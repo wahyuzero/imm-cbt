@@ -44,9 +44,18 @@ class ChoukaiApp {
 
     // Deep linking via URL hash
     const hash = window.location.hash;
-    const babMatch = hash.match(/^#bab-(\d{2})$/);
-    if (babMatch && typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[babMatch[1]]) {
-      this.startExam(CHAPTERS_DATA[babMatch[1]], "renshuu");
+    const babMatch = hash.match(/^#bab-(\d{1,2})$/);
+    const resultMatch = hash.match(/^#result-(\d{1,2})$/);
+    if (babMatch) {
+      const bNum = babMatch[1].padStart(2, "0");
+      if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
+        this.startExam(CHAPTERS_DATA[bNum], "renshuu");
+      }
+    } else if (resultMatch) {
+      const bNum = resultMatch[1].padStart(2, "0");
+      if (this.progress[bNum]) {
+        this.viewSavedResult(bNum);
+      }
     } else if (hash === "#exam" || hash === "#bab-08") {
       this.startExam(BAB_08_DATA, "renshuu");
     } else if (hash === "#result" && this.progress["08"]) {
@@ -85,7 +94,11 @@ class ChoukaiApp {
 
   saveProfile(name, classNo, target) {
     this.profile = { name: name.trim(), classNo: classNo.trim(), target };
-    localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+    try {
+      localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+    } catch (e) {
+      console.warn("Gagal menyimpan profil siswa ke localStorage:", e);
+    }
     this.closeModal();
     this.render();
   }
@@ -116,7 +129,11 @@ class ChoukaiApp {
       date: new Date().toISOString(),
       mode: result.mode,
     };
-    localStorage.setItem("choukai_progress", JSON.stringify(this.progress));
+    try {
+      localStorage.setItem("choukai_progress", JSON.stringify(this.progress));
+    } catch (e) {
+      console.warn("Gagal menyimpan progress ujian ke localStorage:", e);
+    }
   }
 
   viewSavedResult(chapterNum) {
@@ -155,7 +172,11 @@ class ChoukaiApp {
   applyTheme(theme) {
     this.theme = theme;
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("choukai_theme", theme);
+    try {
+      localStorage.setItem("choukai_theme", theme);
+    } catch (e) {
+      console.warn("Gagal menyimpan preferensi tema ke localStorage:", e);
+    }
   }
 
   toggleTheme() {
@@ -521,6 +542,15 @@ class ChoukaiApp {
     this.answers[questionId] = optionId;
     this.renderQuestionContent();
     this.renderQuestionNav();
+  }
+
+  toggleFurigana() {
+    this.showFurigana = !this.showFurigana;
+    const btn = document.getElementById("furigana-toggle-btn");
+    if (btn) {
+      btn.innerHTML = `かな <span class="text-[10px] text-slate-400">${this.showFurigana ? "ON" : "OFF"}</span>`;
+    }
+    this.renderQuestionContent();
   }
 
   goToSession(sessionName) {
@@ -980,8 +1010,8 @@ class ChoukaiApp {
             }
 
             <!-- Furigana Toggle -->
-            <button onclick="window.app.showFurigana = !window.app.showFurigana; window.app.renderQuestionContent();" class="px-2 py-1 border border-slate-300 dark:border-slate-700 rounded text-xs font-jp text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
-              かな <span class="text-[10px] text-slate-400">${this.showFurigana ? "ON" : "OFF"}</span>
+            <button id="furigana-toggle-btn" onclick="window.app.toggleFurigana()" class="px-2 py-1 border border-slate-300 dark:border-slate-700 rounded text-xs font-jp text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800" title="Toggle Furigana / Kana Display">
+              かな <span class="text-[10px] text-slate-400 font-bold">${this.showFurigana ? "ON" : "OFF"}</span>
             </button>
           </div>
         </div>
