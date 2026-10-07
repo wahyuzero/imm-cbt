@@ -12,7 +12,7 @@ class ChoukaiApp {
     this.theme = localStorage.getItem("choukai_theme") || "light";
 
     // Exam runtime state
-    this.currentChapter = BAB_08_DATA;
+    this.currentChapter = (typeof BAB_08_DATA !== "undefined" ? BAB_08_DATA : null);
     this.currentQuestionIdx = 0;
     this.answers = {}; // { questionId: optionId }
     this.mode = "renshuu"; // 'renshuu' (practice) | 'shiken' (official exam)
@@ -43,11 +43,15 @@ class ChoukaiApp {
     this.setupKeyboardShortcuts();
 
     // Deep linking via URL hash
-    if (window.location.hash === "#exam" || window.location.hash === "#bab-08") {
+    const hash = window.location.hash;
+    const babMatch = hash.match(/^#bab-(\d{2})$/);
+    if (babMatch && typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[babMatch[1]]) {
+      this.startExam(CHAPTERS_DATA[babMatch[1]], "renshuu");
+    } else if (hash === "#exam" || hash === "#bab-08") {
       this.startExam(BAB_08_DATA, "renshuu");
-    } else if (window.location.hash === "#result" && this.progress["08"]) {
+    } else if (hash === "#result" && this.progress["08"]) {
       this.viewSavedResult("08");
-    } else if (window.location.hash === "#result-demo") {
+    } else if (hash === "#result-demo") {
       this.startExam(BAB_08_DATA, "shiken");
       // Populate mock full-score demo
       const ansDemo = {
@@ -118,6 +122,11 @@ class ChoukaiApp {
   viewSavedResult(chapterNum) {
     const saved = this.progress[chapterNum];
     if (!saved) return;
+    if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[chapterNum]) {
+      this.currentChapter = CHAPTERS_DATA[chapterNum];
+    } else if (chapterNum === "08" && typeof BAB_08_DATA !== "undefined") {
+      this.currentChapter = BAB_08_DATA;
+    }
     this.currentResult = saved;
     this.view = "result";
     this.render();
@@ -353,7 +362,7 @@ class ChoukaiApp {
     const titleEl = document.getElementById("audio-header-title");
     const q = this.getCurrentQuestion();
     if (titleEl && q) {
-      titleEl.textContent = `Audio Soal ${q.id} (Sesi Choukai)`;
+      titleEl.textContent = `Audio Soal ${q ? q.id : ""} (Sesi Choukai)`;
     }
   }
 
@@ -429,7 +438,14 @@ class ChoukaiApp {
   // ==========================================
   // EXAM LOGIC & TIMER
   // ==========================================
-  startExam(chapterData, mode = "renshuu") {
+  startExam(chapterDataOrNum, mode = "renshuu") {
+    let chapterData = chapterDataOrNum;
+    if (typeof chapterDataOrNum === "string" && typeof CHAPTERS_DATA !== "undefined") {
+      chapterData = CHAPTERS_DATA[chapterDataOrNum] || chapterData;
+    }
+    if (!chapterData && typeof BAB_08_DATA !== "undefined") {
+      chapterData = BAB_08_DATA;
+    }
     this.currentChapter = chapterData;
     this.currentQuestionIdx = 0;
     this.answers = {};
@@ -441,7 +457,8 @@ class ChoukaiApp {
 
     if (this.timerInterval) clearInterval(this.timerInterval);
     if (this.mode === "shiken") {
-      this.timerSeconds = 3600; // 60 menit (50m Reading + 10m Choukai)
+      const hasChoukai = this.currentChapter.questions.some((q) => q.session === "choukai");
+      this.timerSeconds = hasChoukai ? 3600 : 3000; // 50 menit (3000s) untuk Bab 1-7, 60 menit (3600s) untuk Bab 8
       this.startTimer();
       const q = this.getCurrentQuestion();
       if (q && q.session === "choukai") {
@@ -538,7 +555,7 @@ class ChoukaiApp {
 
     const questions = this.currentChapter.questions;
     const readingQuestions = questions.filter((q) => q.session === "reading" || q.id <= 25);
-    const choukaiQuestions = questions.filter((q) => q.session === "choukai" || q.id > 25);
+    const choukaiQuestions = questions.filter((q) => q.session === "choukai" || (q.id > 25 && (this.currentChapter.choukaiCount || 0) > 0));
 
     let readingCorrect = 0;
     readingQuestions.forEach((q) => {
@@ -551,11 +568,18 @@ class ChoukaiApp {
     });
 
     const readingTotal = readingQuestions.length || 25;
-    const choukaiTotal = choukaiQuestions.length || 8;
+    const choukaiTotal = choukaiQuestions.length;
 
     const readingScore = (readingCorrect / readingTotal) * 100;
-    const choukaiScore = (choukaiCorrect / choukaiTotal) * 100;
-    const totalScore = (readingScore + choukaiScore) / 2;
+    let choukaiScore = 0;
+    let totalScore = 0;
+
+    if (choukaiTotal > 0) {
+      choukaiScore = (choukaiCorrect / choukaiTotal) * 100;
+      totalScore = (readingScore + choukaiScore) / 2;
+    } else {
+      totalScore = readingScore;
+    }
     const passingGrade = this.currentChapter.passingGrade || 80;
     const passed = totalScore >= passingGrade;
 
@@ -738,6 +762,10 @@ class ChoukaiApp {
         ? `<span class="px-2 py-0.5 rounded text-xs font-bold ${prog.passed ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400" : "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400"}">${prog.score.toFixed(0)} Poin</span>`
         : "";
 
+      const chData = typeof CHAPTERS_DATA !== "undefined" ? CHAPTERS_DATA[ch.num] : null;
+      const pdfReadingSoal = chData ? chData.pdfReadingSoalUrl : `assets/pdf/Salinan Soal Bab ${ch.num}.pdf`;
+      const pdfReadingKunci = chData ? chData.pdfReadingKunciUrl : `assets/pdf/Kunci dan Pembahasan Bab ${ch.num}.pdf`;
+
       const actionButton = ch.available
         ? (isCompleted
             ? `<div class="grid grid-cols-2 gap-2 mt-3">
@@ -745,18 +773,38 @@ class ChoukaiApp {
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   Lihat Hasil
                 </button>
-                <button onclick="window.app.startExam(BAB_08_DATA, 'renshuu')" class="py-2 px-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
+                <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="py-2 px-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                   Ulangi
                 </button>
               </div>`
-            : `<button onclick="window.app.startExam(BAB_08_DATA, 'renshuu')" class="w-full mt-3 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+            : `<button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="w-full mt-3 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-                Mulai Tryout Bab 08
+                Mulai Bab ${ch.num}
               </button>`)
         : `<button disabled class="w-full mt-3 py-2 px-3 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-md text-xs font-semibold cursor-not-allowed">
             Terkunci (Segera Hadir)
           </button>`;
+
+      const pdfCardLinks = ch.available
+        ? `<div class="flex items-center gap-2 mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px]">
+            <a href="${pdfReadingSoal}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="Unduh Lembar Soal PDF">
+              <svg class="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+              Soal PDF
+            </a>
+            <span class="text-slate-300 dark:text-slate-700">&bull;</span>
+            <a href="${pdfReadingKunci}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="Unduh Kunci & Pembahasan PDF">
+              <svg class="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+              Kunci PDF
+            </a>
+            ${ch.choukaiQuestions > 0 ? `
+              <span class="text-slate-300 dark:text-slate-700">&bull;</span>
+              <a href="assets/pdf/Soal Choukai Bab ${ch.num}.pdf" target="_blank" class="text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1" title="Unduh Soal Choukai PDF">
+                Choukai
+              </a>
+            ` : ""}
+          </div>`
+        : "";
 
       cardsHTML += `
         <div class="border ${ch.available ? "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm" : "border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 opacity-75"} rounded-lg p-4 flex flex-col justify-between transition hover:border-sky-500">
@@ -775,6 +823,7 @@ class ChoukaiApp {
           </div>
           <div>
             ${actionButton}
+            ${pdfCardLinks}
           </div>
         </div>
       `;
@@ -801,7 +850,7 @@ class ChoukaiApp {
             <!-- Quick Stats -->
             <div class="flex items-center gap-4 bg-slate-800/80 border border-slate-700/80 rounded-lg p-3 shrink-0">
               <div class="text-center px-2">
-                <span class="block text-lg font-black text-white font-mono">${completedCount}/18</span>
+                <span class="block text-lg font-black text-white font-mono">${completedCount}/${chapters.filter(c => c.available).length}</span>
                 <span class="text-[10px] text-slate-400 uppercase tracking-wider">Bab Selesai</span>
               </div>
               <div class="w-px h-8 bg-slate-700"></div>
@@ -818,7 +867,7 @@ class ChoukaiApp {
           <div>
             <h2 class="text-base font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
-              Katalog Bab Suplemen (Bab 08 s.d. Bab 25)
+              Katalog Bab Lengkap (Bab 01 s.d. Bab 25)
             </h2>
             <p class="text-xs text-slate-500">Pilih modul bab tryout yang ingin Anda kerjakan di bawah ini</p>
           </div>
@@ -887,7 +936,7 @@ class ChoukaiApp {
               this.mode === "shiken"
                 ? `<div class="bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 px-2.5 py-1 rounded text-xs font-mono font-bold text-rose-700 dark:text-rose-300 flex items-center gap-1">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <span id="exam-timer-display">60:00</span>
+                    <span id="exam-timer-display">${this.currentChapter.questions.some(item => item.session === "choukai") ? "60:00" : "50:00"}</span>
                   </div>`
                 : ""
             }
@@ -908,11 +957,11 @@ class ChoukaiApp {
                 <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </button>
               <div>
-                <div class="text-[11px] font-bold text-sky-400 font-mono tracking-wide" id="audio-header-title">Audio Soal ${q.id} (Sesi Choukai)</div>
+                <div class="text-[11px] font-bold text-sky-400 font-mono tracking-wide" id="audio-header-title">Audio Soal ${q ? q.id : ""} (Sesi Choukai)</div>
                 <div class="text-xs font-mono flex items-center gap-1 text-slate-300">
                   <span id="audio-current-time">00:00</span>
                   <span>/</span>
-                  <span id="audio-total-time">${q.audioDuration || "00:50"}</span>
+                  <span id="audio-total-time">${q && q.audioDuration ? q.audioDuration : "00:50"}</span>
                 </div>
               </div>
             </div>
@@ -996,14 +1045,21 @@ class ChoukaiApp {
         <!-- Top Session Indicator Bar -->
         <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-slate-100 dark:border-slate-800">
           <div class="flex items-center gap-2">
-            <button onclick="window.app.goToSession('reading')" class="px-2.5 py-1 rounded text-xs font-bold transition flex items-center gap-1.5 ${currentSession === 'reading' ? 'bg-sky-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-              <span>📖 Sesi 1: Reading</span>
-              <span class="text-[10px] font-mono px-1 py-0.2 rounded ${currentSession === 'reading' ? 'bg-sky-700 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${readingAnswered}/25</span>
-            </button>
-            <button onclick="window.app.goToSession('choukai')" class="px-2.5 py-1 rounded text-xs font-bold transition flex items-center gap-1.5 ${currentSession === 'choukai' ? 'bg-sky-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-              <span>🎧 Sesi 2: Choukai</span>
-              <span class="text-[10px] font-mono px-1 py-0.2 rounded ${currentSession === 'choukai' ? 'bg-sky-700 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${choukaiAnswered}/8</span>
-            </button>
+            ${choukaiQuestions.length > 0 ? `
+              <button onclick="window.app.goToSession('reading')" class="px-2.5 py-1 rounded text-xs font-bold transition flex items-center gap-1.5 ${currentSession === 'reading' ? 'bg-sky-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <span>📖 Sesi 1: Reading</span>
+                <span class="text-[10px] font-mono px-1 py-0.2 rounded ${currentSession === 'reading' ? 'bg-sky-700 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${readingAnswered}/${readingQuestions.length}</span>
+              </button>
+              <button onclick="window.app.goToSession('choukai')" class="px-2.5 py-1 rounded text-xs font-bold transition flex items-center gap-1.5 ${currentSession === 'choukai' ? 'bg-sky-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <span>🎧 Sesi 2: Choukai</span>
+                <span class="text-[10px] font-mono px-1 py-0.2 rounded ${currentSession === 'choukai' ? 'bg-sky-700 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${choukaiAnswered}/${choukaiQuestions.length}</span>
+              </button>
+            ` : `
+              <div class="px-2.5 py-1 rounded text-xs font-bold bg-sky-600 text-white shadow-xs flex items-center gap-1.5">
+                <span>📖 Ujian Tulis (Reading)</span>
+                <span class="text-[10px] font-mono px-1 py-0.2 rounded bg-sky-700 text-white">${readingAnswered}/${readingQuestions.length}</span>
+              </div>
+            `}
           </div>
           <div class="flex items-center gap-2">
             <span class="text-xs text-slate-500 font-mono hidden sm:inline">${answeredCount}/${totalCount} Terjawab</span>
@@ -1015,16 +1071,18 @@ class ChoukaiApp {
 
         <!-- Question Number Buttons Grid -->
         <div class="space-y-2">
-          <!-- Sesi 1 (Reading 1-25) -->
+          <!-- Sesi 1 (Reading) -->
           <div class="flex items-center gap-1 overflow-x-auto py-0.5 max-w-full">
             <span class="text-[10px] font-bold text-slate-400 uppercase font-mono tracking-wider w-16 shrink-0">Reading:</span>
             ${renderNavButtons(readingQuestions)}
           </div>
-          <!-- Sesi 2 (Choukai 26-33) -->
-          <div class="flex items-center gap-1 overflow-x-auto py-0.5 max-w-full">
-            <span class="text-[10px] font-bold text-sky-500 uppercase font-mono tracking-wider w-16 shrink-0">Choukai:</span>
-            ${renderNavButtons(choukaiQuestions)}
-          </div>
+          ${choukaiQuestions.length > 0 ? `
+            <!-- Sesi 2 (Choukai) -->
+            <div class="flex items-center gap-1 overflow-x-auto py-0.5 max-w-full">
+              <span class="text-[10px] font-bold text-sky-500 uppercase font-mono tracking-wider w-16 shrink-0">Choukai:</span>
+              ${renderNavButtons(choukaiQuestions)}
+            </div>
+          ` : ""}
         </div>
       </div>
     `;
@@ -1096,7 +1154,7 @@ class ChoukaiApp {
           ${isChoukai ? `
             <button onclick="window.app.playQuestionAudio(${q.id})" class="px-2.5 py-1 rounded bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs font-semibold transition flex items-center gap-1.5 shadow-sm" title="Putar audio soal ${q.id} (${q.audioDuration || '00:50'})">
               <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <span>Putar Audio (${q.audioDuration || "00:50"})</span>
+              <span>Putar Audio (${q && q.audioDuration ? q.audioDuration : "00:50"})</span>
             </button>
             <span class="text-[11px] text-slate-400 font-mono">Bobot: 12.5 Poin</span>
           ` : `
@@ -1123,7 +1181,7 @@ class ChoukaiApp {
           &larr; Soal Sebelumnya
         </button>
         <button onclick="window.app.nextQuestion()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-semibold transition ${this.currentQuestionIdx === this.currentChapter.questions.length - 1 ? "opacity-50 pointer-events-none" : ""}">
-          ${this.currentQuestionIdx === 24 ? "Lanjut ke Sesi Choukai (Soal 26) &rarr;" : "Soal Selanjutnya &rarr;"}
+          ${(this.currentQuestionIdx === 24 && this.currentChapter.questions.some(item => item.session === "choukai")) ? "Lanjut ke Sesi Choukai (Soal 26) &rarr;" : "Soal Selanjutnya &rarr;"}
         </button>
       </div>
     `;
@@ -1183,7 +1241,7 @@ class ChoukaiApp {
             ${isChoukai ? `
               <button onclick="window.app.toggleResultAudio(${q.id})" id="result-audio-btn-${q.id}" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 font-mono font-semibold">
                 <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span>Dengar Ulang Audio Soal ${q.id} (${q.audioDuration || "00:50"})</span>
+                <span>Dengar Ulang Audio Soal ${q.id} (${q && q.audioDuration ? q.audioDuration : "00:50"})</span>
               </button>
             ` : ""}
           </div>
@@ -1224,7 +1282,7 @@ class ChoukaiApp {
 
             ${q.explanation.grammarRule ? `
             <div class="bg-sky-50 dark:bg-sky-950/40 p-3 rounded-lg border border-sky-200 dark:border-sky-900 text-sky-900 dark:text-sky-200">
-              <strong class="block mb-1">📘 Poin Kaidah Bab 8:</strong>
+              <strong class="block mb-1">📘 Poin Kaidah Bab ${this.currentChapter.chapter}:</strong>
               <p class="leading-relaxed text-[11.5px]">${q.explanation.grammarRule}</p>
             </div>
             ` : ""}
@@ -1247,27 +1305,39 @@ class ChoukaiApp {
             Total Benar: ${r.correctCount} dari ${r.totalCount} Soal &bull; Passing Grade: 80.0
           </p>
 
-          <!-- Dual Section Score Badges -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto text-left mb-4">
-            <div class="p-3 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60">
-              <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono">📖 Sesi 1: Reading (読解)</div>
-              <div class="text-xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
+          <!-- Score Breakdown Badges -->
+          ${r.choukaiTotal > 0 ? `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto text-left mb-4">
+              <div class="p-3 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60">
+                <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono">📖 Sesi 1: Reading (読解)</div>
+                <div class="text-xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
+                  ${r.readingScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
+                </div>
+                <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  ${r.readingCorrect} dari ${r.readingTotal} Soal Benar
+                </div>
+              </div>
+              <div class="p-3 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60">
+                <div class="text-[11px] text-sky-700 dark:text-sky-400 font-bold uppercase font-mono">🎧 Sesi 2: Choukai (聴解)</div>
+                <div class="text-xl font-black font-mono text-sky-900 dark:text-sky-200 mt-0.5">
+                  ${r.choukaiScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
+                </div>
+                <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  ${r.choukaiCorrect} dari ${r.choukaiTotal} Soal Benar
+                </div>
+              </div>
+            </div>
+          ` : `
+            <div class="p-3.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 max-w-sm mx-auto text-center mb-4">
+              <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono">📖 Ujian Tulis: Reading (読解)</div>
+              <div class="text-2xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
                 ${r.readingScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
               </div>
               <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                ${r.readingCorrect} dari ${r.readingTotal} Soal Benar
+                ${r.readingCorrect} dari ${r.readingTotal} Soal Benar (Bobot 4.0 Poin / Soal)
               </div>
             </div>
-            <div class="p-3 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60">
-              <div class="text-[11px] text-sky-700 dark:text-sky-400 font-bold uppercase font-mono">🎧 Sesi 2: Choukai (聴解)</div>
-              <div class="text-xl font-black font-mono text-sky-900 dark:text-sky-200 mt-0.5">
-                ${r.choukaiScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
-              </div>
-              <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                ${r.choukaiCorrect} dari ${r.choukaiTotal} Soal Benar
-              </div>
-            </div>
-          </div>
+          `}
 
           <!-- WhatsApp Share & Actions -->
           <div class="flex flex-wrap items-center justify-center gap-2.5 mt-5 pt-5 border-t border-slate-100 dark:border-slate-800">
@@ -1275,22 +1345,30 @@ class ChoukaiApp {
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.74 0.965 1.2.664.592 1.224.776 1.397.863.173.086.274.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
               Kirim Nilai ke Sensei via WhatsApp
             </button>
-            <a href="${this.currentChapter.pdfReadingSoalUrl || 'assets/pdf/Salinan Soal Bab 08.pdf'}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-              <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Soal Reading PDF
-            </a>
-            <a href="${this.currentChapter.pdfReadingKunciUrl || 'assets/pdf/Kunci dan Pembahasan Bab 08.pdf'}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-              <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Kunci Reading PDF
-            </a>
-            <a href="${this.currentChapter.pdfSoalUrl || 'assets/pdf/Soal Choukai Bab 08.pdf'}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-              <svg class="w-4 h-4 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Soal Choukai PDF
-            </a>
-            <a href="${this.currentChapter.pdfKunciUrl || 'assets/pdf/Kunci dan Pembahasan Choukai Bab 08.pdf'}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-              <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Kunci Choukai PDF
-            </a>
+            ${this.currentChapter.pdfReadingSoalUrl ? `
+              <a href="${this.currentChapter.pdfReadingSoalUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                Soal Reading PDF
+              </a>
+            ` : ""}
+            ${this.currentChapter.pdfReadingKunciUrl ? `
+              <a href="${this.currentChapter.pdfReadingKunciUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                Kunci Reading PDF
+              </a>
+            ` : ""}
+            ${this.currentChapter.pdfSoalUrl ? `
+              <a href="${this.currentChapter.pdfSoalUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                <svg class="w-4 h-4 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                Soal Choukai PDF
+              </a>
+            ` : ""}
+            ${this.currentChapter.pdfKunciUrl ? `
+              <a href="${this.currentChapter.pdfKunciUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                Kunci Choukai PDF
+              </a>
+            ` : ""}
             <button onclick="window.app.startExam(window.app.currentChapter, 'renshuu')" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition">
               Ulangi Tryout
             </button>
