@@ -709,17 +709,7 @@ class ChoukaiApp {
     let optionsHTML = "";
     q.options.forEach((opt) => {
       const isSelected = selectedAns === opt.id;
-      let btnState = isSelected ? "selected" : "";
-
-      // In Mode Renshuu, if answered, highlight correct & wrong immediately
-      if (this.mode === "renshuu" && isAnswered) {
-        if (opt.id === q.correctAnswer) {
-          btnState += " correct";
-        } else if (isSelected && opt.id !== q.correctAnswer) {
-          btnState += " incorrect";
-        }
-      }
-
+      const btnState = isSelected ? "selected" : "";
       const optCleanJa = opt.text_ja.replace(/^[①②③④\d]+[\s.、]*\s*/, "");
 
       optionsHTML += `
@@ -734,36 +724,6 @@ class ChoukaiApp {
         </button>
       `;
     });
-
-    // Explanation in Mode Renshuu
-    let explanationHTML = "";
-    if (this.mode === "renshuu" && isAnswered) {
-      explanationHTML = `
-        <div class="mt-6 border-t border-slate-200 dark:border-slate-800 pt-4 bg-slate-50 dark:bg-slate-900/60 -mx-4 -mb-4 sm:-mx-6 sm:-mb-6 p-4 sm:p-6 rounded-b-lg">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="px-2 py-0.5 rounded text-xs font-bold ${selectedAns === q.correctAnswer ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"}">
-              ${selectedAns === q.correctAnswer ? "Jawaban Anda Benar (正解)!" : "Jawaban Anda Kurang Tepat"}
-            </span>
-            <span class="text-xs text-slate-500 font-mono">Kunci: Opsi ${q.correctAnswer}</span>
-          </div>
-
-          <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
-            <div class="bg-white dark:bg-slate-800 p-3 rounded border border-slate-200 dark:border-slate-700">
-              <strong class="text-sky-600 dark:text-sky-400 block mb-1">💡 Analisis Logika:</strong>
-              ${q.explanation.logic}
-            </div>
-            <div class="bg-white dark:bg-slate-800 p-3 rounded border border-slate-200 dark:border-slate-700">
-              <strong class="text-amber-600 dark:text-amber-400 block mb-1">⚠️ Jebakan Distraktor:</strong>
-              <div class="whitespace-pre-line">${q.explanation.distractor}</div>
-            </div>
-            <div class="bg-sky-50 dark:bg-sky-950/40 p-3 rounded border border-sky-200 dark:border-sky-900 text-sky-900 dark:text-sky-200">
-              <strong class="block mb-1">📘 Catatan Kaidah Bab 8:</strong>
-              ${q.explanation.grammarRule}
-            </div>
-          </div>
-        </div>
-      `;
-    }
 
     const questionTextDisplay = this.showFurigana ? q.question_ruby : q.question_ja;
 
@@ -799,8 +759,6 @@ class ChoukaiApp {
         ${optionsHTML}
       </div>
 
-      ${explanationHTML}
-
       <!-- Bottom Nav buttons -->
       <div class="flex items-center justify-between gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
         <button onclick="window.app.prevQuestion()" class="px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition ${this.currentQuestionIdx === 0 ? "opacity-50 pointer-events-none" : ""}">
@@ -819,11 +777,11 @@ class ChoukaiApp {
     const r = this.currentResult;
     const qList = this.currentChapter.questions;
 
-    let reviewCardsHTML = "";
-    qList.forEach((q) => {
-      const userAns = r.answers[q.id];
-      const isCorrect = userAns === q.correctAnswer;
+    const wrongQuestions = qList.filter((q) => r.answers[q.id] !== q.correctAnswer);
+    const correctQuestions = qList.filter((q) => r.answers[q.id] === q.correctAnswer);
 
+    const renderCard = (q, isCorrect) => {
+      const userAns = r.answers[q.id];
       let dialogueScriptHTML = "";
       q.dialogue.forEach((d) => {
         dialogueScriptHTML += `
@@ -835,42 +793,68 @@ class ChoukaiApp {
         `;
       });
 
-      reviewCardsHTML += `
-        <div class="border ${isCorrect ? "border-emerald-200 dark:border-emerald-900 bg-white dark:bg-slate-900" : "border-rose-200 dark:border-rose-900 bg-rose-50/20 dark:bg-rose-950/20"} rounded-lg p-4 shadow-sm mb-4">
-          <div class="flex items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-2 mb-2">
-            <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isCorrect ? "bg-emerald-600 text-white" : "bg-rose-600 text-white"} font-mono">
+      return `
+        <div class="border ${isCorrect ? "border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/10 dark:bg-emerald-950/10" : "border-rose-300 dark:border-rose-900/70 bg-rose-50/20 dark:bg-rose-950/20"} rounded-xl p-4 sm:p-5 shadow-sm mb-4 transition">
+          <div class="flex items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3 mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${isCorrect ? "bg-emerald-600 text-white" : "bg-rose-600 text-white"} font-mono shadow-sm">
                 ${q.id}
               </span>
-              <span class="font-jp font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100">${q.question_ja}</span>
+              <div>
+                <span class="text-[10px] text-slate-400 font-jp uppercase block">${q.section_ja}</span>
+                <span class="font-jp font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100">${q.question_ja}</span>
+              </div>
             </div>
-            <span class="px-2 py-0.5 rounded text-[11px] font-bold ${isCorrect ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"}">
-              ${isCorrect ? "BENAR (+12.5)" : "SALAH (0)"}
+            <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${isCorrect ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300" : "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300"} flex items-center gap-1">
+              ${isCorrect ? `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> BENAR (+12.5)` : `<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg> SALAH (0)`}
             </span>
           </div>
 
-          <div class="text-xs text-slate-600 dark:text-slate-400 mb-2">
-            Jawaban Anda: <strong class="${isCorrect ? "text-emerald-600" : "text-rose-600"}">${userAns ? "Opsi " + userAns : "Kosong"}</strong> &bull; Kunci Jawaban: <strong class="text-sky-600">Opsi ${q.correctAnswer}</strong>
+          <div class="text-xs text-slate-600 dark:text-slate-400 mb-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+            <div>Jawaban Anda: <strong class="${isCorrect ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}">${userAns ? "Opsi " + userAns : "Tidak Dijawab"}</strong></div>
+            <div>Kunci Jawaban: <strong class="text-sky-600 dark:text-sky-400">Opsi ${q.correctAnswer}</strong></div>
+            ${q.audioTimestamp ? `
+            <button onclick="window.app.seekAndPlayAudio(${q.audioStartSeconds})" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 font-mono">
+              <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              Dengar Ulang (${q.audioTimestamp})
+            </button>` : ""}
           </div>
 
           <!-- Dialogue script disclosure -->
-          <details class="bg-slate-50 dark:bg-slate-800/60 rounded p-2.5 my-2 border border-slate-200 dark:border-slate-700">
-            <summary class="cursor-pointer text-xs font-bold text-slate-700 dark:text-slate-300">
-              📄 Transkrip Dialog Lengkap & Terjemahan
+          <details class="bg-white dark:bg-slate-800/80 rounded-lg p-3 my-2.5 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <summary class="cursor-pointer text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+              <span>📄 Transkrip Percakapan Lengkap & Terjemahan</span>
+              <span class="text-[10px] text-slate-400">Klik untuk buka/tutup</span>
             </summary>
-            <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 space-y-1">
+            <div class="mt-2.5 pt-2.5 border-t border-slate-100 dark:border-slate-700/60 space-y-1.5">
               ${dialogueScriptHTML}
             </div>
           </details>
 
           <!-- Explanation notes -->
-          <div class="bg-sky-50/50 dark:bg-sky-950/20 border-l-2 border-sky-500 p-2.5 text-xs text-slate-700 dark:text-slate-300 space-y-1">
-            <p><strong>Analisis:</strong> ${q.explanation.logic}</p>
-            <p class="text-[11px] text-slate-500"><strong>Kaidah:</strong> ${q.explanation.grammarRule}</p>
+          <div class="space-y-2 text-xs">
+            <div class="bg-white dark:bg-slate-800/90 p-3 rounded-lg border ${isCorrect ? "border-emerald-100 dark:border-emerald-950" : "border-rose-100 dark:border-rose-950"} text-slate-700 dark:text-slate-200">
+              <strong class="${isCorrect ? "text-emerald-700 dark:text-emerald-400" : "text-rose-700 dark:text-rose-400"} block mb-1">
+                ${isCorrect ? "💡 Analisis Mengapa Jawaban Anda Tepat:" : "⚠️ Bedah Kesalahan & Jebakan Logika:"}
+              </strong>
+              <p class="leading-relaxed">${q.explanation.logic}</p>
+            </div>
+
+            ${!isCorrect ? `
+            <div class="bg-amber-50 dark:bg-amber-950/30 p-3 rounded-lg border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200">
+              <strong class="text-amber-800 dark:text-amber-300 block mb-1">⚠️ Jebakan Distraktor Pengecoh:</strong>
+              <div class="whitespace-pre-line leading-relaxed text-[11.5px]">${q.explanation.distractor}</div>
+            </div>
+            ` : ""}
+
+            <div class="bg-sky-50 dark:bg-sky-950/40 p-3 rounded-lg border border-sky-200 dark:border-sky-900 text-sky-900 dark:text-sky-200">
+              <strong class="block mb-1">📘 Poin Kaidah Grammar Bab 8:</strong>
+              <p class="leading-relaxed text-[11.5px]">${q.explanation.grammarRule}</p>
+            </div>
           </div>
         </div>
       `;
-    });
+    };
 
     return `
       <div class="max-w-4xl mx-auto px-4 py-6">
@@ -909,13 +893,59 @@ class ChoukaiApp {
           </div>
         </div>
 
-        <!-- Detailed Breakdown Header -->
-        <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
-          <span>📝</span> Pembahasan Detail Tiap Butir Soal
-        </h3>
+        <!-- Bagian 1: Soal Salah (Prioritas Utama untuk Evaluasi) -->
+        <div class="mb-8">
+          <div class="flex items-center gap-2.5 mb-4 p-3 bg-rose-50/60 dark:bg-rose-950/40 rounded-xl border border-rose-200/80 dark:border-rose-900/60">
+            <span class="w-8 h-8 rounded-lg bg-rose-600 text-white flex items-center justify-center shrink-0 shadow-sm font-bold text-sm">
+              ⚠️
+            </span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-rose-900 dark:text-rose-200">
+                Butir Soal Perlu Evaluasi & Pembahasan (Jawaban Salah)
+              </h3>
+              <p class="text-[11px] text-rose-700 dark:text-rose-400">
+                Fokuskan belajar pada ${wrongQuestions.length} butir soal di bawah ini. Pahami jebakan dan alasan jawaban yang tepat.
+              </p>
+            </div>
+          </div>
 
-        <!-- Review Cards -->
-        ${reviewCardsHTML}
+          ${wrongQuestions.length > 0
+            ? wrongQuestions.map((q) => renderCard(q, false)).join("")
+            : `
+            <div class="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/80 rounded-xl p-6 text-center text-emerald-800 dark:text-emerald-200 shadow-xs">
+              <div class="text-3xl mb-1.5">🎉</div>
+              <h4 class="font-bold text-sm">Luar Biasa! Tidak Ada Jawaban yang Salah</h4>
+              <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">Seluruh 8 butir soal pada bab ini berhasil Anda kuasai dengan sempurna.</p>
+            </div>
+            `
+          }
+        </div>
+
+        <!-- Bagian 2: Soal Benar (Terpisah di Bawah) -->
+        <div>
+          <div class="flex items-center gap-2.5 mb-4 p-3 bg-emerald-50/60 dark:bg-emerald-950/40 rounded-xl border border-emerald-200/80 dark:border-emerald-900/60">
+            <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm font-bold text-sm">
+              ✓
+            </span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-emerald-900 dark:text-emerald-200">
+                Butir Soal Berhasil Dikuasai (Jawaban Benar)
+              </h3>
+              <p class="text-[11px] text-emerald-700 dark:text-emerald-400">
+                Daftar ${correctQuestions.length} butir soal yang berhasil Anda jawab dengan benar. Tinjau kaidah untuk penguatan materi.
+              </p>
+            </div>
+          </div>
+
+          ${correctQuestions.length > 0
+            ? correctQuestions.map((q) => renderCard(q, true)).join("")
+            : `
+            <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 text-center text-slate-500 text-xs">
+              Belum ada jawaban benar pada sesi ini. Pelajari pembahasan soal yang salah di atas dan ulangi kembali ujian.
+            </div>
+            `
+          }
+        </div>
       </div>
     `;
   }
