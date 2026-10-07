@@ -1,7 +1,7 @@
 /**
  * Data Modul & Bank Soal Choukai CBT Platform
  * Kurikulum IMM Japan テキスト (Bab 01 s.d. Bab 25)
- * Paket Bab 01 s.d. 07 (Fase Fondasi Reading: 25 Soal) & Bab 08 (Tryout Terpadu: 33 Soal)
+ * Seluruh Bab 01 s.d. Bab 25 Aktif & Siap Ujian di Web CBT
  */
 const CHAPTERS_INDEX = [
   {
@@ -121,187 +121,238 @@ const CHAPTERS_INDEX = [
     "title_ja": "第9課：好き・嫌い・上手・下手",
     "title_id": "Bab 09: Kesukaan & Kemahiran",
     "topic_id": "Kesenangan, Olahraga, Kemampuan Bahasa, Alasan (~から)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:15",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "10",
     "title_ja": "第10課：存在と位置表現",
     "title_id": "Bab 10: Keberadaan & Letak Benda",
     "topic_id": "います / あります, Posisi Atas, Bawah, Dalam, Luar, Samping",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:20",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "11",
     "title_ja": "第11課：数量詞と期間",
     "title_id": "Bab 11: Satuan Bilangan & Jangka Waktu",
     "topic_id": "Hitungan Jumlah Barang, Orang, Jam, Hari, Frekuensi",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:30",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "12",
     "title_ja": "第12課：比較表現",
     "title_id": "Bab 12: Kalimat Perbandingan",
     "topic_id": "より～のほうが, どちらが, 一番～ (Perbandingan Tempat & Benda)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:10",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "13",
     "title_ja": "第13課：希望と目的",
     "title_id": "Bab 13: Keinginan & Tujuan Perjalanan",
     "topic_id": "～がほしい, ～たい, ～へ～に行きます",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:25",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "14",
     "title_ja": "第14課：て形と指示・依頼",
     "title_id": "Bab 14: Bentuk Te & Permohonan Kerja",
     "topic_id": "Bentuk -te, ～てください (Instruksi Pabrik & K3)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:40",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "15",
     "title_ja": "第15課：許可と禁止",
     "title_id": "Bab 15: Izin & Larangan",
     "topic_id": "～てもいいです, ～てはいけません (Aturan K3 & Keamanan)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:15",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "16",
     "title_ja": "第16課：動作の順序と方法",
     "title_id": "Bab 16: Urutan Aksi & Metode",
     "topic_id": "～てから, ～て、～て, Bagaimana Cara Mengoperasikan Mesin",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:30",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "17",
     "title_ja": "第17課：ない形と義務",
     "title_id": "Bab 17: Bentuk Nai & Kewajiban",
     "topic_id": "～ないでください, ～なければなりません (Disiplin Kerja)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:35",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "18",
     "title_ja": "第18課：辞書形と能力・趣味",
     "title_id": "Bab 18: Bentuk Kamus & Kemampuan",
     "topic_id": "～ことができます, 趣味は～ことです, ～の前に",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:20",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "19",
     "title_ja": "第19課：た形と経験",
     "title_id": "Bab 19: Bentuk Ta & Pengalaman",
     "topic_id": "～たことがあります, ～たり～たりします, ～くなります",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:25",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "20",
     "title_ja": "第20課：普通形と会話",
     "title_id": "Bab 20: Bentuk Biasa (Futsuukei)",
     "topic_id": "Percakapan Kasual antar Rekan Asrama & Pabrik",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:15",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "21",
     "title_ja": "第21課：意見と推量",
     "title_id": "Bab 21: Pendapat & Dugaan",
     "topic_id": "～と思います, ～と言いました, ～でしょう",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:30",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "22",
     "title_ja": "第22課：連体修飾",
     "title_id": "Bab 22: Modifikasi Frasa Benda",
     "topic_id": "Kalimat Penjelas Kata Benda (Benda/Orang yang Dilakukan)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:40",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "23",
     "title_ja": "第23課：時と条件",
     "title_id": "Bab 23: Waktu & Hubungan Sebab Akibat",
     "topic_id": "～とき, ～と (Bila Menekan Tombol Mesin)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:35",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "24",
     "title_ja": "第24課：授受表現",
     "title_id": "Bab 24: Memberi & Menerima Bantuan",
     "topic_id": "くれます, あげます, もらいます (Bantuan Rekan Senior)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:25",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   },
   {
     "num": "25",
     "title_ja": "第25課：仮定条件",
     "title_id": "Bab 25: Pengandaian & Syarat Lanjutan",
     "topic_id": "～たら, ～ても (Syarat & Tindakan Darurat)",
-    "available": false,
-    "totalQuestions": 8,
-    "audioDuration": "08:45",
+    "available": true,
+    "totalQuestions": 25,
+    "audioDuration": "50:00",
     "passingScore": 80,
-    "badge": "Segera Hadir"
+    "badge": "Tersedia",
+    "examDuration": "50:00",
+    "readingQuestions": 25,
+    "choukaiQuestions": 0
   }
 ];
 
@@ -9347,6 +9398,17788 @@ const BAB_08_DATA = {
   ]
 };
 
+const BAB_09_DATA = {
+  "chapter": "09",
+  "title_ja": "第９課：嗜好・能力・所有（すき・きらい・上手・下手・あります・分かります）",
+  "title_id": "Bab 09: Kesukaan, Kemahiran, Kepemilikan, Pemahaman (Ga) & Alasan (Kara)",
+  "theme_ja": "対象の助詞「が」 (Taishou no Joshi 'Ga') & 理由表現 (Riyuu Hyougen)",
+  "theme_id": "Evaluasi penguasaan kosakata hobi, cita rasa, kemampuan, kepemilikan properti/waktu, serta pola tata bahasa objek partikel (が) pada predikat kesukaan (すき/きらい), kemahiran (上手/下手), kepemilikan (あります), pemahaman (分かります), kata tanya alasan (どうして), kalimat sebab-akibat (～から), dan adverbia derajat (よく, だいたい, 少し, あまり, ぜんぜん) pada Bab 9 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 09.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 09.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Cita Rasa Makanan",
+      "type": "teks",
+      "question_ja": "ダダンさんは とうがらしを たくさん つかいます。（　<strong>からい</strong>　）料理が すきですから。「からい」の 意味は どれですか。",
+      "question_ruby": "ダダンさんは とうがらしを たくさん つかいます。（　<strong>からい</strong>　）料理が すきですから。「からい」の 意味は どれですか。",
+      "question_id": "Kosakata cita rasa masakan yang dicetak tebal memiliki arti...",
+      "translation": "Dadan-san menggunakan banyak cabai karena suka masakan pedas. 'Karai' bermakna pedas.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Pedas"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Manis"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Asin gurih"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Pahit getir"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (Pedas).",
+        "logic": "Kata sifat I <strong>辛い（からい - karai）</strong> berarti <strong>pedas</strong> (seperti rasa cabai /とうがらし atau lada). Masakan pedas adalah kegemaran Dadan di asrama.",
+        "distractor": "• Opsi B: Manis adalah 甘い (あまい - amai).\n• Opsi C: Asin adalah 塩辛い (しおからい) atau しょっぱい (shoppai).\n• Opsi D: Pahit adalah 苦い (にがい - nigai).",
+        "grammarRule": "Cita Rasa Bab 9: 辛い（からい - pedas）, 甘い（あまい - manis）, すっぱい (asam), 苦い（にがい - pahit）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji",
+      "type": "teks",
+      "question_ja": "ウテンさんは 日本語が （　<strong>上手</strong>　）です。「上手」の 読み方は どれですか。",
+      "question_ruby": "ウテンさんは 日本語が （　<strong>上手</strong>　）です。「上手」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'jouzu' (pandai/mahir) adalah...",
+      "translation": "Uten-san pandai berbahasa Jepang. Kanji 上手 dibaca jouzu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "へた"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "うわて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "じょうず"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "とくい"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (じょうず).",
+        "logic": "Kanji <strong>上手</strong> dibaca secara on'yomi khusus <strong>じょうず (jouzu)</strong> yang berarti <strong>pandai, mahir, atau cakap</strong> dalam suatu bidang keterampilan.",
+        "distractor": "• Opsi A: へた adalah cara baca untuk kanji 下手 (tidak mahir / payah).\n• Opsi B: うわて adalah cara baca alternatif yang berarti 'posisi atas / keunggulan taktik'.\n• Opsi D: とくい adalah kanji 得意 (kebanggaan / keahlian diri sendiri).",
+        "grammarRule": "Pasangan Kanji Kemahiran: 上手（じょうず - pandai/mahir） >< 下手（へた - tidak mahir/buruk）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Fasilitas Komunitas Warga",
+      "type": "teks",
+      "question_ja": "ウテンさんは 日曜日に 会社の 近くの （　<strong>こうみんかん</strong>　）で 日本語を 勉強します。「こうみんかん」の 意味は どれですか。",
+      "question_ruby": "ウテンさんは 日曜日に 会社の 近くの （　<strong>こうみんかん</strong>　）で 日本語を 勉強します。「こうみんかん」の 意味は どれですか。",
+      "question_id": "Fasilitas umum kemasyarakatan yang dicetak tebal bermakna...",
+      "translation": "Uten-san hari Minggu belajar bahasa Jepang di balai warga dekat perusahaan. 'Kouminkan' adalah balai warga.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Kantor kepolisian distrik"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Balai rakyat / gedung pertemuan warga"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Stasiun kereta rel listrik"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Taman rekreasi kota"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (Balai rakyat / gedung pertemuan warga).",
+        "logic": "Kosakata <strong>公民館（こうみんかん - kouminkan）</strong> adalah <strong>balai warga / gedung pertemuan komunitas publik</strong> di Jepang yang sering mengadakan kelas bahasa Jepang gratis untuk warga asing.",
+        "distractor": "• Opsi A: Kantor polisi adalah 警察署 (けいさつしょ) atau 交番 (こうばん).\n• Opsi C: Stasiun kereta adalah 駅 (えき).\n• Opsi D: Taman kota adalah 公園 (こうえん).",
+        "grammarRule": "Fasilitas Publik Bab 9: 公民館（こうみんかん - balai pertemuan warga）, 体育館（たいいくかん - gedung olahraga）, 病院（びょういん - rumah sakit）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji",
+      "type": "teks",
+      "question_ja": "トニーさんは カラオケで 日本の （　<strong>歌</strong>　）を うたいました。「歌」の 読み方は どれですか。",
+      "question_ruby": "トニーさんは カラオケで 日本の （　<strong>歌</strong>　）を うたいました。「歌」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang tepat untuk kata 'lagu' adalah...",
+      "translation": "Tony-san menyanyikan lagu Jepang di karaoke. Kanji 歌 dibaca uta.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "え"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おと"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "こえ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "うた"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (うた).",
+        "logic": "Kanji <strong>歌</strong> memiliki kun'yomi <strong>うた (uta)</strong> yang bermakna <strong>nyanyian atau lagu</strong>. Kata kerjanya adalah 歌います（うたいます - menyanyi）.",
+        "distractor": "• Opsi A: え adalah kanji 絵 (lukisan/gambar).\n• Opsi B: おと adalah kanji 音 (suara benda/bunyi).\n• Opsi C: こえ adalah kanji 声 (suara makhluk hidup/manusia).",
+        "grammarRule": "Kosakata Seni & Hobi Bab 9: 歌（うた - lagu）, 絵（え - lukisan/gambar）, ダンス (tari), 音楽（おんがく - musik）, ピアノ (piano), ギター (gitar)."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Janji Temu",
+      "type": "teks",
+      "question_ja": "日曜日、友だちと （　<strong>やくそく</strong>　）が ありますから、出かけます。「やくそく」の 漢字は どれですか。",
+      "question_ruby": "日曜日、友だちと （　<strong>やくそく</strong>　）が ありますから、出かけます。「やくそく」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'yakusoku' (janji/komitmen) adalah...",
+      "translation": "Karena ada janji dengan teman pada hari Minggu, saya akan bepergian keluar. Kanji yakusoku adalah 約束.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "約束"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "用事"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "時間"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "宿題"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (約束).",
+        "logic": "Kata <strong>やくそく (yakusoku)</strong> ditulis dengan kanji <strong>約束</strong> yang bermakna <strong>janji atau janji temu (appointment)</strong>. Ungkapan: 約束があります (ada janji).",
+        "distractor": "• Opsi B: 用事 dibaca ようじ (youji) yang berarti urusan / kepentingan.\n• Opsi C: 時間 dibaca じかん (jikan) yang berarti waktu.\n• Opsi D: 宿題 dibaca しゅくだい (shukudai) yang berarti pekerjaan rumah (PR).",
+        "grammarRule": "Kosakata Urusan & Waktu Bab 9: 約束（やくそく - janji）, 用事（ようじ - urusan）, 時間（じかん - waktu）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Kondisi Sakit Badan",
+      "type": "teks",
+      "question_ja": "きのう （　<strong>ねつ</strong>　）が ありましたから、会社を 休みました。「ねつ」の 意味は どれですか。",
+      "question_ruby": "きのう （　<strong>ねつ</strong>　）が ありましたから、会社を 休みました。「ねつ」の 意味は どれですか。",
+      "question_id": "Gejala kondisi tubuh yang dicetak tebal bermakna...",
+      "translation": "Kemarin saya tidak masuk kerja karena demam panas badan. 'Netsu' bermakna demam.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Batuk kering"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Sakit perut"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Demam / panas badan"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Sakit gigi berlubang"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (Demam / panas badan).",
+        "logic": "Kosakata <strong>熱（ねつ - netsu）</strong> berarti <strong>panas badan atau demam</strong>. Ungkapan: 熱があります (mengalami demam panas). Menjadi alasan medis yang sah saat meminta izin tidak masuk kerja di pabrik.",
+        "distractor": "• Opsi A: Batuk adalah 咳 (せき - seki).\n• Opsi B: Sakit perut adalah お腹が痛い (おなかがいたい).\n• Opsi D: Sakit gigi adalah 歯が痛い (はがいたい).",
+        "grammarRule": "Kondisi Medis Bab 9: 熱（ねつ - demam panas）, 歯が痛い（はがいたい - sakit gigi）, 病気（びょうき - sakit）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Kendaraan Bermotor",
+      "type": "teks",
+      "question_ja": "父は （　<strong>じどうしゃ</strong>　）が あります。「じどうしゃ」の 漢字は どれですか。",
+      "question_ruby": "父は （　<strong>じどうしゃ</strong>　）が あります。「じどうしゃ」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'jidousha' (mobil) adalah...",
+      "translation": "Ayah memiliki sebuah mobil. Kanji jidousha adalah 自動車.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "自転車"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "自動車"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "飛行機"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "新幹線"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (自動車).",
+        "logic": "Kosakata <strong>じどうしゃ (jidousha)</strong> ditulis dengan kanji <strong>自動車</strong> (secara harfiah: gerobak/kendaraan yang bergerak sendiri) yang bermakna <strong>mobil roda empat</strong>.",
+        "distractor": "• Opsi A: 自転車 dibaca じてんしゃ (jitensha - sepeda gowes).\n• Opsi C: 飛行機 dibaca ひこうき (hikouki - pesawat terbang).\n• Opsi D: 新幹線 dibaca しんかんせん (shinkansen - kereta cepat peluru).",
+        "grammarRule": "Aset Kepemilikan Bab 9: 自動車 (mobil), オートバイ (motor), パソコン (komputer), 辞書 (kamus), お金 (uang)."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Rasa Suka (Ga)",
+      "type": "teks",
+      "question_ja": "アグスさんは 日本料理（　<strong>？</strong>　） すきです。",
+      "question_ruby": "アグスさんは 日本料理（　<strong>？</strong>　） すきです。",
+      "question_id": "Partikel yang tepat untuk menandai objek kesukaan 'masakan Jepang' adalah...",
+      "translation": "Agus-san menyukai masakan Jepang. Partikel objek kesukaan adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "が"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (が).",
+        "logic": "Kata <strong>すき（好き - suki）</strong> secara gramatikal bahasa Jepang adalah kata sifat Na (bukan verba transitif). Oleh karena itu, sasaran rasa suka yang menjadi objek ketertarikan <strong>WAJIB ditandai dengan partikel が (ga)</strong>, BUKAN partikel を. Pola: <code>[Topik は] [Objek が] すきです</code>.",
+        "distractor": "• Opsi A: を adalah jebakan paling sering; partikel を hanya boleh digunakan untuk kata kerja aksi fisik langsung (transitif), tidak boleh untuk kata sifat suki/kirai.\n• Opsi B: に salah konteks predikat rasa.\n• Opsi C: で menandai tempat aksi atau alat.",
+        "grammarRule": "Kaidah Mutlak Partikel が Bab 9: [Topik は] + [Sasaran] が + すきです / きらいです / 上手です / 下手です / あります / 分かります."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Kemahiran Olahraga (Ga)",
+      "type": "teks",
+      "question_ja": "トニーさんは サッカー（　<strong>？</strong>　） 上手です。",
+      "question_ruby": "トニーさんは サッカー（　<strong>？</strong>　） 上手です。",
+      "question_id": "Partikel yang tepat untuk menunjukkan cabang olahraga yang dikuasai adalah...",
+      "translation": "Tony-san pandai bermain sepak bola. Partikel bidang kemahiran adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (が).",
+        "logic": "Bidang keahlian atau keterampilan yang dinilai dengan predikat <strong>上手（じょうず）</strong> atau <strong>下手（へた）</strong> wajib ditandai dengan partikel <strong>が (ga)</strong>. Pola: <code>[Orang は] [Keahlian が] 上手です</code>.",
+        "distractor": "• Opsi B: を salah karena 上手 bukan kata kerja transitif melainkan kata sifat Na.\n• Opsi C: に tidak digunakan untuk bidang keterampilan dengan kata sifat jouzu.\n• Opsi D: へ hanya untuk arah perpindahan tempat.",
+        "grammarRule": "Pola Kemahiran: [Nomina Cabang Keahlian] + が + 上手です (pandai) / 下手です (kurang pandai)."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Kepemilikan Barang & Waktu (Ga)",
+      "type": "teks",
+      "question_ja": "わたしは 日本語の 辞書（　<strong>？</strong>　） あります。",
+      "question_ruby": "わたしは 日本語の 辞書（　<strong>？</strong>　） あります。",
+      "question_id": "Partikel yang tepat untuk menandai barang yang dimiliki adalah...",
+      "translation": "Saya memiliki kamus bahasa Jepang. Partikel objek kepemilikan arimasu adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (が).",
+        "logic": "Verba <strong>あります (arimasu)</strong> yang menyatakan <strong>kepemilikan (terhadap barang, properti, uang, waktu, janji, urusan)</strong> menuntut objek yang dimiliki ditandai dengan partikel <strong>が (ga)</strong>. Contoh: 辞書があります (punya kamus), 時間があります (ada waktu).",
+        "distractor": "• Opsi A: を adalah kesalahan umum pemula yang menganggap arimasu sebagai kata kerja aksi fisik (padahal arimasu adalah verba status keberadaan/kepemilikan).\n• Opsi C: で menandai sarana alat.\n• Opsi D: に menandai tempat letak benda.",
+        "grammarRule": "Pola Kepemilikan: [Pemilik は] + [Barang/Waktu/Janji が] + あります."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pemahaman Bahasa (Ga)",
+      "type": "teks",
+      "question_ja": "山田先生は タイ語（　<strong>？</strong>　） 少し 分かります。",
+      "question_ruby": "山田先生は タイ語（　<strong>？</strong>　） 少し 分かります。",
+      "question_id": "Partikel yang tepat untuk menandai bahasa yang dipahami adalah...",
+      "translation": "Yamada-sensei mengerti sedikit bahasa Thai. Partikel objek pemahaman wakarimasu adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Verba <strong>分かります（わかります - wakarimasu）</strong> adalah verba potensi/keadaan mental (pemahaman), sehingga objek pengetahuan atau bahasa yang dimengerti ditandai dengan partikel <strong>が (ga)</strong>: <code>タイ語が分かります</code>.",
+        "distractor": "• Opsi A: を salah karena wakarimasu tidak mengambil objek bertanda を dalam kaidah tata bahasa Jepang standar.\n• Opsi B: で jika digunakan berarti 'mengerti menggunakan perantara bahasa Thai'.\n• Opsi D: と berarti 'dan / bersama'.",
+        "grammarRule": "Pola Pemahaman Bab 9: [Bahasa / Huruf / Masalah] + が + 分かります (タイ語が分かります, 漢字が分かります)."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Konjungsi Sebab-Akibat (Kara)",
+      "type": "teks",
+      "question_ja": "明日 テストが あります（　<strong>？</strong>　）、今晩 勉強します。",
+      "question_ruby": "明日 テストが あります（　<strong>？</strong>　）、今晩 勉強します。",
+      "question_id": "Partikel yang berfungsi menghubungkan alasan dengan tindakan akibatnya adalah...",
+      "translation": "Karena besok ada ujian, malam ini saya belajar. Partikel konjungsi alasan adalah から.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "も"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (から).",
+        "logic": "Partikel penghubung <strong>から (kara)</strong> diletakkan di ujung klausa pertama untuk menandai <strong>sebab atau alasan</strong> terjadinya perbuatan di klausa kedua: <code>[Alasan] から、[Tindakan/Keputusan]</code>. Arti: 'Karena..., maka...'.",
+        "distractor": "• Opsi A: が adalah konjungsi pertentangan ('tetapi').\n• Opsi B: も berarti 'juga'.\n• Opsi C: で menandai tempat aksi atau alat.",
+        "grammarRule": "Rumus Kalimat Alasan Bab 9: [Klausa Alasan] から、[Klausa Hasil/Tindakan] (テストがありますから、勉強します)."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pendamping Mitra (To)",
+      "type": "teks",
+      "question_ja": "ダダンさんは 近くの 実習生（　<strong>？</strong>　） いっしょに 料理を つくります。",
+      "question_ruby": "ダダンさんは 近くの 実習生（　<strong>？</strong>　） いっしょに 料理を つくります。",
+      "question_id": "Partikel yang tepat untuk menyatakan 'bersama kawan magang' adalah...",
+      "translation": "Dadan-san memasak makanan bersama rekan magang di dekatnya. Partikel mitra adalah と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (と).",
+        "logic": "Frasa <code>いっしょに (bersama-sama)</code> umumnya berpasangan dengan orang yang ditandai oleh partikel <strong>と (to)</strong>: <code>[Orang] と いっしょに [Aktivitas]</code>.",
+        "distractor": "• Opsi B: を menandai masakan yang dimasak (料理を).\n• Opsi C: に menandai arah atau target sasaran.\n• Opsi D: で menandai tempat memasak (台所で).",
+        "grammarRule": "Frasa Mitra Bab 9: [Orang] + と + いっしょに + Verba Aksi."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Bentuk Penyangkalan Predikat Kesukaan",
+      "type": "teks",
+      "question_ja": "アグスさんは からいものが （　<strong>＿＿＿＿＿</strong>　）。（すき：Bentuk Negatif Sopan）",
+      "question_ruby": "アグスさんは からいものが （　<strong>＿＿＿＿＿</strong>　）。（すき：Bentuk Negatif Sopan）",
+      "question_id": "Bentuk negatif baku yang tepat untuk menyatakan 'tidak suka' adalah...",
+      "translation": "Agus-san tidak menyukai makanan pedas. Bentuk negatif sopan dari suki adalah suki dewa arimasen.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "すきくないです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "すきではありません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "すきでした"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "すきないです"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (すきではありません).",
+        "logic": "Karena <strong>すき (suki)</strong> adalah kata sifat golongan Na, maka bentuk negatifnya mengikuti kaidah Na-keiyoushi: <strong>すきではありません (suki dewa arimasen)</strong> atau <strong>すきじゃありません</strong>. BUKAN sukikunai.",
+        "distractor": "• Opsi A: すきくないです adalah kesalahan fatal karena memperlakukan kata sifat Na seolah-olah kata sifat I.\n• Opsi C: すきでした adalah bentuk lampau positif ('dulu suka').\n• Opsi D: すきないです salah bentuk tata bahasa.",
+        "grammarRule": "Konjugasi Suki/Kirai: Positif: すきです / Negatif: すきではありません（じゃありません）."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Tata Krama Kemahiran & Kerendahan Hati",
+      "type": "teks",
+      "question_ja": "指導員：『ダダンさんは 料理が 上手ですね。』<br>ダダン：『いいえ、（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "指導員：『ダダンさんは 料理が 上手ですね。』<br>ダダン：『いいえ、（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Respons kerendahan hati dan kesopanan yang tepat saat dipuji kemampuannya adalah...",
+      "translation": "Instruktur: 'Dadan-san pandai sekali memasak ya.' Dadan: 'Tidak, saya tidak begitu pandai.' Ungkapan: あまり上手ではありません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "とても 上手です"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "上手でした"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "あまり 上手ではありません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "上手になります"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (あまり 上手ではありません).",
+        "logic": "Dalam etika kesopanan berbahasa Jepang (謙遜 - kenson) dan materi Bab 9 IMM Japan, seseorang <strong>tidak boleh menyombongkan diri memuji kemampuannya sendiri</strong>. Respons penolakan pujian yang santun dan baku sesuai kurikulum adalah bentuk negatif sopan kata sifat Na: <strong>『いいえ、あまり上手ではありません』</strong> (Tidak, saya tidak begitu mahir).",
+        "distractor": "• Opsi A: とても上手です berarti 'saya sangat pandai', ungkapan ini dianggap sombong dan tidak santun.\n• Opsi B: 上手でした salah makna bentuk lampau dan tidak sopan.\n• Opsi D: 上手になります berarti 'saya akan menjadi pandai' (menyatakan proses perubahan di masa depan).",
+        "grammarRule": "Aturan Sosial Budaya Bab 9: Kata 上手です hanya untuk menilai orang lain. Untuk diri sendiri, gunakan bentuk negatif: あまり上手ではありません (tidak begitu pandai) atau 下手です (kurang mahir)."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Tanya Alasan dan Jawabannya (Doushite - Kara)",
+      "type": "teks",
+      "question_ja": "A：『（　①　） 昨日 会社を 休みましたか。』<br>B：『熱が ありました（　②　）。』",
+      "question_ruby": "A：『（　①　） 昨日 会社を 休みましたか。』<br>B：『熱が ありました（　②　）。』",
+      "question_id": "Pasangan kata tanya ① dan partikel penjelas ② yang tepat adalah...",
+      "translation": "A: 'Mengapa kemarin Anda tidak masuk kerja?' B: 'Karena demam.' Pasangan: どうして dan から.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "どうして ／ が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "なん ／ から"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "どこ ／ で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "どうして ／ から"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (どうして ／ から).",
+        "logic": "Untuk menanyakan alasan atau penyebab, digunakan kata tanya <strong>どうして (doushite = mengapa/kenapa)</strong>. Kalimat jawaban atas pertanyaan doushite selalu diakhiri dengan partikel penjelas alasan <strong>から (kara)</strong>: <code>熱がありましたから</code>.",
+        "distractor": "• Opsi A: が adalah konjungsi pertentangan, bukan penutup jawaban alasan.\n• Opsi B: なん berarti 'apa', bukan 'mengapa'.\n• Opsi C: どこ berarti 'di mana'.",
+        "grammarRule": "Pasangan Dialog Alasan Bab 9: Tanya: どうして～か (Mengapa...?) -> Jawab: [Alasan] + から (Karena...)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penggabungan Alasan dan Akibat Negatif",
+      "type": "teks",
+      "question_ja": "（　<strong>＿＿＿＿＿</strong>　）から、何も 食べません。",
+      "question_ruby": "（　<strong>＿＿＿＿＿</strong>　）から、何も 食べません。",
+      "question_id": "Klausa alasan yang paling tepat dan logis untuk melengkapi kalimat di atas adalah...",
+      "translation": "Karena gigi sakit, saya tidak makan apa pun. Klausa logis: 歯が痛いです (gigi sakit).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "歯が 痛いです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "お腹が すきました"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "料理が 上手です"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "時間が あります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (歯が 痛いです).",
+        "logic": "Kalimat akibat menyatakan <code>何も食べません (tidak makan apa pun)</code>. Alasan yang masuk akal dan sesuai materi Bab 9 buku teks IMM Japan adalah <strong>歯が痛いですから (karena gigi terasa sakit)</strong>.",
+        "distractor": "• Opsi B: お腹がすきました berarti perut lapar; jika lapar tentu tindakannya adalah makan.\n• Opsi C: 料理が上手です berarti pandai memasak, tidak berkorelasi dengan tidak makan.\n• Opsi D: 時間があります berarti punya waktu luang.",
+        "grammarRule": "Logika Kausalitas Kalimat Bab 9: Alasan harus berhubungan kausalitas langsung dengan tindakan akibat."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Adverbia Tingkat Pemahaman (Yoku vs Daitai)",
+      "type": "teks",
+      "question_ja": "指導員：『アグスさん、この 図面（ずめん）の 説明が 分かりますか。』<br>アグス：『はい、（　<strong>＿＿＿＿＿</strong>　） 分かります。大丈夫です。（100% Mengerti Sempurna）』",
+      "question_ruby": "指導員：『アグスさん、この 図面（ずめん）の 説明が 分かりますか。』<br>アグス：『はい、（　<strong>＿＿＿＿＿</strong>　） 分かります。大丈夫です。（100% Mengerti Sempurna）』",
+      "question_id": "Kata keterangan derajat yang menyatakan pemahaman tinggi/sempurna (100%) adalah...",
+      "translation": "Instruktur: 'Agus-san, apakah mengerti penjelasan gambar teknik ini?' Agus: 'Ya, mengerti dengan sangat baik (100%).' Adverbia: よく.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "だいたい"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "よく"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "少し"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ぜんぜん"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (よく).",
+        "logic": "Dalam bagan derajat pemahaman Bab 9 IMM Japan: <strong>よく分かります</strong> menunjukkan tingkat <strong>100% (sangat paham / mengerti dengan baik)</strong>. Sedangkan だいたい berkisar 80% (garis besarnya), dan 少し berkisar 30% (sedikit).",
+        "distractor": "• Opsi A: だいたい berarti mengerti garis besarnya saja (~80%).\n• Opsi C: 少し berarti hanya mengerti sedikit (~30%).\n• Opsi D: ぜんぜん berarti sama sekali tidak mengerti (0%, berpasangan dengan bentuk negatif).",
+        "grammarRule": "Tingkatan Adverbia Pemahaman Bab 9: よく (100% paham) > だいたい (80% garis besar) > 少し (30% sedikit) > あまり (tidak begitu + negatif) > ぜんぜん (0% sama sekali tidak + negatif)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Adverbia Kuantitas Negatif Mutlak (Zenzen + Negatif)",
+      "type": "teks",
+      "question_ja": "今月は 買いものを たくさん しましたから、お金が （　<strong>ぜんぜん ＿＿＿＿＿</strong>　）。",
+      "question_ruby": "今月は 買いものを たくさん しましたから、お金が （　<strong>ぜんぜん ＿＿＿＿＿</strong>　）。",
+      "question_id": "Bentuk predikat yang wajib berpasangan dengan kata 'zenzen' (sama sekali) adalah...",
+      "translation": "Karena bulan ini banyak berbelanja, sama sekali tidak ada uang. Pasangan zenzen adalah ありません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "たくさんあります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "少しあります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ありません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ありました"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (ありません).",
+        "logic": "Kata keterangan <strong>ぜんぜん (zenzen)</strong> dalam kaidah gramatikal standar berfungsi menegaskan ketiadaan mutlak (0%) dan <strong>wajib berpasangan dengan predikat negatif</strong>: <code>ぜんぜん + ありません (sama sekali tidak ada)</code> atau <code>ぜんぜん + 分かりません (sama sekali tidak mengerti)</code>.",
+        "distractor": "• Opsi A: たくさんあります bertentangan dengan makna penolakan total zenzen.\n• Opsi B: 少しあります berarti ada sedikit.\n• Opsi D: ありました adalah bentuk lampau positif.",
+        "grammarRule": "Kaidah Negasi Mutlak Zenzen: ぜんぜん + [Predikat Negatif] = Sama sekali tidak..."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Alasan Berhalangan Hadir (Youji ga arimasu)",
+      "type": "teks",
+      "question_ja": "友だち：『明日 いっしょに 映画を 見に 行きませんか。』<br>ダダン：『すみません。明日は （　<strong>＿＿＿＿＿</strong>　）から、行きません。』",
+      "question_ruby": "友だち：『明日 いっしょに 映画を 見に 行きませんか。』<br>ダダン：『すみません。明日は （　<strong>＿＿＿＿＿</strong>　）から、行きません。』",
+      "question_id": "Ungkapan yang paling lazim digunakan untuk menyatakan 'ada urusan keperluan' adalah...",
+      "translation": "Teman: 'Maukah besok pergi menonton film bersama?' Dadan: 'Maaf, karena besok ada urusan (keperluan), saya tidak pergi.'",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "病気があります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "自動車があります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "歌があります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "用事があります"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (用事があります).",
+        "logic": "Ungkapan baku dalam bahasa Jepang untuk menyatakan <strong>adanya suatu urusan keperluan pribadi atau dinas</strong> yang membuat seseorang berhalangan hadir adalah <strong>用事があります（ようじがあります - youji ga arimasu）</strong>. Pola: <code>[Alasan] から、[Akibat]</code>.",
+        "distractor": "• Opsi A: 病気があります tidak lazim secara kolokasi (lazimnya 病気です atau 風邪をひきました).\n• Opsi B: 自動車があります berarti memiliki mobil.\n• Opsi C: 歌があります berarti memiliki lagu.",
+        "grammarRule": "Frasa Kesibukan & Penolakan Halus Bab 9: 用事があります (ada urusan), 約束があります (ada janji temu), 時間がありません (tidak punya waktu). Pola: [Alasan] から、ちょっと……／行きません."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Minat & Musik (音楽)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。休みの 日に 何を しますか。<br>「すきな （　　　）を 聞きます。」",
+      "question_ruby": "絵（え）を 見て ください。休みの 日に 何を しますか。<br>「すきな （　　　）を 聞きます。」",
+      "question_id": "Perhatikan gambar. Apakah yang dilakukan saat hari libur? 'Mendengarkan (...) kesukaan'.",
+      "translation": "Mendengarkan musik yang disukai saat hari libur.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "えいが"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "音楽（おんがく）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "スポーツ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "りょうり"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (音楽（おんがく）).",
+        "logic": "Gambar menunjukkan headphone dan alunan nada musik (音楽 / おんがく - ongaku).",
+        "distractor": "• Opsi A: えいが adalah film / bioskop.\n• Opsi C: スポーツ adalah kegiatan olahraga.\n• Opsi D: りょうり adalah masakan masakan.",
+        "grammarRule": "Kosakata Minat Bab 9: 音楽（おんがく = musik）."
+      },
+      "image": "assets/bab_09/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kepemilikan Benda (自転車)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。アグスさんは 何を 持っていますか。<br>「青い （　　　）を 持っています。」",
+      "question_ruby": "絵（え）を 見て ください。アグスさんは 何を 持っていますか。<br>「青い （　　　）を 持っています。」",
+      "question_id": "Perhatikan gambar. Apakah yang dimiliki oleh Agus-san? 'Memiliki (...) biru'.",
+      "translation": "Memiliki sepeda kayuh berwarna biru.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "じどうしゃ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "オートバイ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "自転車（じてんしゃ）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "カメラ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (自転車（じてんしゃ）).",
+        "logic": "Gambar menunjukkan sepeda (自転車 / じてんしゃ - jitensha).",
+        "distractor": "• Opsi A: じどうしゃ adalah mobil beroda empat.\n• Opsi B: オートバイ adalah sepeda motor.\n• Opsi D: カメラ adalah kamera foto.",
+        "grammarRule": "Kepemilikan Barang Bab 9: 自転車（じてんしゃ = sepeda）."
+      },
+      "image": "assets/bab_09/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (上手)",
+      "type": "teks",
+      "question_ja": "シギットさんは 日本料理が とても （ 上手 ）です。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "シギットさんは 日本料理が とても （ 上手 ）です。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Sigit-san sangat mahir masakan Jepang. Pilihlah cara baca kanji '上手' yang tepat.",
+      "translation": "Sigit-san sangat mahir memasak hidangan Jepang.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "じょうず"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "へた"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "すき"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "とくい"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (じょうず).",
+        "logic": "Kanji 上手 dibaca じょうず (jouzu) yang bermakna pandai, pintar, atau mahir.",
+        "distractor": "• Opsi B: へた ditulis 下手 (tidak pandai / ceroboh).\n• Opsi C: すき ditulis 好き (suka).\n• Opsi D: とくい ditulis 得意 (kebanggaan keahlian diri).",
+        "grammarRule": "Predikat Kemampuan Bab 9: 上手（じょうず = pandai/mahir）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (好き)",
+      "type": "teks",
+      "question_ja": "わたしは 日本の アニメが （ すき ）です。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "わたしは 日本の アニメが （ すき ）です。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Saya suka anime Jepang. Pilihlah penulisan kanji yang tepat untuk 'suki'.",
+      "translation": "Saya suka anime Jepang.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "好き"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "好く"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "女き"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "子き"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (好き).",
+        "logic": "Kata すき ditulis dengan kanji 好き (gabungan karakter 女 = perempuan dan 子 = anak).",
+        "distractor": "• Opsi B: 好く adalah bentuk verba kuno.\n• Opsi C: 女き adalah bentuk keliru.\n• Opsi D: 子き adalah bentuk keliru.",
+        "grammarRule": "Predikat Preferensi Bab 9: 好き（すき = menyukai）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (料理)",
+      "type": "teks",
+      "question_ja": "寮の 台所で インドネシアの （ りょうり ）を 作ります。<br>正しい 漢字は どれですか。",
+      "question_ruby": "寮の 台所で インドネシアの （ りょうり ）を 作ります。<br>正しい 漢字は どれですか。",
+      "question_id": "Membuat masakan Indonesia di dapur asrama. Pilihlah kanji yang tepat untuk 'ryouri'.",
+      "translation": "Membuat masakan masakan Indonesia di dapur asrama.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "料理"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "料里"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "料金"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "科理"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (料理).",
+        "logic": "Kata りょうり (masakan/kuliner) ditulis dengan kanji 料理 (料 = bahan, 理 = menata/mengolah).",
+        "distractor": "• Opsi B: 料里 salah huruf kanan.\n• Opsi C: 料金 dibaca りょうきん (biaya / ongkos).\n• Opsi D: 科理 salah huruf kiri (menggunakan ka/ilmu pengetahuan).",
+        "grammarRule": "Aktivitas Asrama Bab 9: 料理（りょうり = masakan）."
+      }
+    }
+  ]
+};
+
+const BAB_10_DATA = {
+  "chapter": "10",
+  "title_ja": "第１０課：存在表現（あります・います）と位置関係",
+  "title_id": "Bab 10: Eksistensi Makhluk Bernyawa (Imasu) & Benda Mati (Arimasu), Posisi Spasial",
+  "theme_ja": "存在表現 (Sonzai Hyougen) & 位置関係 (Ichi Kankei)",
+  "theme_id": "Evaluasi penguasaan kosakata fasilitas pabrik, letak/posisi spasial (上, 下, 前, 後ろ, 右, 左, 中, 隣, 間), pembedaan verba eksistensi bernyawa (います) dan tak bernyawa (あります), partikel lokasi (に), partikel subjek eksistensi (が), enumerasi representatif (や / など), serta negasi mutlak (だれもいません / 何もありません) pada Bab 10 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 10.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 10.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Posisi Spasial Berdampingan",
+      "type": "teks",
+      "question_ja": "デパートの （　<strong>となり</strong>　）に 郵便局が あります。「となり」の 意味は どれですか。",
+      "question_ruby": "デパートの （　<strong>となり</strong>　）に 郵便局が あります。「となり」の 意味は どれですか。",
+      "question_id": "Kata posisi spasial yang dicetak tebal memiliki arti...",
+      "translation": "Di sebelah toserba ada kantor pos. 'Tonari' bermakna di sebelah / berdampingan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Di dalam ruangan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Di seberang jalan jauh"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Di sebelah / berdampingan persis"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Di bagian belakang gedung"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (Di sebelah / berdampingan persis).",
+        "logic": "Kosakata posisi <strong>となり（隣 - tonari）</strong> berarti <strong>sebelah atau berdampingan langsung</strong> (pada kategori objek yang setara/sejenis, seperti gedung di samping gedung, atau orang di samping orang).",
+        "distractor": "• Opsi A: Di dalam adalah 中（なか - naka）.\n• Opsi B: Di seberang adalah 向かい（むかい - mukai）.\n• Opsi D: Di belakang adalah 後ろ（うしろ - ushiro）.",
+        "grammarRule": "Kosakata Posisi Spasial Bab 10: 隣（となり - sebelah）, 近く（ちかく - dekat/area sekitar）, そば (di samping/dekat)."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji",
+      "type": "teks",
+      "question_ja": "机の （　<strong>後ろ</strong>　）に ごみ箱が あります。「後ろ」の 読み方は どれですか。",
+      "question_ruby": "机の （　<strong>後ろ</strong>　）に ごみ箱が あります。「後ろ」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'ushiro' (belakang) adalah...",
+      "translation": "Di belakang meja ada tempat sampah. Kanji 後ろ dibaca ushiro.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "うしろ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "まえ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "した"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "なか"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (うしろ).",
+        "logic": "Kanji <strong>後ろ</strong> memiliki cara baca baku <strong>うしろ (ushiro)</strong> yang berarti <strong>bagian belakang</strong>. Kebalikannya adalah <strong>前（まえ - mae = depan）</strong>.",
+        "distractor": "• Opsi B: まえ adalah cara baca kanji 前 (depan).\n• Opsi C: した adalah cara baca kanji 下 (bawah).\n• Opsi D: なか adalah cara baca kanji 中 (dalam).",
+        "grammarRule": "Pasangan Kanji Depan-Belakang: 前（まえ - depan） >< 後ろ（うしろ - belakang）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Fasilitas Logistik Pabrik",
+      "type": "teks",
+      "question_ja": "会社の 地下に （　<strong>そうこ</strong>　）が あります。「そうこ」の 漢字は どれですか。",
+      "question_ruby": "会社の 地下に （　<strong>そうこ</strong>　）が あります。「そうこ」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang tepat untuk 'souko' (gudang pabrik) adalah...",
+      "translation": "Di lantai bawah tanah perusahaan terdapat gudang. Kanji souko adalah 倉庫.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "事務所"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "工場"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食堂"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "倉庫"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (倉庫).",
+        "logic": "Kata <strong>そうこ (souko)</strong> ditulis dengan kanji <strong>倉庫</strong> yang bermakna <strong>gudang penyimpanan bahan baku, material, atau barang jadi</strong> di lingkungan industri kerja.",
+        "distractor": "• Opsi A: 事務所 dibaca じむしょ (jimusho - kantor).\n• Opsi B: 工場 dibaca こうじょう (koujou - pabrik manufaktur).\n• Opsi C: 食堂 dibaca しょくどう (shokudou - kantin/ruang makan).",
+        "grammarRule": "Fasilitas Industri Pabrik Bab 10: 倉庫（そうこ - gudang）, 工場（こうじょう - pabrik）, 事務所（じむしょ - kantor）, 地下（ちか - bawah tanah）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji",
+      "type": "teks",
+      "question_ja": "本屋と 銀行の （　<strong>間</strong>　）に ポストが あります。「間」の 読み方は どれですか。",
+      "question_ruby": "本屋と 銀行の （　<strong>間</strong>　）に ポストが あります。「間」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'di antara' adalah...",
+      "translation": "Di antara toko buku dan bank ada kotak pos. Kanji 間 dibaca aida.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ちかく"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あいだ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "となり"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "そと"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (あいだ).",
+        "logic": "Kanji <strong>間</strong> memiliki kun'yomi <strong>あいだ (aida)</strong> jika digunakan untuk menunjukkan <strong>posisi spasial di antara dua buah titik atau benda</strong>: <code>A と B の 間</code>.",
+        "distractor": "• Opsi A: ちかく adalah kanji 近く (dekat).\n• Opsi C: となり adalah kanji 隣 (sebelah).\n• Opsi D: そと adalah kanji 外 (luar).",
+        "grammarRule": "Pola Posisi Antara Bab 10: [Benda A] と [Benda B] の 間（あいだ） = Di antara A dan B."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Perabot Ruang Kantor",
+      "type": "teks",
+      "question_ja": "事務所に （　<strong>つくえ</strong>　）と いすが あります。「つくえ」の 漢字は どれですか。",
+      "question_ruby": "事務所に （　<strong>つくえ</strong>　）と いすが あります。「つくえ」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'tsukue' (meja tulis) adalah...",
+      "translation": "Di kantor ada meja tulis dan kursi. Kanji tsukue adalah 机.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "机"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "本"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "箱"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "木"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (机).",
+        "logic": "Kata <strong>つくえ (tsukue)</strong> ditulis dengan kanji <strong>机</strong> yang berarti <strong>meja kerja / meja tulis</strong>. Pasangan lazimnya adalah 椅子（いす - kursi）.",
+        "distractor": "• Opsi B: 本 dibaca ほん (hon - buku).\n• Opsi C: 箱 dibaca はこ (hako - kotak/kardus).\n• Opsi D: 木 dibaca き (ki - pohon/kayu).",
+        "grammarRule": "Perabot Ruangan Bab 10: 机（つくえ - meja kerja）, 椅子（いす - kursi）, 本棚（ほんだな - rak buku）, 箱（はこ - kotak）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Karyawan Perusahaan",
+      "type": "teks",
+      "question_ja": "工場には 日本人の （　<strong>じゅうぎょういん</strong>　）が います。「じゅうぎょういん」の 意味は どれですか。",
+      "question_ruby": "工場には 日本人の （　<strong>じゅうぎょういん</strong>　）が います。「じゅうぎょういん」の 意味は どれですか。",
+      "question_id": "Istilah ketenagakerjaan yang dicetak tebal bermakna...",
+      "translation": "Di pabrik ada karyawan berkebangsaan Jepang. 'Juugyouin' bermakna karyawan / pegawai perusahaan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Tamu dinas luar"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Siswa magang asing"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Karyawan / pegawai tetap perusahaan"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Petugas kebersihan pabrik"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (Karyawan / pegawai tetap perusahaan).",
+        "logic": "Kosakata <strong>従業員（じゅうぎょういん - juugyouin）</strong> berarti <strong>pekerja / staf karyawan pabrik/perusahaan</strong> yang dipekerjakan secara resmi.",
+        "distractor": "• Opsi A: Tamu dinas adalah お客様 (おきゃくさま) atau 来客 (らいきゃく).\n• Opsi B: Siswa magang adalah 実習生 (じっしゅうせい).\n• Opsi D: Petugas kebersihan adalah 清掃員 (せいそういん).",
+        "grammarRule": "Status Personel Pabrik Bab 10: 従業員（じゅうぎょういん - karyawan tetap）, 実習生（じっしゅうせい - peserta magang）, 指導員（しどういん - instruktur）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Posisi Arah",
+      "type": "teks",
+      "question_ja": "部屋の ドアの （　<strong>右</strong>　）に スイッチが あります。「右」の 読み方は どれですか。",
+      "question_ruby": "部屋の ドアの （　<strong>右</strong>　）に スイッチが あります。「右」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang tepat untuk 'migi' (kanan) adalah...",
+      "translation": "Di sebelah kanan pintu kamar ada sakelar. Kanji 右 dibaca migi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ひだり"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "みぎ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "うえ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "した"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (みぎ).",
+        "logic": "Kanji <strong>右</strong> dibaca <strong>みぎ (migi)</strong> yang berarti <strong>arah kanan</strong>. Kebalikannya adalah <strong>左（ひだり - hidari = kiri）</strong>.",
+        "distractor": "• Opsi A: ひだり adalah cara baca kanji 左 (kiri).\n• Opsi C: うえ adalah cara baca kanji 上 (atas).\n• Opsi D: した adalah cara baca kanji 下 (bawah).",
+        "grammarRule": "Pasangan Arah Sisi Bab 10: 右（みぎ - kanan） >< 左（ひだり - kiri）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Tempat Keberadaan Eksistensi (Ni)",
+      "type": "teks",
+      "question_ja": "教室（　<strong>？</strong>　） 先生と 実習生が います。",
+      "question_ruby": "教室（　<strong>？</strong>　） 先生と 実習生が います。",
+      "question_id": "Partikel yang tepat untuk menandai ruang kelas sebagai tempat keberadaan adalah...",
+      "translation": "Di dalam ruang kelas ada guru dan siswa magang. Partikel tempat keberadaan statis adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (に).",
+        "logic": "Untuk menandai <strong>tempat keberadaan statis (titik di mana suatu wujud berada)</strong> bersama verba eksistensi <strong>います (imasu)</strong> atau <strong>あります (arimasu)</strong>, partikel yang wajib digunakan adalah <strong>に (ni)</strong>. Pola: <code>[Tempat] に [Subjek] が います/あります</code>.",
+        "distractor": "• Opsi A: で menandai tempat aksi aktif dinamis (seperti 教室で勉強します); tidak boleh digunakan untuk predikat います/あります.\n• Opsi B: を menandai objek penderita verba transitif.\n• Opsi C: へ menandai arah pergerakan verba perpindahan.",
+        "grammarRule": "Pembeda Fundamental Tempat: [Tempat] + に + あります/います (Keberadaan Statis) vs [Tempat] + で + Verba Aksi (Tempat Kegiatan Aktif)."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Eksistensi (Ga)",
+      "type": "teks",
+      "question_ja": "事務所に パソコン（　<strong>？</strong>　） あります。",
+      "question_ruby": "事務所に パソコン（　<strong>？</strong>　） あります。",
+      "question_id": "Partikel yang tepat untuk menandai laptop/komputer sebagai subjek yang berada di kantor adalah...",
+      "translation": "Di kantor ada komputer. Partikel subjek wujud yang ada adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Dalam pola kalimat eksistensi, benda atau makhluk hidup yang wujud keberadaannya dinyatakan berkedudukan sebagai <strong>subjek gramatikal</strong>, sehingga ditandai dengan partikel <strong>が (ga)</strong>: <code>パソコンがあります</code>.",
+        "distractor": "• Opsi A: を salah fatal karena arimasu adalah kata kerja intransitif otomatis (自動詞), bukan kata kerja aksi transitif.\n• Opsi B: で menandai alat atau lokasi aksi.\n• Opsi D: に menandai tempat letaknya (事務所に).",
+        "grammarRule": "Rumus Kalimat Eksistensi Dasar: [Lokasi] に + [Benda/Orang] が + あります / います."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penghubung Frasa Posisi Spasial (No)",
+      "type": "teks",
+      "question_ja": "本は 机（　<strong>？</strong>　） 上に あります。",
+      "question_ruby": "本は 机（　<strong>？</strong>　） 上に あります。",
+      "question_id": "Partikel yang tepat untuk menghubungkan benda acuan 'tsukue' dengan posisi 'ue' adalah...",
+      "translation": "Buku ada di atas meja. Partikel penghubung posisi adalah の.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "の"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (の).",
+        "logic": "Kata penunjuk posisi (上, 下, 前, 後ろ, 中, 隣, dll.) berstatus sebagai kata benda (nomina). Oleh karena itu, penggabungannya dengan kata benda acuan wajib dihubungkan oleh partikel <strong>の (no)</strong>. Pola: <code>[Benda Acuan] の [Kata Posisi] に</code>. Contoh: 机<strong>の</strong>上 (atas meja), 箱<strong>の</strong>中 (dalam kardus).",
+        "distractor": "• Opsi B: に diletakkan setelah kata posisi (机の上に), bukan di tengah antara tsukue dan ue.\n• Opsi C: で salah fungsi.\n• Opsi D: と berarti 'meja dan atas' (tidak logis).",
+        "grammarRule": "Konstruksi Frasa Lokasi: [Benda Acuan] + の + [Posisi (上/下/前/後ろ/中/となり)] + に."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Enumerasi Terbuka Tak Lengkap (Ya)",
+      "type": "teks",
+      "question_ja": "ショッピングセンターの 中に、スーパー（　<strong>？</strong>　） 映画館などが あります。",
+      "question_ruby": "ショッピングセンターの 中に、スーパー（　<strong>？</strong>　） 映画館などが あります。",
+      "question_id": "Partikel yang digunakan untuk menyebutkan beberapa contoh benda secara tidak lengkap adalah...",
+      "translation": "Di dalam pusat perbelanjaan ada supermarket, bioskop, dan lain-lain. Partikel enumerasi perwakilan adalah や.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "や"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "も"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (や).",
+        "logic": "Partikel <strong>や (ya)</strong> digunakan untuk melakukan <strong>enumerasi terbuka (menyebutkan 2 atau lebih benda sebagai perwakilan contoh saja)</strong>, yang menyiratkan bahwa masih ada benda-benda lain yang tidak disebutkan seluruhnya. Lawannya adalah <strong>と (to)</strong> yang bersifat tertutup (menyebutkan semua daftar secara lengkap).",
+        "distractor": "• Opsi A: と bersifat enumerasi tuntas tertutup (hanya ada barang itu saja tanpa ada barang lain).\n• Opsi C: も berarti 'juga'.\n• Opsi D: で menandai tempat aksi.",
+        "grammarRule": "Perbedaan Enumerasi: [A と B] = Hanya A dan B (lengkap) vs [A や B (など)] = A, B, dan lain-lain (perwakilan tidak lengkap)."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda 'Dan Lain-Lain' (Nado)",
+      "type": "teks",
+      "question_ja": "かばんの 中に 教科書や 辞書（　<strong>？</strong>　）が あります。",
+      "question_ruby": "かばんの 中に 教科書や 辞書（　<strong>？</strong>　）が あります。",
+      "question_id": "Partikel yang sering menyertai partikel 'ya' dengan arti 'dan lain sebagainya' adalah...",
+      "translation": "Di dalam tas ada buku pelajaran, kamus, dan lain sebagainya. Partikel pengiring: など.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "だけ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ころ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ぐらい"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "など"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (など).",
+        "logic": "Kata partikel penutup <strong>など (nado)</strong> bermakna <strong>'dan lain-lain / dan sebagainya'</strong>. Sering diletakkan setelah kata benda terakhir dalam rantai partikel や untuk menegaskan adanya benda lain yang sejenis: <code>[Nomina 1] や [Nomina 2] など が あります</code>.",
+        "distractor": "• Opsi A: だけ berarti 'hanya / cuma' (mengecualikan hal lain).\n• Opsi B: ころ menandai perkiraan titik waktu jam/musim.\n• Opsi C: ぐらい menandai perkiraan kuantitas durasi/jumlah.",
+        "grammarRule": "Pasangan Frasa Enumerasi Representatif: ～や ～（など）が あります/います."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Koordinatif Pembatas 'Antara' (To)",
+      "type": "teks",
+      "question_ja": "ポストは 郵便局（　<strong>？</strong>　） 銀行の 間に あります。",
+      "question_ruby": "ポストは 郵便局（　<strong>？</strong>　） 銀行の 間に あります。",
+      "question_id": "Partikel yang tepat untuk menghubungkan dua titik batas 'kantor pos' dan 'bank' adalah...",
+      "translation": "Kotak pos berada di antara kantor pos dan bank. Partikel penghubung kedua batas adalah と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "や"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (と).",
+        "logic": "Dalam rumus posisi ruang 'antara dua hal', kedua nomina pembatas dihubungkan secara definitif menggunakan partikel <strong>と (to)</strong>: <code>[Benda 1] と [Benda 2] の 間（あいだ） に</code>.",
+        "distractor": "• Opsi B: や tidak lazim digunakan pada konstruksi posisi aida yang membutuhkan dua batas pasti.\n• Opsi C: に menandai titik lokasi akhir.\n• Opsi D: で menandai tempat aktivitas gerak.",
+        "grammarRule": "Rumus Posisi Antara Bab 10: [Titik A] と [Titik B] の 間（あいだ） に あります / います."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Verba Bernyawa (Imasu) vs Benda Mati (Arimasu)",
+      "type": "teks",
+      "question_ja": "うちの 庭に 犬が （　①　）。そして、大きい 木が （　②　）。",
+      "question_ruby": "うちの 庭に 犬が （　①　）。そして、大きい 木が （　②　）。",
+      "question_id": "Pasangan verba eksistensi ① dan ② yang tepat secara berturut-turut adalah...",
+      "translation": "Di halaman rumah ada anjing. Dan ada pohon besar. Pasangan verba: います lalu あります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あります ／ います"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あります ／ あります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "います ／ います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "います ／ あります"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (います ／ あります).",
+        "logic": "Kaidah gramatikal eksistensi Jepang membedakan subjek secara ketat:<br>1) <strong>Makhluk bernyawa yang dapat bergerak atas kehendak sendiri (manusia dan hewan)</strong> menggunakan verba <strong>います (imasu)</strong>. Anjing (犬 - inu) adalah hewan bernyawa -> 犬が<strong>います</strong>.<br>2) <strong>Benda mati serta tanaman/pohon (tumbuh-tumbuhan tidak bernyawa aktif)</strong> menggunakan verba <strong>あります (arimasu)</strong>. Pohon (木 - ki) tergolong arimasu -> 木が<strong>あります</strong>.<br>Maka susunannya adalah <strong>います ／ あります</strong>.",
+        "distractor": "• Opsi A: あります ／ います adalah urutan terbalik yang fatal.\n• Opsi B: あります ／ あります salah karena hewan anjing tidak boleh memakai arimasu.\n• Opsi C: います ／ います salah karena pohon bukan makhluk bernyawa bergerak bebas.",
+        "grammarRule": "Aturan Emas Eksistensi Bab 10: Manusia/Hewan = います (実習生がいます, 猫がいます); Benda Mati/Tumbuhan = あります (車があります, 木があります)."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kalimat Keberadaan Benda di Lokasi Tertentu",
+      "type": "teks",
+      "question_ja": "アグスさん：『すみません。スパナは どこですか。』<br>先輩：『あの 工具箱の （　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "アグスさん：『すみません。スパナは どこですか。』<br>先輩：『あの 工具箱の （　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Bentuk kalimat petunjuk keberadaan alat kerja yang tepat dan alami adalah...",
+      "translation": "Agus-san: 'Permisi, kunci pas ada di mana?' Senior: 'Ada di dalam kotak perkakas itu.' Jawaban: 中にあります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "中を あります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "中に あります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "中で います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "中に います"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (中に あります).",
+        "logic": "Kunci pas (スパナ) adalah benda mati, sehingga menggunakan verba <strong>あります</strong>. Frasa posisi di dalam kotak perkakas adalah <code>工具箱の 中に</code>. Maka ungkapan yang benar adalah <strong>中にあります (naka ni arimasu)</strong>.",
+        "distractor": "• Opsi A: 中を salah penggunaan partikel を pada kata arimasu.\n• Opsi C: 中でいます salah partikel dan salah verba untuk benda mati.\n• Opsi D: 中にいます salah verba (kunci pas bukan makhluk hidup bernyawa).",
+        "grammarRule": "Pola Lokasi Benda Kerja: [Wadah/Acuan] の [Posisi] に あります."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Topik Subjek Berada di Lokasi (Wa ... Ni Imasu)",
+      "type": "teks",
+      "question_ja": "アグスさんは いま 千葉の （　<strong>＿＿＿＿＿</strong>　）。",
+      "question_ruby": "アグスさんは いま 千葉の （　<strong>＿＿＿＿＿</strong>　）。",
+      "question_id": "Bentuk predikat penutup kalimat yang tepat untuk menyatakan keberadaan Agus di pabrik Chiba adalah...",
+      "translation": "Agus-san sekarang berada di pabrik Chiba. Pola: 千葉の工場にいます.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "工場で あります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "工場を います"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "工場に います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "工場へ 行きます"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (工場に います).",
+        "logic": "Dalam pola mengangkat orang sebagai topik pembicaraan: <code>[Orang は] [Tempat] に います</code>. Karena Agus adalah manusia hidup, partikel lokasi yang menyertainya adalah <strong>に</strong> dan verbanya adalah <strong>います</strong>: <strong>工場にいます</strong>.",
+        "distractor": "• Opsi A: 工場であります salah partikel dan salah verba untuk manusia.\n• Opsi B: 工場をいます salah partikel (partikel を tidak dipakai untuk keberadaan).\n• Opsi D: 工場へ行きます berarti 'pergi ke pabrik', bukan menyatakan posisi diam saat ini (いま).",
+        "grammarRule": "Pola Topik Keberadaan: [Orang/Benda は] + [Lokasi] に + います / あります."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penyangkalan Mutlak Ketiadaan Orang (Dare mo Imasen)",
+      "type": "teks",
+      "question_ja": "日曜日は 休みですから、事務所に （　<strong>＿＿＿＿＿</strong>　）。（Ketiadaan orang sama sekali）",
+      "question_ruby": "日曜日は 休みですから、事務所に （　<strong>＿＿＿＿＿</strong>　）。（Ketiadaan orang sama sekali）",
+      "question_id": "Ungkapan yang tepat untuk menyatakan 'tidak ada siapa pun' adalah...",
+      "translation": "Karena hari Minggu libur, tidak ada siapa pun di kantor. Ungkapan: だれもいません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "だれも いません"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "誰も ありません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "何が います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "だれも ありました"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (だれも いません).",
+        "logic": "Pola penolakan mutlak terhadap kehadiran manusia dibentuk dari kata tanya <strong>だれ (siapa) + Partikel も + Bentuk Negatif います (いません)</strong>, menghasilkan frasa baku <strong>だれも いません (dare mo imasen = tidak ada siapa pun sama sekali)</strong>.",
+        "distractor": "• Opsi B: 誰もありません salah fatal karena manusia bernyawa harus menggunakan bentuk います/いません, bukan ありません.\n• Opsi C: 何がいます tata bahasanya kacau.\n• Opsi D: だれもありました salah bentuk dan salah verba.",
+        "grammarRule": "Penolakan Mutlak Personel Bab 10: だれも + いません = Tidak ada seorang pun."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penyangkalan Mutlak Ketiadaan Benda (Nani mo Arimasen)",
+      "type": "teks",
+      "question_ja": "寮の 冷蔵庫を 開けました。でも、中に （　<strong>＿＿＿＿＿</strong>　）。（Ketiadaan benda sama sekali）",
+      "question_ruby": "寮の 冷蔵庫を 開けました。でも、中に （　<strong>＿＿＿＿＿</strong>　）。（Ketiadaan benda sama sekali）",
+      "question_id": "Ungkapan yang tepat untuk menyatakan 'tidak ada apa pun sama sekali' adalah...",
+      "translation": "Saya membuka kulkas asrama. Namun, di dalamnya tidak ada apa pun sama sekali. Ungkapan: 何もありません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "何も あります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "何が ありません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "だれも いません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "何も ありません"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (何も ありません).",
+        "logic": "Untuk menyatakan ketiadaan mutlak dari benda mati atau barang (isi kulkas), digunakan rumus kata tanya <strong>何 (なに) + Partikel も + Bentuk Negatif あります (ありません)</strong>: <strong>何もありません (nani mo arimasen = tidak ada apa pun)</strong>.",
+        "distractor": "• Opsi A: 何もあります salah bentuk (pola 何も menuntut predikat bentuk negatif).\n• Opsi B: 何がありません salah partikel (partikel が digantikan oleh partikel penegas も).\n• Opsi C: だれもいません digunakan untuk manusia, bukan isi kulkas.",
+        "grammarRule": "Penolakan Mutlak Benda Bab 10: 何も + ありません = Tidak ada apa pun sama sekali."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Sintaksis Posisi Spasial Relatif Di Antara Dua Titik",
+      "type": "teks",
+      "question_ja": "食卓の 上で、スプーンは （　<strong>＿＿＿＿＿</strong>　）の 間に あります。",
+      "question_ruby": "食卓の 上で、スプーンは （　<strong>＿＿＿＿＿</strong>　）の 間に あります。",
+      "question_id": "Pola susunan frasa yang benar untuk menyatakan posisi 'di antara piring dan garpu' adalah...",
+      "translation": "Di atas meja makan, sendok berada di antara piring dan garpu. Frasa: お皿とフォーク [の間に].",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "お皿と フォークに"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "お皿と フォーク"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "お皿で フォーク"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "お皿の フォーク"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (お皿と フォーク).",
+        "logic": "Rumus posisi antara: <code>[Objek 1] と [Objek 2] の 間に</code>. Maka bagian pengisi sebelum kata <code>の 間に</code> adalah <strong>お皿と フォーク (osara to fooku = piring dan garpu)</strong>.",
+        "distractor": "• Opsi A: お皿とフォークに salah penambahan partikel に ganda sebelum の間に.\n• Opsi C: お皿でフォーク salah partikel penghubung.\n• Opsi D: お皿のフォーク berarti garpunya piring (tidak logis).",
+        "grammarRule": "Rumus Lengkap Posisi Antara: [Nomina A] と [Nomina B] の 間に [Subjek] が あります/います."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kalimat Tanya Keberadaan Bernyawa (Dare ga Imasu ka)",
+      "type": "teks",
+      "question_ja": "指導員：『あそこの 会議室に （　<strong>＿＿＿＿＿</strong>　）か。』<br>実習生：『東京ゴムの 従業員が います。』",
+      "question_ruby": "指導員：『あそこの 会議室に （　<strong>＿＿＿＿＿</strong>　）か。』<br>実習生：『東京ゴムの 従業員が います。』",
+      "question_id": "Bentuk pertanyaan yang paling tepat sesuai jawaban di atas adalah...",
+      "translation": "Instruktur: 'Di ruang rapat sebelah sana ada siapa?' Trainee: 'Ada karyawan Tokyo Gomu.' Pertanyaan: だれがいますか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "何が あります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "だれが あります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "だれが います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "どこに 行きます"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (だれが います).",
+        "logic": "Karena jawaban mengacu pada <strong>orang / manusia bernyawa (東京ゴムの従業員がいます)</strong>, kata tanya orang yang digunakan adalah <strong>だれ (siapa)</strong> dan predikat eksistensinya adalah <strong>います</strong>: <strong>だれがいますか (dare ga imasu ka = ada siapa?)</strong>.",
+        "distractor": "• Opsi A: 何がありますか menanyakan benda mati apa yang ada.\n• Opsi B: だれがありますか salah tata bahasa karena kata tanya orang tidak boleh dipasangkan dengan arimasu.\n• Opsi D: どこに行きますか menanyakan pergi ke mana.",
+        "grammarRule": "Pertanyaan Eksistensi Bab 10: Menanyakan Benda: 何（なに）が ありますか vs Menanyakan Orang: だれが いますか."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Posisi Spasial (机の上)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。ねこは どこに いますか。<br>「机の （　　　）に います。」",
+      "question_ruby": "絵（え）を 見て ください。ねこは どこに いますか。<br>「机の （　　　）に います。」",
+      "question_id": "Perhatikan gambar. Di manakah kucing berada? 'Ada di (...) meja'.",
+      "translation": "Kucing ada di atas (ue) meja.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "した"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "上（うえ）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "なか"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "うしろ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (上（うえ）).",
+        "logic": "Gambar menunjukkan seekor kucing yang sedang duduk santai di atas permukaan meja belajar (机の上 / つくえのうえ).",
+        "distractor": "• Opsi A: した adalah di bawah kolong.\n• Opsi C: なか adalah di dalam laci/kotak.\n• Opsi D: うしろ adalah di bagian belakang.",
+        "grammarRule": "Posisi Spasial Bab 10: 上（うえ = bagian atas / di atas permukaan）."
+      },
+      "image": "assets/bab_10/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Keberadaan di Dalam Wadah (箱の中)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。箱の （　　　）に 何が ありますか。<br>「時計や 手紙が あります。」",
+      "question_ruby": "絵（え）を 見て ください。箱の （　　　）に 何が ありますか。<br>「時計や 手紙が あります。」",
+      "question_id": "Perhatikan gambar. Ada apa di (...) kotak? 'Ada jam dan surat'.",
+      "translation": "Ada apa di dalam (naka) kotak? 'Ada jam dan surat'.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まえ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "そと"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "中（なか）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "となり"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (中（なか）).",
+        "logic": "Gambar menunjukkan berbagai benda tersimpan rapi di dalam kotak penyimpanan (箱の中 / はこのなか).",
+        "distractor": "• Opsi A: まえ adalah di sebelah depan.\n• Opsi B: そと adalah di bagian luar.\n• Opsi D: となり adalah tepat bersebelahan / berdampingan.",
+        "grammarRule": "Posisi Spasial Bab 10: 中（なか = bagian dalam wadah）."
+      },
+      "image": "assets/bab_10/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (下)",
+      "type": "teks",
+      "question_ja": "作業台の （ 下 ）に 工具箱が あります。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "作業台の （ 下 ）に 工具箱が あります。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Di bawah meja kerja ada kotak perkakas. Pilihlah cara baca kanji '下' yang tepat.",
+      "translation": "Di bagian bawah meja kerja ada kotak perkakas alat.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "した"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "うえ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "まえ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "よこ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (した).",
+        "logic": "Kanji 下 dibaca した (shita) yang bermakna bawah atau kolong.",
+        "distractor": "• Opsi B: うえ ditulis 上 (atas).\n• Opsi C: まえ ditulis 前 (depan).\n• Opsi D: よこ ditulis 横 (samping).",
+        "grammarRule": "Pasangan Kanji Posisi: 上（うえ = atas） vs 下（した = bawah）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (前)",
+      "type": "teks",
+      "question_ja": "工場の （ まえ ）に バス停が あります。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "工場の （ まえ ）に バス停が あります。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Di depan pabrik ada halte bus. Pilihlah penulisan kanji yang tepat untuk 'mae'.",
+      "translation": "Di depan pabrik ada tempat perhentian bus halte.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "前"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "後"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "剪"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "箭"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (前).",
+        "logic": "Kata まえ (depan) ditulis dengan kanji baku 前.",
+        "distractor": "• Opsi B: 後 dibaca うしろ (belakang) atau あと (setelah).\n• Opsi C: 剪 adalah huruf gunting.\n• Opsi D: 箭 adalah huruf anak panah bambu.",
+        "grammarRule": "Kanji Posisi Bab 10: 前（まえ = depan）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (右)",
+      "type": "teks",
+      "question_ja": "機械の （ みぎ ）と 左を よく 確認します。<br>「みぎ」の 正しい 漢字は どれですか。",
+      "question_ruby": "機械の （ みぎ ）と 左を よく 確認します。<br>「みぎ」の 正しい 漢字は どれですか。",
+      "question_id": "Memeriksa bagian kanan dan kiri mesin dengan seksama. Pilihlah kanji yang tepat untuk 'migi'.",
+      "translation": "Memeriksa arah kanan dan kiri mesin dengan seksama sebelum operasi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "右"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "左"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "石"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "若"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (右).",
+        "logic": "Kata みぎ (arah kanan) ditulis dengan kanji 右 (memiliki goresan awal miring kiri lalu mendatar, dan kotak 口 di bawah).",
+        "distractor": "• Opsi B: 左 dibaca ひだり (arah kiri).\n• Opsi C: 石 dibaca いし (batu).\n• Opsi D: 若 dibaca わかい (muda).",
+        "grammarRule": "Arah K3 Industri: 右（みぎ = kanan） vs 左（ひだり = kiri）."
+      }
+    }
+  ]
+};
+
+const BAB_11_DATA = {
+  "chapter": "11",
+  "title_ja": "第１１課：助数詞（数・量・期間）と数量詞構文",
+  "title_id": "Bab 11: Kata Bantu Bilangan (Josuushi), Kuantor Waktu/Frekuensi, dan Sintaksis Kuantifikator",
+  "theme_ja": "助数詞 (Josuushi) & 数量詞構文 (Suuryoushi Koubun)",
+  "theme_id": "Evaluasi penguasaan kata bantu bilangan (hitotsu-to-o, ~nin, ~dai, ~mai, ~hon, ~hai, ~kai, ~satsu, ~soku), satuan periode waktu (~jikan, ~shuukan, ~kagetsu, ~nen), sintaksis kuantifikator tanpa partikel langsung pada verba, partikel frekuensi (ni), pembatas jumlah (dake), serta kata tanya ikutsu, nan-nin, dan dono kurai pada Bab 11 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 11.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 11.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Bantu Bilangan Barang Umum (Hitotsu - To-o)",
+      "type": "teks",
+      "question_ja": "食堂で みかんを （　<strong>三つ</strong>　） 買いました。「三つ」の 読み方は どれですか。",
+      "question_ruby": "食堂で みかんを （　<strong>三つ</strong>　） 買いました。「三つ」の 読み方は どれですか。",
+      "question_id": "Cara baca kata bantu bilangan umum Jepang untuk 'tiga buah' adalah...",
+      "translation": "Di kantin saya membeli 3 buah jeruk mandarin. '三つ' dibaca mittsu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ひとつ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ふたつ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "みっつ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "よっつ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (みっつ).",
+        "logic": "Sistem bilangan asli Jepang untuk menghitung barang umum 1 sampai 10 adalah: ひとつ (1), ふたつ (2), <strong>みっつ (3)</strong>, よっつ (4), いつつ (5), むっつ (6), ななつ (7), やっつ (8), ここのつ (9), とお (10).",
+        "distractor": "• Opsi A: ひとつ adalah hitungan untuk 1 buah (一つ).\n• Opsi B: ふたつ adalah hitungan untuk 2 buah (二つ).\n• Opsi D: よっつ adalah hitungan untuk 4 buah (四つ).",
+        "grammarRule": "Deret Bilangan Asli Jepang (1-4): 一つ（ひとつ）, 二つ（ふたつ）, 三つ（みっつ）, 四つ（よっつ）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Bantu Bilangan Orang Khusus (Hitori & Futari)",
+      "type": "teks",
+      "question_ja": "公園に 男の子が （　<strong>一人</strong>　）と 女の子が （　<strong>二人</strong>　） います。「一人」と「二人」の 読み方は どれですか。",
+      "question_ruby": "公園に 男の子が （　<strong>一人</strong>　）と 女の子が （　<strong>二人</strong>　） います。「一人」と「二人」の 読み方は どれですか。",
+      "question_id": "Cara baca khusus penghitung orang untuk '1 orang' dan '2 orang' berturut-turut adalah...",
+      "translation": "Di taman ada 1 anak laki-laki dan 2 anak perempuan. Dibaca hitori dan futari.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ひとり ／ ふたり"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "いちにん ／ ににん"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "いちにん ／ ふたり"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ひとり ／ ににん"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ひとり ／ ふたり).",
+        "logic": "Penghitung jumlah orang menggunakan kata bantu <strong>～人 (にん)</strong>, namun untuk 1 orang dan 2 orang wajib menggunakan bentuk pembacaan khusus: <strong>1人 = ひとり (hitori)</strong> dan <strong>2人 = ふたり (futari)</strong>. Mulai 3 orang barulah memakai pembacaan reguler: 3人 (さんにん), 4人 (よにん - perhatikan bukan yonin).",
+        "distractor": "• Opsi B: いちにん dan ににん adalah kesalahan fatal karena melanggar bentuk pembacaan khusus kanji orang.\n• Opsi C: いちにん tidak pernah digunakan dalam percakapan hitungan manusia normal.\n• Opsi D: ににん salah penuturan (wajib dibaca futari).",
+        "grammarRule": "Bentuk Khusus Penghitung Orang: 1人（ひとり - hitori）, 2人（ふたり - futari）, 4人（よにん - yonin）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Bantu Bilangan Mesin & Kendaraan (Dai)",
+      "type": "teks",
+      "question_ja": "工場の ガレージに フォークリフトが （　<strong>５だい</strong>　） あります。「だい」の 漢字は どれですか。",
+      "question_ruby": "工場の ガレージに フォークリフトが （　<strong>５だい</strong>　） あります。「だい」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk kata bantu hitung mesin/kendaraan 'dai' adalah...",
+      "translation": "Di garasi pabrik terdapat 5 unit forklift. Kanji dai adalah 台.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "本"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "枚"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "杯"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "台"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (台).",
+        "logic": "Kata bantu bilangan untuk <strong>mesin industri, komputer, kendaraan bermotor (mobil, forklift, motor, sepeda), dan barang elektronik</strong> adalah <strong>台（だい - dai）</strong>.",
+        "distractor": "• Opsi A: 本（ほん） digunakan untuk benda panjang silindris (pensil, botol, pipa).\n• Opsi B: 枚（まい） digunakan untuk benda tipis pipih (kertas, tiket, pelat logam).\n• Opsi C: 杯（はい） digunakan untuk takaran cangkir / gelas minuman.",
+        "grammarRule": "Klasifikasi Josuushi: 台（だい） = Mesin/Kendaraan, 枚（まい） = Lembaran/Benda Pipih, 本（ほん） = Benda Silindris Panjang."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Bantu Bilangan Lembaran / Benda Tipis (Mai)",
+      "type": "teks",
+      "question_ja": "郵便局で ８０円の （　<strong>切手</strong>　）を ３枚 買いました。「切手」の 読み方は どれですか。",
+      "question_ruby": "郵便局で ８０円の （　<strong>切手</strong>　）を ３枚 買いました。「切手」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji untuk 'perangko' yang dihitung dengan satuan 'mai' adalah...",
+      "translation": "Saya membeli 3 lembar perangko seharga 80 yen di kantor pos. Kanji 切手 dibaca kitte.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "はがき"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "きって"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ふうとう"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "きっぷ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (きって).",
+        "logic": "Kanji <strong>切手</strong> dibaca <strong>きって (kitte)</strong> yang bermakna <strong>perangko pos</strong>. Karena berbentuk lembaran kertas tipis, perangko dihitung dengan kata bantu <strong>枚（まい - mai）</strong>.",
+        "distractor": "• Opsi A: はがき berarti kartu pos (葉書).\n• Opsi C: ふうとう berarti amplop surat (封筒).\n• Opsi D: きっぷ berarti tiket karcis kereta api (切符).",
+        "grammarRule": "Kosakata Pos & Satuan Mai: 切手（きって - perangko）, 葉書（はがき - kartu pos）, 封筒（ふうとう - amplop） dihitung dengan 枚（まい）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Bantu Bilangan Benda Panjang Silindris (Hon)",
+      "type": "teks",
+      "question_ja": "朝ごはんに バナナを （　<strong>さんぼん</strong>　） 食べました。「さんぼん」の 漢字と 助数詞の 組み合わせは どれですか。",
+      "question_ruby": "朝ごはんに バナナを （　<strong>さんぼん</strong>　） 食べました。「さんぼん」の 漢字と 助数詞の 組み合わせは どれですか。",
+      "question_id": "Pasangan kanji angka dan kata bantu hitung silindris yang benar untuk 'sanbon' adalah...",
+      "translation": "Saya sarapan memakan 3 buah pisang. Penulisan sanbon adalah 三本.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "三本"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "三枚"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "三杯"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "三台"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (三本).",
+        "logic": "Kata bantu bilangan <strong>～本（ほん - hon）</strong> digunakan untuk benda panjang silindris (pisang, botol, pohon, pena, jari, payung). Pada angka 3 terjadi perubahan bunyi (euphony/rendaku) menjadi <strong>さんぼん (sanbon)</strong>.",
+        "distractor": "• Opsi B: 三枚 dibaca さんまい (sanmai), untuk benda tipis seperti kertas.\n• Opsi C: 三杯 dibaca さんばい (sanbai), untuk takaran minuman dalam cangkir/gelas.\n• Opsi D: 三台 dibaca さんだい (sandai), untuk mesin atau kendaraan.",
+        "grammarRule": "Variasi Bunyi ～本: 1本（いっぽん）, 2本（にほん）, 3本（さんぼん）, 6本（ろっぽん）, 8本（はっぽん）, 10本（じゅっぽん/じっぽん）, 何本（なんぼん）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Periode Jangka Waktu (Kikan)",
+      "type": "teks",
+      "question_ja": "アグスさんは 日本で （　<strong>いっかげつ</strong>　） 研修を しました。「いっかげつ」の 表記は どれですか。",
+      "question_ruby": "アグスさんは 日本で （　<strong>いっかげつ</strong>　） 研修を しました。「いっかげつ」の 表記は どれですか。",
+      "question_id": "Penulisan penanda jangka waktu yang tepat untuk 'satu bulan' adalah...",
+      "translation": "Agus-san menjalani pelatihan di Jepang selama 1 bulan. 'いっかげつ' ditulis 一か月.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "一週間"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "一日"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "一か月"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "一年"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (一か月).",
+        "logic": "Satuan penghitung jangka waktu bulan adalah <strong>～か月（かげつ - kagetsu）</strong>. Untuk durasi 1 bulan dibaca <strong>一か月（いっかげつ - ikkagetsu）</strong>. Perhatikan pembedaan antara nama bulan (1月 = いちがつ / Januari) dengan durasi lamanya waktu (1か月 = いっかげつ / selama 1 bulan).",
+        "distractor": "• Opsi A: 一週間 dibaca いっしゅうかん (isshuukan = selama 1 minggu).\n• Opsi B: 一日 dibaca いちにち (ichinichi = selama 1 hari) atau ついたち (tanggal 1).\n• Opsi D: 一年 dibaca いちねん (ichinen = selama 1 tahun).",
+        "grammarRule": "Perbedaan Nama Bulan vs Durasi: [Angka] + 月（がつ） = Nama Kalender; [Angka] + か月（かげつ） = Jangka Waktu/Durasi Lamanya Bulan."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Bantu Bilangan Takaran Minuman (Hai / Pai)",
+      "type": "teks",
+      "question_ja": "毎朝、食堂で コーヒーを （　<strong>にはい</strong>　） 飲みます。「にはい」の 漢字表記は どれですか。",
+      "question_ruby": "毎朝、食堂で コーヒーを （　<strong>にはい</strong>　） 飲みます。「にはい」の 漢字表記は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'dua cangkir/gelas' (nihai) adalah...",
+      "translation": "Setiap pagi saya minum dua cangkir kopi di kantin. Kanji nihai adalah 二杯.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "二本"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "二杯"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "二枚"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "二皿"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (二杯).",
+        "logic": "Kata bantu hitung untuk minuman dalam cangkir, mangkuk, atau gelas adalah <strong>～杯（はい - hai）</strong>. Dua cangkir ditulis <strong>二杯（にはい - nihai）</strong>.",
+        "distractor": "• Opsi A: 二本 dibaca にほん, digunakan untuk 2 botol/benda silindris, bukan cangkir kopi.\n• Opsi C: 二枚 dibaca にまい, digunakan untuk lembaran tipis.\n• Opsi D: 二皿 dibaca にさら, digunakan untuk hitungan piring sajian makanan.",
+        "grammarRule": "Variasi Bunyi ～杯: 1杯（いっぱい）, 2杯（にはい）, 3杯（さんばい）, 6杯（ろっぱい）, 8杯（はっぱい）, 10杯（じゅっぱい）, 何杯（なんばい）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Frekuensi dalam Rentang Waktu (Ni)",
+      "type": "teks",
+      "question_ja": "国際電話は 高いですから、１か月（　<strong>？</strong>　） １回だけ 国の 家族に かけます。",
+      "question_ruby": "国際電話は 高いですから、１か月（　<strong>？</strong>　） １回だけ 国の 家族に かけます。",
+      "question_id": "Partikel yang tepat untuk menyatakan frekuensi dalam jangka waktu '1 bulan 1 kali' adalah...",
+      "translation": "Karena telepon internasional mahal, saya hanya menelepon keluarga di tanah air 1 kali dalam 1 bulan. Partikel frekuensi adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (に).",
+        "logic": "Untuk menyatakan <strong>frekuensi dilakukannya suatu tindakan dalam kurun waktu tertentu</strong>, digunakan partikel <strong>に (ni)</strong> dengan pola: <code>[Jangka Waktu] に [Jumlah Frekuensi] 回 [Verba]</code>. Contoh: 1か月に1回 (sebulan sekali), 1週間に2回 (seminggu dua kali).",
+        "distractor": "• Opsi A: で menandai batas total biaya/waktu atau sarana aksi, bukan frekuensi per rentang waktu.\n• Opsi B: を menandai objek penderita verba transitif.\n• Opsi C: へ menandai arah pergerakan tempat tujuan.",
+        "grammarRule": "Rumus Frekuensi Kegiatan: [Kurun Waktu (期間)] + に + [Frekuensi (回数)] + Verba Aksi."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Tempat Keberadaan Waktu Tinggal (Ni)",
+      "type": "teks",
+      "question_ja": "アグスさんは これから 日本（　<strong>？</strong>　） ３年 います。",
+      "question_ruby": "アグスさんは これから 日本（　<strong>？</strong>　） ３年 います。",
+      "question_id": "Partikel yang tepat untuk menunjukkan negara/tempat keberadaan selama kurun waktu tertentu adalah...",
+      "translation": "Agus-san mulai sekarang akan berada di Jepang selama 3 tahun. Partikel lokasi eksistensi adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Dalam pola menyatakan keberadaan subjek bernyawa di suatu lokasi dalam kurun waktu tertentu: <code>[Tempat] に [Durasi Waktu] います</code>. Karena predikatnya adalah verba statis <strong>います (imasu)</strong>, partikel penanda tempatnya wajib menggunakan <strong>に (ni)</strong>.",
+        "distractor": "• Opsi A: を tidak dapat digunakan bersama kata kerja intransitif います.\n• Opsi B: で digunakan jika predikatnya adalah kata kerja aktivitas aktif dinamis (misal: 日本で実習します).\n• Opsi D: へ digunakan untuk kata kerja perpindahan arah (misal: 日本へ来ました).",
+        "grammarRule": "Pembeda Partikel Tempat Tinggal/Aktivitas: [Tempat] に います (berada) vs [Tempat] で 働きます/実習します (bekerja/praktik aktif)."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Sintaksis Kuantifikator Tanpa Partikel (Zero Particle)",
+      "type": "teks",
+      "question_ja": "スーパーで りんごを ４つ（　<strong>？</strong>　） 買いました。",
+      "question_ruby": "スーパーで りんごを ４つ（　<strong>？</strong>　） 買いました。",
+      "question_id": "Partikel yang tepat untuk mengisi tanda kurung setelah kuantor bilangan 'yottsu' adalah...",
+      "translation": "Saya membeli 4 buah apel di supermarket. Kuantifikator menempel langsung sebelum verba tanpa partikel.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "（Partikel tidak diperlukan / なし）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (（Partikel tidak diperlukan / なし）).",
+        "logic": "Dalam tata bahasa Jepang standar, <strong>kata bantu kuantitas (suuryoushi)</strong> umumnya diletakkan <strong>tepat sebelum kata kerja</strong> dan <strong>TIDAK memerlukan partikel penyambung tambahan</strong>. Pola baku: <code>[Objek] を [Jumlah] [Verba]</code> ➔ <code>りんごを ４つ 買いました</code>.",
+        "distractor": "• Opsi A: に salah karena kuantor jumlah benda tidak diberi partikel に sebelum kata kerja aksi biasa.\n• Opsi B: を salah karena partikel を sudah terpasang di belakang objek (りんごを). Menaruh を dua kali menghasilkan kalimat rancu.\n• Opsi C: で salah karena angka 4 buah di sini bukan penunjuk harga total agregat.",
+        "grammarRule": "Aturan Emas Kuantifikator: [Nomina] + を + [Kuantor/Angka] + Verba. Kuantor berdiri mandiri tanpa partikel penyambung."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pembatas Kuantitas Eksklusif (Dake)",
+      "type": "teks",
+      "question_ja": "日曜日は 休みですから、寮に 実習生が １人（　<strong>？</strong>　） います。",
+      "question_ruby": "日曜日は 休みですから、寮に 実習生が １人（　<strong>？</strong>　） います。",
+      "question_id": "Partikel pembatas yang bermakna 'hanya 1 orang saja' adalah...",
+      "translation": "Karena hari Minggu libur, hanya ada 1 orang siswa magang di asrama. Partikel pembatas positif adalah だけ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "しか"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "だけ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ほど"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ごろ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (だけ).",
+        "logic": "Partikel <strong>だけ (dake)</strong> berfungsi sebagai partikel pembatas yang berarti <strong>'hanya / saja'</strong> dan berpasangan dengan <strong>predikat berbentuk positif</strong>: <code>1人だけ います (hanya ada 1 orang)</code>.",
+        "distractor": "• Opsi A: しか juga berarti 'hanya', namun WAJIB berpasangan dengan predikat negatif (1人しか いません). Karena predikatnya positif (います), shika tidak dapat digunakan.\n• Opsi C: ほど berarti 'kira-kira / sebanyak' untuk perkiraan, bukan pembatas kuantitas.\n• Opsi D: ごろ digunakan untuk perkiraan titik waktu tertentu (misal: 3時ごろ), bukan kuantitas orang.",
+        "grammarRule": "Pembeda Pembatas Mutlak: [Kuantor] + だけ + Predikat Positif (1人だけ います) vs [Kuantor] + しか + Predikat Negatif (1人しか いません)."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Rentang Titik Awal & Akhir (Kara ... Made)",
+      "type": "teks",
+      "question_ja": "ジャカルタ（　<strong>？</strong>　） バンドゥンまで 車で ３時間ぐらい かかります。",
+      "question_ruby": "ジャカルタ（　<strong>？</strong>　） バンドゥンまで 車で ３時間ぐらい かかります。",
+      "question_id": "Partikel yang tepat untuk menunjukkan titik awal keberangkatan 'dari Jakarta' adalah...",
+      "translation": "Dari Jakarta sampai Bandung memakan waktu sekitar 3 jam dengan mobil. Titik awal ditandai dengan から.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "から"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "まで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (から).",
+        "logic": "Pasangan pola jarak dan rentang perjalanan spasial maupun temporal adalah <strong>[Titik Asal] から [Titik Tujuan] まで</strong> (dari ... sampai ...). Maka untuk menandai titik keberangkatan Jakarta digunakan partikel <strong>から (kara)</strong>.",
+        "distractor": "• Opsi B: まで menandai batas akhir (sampai), yang sudah tertera pada kata Bandung (バンドゥンまで).\n• Opsi C: に menandai titik tiba jika berpasangan dengan verba transitif gerak tertentu, bukan pasangan kara...made.\n• Opsi D: へ menunjukkan arah gerak perpindahan, bukan batas pangkal rentang.",
+        "grammarRule": "Rumus Rentang Spasial/Temporal: [Titik A] から + [Titik B] まで + [Kuantor Waktu] + かかります."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Jumlah Total Agregat / Alat Waktu (De)",
+      "type": "teks",
+      "question_ja": "店員：『５０円の 切手を ４枚ですね。全部（　<strong>？</strong>　） ２００円です。』",
+      "question_ruby": "店員：『５０円の 切手を ４枚ですね。全部（　<strong>？</strong>　） ２００円です。』",
+      "question_id": "Partikel yang tepat untuk menyatakan jumlah keseluruhan / total biaya adalah...",
+      "translation": "Pelayan toko: 'Perangko 50 yen 4 lembar, ya. Semuanya total 200 yen.' Partikel total adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "と"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (で).",
+        "logic": "Partikel <strong>で (de)</strong> digunakan untuk menandai <strong>keadaan akumulatif, total keseluruhan kuantitas, atau biaya agregat</strong>. Frasa <strong>全部で（ぜんぶで - zenbu de）</strong> bermakna <strong>secara keseluruhan / total semuanya</strong>.",
+        "distractor": "• Opsi A: に tidak digunakan untuk menandai batas total akumulasi nominal harga.\n• Opsi B: と bermakna 'dan' / 'bersama', tidak tepat secara gramatikal.\n• Opsi C: を menandai objek penderita, sedangkan harga 200 yen berstatus sebagai predikat nominal.",
+        "grammarRule": "Pola Akumulasi Total Biaya: 全部（ぜんぶ） + で + [Jumlah Nominal Harga] です."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Sintaksis Penempatan Kuantifikator dalam Kalimat",
+      "type": "teks",
+      "question_ja": "「けさ、バナナを ３本 食べました」と 言いたいです。正しい 文は どれですか。",
+      "question_ruby": "「けさ、バナナを ３本 食べました」と 言いたいです。正しい 文は どれですか。",
+      "question_id": "Susunan kalimat bahasa Jepang yang paling alami dan benar secara tata bahasa adalah...",
+      "translation": "Tadi pagi saya memakan 3 buah pisang. Urutan baku: バナナを ３本 食べました.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "けさ、３本を バナナ 食べました。"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "けさ、バナナを ３本 食べました。"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "けさ、バナナの ３本を 食べました。"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "けさ、バナナを 食べました ３本。"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (けさ、バナナを ３本 食べました。).",
+        "logic": "Struktur kalimat bahasa Jepang standar menempatkan kuantifikator/bilangan <strong>tepat di depan verba</strong>: <code>[Waktu] + [Objek] を + [Kata Bantu Bilangan] + [Verba]</code>. Maka yang benar adalah <strong>けさ、バナナを ３本 食べました</strong>.",
+        "distractor": "• Opsi A: ３本を バナナ menyalahi aturan karena partikel を harus melekat pada benda (バナナを), bukan pada kuantor.\n• Opsi C: バナナの ３本を terlalu kaku dan tidak lazim dalam percakapan sehari-hari.\n• Opsi D: バナナを 食べました ３本 memecah struktur predikat bahasa Jepang yang selalu diletakkan di akhir.",
+        "grammarRule": "Struktur Baku Kuantor: [Nomina] + を + [Angka + Josuushi] + [Kata Kerja]."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Kata Tanya Kuantitas Barang Umum (Ikutsu)",
+      "type": "teks",
+      "question_ja": "店員：『いらっしゃいませ。りんごを （　<strong>＿＿＿＿＿</strong>　） 買いますか。』<br>客：『３つ ください。』",
+      "question_ruby": "店員：『いらっしゃいませ。りんごを （　<strong>＿＿＿＿＿</strong>　） 買いますか。』<br>客：『３つ ください。』",
+      "question_id": "Kata tanya yang tepat untuk menanyakan jumlah kuantitas buah/barang umum adalah...",
+      "translation": "Pelayan: 'Selamat datang. Anda ingin membeli berapa buah apel?' Pembeli: 'Tolong beri 3 buah.' Kata tanya: いくつ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "いくつ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "何人"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "いくら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "だれ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (いくつ).",
+        "logic": "Untuk menanyakan jumlah satuan barang umum yang dihitung dengan pola hitotsu, futatsu, mittsu, kata tanya baku yang digunakan adalah <strong>いくつ (ikutsu = berapa buah)</strong>.",
+        "distractor": "• Opsi B: 何人（なんにん） digunakan khusus untuk menanyakan jumlah orang.\n• Opsi C: いくら digunakan untuk menanyakan harga uang (berapa rupiah/yen).\n• Opsi D: だれ menanyakan identitas orang (siapa).",
+        "grammarRule": "Kata Tanya Kuantitas: いくつ = Berapa buah (umum), 何人（なんにん） = Berapa orang, いくら = Berapa harganya."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Kata Tanya Jangka Waktu / Durasi Perjalanan (Dono kurai)",
+      "type": "teks",
+      "question_ja": "質問：『ジャカルタから バンドゥンまで （　<strong>＿＿＿＿＿</strong>　） かかりますか。』<br>回答：『車で ３時間ぐらい かかります。』",
+      "question_ruby": "質問：『ジャカルタから バンドゥンまで （　<strong>＿＿＿＿＿</strong>　） かかりますか。』<br>回答：『車で ３時間ぐらい かかります。』",
+      "question_id": "Frasa tanya yang paling tepat untuk menanyakan lamanya durasi waktu perjalanan adalah...",
+      "translation": "Pertanyaan: 'Dari Jakarta sampai Bandung memakan waktu berapa lama?' Jawaban: 'Dengan mobil kira-kira 3 jam.' Kata tanya: どのくらい.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "何時"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "何日"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "どのくらい"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "いつ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (どのくらい).",
+        "logic": "Untuk menanyakan <strong>rentang lamanya waktu, durasi, atau jarak perkiraan</strong>, digunakan kata tanya <strong>どのくらい / どのぐらい (dono kurai / dono gurai = berapa lama / seberapa banyak)</strong> yang berpasangan dengan kata kerja <strong>かかります (kakarimasu = memakan waktu/biaya)</strong>.",
+        "distractor": "• Opsi A: 何時（なんじ） menanyakan titik jam tertentu pada jam dinding (pukul berapa), bukan rentang durasi.\n• Opsi B: 何日（なんにち） menanyakan tanggal kalender atau jumlah hari secara spesifik.\n• Opsi D: いつ menanyakan waktu secara umum (kapan).",
+        "grammarRule": "Pola Tanya Durasi Jangka Waktu: [Tempat A] から [Tempat B] まで + どのくらい + かかりますか."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Tanya Jumlah Anggota Keluarga / Orang (Nan-nin)",
+      "type": "teks",
+      "question_ja": "田中さん：『アグスさんの ご家族は 全部で （　<strong>＿＿＿＿＿</strong>　）ですか。』<br>アグス：『１０人です。』",
+      "question_ruby": "田中さん：『アグスさんの ご家族は 全部で （　<strong>＿＿＿＿＿</strong>　）ですか。』<br>アグス：『１０人です。』",
+      "question_id": "Kata tanya yang tepat untuk menanyakan jumlah anggota keluarga adalah...",
+      "translation": "Tanaka-san: 'Keluarga Agus-san semuanya ada berapa orang?' Agus: 'Ada 10 orang.' Kata tanya: 何人 (なんにん).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "何台"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "何枚"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "何歳"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "何人"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (何人).",
+        "logic": "Untuk menanyakan jumlah orang atau personel, digunakan kata bantu tanya <strong>何人（なんにん - nan-nin = berapa orang）</strong>. Pola kalimat: <code>ご家族は 何人ですか</code>.",
+        "distractor": "• Opsi A: 何台（なんだい） menanyakan jumlah kendaraan atau mesin.\n• Opsi B: 何枚（なんまい） menanyakan jumlah lembaran tipis kertas/tiket.\n• Opsi C: 何歳（なんさい） menanyakan usia/umur seseorang.",
+        "grammarRule": "Pertanyaan Jumlah Orang: [Kelompok/Keluarga] は 全部で 何人（なんにん） ですか."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konstruksi Verba Waktu Perjalanan dengan Sarana Transportasi",
+      "type": "teks",
+      "question_ja": "寮から 工場まで 自転車（　①　） １５分（　②　）。",
+      "question_ruby": "寮から 工場まで 自転車（　①　） １５分（　②　）。",
+      "question_id": "Pasangan partikel sarana ① dan predikat waktu ② yang benar adalah...",
+      "translation": "Dari asrama ke pabrik memakan waktu 15 menit dengan sepeda. Pasangan: で lalu かかります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で ／ かかります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に ／ あります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を ／ います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ ／ します"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (で ／ かかります).",
+        "logic": "1) Sarana transportasi (sepeda / 自転車) ditandai dengan partikel instrumen <strong>で (de)</strong>.<br>2) Menghabiskan waktu durasi dinyatakan dengan verba <strong>かかります (kakarimasu)</strong>. Maka gabungan yang tepat adalah <strong>自転車で １５分かかります</strong>.",
+        "distractor": "• Opsi B: に ／ あります salah karena sarana bukan partikel に dan waktu tempuh tidak menggunakan あります.\n• Opsi C: を ／ います salah fatal secara tata bahasa.\n• Opsi D: へ ／ します salah pasangan partikel dan verba.",
+        "grammarRule": "Rumus Tempuh Perjalanan: [Sarana Transportasi] + で + [Durasi Waktu] + かかります."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Durasi Belajar / Bekerja dalam Jangka Waktu Tertentu",
+      "type": "teks",
+      "question_ja": "アグスさんは インドネシアで ４か月 日本語を 勉強しました。そして、日本の 研修センターで １か月 勉強しました。アグスさんは 全部で （　<strong>＿＿＿＿＿</strong>　） 日本語を 勉強しました。",
+      "question_ruby": "アグスさんは インドネシアで ４か月 日本語を 勉強しました。そして、日本の 研修センターで １か月 勉強しました。アグスさんは 全部で （　<strong>＿＿＿＿＿</strong>　） 日本語を 勉強しました。",
+      "question_id": "Total durasi waktu belajar bahasa Jepang yang tepat sesuai konteks di atas adalah...",
+      "translation": "Agus belajar bahasa Jepang selama 4 bulan di Indonesia dan 1 bulan di pusat pelatihan Jepang. Totalnya belajar selama 5 bulan (4 + 1 = 5か月).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "３か月"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "４か月"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "５か月"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "６か月"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (５か月).",
+        "logic": "Kalkulasi durasi waktu: 4 bulan di Indonesia (4か月) + 1 bulan di Jepang (1か月) = <strong>5か月（ごかげつ - go-kagetsu = selama 5 bulan）</strong>. Kalimat tanya menanyakan akumulasi total waktu belajar.",
+        "distractor": "• Opsi A: 3か月 adalah pengurangan yang keliru.\n• Opsi B: 4か月 hanya menghitung durasi di Indonesia saja tanpa menjumlahkan pelatihan di Jepang.\n• Opsi D: 6か月 adalah perhitungan berlebih yang tidak sesuai narasi.",
+        "grammarRule": "Akumulasi Jangka Waktu Bab 11: 4か月 + 1か月 = 5か月（ごかげつ）."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Pemesanan Barang Berganda di Toko / Restoran",
+      "type": "teks",
+      "question_ja": "実習生：『すみません。５０円の 切手を （　①　）と、８０円の 切手を （　②　） ください。』<br>局員：『はい、全部で ３４０円です。』",
+      "question_ruby": "実習生：『すみません。５０円の 切手を （　①　）と、８０円の 切手を （　②　） ください。』<br>局員：『はい、全部で ３４０円です。』",
+      "question_id": "Kombinasi kuantor ① dan ② yang menghasilkan total 340 yen adalah...",
+      "translation": "Siswa magang: 'Permisi, tolong berikan 2 lembar perangko 50 yen dan 3 lembar perangko 80 yen.' Petugas: 'Baik, totalnya 340 yen.' (50x2 + 80x3 = 100 + 240 = 340 yen).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "１枚 ／ １枚"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "２枚 ／ ３枚"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "３枚 ／ １枚"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "４枚 ／ ２枚"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (２枚 ／ ３枚).",
+        "logic": "Kalkulasi matematis pragmatis: <code>(50 yen × 2枚 = 100 yen) + (80 yen × 3枚 = 240 yen) = 340 yen</code>. Maka pilihan yang tepat adalah <strong>２枚 ／ ３枚</strong>.",
+        "distractor": "• Opsi A: 1枚 / 1枚 totalnya hanya 50 + 80 = 130 yen.\n• Opsi C: 3枚 / 1枚 totalnya (50×3) + 80 = 230 yen.\n• Opsi D: 4枚 / 2枚 totalnya (50×4) + (80×2) = 360 yen.",
+        "grammarRule": "Pola Pemesanan Berganda: [Benda A] を [Jumlah A] と、[Benda B] を [Jumlah B] ください."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kuantor Buah / Benda (３つ)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。りんごが いくつ ありますか。<br>「りんごが （　　　）あります。」",
+      "question_ruby": "絵（え）を 見て ください。りんごが いくつ ありますか。<br>「りんごが （　　　）あります。」",
+      "question_id": "Perhatikan gambar. Ada berapa buah apel? 'Ada (...) buah apel'.",
+      "translation": "Ada 3 buah (mittsu) apel.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ひとつ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ふたつ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "みっつ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "よっつ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (みっつ).",
+        "logic": "Gambar memperlihatkan tiga butir buah apel merah segar di atas meja (みっつ - mittsu).",
+        "distractor": "• Opsi A: ひとつ adalah 1 buah.\n• Opsi B: ふたつ adalah 2 buah.\n• Opsi D: よっつ adalah 4 buah.",
+        "grammarRule": "Hitungan Tradisional Bab 11: ひとつ, ふたつ, みっつ, よっつ."
+      },
+      "image": "assets/bab_11/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kuantor Kendaraan Mesin (２台)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。車が 何台 ありますか。<br>「（　　　）あります。」",
+      "question_ruby": "絵（え）を 見て ください。車が 何台 ありますか。<br>「（　　　）あります。」",
+      "question_id": "Perhatikan gambar. Ada berapa unit mobil? 'Ada (...)'.",
+      "translation": "Ada 2 unit (nidai) mobil.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "１台（いちだい）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "２台（にだい）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "３台（さんだい）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "４台（よんだい）"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (２台（にだい）).",
+        "logic": "Gambar memperlihatkan 2 unit mobil berjejer (２台 / にだい - nidai).",
+        "distractor": "• Opsi A: １台 adalah 1 unit mesin/kendaraan.\n• Opsi C: ３台 adalah 3 unit.\n• Opsi D: ４台 adalah 4 unit.",
+        "grammarRule": "Kuantor Mesin & Kendaraan: ～台（だい）."
+      },
+      "image": "assets/bab_11/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (一人)",
+      "type": "teks",
+      "question_ja": "実習生が 部屋に （ 一人 ）います。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "実習生が 部屋に （ 一人 ）います。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Ada satu orang peserta magang di kamar. Pilihlah cara baca kanji '一人' yang tepat.",
+      "translation": "Ada 1 orang peserta magang di dalam kamar.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ひとり"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ふたり"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "いちにん"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ひとつ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ひとり).",
+        "logic": "Kanji 一人 dibaca ひとり (hitori) yang bermakna satu orang (pengecualian vokal kun'yomi).",
+        "distractor": "• Opsi B: ふたり ditulis 二人 (dua orang).\n• Opsi C: いちにん adalah bacaan on'yomi tidak lazim untuk manusia umum.\n• Opsi D: ひとつ ditulis 一つ (satu buah).",
+        "grammarRule": "Kuantor Jumlah Orang Bab 11: 一人（ひとり）, 二人（ふたり）, 三人（さんにん）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (一枚)",
+      "type": "teks",
+      "question_ja": "作業指示書を （ いちまい ）コピーして ください。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "作業指示書を （ いちまい ）コピーして ください。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Tolong fotokopi lembar instruksi kerja satu lembar. Pilihlah penulisan kanji yang tepat untuk 'ichimai'.",
+      "translation": "Tolong gandakan/fotokopi lembar instruksi kerja sebanyak satu lembar.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "一枚"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "一毎"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "一木"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "一杯"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (一枚).",
+        "logic": "Kata いちまい (satu lembar barang pipih tipis) ditulis dengan kanji 一枚 (枚 = kuantor lembaran).",
+        "distractor": "• Opsi B: 一毎 adalah kesalahan penggunaan kanji mai (setiap).\n• Opsi C: 一木 dibaca いちぼく.\n• Opsi D: 一杯 dibaca いっぱい (satu cangkir/penuh).",
+        "grammarRule": "Kuantor Benda Pipih Bab 11: ～枚（まい = kertas, baju, piring）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (時間)",
+      "type": "teks",
+      "question_ja": "毎日 ８（ じかん ）集中して 実習します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "毎日 ８（ じかん ）集中して 実習します。<br>正しい 漢字は どれですか。",
+      "question_id": "Setiap hari berlatih magang dengan konsentrasi selama 8 jam. Pilihlah kanji yang tepat untuk 'jikan'.",
+      "translation": "Setiap hari berlatih magang dengan konsentrasi penuh selama durasi 8 jam.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "時間"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "時問"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "時簡"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "寺間"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (時間).",
+        "logic": "Kata じかん (durasi jam) ditulis dengan kanji 時間 (時 = waktu, 間 = antara/durasi rentang).",
+        "distractor": "• Opsi B: 時問 salah huruf kanan (menggunakan 問 = toi/tanya).\n• Opsi C: 時簡 salah huruf kanan (menggunakan 簡 = kanji sederhana).\n• Opsi D: 寺間 salah huruf kiri (menggunakan 寺 = kuil).",
+        "grammarRule": "Durasi Waktu Bab 11: ～時間（じかん = selama ... jam）."
+      }
+    }
+  ]
+};
+
+const BAB_12_DATA = {
+  "chapter": "12",
+  "title_ja": "第１２課：比較・最上級表現と形容詞・名詞の過去形",
+  "title_id": "Bab 12: Kalimat Komparasi, Superlatif, dan Bentuk Lampau Kata Sifat & Nomina",
+  "theme_ja": "比較表現 (Hikaku Hyougen) & 過去形 (Kako-kei)",
+  "theme_id": "Evaluasi penguasaan kosakata musim (春, 夏, 秋, 冬), kondisi cuaca, bentuk lampau kata sifat-i (~katta / ~kunakatta), kata sifat-na & nomina lampau (~deshita / ~ja arimasen deshita), sintaksis komparasi dua hal (A wa B yori... / A to B to dochira ga... no hou ga...), superlatif (~no naka de ~ga ichiban...), serta partikel perbandingan (yori, no hou ga, de) pada Bab 12 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 12.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 12.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Empat Musim di Jepang (Shiki)",
+      "type": "teks",
+      "question_ja": "日本には （　<strong>春、夏、秋、冬</strong>　）の 四つの 季節が あります。「秋」の 読み方は どれですか。",
+      "question_ruby": "日本には （　<strong>春、夏、秋、冬</strong>　）の 四つの 季節が あります。「秋」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji untuk musim gugur (autumn) adalah...",
+      "translation": "Di Jepang terdapat 4 musim: musim semi, musim panas, musim gugur, dan musim dingin. Kanji 秋 dibaca aki.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "はる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あき"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "なつ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ふゆ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (あき).",
+        "logic": "Empat musim di Jepang (四季 - shiki) terdiri dari: <strong>春（はる - haru / semi）</strong>, <strong>夏（なつ - natsu / panas）</strong>, <strong>秋（あき - aki / gugur）</strong>, dan <strong>冬（ふゆ - fuyu / dingin）</strong>.",
+        "distractor": "• Opsi A: はる adalah cara baca kanji 春 (musim semi).\n• Opsi C: なつ adalah cara baca kanji 夏 (musim panas).\n• Opsi D: ふゆ adalah cara baca kanji 冬 (musim dingin).",
+        "grammarRule": "Empat Musim Jepang: 春（はる - semi）, 夏（なつ - panas）, 秋（あき - gugur）, 冬（ふゆ - dingin）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Cuaca & Fenomena Alam",
+      "type": "teks",
+      "question_ja": "先週の 日曜日は 朝から （　<strong>雨</strong>　）でした。「雨」の 読み方は どれですか。",
+      "question_ruby": "先週の 日曜日は 朝から （　<strong>雨</strong>　）でした。「雨」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'hujan' adalah...",
+      "translation": "Minggu lalu hujan turun sejak pagi. Kanji 雨 dibaca ame.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ゆき"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "くもり"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かぜ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あめ"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (あめ).",
+        "logic": "Kanji <strong>雨</strong> dibaca <strong>あめ (ame)</strong> yang berarti <strong>hujan</strong>. Fenomena cuaca lainnya meliputi: 雪（ゆき - salju）, 曇り（くもり - berawan）, 風（かぜ - angin）.",
+        "distractor": "• Opsi A: ゆき ditulis dengan kanji 雪 (salju).\n• Opsi B: くもり ditulis dengan kanji 曇り (mendung/berawan).\n• Opsi C: かぜ ditulis dengan kanji 風 (angin).",
+        "grammarRule": "Kosakata Cuaca Bab 12: 天気（てんき - cuaca）, 雨（あめ - hujan）, 雪（ゆき - salju）, 曇り（くもり - mendung）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Sifat Iklim & Suhu Udara (Suzushii)",
+      "type": "teks",
+      "question_ja": "秋は 暑くありません。とても （　<strong>すずしい</strong>　）です。「すずしい」の 漢字と 意味は どれですか。",
+      "question_ruby": "秋は 暑くありません。とても （　<strong>すずしい</strong>　）です。「すずしい」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk sifat sejuk 'suzushii' adalah...",
+      "translation": "Musim gugur tidak panas. Udaranya sangat sejuk. Kanji suzushii adalah 涼しい.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "涼しい （Sejuk / nyaman）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "暖かい （Hangat bersahabat）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "寒い （Dingin menggigil）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "暑い （Panas terik）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (涼しい （Sejuk / nyaman）).",
+        "logic": "Kata sifat <strong>涼しい（すずしい - suzushii）</strong> berarti <strong>sejuk / segar</strong>, biasanya menggambarkan suhu udara pada musim gugur yang mulai mendingin setelah musim panas.",
+        "distractor": "• Opsi B: 暖かい（あたたかい） berarti hangat, mencirikan iklim musim semi.\n• Opsi C: 寒い（さむい） berarti dingin menggigit pada musim dingin.\n• Opsi D: 暑い（あつい） berarti panas menyengat pada musim panas.",
+        "grammarRule": "Pasangan Kata Sifat Suhu Udara: 暑い（panas） >< 寒い（dingin）; 暖かい（hangat） >< 涼しい（sejuk）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Jarak Spasial (Chikai)",
+      "type": "teks",
+      "question_ja": "成田空港の （　<strong>近く</strong>　）の 工場で 実習を しています。「近く」の 読み方は どれですか。",
+      "question_ruby": "成田空港の （　<strong>近く</strong>　）の 工場で 実習を しています。「近く」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji untuk 'dekat / sekitar' adalah...",
+      "translation": "Saya menjalani pemagangan di pabrik dekat Bandara Narita. Kanji 近く dibaca chikaku.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "とおく"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ひろく"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ちかく"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "せまく"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (ちかく).",
+        "logic": "Kanji <strong>近</strong> memiliki kun'yomi <strong>ちか (chika)</strong>. Bentuk <strong>近く（ちかく - chikaku）</strong> bermakna <strong>di dekat / area sekitar</strong>. Kebalikannya adalah <strong>遠く（とおく - tooku = jauh）</strong>.",
+        "distractor": "• Opsi A: とおく adalah lawan katanya: 遠く (jauh).\n• Opsi B: ひろく berasal dari kata sifat 広い (luas).\n• Opsi D: せまく berasal dari kata sifat 狭い (sempit).",
+        "grammarRule": "Pasangan Kanji Jarak: 近い（ちかい - dekat） >< 遠い（とおい - jauh）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Genre Hiburan & Rekreasi (Eiga)",
+      "type": "teks",
+      "question_ja": "日曜日に 田中さんと （　<strong>ホラーえいが</strong>　）を 見ました。「えいが」の 漢字は どれですか。",
+      "question_ruby": "日曜日に 田中さんと （　<strong>ホラーえいが</strong>　）を 見ました。「えいが」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'film/bioskop' (eiga) adalah...",
+      "translation": "Pada hari Minggu saya menonton film horor bersama Tanaka-san. Kanji eiga adalah 映画.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "音楽"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "映画"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "写真"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "手紙"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (映画).",
+        "logic": "Kata <strong>えいが (eiga)</strong> ditulis dengan kanji <strong>映画</strong> yang berarti <strong>film sinema</strong>. Genre dalam teks Bab 12 mencakup: ホラー映画 (film horor) dan ラブストーリー (film romantis/kisah cinta).",
+        "distractor": "• Opsi A: 音楽 dibaca おんがく (ongaku - musik).\n• Opsi C: 写真 dibaca しゃしん (shashin - foto/potret).\n• Opsi D: 手紙 dibaca てがみ (tegami - surat tertulis).",
+        "grammarRule": "Kosakata Hiburan Bab 12: 映画（えいが - film）, 音楽（おんがく - musik）, 旅行（りょこう - wisata/traveling）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Adverbia Komparasi Penegas (Zutto)",
+      "type": "teks",
+      "question_ja": "新幹線は バスより （　<strong>ずっと</strong>　） 速いです。「ずっと」の 意味は どれですか。",
+      "question_ruby": "新幹線は バスより （　<strong>ずっと</strong>　） 速いです。「ずっと」の 意味は どれですか。",
+      "question_id": "Kata penegas komparasi yang dicetak tebal bermakna...",
+      "translation": "Kereta Shinkansen jauh lebih cepat daripada bus umum. 'Zutto' berarti jauh lebih.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Sedikit demi sedikit"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Sama persis"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Kadang-kadang"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Jauh lebih / terpaut amat besar"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (Jauh lebih / terpaut amat besar).",
+        "logic": "Adverbia <strong>ずっと (zutto)</strong> jika digunakan dalam kalimat komparasi berfungsi untuk <strong>menegaskan perbedaan tingkat yang sangat mencolok atau jauh melampaui</strong> (<em>by far / much more</em>). Contoh: ずっと速いです (jauh lebih cepat), ずっと大きいです (jauh lebih besar).",
+        "distractor": "• Opsi A: Sedikit demi sedikit adalah だんだん (dandan).\n• Opsi B: Sama adalah 同じ（おなじ - onaji）.\n• Opsi C: Kadang-kadang adalah 時々（ときどき - tokidoki）.",
+        "grammarRule": "Adverbia Penegas Tingkat: ずっと + [Kata Sifat] = Jauh lebih [Kata Sifat]."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Jumlah Kuantitas (Ooi)",
+      "type": "teks",
+      "question_ja": "東京は 人が （　<strong>多い</strong>　）です。「多い」の 読み方は どれですか。",
+      "question_ruby": "東京は 人が （　<strong>多い</strong>　）です。「多い」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji untuk 'banyak' (orang/barang) adalah...",
+      "translation": "Tokyo orangnya banyak (padat). Kanji 多い dibaca ooi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おおい"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "すくない"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "たかい"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ひろい"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (おおい).",
+        "logic": "Kanji <strong>多い</strong> dibaca <strong>おおい (ooi)</strong> yang berarti <strong>banyak (kuantitasnya melimpah)</strong>. Kebalikannya adalah <strong>少ない（すくない - sukunai = sedikit）</strong>.",
+        "distractor": "• Opsi B: すくない adalah lawan katanya: 少ない (sedikit).\n• Opsi C: たかい adalah kanji 高い (tinggi/mahal).\n• Opsi D: ひろい adalah kanji 広い (luas).",
+        "grammarRule": "Pasangan Kuantitas Sifat: 多い（おおい - banyak） >< 少ない（すくない - sedikit）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Standar Pembanding Komparatif (Yori)",
+      "type": "teks",
+      "question_ja": "新幹線は 電車（　<strong>？</strong>　） 速いです。",
+      "question_ruby": "新幹線は 電車（　<strong>？</strong>　） 速いです。",
+      "question_id": "Partikel yang tepat untuk menunjukkan titik tolak pembanding 'daripada kereta biasa' adalah...",
+      "translation": "Shinkansen lebih cepat daripada kereta listrik biasa. Partikel pembanding adalah より.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "から"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "まで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "より"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ほど"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (より).",
+        "logic": "Dalam pola komparasi dua nomina: <code>[Nomina 1] は [Nomina 2] より [Kata Sifat] です</code>. Nomina yang ditempeli partikel <strong>より (yori)</strong> berfungsi sebagai <strong>objek pembanding (daripada...)</strong>, sedangkan Nomina 1 adalah pihak yang memiliki keunggulan sifat.",
+        "distractor": "• Opsi A: から menandai titik awal asal (dari), bukan komparasi perbandingan sifat.\n• Opsi B: まで menandai batas akhir (sampai).\n• Opsi D: ほど digunakan dalam komparasi negatif (ほど～ない), bukan predikat komparatif afirmatif.",
+        "grammarRule": "Rumus Komparasi Baku: [Subjek A] は + [Objek Pembanding B] より + [Kata Sifat] です."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Paralel Penimbang Pilihan (To ... To)",
+      "type": "teks",
+      "question_ja": "日本料理（　①　） インドネシア料理（　②　） どちらが すきですか。",
+      "question_ruby": "日本料理（　①　） インドネシア料理（　②　） どちらが すきですか。",
+      "question_id": "Pasangan partikel ① dan ② yang benar untuk menimbang dua pilihan adalah...",
+      "translation": "Antara masakan Jepang dan masakan Indonesia, mana yang lebih Anda sukai? Pasangan partikel: と ... と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と ／ と"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "や ／ や"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に ／ に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "も ／ も"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (と ／ と).",
+        "logic": "Untuk mengajukan perbandingan antara dua buah nomina secara sejajar, kedua pilihan wajib diapit menggunakan partikel <strong>と (to)</strong>: <code>[Nomina 1] と [Nomina 2] と どちらが [Kata Sifat] ですか</code>.",
+        "distractor": "• Opsi B: や digunakan untuk penyebutan contoh tak tuntas (daftar tidak lengkap), tidak tepat untuk struktur dikotomi komparatif baku.\n• Opsi C: に bukan partikel koordinatif perbandingan.\n• Opsi D: も ... も berarti 'keduanya / dua-duanya', bukan mengajukan pilihan pembanding (dochira).",
+        "grammarRule": "Rumus Pertanyaan Pilihan Komparatif: [Opsi A] と + [Opsi B] と + どちらが + [Kata Sifat] ですか."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penentu Pihak yang Dipilih (No hou ga)",
+      "type": "teks",
+      "question_ja": "質問：『夏と 冬と どちらが すきですか。』<br>回答：『冬（　<strong>？</strong>　） ほうが すきです。』",
+      "question_ruby": "質問：『夏と 冬と どちらが すきですか。』<br>回答：『冬（　<strong>？</strong>　） ほうが すきです。』",
+      "question_id": "Partikel penghubung yang tepat sebelum kata 'hou ga' untuk menentukan pilihan adalah...",
+      "translation": "Tanya: 'Antara musim panas dan musim dingin, mana yang lebih Anda sukai?' Jawab: 'Musim dingin yang lebih saya sukai.' Partikel: の.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "な"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "の"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (の).",
+        "logic": "Kata <strong>ほう（方）</strong> berkedudukan secara tata bahasa sebagai kata benda (nomina). Oleh sebab itu, kata benda yang mendahuluinya wajib disambung dengan partikel kepemilikan/asosiatif <strong>の (no)</strong>: <code>[Nomina Pilihan] の ほうが [Kata Sifat] です</code>.",
+        "distractor": "• Opsi A: な hanya digunakan setelah kata sifat-na (na-keiyoushi), sedangkan 冬 (fuyu) adalah kata benda murni.\n• Opsi C: に tidak dapat menyambungkan kata benda dengan kata hou.\n• Opsi D: で bukan partikel pemodifikasi nomina.",
+        "grammarRule": "Rumus Jawaban Pilihan Komparatif: [Nomina Terpilih] + の ほうが + [Kata Sifat] です."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pembatas Lingkup Cakupan Superlatif (De)",
+      "type": "teks",
+      "question_ja": "スポーツの 中（なか）（　<strong>？</strong>　） サッカーが 一番 おもしろいです。",
+      "question_ruby": "スポーツの 中（なか）（　<strong>？</strong>　） サッカーが 一番 おもしろいです。",
+      "question_id": "Partikel yang tepat untuk membatasi cakupan kategori dalam bentuk superlatif adalah...",
+      "translation": "Di antara cabang olahraga, sepak bola adalah yang paling menarik. Partikel pembatas cakupan adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "から"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (で).",
+        "logic": "Untuk menetapkan <strong>lingkup / batas kelompok dalam kalimat superlatif (paling...)</strong>, digunakan frasa <strong>[Kategori/Kelompok] の 中（なか）で (no naka de = di antara / dalam cakupan...)</strong> yang diakhiri dengan partikel batas cakupan <strong>で</strong>: <code>スポーツの 中で サッカーが 一番 おもしろいです</code>.",
+        "distractor": "• Opsi A: に tidak dapat berdiri sebagai pembatas kelompok perbandingan superlatif umum.\n• Opsi B: を menandai objek penderita verba aksi.\n• Opsi C: から menandai titik awal/sumber.",
+        "grammarRule": "Rumus Superlatif Kategori: [Kategori Luas] の 中（なか）で + [Subjek Spesifik] が + 一番（いちばん） + [Kata Sifat] です."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penegas Subjek Pilihan Komparasi (Ga)",
+      "type": "teks",
+      "question_ja": "先週の ホラーえいがと 今週の ラブストーリーと どちら（　<strong>？</strong>　） おもしろかったですか。",
+      "question_ruby": "先週の ホラーえいがと 今週の ラブストーリーと どちら（　<strong>？</strong>　） おもしろかったですか。",
+      "question_id": "Partikel yang tepat untuk menandai kata tanya 'dochira' sebagai fokus subjek pertanyaan adalah...",
+      "translation": "Antara film horor minggu lalu dan kisah cinta minggu ini, mana yang lebih menarik? Subjek kata tanya ditandai が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "は"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Dalam kaidah tata bahasa Jepang, kata tanya (seperti <em>dochira, dare, nani, dore</em>) yang bertindak sebagai subjek kalimat <strong>TIDAK PERNAH boleh diikuti partikel は (wa)</strong>, melainkan <strong>wajib selalu diikuti partikel が (ga)</strong>: <code>どちらが おもしろいですか</code>.",
+        "distractor": "• Opsi A: は melanggar aturan tata bahasa dasar karena kata tanya tidak dapat dijadikan topik dengan は.\n• Opsi B: を salah karena predikatnya adalah kata sifat komparatif, bukan verba transitif.\n• Opsi D: に salah fungsi.",
+        "grammarRule": "Aturan Mutlak Kata Tanya: Kata tanya sebagai subjek selalu memakai partikel が: どちらが, だれが, 何が, どこが."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Konjungtif Pertentangan Lampau (Ga)",
+      "type": "teks",
+      "question_ja": "昨日は 雨でした（　<strong>？</strong>　）、とても 楽しかったです。",
+      "question_ruby": "昨日は 雨でした（　<strong>？</strong>　）、とても 楽しかったです。",
+      "question_id": "Partikel konjungtif yang bermakna 'tetapi / meskipun begitu' adalah...",
+      "translation": "Kemarin hujan, tetapi sangat menyenangkan. Partikel konjungtif pertentangan adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "から"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ので"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (が).",
+        "logic": "Partikel penyambung klausa <strong>が (ga)</strong> diletakkan di akhir klausa pertama untuk menyatakan <strong>kontradiksi / pertentangan makna (tetapi / namun)</strong>: <code>[Klausa 1] ですが、[Klausa 2]</code>.",
+        "distractor": "• Opsi B: から menyatakan hubungan sebab-akibat (karena/sebab). Hujan bukan sebab logis dari rasa sangat senang.\n• Opsi C: ので juga menyatakan alasan kausatif objektif.\n• Opsi D: と menyatakan penggabungan setara atau syarat mutlak.",
+        "grammarRule": "Konjungsi Pertentangan: [Kalimat A] が、[Kalimat B] = [Kalimat A], tetapi [Kalimat B]."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Bentuk Lampau Kata Sifat-i Afirmatif (~Katta desu)",
+      "type": "teks",
+      "question_ja": "昨日の 映画は とても （　<strong>＿＿＿＿＿</strong>　）。（おもしろい：Lampau Positif）",
+      "question_ruby": "昨日の 映画は とても （　<strong>＿＿＿＿＿</strong>　）。（おもしろい：Lampau Positif）",
+      "question_id": "Bentuk lampau afirmatif yang benar untuk kata sifat 'omoshiroi' (menarik) adalah...",
+      "translation": "Film kemarin sangat menarik. Bentuk lampau dari omoshiroi adalah おもしろかったです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おもしろいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おもしろいでした"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "おもしろくなかったです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おもしろかったです"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (おもしろかったです).",
+        "logic": "Aturan konjugasi lampau kata sifat-i (い形容詞): huruf akhir <strong>～い</strong> dihilangkan dan diganti dengan <strong>～かったです (~katta desu)</strong>. Contoh: <code>おもしろい ➔ おもしろかったです</code>.",
+        "distractor": "• Opsi A: おもしろいです adalah bentuk non-lampau (waktu sekarang/akan datang).\n• Opsi B: おもしろいでした adalah kesalahan tipikal pembelajar asing karena kata sifat-i tidak boleh langsung ditempel でした.\n• Opsi C: おもしろくなかったです adalah bentuk lampau negatif (tidak menarik).",
+        "grammarRule": "Konjugasi Lampau Kata Sifat-i: Akhiran [～い] diubah menjadi [～かったです]. Larangan keras: [Adj-i + でした] adalah SALAH!"
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Bentuk Lampau Kata Sifat-i Negatif (~Kunakatta desu)",
+      "type": "teks",
+      "question_ja": "昨日の 日本語の テストは あまり （　<strong>＿＿＿＿＿</strong>　）。（難しい：Lampau Negatif）",
+      "question_ruby": "昨日の 日本語の テストは あまり （　<strong>＿＿＿＿＿</strong>　）。（難しい：Lampau Negatif）",
+      "question_id": "Bentuk lampau negatif yang benar untuk kata sifat 'muzukashii' (sulit) adalah...",
+      "translation": "Ujian bahasa Jepang kemarin tidak begitu sulit. Bentuk lampau negatif: 難しくなかったです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "難しかったです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "難しくなかったです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "難しいではありませんでした"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "難しくありません"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (難しくなかったです).",
+        "logic": "Konjugasi lampau negatif kata sifat-i dibentuk dengan mengubah akhiran <strong>～い</strong> menjadi <strong>～くなかったです (~kunakatta desu)</strong> atau <em>～くありませんでした</em>. Maka <code>難しい ➔ 難しくなかったです</code>.",
+        "distractor": "• Opsi A: 難しかったです adalah bentuk lampau positif (sulit).\n• Opsi C: 難しいではありませんでした salah tata bahasa (pola dewa arimasen deshita hanya untuk kata sifat-na dan nomina).\n• Opsi D: 難しくありません adalah bentuk sekarang/non-lampau negatif.",
+        "grammarRule": "Konjugasi Lampau Negatif Kata Sifat-i: Akhiran [～い] diubah menjadi [～くなかったです]."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Bentuk Lampau Nomina / Kata Sifat-na Afirmatif (~Deshita)",
+      "type": "teks",
+      "question_ja": "おとといは 会社の 創立記念日で 工場は （　<strong>＿＿＿＿＿</strong>　）。（休み：Nomina Lampau Positif）",
+      "question_ruby": "おとといは 会社の 創立記念日で 工場は （　<strong>＿＿＿＿＿</strong>　）。（休み：Nomina Lampau Positif）",
+      "question_id": "Bentuk lampau positif yang tepat untuk kata benda 'yasumi' (libur) adalah...",
+      "translation": "Kemarin lusa adalah hari ulang tahun pendirian perusahaan, sehingga pabrik libur. Bentuk lampau: 休みでした.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "休みでした"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "休みかったです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "休みではありません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "休みます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (休みでした).",
+        "logic": "Kata benda (nomina) dan kata sifat-na (na-keiyoushi) membentuk kalimat lampau afirmatif dengan mengganti kopula <strong>です</strong> menjadi <strong>でした (deshita)</strong>: <code>休みでした</code>.",
+        "distractor": "• Opsi B: 休みかったです salah fatal karena kata 休み adalah nomina, tidak boleh dikonjugasikan dengan rumus kata sifat-i (~katta).\n• Opsi C: 休みではありません adalah bentuk negatif non-lampau.\n• Opsi D: 休みます adalah kata kerja non-lampau.",
+        "grammarRule": "Konjugasi Lampau Nomina & Kata Sifat-na: [Nomina / Kata Sifat-na] + でした."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Bentuk Lampau Kata Sifat-na Negatif (~Dewa Arimasen Deshita)",
+      "type": "teks",
+      "question_ja": "田中さん：『先週の 日曜日は 暇でしたか。』<br>アグス：『いいえ、洗濯や 掃除が ありましたから、全然 （　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "田中さん：『先週の 日曜日は 暇でしたか。』<br>アグス：『いいえ、洗濯や 掃除が ありましたから、全然 （　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Bentuk lampau negatif yang tepat untuk kata sifat-na 'hima' (senggang) adalah...",
+      "translation": "Tanaka-san: 'Apakah hari Minggu lalu kamu senggang?' Agus: 'Tidak, karena ada cucian dan bersih-bersih, saya sama sekali tidak senggang.' Lampau negatif: 暇じゃありませんでした.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "暇でした"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "暇くないでした"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "暇じゃありませんでした"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "暇ではありません"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (暇じゃありませんでした).",
+        "logic": "Bentuk lampau negatif untuk kata sifat-na dibentuk dengan rumus: <strong>～ではありませんでした</strong> atau dalam ragam lisan percakapan akrab <strong>～じゃありませんでした (~ja arimasen deshita)</strong>.",
+        "distractor": "• Opsi A: 暇でした adalah bentuk lampau positif (senggang).\n• Opsi B: 暇くないでした adalah bentuk cacat tata bahasa.\n• Opsi D: 暇ではありません adalah bentuk negatif non-lampau (sekarang).",
+        "grammarRule": "Konjugasi Lampau Negatif Kata Sifat-na: [Kata Sifat-na] + じゃありませんでした / ではありませんでした."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Sintaksis Komparasi Perbandingan Dua Entitas",
+      "type": "teks",
+      "question_ja": "北海道は 九州（　①　） （　②　）です。",
+      "question_ruby": "北海道は 九州（　①　） （　②　）です。",
+      "question_id": "Pasangan partikel komparasi ① dan kata sifat ② yang tepat untuk perbandingan suhu dingin adalah...",
+      "translation": "Hokkaido lebih dingin daripada Kyushu. Pasangan: より lalu 寒い.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "のほうが ／ 寒い"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "より ／ 寒い"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ほど ／ 寒くない"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "より ／ 暖かい"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (より ／ 寒い).",
+        "logic": "Rumus perbandingan: <code>[Entitas A] は [Entitas B] より [Kata Sifat] です</code>. Karena posisi geografis Hokkaido di utara Jepang jauh lebih dingin dibandingkan Kyushu di selatan, kalimat fakta yang benar adalah <strong>北海道は 九州より 寒いです</strong>.",
+        "distractor": "• Opsi A: のほうが / 寒い menghasilkan susunan salah (Hokkaido wa Kyushu no hou ga...).\n• Opsi C: ほど / 寒くない membalikkan fakta iklim Jepang.\n• Opsi D: より / 暖かい salah secara substansi fakta (Hokkaido justru dingin, bukan hangat).",
+        "grammarRule": "Struktur Komparasi Standar: A は B より [Sifat] です (A lebih [sifat] daripada B)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Tanya Komparasi dan Jawaban Pemilihan Dua Pihak",
+      "type": "teks",
+      "question_ja": "ウテン：『インドネシアの えいがと アメリカの えいがと どちらが おもしろいですか。』<br>ダダン：『（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "ウテン：『インドネシアの えいがと アメリカの えいがと どちらが おもしろいですか。』<br>ダダン：『（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Jawaban yang paling tepat dan alami sesuai kaidah bahasa Jepang adalah...",
+      "translation": "Uten: 'Antara film Indonesia dan film Amerika, mana yang lebih menarik?' Dadan: 'Film Indonesia yang lebih menarik.' Jawaban: インドネシアの えいがの ほうが おもしろいです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "アメリカの えいがが すきじゃありませんでした"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "どちらも おもしろかったです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "インドネシアの えいがより おもしろいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "インドネシアの えいがの ほうが おもしろいです"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (インドネシアの えいがの ほうが おもしろいです).",
+        "logic": "Pola baku untuk menjawab pertanyaan perbandingan dua pihak (どちらが...ですか) adalah dengan menegaskan pilihan yang diunggulkan menggunakan konstruksi: <code>[Nomina Pilihan] の ほうが [Kata Sifat] です</code>.",
+        "distractor": "• Opsi A: Tidak menjawab inti pertanyaan perbandingan tingkat kemenarikan film.\n• Opsi B: Menggunakan bentuk lampau (omoshirokatta desu) padahal pertanyaannya berbentuk non-lampau (omoshiroi desu ka).\n• Opsi C: Menyisakan kalimat menggantung tanpa menyebutkan pihak subjek utama.",
+        "grammarRule": "Pola Baku Respon Komparasi: Pertanyaan [A と B と どちらが...] dijawab dengan [[Pilihan] の ほうが...です]."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konstruksi Superlatif Tingkat Tertinggi (Ichiban)",
+      "type": "teks",
+      "question_ja": "１年の 中で ８月が （　<strong>＿＿＿＿＿</strong>　） 暑いです。",
+      "question_ruby": "１年の 中で ８月が （　<strong>＿＿＿＿＿</strong>　） 暑いです。",
+      "question_id": "Kata penanda tingkat superlatif tertinggi ('paling / ter-') yang tepat adalah...",
+      "translation": "Di antara satu tahun, bulan Agustus adalah yang paling panas. Kata superlatif: 一番 (いちばん).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "とても"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ずっと"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "一番"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あまり"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (一番).",
+        "logic": "Dalam konstruksi superlatif yang menyatakan tingkatan paling utama di dalam suatu kelompok cakupan, kata keterangan yang wajib digunakan adalah <strong>一番（いちばん - ichiban = paling / nomor satu）</strong>: <code>[Kelompok] の中で [Subjek] が 一番 [Kata Sifat] です</code>.",
+        "distractor": "• Opsi A: とても berarti 'sangat', hanya penguat intensitas tanpa makna superlatif komparatif relatif dalam kelompok.\n• Opsi B: ずっと berarti 'jauh lebih' untuk komparasi dua hal, bukan superlatif banyak hal.\n• Opsi D: あまり berarti 'tidak begitu' dan berpasangan dengan bentuk negatif.",
+        "grammarRule": "Rumus Superlatif Absolut: [Kelompok] の 中で + [Subjek] が + 一番（いちばん） + [Kata Sifat] です."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Komparasi Transportasi (飛行機)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。飛行機と 新幹線と どちらが 速いですか。<br>「（　　　）の ほうが 速いです。」",
+      "question_ruby": "絵（え）を 見て ください。飛行機と 新幹線と どちらが 速いですか。<br>「（　　　）の ほうが 速いです。」",
+      "question_id": "Perhatikan gambar. Antara pesawat dan shinkansen mana yang lebih cepat? '(...) lebih cepat'.",
+      "translation": "Pesawat terbang (hikouki) lebih cepat.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "じてんしゃ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "飛行機（ひこうき）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "バス"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ふね"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (飛行機（ひこうき）).",
+        "logic": "Gambar memperlihatkan pesawat terbang yang melaju kencang di udara dibandingkan moda darat (飛行機 / ひこうき - hikouki).",
+        "distractor": "• Opsi A: じてんしゃ adalah sepeda.\n• Opsi C: バス adalah bus kota.\n• Opsi D: ふね adalah kapal laut.",
+        "grammarRule": "Pola Komparasi Bab 12: [N1] の ほうが [Kata Sifat] です."
+      },
+      "image": "assets/bab_12/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Komparasi Kualitas Barang (新しい)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。どちらの 車が 新しいですか。<br>「Aの 車の ほうが （　　　）です。」",
+      "question_ruby": "絵（え）を 見て ください。どちらの 車が 新しいですか。<br>「Aの 車の ほうが （　　　）です。」",
+      "question_id": "Perhatikan gambar. Mobil manakah yang baru? 'Mobil A lebih (...)'.",
+      "translation": "Mobil A lebih baru (atarashii).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ふるい"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "やすい"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "新しい（あたらしい）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おもい"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (新しい（あたらしい）).",
+        "logic": "Gambar menunjukkan mobil A mulus dan mengkilap sebagai model baru dibandingkan mobil B (新しい / あたらしい - atarashii).",
+        "distractor": "• Opsi A: ふるい adalah model lama / usang.\n• Opsi B: やすい adalah murah harganya.\n• Opsi D: おもい adalah berat bobotnya.",
+        "grammarRule": "Perbandingan Sifat Bab 12: [N] の ほうが 新しいです."
+      },
+      "image": "assets/bab_12/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (近い)",
+      "type": "teks",
+      "question_ja": "寮から 工場までは とても （ 近い ）です。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "寮から 工場までは とても （ 近い ）です。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Dari asrama ke pabrik sangat dekat. Pilihlah cara baca kanji '近い' yang tepat.",
+      "translation": "Dari asrama ke pabrik jaraknya sangat dekat.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ちかい"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "とおい"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "はやい"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おそい"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ちかい).",
+        "logic": "Kanji 近い dibaca ちかい (chikai) yang bermakna dekat secara jarak spasial.",
+        "distractor": "• Opsi B: とおい ditulis 遠い (jauh).\n• Opsi C: はやい ditulis 早い / 速い (cepat).\n• Opsi D: おそい ditulis 遅い (lambat / terlambat).",
+        "grammarRule": "Kanji Sifat Jarak Bab 12: 近い（ちかい = dekat） vs 遠い（とおい = jauh）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (早く)",
+      "type": "teks",
+      "question_ja": "朝 （ はやく ）起きて ジョギングを します。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "朝 （ はやく ）起きて ジョギングを します。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Bangun pagi-pagi lalu joging. Pilihlah penulisan kanji yang tepat untuk 'hayaku' (pagi/awal waktu).",
+      "translation": "Bangun pagi-pagi sekali lalu melakukan lari pagi/joging.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "早く"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "速く"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "草く"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "旱く"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (早く).",
+        "logic": "Kata はやく yang merujuk pada waktu yang lebih awal (pagi-pagi) ditulis dengan kanji 早く (radikal matahari 日 di atas sepuluh 十).",
+        "distractor": "• Opsi B: 速く merujuk pada kecepatan gerak fisik (speed), bukan waktu bangun.\n• Opsi C: 草く salah karena huruf rumput (kusa).\n• Opsi D: 旱く adalah huruf kekeringan/kemarau.",
+        "grammarRule": "Pembedaan Kanji Waktu vs Kecepatan: 早く（はやくい = awal waktu） vs 速く（はやくい = laju cepat）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (天気)",
+      "type": "teks",
+      "question_ja": "きょうは （ てんき ）が よくありません。雨です。<br>正しい 漢字は どれですか。",
+      "question_ruby": "きょうは （ てんき ）が よくありません。雨です。<br>正しい 漢字は どれですか。",
+      "question_id": "Hari ini cuaca kurang bagus. Hujan. Pilihlah kanji yang tepat untuk 'tenki'.",
+      "translation": "Hari ini cuacanya tidak bagus. Hujan turun.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "天気"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "元気"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "天汽"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "天天"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (天気).",
+        "logic": "Kata てんき (cuaca) ditulis dengan kanji 天気 (天 = langit, 気 = hawa/kondisi).",
+        "distractor": "• Opsi B: 元気 dibaca げんき (sehat bugar / bersemangat).\n• Opsi C: 天汽 salah huruf kanan (menggunakan uap air).\n• Opsi D: 天天 adalah pengulangan langit.",
+        "grammarRule": "Kosakata Cuaca Bab 12: 天気（てんき = cuaca atmosfer）."
+      }
+    }
+  ]
+};
+
+const BAB_13_DATA = {
+  "chapter": "13",
+  "title_ja": "第１３課：願望表現（ほしい・～たい）と移動の目的（～に行きます）",
+  "title_id": "Bab 13: Desideratif (Hoshii & ~Tai), Perpindahan Bertujuan (~Ni Ikimasu)",
+  "theme_ja": "願望表現 (Ganbou Hyougen) & 移動の目的 (Idou no Mokuteki)",
+  "theme_id": "Evaluasi penguasaan pola desideratif kepemilikan benda ([Nomina] が ほしいです), desideratif aksi ([Verba stem] たいです / たくないです), perpindahan bertujuan ([Tempat] へ [V-stem / Nomina Aksi] に 行きます/来ます/帰ります), partikel objek penanda keinginan (が/を), serta kata tanya donna [N] ga hoshii desu ka pada Bab 13 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 13.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 13.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Keinginan Kepemilikan Benda (Hoshii)",
+      "type": "teks",
+      "question_ja": "わたしは 新しい デジタルカメラが （　<strong>ほしい</strong>　）です。「ほしい」の 漢字と 意味は どれですか。",
+      "question_ruby": "わたしは 新しい デジタルカメラが （　<strong>ほしい</strong>　）です。「ほしい」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan makna kata yang tepat untuk 'hoshii' adalah...",
+      "translation": "Saya ingin memiliki kamera digital baru. Kanji hoshii adalah 欲しい.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "欲しい （Ingin memiliki / mendambakan）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "借りたい （Ingin meminjam）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "買いたい （Ingin membeli）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "売りたい （Ingin menjual）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (欲しい （Ingin memiliki / mendambakan）).",
+        "logic": "Kata sifat <strong>欲しい（ほしい - hoshii）</strong> adalah kata sifat-i yang menyatakan <strong>keinginan emosional penutur untuk memperoleh atau memiliki suatu benda konkret/abstrak</strong>. Polanya: <code>[Nomina] が ほしいです</code>.",
+        "distractor": "• Opsi B: 借りたい adalah bentuk keinginan melakukan aksi meminjam (dari verba 借ります).\n• Opsi C: 買いたい adalah bentuk keinginan melakukan aksi membeli (dari verba 買います).\n• Opsi D: 売りたい adalah bentuk keinginan melakukan aksi menjual (dari verba 売ります).",
+        "grammarRule": "Pola Keinginan Benda: [Nomina Objek] + が + 欲しい（ほしい）です."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Fasilitas Publik Peminjaman Buku (Toshokan)",
+      "type": "teks",
+      "question_ja": "本を 借りに （　<strong>としょかん</strong>　）へ 行きました。「としょかん」の 漢字は どれですか。",
+      "question_ruby": "本を 借りに （　<strong>としょかん</strong>　）へ 行きました。「としょかん」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'perpustakaan' (toshokan) adalah...",
+      "translation": "Saya pergi ke perpustakaan untuk meminjam buku. Kanji toshokan adalah 図書館.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "郵便局"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "美術館"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "図書館"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "大使館"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (図書館).",
+        "logic": "Kata <strong>としょかん (toshokan)</strong> ditulis dengan kanji <strong>図書館</strong> yang bermakna <strong>perpustakaan tempat membaca dan meminjam buku</strong>.",
+        "distractor": "• Opsi A: 郵便局 dibaca ゆうびんきょく (yuubinkyoku - kantor pos).\n• Opsi B: 美術館 dibaca びじゅつかん (bijutsukan - museum seni/galeri seni).\n• Opsi D: 大使館 dibaca たいしかん (taishikan - kedutaan besar).",
+        "grammarRule": "Fasilitas Umum Berakhiran 館（かん）: 図書館（perpustakaan）, 美術館（museum seni）, 大使館（kedubes）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Aksi Peminjaman & Pengembalian Barang",
+      "type": "teks",
+      "question_ja": "図書館から 借りた 本を （　<strong>かえしに</strong>　） 行きます。「かえしに」の 漢字と ます形は どれですか。",
+      "question_ruby": "図書館から 借りた 本を （　<strong>かえしに</strong>　） 行きます。「かえしに」の 漢字と ます形は どれですか。",
+      "question_id": "Penulisan kanji dan kata kerja asal (bentuk-masu) yang benar untuk 'mengembalikan' adalah...",
+      "translation": "Saya pergi untuk mengembalikan buku yang dipinjam dari perpustakaan. Verba asalnya 返します.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "借ります （Meminjam）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "返します （Mengembalikan barang pinjaman）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "買います （Membeli）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "帰ります （Pulang ke rumah/negeri asal）"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (返します （Mengembalikan barang pinjaman）).",
+        "logic": "Verba <strong>返します（かえします - kaeshimasu）</strong> berarti <strong>mengembalikan barang atau uang yang telah dipinjam</strong>. Bentuk stem tujuannya adalah <code>返しに行きます (pergi untuk mengembalikan)</code>.",
+        "distractor": "• Opsi A: 借ります（かります） bermakna meminjam dari pihak lain.\n• Opsi C: 買います（かいます） bermakna membeli di toko.\n• Opsi D: 帰ります（かえります） memiliki pengucapan mirip tapi ditulis dengan kanji 帰 dan bermakna pulang ke tempat asal (寮へ帰ります).",
+        "grammarRule": "Pasangan Peminjaman Barang: 借ります（かります - meminjam） >< 返します（かえします - mengembalikan）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Finansial Tabungan & Gaji Karyawan",
+      "type": "teks",
+      "question_ja": "会社から お給料を もらいましたから、将来の ために （　<strong>ちょきん</strong>　）します。「ちょきん」の 漢字と 意味は どれですか。",
+      "question_ruby": "会社から お給料を もらいましたから、将来の ために （　<strong>ちょきん</strong>　）します。「ちょきん」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk istilah finansial 'chokin' adalah...",
+      "translation": "Karena sudah menerima gaji dari perusahaan, saya menabung untuk masa depan. Kanji chokin adalah 貯金.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "借金 （Meminjam hutang uang）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "集金 （Menagih/mengumpulkan uang iuran）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "送金 （Mengirim uang / transfer bank）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "貯金 （Menabung uang simpanan di bank）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (貯金 （Menabung uang simpanan di bank）).",
+        "logic": "Istilah <strong>貯金（ちょきん - chokin）</strong> bermakna <strong>menabung uang di rekening bank atau celengan</strong> demi rencana masa depan atau pembelian barang berharga. Verba bentuk lakunya adalah <code>貯金します (menabung)</code>.",
+        "distractor": "• Opsi A: 借金（しゃっきん） bermakna berhutang uang pinjaman.\n• Opsi B: 集金（しゅうきん） bermakna mengumpulkan/menarik iuran uang.\n• Opsi C: 送金（そうきん） bermakna mentransfer/mengirim uang remitansi ke rekening lain.",
+        "grammarRule": "Kosakata Finansial Bab 13: 給料（きゅうりょう - gaji）, 貯金（ちょきん - tabungan）, 送金（そうきん - remitansi/kirim uang）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Prestasi Kelulusan Ujian (Goukaku)",
+      "type": "teks",
+      "question_ja": "日本語能力試験の Ｎ３に （　<strong>ごうかく</strong>　）したいです。「ごうかく」の 漢字は どれですか。",
+      "question_ruby": "日本語能力試験の Ｎ３に （　<strong>ごうかく</strong>　）したいです。「ごうかく」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'lulus ujian' (goukaku) adalah...",
+      "translation": "Saya ingin lulus Ujian Kemampuan Bahasa Jepang (JLPT) tingkat N3. Kanji goukaku adalah 合格.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "合格"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "成功"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "実習"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "勉強"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (合格).",
+        "logic": "Kata <strong>ごうかく (goukaku)</strong> ditulis dengan kanji <strong>合格</strong> yang bermakna <strong>lulus / memenuhi standar kualifikasi ujian resmi</strong>. Pasangan partikelnya adalah <code>[Ujian] に 合格します</code>.",
+        "distractor": "• Opsi B: 成功 dibaca せいこう (seikou - keberhasilan/sukses).\n• Opsi C: 実習 dibaca じっしゅう (jisshuu - magang/praktik kerja).\n• Opsi D: 勉強 dibaca べんきょう (benkyou - belajar).",
+        "grammarRule": "Pola Kelulusan Ujian: [Nama Ujian] に + 合格（ごうかく）します."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Aktivitas Rekreasi Santai (Sanpo)",
+      "type": "teks",
+      "question_ja": "天気が いいですから、近くの 公園へ （　<strong>さんぽ</strong>　）に 行きます。「さんぽ」の 漢字と 意味は どれですか。",
+      "question_ruby": "天気が いいですから、近くの 公園へ （　<strong>さんぽ</strong>　）に 行きます。「さんぽ」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang benar untuk 'sanpo' adalah...",
+      "translation": "Karena cuaca cerah, saya pergi jalan-jalan santai ke taman terdekat. Kanji sanpo adalah 散歩.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "見学 （Kunjungan studi observasi pabrik）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "旅行 （Perjalanan liburan jauh）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "散歩 （Berjalan-jalan santai mencari udara segar）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "買い物 （Belanja kebutuhan harian di pasar）"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (散歩 （Berjalan-jalan santai mencari udara segar）).",
+        "logic": "Kata <strong>散歩（さんぽ - sanpo）</strong> bermakna <strong>jalan-jalan santai santai tanpa tujuan terburu-buru untuk menikmati udara segar</strong>. Frasa tujuannya: <code>散歩に行きます (pergi jalan-jalan santai)</code>.",
+        "distractor": "• Opsi A: 見学（けんがく） berarti tinjauan studi lapangan industri.\n• Opsi B: 旅行（りょこう） berarti berwisata perjalanan jauh ke luar kota.\n• Opsi D: 買い物（かいもの） berarti aktivitas berbelanja barang.",
+        "grammarRule": "Nomina Aktivitas Santai Bab 13: 散歩（さんぽ - jalan-jalan santai）, 食事（しょくじ - makan）, 買い物（かいもの - belanja）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Tanya Karakteristik / Tipe Benda (Donna)",
+      "type": "teks",
+      "question_ja": "店員：『いらっしゃいませ。（　<strong>どんな</strong>　） パソコンが ほしいですか。』「どんな」の 意味は どれですか。",
+      "question_ruby": "店員：『いらっしゃいませ。（　<strong>どんな</strong>　） パソコンが ほしいですか。』「どんな」の 意味は どれですか。",
+      "question_id": "Kata tanya yang dicetak tebal bermakna...",
+      "translation": "Pelayan: 'Selamat datang. Komputer yang model/kriteria bagaimana yang Anda inginkan?' 'どんな' bermakna yang seperti apa.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Berapa banyak jumlah unitnya"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Di toko cabang sebelah mana"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Berapa ratus ribu yen harganya"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Yang seperti apa / model/kriteria yang bagaimana"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (Yang seperti apa / model/kriteria yang bagaimana).",
+        "logic": "Kata tanya <strong>どんな (donna)</strong> diikuti nomina (<code>どんな + Nomina</code>) berfungsi untuk <strong>menanyakan jenis, rupa, kriteria spesifik, corak, atau sifat dari benda yang dicari atau diminati</strong>.",
+        "distractor": "• Opsi A: Menanyakan jumlah unit menggunakan いくつ atau 何台 (nandai).\n• Opsi B: Menanyakan lokasi toko menggunakan どこ (doko).\n• Opsi C: Menanyakan nominal harga menggunakan いくら (ikura).",
+        "grammarRule": "Pola Tanya Kriteria Nomina: どんな + [Nomina] + が ほしいですか / すきですか."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Desideratif Kepemilikan (Ga)",
+      "type": "teks",
+      "question_ja": "わたしは 新しい スマホ（　<strong>？</strong>　） ほしいです。",
+      "question_ruby": "わたしは 新しい スマホ（　<strong>？</strong>　） ほしいです。",
+      "question_id": "Partikel yang tepat untuk menandai objek kepemilikan pada pola 'hoshii desu' adalah...",
+      "translation": "Saya ingin memiliki ponsel cerdas baru. Partikel objek keinginan kepemilikan benda adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (が).",
+        "logic": "Kata <strong>ほしい (欲しい)</strong> berkedudukan sebagai kata sifat-i, bukan kata kerja transitif. Oleh sebab itu, benda yang menjadi objek keinginan wajib ditandai dengan partikel subjek target <strong>が (ga)</strong>: <code>[Nomina] が ほしいです</code>. Partikel を tidak boleh digunakan bersama hoshii.",
+        "distractor": "• Opsi A: を salah secara gramatikal karena hoshii adalah adjektiva, bukan verba aksi transitif biasa.\n• Opsi C: に salah fungsi.\n• Opsi D: で menandai tempat aksi atau alat sarana.",
+        "grammarRule": "Aturan Mutlak Hoshii: Objek keinginan selalu ditandai partikel が: [Benda] + が ほしいです. (Larangan: Jangan gunakan を ほしいです)."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Verba Desideratif Tindakan (O / Ga)",
+      "type": "teks",
+      "question_ja": "のどが かわきましたから、冷たい 水（　<strong>？</strong>　） 飲みたいです。",
+      "question_ruby": "のどが かわきましたから、冷たい 水（　<strong>？</strong>　） 飲みたいです。",
+      "question_id": "Partikel yang lazim digunakan menandai objek sasaran verba bentuk keinginan (~tai) adalah...",
+      "translation": "Karena tenggorokan haus, saya ingin minum air dingin. Partikel objek verba aksi adalah を (atau が).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "へ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (を).",
+        "logic": "Pada verba keinginan <code>～たいです (~tai desu)</code> yang diturunkan dari verba transitif (seperti 飲みます), objek penderita umumnya mempertahankan partikel asli <strong>を (o)</strong> (atau dapat pula digantikan dengan partikel <strong>が</strong> untuk penekanan fokus keinginan). Di antara opsi yang ada, <strong>を (o)</strong> adalah jawaban gramatikal yang tepat.",
+        "distractor": "• Opsi B: へ menandai arah pergerakan tujuan tempat.\n• Opsi C: に menandai titik waktu atau titik lokasi diam.\n• Opsi D: で menandai sarana alat atau lokasi kegiatan.",
+        "grammarRule": "Partikel Pola ～たい: [Objek] + を（が） + [V-stem]たいです."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Tujuan Perpindahan Spasial (Ni)",
+      "type": "teks",
+      "question_ja": "土曜日に 友達と 新宿へ 日本料理を 食べ（　<strong>？</strong>　） 行きます。",
+      "question_ruby": "土曜日に 友達と 新宿へ 日本料理を 食べ（　<strong>？</strong>　） 行きます。",
+      "question_id": "Partikel yang tepat untuk menandai tujuan perpindahan setelah kata kerja bentuk stem adalah...",
+      "translation": "Pada hari Sabtu saya pergi ke Shinjuku bersama teman untuk makan masakan Jepang. Partikel tujuan perpindahan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Dalam pola kalimat perpindahan bertujuan: <code>[Tempat] へ [Verba-masu stem / Nomina Aksi] に 行きます / 来ます / 帰ります</code>, partikel yang wajib dilekatkan setelah akar kata kerja untuk menyatakan <strong>maksud / tujuan kepergian</strong> adalah <strong>に (ni)</strong>: <code>食べに行きます (pergi untuk makan)</code>.",
+        "distractor": "• Opsi A: で menandai tempat dilakukannya aksi (新宿で食べます), bukan penanda tujuan aksi perpindahan.\n• Opsi B: を sudah melekat pada objek masakan Jepang (日本料理を).\n• Opsi D: へ menandai tujuan fisik geografis (新宿へ).",
+        "grammarRule": "Rumus Perpindahan Bertujuan: [Tempat] へ + [V-stem / Nomina Aksi] + に + 行きます / 来ます / 帰ります."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Arah Tempat Tujuan Perpindahan (He)",
+      "type": "teks",
+      "question_ja": "実習生は 成田空港（　<strong>？</strong>　） 友達を 迎えに 行きました。",
+      "question_ruby": "実習生は 成田空港（　<strong>？</strong>　） 友達を 迎えに 行きました。",
+      "question_id": "Partikel yang tepat untuk menandai arah tempat yang dituju adalah...",
+      "translation": "Siswa magang pergi ke Bandara Narita untuk menjemput temannya. Partikel arah tujuan adalah へ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "へ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (へ).",
+        "logic": "Untuk menunjukkan <strong>arah tempat sasaran perpindahan geografis</strong> menuju suatu fasilitas fisik bersama verba arah (行きます), digunakan partikel arah <strong>へ (e)</strong> atau <em>に</em>: <code>成田空港へ 行きました</code>.",
+        "distractor": "• Opsi A: で menandai tempat kegiatan, sedangkan kalimat ini menyatakan perpindahan gerak menuju bandara.\n• Opsi C: を menandai teman yang dijemput (友達を).\n• Opsi D: から berarti 'dari bandara' (kebalikan arah).",
+        "grammarRule": "Pasangan Partikel Arah dan Tujuan: [Lokasi Tujuan] へ（に） + [Maksud Aksi] に + 行きます."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Sumber Peminjaman Barang / Informasi (Kara)",
+      "type": "teks",
+      "question_ja": "先週、ダダンさん（　<strong>？</strong>　） カメラを 借りました。",
+      "question_ruby": "先週、ダダンさん（　<strong>？</strong>　） カメラを 借りました。",
+      "question_id": "Partikel yang tepat untuk menandai orang sebagai sumber asal meminjam adalah...",
+      "translation": "Minggu lalu saya meminjam kamera dari Dadan-san. Partikel asal peminjaman adalah から (atau に).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (から).",
+        "logic": "Dalam transaksi penerimaan atau peminjaman barang menggunakan verba <strong>借ります (karimasu = meminjam)</strong> atau <strong>もらいます (moraimasu = menerima)</strong>, pihak pemberi pinjaman/sumber ditandai dengan partikel <strong>から (kara = dari)</strong> atau <em>に (ni)</em>: <code>ダダンさんから 借りました</code>.",
+        "distractor": "• Opsi A: まで berarti 'sampai/hingga'.\n• Opsi B: を menandai barang yang dipinjam (カメラを).\n• Opsi C: で menandai alat atau sarana peminjaman.",
+        "grammarRule": "Pola Sumber Peminjaman: [Orang Pemberi Pinjaman] から / に + [Benda] を + 借ります."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Konjungtif Kausalitas Alasan (Kara)",
+      "type": "teks",
+      "question_ja": "日本語能力試験に 合格したいです（　<strong>？</strong>　）、毎日 勉強します。",
+      "question_ruby": "日本語能力試験に 合格したいです（　<strong>？</strong>　）、毎日 勉強します。",
+      "question_id": "Partikel konjungtif kausalitas yang bermakna 'karena / oleh sebab itu' adalah...",
+      "translation": "Karena ingin lulus Ujian Kemampuan Bahasa Jepang, saya belajar setiap hari. Partikel sebab-alasan adalah から.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "から"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "でも"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "のに"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (から).",
+        "logic": "Partikel <strong>から (kara)</strong> diletakkan di akhir klausa sebab/alasan untuk membentuk kalimat hubungan kausatif: <code>[Alasan / Motivasi] から、[Tindakan Logis]</code>: <em>Ingin lulus JLPT, oleh karena itu belajar setiap hari</em>.",
+        "distractor": "• Opsi B: が menyatakan pertentangan kontradiktif (tetapi/namun).\n• Opsi C: でも adalah konjungsi penghubung di awal kalimat baru, tidak dapat menempel langsung di akhir klausa predikat.\n• Opsi D: のに menyatakan paradoks kekecewaan (padahal).",
+        "grammarRule": "Rumus Alasan Kausatif: [Klausa Sebab / Alasan] から、[Klausa Hasil Tindakan]."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kalimat Desideratif Nomina (Watashi wa N ga hoshii desu)",
+      "type": "teks",
+      "question_ja": "アグス：『わたしは いま （　<strong>＿＿＿＿＿</strong>　）。寮の 部屋が 少し 狭いですから。』",
+      "question_ruby": "アグス：『わたしは いま （　<strong>＿＿＿＿＿</strong>　）。寮の 部屋が 少し 狭いですから。』",
+      "question_id": "Ungkapan keinginan kepemilikan benda yang tepat dan logis sesuai konteks adalah...",
+      "translation": "Agus: 'Saya sekarang ingin kamar yang luas. Karena kamar asrama agak sempit.' Pola: 広い部屋が ほしいです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "広い部屋を ほしいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "広い部屋が ほしくないです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "広い部屋が ほしいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "広い部屋に ほしいでした"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (広い部屋が ほしいです).",
+        "logic": "Rumus keinginan memiliki benda/keadaan: <code>[Nomina yang diinginkan] + が ほしいです</code>. Karena kamarnya sempit, Agus mendambakan kamar yang luas (広い部屋が ほしいです). Partikel penandanya wajib <strong>が</strong>.",
+        "distractor": "• Opsi A: 広い部屋を ほしいです salah partikel (hoshii tidak boleh menggunakan partikel を).\n• Opsi B: 広い部屋が ほしくないです tidak logis dengan alasan kamar asrama sempit.\n• Opsi D: 広い部屋に ほしいでした salah partikel dan tata bahasa.",
+        "grammarRule": "Pola Dasar Keinginan Benda: わたしは + [Nomina] + が + ほしいです."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Pertanyaan Spesifikasi Kriteria Benda Idaman",
+      "type": "teks",
+      "question_ja": "質問：『日本で （　<strong>＿＿＿＿＿</strong>　） 車が ほしいですか。』<br>回答：『小さくて 便利な 車が ほしいです。』",
+      "question_ruby": "質問：『日本で （　<strong>＿＿＿＿＿</strong>　） 車が ほしいですか。』<br>回答：『小さくて 便利な 車が ほしいです。』",
+      "question_id": "Kata tanya yang tepat untuk melengkapi dialog di atas adalah...",
+      "translation": "Tanya: 'Mobil yang model/tipe bagaimana yang Anda inginkan di Jepang?' Jawab: 'Saya ingin mobil yang kecil dan praktis.' Kata tanya: どんな.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "どれ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "どんな"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "どこ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "どうして"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (どんな).",
+        "logic": "Untuk menanyakan ciri-ciri, spesifikasi, atau kriteria barang idaman yang diinginkan sebelum nomina (車), kata tanya wajib yang digunakan adalah <strong>どんな (donna = yang seperti apa)</strong>: <code>どんな 車が ほしいですか</code>.",
+        "distractor": "• Opsi A: どれ berdiri mandiri memilih di antara pilihan benda konkret di depan mata, tidak langsung memodifikasi nomina tanpa partikel の.\n• Opsi C: どこ menanyakan tempat/lokasi.\n• Opsi D: どうして menanyakan alasan (mengapa).",
+        "grammarRule": "Pola Tanya Kriteria Desideratif: どんな + [Nomina Benda] + が ほしいですか."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pembentukan Verba Keinginan Afirmatif (~Tai desu)",
+      "type": "teks",
+      "question_ja": "今度の 日曜日に 新宿の デパートで 服を （　<strong>＿＿＿＿＿</strong>　）。（買います：Bentuk Ingin）",
+      "question_ruby": "今度の 日曜日に 新宿の デパートで 服を （　<strong>＿＿＿＿＿</strong>　）。（買います：Bentuk Ingin）",
+      "question_id": "Perubahan verba bentuk keinginan positif yang benar untuk 'kaimasu' (membeli) adalah...",
+      "translation": "Hari Minggu besok saya ingin membeli pakaian di toserba di Shinjuku. Bentuk ingin: 買いたいです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "買いたいですから"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "買いてです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "買いしたいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "買いたいです"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (買いたいです).",
+        "logic": "Aturan pembentukan verba keinginan aksi (たい形): hilangkan akhiran <strong>～ます</strong> dari kata kerja bentuk-masu, lalu sambungkan dengan <strong>～たいです (~tai desu)</strong>. Contoh: <code>買います ➔ 買い ➔ 買いたいです (ingin membeli)</code>.",
+        "distractor": "• Opsi A: 買いたいですから mengandung partikel kausalitas kara yang membuat kalimat menjadi anak kalimat menggantung.\n• Opsi B: 買いてです adalah konjugasi tidak beraturan yang keliru.\n• Opsi C: 買いしたいです adalah penggabungan dobel verba yang rancu.",
+        "grammarRule": "Rumus Verba Desideratif Positif: [Verba Masu-stem] + たいです (contoh: 飲みます ➔ 飲みたいです; 行きます ➔ 行きたいです)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pembentukan Verba Keinginan Negatif (~Takunai desu)",
+      "type": "teks",
+      "question_ja": "歯が とても 痛いですから、今は 固い 物を 何も （　<strong>＿＿＿＿＿</strong>　）。（食べます：Keinginan Negatif）",
+      "question_ruby": "歯が とても 痛いですから、今は 固い 物を 何も （　<strong>＿＿＿＿＿</strong>　）。（食べます：Keinginan Negatif）",
+      "question_id": "Bentuk penolakan / tidak berkeinginan melakukan aksi yang benar adalah...",
+      "translation": "Karena gigi saya sangat sakit, sekarang saya tidak ingin makan makanan keras apa pun. Bentuk negatif: 食べたくないです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "食べたくないです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "食べたいではありません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食べませんでした"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "食べないでした"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (食べたくないです).",
+        "logic": "Bentuk negatif dari <code>～たいです</code> mengikuti konjugasi kata sifat-i, yaitu akhiran <strong>～たい</strong> diubah menjadi <strong>～たくないです (~takunai desu = tidak ingin melakukan...)</strong>: <code>食べます ➔ 食べたい ➔ 食べたくないです</code>.",
+        "distractor": "• Opsi B: 食べたいではありません adalah kesalahan tipikal karena ～たい berkonjugasi seperti kata sifat-i, bukan nomina.\n• Opsi C: 食べませんでした menyatakan fakta masa lampau bahwa ia tidak memakan, bukan menyatakan rasa 'tidak ingin makan'.\n• Opsi D: 食べないでした adalah bentuk tata bahasa yang rusak.",
+        "grammarRule": "Konjugasi Verba Desideratif Negatif: [Verba Masu-stem] + たくないです (contoh: 食べます ➔ 食べたくないです)."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Perpindahan Bertujuan Menggunakan Verba Stem (~Ni ikimasu)",
+      "type": "teks",
+      "question_ja": "今夜、友達と レストランへ ラーメンを （　<strong>＿＿＿＿＿</strong>　） 行きます。",
+      "question_ruby": "今夜、友達と レストランへ ラーメンを （　<strong>＿＿＿＿＿</strong>　） 行きます。",
+      "question_id": "Bentuk kata kerja pengisi tujuan perpindahan yang benar untuk 'makan' adalah...",
+      "translation": "Malam ini saya pergi ke restoran bersama teman untuk makan ramen. Bentuk tujuan: 食べに行きます.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "食べるに"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "食べてに"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食べに"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "食べたに"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (食べに).",
+        "logic": "Dalam rumus perpindahan untuk tujuan aksi: <code>[Tempat] へ [Verba Masu-stem] に 行きます</code>, kata kerja yang menempel pada partikel に <strong>wajib hanya berupa batang/akar kata kerja (masu-stem tanpa akhiran ます)</strong>: <code>食べます ➔ 食べ + に ➔ 食べに行きます</code>.",
+        "distractor": "• Opsi A: 食べるに salah karena bentuk kamus (bentuk biasa) tidak dapat langsung ditempel partikel に dalam pola ini.\n• Opsi B: 食べてに salah karena bentuk-te tidak berpasangan dengan に ikimasu.\n• Opsi D: 食べたに salah karena bentuk lampau tidak digunakan di sini.",
+        "grammarRule": "Rumus Gerak Bertujuan: [Verba Masu-stem] + に + 行きます / 来ます / 帰ります (contoh: 見ます ➔ 見に行きます; 買います ➔ 買いに行きます)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Perpindahan Bertujuan Menggunakan Nomina Aksi",
+      "type": "teks",
+      "question_ja": "ダダンさんは バンドゥンへ 工場の （　<strong>＿＿＿＿＿</strong>　） 来ました。",
+      "question_ruby": "ダダンさんは バンドゥンへ 工場の （　<strong>＿＿＿＿＿</strong>　） 来ました。",
+      "question_id": "Nomina tindakan langsung yang paling tepat melengkapi kalimat tujuan perpindahan di atas adalah...",
+      "translation": "Dadan-san datang ke Bandung untuk observasi/kunjungan studi pabrik. Frasa tujuan: 見学に来ました.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "見学を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "見学に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "見学で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "見学へ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (見学に).",
+        "logic": "Selain kata kerja masu-stem, <strong>kata benda yang mengandung makna aktivitas tindakan (nomina aksi / suru-noun seperti 見学, 実習, 散歩, 買い物)</strong> dapat langsung dilekati partikel <strong>に</strong> untuk menyatakan maksud kedatangan/kepergian: <code>工場の 見学に 来ました (datang untuk studi observasi pabrik)</code>.",
+        "distractor": "• Opsi A: 見学を salah partikel (tidak dapat dipasangkan langsung dengan verba arah 来ました).\n• Opsi C: 見学で salah partikel sarana/alat.\n• Opsi D: 見学へ salah karena 工場の見学 adalah aktivitas, bukan titik lokasi geografis.",
+        "grammarRule": "Tujuan Perpindahan dengan Nomina Aksi: [Tempat] へ + [Nomina Tindakan] + に + 来ます / 行きます (contoh: 散歩に行きます, 実習に来ました)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Batasan Sudut Pandang Subjek Desideratif (~Tai & Hoshii)",
+      "type": "teks",
+      "question_ja": "次の 文の 中で、文法的に 正しくない 文は どれですか。",
+      "question_ruby": "次の 文の 中で、文法的に 正しくない 文は どれですか。",
+      "question_id": "Di antara kalimat-kalimat berikut, manakah yang TIDAK TEPAT menurut kaidah sudut pandang pembicara tata bahasa Jepang dasar?",
+      "translation": "Kalimat D melanggar kaidah karena perasaan subjektif orang ketiga (Tanaka-san) tidak boleh dinyatakan langsung dengan ~tai desu tanpa perantara pembatas rasa dugaan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "わたしは 新しい 自転車が ほしいです。"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "わたしは 国へ 帰りたいです。"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "アグスさんは 何を 買いたいですか。"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "田中さんは 国へ 帰りたいです。"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (田中さんは 国へ 帰りたいです。).",
+        "logic": "Dalam kaidah tata bahasa Jepang, ekspresi keinginan batin <strong>欲しいです</strong> dan <strong>～たいです</strong> hanya boleh digunakan secara deklaratif langsung untuk <strong>orang pertama (わたし)</strong> atau ditanyakan kepada <strong>orang kedua (あなた)</strong>. Untuk <strong>orang ketiga (seperti 田中さん)</strong>, kita tidak bisa mengetahui isi hatinya secara mutlak, sehingga tidak lazim mengatakan secara polos <em>田中さんは帰りたいです</em> (harus menggunakan imbuhan dugaan/pelaporan seperti <em>～たがっています</em> atau <em>～と言っています</em>).",
+        "distractor": "• Opsi A: Tepat karena subjeknya orang pertama (watashi) menyatakan keinginan benda.\n• Opsi B: Tepat karena subjeknya orang pertama menyatakan keinginan aksi.\n• Opsi C: Tepat karena bertanya secara sopan kepada lawan bicara mengenai keinginannya.",
+        "grammarRule": "Kaidah Perspektif Desideratif: Bentuk ほしい / ～たい hanya boleh dipakai langsung untuk orang pertama (saya) atau pertanyaan kepada orang kedua (kamu). Orang ketiga memerlukan bentuk pelaporan."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Keinginan Benda (カメラが欲しい)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。アグスさんは 何が 欲しいですか。<br>「（　　　）が 欲しいです。」",
+      "question_ruby": "絵（え）を 見て ください。アグスさんは 何が 欲しいですか。<br>「（　　　）が 欲しいです。」",
+      "question_id": "Perhatikan gambar. Agus-san menginginkan apa? 'Menginginkan (...)'.",
+      "translation": "Menginginkan kamera foto (kamera).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "パソコン"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "カメラ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "じどうしゃ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "とけい"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (カメラ).",
+        "logic": "Gambar memperlihatkan seseorang yang sedang memimpikan kamera digital baru (カメラ - kamera).",
+        "distractor": "• Opsi A: パソコン adalah laptop / komputer pribadi.\n• Opsi C: じどうしゃ adalah mobil.\n• Opsi D: とけい adalah jam tangan.",
+        "grammarRule": "Pola Keinginan Benda Bab 13: [Nomina] が 欲しいです."
+      },
+      "image": "assets/bab_13/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Keinginan Aktivitas (ビールを飲みたい)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。仕事を 終えて 何を 飲みたいですか。<br>「つめたい （　　　）を 飲みたいです。」",
+      "question_ruby": "絵（え）を 見て ください。仕事を 終えて 何を 飲みたいですか。<br>「つめたい （　　　）を 飲みたいです。」",
+      "question_id": "Perhatikan gambar. Setelah selesai bekerja ingin minum apa? 'Ingin minum (...) dingin'.",
+      "translation": "Ingin minum bir dingin.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ジュース"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おゆ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ビール"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おちゃ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (ビール).",
+        "logic": "Gambar memperlihatkan segelas bir berbusa dingin (ビール - biiru).",
+        "distractor": "• Opsi A: ジュース adalah jus buah.\n• Opsi B: おゆ adalah air panas.\n• Opsi D: おちゃ adalah teh hijau.",
+        "grammarRule": "Bentuk Desideratif Bab 13: [Verba-masu stem] + たいです."
+      },
+      "image": "assets/bab_13/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (欲しい)",
+      "type": "teks",
+      "question_ja": "いま 新しい 安全靴が （ 欲しい ）です。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "いま 新しい 安全靴が （ 欲しい ）です。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Sekarang menginginkan sepatu safety baru. Pilihlah cara baca kanji '欲しい' yang tepat.",
+      "translation": "Sekarang saya menginginkan sepatu pengaman kerja (safety shoes) yang baru.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ほしい"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おいしい"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "うれしい"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "さびしい"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ほしい).",
+        "logic": "Kanji 欲しい dibaca ほしい (hoshii) yang bermakna ingin memiliki suatu benda.",
+        "distractor": "• Opsi B: おいしい ditulis 美味しい (enak/lezat).\n• Opsi C: うれしい ditulis 嬉しい (gembira).\n• Opsi D: さびしい ditulis 寂しい (kesepian).",
+        "grammarRule": "Kata Sifat Keinginan: 欲しい（ほしい = ingin/mau）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (広い)",
+      "type": "teks",
+      "question_ja": "この 実習室は とても （ ひろい ）です。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "この 実習室は とても （ ひろい ）です。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Ruang praktek ini sangat luas. Pilihlah penulisan kanji yang tepat untuk 'hiroi'.",
+      "translation": "Ruang praktek magang ini sangatlah luas.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "広い"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "鉱い"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "拡い"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "庁い"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (広い).",
+        "logic": "Kata ひろい (luas/lapang) ditulis dengan kanji baku 広い.",
+        "distractor": "• Opsi B: 鉱い adalah huruf tambang mineral.\n• Opsi C: 拡い adalah kanji perluas pada 拡大.\n• Opsi D: 庁い adalah kanji instansi pemerintah pada 官庁.",
+        "grammarRule": "Kanji Ruangan Bab 13: 広い（ひろい = luas） vs 狭い（せまい = sempit）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (見学)",
+      "type": "teks",
+      "question_ja": "来週、自動車工場を （ けんがく ）します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "来週、自動車工場を （ けんがく ）します。<br>正しい 漢字は どれですか。",
+      "question_id": "Minggu depan akan melakukan kunjungan studi/studi tiru ke pabrik mobil. Pilihlah kanji yang tepat untuk 'kengaku'.",
+      "translation": "Minggu depan kami akan melakukan kunjungan studi observasi (kengaku) ke pabrik mobil.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "見学"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "視学"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "見校"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "研学"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (見学).",
+        "logic": "Kata けんがく (kunjungan studi industri) ditulis dengan kanji 見学 (見 = melihat secara nyata, 学 = belajar/menimba ilmu).",
+        "distractor": "• Opsi B: 視学 adalah penulisan yang tidak lazim.\n• Opsi C: 見校 salah huruf belakang (menggunakan gakkou/sekolah).\n• Opsi D: 研学 salah huruf depan (menggunakan kenkyuu/riset).",
+        "grammarRule": "Aktivitas Industri: 見学（けんがく = kunjungan studi lapangan）."
+      }
+    }
+  ]
+};
+
+const BAB_14_DATA = {
+  "chapter": "14",
+  "title_ja": "第１４課：動詞のて形（グループ分類と音便則）と指示・現在進行表現",
+  "title_id": "Bab 14: Konjugasi Bentuk TE (Te-kei), Aturan Onbin, Permohonan (~Te kudasai), Aksi Sedang Berlangsung (~Te imasu)",
+  "theme_ja": "動詞のて形 (Te-kei) & 指示・進行表現 (Shiji & Shinkou Hyougen)",
+  "theme_id": "Evaluasi penguasaan revolusi perubahan kata kerja bentuk-TE (Golongan 1: i-onbin, soku-onbin, hatsu-onbin; Golongan 2; Golongan 3; serta pengecualian emas ikimasu -> itte), instruksi permohonan kerja sopan (~te kudasai), aksi yang sedang berlangsung saat ini (~te imasu), penawaran bantuan sukarela (~mashou ka), serta partikel batas tenggat waktu (made) pada Bab 14 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 14.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 14.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Manajemen Produksi & Batas Waktu Pabrik",
+      "type": "teks",
+      "question_ja": "製品の （　<strong>のうき</strong>　）まで あまり 時間が ありません。「のうき」の 漢字と 意味は どれですか。",
+      "question_ruby": "製品の （　<strong>のうき</strong>　）まで あまり 時間が ありません。「のうき」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk istilah industri 'nouki' adalah...",
+      "translation": "Hingga batas waktu penyerahan produk (deadline) tidak banyak waktu tersisa. '納期' berarti tenggat waktu penyerahan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "納期 （Waktu jam istirahat siang）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "現場 （Tempat area kerja lapangan）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "機械 （Peralatan mesin operasional）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "納期 （Batas tanggal penyerahan / deadline produk）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (納期 （Batas tanggal penyerahan / deadline produk）).",
+        "logic": "Istilah industri penting <strong>納期（のうき - nouki）</strong> bermakna <strong>tenggat waktu batas akhir penyerahan barang pesanan / delivery deadline</strong> dalam manajemen manufaktur pabrik Jepang. Keterlambatan nouki dapat menimbulkan kerugian fatal bagi kepercayaan klien.",
+        "distractor": "• Opsi A: 納期 bukan jam istirahat (jam istirahat adalah 昼休み - hiruyasumi).\n• Opsi B: 現場 dibaca げんば (genba = area lapangan kerja pabrik).\n• Opsi C: 機械 dibaca きかい (kikai = mesin).",
+        "grammarRule": "Kosakata Manajemen Industri Bab 14: 納期（のうき - batas waktu pengiriman produk/deadline）, 現場（げんば - area kerja lapangan）, 残業（ざんぎょう - lembur kerja）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Standar Operasional Keselamatan Kerja (Kakunin)",
+      "type": "teks",
+      "question_ja": "機械を 使う 前に、スイッチを （　<strong>かくにん</strong>　）してください。「かくにん」の 漢字は どれですか。",
+      "question_ruby": "機械を 使う 前に、スイッチを （　<strong>かくにん</strong>　）してください。「かくにん」の 漢字は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'memeriksa / memastikan' (kakunin) adalah...",
+      "translation": "Sebelum menggunakan mesin, pastikan / periksalah sakelarnya. Kanji kakunin adalah 確認.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "見学"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "確認"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "練習"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "掃除"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (確認).",
+        "logic": "Kata <strong>かくにん (kakunin)</strong> ditulis dengan kanji <strong>確認</strong> yang bermakna <strong>memeriksa, mengecek ulang, atau mengonfirmasi secara cermat</strong> demi memastikan keselamatan kerja sebelum mesin dioperasikan.",
+        "distractor": "• Opsi A: 見学 dibaca けんがく (kengaku - observasi/studi lapangan).\n• Opsi C: 練習 dibaca れんしゅう (renshuu - latihan berulang).\n• Opsi D: 掃除 dibaca そうじ (souji - bersih-bersih).",
+        "grammarRule": "SOP Keselamatan Kerja Pabrik: 確認（かくにん - pengecekan/konfirmasi）, 点検（てんけん - inspeksi mesin）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Hubungan Senioritas di Lingkungan Kerja",
+      "type": "teks",
+      "question_ja": "アグスさんは （　<strong>こうはい</strong>　）に 仕事の やり方を 教えています。「こうはい」の 漢字と 意味は どれですか。",
+      "question_ruby": "アグスさんは （　<strong>こうはい</strong>　）に 仕事の やり方を 教えています。「こうはい」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk 'kouhai' adalah...",
+      "translation": "Agus-san sedang mengajarkan cara kerja kepada rekan yuniornya (kouhai). Kanji kouhai adalah 後輩.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "後輩 （Rekan yunior / angkatan di bawahnya）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "先輩 （Rekan senior yang lebih berpengalaman）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "指導員 （Instruktur pengawas pabrik）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "従業員 （Karyawan tetap perusahaan）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (後輩 （Rekan yunior / angkatan di bawahnya）).",
+        "logic": "Dalam relasi sosial kerja di Jepang: <strong>後輩（こうはい - kouhai）</strong> adalah <strong>rekan kerja yunior (yang masuk belakangan / angkatan di bawah)</strong>. Kebalikannya adalah <strong>先輩（せんぱい - senpai = senior）</strong>.",
+        "distractor": "• Opsi B: 先輩 adalah rekan senior / tingkat di atasnya.\n• Opsi C: 指導員 adalah instruktur pelatih pabrik.\n• Opsi D: 従業員 adalah staf karyawan perusahaan secara umum.",
+        "grammarRule": "Pasangan Senioritas Budaya Kerja Jepang: 先輩（せんぱい - senior） >< 後輩（こうはい - yunior）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Lokasi Kerja Lapangan (Genba)",
+      "type": "teks",
+      "question_ja": "ダダンさんは 今日から 新しい （　<strong>現場</strong>　）で 実習を します。「現場」の 読み方は どれですか。",
+      "question_ruby": "ダダンさんは 今日から 新しい （　<strong>現場</strong>　）で 実習を します。「現場」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'area kerja lapangan / bengkel' adalah...",
+      "translation": "Dadan-san mulai hari ini magang di lokasi kerja lapangan yang baru. Kanji 現場 dibaca genba.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "こうじょう"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "じむしょ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "げんば"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へや"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (げんば).",
+        "logic": "Kanji <strong>現場</strong> dibaca <strong>げんば (genba)</strong> yang bermakna <strong>lokasi riil pekerjaan fisik lapangan / area lantai pabrik / lokasi proyek konstruksi</strong>.",
+        "distractor": "• Opsi A: こうじょう ditulis 工場 (pabrik manufaktur).\n• Opsi B: じむしょ ditulis 事務所 (kantor staf).\n• Opsi D: へや ditulis 部屋 (kamar/ruangan).",
+        "grammarRule": "Istilah Filosofi Manufaktur Jepang: 現場（げんば - genba = lantai kerja aktual/lokasi riil tempat nilai tambah diproduksi）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Prosedur dan Panduan Cara Melakukan Sesuatu (~Kata)",
+      "type": "teks",
+      "question_ja": "この 切断機の （　<strong>つかいかた</strong>　）を 教えてください。「つかいかた」の 漢字表記は どれですか。",
+      "question_ruby": "この 切断機の （　<strong>つかいかた</strong>　）を 教えてください。「つかいかた」の 漢字表記は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'cara penggunaan' (tsukaikata) adalah...",
+      "translation": "Tolong ajarkan cara penggunaan mesin pemotong ini. Kanji tsukaikata adalah 使い方.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "読見方"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "行き方"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食べ方"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "使い方"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (使い方).",
+        "logic": "Pola pembentukan nomina cara: <code>[Verba Masu-stem] + 方（かた - kata）</code>. Dari verba <strong>使います（つかいます - memakai/menggunakan）</strong> menjadi <strong>使い方（つかいかた - tsukaikata = cara penggunaan）</strong>.",
+        "distractor": "• Opsi A: 読見方 salah tulis kanji (yang benar 読み方 = cara baca).\n• Opsi B: 行き方 dibaca いきかた (cara pergi / rute jalan).\n• Opsi C: 食べ方 dibaca たべかた (cara makan / etika menyantap).",
+        "grammarRule": "Rumus Pembentukan 'Cara Melakukan': [Verba Masu-stem] + 方（かた） = Cara melakukan sesuatu (使い方 = cara pakai; 作り方 = cara membuat; 読み方 = cara baca)."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Ungkapan Etika Sopan Santun Preambul (Sumimasen ga)",
+      "type": "teks",
+      "question_ja": "実習生：『（　<strong>すみませんが</strong>　）、駅までの 道を 教えてください。』「すみませんが」の 役割は どれですか。",
+      "question_ruby": "実習生：『（　<strong>すみませんが</strong>　）、駅までの 道を 教えてください。』「すみませんが」の 役割は どれですか。",
+      "question_id": "Fungsi dari ungkapan percakapan yang dicetak tebal adalah...",
+      "translation": "Trainee: 'Permisi, tolong beri tahu jalan menuju stasiun.' 'すみませんが' berfungsi sebagai preambul sopan sebelum meminta tolong.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Ungkapan pembuka sopan / preambul sebelum meminta bantuan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Salam perpisahan pulang kerja di sore hari"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Menyatakan kemarahan karena perintah tidak dijalankan"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Jawaban tegas menolak ajakan makan siang"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (Ungkapan pembuka sopan / preambul sebelum meminta bantuan).",
+        "logic": "Ungkapan <strong>すみませんが (sumimasen ga)</strong> atau <strong>失礼ですが (shitsurei desu ga)</strong> berfungsi sebagai <strong>kata pengantar sopan (preambul bantal sosial)</strong> untuk melunakkan permintaan agar tidak terkesan mendadak atau menuntut secara kasar.",
+        "distractor": "• Opsi B: Salam perpisahan kerja sore hari adalah お疲れ様でした (otsukaresama deshita).\n• Opsi C: Bukan ekspresi kemarahan.\n• Opsi D: Menolak tawaran secara halus menggunakan けっこうです (kekkou desu).",
+        "grammarRule": "Etika Berkomunikasi di Jepang: Gunakan すみませんが、～てください ketika meminta petunjuk, instruksi, atau bantuan."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Kontrol Operasional Mesin (Tomemasu)",
+      "type": "teks",
+      "question_ja": "作業が 終わりましたから、機械の スイッチを （　<strong>とめて</strong>　）ください。「とめて」の 漢字表記は どれですか。",
+      "question_ruby": "作業が 終わりましたから、機械の スイッチを （　<strong>とめて</strong>　）ください。「とめて」の 漢字表記は どれですか。",
+      "question_id": "Penulisan kanji yang benar untuk 'menghentikan / mematikan mesin' (tomete) adalah...",
+      "translation": "Karena pekerjaan sudah selesai, tolong matikan / hentikan mesin. Kanji tomete adalah 止めて.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "開けて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "止めて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "閉めて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "待って"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (止めて).",
+        "logic": "Verba <strong>止めます（とめます - tomemasu）</strong> ditulis dengan kanji <strong>止</strong> yang berarti <strong>menghentikan pergerakan atau mematikan aliran mesin</strong>. Bentuk-te: <strong>止めて（とめて - tomete）</strong>.",
+        "distractor": "• Opsi A: 開けて dibaca あけて (akete - tolong buka).\n• Opsi C: 閉めて dibaca しめて (shimete - tolong tutup).\n• Opsi D: 待って dibaca まって (matte - tolong tunggu).",
+        "grammarRule": "Operasi Kontrol Mesin: スイッチを 入れます（いれます - menyalakan） >< スイッチを 止めます/切ります（とめます/きります - mematikan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Batas Tenggat Akhir Waktu (Made)",
+      "type": "teks",
+      "question_ja": "製品の 納期（　<strong>？</strong>　） あまり 時間が ありませんから、急いでください。",
+      "question_ruby": "製品の 納期（　<strong>？</strong>　） あまり 時間が ありませんから、急いでください。",
+      "question_id": "Partikel yang tepat untuk menyatakan batas tenggat akhir 'sampai batas deadline' adalah...",
+      "translation": "Karena tidak banyak waktu lagi sampai batas deadline pengiriman barang, tolong bergegaslah. Partikel batas tenggat adalah まで.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "から"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (まで).",
+        "logic": "Partikel <strong>まで (made)</strong> menyatakan <strong>batas akhir dari suatu kurun waktu atau kegiatan yang terus berlangsung (hingga/sampai titik waktu...)</strong>: <code>納期まで (sampai batas deadline)</code>.",
+        "distractor": "• Opsi B: から menandai titik permulaan waktu (mulai dari).\n• Opsi C: で menandai tempat aksi atau batas jumlah total.\n• Opsi D: に menandai titik target tepat terjadinya aksi tunggal (seperti 納期に間に合います).",
+        "grammarRule": "Pembeda Batas Waktu: [Waktu] まで = Sampai batas waktu (kegiatan terus berlanjut hingga titik tsb); [Waktu] までに = Paling lambat pada (aksi selesai sebelum titik tsb)."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Konjungtif Penghubung Sopan / Preambul (Ga)",
+      "type": "teks",
+      "question_ja": "すみません（　<strong>？</strong>　）、この ボルトを 取ってください。",
+      "question_ruby": "すみません（　<strong>？</strong>　）、この ボルトを 取ってください。",
+      "question_id": "Partikel penghubung yang tepat untuk melengkapi ungkapan permisi 'sumimasen...' adalah...",
+      "translation": "Permisi, tolong ambilkan baut ini. Partikel penghubung pengantar sopan adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "も"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Partikel <strong>が (ga)</strong> yang dilekatkan pada akhir frasa permohonan maaf <code>すみませんが (sumimasen ga)</code> berfungsi sebagai <strong>konjungsi transisi pelunak (preambul kesantunan)</strong> sebelum masuk ke inti instruksi atau permohonan tolong.",
+        "distractor": "• Opsi A: と tidak lazim disambung setelah bentuk kata kerja maaf sumimasen.\n• Opsi B: も berarti 'juga'.\n• Opsi D: で salah tata bahasa.",
+        "grammarRule": "Pola Preambul Sopan Santun: すみませんが、～てください (Maaf/permisi, tolong...)."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Penderita Verba Aksi Transisi (O)",
+      "type": "teks",
+      "question_ja": "ウテンさんは 今日から 新しい 機械（　<strong>？</strong>　） 使っています。",
+      "question_ruby": "ウテンさんは 今日から 新しい 機械（　<strong>？</strong>　） 使っています。",
+      "question_id": "Partikel yang tepat untuk menandai mesin baru sebagai objek yang digunakan adalah...",
+      "translation": "Uten-san mulai hari ini menggunakan mesin yang baru. Partikel objek penderita adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (を).",
+        "logic": "Verba <strong>使っています (tsukatte imasu)</strong> adalah bentuk progresif dari verba transitif <strong>使います (tsukaimasu = memakai/menggunakan)</strong>. Objek yang digunakan (mesin baru / 新しい機械) wajib ditandai partikel <strong>を (o)</strong>.",
+        "distractor": "• Opsi A: に salah karena tsukaimasu menuntut objek partikel を.\n• Opsi B: で menandai alat yang dipakai untuk aksi lain (misal: ハサミで切ります), bukan sasaran utama penggunaan mesin itu sendiri.\n• Opsi C: へ menandai arah perpindahan tempat.",
+        "grammarRule": "Objek Transitif Bentuk-TE: [Benda/Alat] + を + 使っています / 操作しています."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Target Sasaran Penerima Tindakan Edukasi (Ni)",
+      "type": "teks",
+      "question_ja": "先輩は 後輩（　<strong>？</strong>　） 現場の ルールを 教えています。",
+      "question_ruby": "先輩は 後輩（　<strong>？</strong>　） 現場の ルールを 教えています。",
+      "question_id": "Partikel yang tepat untuk menandai yunior (kouhai) sebagai penerima ajaran bimbingan adalah...",
+      "translation": "Senior sedang mengajarkan aturan area kerja lapangan kepada yuniornya. Partikel penerima sasaran adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Verba <strong>教えます (oshiemasu = mengajar/memberi tahu)</strong> memerlukan penerima informasi atau orang yang diajari yang ditandai dengan partikel target <strong>に (ni)</strong>: <code>[Penerima Ajaran] に [Materi] を 教えます</code>.",
+        "distractor": "• Opsi A: を menandai materi pelajarannya (現場のルールを), tidak boleh mendua pada orangnya.\n• Opsi C: で menandai tempat aksi atau alat sarana.\n• Opsi D: から berarti 'menerima ajaran dari kouhai' (membalikkan peran relasi senior-yunior).",
+        "grammarRule": "Rumus Verba Bimbingan: [Orang Penerima Bimbingan] + に + [Materi/Informasi] + を + 教えます."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Alat / Instrumen Tulisan Operasional (De)",
+      "type": "teks",
+      "question_ja": "日報は 鉛筆で 書いてはいけません。黒い ボールペン（　<strong>？</strong>　） 書いてください。",
+      "question_ruby": "日報は 鉛筆で 書いてはいけません。黒い ボールペン（　<strong>？</strong>　） 書いてください。",
+      "question_id": "Partikel yang tepat untuk menandai pulpen hitam sebagai alat tulis adalah...",
+      "translation": "Laporan harian tidak boleh ditulis dengan pensil. Tolong tulis dengan pulpen hitam. Partikel alat adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (で).",
+        "logic": "Partikel <strong>で (de)</strong> berfungsi menandai <strong>sarana instrumen, perkakas kerja, atau alat yang digunakan untuk mengeksekusi suatu perbuatan</strong>: <code>ボールペンで 書きます (menulis dengan pulpen)</code>.",
+        "distractor": "• Opsi A: に menandai titik letak atau waktu sasaran.\n• Opsi B: を menandai isi materi laporan yang ditulis (日報を書いてください).\n• Opsi D: へ menandai arah pergerakan tempat.",
+        "grammarRule": "Instrumen Penulisan & Alat Kerja: [Alat Tulis / Perkakas] + で + 書いてください / 組み立ててください."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Fenomena Alam Sedang Berlangsung (Ga)",
+      "type": "teks",
+      "question_ja": "窓を 閉めてください。外で 雨（　<strong>？</strong>　） 降っていますから。",
+      "question_ruby": "窓を 閉めてください。外で 雨（　<strong>？</strong>　） 降っていますから。",
+      "question_id": "Partikel yang tepat untuk menandai 'hujan' sebagai subjek fenomena alam adalah...",
+      "translation": "Tolong tutup jendela. Karena di luar hujan sedang turun. Partikel fenomena alam adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (が).",
+        "logic": "Fenomena alamiah dan cuaca objektif yang terjadi dengan sendirinya (seperti hujan turun, salju turun, angin berhembus) ditandai dengan partikel subjek <strong>が (ga)</strong>: <code>雨が 降っています (ame ga futte imasu = hujan sedang turun)</code>.",
+        "distractor": "• Opsi B: を salah karena 降ります adalah kata kerja intransitif otomatis (自動詞), bukan verba transitif aksi.\n• Opsi C: に menandai titik jatuh, bukan subjek fenomena.\n• Opsi D: で menandai tempat berlangsungnya kejadian (外で).",
+        "grammarRule": "Rumus Fenomena Cuaca Alami: [Fenomena Alam (雨・雪)] + が + 降っています（ふっています）."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk-TE Golongan 1 Bunyi I-onbin & Pengecualian Emas (Ikimasu)",
+      "type": "teks",
+      "question_ja": "動詞「書きます」と 特別な 動詞「行きます」の て形は どれですか。",
+      "question_ruby": "動詞「書きます」と 特別な 動詞「行きます」の て形は どれですか。",
+      "question_id": "Perubahan bentuk-TE yang tepat untuk verba 'kakimasu' dan verba pengecualian khusus 'ikimasu' berturut-turut adalah...",
+      "translation": "Kakimasu menjadi kaite, sedangkan verba khusus ikimasu menjadi itte. Pasangan: かいて ／ いって.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かいて ／ いいて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かいて ／ いって"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かって ／ いって"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "かして ／ いいて"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (かいて ／ いって).",
+        "logic": "1) Pada Golongan 1, verba berakhiran bunyi <strong>～き (ki)</strong> mengalami <em>i-onbin</em> berubah menjadi <strong>～いて (-ite)</strong>: <code>書きます ➔ 書いて (kaite)</code>.<br>2) <strong>PENGECUALIAN EMAS:</strong> Kata kerja <strong>行きます（いきます - ikimasu = pergi）</strong> TIDAK berubah menjadi <em>いいて</em>, melainkan mengalami <em>soku-onbin</em> menjadi <strong>行って（いって - itte）</strong>. Ini adalah aturan khusus paling krusial dalam konjugasi bentuk-TE.",
+        "distractor": "• Opsi A: いいて adalah kekeliruan fatal karena melanggar aturan pengecualian emas kata ikimasu.\n• Opsi C: かって adalah bentuk-te dari 買います (membeli) atau 勝ます (menang).\n• Opsi D: かして adalah bentuk-te dari 貸します (meminjamkan).",
+        "grammarRule": "Pengecualian Emas Konjugasi Bentuk-TE: Semua akhiran ～きます ➔ ～いて (書きます ➔ 書いて), KECUALI 行きます ➔ 行って（いって）!"
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk-TE Golongan 1 Bunyi Soku-onbin (~Tte)",
+      "type": "teks",
+      "question_ja": "先輩：『アグスさん、あそこで ちょっと （　<strong>＿＿＿＿＿</strong>　）ください。』<br>アグス：『はい、分かりました。』（待ちます：Bentuk Permohonan）",
+      "question_ruby": "先輩：『アグスさん、あそこで ちょっと （　<strong>＿＿＿＿＿</strong>　）ください。』<br>アグス：『はい、分かりました。』（待ちます：Bentuk Permohonan）",
+      "question_id": "Bentuk konjugasi kata kerja yang tepat untuk 'tunggulah sebentar' adalah...",
+      "translation": "Senior: 'Agus-san, tolong tunggu sebentar di sebelah sana.' Agus: 'Baik, saya mengerti.' Bentuk konjugasi: 待って (matte kudasai).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まちて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "まいで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "まんで"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "まって"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (まって).",
+        "logic": "Kata kerja Golongan 1 yang berakhiran suku kata <strong>～ち (chi), ～り (ri), ～い (i)</strong> mengalami asimilasi konsonan ganda (<em>soku-onbin</em>) dengan mengganti suku kata tersebut menjadi <strong>～って (-tte)</strong>: <code>待ちます ➔ 待って (matte)</code> ➔ <strong>待ってください</strong>.",
+        "distractor": "• Opsi A: まちて salah karena verba Golongan 1 tidak boleh langsung menempelkan て tanpa konjugasi onbin.\n• Opsi B: まいで salah rumus (～いで hanya untuk akhiran ～ぎ).\n• Opsi C: まんで salah rumus (～んで hanya untuk akhiran ～み, ～び, ～に).",
+        "grammarRule": "Aturan Soku-onbin (~って): Verba berakhiran [~い, ~ち, ~り] + ます ➔ diubah menjadi [~って] (買います ➔ 買って; 待ちます ➔ 待って; 帰ります ➔ 帰って)."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk-TE Golongan 1 Bunyi Hatsu-onbin (~Nde)",
+      "type": "teks",
+      "question_ja": "機械が 故障しましたから、すぐに 指導員を （　<strong>＿＿＿＿＿</strong>　）ください。（呼びます：Bentuk Permohonan）",
+      "question_ruby": "機械が 故障しましたから、すぐに 指導員を （　<strong>＿＿＿＿＿</strong>　）ください。（呼びます：Bentuk Permohonan）",
+      "question_id": "Bentuk permohonan instruksi yang tepat untuk 'panggillah instruktur' adalah...",
+      "translation": "Karena mesin rusak/macet, tolong segera panggil instruktur pelatih. Bentuk: 呼んでください.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "呼んで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "呼びて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "呼いて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "呼って"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (呼んで).",
+        "logic": "Kata kerja Golongan 1 yang berakhiran suku kata nasal <strong>～び (bi), ～み (mi), ～に (ni)</strong> mengalami asimilasi sengau (<em>hatsu-onbin</em>) dengan berubah menjadi <strong>～んで (-nde)</strong> berbunyi dengung voiced: <code>呼びます ➔ 呼んで (yonde)</code>, <code>飲みます ➔ 飲んで (nonde)</code>.",
+        "distractor": "• Opsi B: 呼びて salah fatal karena tidak mengkonjugasikan bentuk masu.\n• Opsi C: 呼いて salah rumus (akhiran bi bukan i-onbin).\n• Opsi D: 呼って salah rumus (akhiran bi bukan soku-onbin).",
+        "grammarRule": "Aturan Hatsu-onbin (~んで): Verba berakhiran [~み, ~び, ~に] + ます ➔ diubah menjadi [~んで] (飲みます ➔ 飲んで; 呼びます ➔ 呼んで; 死にます ➔ 死んで)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk-TE Golongan 2 & 3",
+      "type": "teks",
+      "question_ja": "動詞「食べます」（２グループ）と「実習します」（３グループ）の て形は どれですか。",
+      "question_ruby": "動詞「食べます」（２グループ）と「実習します」（３グループ）の て形は どれですか。",
+      "question_id": "Pilihlah bentuk-TE yang tepat untuk Golongan 2 dan 3 secara berturut-turut:",
+      "translation": "Tabemasu menjadi tabete, dan jisshuu shimasu menjadi jisshuu shite. Pasangan: 食べて ／ 実習して.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "食って ／ 実習して"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "食べって ／ 実習して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食べて ／ 実習して"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "食べいて ／ 実習して"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (食べて ／ 実習して).",
+        "logic": "1) <strong>Golongan 2 (Ichidan):</strong> Sangat teratur, cukup menghilangkan akhiran <strong>～ます</strong> dan menggantikannya dengan <strong>～て</strong>: <code>食べます ➔ 食べて (tabete)</code>, <code>見ます ➔ 見て (mite)</code>.<br>2) <strong>Golongan 3 (Fukisoku / Tidak Beraturan):</strong> <code>します ➔ して</code> (sehingga <code>実習します ➔ 実習して</code>) dan <code>来ます ➔ 来て (kite)</code>.",
+        "distractor": "• Opsi A: 食って adalah ragam bahasa kasar slang dari kata kuu.\n• Opsi B: 食べって salah karena verba Golongan 2 tidak mengalami perubahan konsonan ganda soku-onbin.\n• Opsi D: 食べいて salah bentuk karena Golongan 2 tidak mengenal i-onbin.",
+        "grammarRule": "Rumus Konjugasi Golongan 2 & 3: Grup 2: [Masu-stem] + て (食べて, 見て); Grup 3: します ➔ して, 来ます ➔ 来て."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Permohonan / Instruksi Kerja Standar Pabrik (~Te kudasai)",
+      "type": "teks",
+      "question_ja": "作業の 前に、安全靴を （　<strong>＿＿＿＿＿</strong>　）ください。（履きます：Bentuk Permohonan K3）",
+      "question_ruby": "作業の 前に、安全靴を （　<strong>＿＿＿＿＿</strong>　）ください。（履きます：Bentuk Permohonan K3）",
+      "question_id": "Bentuk instruksi K3 yang benar untuk 'tolong kenakan sepatu pengaman' adalah...",
+      "translation": "Sebelum mulai bekerja, tolong pakailah sepatu keselamatan kerja. Bentuk: 履いてください (haite kudasai).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "履きて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "履いで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "履って"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "履いて"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (履いて).",
+        "logic": "Verba <strong>履きます（はきます - hakimasu = memakai alas kaki/celana）</strong> adalah kata kerja Golongan 1 berakhiran <strong>～き</strong>. Maka konjugasi bentuk-te mengalami <em>i-onbin</em> menjadi <strong>履いて（はいて - haite）</strong>. Pola instruksi kerja: <code>安全靴を 履いてください</code>.",
+        "distractor": "• Opsi A: 履きて tidak mengalami onbin sehingga salah secara gramatikal.\n• Opsi B: 履いで salah karena bunyi ki menjadi ite, bukan ide.\n• Opsi C: 履って salah rumus (bukan soku-onbin).",
+        "grammarRule": "Rumus Instruksi Kerja: [Verba Te-kei] + ください (Tolong lakukan...)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Aksi Sedang Berlangsung Saat Ini (~Te imasu)",
+      "type": "teks",
+      "question_ja": "指導員：『アグスさんは いま 何を していますか。』<br>先輩：『あそこの 現場で 旋盤機械を （　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "指導員：『アグスさんは いま 何を していますか。』<br>先輩：『あそこの 現場で 旋盤機械を （　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Bentuk predikat yang tepat untuk menyatakan 'sedang menggunakan mesin bubut' adalah...",
+      "translation": "Instruktur: 'Agus-san sekarang sedang melakukan apa?' Senior: 'Sedang menggunakan mesin bubut di area bengkel sebelah sana.' Bentuk: 使っています.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "使いました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "使っています"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "使いたいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "使いましょう"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (使っています).",
+        "logic": "Untuk menyatakan perbuatan yang <strong>sedang berlangsung tepat pada saat percakapan terjadi (aspek progresif / <em>present continuous</em>)</strong>, digunakan pola rumus <strong>[Verba Te-kei] + います</strong>. Dari <code>使います ➔ 使って + います ➔ 使っています</code>.",
+        "distractor": "• Opsi A: 使いました adalah bentuk lampau (sudah selesai menggunakan).\n• Opsi C: 使いたいです adalah bentuk keinginan (ingin menggunakan).\n• Opsi D: 使いましょう adalah bentuk ajakan (ayo kita gunakan bersama).",
+        "grammarRule": "Rumus Aksi Berlangsung: [Verba Te-kei] + います (Sedang melakukan...)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Penawaran Bantuan Sukarela (~Mashou ka)",
+      "type": "teks",
+      "question_ja": "実習生：『荷物が 重そうですね。（　<strong>＿＿＿＿＿</strong>　）か。』<br>先輩：『すみません。お願いします。』",
+      "question_ruby": "実習生：『荷物が 重そうですね。（　<strong>＿＿＿＿＿</strong>　）か。』<br>先輩：『すみません。お願いします。』",
+      "question_id": "Ungkapan penawaran bantuan yang paling sopan dan tepat adalah...",
+      "translation": "Trainee: 'Bawaan barangnya tampak berat ya. Bolehkah saya bantu bawakan?' Senior: 'Terima kasih, tolong ya.' Bentuk: 持ちましょうか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "持ちてください"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "持ちたいです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "持ちましょう"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "持ちませんでした"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (持ちましょう).",
+        "logic": "Pola untuk <strong>menawarkan bantuan tenaga atau pertolongan secara proaktif dan santun</strong> kepada lawan bicara dibentuk dengan rumus <strong>[Verba Masu-stem] + ましょうか (~mashou ka)</strong>. Dari verba <code>持ちます (membawa) ➔ 持ちましょうか (bagaimana jika saya bawakan?)</code>.",
+        "distractor": "• Opsi A: 持ちてください salah tata bahasa bentuk permohonan.\n• Opsi B: 持ちたいです menyatakan keinginan pribadi penutur sendiri, bukan menawarkan bantuan kepada senior.\n• Opsi D: 持ちませんでした menyatakan tidak membawakan di masa lampau.",
+        "grammarRule": "Rumus Penawaran Bantuan Sopan: [Verba Masu-stem] + ましょうか (Bolehkah saya bantu...?). Respons terima: はい、お願いします; Respons tolak halus: いいえ、けっこうです."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Aksi Sedang Berlangsung (たばこを吸う)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。この 人は 何を していますか。<br>「（　　　）を 吸っています。」",
+      "question_ruby": "絵（え）を 見て ください。この 人は 何を していますか。<br>「（　　　）を 吸っています。」",
+      "question_id": "Perhatikan gambar. Orang ini sedang melakukan apa? 'Sedang mengisap (...)'.",
+      "translation": "Orang ini sedang merokok (mengisap rokok / tabako o sutte imasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おちゃ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "たばこ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "くすり"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ジュース"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (たばこ).",
+        "logic": "Gambar memperlihatkan seorang karyawan sedang merokok di ruang istirahat (たばこ - tabako).",
+        "distractor": "• Opsi A: おちゃ adalah teh.\n• Opsi C: くすり adalah obat.\n• Opsi D: ジュース adalah jus buah.",
+        "grammarRule": "Bentuk ~te iru Bab 14: たばこを吸っています（sedang merokok）."
+      },
+      "image": "assets/bab_14/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Tindakan Berlangsung (写真を撮る)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。何を していますか。<br>「（　　　）を 撮っています。」",
+      "question_ruby": "絵（え）を 見て ください。何を していますか。<br>「（　　　）を 撮っています。」",
+      "question_id": "Perhatikan gambar. Sedang melakukan apa? 'Sedang mengambil (...)'.",
+      "translation": "Sedang memotret / mengambil foto (shashin o totte imasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "え"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ビデオ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "写真（しゃしん）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "てがみ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (写真（しゃしん）).",
+        "logic": "Gambar memperlihatkan orang yang sedang membidik kamera untuk mengambil foto (写真 / しゃしん - shashin).",
+        "distractor": "• Opsi A: え adalah lukisan / gambar.\n• Opsi B: ビデオ adalah rekaman video.\n• Opsi D: てがみ adalah surat tulisan tangan.",
+        "grammarRule": "Kolokasi Verba Bab 14: 写真を撮ります ➔ 写真を撮っています."
+      },
+      "image": "assets/bab_14/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (開けて)",
+      "type": "teks",
+      "question_ja": "暑いですから、窓を （ 開けて ）ください。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "暑いですから、窓を （ 開けて ）ください。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Karena panas tolong buka jendela. Pilihlah cara baca kanji '開けて' yang tepat.",
+      "translation": "Karena udara terasa gerah, tolong bukakan jendela.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あけて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "しめて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "つけて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "けして"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (あけて).",
+        "logic": "Kanji 開けて dibaca あけて (akete) dari bentuk kamus 開ける (membuka).",
+        "distractor": "• Opsi B: しめて ditulis 閉めて (menutup).\n• Opsi C: つけて ditulis 点けて (menyalakan).\n• Opsi D: けして ditulis 消して (memadamkan/mematikan).",
+        "grammarRule": "Instruksi Kerja Bab 14: ～てください（tolong lakukan ...）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (待ちます)",
+      "type": "teks",
+      "question_ja": "ロビーで 指導員を （ まちます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "ロビーで 指導員を （ まちます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Menunggu instruktur di lobi. Pilihlah penulisan kanji yang tepat untuk 'machimasu'.",
+      "translation": "Menunggu kedatangan instruktur di ruang tunggu lobi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "待ちます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "持ちます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "侍ちます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "特ちます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (待ちます).",
+        "logic": "Kata まちます (menunggu) ditulis dengan kanji 待ちます (radikal langkah kaki 彳 dan kuil 寺).",
+        "distractor": "• Opsi B: 持ちます dibaca もちます (membawa/memegang).\n• Opsi C: 侍ちます salah radikal kiri (menggunakan orang 亻).\n• Opsi D: 特ちます salah radikal kiri (menggunakan sapi 牛).",
+        "grammarRule": "Verba Bab 14: 待ちます（まちます = menunggu）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (呼びます)",
+      "type": "teks",
+      "question_ja": "緊急の 時は すぐ リーダーを （ よびます ）。<br>正しい 漢字は どれですか。",
+      "question_ruby": "緊急の 時は すぐ リーダーを （ よびます ）。<br>正しい 漢字は どれですか。",
+      "question_id": "Saat darurat segera panggil pemimpin regu. Pilihlah kanji yang tepat untuk 'yobimasu'.",
+      "translation": "Ketika terjadi kondisi darurat, segera panggil pemimpin regu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "呼びます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "招びます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "召びます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "告びます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (呼びます).",
+        "logic": "Kata よびます (memanggil) ditulis dengan kanji 呼びます (radikal mulut 口 di sisi kiri).",
+        "distractor": "• Opsi B: 招びます dibaca まねきます (mengundang).\n• Opsi C: 召びます dibaca めします (bentuk hormat makan/mengenakan).\n• Opsi D: 告びます adalah penulisan yang salah.",
+        "grammarRule": "Tindakan Darurat Pabrik: 呼びます（よびます = memanggil bantuan）."
+      }
+    }
+  ]
+};
+
+const BAB_15_DATA = {
+  "chapter": "15",
+  "title_ja": "第１５課：許可（～てもいい）・禁止（～てはいけない）と状態・継続の「～ている」",
+  "title_id": "Bab 15: Izin (~Te mo ii), Larangan K3 Pabrik (~Te wa ikenai), dan Status Berkelanjutan (~Te iru)",
+  "theme_ja": "許可・禁止表現 (Kyoka & Kinshi) & 状態・属性の「～ている」",
+  "theme_id": "Evaluasi penguasaan aturan keselamatan kerja pabrik (K3), ungkapan pemberian izin (~te mo ii desu), permohonan izin (~te mo ii desu ka), larangan mutlak standar pabrik (~te wa ikemasen), status kondisi tempat tinggal (~ni sunde imasu), afiliasi institusi (~ni tsutomete imasu), bentuk negatif khusus shiri-masen (bukan shitte imasen), serta partikel penanda target larangan (ni) pada Bab 15 buku IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 15.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 15.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Regulasi Keselamatan Pabrik & Area Khusus Merokok",
+      "type": "teks",
+      "question_ja": "工場には いろいろな （　<strong>きそく</strong>　）が あります。たばこは （　<strong>きつえんじょ</strong>　）で 吸います。「きそく」と「きつえんじょ」の 漢字表記は どれですか。",
+      "question_ruby": "工場には いろいろな （　<strong>きそく</strong>　）が あります。たばこは （　<strong>きつえんじょ</strong>　）で 吸います。「きそく」と「きつえんじょ」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'peraturan/regulasi' dan 'area merokok' adalah...",
+      "translation": "Di pabrik ada berbagai macam peraturan (aturan keselamatan). Rokok dihisap di tempat khusus merokok. Pasangan kanji: 規則 ／ 喫煙所.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "現場 ／ 案内所"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "納期 ／ 事務所"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "規則 ／ 喫煙所"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "安全 ／ 駐車場"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (規則 ／ 喫煙所).",
+        "logic": "1) <strong>規則（きそく - kisoku）</strong> berarti <strong>peraturan / regulasi kerja tertulis</strong>.<br>2) <strong>喫煙所（きつえんじょ - kitsuenjo）</strong> adalah <strong>area khusus yang diizinkan untuk merokok</strong> demi pencegahan bahaya kebakaran di pabrik.",
+        "distractor": "• Opsi A: 現場 (lokasi kerja) / 案内所 (pusat informasi/resepsionis).\n• Opsi B: 納期 (tenggat deadline pengiriman) / 事務所 (kantor tata usaha).\n• Opsi D: 安全 (keselamatan/aman) / 駐車場 (tempat parkir kendaraan).",
+        "grammarRule": "Regulasi K3 Pabrik: 規則（きそく - peraturan）, 喫煙所（きつえんじょ - area merokok）, 禁煙（きんえん - dilarang merokok）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Larangan Sentuhan Bahaya Mesin (Sawaru)",
+      "type": "teks",
+      "question_ja": "運転中の 機械に 手で （　<strong>さわって</strong>　）はいけません。「さわって」の 漢字と 意味は どれですか。",
+      "question_ruby": "運転中の 機械に 手で （　<strong>さわって</strong>　）はいけません。「さわって」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk verba 'sawatte' adalah...",
+      "translation": "Dilarang menyentuh mesin yang sedang beroperasi dengan tangan. '触って' berarti menyentuh.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "触って （Menyentuh / meraba benda berbahaya）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "座って （Duduk di kursi kerja）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "吸って （Menghisap asap rokok）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "使って （Mengoperasikan mesin）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (触って （Menyentuh / meraba benda berbahaya）).",
+        "logic": "Verba <strong>触ります（さわります - sawarimasu）</strong> ditulis dengan kanji <strong>触</strong> yang bermakna <strong>menyentuh, memegang, atau mengontak secara fisik</strong>. Dalam keselamatan industri pabrik: <code>機械に 触ってはいけません (Dilarang menyentuh mesin)</code>.",
+        "distractor": "• Opsi B: 座って dibaca すわって (suwatte - duduk).\n• Opsi C: 吸って dibaca すって (sutte - menghisap).\n• Opsi D: 使って dibaca つかって (tsukatte - menggunakan).",
+        "grammarRule": "Instruksi K3 Bahaya Mekanis: 機械に 触ります（さわります - menyentuh） ➔ 触ってはいけません (Dilarang keras menyentuh)."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Pelepasan Pakaian / APD (Nugu)",
+      "type": "teks",
+      "question_ja": "現場に 入る とき、ヘルメットを （　<strong>ぬいで</strong>　）はいけません。「ぬいで」の 漢字と ます形は どれですか。",
+      "question_ruby": "現場に 入る とき、ヘルメットを （　<strong>ぬいで</strong>　）はいけません。「ぬいで」の 漢字と ます形は どれですか。",
+      "question_id": "Penulisan kanji dan kata kerja asal (bentuk-masu) yang tepat untuk 'melepas (pakaian/topi)' adalah...",
+      "translation": "Saat masuk ke area lapangan kerja, dilarang melepas helm pengaman. Verba asal: 脱ぎます (nugimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "着ます （Memakai baju atas）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "履きます （Memakai celana/sepatu）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "洗います （Mencuci pakaian kerja）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "脱ぎます （Melepas pakaian / perlengkapan badan）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (脱ぎます （Melepas pakaian / perlengkapan badan）).",
+        "logic": "Verba <strong>脱ぎます（ぬぎます - nugimasu）</strong> ditulis dengan kanji <strong>脱</strong> yang berarti <strong>menanggalkan atau melepas pakaian, sepatu, topi, helm, atau sarung tangan</strong>. Bentuk-te mengalami perubahan menjadi <strong>脱いで（ぬいで - nuide）</strong>.",
+        "distractor": "• Opsi A: 着ます（きます） berarti memakai kemeja/pakaian atas.\n• Opsi B: 履きます（はきます） berarti mengenakan sepatu/celana.\n• Opsi C: 洗います（あらいます） berarti mencuci pakaian/peralatan.",
+        "grammarRule": "Pasangan Aksi Pakaian & APD: かぶります（memakai topi/helm） / 履きます（memakai sepatu） >< 脱ぎます（ぬぎます - melepas/menanggalkan）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Pintu Evakuasi & Akses Keluar (Deguchi)",
+      "type": "teks",
+      "question_ja": "非常の ときは、左側の （　<strong>出口</strong>　）から 外へ 出ます。「出口」の 読み方は どれですか。",
+      "question_ruby": "非常の ときは、左側の （　<strong>出口</strong>　）から 外へ 出ます。「出口」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'pintu keluar' (exit) adalah...",
+      "translation": "Saat keadaan darurat, keluarlah ke luar melalui pintu keluar di sebelah kiri. Kanji 出口 dibaca deguchi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "いりぐち"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "でぐち"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "まどぐち"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "かいさつぐち"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (でぐち).",
+        "logic": "Kanji <strong>出口</strong> dibaca <strong>でぐち (deguchi)</strong> yang berarti <strong>pintu keluar / akses jalur keluar</strong>. Kebalikannya adalah <strong>入口（いりぐち - iriguchi = pintu masuk）</strong>.",
+        "distractor": "• Opsi A: いりぐち adalah pintu masuk (入口).\n• Opsi C: まどぐち adalah loket pelayanan (窓口).\n• Opsi D: かいさつぐち adalah gerbang tiket stasiun kereta (改札口).",
+        "grammarRule": "Akses Pintu Darurat & Jalur Evakuasi: 入口（いりぐち - masuk） >< 出口（でぐち - keluar）; 非常口（ひじょうぐち - pintu darurat）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Afiliasi Ketenagakerjaan Institusional (Tsutomeru)",
+      "type": "teks",
+      "question_ja": "父は 東京の 自動車会社に （　<strong>つとめて</strong>　）います。「つとめて」の 漢字表記と 意味は どれですか。",
+      "question_ruby": "父は 東京の 自動車会社に （　<strong>つとめて</strong>　）います。「つとめて」の 漢字表記と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan makna kata yang tepat untuk 'tsutomete' adalah...",
+      "translation": "Ayah saya bekerja sebagai pegawai di perusahaan otomotif Tokyo. Kanji tsutomete adalah 勤めて.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "泊めて （Menginap di hotel）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "止めて （Menghentikan kendaraan）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "勤めて （Bekerja / mengabdi sebagai staf di perusahaan）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "集めて （Mengumpulkan dokumen kerja）"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (勤めて （Bekerja / mengabdi sebagai staf di perusahaan）).",
+        "logic": "Verba <strong>勤めます（つとめます - tsutomemasu）</strong> ditulis dengan kanji <strong>勤</strong> yang berarti <strong>terdaftar dan bekerja secara resmi di suatu institusi atau korporasi</strong>. Pasangan partikelnya adalah: <code>[Perusahaan/Institusi] に 勤めています</code>.",
+        "distractor": "• Opsi A: 泊めて ditulis 泊 (menginapkan).\n• Opsi B: 止めて ditulis 止 (menghentikan).\n• Opsi D: 集めて ditulis 集 (mengumpulkan).",
+        "grammarRule": "Istilah Status Kepegawaian: [Perusahaan/Pabrik] に + 勤めます（つとめます） ➔ 勤めています."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Alat Pelindung Diri (APD Pabrik)",
+      "type": "teks",
+      "question_ja": "工場の中では、必ず 頭に （　<strong>ヘルメット</strong>　）を かぶらなければなりません。「ヘルメット」の 意味は どれですか。",
+      "question_ruby": "工場の中では、必ず 頭に （　<strong>ヘルメット</strong>　）を かぶらなければなりません。「ヘルメット」の 意味は どれですか。",
+      "question_id": "Perlengkapan APD keselamatan kerja yang dicetak tebal berarti...",
+      "translation": "Di dalam area pabrik, wajib mengenakan helm keselamatan di kepala. 'ヘルメット' adalah helm pengaman.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Helm pelindung kepala dari benturan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Sarung tangan pelindung percikan api"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Sepatu keselamatan berpelat baja"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Kacamata pengaman debu gerinda"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (Helm pelindung kepala dari benturan).",
+        "logic": "Kata serapan katakana <strong>ヘルメット (herumetto)</strong> berarti <strong>helm pelindung kepala (safety helmet)</strong> yang merupakan standar mutlak APD di seluruh area manufaktur Jepang. Kata kerja pasangannya adalah <code>かぶります (mengenakan di kepala)</code>.",
+        "distractor": "• Opsi B: Sarung tangan adalah 手袋（てぶくろ - tebukuro） atau 軍手（ぐんて - gunte）.\n• Opsi C: Sepatu keselamatan adalah 安全靴（あんぜんぐつ - anzengutsu）.\n• Opsi D: Kacamata pengaman adalah 保護メガネ（ほごめがね - hogo megane）.",
+        "grammarRule": "Perlengkapan K3 Standar Pabrik: ヘルメット（helm）, 安全靴（sepatu safety）, 作業着（seragam kerja）, 手袋（sarung tangan）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Tempat Tinggal Menetap (Sunde imasu)",
+      "type": "teks",
+      "question_ja": "アグスさんは 千葉県の 寮に （　<strong>住んで</strong>　）います。「住んで」の 読み方は どれですか。",
+      "question_ruby": "アグスさんは 千葉県の 寮に （　<strong>住んで</strong>　）います。「住んで」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'tinggal menetap' adalah...",
+      "translation": "Agus-san tinggal di asrama di Prefektur Chiba. Kanji 住んで dibaca sunde.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "しんで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "やすんで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "のんで"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "すんで"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (すんで).",
+        "logic": "Kanji <strong>住</strong> dibaca <strong>す (su)</strong> dalam bentuk kun'yomi <strong>住みます（すみます - sumimasu = tinggal/bermukim）</strong>. Bentuk berkelanjutannya adalah <strong>住んでいます（すんでいます - sunde imasu）</strong>.",
+        "distractor": "• Opsi A: しんで ditulis 死んで (meninggal dunia).\n• Opsi B: やすんで ditulis 休んで (beristirahat/libur).\n• Opsi C: のんで ditulis 飲んで (meminum).",
+        "grammarRule": "Pola Status Domisili: [Kota / Asrama] に + 住んでいます（すんでいます = bertempat tinggal di...）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Domisili Tempat Tinggal Menetap (Ni)",
+      "type": "teks",
+      "question_ja": "実習生は 会社の 寮（　<strong>？</strong>　） 住んでいます。",
+      "question_ruby": "実習生は 会社の 寮（　<strong>？</strong>　） 住んでいます。",
+      "question_id": "Partikel yang tepat untuk menandai asrama sebagai tempat domisili tinggal menetap adalah...",
+      "translation": "Siswa magang tinggal di asrama perusahaan. Partikel domisili menetap adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Verba <strong>住んでいます (sunde imasu)</strong> menyatakan <strong>status kondisi keberadaan domisili yang menetap di suatu titik lokasi</strong>. Oleh karena itu, partikel penanda tempatnya wajib menggunakan <strong>に (ni)</strong>: <code>寮に 住んでいます</code> (bukan で).",
+        "distractor": "• Opsi A: で digunakan untuk tempat berlangsungnya aksi dinamis aktif (misal: 寮で勉強します), tidak boleh dipasangkan dengan sunde imasu.\n• Opsi C: を menandai objek penderita.\n• Opsi D: へ menandai arah perpindahan gerak.",
+        "grammarRule": "Pembeda Fundamental Domisili: [Tempat] + に + 住んでいます (Bertempat tinggal menetap di...) vs [Tempat] + で + Kata Kerja Aksi."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Afiliasi Tempat Bekerja Staf (Ni)",
+      "type": "teks",
+      "question_ja": "兄は 東京ゴム（　<strong>？</strong>　） 勤めています。",
+      "question_ruby": "兄は 東京ゴム（　<strong>？</strong>　） 勤めています。",
+      "question_id": "Partikel yang tepat untuk menandai perusahaan tempat bekerja resmi dengan verba 'tsutomete imasu' adalah...",
+      "translation": "Kakak laki-laki saya bekerja di perusahaan Tokyo Gomu. Partikel penanda institusi pada tsutomete imasu adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Verba <strong>勤めています (tsutomete imasu = berstatus karyawan/mengabdi)</strong> menuntut partikel sasaran afiliasi <strong>に (ni)</strong>: <code>[Perusahaan] に 勤めています</code>. Bandingkan dengan verba <strong>働いています (hataraite imasu = bekerja aktif)</strong> yang menggunakan partikel <strong>で (de)</strong>: <code>工場で 働いています</code>.",
+        "distractor": "• Opsi A: を salah secara gramatikal.\n• Opsi B: で dipasangkan dengan 働いています (工場で働いています), bukan dengan 勤めています.\n• Opsi D: から menandai asal sumber.",
+        "grammarRule": "Pasangan Tetap Partikel Kerja: [Institusi / Perusahaan] + に + 勤めています vs [Lokasi / Bengkel] + で + 働いています."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Target Sentuhan Kontak (Ni)",
+      "type": "teks",
+      "question_ja": "危ないですから、絶対に 機械（　<strong>？</strong>　） 触ってはいけません。",
+      "question_ruby": "危ないですから、絶対に 機械（　<strong>？</strong>　） 触ってはいけません。",
+      "question_id": "Partikel yang tepat untuk menandai mesin sebagai sasaran kontak sentuhan fisik adalah...",
+      "translation": "Karena berbahaya, mutlak tidak boleh menyentuh mesin. Partikel sasaran sentuhan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (に).",
+        "logic": "Kata kerja <strong>触ります（さわります - sawarimasu = menyentuh）</strong> menuntut partikel titik sasaran sentuhan <strong>に (ni)</strong>: <code>[Benda / Mesin] に 触ります / 触ってはいけません</code>. Jangan menggunakan partikel を.",
+        "distractor": "• Opsi B: を adalah kesalahan umum pemula; verba sawaru tidak mengambil partikel を.\n• Opsi C: で menandai alat sentuh (seperti 手で触ります).\n• Opsi D: へ menandai arah perjalanan.",
+        "grammarRule": "Rumus Target Sentuhan K3: [Objek Sentuhan] + に + 触ります / 触ってはいけません."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Ruang Akses Masuk (Ni)",
+      "type": "teks",
+      "question_ja": "関係者以外、この 部屋（　<strong>？</strong>　） 入ってはいけません。",
+      "question_ruby": "関係者以外、この 部屋（　<strong>？</strong>　） 入ってはいけません。",
+      "question_id": "Partikel yang tepat untuk menandai ruangan sebagai titik dimasuki adalah...",
+      "translation": "Selain pihak yang berkepentingan, dilarang masuk ke dalam ruangan ini. Partikel akses masuk ruangan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Verba <strong>入ります（はいります - hairimasu = masuk）</strong> memerlukan titik ruang yang dituju/dimasuki yang ditandai dengan partikel <strong>に (ni)</strong>: <code>部屋に 入ります / 部屋に 入ってはいけません</code>. Sebaliknya, saat keluar dari ruangan menggunakan partikel <strong>を</strong> (部屋を出ます).",
+        "distractor": "• Opsi A: を digunakan untuk kata kerja keluar (部屋を出ます), bukan masuk (入ります).\n• Opsi C: で menandai tempat melakukan kegiatan di dalam ruangan.\n• Opsi D: から menandai asal keluar (部屋から出ます).",
+        "grammarRule": "Pasangan Titik Akses Ruangan: [Ruangan] + に + 入ります（はいります - masuk ke） >< [Ruangan] + を/から + 出ます（でます - keluar dari）."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Konsesi Izin Tindakan (Mo)",
+      "type": "teks",
+      "question_ja": "実習生：『ここで 写真を 撮って（　<strong>？</strong>　） いいですか。』<br>指導員：『はい、いいですよ。』",
+      "question_ruby": "実習生：『ここで 写真を 撮って（　<strong>？</strong>　） いいですか。』<br>指導員：『はい、いいですよ。』",
+      "question_id": "Partikel yang tepat untuk membentuk pola izin 'bolehkah...' adalah...",
+      "translation": "Trainee: 'Bolehkah mengambil foto di sini?' Instruktur: 'Ya, boleh.' Partikel izin adalah も.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "は"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "も"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (も).",
+        "logic": "Pola kalimat untuk meminta dan memberikan izin melakukan suatu perbuatan dibentuk dengan rumus <strong>[Verba Te-kei] + も + いいです（か）</strong>: <code>撮ってもいいですか (bolehkah mengambil foto?)</code>. Partikel <strong>も (mo)</strong> memberikan nuansa 'bahkan jika melakukan aksi tersebut pun tidak apa-apa'.",
+        "distractor": "• Opsi A: は digunakan pada pola LARANGAN keras: ～ては いけません.\n• Opsi B: が salah partikel.\n• Opsi C: を salah penempatan partikel.",
+        "grammarRule": "Pembeda Mutlak Pola Izin vs Larangan: [Verba-TE] + も いいです (IZIN: Boleh) vs [Verba-TE] + は いけません (LARANGAN: Tidak Boleh)."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penegas Topik Larangan Keras K3 (Wa)",
+      "type": "teks",
+      "question_ja": "作業現場では、サンダルを 履いて（　<strong>？</strong>　） いけません。",
+      "question_ruby": "作業現場では、サンダルを 履いて（　<strong>？</strong>　） いけません。",
+      "question_id": "Partikel yang tepat untuk membentuk kalimat larangan keras K3 'tidak boleh...' adalah...",
+      "translation": "Di area kerja lapangan, dilarang keras memakai sandal. Partikel larangan adalah は.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "も"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "は"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (は).",
+        "logic": "Pola kalimat larangan keras yang menyatakan pelanggaran aturan atau larangan keselamatan kerja dibentuk dari rumus <strong>[Verba Te-kei] + は (wa) + いけません</strong>: <code>履いては いけません (tidak boleh / dilarang memakai)</code>.",
+        "distractor": "• Opsi A: も digunakan untuk pemberian izin (履いてもいいです = boleh memakai).\n• Opsi B: に salah posisi dan fungsi.\n• Opsi D: で salah tata bahasa.",
+        "grammarRule": "Rumus Larangan K3 Mutlak: [Verba Te-kei] + は + いけません (Dilarang keras melakukan...)."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Meminta Izin Operasional (~Te mo ii desu ka)",
+      "type": "teks",
+      "question_ja": "実習生：『すみません。この ノートパソコンを （　<strong>＿＿＿＿＿</strong>　）か。』<br>先輩：『はい、どうぞ 使ってください。』",
+      "question_ruby": "実習生：『すみません。この ノートパソコンを （　<strong>＿＿＿＿＿</strong>　）か。』<br>先輩：『はい、どうぞ 使ってください。』",
+      "question_id": "Ungkapan meminta izin yang paling tepat dan sopan adalah...",
+      "translation": "Trainee: 'Permisi, bolehkah saya memakai laptop ini?' Senior: 'Ya, silakan pakai.' Pola: 使ってもいいですか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "使ってもいいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "使ってはいけません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "使いたいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "使ってください"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (使ってもいいです).",
+        "logic": "Rumus untuk <strong>meminta izin melakukan sesuatu</strong> adalah <strong>[Verba Te-kei] + もいいですか (~te mo ii desu ka = bolehkah saya...?)</strong>. Dari <code>使います ➔ 使って + もいいですか ➔ 使ってもいいですか</code>.",
+        "distractor": "• Opsi B: 使ってはいけませんか menanyakan apakah dilarang menggunakan.\n• Opsi C: 使いたいですか menanyakan apakah lawan bicara ingin menggunakan.\n• Opsi D: 使ってくださいか salah tata bahasa (kudasai tidak dilekati partikel tanya ka untuk izin).",
+        "grammarRule": "Rumus Permohonan Izin Sopan: [Verba Te-kei] + もいいですか (Bolehkah saya...?)."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Respons Terhadap Permohonan Izin",
+      "type": "teks",
+      "question_ja": "実習生：『先生、ここで 辞書を 見てもいいですか。』<br>先生：『はい、（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "実習生：『先生、ここで 辞書を 見てもいいですか。』<br>先生：『はい、（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Jawaban pemberian izin yang tepat dari guru adalah...",
+      "translation": "Siswa: 'Sensei, bolehkah saya melihat kamus di sini?' Guru: 'Ya, boleh.' Respons: 見てもいいですよ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "見てはいけません"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "見ませんでした"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "見たくないです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "見てもいいですよ"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (見てもいいですよ).",
+        "logic": "Untuk merespons positif permohonan izin <code>～てもいいですか</code>, digunakan ungkapan pemberian izin: <strong>はい、[Verba Te-kei] + もいいです（よ）</strong>, atau dapat pula disingkat sopan dengan <em>はい、どうぞ</em>.",
+        "distractor": "• Opsi A: 見てはいけません adalah penolakan/larangan, kontradiktif dengan kata 'はい'.\n• Opsi B: 見ませんでした adalah bentuk lampau (tidak melihat).\n• Opsi C: 見たくないです menyatakan keinginan pribadi tidak ingin melihat.",
+        "grammarRule": "Respons Permohonan Izin: Izin Diberikan: はい、～てもいいです / はい、どうぞ; Izin Ditolak: いいえ、～てはいけません / いいえ、だめです."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Larangan Pelanggaran Aturan K3 (~Te wa ikemasen)",
+      "type": "teks",
+      "question_ja": "工場長：『作業中、絶対に 保護メガネを （　<strong>＿＿＿＿＿</strong>　）。危険ですから。』",
+      "question_ruby": "工場長：『作業中、絶対に 保護メガネを （　<strong>＿＿＿＿＿</strong>　）。危険ですから。』",
+      "question_id": "Ungkapan larangan tegas K3 yang tepat untuk 'tidak boleh melepas kacamata pelindung' adalah...",
+      "translation": "Kepala pabrik: 'Selama bekerja, mutlak tidak boleh melepas kacamata pengaman. Karena berbahaya.' Larangan: 外してはいけません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "外してもいいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "外してはいけません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "外してください"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "外しましょう"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (外してはいけません).",
+        "logic": "Rumus <strong>larangan mutlak peraturan keselamatan kerja</strong> adalah <strong>[Verba Te-kei] + はいけません (~te wa ikemasen = dilarang / tidak boleh...)</strong>: <code>外しては いけません (dilarang melepas kacamata)</code>.",
+        "distractor": "• Opsi A: 外してもいいです berarti memberikan izin untuk melepas (sangat berbahaya).\n• Opsi C: 外してください berarti menyuruh melepas kacamata.\n• Opsi D: 外しましょう mengajak melepas bersama.",
+        "grammarRule": "Kaidah Larangan K3 Mutlak: [Tindakan Bahaya (Bentuk-TE)] + は いけません."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Status Kondisi Domisili Tempat Tinggal (~Ni sunde imasu)",
+      "type": "teks",
+      "question_ja": "鈴木：『アグスさんは いま どこに （　<strong>＿＿＿＿＿</strong>　）か。』<br>アグス：『東京の アイムジャパンの 寮に 住んでいます。』",
+      "question_ruby": "鈴木：『アグスさんは いま どこに （　<strong>＿＿＿＿＿</strong>　）か。』<br>アグス：『東京の アイムジャパンの 寮に 住んでいます。』",
+      "question_id": "Bentuk pertanyaan yang tepat untuk menanyakan domisili tempat tinggal saat ini adalah...",
+      "translation": "Suzuki: 'Agus-san sekarang tinggal di mana?' Agus: 'Saya tinggal di asrama IMM Japan di Tokyo.' Bentuk: 住んでいますか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "住んでいます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "住みます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "住んでいました"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "住みたいです"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (住んでいます).",
+        "logic": "Tempat tinggal / domisili adalah suatu <strong>status keadaan berkelanjutan (state of living)</strong> yang dihasilkan dari tindakan menetap. Oleh sebab itu, bentuk baku dalam bahasa Jepang adalah bentuk aspek kontinu <strong>住んでいます（すんでいます - sunde imasu）</strong>: <code>どこに 住んでいますか</code>.",
+        "distractor": "• Opsi B: 住みますか menanyakan niat masa depan (apakah akan tinggal?), bukan kondisi keberadaan saat ini.\n• Opsi C: 住んでいましたか menanyakan masa lampau (dulu tinggal di mana?).\n• Opsi D: 住みたいですか menanyakan keinginan (ingin tinggal di mana?).",
+        "grammarRule": "Rumus Status Domisili: [Tempat] に + 住んでいます（すんでいます）."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Status Afiliasi Perusahaan vs Aktivitas Kerja Pabrik",
+      "type": "teks",
+      "question_ja": "鈴木さんは 自動車の 会社（　①　） 勤めています。そして、横浜の 工場（　②　） 働いています。",
+      "question_ruby": "鈴木さんは 自動車の 会社（　①　） 勤めています。そして、横浜の 工場（　②　） 働いています。",
+      "question_id": "Pasangan partikel ① dan ② yang benar secara berturut-turut adalah...",
+      "translation": "Suzuki-san berstatus karyawan di perusahaan otomotif, dan melakukan aktivitas kerja di pabrik Yokohama. Pasangan partikel: に lalu で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で ／ で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に ／ に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で ／ に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に ／ で"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (に ／ で).",
+        "logic": "Kaidah gramatikal distingsi verba kerja:<br>1) <strong>勤めています (tsutomete imasu)</strong> menandai status kepegawaian pada suatu institusi / korporasi ➔ memakai partikel <strong>に (ni)</strong>.<br>2) <strong>働いています (hataraite imasu)</strong> menandai aktivitas dinamis bekerja fisik di suatu tempat konkret ➔ memakai partikel <strong>で (de)</strong>.<br>Maka susunannya adalah <strong>に ／ で</strong>.",
+        "distractor": "• Opsi A: で ／ で salah karena tsutomete imasu tidak mengambil partikel で.\n• Opsi B: に ／ に salah karena hataraite imasu menuntut partikel で.\n• Opsi C: で ／ に adalah pasangan terbalik yang keliru.",
+        "grammarRule": "Perbedaan Partikel Bekerja Bab 15: [Institusi Perusahaan] に 勤めています vs [Lokasi Tempat Kerja] で 働いています."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Keunikan Bentuk Negatif Verba Pengetahuan (Shiru ➔ Shirimasen)",
+      "type": "teks",
+      "question_ja": "先輩：『アグスさん、あそこにいる 指導員の 名前を 知っていますか。』<br>アグス：『いいえ、（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_ruby": "先輩：『アグスさん、あそこにいる 指導員の 名前を 知っていますか。』<br>アグス：『いいえ、（　<strong>＿＿＿＿＿</strong>　）。』",
+      "question_id": "Bentuk negatif yang benar dan baku dalam bahasa Jepang untuk 'saya tidak tahu/kenal' adalah...",
+      "translation": "Senior: 'Agus-san, apakah kamu tahu nama instruktur yang di sana itu?' Agus: 'Tidak, saya tidak tahu.' Bentuk negatif baku: 知りません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "知っていません"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "知りません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "知ってありません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "知らなくていいです"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (知りません).",
+        "logic": "Dalam kaidah tata bahasa Jepang, verba <strong>知ります (tahu/kenal)</strong> memiliki aturan khusus yang sangat khas:<br>- Bentuk Afirmatif: <strong>知っています (shitte imasu = tahu/kenal)</strong>.<br>- Bentuk Negatif: WAJIB berbentuk <strong>知りません (shirimasen = tidak tahu)</strong>.<br>Bentuk <em>知っていません (shitte imasen)</em> adalah <strong>KESALAHAN BESAR</strong> yang tidak pernah digunakan dalam bahasa Jepang standar.",
+        "distractor": "• Opsi A: 知っていません adalah kesalahan fatal pembelajar asing karena bentuk ini tidak ada dalam bahasa Jepang baku.\n• Opsi C: 知ってありません adalah bentuk tata bahasa yang rusak.\n• Opsi D: 知らなくていいです bermakna 'tidak perlu tahu'.",
+        "grammarRule": "Aturan Khusus Verba 知る: Pertanyaan: 知っていますか ➔ Jawaban Positif: はい、知っています; Jawaban Negatif: いいえ、知りません (DILARANG KERAS mengatakan 知っていません)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Status Kondisi Hasil Tindakan / Penjualan Komersial (~Te iru)",
+      "type": "teks",
+      "question_ja": "駅前の あの 店では、丈夫な 作業靴や 安全靴を （　<strong>＿＿＿＿＿</strong>　）。（売ります：Status Penjualan Rutin Toko）",
+      "question_ruby": "駅前の あの 店では、丈夫な 作業靴や 安全靴を （　<strong>＿＿＿＿＿</strong>　）。（売ります：Status Penjualan Rutin Toko）",
+      "question_id": "Bentuk predikat yang tepat untuk menyatakan komoditas yang rutin diperjualbelikan di toko adalah...",
+      "translation": "Di toko depan stasiun itu, menjual sepatu kerja dan sepatu pengaman yang kuat. Bentuk rutin toko: 売っています.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "売りました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "売りたいです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "売っています"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "売りましょう"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (売っています).",
+        "logic": "Untuk menyatakan <strong>kegiatan komersial yang berlangsung secara berkelanjutan sebagai mata pencaharian rutin toko / penyediaan barang dagangan</strong>, digunakan bentuk kontinu <strong>[Verba Te-kei] + います</strong>: <code>売っています (utte imasu = menjual)</code>.",
+        "distractor": "• Opsi A: 売りました berarti sudah terjual di masa lampau.\n• Opsi B: 売りたいです berarti penutur ingin menjual.\n• Opsi D: 売りましょう berarti ajakan mari kita jual.",
+        "grammarRule": "Status Niaga Berkelanjutan: [Toko/Toserba] で + [Barang Dagangan] を + 売っています（うっています）."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Rambu Larangan K3 (禁煙)",
+      "type": "gambar",
+      "question_ja": "工場の マークを 見て ください。この 意味は 何ですか。<br>「ここで たばこを （　　　）。」",
+      "question_ruby": "工場の マークを 見て ください。この 意味は 何ですか。<br>「ここで たばこを （　　　）。」",
+      "question_id": "Perhatikan rambu pabrik. Apakah arti rambu ini? 'Di sini (...) merokok'.",
+      "translation": "Di sini tidak boleh merokok (tabako o sutte wa ikemasen).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "吸ってもいいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "吸ってはいけません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "吸わなければなりません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "吸いたいです"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (吸ってはいけません).",
+        "logic": "Rambu '禁煙' (Dilarang Merokok) menunjukkan larangan keras di area pabrik, sehingga pola kalimat yang tepat adalah [V-te] ＋ はいけません.",
+        "distractor": "• Opsi A: 吸ってもいいです menyatakan izin boleh merokok.\n• Opsi C: 吸わなければなりません menyatakan kewajiban harus merokok.\n• Opsi D: 吸いたいです menyatakan keinginan pribadi.",
+        "grammarRule": "Pola Larangan K3 Bab 15: ～てはいけません（tidak boleh / dilarang keras）."
+      },
+      "image": "assets/bab_15/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Rambu Larangan Masuk (立入禁止)",
+      "type": "gambar",
+      "question_ja": "工場の マークを 見て ください。これは 何の マークですか。<br>「あぶないですから、（　　　）です。」",
+      "question_ruby": "工場の マークを 見て ください。これは 何の マークですか。<br>「あぶないですから、（　　　）です。」",
+      "question_id": "Perhatikan rambu pabrik. Rambu apakah ini? 'Karena berbahaya, (...)'.",
+      "translation": "Karena area berbahaya, dilarang masuk (tachiiri kinshi).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ちゅうしゃきんし"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かきげんきん"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "立入禁止（たちいりきんし）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "使用禁止"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (立入禁止（たちいりきんし）).",
+        "logic": "Rambu memperlihatkan tulisan '立入禁止' (たちいりきんし - tachiiri kinshi) yang berarti larangan memasuki kawasan operasional berbahaya.",
+        "distractor": "• Opsi A: ちゅうしゃきんし adalah dilarang parkir (駐車禁止).\n• Opsi B: かきげんきん adalah dilarang menyalakan api (火気厳禁).\n• Opsi D: 使用禁止 adalah dilarang menggunakan alat.",
+        "grammarRule": "Rambu Keselamatan Pabrik: 立入禁止（たちいりきんし = dilarang masuk）."
+      },
+      "image": "assets/bab_15/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (置いて)",
+      "type": "teks",
+      "question_ja": "工具を 指定の 場所に （ 置いて ）ください。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "工具を 指定の 場所に （ 置いて ）ください。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Tolong taruh peralatan di tempat yang ditentukan. Pilihlah cara baca kanji '置いて' yang tepat.",
+      "translation": "Tolong letakkan perkakas pada tempat yang telah ditentukan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おいて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "つかって"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "すてて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "だして"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (おいて).",
+        "logic": "Kanji 置いて dibaca おいて (oite) dari verba 置く (menaruh/meletakkan).",
+        "distractor": "• Opsi B: つかって ditulis 使って (menggunakan).\n• Opsi C: すてて ditulis 捨てて (membuang).\n• Opsi D: だして ditulis 出して (mengeluarkan).",
+        "grammarRule": "Kaidah 5S Pabrik Bab 15: 置きます（おきます = meletakkan barang）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (作ります)",
+      "type": "teks",
+      "question_ja": "日本の 工場で 部品を （ つくります ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "日本の 工場で 部品を （ つくります ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Membuat suku cadang di pabrik Jepang. Pilihlah penulisan kanji yang tepat untuk 'tsukurimasu'.",
+      "translation": "Memproduksi suku cadang komponen di pabrik Jepang.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "作ります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "昨ります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "乍ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "柞ります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (作ります).",
+        "logic": "Kata つくります (membuat/memproduksi) ditulis dengan kanji baku 作ります (radikal orang 亻 dan 乍).",
+        "distractor": "• Opsi B: 昨ります salah radikal kiri (menggunakan hari 日 pada kemarin 昨).\n• Opsi C: 乍ります tidak memiliki radikal orang.\n• Opsi D: 柞ります salah radikal kiri (menggunakan pohon 木).",
+        "grammarRule": "Istilah Manufaktur: 作ります（つくります = membuat / memproduksi）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (安全)",
+      "type": "teks",
+      "question_ja": "工場では いつも （ あんぜん ）に 注意して 作業します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "工場では いつも （ あんぜん ）に 注意して 作業します。<br>正しい 漢字は どれですか。",
+      "question_id": "Di pabrik selalu berhati-hati terhadap keselamatan saat bekerja. Pilihlah kanji yang tepat untuk 'anzen'.",
+      "translation": "Di pabrik selalu berhati-hati demi keselamatan dalam setiap pekerjaan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "安全"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "安前"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "全安"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "安善"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (安全).",
+        "logic": "Kata あんぜん (keselamatan) ditulis dengan urutan kanji baku 安全 (安 = tenang/damai, 全 = utuh/sepenuhnya).",
+        "distractor": "• Opsi B: 安前 salah huruf kanan (menggunakan 前 = depan).\n• Opsi C: 全安 terbalik susunannya.\n• Opsi D: 安善 salah huruf kanan (menggunakan 善 = kebaikan moral).",
+        "grammarRule": "Prinsip K3 Industri Jepang: 安全（あんぜん = keselamatan kerja）."
+      }
+    }
+  ]
+};
+
+const BAB_16_DATA = {
+  "chapter": "16",
+  "title_ja": "第１６課：動作の連続（～て、～て）・「～てから」・形容詞の接続（～くて／～で）・属性の「～は～が」",
+  "title_id": "Bab 16: Rangkaian Aktivitas Berturut-turut (~Te, ~Te), Urutan Waktu (~Te kara), Penyambungan Kata Sifat (~Kute / ~De), dan Karakteristik Sub-Topik (~Wa ~Ga)",
+  "theme_ja": "動作の連続表現 (Rangkaian Aksi), 時間的順序 (Urutan Waktu), 形容詞の接続 (Penyambungan Sifat) & 人物・物の特徴描写",
+  "theme_id": "Evaluasi penguasaan materi Bab 16 buku IMM Japan yang mencakup: rangkaian perbuatan berurutan secara kronologis menggunakan verba bentuk-te (V1-te, V2-te, V3-masu), urutan pasti setelah perbuatan pertama selesai (V-te kara), metode/sarana pelaksanaan aksi (V-te + verba utama), penyambungan kata sifat-I (~kute) dan kata sifat-Na (~de), penggambaran ciri fisik/karakteristik spesifik ([Topik] は [Atribut] が [Kata Sifat] です), serta partikel transitif/lokatif khas transportasi dan mobilitas (o demask, ni norimasu, o orimasu, ni norikaemasu).",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 16.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 16.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Rutinitas Pagi & Higienitas Diri",
+      "type": "teks",
+      "question_ja": "毎朝 6時に 起きて、歯を （　<strong>みがいて</strong>　）、シャワーを （　<strong>あびます</strong>　）。「みがいて」と「あびます」の 漢字表記は どれですか。",
+      "question_ruby": "毎朝 6時に 起きて、歯を （　<strong>みがいて</strong>　）、シャワーを （　<strong>あびます</strong>　）。「みがいて」と「あびます」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'menggosok (gigi)' dan 'menyiram / mandi (shower)' adalah...",
+      "translation": "Setiap pagi bangun jam 6, menggosok gigi, lalu mandi shower. Kanji yang tepat: 磨いて ／ 浴びます.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "洗って ／ 飲みます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "磨いて ／ 浴びます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "拭いて ／ 入ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "切って ／ 降ります"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (磨いて ／ 浴びます).",
+        "logic": "1) <strong>磨きます（みがきます - migakimasu）</strong> ditulis dengan kanji <strong>磨</strong> yang berarti <strong>menggosok atau menyikat (gigi / benda hingga mengilap)</strong>. Bentuk-te adalah <code>磨いて（みがいて）</code>.<br>2) <strong>浴びます（あびます - abimasu）</strong> ditulis dengan kanji <strong>浴</strong> yang berarti <strong>menyiramkan air ke seluruh badan / mandi guyur</strong>. Pasangan tetap: <code>シャワーを浴びます</code>.",
+        "distractor": "• Opsi A: 洗って (あらって - mencuci muka/tangan) / 飲みます (のみます - meminum air).\n• Opsi C: 拭いて (ふいて - mengelap meja) / 入ります (はいります - masuk bak mandi / berendam).\n• Opsi D: 切って (きって - memotong bahan) / 降ります (おります - turun dari kendaraan).",
+        "grammarRule": "Kolokasi Rutinitas Pagi: 歯を磨きます（はをみがきます - sikat gigi） & シャワーを浴びます（シャワーをあびます - mandi shower）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Pergantian Pakaian Kerja & Pembenahan Pasca-Kerja",
+      "type": "teks",
+      "question_ja": "工場に 着いてから 作業服に （　<strong>きがえて</strong>　）、仕事が 終わってから （　<strong>あとかたづけ</strong>　）を します。下線部の 意味の 組み合わせは どれですか。",
+      "question_ruby": "工場に 着いてから 作業服に （　<strong>きがえて</strong>　）、仕事が 終わってから （　<strong>あとかたづけ</strong>　）を します。下線部の 意味の 組み合わせは どれですか。",
+      "question_id": "Kombinasi arti yang tepat untuk kata kerja 'kigaete' dan istilah 'atokataduke' adalah...",
+      "translation": "Setelah tiba di pabrik, berganti pakaian ke seragam kerja, dan setelah pekerjaan selesai, melakukan pembenahan/perapian tempat kerja.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Mencuci seragam kerja ／ Memeriksa mesin produksi"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Membeli perlengkapan kerja ／ Melaporkan hasil pekerjaan"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Menyimpan alat kerja ／ Menyiapkan bahan baku"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Berganti pakaian kerja ／ Bersih-bersih dan perapian setelah bekerja"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (Berganti pakaian kerja ／ Bersih-bersih dan perapian setelah bekerja).",
+        "logic": "1) Verba <strong>着替えます（きがえます - kigaemasu）</strong> berarti <strong>berganti pakaian</strong> (dari pakaian bebas ke pakaian kerja / 作業服).<br>2) Istilah industri <strong>後片付け（あとかたづけ - atokataduke）</strong> bermakna <strong>merapikan kembali peralatan, membersihkan area kerja, dan menata tempat setelah suatu tugas selesai</strong>, yang merupakan implementasi prinsip 5S (Seiri & Seiton) di pabrik Jepang.",
+        "distractor": "• Opsi A: Mencuci seragam adalah 洗濯します (せんたくします), memeriksa mesin adalah 点検します (てんけんします).\n• Opsi B: Membeli perlengkapan adalah 買いものをします, melapor adalah 報告します (ほうこくします).\n• Opsi C: Menyimpan alat adalah 道具を片付けます, menyiapkan bahan adalah 材料を準備します.",
+        "grammarRule": "Kosakata Prosedur Kerja Pabrik: 作業服に着替えます（きがえます - ganti baju kerja） & 後片付けをします（あとかたづけ - beres-beres pasca kerja）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Transportasi Kereta & Pindah Jalur (Norikae)",
+      "type": "teks",
+      "question_ja": "東京駅で 電車に 乗って、新宿駅で 地下鉄に （　<strong>乗り換えます</strong>　）。「乗り換えます」の 読み方は どれですか。",
+      "question_ruby": "東京駅で 電車に 乗って、新宿駅で 地下鉄に （　<strong>乗り換えます</strong>　）。「乗り換えます」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk verba 'transit / berpindah moda kendaraan' adalah...",
+      "translation": "Di Stasiun Tokyo naik kereta, lalu di Stasiun Shinjuku berganti / transit ke kereta bawah tanah (subway). Kanji 乗り換えます dibaca norikaemasu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "のりかえます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "のりこえます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "おりかえます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "とりかえます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (のりかえます).",
+        "logic": "Kanji gabungan <strong>乗り換えます</strong> dibaca <strong>のりかえます (norikaemasu)</strong>, tersusun dari verba <em>乗る (naik)</em> dan <em>換える (menukar/mengganti)</em>, yang bermakna <strong>beralih moda transportasi atau berpindah jalur kereta/bus</strong>.",
+        "distractor": "• Opsi B: のりこえます (乗り越えます) berarti melompati rintangan atau mengatasi kesulitan.\n• Opsi C: おりかえます bukan leksikon mobilitas bahasa Jepang baku.\n• Opsi D: とりかえます (取り替えます) berarti menukar komponen atau onderdil mesin yang rusak.",
+        "grammarRule": "Kosakata Mobilitas Kereta Komuter: 乗ります（のります - naik） ➔ 降ります（おります - turun） ➔ 乗り換えます（のりかえます - pindah armada/transit）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Atribut Fisik & Anggota Tubuh Manusia",
+      "type": "teks",
+      "question_ja": "ダダンさんは （　<strong>せ</strong>　）が 高くて、マリーさんは （　<strong>かみ</strong>　）が 長いです。「せ」と「かみ」の 漢字表記は どれですか。",
+      "question_ruby": "ダダンさんは （　<strong>せ</strong>　）が 高くて、マリーさんは （　<strong>かみ</strong>　）が 長いです。「せ」と「かみ」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'postur tinggi badan' dan 'rambut' adalah...",
+      "translation": "Dadan-san berpostur badan tinggi, dan Marie-san berambut panjang. Pasangan kanji: 背 ／ 髪.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "手 ／ 目"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "足 ／ 顔"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "背 ／ 髪"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "頭 ／ 耳"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (背 ／ 髪).",
+        "logic": "1) <strong>背（せ - se）</strong> berarti <strong>punggung / perawakan tinggi badan manusia</strong>. Bentuk ekspresinya: <code>背が高い（せがたかい - berbadan tinggi）</code>.<br>2) <strong>髪（かみ - kami）</strong> berarti <strong>rambut kepala</strong>. Bentuk ekspresinya: <code>髪が長い（かみがながい - berambut panjang）</code>.",
+        "distractor": "• Opsi A: 手 (て - tangan) / 目 (め - mata).\n• Opsi B: 足 (あし - kaki) / 顔 (かお - wajah).\n• Opsi D: 頭 (あたま - kepala) / 耳 (みみ - telinga).",
+        "grammarRule": "Kosakata Anatomi Ciri Fisik Bab 16: 背（せ - tinggi badan）, 目（め - mata）, 髪（かみ - rambut）, 頭（あたま - kepala）, 口（くち - mulut）, 鼻（はな - hidung）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Pasangan Antonim Kata Sifat (Karakteristik Lingkungan & Benda)",
+      "type": "teks",
+      "question_ja": "この 通路は （　<strong>せまい</strong>　）ですから 危険です。もっと （　<strong>ひろい</strong>　）場所を 通りましょう。「せまい」と「ひろい」の 漢字表記は どれですか。",
+      "question_ruby": "この 通路は （　<strong>せまい</strong>　）ですから 危険です。もっと （　<strong>ひろい</strong>　）場所を 通りましょう。「せまい」と「ひろい」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang tepat untuk lawan kata 'sempit' dan 'luas/lebar' adalah...",
+      "translation": "Karena lorong jalan ini sempit, maka berbahaya. Mari melewati tempat yang lebih luas. Kanji: 狭い ／ 広い.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "暗い ／ 明るい"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "狭い ／ 広い"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "重い ／ 軽い"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "古い ／ 新しい"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (狭い ／ 広い).",
+        "logic": "1) <strong>狭い（せまい - semai）</strong> berarti <strong>sempit</strong>.<br>2) Lawan katanya adalah <strong>広い（ひろい - hiroi）</strong> yang berarti <strong>luas, lapang, atau lebar</strong>. Keduanya merupakan kata sifat-I esensial dalam tata letak lingkungan kerja industri.",
+        "distractor": "• Opsi A: 暗い（くらい - gelap） >< 明るい（あかるい - terang/cerah）.\n• Opsi C: 重い（おもい - berat） >< 軽い（かるい - ringan）.\n• Opsi D: 古い（ふるい - kuno/usang） >< 新しい（あたらしい - baru）.",
+        "grammarRule": "Pasangan Antonim Sifat Ruang Bab 16: 狭い（せまい - sempit） ⇔ 広い（ひろい - luas/lapang）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Turun Kendaraan & Pelepasan Akses Ruang",
+      "type": "teks",
+      "question_ja": "3つ目の バス停で バスを （　<strong>降ります</strong>　）。それから 会社に 入ります。「降ります」の 読み方と 意味は どれですか。",
+      "question_ruby": "3つ目の バス停で バスを （　<strong>降ります</strong>　）。それから 会社に 入ります。「降ります」の 読み方と 意味は どれですか。",
+      "question_id": "Cara baca dan arti yang benar untuk verba '降ります' pada konteks transportasi umum adalah...",
+      "translation": "Di halte bus ketiga turun dari bus. Setelah itu masuk ke perusahaan. Kanji 降ります dibaca orimasu yang berarti turun dari kendaraan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "のります （Naik ke dalam bus angkutan）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "やみます （Hujan air berhenti turun）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "きがえます （Mengganti pakaian seragam）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おります （Turun keluar dari kendaraan）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (おります （Turun keluar dari kendaraan）).",
+        "logic": "Verba <strong>降ります</strong> dibaca <strong>おります (orimasu)</strong> jika berpasangan dengan kendaraan (bus, kereta, taksi) yang berarti <strong>turun dari sarana transportasi</strong>. Partikel pendamping tempat turunnya adalah <strong>を (o)</strong>: <code>バスを降ります</code>.",
+        "distractor": "• Opsi A: 乗ります dibaca のります (norimasu) yang bermakna naik kendaraan.\n• Opsi B: 止みます dibaca やみます (hujan reda/berhenti).\n• Opsi C: 着替えます dibaca きがえます (berganti pakaian).",
+        "grammarRule": "Aksi Transportasi: [Kendaraan] に 乗ります（naik） >< [Kendaraan] を 降ります（turun）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Peralatan Makan Tradisional & Verba Operasional (Tsukau)",
+      "type": "teks",
+      "question_ja": "寮の 食堂では、（　<strong>はし</strong>　）を （　<strong>つかって</strong>　）、日本の 料理を 食べます。「はし」と「つかって」の 漢字表記は どれですか。",
+      "question_ruby": "寮の 食堂では、（　<strong>はし</strong>　）を （　<strong>つかって</strong>　）、日本の 料理を 食べます。「はし」と「つかって」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk peralatan makan 'sumpit' dan kata kerja 'menggunakan' adalah...",
+      "translation": "Di kantin asrama, menggunakan sumpit memakan masakan Jepang. Pasangan kanji yang benar: 箸 ／ 使って.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "箸 ／ 使って"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "橋 ／ 作って"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "端 ／ 待って"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "服 ／ 拭いて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (箸 ／ 使って).",
+        "logic": "1) <strong>箸（はし - hashi）</strong> adalah <strong>sumpit</strong> (alat makan khas Jepang). Perhatikan homofon: 橋 (jembatan) dan 端 (ujung/tepi).<br>2) <strong>使います（つかいます - tsukaimasu）</strong> ditulis <strong>使</strong> yang berarti <strong>menggunakan / memakai peralatan</strong>. Bentuk-te adalah <code>使って（つかって）</code>.",
+        "distractor": "• Opsi B: 橋 (jembatan) / 作って (つくって - membuat).\n• Opsi C: 端 (ujung sisi) / 待って (まって - menunggu).\n• Opsi D: 服 (pakaian) / 拭いて (ふいて - mengelap).",
+        "grammarRule": "Instrumen & Aksi: 箸（はし - sumpit） ＋ を ＋ 使います（つかいます - memakai/menggunakan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Lepas / Asal Keberangkatan Fasilitas (O)",
+      "type": "teks",
+      "question_ja": "シギットさんは 毎朝 7時に うち（　<strong>？</strong>　） 出て、歩いて 駅へ 行きます。",
+      "question_ruby": "シギットさんは 毎朝 7時に うち（　<strong>？</strong>　） 出て、歩いて 駅へ 行きます。",
+      "question_id": "Partikel yang tepat untuk menandai titik tolak keluar / lepas dari rumah dengan verba 'demasu' adalah...",
+      "translation": "Sigit-san setiap pagi jam 7 keluar dari rumah, lalu berjalan kaki menuju stasiun. Partikel titik lepas keluar adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (を).",
+        "logic": "Kata kerja perpindahan keluar seperti <strong>出ます（でます - keluar）</strong> menuntut partikel <strong>を (o)</strong> untuk menandai <strong>titik ruang yang ditinggalkan atau dilepaskan</strong>: <code>うちを 出ます (keluar dari rumah)</code>, <code>会社を 出ます (keluar/pulang dari perusahaan)</code>. Walaupun dalam bahasa Indonesia diartikan 'dari', penggunaan partikel に atau で adalah keliru.",
+        "distractor": "• Opsi A: で menandai tempat kegiatan aktif, bukan titik tolak keluar.\n• Opsi B: に menandai titik tujuan masuk (masuk ke rumah = うちに入ります), bukan keluar.\n• Opsi D: へ menandai arah tujuan gerak (ke arah).",
+        "grammarRule": "Kaidah Titik Lepas Ruang: [Tempat Keberangkatan] + を + 出ます（でます） / 降ります（おります）."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Moda Transportasi yang Dinaiki (Ni)",
+      "type": "teks",
+      "question_ja": "新宿駅で JRの 山手線（　<strong>？</strong>　） 乗って、秋葉原駅まで 行きます。",
+      "question_ruby": "新宿駅で JRの 山手線（　<strong>？</strong>　） 乗って、秋葉原駅まで 行きます。",
+      "question_id": "Partikel yang tepat untuk menandai moda kendaraan yang dinaiki dengan verba 'norimasu' adalah...",
+      "translation": "Di Stasiun Shinjuku naik jalur kereta JR Yamanote, lalu pergi sampai Stasiun Akihabara. Partikel menaiki kendaraan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (に).",
+        "logic": "Kata kerja <strong>乗ります（のります - naik/menumpang kendaraan）</strong> menuntut partikel penanda target sasaran tumpangan <strong>に (ni)</strong>: <code>電車に 乗ります</code>, <code>バスに 乗ります</code>. Jangan tertukar dengan partikel で yang menandai alat transportasi (misal: 電車で行きます).",
+        "distractor": "• Opsi B: を digunakan untuk kata kerja TURUN kendaraan (電車を降ります), bukan naik.\n• Opsi C: で digunakan bersama kata kerja mobilitas umum seperti 行きます / 来ます (電車で行きます).\n• Opsi D: へ menandai arah tempat tujuan stasiun/kota.",
+        "grammarRule": "Pasangan Tetap Naik Kendaraan: [Sarana Kendaraan] + に + 乗ります（のります = naik tumpangan）."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pelepasan Armada Transportasi (O)",
+      "type": "teks",
+      "question_ja": "実習生は 会社の 前の バス停で バス（　<strong>？</strong>　） 降りました。",
+      "question_ruby": "実習生は 会社の 前の バス停で バス（　<strong>？</strong>　） 降りました。",
+      "question_id": "Partikel yang tepat untuk menandai sarana transportasi yang ditinggalkan dengan verba 'orimashita' adalah...",
+      "translation": "Siswa magang turun dari bus di halte bus depan perusahaan. Partikel untuk verba orimasu adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "から"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (を).",
+        "logic": "Sama seperti verba <em>出ます</em>, verba <strong>降ります（おります - turun）</strong> memerlukan partikel <strong>を (o)</strong> untuk menandai wahana atau fasilitas transportasi yang dilepas/ditinggalkan oleh penumpang: <code>バスを 降ります</code>, <code>電車を 降ります</code>.",
+        "distractor": "• Opsi A: から terkadang dipakai dalam percakapan informal, namun partikel gramatikal standar buku teks IMM Japan untuk orimasu adalah を.\n• Opsi B: で salah tata bahasa untuk objek lepasan orimasu.\n• Opsi C: に adalah kebalikannya, dipakai untuk NAIK kendaraan (バスに乗ります).",
+        "grammarRule": "Pembeda Naik vs Turun Kendaraan: [Kendaraan] + に + 乗ります vs [Kendaraan] + を + 降ります."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Beralih Transit Moda Transportasi (Ni)",
+      "type": "teks",
+      "question_ja": "東京駅まで 電車で 行って、そこで 地下鉄（　<strong>？</strong>　） 乗り換えます。",
+      "question_ruby": "東京駅まで 電車で 行って、そこで 地下鉄（　<strong>？</strong>　） 乗り換えます。",
+      "question_id": "Partikel yang tepat untuk menandai moda tujuan pergantian transit dengan verba 'norikaemasu' adalah...",
+      "translation": "Pergi dengan kereta sampai Stasiun Tokyo, lalu di sana berganti jalur naik kereta bawah tanah. Partikel transit adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Verba <strong>乗り換えます（のりかえます - berganti kendaraan/transit）</strong> pada hakikatnya adalah perbuatan menaiki armada kendaraan baru pengganti, sehingga titik sasaran kendaraan barunya ditandai dengan partikel <strong>に (ni)</strong>: <code>地下鉄に 乗り換えます</code>.",
+        "distractor": "• Opsi A: を digunakan jika menyebutkan kendaraan yang ditinggalkan.\n• Opsi C: で menandai sarana penggunaan, bukan objek transit verba norikaemasu.\n• Opsi D: と menandai rekan penyerta.",
+        "grammarRule": "Pola Transit Jalur Kendaraan: [Kendaraan Tujuan Baru] + に + 乗り換えます（のりかえます）."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Sub-Karakteristik Topik ([N1] は [N2] が [Adj])",
+      "type": "teks",
+      "question_ja": "マリーさんは 目（　<strong>？</strong>　） 大きくて、とても きれいな 人です。",
+      "question_ruby": "マリーさんは 目（　<strong>？</strong>　） 大きくて、とても きれいな 人です。",
+      "question_id": "Partikel yang tepat untuk menandai atribut bagian tubuh 'mata' sebagai subjek kata sifat adalah...",
+      "translation": "Marie-san matanya besar dan orang yang sangat cantik. Partikel atribut fisik adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "は"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Dalam pola penggambaran karakteristik atau ciri fisik khusus <strong>[Topik Utama] は [Sub-Bagian/Atribut] が [Kata Sifat] です</strong>, subjek spesifik atribut penjelas wajib ditandai dengan partikel <strong>が (ga)</strong>: <code>マリーさんは 目が 大きいです</code>.",
+        "distractor": "• Opsi A: は sudah digunakan untuk topik utama orang (マリーさんは); menduplikasi は di sini akan merusak hierarki kalimat deskriptif.\n• Opsi B: を hanya menandai objek penderita kata kerja transitif, sedangkan kalimat ini berpredikat kata sifat.\n• Opsi D: に menandai titik lokasi atau waktu.",
+        "grammarRule": "Rumus Ciri Fisik & Atribut Bab 16: [Subjek Utama] は + [Anggota Tubuh / Atribut] が + [Kata Sifat] です."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Sekuensial Pasca-Tindakan (~Te kara)",
+      "type": "teks",
+      "question_ja": "朝 起きて、シャワーを 浴びて（　<strong>？</strong>　）、友だちと いっしょに ごはんを 食べます。",
+      "question_ruby": "朝 起きて、シャワーを 浴びて（　<strong>？</strong>　）、友だちと いっしょに ごはんを 食べます。",
+      "question_id": "Partikel yang tepat untuk membentuk pola sekuensial mutlak 'setelah melakukan mandi shower' adalah...",
+      "translation": "Pagi bangun tidur, setelah mandi shower, makan bersama dengan teman. Partikel urutan 'setelah' adalah から.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "から"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "まで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ので"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "より"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (から).",
+        "logic": "Pola <strong>[Verba Bentuk-TE] + から (kara)</strong> menyatakan bahwa perbuatan kedua mutlak baru dilakukan <strong>setelah tuntasnya perbuatan pertama secara kronologis</strong>: <code>浴びてから (setelah mandi)</code>.",
+        "distractor": "• Opsi B: まで berarti 'sampai/hingga'.\n• Opsi C: ので menyatakan sebab-akibat objektif (karena), tidak dirangkai langsung dengan bentuk-te semacam ini.\n• Opsi D: より digunakan dalam perbandingan komparatif (daripada).",
+        "grammarRule": "Rumus Urutan Waktu Pasti: [Kata Kerja Bentuk-TE] + から、[Kata Kerja Selanjutnya] (Setelah selesai..., kemudian...)."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Rangkaian Tindakan Kronologis (~Te, ~Te, ~Masu)",
+      "type": "teks",
+      "question_ja": "毎朝 6時に （　①　）、顔を （　②　）、それから 朝ごはんを 食べます。",
+      "question_ruby": "毎朝 6時に （　①　）、顔を （　②　）、それから 朝ごはんを 食べます。",
+      "question_id": "Bentuk konjugasi kata kerja yang tepat untuk mengisi nomor ① dan ② secara berturut-turut adalah...",
+      "translation": "Setiap pagi bangun jam 6, mencuci muka, lalu setelah itu memakan sarapan. Bentuk sekuensial: 起きて lalu 洗って.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おきます ／ あらいます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おきて ／ あらって"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "おきたり ／ あらったり"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おきながら ／ あらいながら"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (おきて ／ あらって).",
+        "logic": "Untuk menyambungkan beberapa kata kerja yang dilakukan <strong>berurutan secara kronologis sesuai deret waktu</strong>, seluruh verba awal dikonjugasikan ke dalam <strong>Bentuk-TE (て形)</strong>, dan bentuk kala/tenses akhir (lampau/non-lampau) ditentukan oleh verba paling terakhir: <code>起きて（おきて）、洗って（あらって）、食べます</code>.",
+        "distractor": "• Opsi A: おきます ／ あらいます adalah bentuk-masu terputus yang tidak menyambung klausa berturut-turut.\n• Opsi C: おきたり ／ あらったり adalah pola representasi acak non-kronologis (Bab 19), bukan rangkaian sekuensial pagi rutin.\n• Opsi D: おきながら ／ あらいながら adalah aksi simultan bersamaan (Bab 28).",
+        "grammarRule": "Rumus Rangkaian Perbuatan Kronologis: [V1 Bentuk-TE]、[V2 Bentuk-TE]、[V3 Bentuk Akhir Masu/Mashita]."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Urutan Kerja Mutlak Industri (V-te kara)",
+      "type": "teks",
+      "question_ja": "工場長：『作業手順を しっかり （　<strong>＿＿＿＿＿</strong>　）、機械の スイッチを 入れてください。』",
+      "question_ruby": "工場長：『作業手順を しっかり （　<strong>＿＿＿＿＿</strong>　）、機械の スイッチを 入れてください。』",
+      "question_id": "Bentuk instruksi sekuensial yang tepat untuk menyatakan 'setelah memastikan prosedur kerja tuntas' adalah...",
+      "translation": "Kepala pabrik: 'Setelah memastikan prosedur kerja dengan seksama, silakan nyalakan saklar mesin.' Pola: 確認してから.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "確認したあとで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "確認する前に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "確認してから"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "確認しながら"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (確認してから).",
+        "logic": "Dalam SOP industri keselamatan pabrik IMM Japan Bab 16, pola <strong>[Verba Bentuk-TE] + から (kara)</strong> ditekankan untuk memastikan suatu prasyarat keselamatan mutlak telah tuntas sebelum tindakan berikutnya dieksekusi: <code>確認します ➔ 確認して ＋ から ➔ 確認してから (setelah tuntas memastikan)</code>.",
+        "distractor": "• Opsi A: 確認したあとで bukan pola tata bahasa target Bab 16 IMM Japan.\n• Opsi B: 確認する前に berarti 'sebelum memastikan' (sangat membahayakan prosedur K3).\n• Opsi D: 確認しながら berarti 'sambil memastikan' (tidak menjamin ketuntasan verifikasi awal).",
+        "grammarRule": "Standar Keselamatan Kerja Sekuensial: [Pemeriksaan K3 (Bentuk-TE)] + から、[Operasi Mesin]."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penyambungan Kata Sifat-I (~Kute) Termasuk Irregular (Ii ➔ Yokute)",
+      "type": "teks",
+      "question_ja": "指導員の 田中さんは、頭が （　①　）、教え方が とても （　②　）です。（いい ／ 親切）",
+      "question_ruby": "指導員の 田中さんは、頭が （　①　）、教え方が とても （　②　）です。（いい ／ 親切）",
+      "question_id": "Bentuk penyambungan kata sifat yang tepat untuk kata sifat-I 'ii' (pintar/baik) dan kata sifat-Na 'shinsetsu' (ramah) adalah...",
+      "translation": "Instruktur Tanaka-san orangnya cerdas (kepalanya pintar) dan cara mengajarnya sangat ramah. Konjugasi penyambung: よくて dan 親切.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "いいて ／ 親切な"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "いくて ／ 親切で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "よいで ／ 親切く"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "よくて ／ 親切"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (よくて ／ 親切).",
+        "logic": "1) Kata sifat-I <strong>いい (bagus/baik)</strong> memiliki konjugasi dasar dari bentuk asalnya <strong>よい (yoi)</strong>. Untuk menyambungkannya dengan klausa berikutnya, akhiran <em>~i</em> diganti menjadi <strong>~くて (~kute)</strong> ➔ <strong>よくて (yokute)</strong>. Bentuk <em>いいて</em> atau <em>いくて</em> adalah <strong>KESALAHAN FATAL</strong>.<br>2) Predikat akhir kalimat menggunakan bentuk dasar kata sifat-Na sebelum desu: <strong>親切（しんせつ）です</strong>.",
+        "distractor": "• Opsi A: いいて adalah kekeliruan pemula yang tidak mengubah ii menjadi yoi.\n• Opsi B: いくて salah bentuk konjugasi irregular.\n• Opsi C: よいで salah memadukan aturan kata sifat-Na pada kata sifat-I.",
+        "grammarRule": "Kaidah Penyambungan Sifat-I Bab 16: [Kata Sifat-I] buang ~い + くて (Pengecualian: いい ➔ よくて)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penyambungan Kata Sifat-Na & Nomina (~De)",
+      "type": "teks",
+      "question_ja": "会社の 近くの レストランは、（　①　）、値段が （　②　）です。（静か ／ 安い）",
+      "question_ruby": "会社の 近くの レストランは、（　①　）、値段が （　②　）です。（静か ／ 安い）",
+      "question_id": "Bentuk penyambungan kata sifat yang tepat untuk 'shizuka' (kata sifat-Na) dan 'yasui' (kata sifat-I) adalah...",
+      "translation": "Restoran di dekat perusahaan suasananya tenang dan harganya murah. Penyambungan: 静かで ／ 安い.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "静かで ／ 安い"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "静かくて ／ 安いで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "静かな ／ 安くて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "静かになり ／ 安い"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (静かで ／ 安い).",
+        "logic": "Untuk menggabungkan <strong>Kata Sifat-Na</strong> dengan kata sifat lain yang searah maknanya, akhiran <em>~na</em> diganti menjadi <strong>~で (~de)</strong>: <code>静か ➔ 静かで (tenang dan...)</code>. Predikat kedua sebagai kata sifat-I penutup langsung dirangkai dengan <em>です</em>: <code>安いです</code>.",
+        "distractor": "• Opsi B: 静かくて adalah kesalahan fatal menerapkan konjugasi kata sifat-I pada kata sifat-Na.\n• Opsi C: 静かな hanya digunakan jika langsung menerangkan nomina (misal: 静かな部屋).\n• Opsi D: 静かになり menyatakan perubahan kondisi (menjadi tenang), bukan penggabungan kualitas setara.",
+        "grammarRule": "Rumus Penyambungan Sifat-Na & Nomina: [Kata Sifat-Na (tanpa na)] + で、～ / [Nomina] + で、～."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penggabungan Kualitas Sifat Komposit Benda Kerja Industri",
+      "type": "teks",
+      "question_ja": "この 新しい 作業用具は、（　<strong>＿＿＿＿＿</strong>　）、使いやすいです。（軽い ＋ 丈夫）",
+      "question_ruby": "この 新しい 作業用具は、（　<strong>＿＿＿＿＿</strong>　）、使いやすいです。（軽い ＋ 丈夫）",
+      "question_id": "Bentuk penggabungan kata sifat 'karui' (ringan) dan 'joubu' (kokoh/kuat) yang benar adalah...",
+      "translation": "Alat kerja baru ini ringan, kokoh, dan mudah digunakan. Bentuk penggabungan: 軽くて、丈夫で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "軽いで、丈夫で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "軽くて、丈夫くて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "軽くて、丈夫で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "軽いな、丈夫な"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (軽くて、丈夫で).",
+        "logic": "1) <strong>軽い（かるい - karui = ringan）</strong> adalah Kata Sifat-I ➔ menjadi <strong>軽くて (karukute)</strong>.<br>2) <strong>丈夫（じょうぶ - joubu = kokoh/kuat）</strong> adalah Kata Sifat-Na ➔ menjadi <strong>丈夫で (joubu de)</strong> saat menyambung ke klausa berikutnya. Maka kombinasi sambungannya adalah <code>軽くて、丈夫で</code>.",
+        "distractor": "• Opsi A: 軽いで salah konjugasi pada kata sifat-I karui.\n• Opsi B: 丈夫くて salah konjugasi pada kata sifat-Na joubu.\n• Opsi D: 軽いな、丈夫な tidak membentuk kalimat penghubung predikatif yang benar.",
+        "grammarRule": "Kaidah Gabungan Lintas Tipe Kata Sifat: [Sifat-I] ~くて + [Sifat-Na] ~で + Predikat Lanjutan."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Penggambaran Ciri Fisik Orang ([N1] は [N2] が [Adj-kute])",
+      "type": "teks",
+      "question_ja": "実習生：『あそこにいる リーダーは どなたですか。』<br>先輩：『あの （　<strong>＿＿＿＿＿</strong>　） 人ですよ。』",
+      "question_ruby": "実習生：『あそこにいる リーダーは どなたですか。』<br>先輩：『あの （　<strong>＿＿＿＿＿</strong>　） 人ですよ。』",
+      "question_id": "Frasa deskriptif ciri fisik yang paling tepat dan alami sesuai kaidah Bab 16 adalah...",
+      "translation": "Trainee: 'Siapakah pemimpin yang ada di sebelah sana itu?' Senior: 'Orang yang rambutnya panjang dan berbadan tinggi itu lho.' Frasa: 髪が長くて、背が高い人.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "髪が長くで、背が高くて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "髪を長くて、背が高い"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "髪は長いで、背が高い"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "髪が長くて、背が高い"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (髪が長くて、背が高い).",
+        "logic": "Untuk menerangkan nomina orang (<em>人</em>) dengan dua ciri fisik berturut-turut:<br>1) Subjek fisik ditandai dengan partikel <strong>が</strong>: <code>髪が (rambutnya)</code>.<br>2) Kata sifat-I pertama disambung dengan bentuk-kute: <code>長くて (nagakute - panjang dan...)</code>.<br>3) Kata sifat-I kedua langsung menerangkan nomina: <code>背が高い人 (orang yang berpostur tinggi)</code>.<br>Menghasilkan susunan baku: <strong>髪が長くて、背が高い人</strong>.",
+        "distractor": "• Opsi A: 長くで salah konjugasi (kata sifat-I tidak boleh disambung dengan ~de).\n• Opsi B: 髪を salah partikel (karakteristik tubuh menggunakan が, bukan を).\n• Opsi C: 髪は salah partikel dan 長いで salah konjugasi.",
+        "grammarRule": "Rumus Modifikasi Ciri Fisik Nomina: [Sub-Bagian 1] が [Adj-1 ~くて]、[Sub-Bagian 2] が [Adj-2] + Nomina."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Sarana / Metode Melakukan Sesuatu (V1-te, V2)",
+      "type": "teks",
+      "question_ja": "工場では、必ず 安全メガネを （　①　）、グラインダー作業を （　②　）。（かけます ／ します）",
+      "question_ruby": "工場では、必ず 安全メガネを （　①　）、グラインダー作業を （　②　）。（かけます ／ します）",
+      "question_id": "Bentuk kata kerja yang tepat untuk menyatakan sarana persiapan keselamatan sebelum melakukan aktivitas adalah...",
+      "translation": "Di pabrik, wajib mengenakan kacamata pelindung (lalu/dengan kondisi tersebut) melakukan pekerjaan gerinda. Bentuk: かけて lalu します.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かけてから ／ して"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かけて ／ します"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かけながら ／ して"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "かけたり ／ します"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (かけて ／ します).",
+        "logic": "Bentuk <strong>[Verba 1 Bentuk-TE] + [Verba 2]</strong> juga berfungsi menjelaskan <strong>metode, cara, atau kondisi persiapan yang menyertai dilakukannya perbuatan utama</strong>: <code>安全メガネを かけて、作業を します (bekerja dengan mengenakan kacamata pengaman)</code>. Sebagaimana contoh buku teks: <em>本を 読んで、勉強します</em> atau <em>はしを 使って、ごはんを 食べます</em>.",
+        "distractor": "• Opsi A: かけてから ／ して membuat kalimat menggantung tanpa predikat penutup baku.\n• Opsi C: かけながら salah karena memakai kacamata adalah kondisi status (putting on), bukan aksi berkesinambungan yang digerakkan bersamaan.\n• Opsi D: かけたり ／ します adalah pola sampel acak yang tidak menunjukkan hubungan metode/kondisi.",
+        "grammarRule": "Fungsi Bentuk-TE Cara/Kondisi: [Tindakan Keadaan/Peralatan (Bentuk-TE)] + [Aksi Utama]."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Urutan Aktivitas Harian (シャワーを浴びる)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。実習が 終わってから 何を しますか。<br>「寮へ 帰って、（　　　）を あびます。」",
+      "question_ruby": "絵（え）を 見て ください。実習が 終わってから 何を しますか。<br>「寮へ 帰って、（　　　）を あびます。」",
+      "question_id": "Perhatikan gambar. Setelah praktek magang selesai melakukan apa? 'Pulang ke asrama lalu mandi (...)'.",
+      "translation": "Pulang ke asrama lalu mandi guyuran air (shower o abimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ごはん"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "シャワー"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "おちゃ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "テレビ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (シャワー).",
+        "logic": "Gambar memperlihatkan seseorang yang sedang mandi menyegarkan diri di bawah pancuran (シャワー - shawaa). Kolokasi yang tepat adalah シャワーを浴びます.",
+        "distractor": "• Opsi A: ごはん adalah nasi / makan besar.\n• Opsi C: おちゃ adalah minum teh.\n• Opsi D: テレビ adalah menonton televisi.",
+        "grammarRule": "Rangkaian Aktivitas V-te Bab 16: 寮へ帰って、シャワーを浴びます."
+      },
+      "image": "assets/bab_16/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Cara Bepergian (歩いて)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。どうやって 工場へ 行きますか。<br>「駅から 工場まで （　　　）行きます。」",
+      "question_ruby": "絵（え）を 見て ください。どうやって 工場へ 行きますか。<br>「駅から 工場まで （　　　）行きます。」",
+      "question_id": "Perhatikan gambar. Bagaimana cara pergi ke pabrik? 'Dari stasiun ke pabrik pergi dengan (...)'.",
+      "translation": "Dari stasiun ke pabrik pergi dengan berjalan kaki (aruite ikimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "でんしゃで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "バスで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "歩いて（あるいて）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "タクシーで"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (歩いて（あるいて）).",
+        "logic": "Gambar memperlihatkan orang yang berjalan kaki melangkah tanpa kendaraan (歩いて / あるいて - aruite). Ingat bahwa 'aruite' tidak menggunakan partikel de.",
+        "distractor": "• Opsi A: でんしゃで naik kereta listrik.\n• Opsi B: バスで naik bus.\n• Opsi D: タクシーで naik taksi.",
+        "grammarRule": "Pola Gerak Khusus: 歩いて 行きます（berjalan kaki tanpa partikel で）."
+      },
+      "image": "assets/bab_16/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (乗り換えます)",
+      "type": "teks",
+      "question_ja": "新宿駅で 地下鉄に （ 乗り換えます ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "新宿駅で 地下鉄に （ 乗り換えます ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Di Stasiun Shinjuku transit berpindah ke kereta bawah tanah. Pilihlah cara baca kanji '乗り換えます' yang tepat.",
+      "translation": "Berpindah moda transportasi / transit ke kereta bawah tanah di Stasiun Shinjuku.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "のりかえます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "のりこえます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "のりすぎます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おりかえます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (のりかえます).",
+        "logic": "Kanji 乗り換えます dibaca のりかえます (norikaemasu) yang berarti berpindah kereta/kendaraan transit.",
+        "distractor": "• Opsi B: のりこえます ditulis 乗り越えます (mengatasi rintangan).\n• Opsi C: のりすぎます ditulis 乗り過ぎます (kebablasan naik kereta).\n• Opsi D: おりかえます adalah bentuk keliru.",
+        "grammarRule": "Aktivitas Perjalanan Bab 16: [Kendaraan] に 乗り換えます（transit berpindah armada）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (洗います)",
+      "type": "teks",
+      "question_ja": "作業の 後、油で 汚れた 手を （ あらいます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "作業の 後、油で 汚れた 手を （ あらいます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Setelah bekerja mencuci tangan yang kotor oleh oli. Pilihlah penulisan kanji yang tepat untuk 'araimasu'.",
+      "translation": "Setelah selesai bekerja, mencuci tangan yang berlumuran minyak/oli.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "洗います"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "洸います"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "浄います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "流います"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (洗います).",
+        "logic": "Kata あらいます (mencuci) ditulis dengan kanji baku 洗います (radikal air 氵 di sebelah kiri dan 先).",
+        "distractor": "• Opsi B: 洸います adalah huruf nama orang langka.\n• Opsi C: 浄います adalah kanji murni/bersih pada 浄化.\n• Opsi D: 流います dibaca ながします (mengalirkan).",
+        "grammarRule": "Kebersihan K3 Bab 16: 洗います（あらいます = mencuci）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (体)",
+      "type": "teks",
+      "question_ja": "実習生は （ からだ ）が 丈夫でなければ なりません。<br>正しい 漢字は どれですか。",
+      "question_ruby": "実習生は （ からだ ）が 丈夫でなければ なりません。<br>正しい 漢字は どれですか。",
+      "question_id": "Peserta magang harus berbadan sehat dan kuat. Pilihlah kanji yang tepat untuk 'karada'.",
+      "translation": "Peserta magang teknis fisiknya harus sehat dan kuat.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "体"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "休"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "本"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "呆"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (体).",
+        "logic": "Kata からだ (tubuh/fisik raga) ditulis dengan kanji baku 体 (radikal orang 亻 dan 本).",
+        "distractor": "• Opsi B: 休 dibaca やすむ (istirahat / libur).\n• Opsi C: 本 dibaca ほん (buku / asal mula).\n• Opsi D: 呆 dibaca あきれる (tercengang / melongo).",
+        "grammarRule": "Kesehatan Kerja: 体（からだ = badan / fisik raga）."
+      }
+    }
+  ]
+};
+
+const BAB_17_DATA = {
+  "chapter": "17",
+  "title_ja": "第１７課：動詞ない形・「～ないでください」・義務「～なければなりません」・不必要「～なくてもいいです」",
+  "title_id": "Bab 17: Bentuk NAI (ない形), Larangan Sopan (~Nai de kudasai), Kewajiban Mutlak (~Nakereba narimasen), dan Izin Tidak Perlu (~Nakutemo ii desu)",
+  "theme_ja": "ない形の活用 (Konjugasi Bentuk NAI), 規則と指示 (Instruksi & Larangan K3 Pabrik), 義務表現 (Kewajiban) & 許容表現 (Tidak Perlu)",
+  "theme_id": "Evaluasi komprehensif Bab 17 buku IMM Japan yang menguji: perubahan konjugasi bentuk negatif kasual verba (ない形 - Nai-kei) untuk Grup 1 (vokal u -> anai, termasuk pengecualian vokal -i menjadi -wanai seperti suwanai/tsukawanai), Grup 2 (ru -> nai), dan Grup 3 (suru -> shinai, kuru -> konai); pola instruksi larangan sopan K3 pabrik (~nai de kudasai); pola kewajiban mutlak operasional dan keselamatan (~nakereba narimasen); pola izin fleksibilitas/ketidakperluan (~nakutemo ii desu); serta penguasaan partikel instrumen, batas waktu (madeni), jangka waktu (de), dan penanda penerima/sasaran (ni).",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 17.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 17.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Penyerahan Dokumen & Pemeriksaan Identitas",
+      "type": "teks",
+      "question_ja": "図書カードを つくりたい 人は、身分証明書を （　<strong>みせて</strong>　）、係の人に （　<strong>わたさなければ</strong>　）なりません。「みせて」と「わたさなければ」の 漢字表記は どれですか。",
+      "question_ruby": "図書カードを つくりたい 人は、身分証明書を （　<strong>みせて</strong>　）、係の人に （　<strong>わたさなければ</strong>　）なりません。「みせて」と「わたさなければ」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'memperlihatkan' dan 'menyerahkan' adalah...",
+      "translation": "Orang yang ingin membuat kartu perpustakaan harus memperlihatkan kartu identitas diri dan menyerahkannya kepada petugas. Kanji: 見せて ／ 渡さなければ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "見せて ／ 渡さなければ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "見て ／ 返さなければ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "出して ／ 払わなければ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "預けて ／ 通さなければ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (見せて ／ 渡さなければ).",
+        "logic": "1) <strong>見せます（みせます - misemasu）</strong> ditulis <strong>見せて</strong> yang berarti <strong>memperlihatkan atau menunjukkan sesuatu kepada orang lain</strong>.<br>2) <strong>渡します（わたします - watashimasu）</strong> ditulis <strong>渡</strong> yang berarti <strong>menyerahkan atau menyampaikan secara fisik dari tangan ke tangan</strong>. Bentuk negatifnya adalah <code>渡さない ➔ 渡さなければなりません</code>.",
+        "distractor": "• Opsi B: 見て (mite - melihat sendiri) / 返さなければ (mengembalikan barang pinjaman).\n• Opsi C: 出して (dashite - mengeluarkan/mengumpulkan) / 払わなければ (membayar uang).\n• Opsi D: 預けて (menitipkan) / 通さなければ (melewati).",
+        "grammarRule": "Kosakata Prosedur Administrasi: 身分証明書を見せます（みせます - menunjukkan ID） & 書類を渡します（わたします - menyerahkan dokumen）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Verba Pengembalian & Pembayaran",
+      "type": "teks",
+      "question_ja": "借りた 工具は、今日の 夕方までに 必ず （　<strong>かえさなければ</strong>　）なりません。「かえさなければ」の 漢字と ます形は どれですか。",
+      "question_ruby": "借りた 工具は、今日の 夕方までに 必ず （　<strong>かえさなければ</strong>　）なりません。「かえさなければ」の 漢字と ます形は どれですか。",
+      "question_id": "Penulisan kanji dan kata kerja asal (bentuk-masu) yang tepat untuk 'mengembalikan' adalah...",
+      "translation": "Peralatan/perkakas yang dipinjam, paling lambat sore hari ini wajib dikembalikan. Verba: 返します (kaeshimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "変えます （かえます - Mengubah/mengganti jadwal kerja）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "買います （かいます - Membeli perlengkapan kerja）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "返します （かえします - Mengembalikan barang pinjaman）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "帰ります （かえります - Pulang kembali ke rumah）"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (返します （かえします - Mengembalikan barang pinjaman）).",
+        "logic": "Kata kerja <strong>返します（かえします - kaeshimasu）</strong> ditulis dengan kanji <strong>返</strong> yang bermakna <strong>mengembalikan barang/alat yang sebelumnya dipinjam kepada pemilik aslinya</strong>. Bentuk-nai: <code>返さない ➔ 返さなければなりません (harus mengembalikan)</code>. Waspadai homofon dengan 帰ります (pulang ke rumah).",
+        "distractor": "• Opsi A: 変えます (kaemasu) berarti mengubah atau menukar situasi.\n• Opsi B: 買います (kaimasu) berarti membeli komoditas dagangan.\n• Opsi D: 帰ります (kaerimasu) berarti pulang ke kediaman/negara asal.",
+        "grammarRule": "Pembeda Homofon Kanji Bab 17: 返します（かえします - mengembalikan barang pinjaman） vs 帰ります（かえります - pulang ke rumah/negara）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata APD Pelindung Kepala & Rambu Larangan Api/Rokok",
+      "type": "teks",
+      "question_ja": "作業現場では 必ず （　<strong>ほごぼう</strong>　）を かぶります。ここは （　<strong>きんえん</strong>　）ですから たばこを 吸っては いけません。漢字表記の 組み合わせは どれですか。",
+      "question_ruby": "作業現場では 必ず （　<strong>ほごぼう</strong>　）を かぶります。ここは （　<strong>きんえん</strong>　）ですから たばこを 吸っては いけません。漢字表記の 組み合わせは どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'topi/helm pelindung keselamatan' dan 'larangan merokok' adalah...",
+      "translation": "Di tempat kerja lapangan wajib mengenakan topi keselamatan pelindung kepala. Di sini dilarang merokok, sehingga tidak boleh merokok. Pasangan kanji: 保護帽 ／ 禁煙.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "安全靴 ／ 立入禁止"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "保護帽 ／ 禁煙"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "防塵具 ／ 火気厳禁"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "作業着 ／ 駐輪禁止"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (保護帽 ／ 禁煙).",
+        "logic": "1) <strong>保護帽（ほごぼう - hogobou）</strong> adalah istilah resmi industri Jepang untuk <strong>topi pengaman pelindung kepala / safety helmet</strong> (sering disepadankan dengan ヘルメット).<br>2) <strong>禁煙（きんえん - kin'en）</strong> adalah rambu baku yang bermakna <strong>larangan merokok di area tertentu</strong> demi mencegah risiko kebakaran.",
+        "distractor": "• Opsi A: 安全靴 (sepatu keselamatan) / 立入禁止 (dilarang masuk).\n• Opsi C: 防塵具 (alat pelindung debu) / 火気厳禁 (dilarang menggunakan api/benda mudah terbakar).\n• Opsi D: 作業着 (pakaian kerja) / 駐輪禁止 (dilarang memarkir sepeda/motor).",
+        "grammarRule": "Istilah K3 Standar Pabrik IMM Japan: 保護帽（ほごぼう - safety helmet） & 禁煙（きんえん - area bebas asap rokok / dilarang merokok）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Mengotori Fasilitas & Perapian Area Kerja",
+      "type": "teks",
+      "question_ja": "図書館の 本を （　<strong>よごさないで</strong>　）ください。使い終わったら つくえを （　<strong>かたづけて</strong>　）ください。下線部の 意味は どれですか。",
+      "question_ruby": "図書館の 本を （　<strong>よごさないで</strong>　）ください。使い終わったら つくえを （　<strong>かたづけて</strong>　）ください。下線部の 意味は どれですか。",
+      "question_id": "Arti yang tepat untuk kata kerja 'yogosanaide' dan 'katadukete' adalah...",
+      "translation": "Tolong jangan mengotori buku perpustakaan. Setelah selesai menggunakan, tolong rapikan/bereskan mejanya.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Jangan merobek ／ Tolong bersihkan dengan kain basah"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Jangan mencoret ／ Tolong kumpulkan di depan"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Jangan menghilangkan ／ Tolong susun berdasarkan nomor"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Jangan mengotori ／ Tolong bereskan dan rapikan"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (Jangan mengotori ／ Tolong bereskan dan rapikan).",
+        "logic": "1) <strong>汚します（よごします - yogoshimasu）</strong> berarti <strong>mengotori, menodai, atau membuat kumuh</strong>. Bentuk larangannya adalah <code>汚さないでください (tolong jangan kotor)</code>.<br>2) <strong>片付けます（かたづけます - katadukemasu）</strong> berarti <strong>membereskan, menata rapi, dan menyimpan kembali barang ke tempat asalnya</strong>.",
+        "distractor": "• Opsi A: Merobek adalah 破ります (やぶります).\n• Opsi B: Mencoret adalah 落書きします (らくがきします), mengumpulkan adalah 集めます.\n• Opsi C: Menghilangkan adalah なくします, menyusun nomor adalah 番号順に並べます.",
+        "grammarRule": "Kosakata Kerapian & Higienitas: 汚します（よごします - mengotori） ➔ 汚さないでください & 片付けます（かたづけます - membereskan）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Keselamatan K3 Sentuhan Kontak & Kelupaan",
+      "type": "teks",
+      "question_ja": "危険ですから、赤いきかいに （　<strong>さわらないで</strong>　）ください。また、安全手順を （　<strong>わすれないで</strong>　）ください。「さわらないで」と「わすれないで」の 漢字表記は どれですか。",
+      "question_ruby": "危険ですから、赤いきかいに （　<strong>さわらないで</strong>　）ください。また、安全手順を （　<strong>わすれないで</strong>　）ください。「さわらないで」と「わすれないで」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'jangan menyentuh' dan 'jangan melupakan' adalah...",
+      "translation": "Karena berbahaya, tolong jangan menyentuh mesin merah ini. Selain itu, tolong jangan melupakan prosedur keselamatan. Kanji: 触らないで ／ 忘れないで.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "触らないで ／ 忘れないで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "押さないで ／ 恐れないで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "座らないで ／ 乱さないで"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "入らないで ／ 残さないで"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (触らないで ／ 忘れないで).",
+        "logic": "1) <strong>触ります（さわります - sawarimasu）</strong> ditulis <strong>触</strong> yang bermakna <strong>menyentuh secara fisik</strong>. Bentuk-nai: <code>触らないでください</code>.<br>2) <strong>忘れます（わすれます - wasuremasu）</strong> ditulis <strong>忘</strong> yang berarti <strong>lupa / melupakan informasi/kewajiban</strong>. Bentuk-nai: <code>忘れないでください</code>.",
+        "distractor": "• Opsi B: 押さないで (jangan menekan tombol) / 恐れないで (jangan takut).\n• Opsi C: 座らないで (jangan duduk) / 乱さないで (jangan mengacaukan).\n• Opsi D: 入らないで (jangan masuk) / 残さないで (jangan menyisakan).",
+        "grammarRule": "Instruksi K3 Pabrik: [Mesin] に 触ります（さわります） ➔ 触らないでください & [SOP/Tugas] を 忘れます（わすれます） ➔ 忘れないでください."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Dokumen Registrasi Resmi & Tanda Pengenal Diri",
+      "type": "teks",
+      "question_ja": "市役所や 銀行で 手続きを する とき、（　<strong>身分証明書</strong>　）を 見せます。「身分証明書」の 読み方は どれですか。",
+      "question_ruby": "市役所や 銀行で 手続きを する とき、（　<strong>身分証明書</strong>　）を 見せます。「身分証明書」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk dokumen resmi 'kartu identitas diri' (ID card/KTP/paspor) adalah...",
+      "translation": "Saat melakukan pengurusan prosedur di kantor wali kota atau bank, menunjukkan kartu identitas diri. Kanji 身分証明書 dibaca mibun shoumeisho.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "じぶんしょうめいしょ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "しんぶんしょうめいしょ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "みぶんしょうめいしょ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "みぶんせつめいしょ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (みぶんしょうめいしょ).",
+        "logic": "Komposisi kanji <strong>身分証明書</strong> dibaca <strong>みぶんしょうめいしょ (mibun shoumeisho)</strong> yang berarti <strong>kartu tanda bukti identitas resmi (KTP, paspor, kartu izin tinggal/zairyuu card)</strong>. Kata ini muncul dalam teks bacaan Bab 17 tentang aturan pembuatan kartu perpustakaan.",
+        "distractor": "• Opsi A: じぶんしょうめいしょ adalah pembacaan keliru yang tertukar dengan kata <em>自分（じぶん - diri sendiri）</em>.\n• Opsi B: しんぶんしょうめいしょ adalah pelafalan rusak yang tertukar dengan kata <em>新聞（しんぶん - koran）</em>.\n• Opsi D: みぶんせつめいしょ salah kanji (説明書 berarti buku panduan petunjuk teknis).",
+        "grammarRule": "Leksikon Formal IMM Japan: 身分証明書（みぶんしょうめいしょ - kartu identitas diri / ID Card）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Keselamatan Lalu Lintas & Penghentian Mesin/Kendaraan",
+      "type": "teks",
+      "question_ja": "車は 道の 左側を （　<strong>はしらなければ</strong>　）なりません。また、非常口の 前に 車を （　<strong>とめては</strong>　）いけません。漢字表記は どれですか。",
+      "question_ruby": "車は 道の 左側を （　<strong>はしらなければ</strong>　）なりません。また、非常口の 前に 車を （　<strong>とめては</strong>　）いけません。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'berlari/melaju (kendaraan)' dan 'menghentikan/memarkir' adalah...",
+      "translation": "Mobil wajib melaju di sebelah kiri jalan. Serta, tidak boleh memarkir/menghentikan mobil di depan pintu darurat. Kanji: 走らなければ ／ 止めては.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "歩かなければ ／ 捨てては"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "走らなければ ／ 止めては"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "渡らなければ ／ 立てては"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "通らなければ ／ 置いては"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (走らなければ ／ 止めては).",
+        "logic": "1) <strong>走ります（はしります - hashirimasu）</strong> ditulis <strong>走</strong> yang berarti <strong>berlari (orang) atau melaju (kendaraan di jalan raya)</strong>. Bentuk-nai: <code>走らない ➔ 走らなければなりません</code>.<br>2) <strong>止めます（とめます - tomemasu）</strong> ditulis <strong>止</strong> yang berarti <strong>menghentikan laju atau memarkir kendaraan</strong>. Bentuk-te: <code>止めてはいけません (dilarang memarkir)</code>.",
+        "distractor": "• Opsi A: 歩かなければ (harus berjalan kaki) / 捨てては (membuang sampah).\n• Opsi C: 渡らなければ (harus menyeberang) / 立てては (mendirikan tiang).\n• Opsi D: 通らなければ (harus melewati) / 置いては (meletakkan barang).",
+        "grammarRule": "Regulasi Lalu Lintas Bab 17: 車は道の左側を走ります（はしります） & 車を止めます（とめます - menghentikan/memarkir kendaraan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Tenggat Batas Waktu Akhir (Madeni)",
+      "type": "teks",
+      "question_ja": "実習生は 今月の レポートを 金曜日（　<strong>？</strong>　） 出さなければなりません。",
+      "question_ruby": "実習生は 今月の レポートを 金曜日（　<strong>？</strong>　） 出さなければなりません。",
+      "question_id": "Partikel yang tepat untuk menyatakan tenggat waktu batas akhir penyerahan tugas (deadline) adalah...",
+      "translation": "Siswa magang wajib mengumpulkan laporan bulan ini paling lambat hari Jumat. Partikel tenggat waktu akhir adalah までに.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "から"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "までに"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (までに).",
+        "logic": "Pembeda fundamental antara <strong>まで (made)</strong> dan <strong>までに (madeni)</strong>:<br>- <strong>まで</strong> menyatakan <em>durasi kontinuitas perbuatan yang berlangsung terus menerus hingga titik waktu tertentu</em> (misal: 5時まで勉強します).<br>- <strong>までに</strong> menandai <em>tenggat batas waktu akhir (deadline) di mana suatu aksi sekali selesai harus dituntaskan sebelumnya atau paling lambat pada waktu tersebut</em>: <code>金曜日までに 出さなければなりません</code>.",
+        "distractor": "• Opsi A: まで salah karena menyerahkan laporan adalah aksi sesaat yang memiliki tenggat batas akhir (deadline), bukan aksi kontinu.\n• Opsi B: から menandai titik awal mulai (sejak/dari).\n• Opsi C: に hanya menandai titik waktu spesifik terjadinya suatu aksi, bukan batas tenggat akhir.",
+        "grammarRule": "Kaidah Krusial Batas Waktu: [Titik Waktu / Hari] + までに + Verba Aksi Sekali Tuntas (Paling lambat sebelum...)."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Target Sasaran Penyerahan / Orang Penerima (Ni)",
+      "type": "teks",
+      "question_ja": "借りたい 本と 図書カードを、いっしょに 図書館の 人（　<strong>？</strong>　） 渡さなければなりません。",
+      "question_ruby": "借りたい 本と 図書カードを、いっしょに 図書館の 人（　<strong>？</strong>　） 渡さなければなりません。",
+      "question_id": "Partikel yang tepat untuk menandai petugas perpustakaan sebagai pihak penerima penyerahan barang adalah...",
+      "translation": "Buku yang ingin dipinjam beserta kartu perpustakaan harus diserahkan bersama-sama kepada petugas perpustakaan. Partikel sasaran penerima adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (に).",
+        "logic": "Kata kerja penyerahan arah dua arah seperti <strong>渡します（わたします - menyerahkan）</strong> atau <strong>見せます（みせます - memperlihatkan）</strong> menuntut partikel <strong>に (ni)</strong> untuk menandai <strong>orang/pihak sasaran yang menerima objek tersebut</strong>: <code>図書館の人に 渡します</code>.",
+        "distractor": "• Opsi B: を menandai objek benda yang diserahkan (本と図書カードを).\n• Opsi C: で menandai tempat dilakukannya aksi atau alat bantu.\n• Opsi D: と menandai rekan pelaku bersama.",
+        "grammarRule": "Rumus Arah Penyerahan Dokumen: [Benda/Surat] を + [Pihak Penerima / Atasan] に + 渡します / 見せます."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Objek Kontak Sentuhan Bahaya (Ni)",
+      "type": "teks",
+      "question_ja": "運転中の ベルトコンベヤー（　<strong>？</strong>　） 手で 触らないでください。巻き込まれますから。",
+      "question_ruby": "運転中の ベルトコンベヤー（　<strong>？</strong>　） 手で 触らないでください。巻き込まれますから。",
+      "question_id": "Partikel yang tepat untuk menandai mesin conveyor belt sebagai target sasaran sentuhan fisik adalah...",
+      "translation": "Tolong jangan menyentuh conveyor belt yang sedang beroperasi dengan tangan, karena bisa tergulung/terjepit. Partikel sasaran sentuhan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Verba <strong>触ります（さわります - menyentuh/kontak fisik）</strong> baik dalam bentuk afirmatif maupun larangan <em>触らないでください</em> secara gramatikal wajib mengambil partikel penanda titik sasaran sentuhan <strong>に (ni)</strong>: <code>ベルトコンベヤーに 触らないでください</code>.",
+        "distractor": "• Opsi A: を adalah kesalahan umum penerjemahan literal dari bahasa ibu; verba sawaru tidak menggunakan partikel を.\n• Opsi C: で menandai organ/alat sentuh (seperti 手で = dengan tangan).\n• Opsi D: へ menandai arah perpindahan gerak.",
+        "grammarRule": "Instruksi Larangan Sentuhan K3: [Objek Bahaya Mekanis] + に + 手で触らないでください."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Rentang Batas Jangka Waktu Penyelesaian (De)",
+      "type": "teks",
+      "question_ja": "図書館で 借りた 本は、1週間（　<strong>？</strong>　） 返さなければなりません。",
+      "question_ruby": "図書館で 借りた 本は、1週間（　<strong>？</strong>　） 返さなければなりません。",
+      "question_id": "Partikel yang tepat untuk menandai jangka waktu tempo peminjaman 'dalam batas 1 minggu' adalah...",
+      "translation": "Buku yang dipinjam di perpustakaan harus dikembalikan dalam batas jangka waktu 1 minggu. Partikel jangka batas waktu adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (で).",
+        "logic": "Partikel <strong>で (de)</strong> setelah kata bilangan jumlah waktu berfungsi menandai <strong>batas kuota total waktu yang dialokasikan untuk menuntaskan suatu hal</strong> (dalam tempo / dalam jangka waktu): <code>1週間で 返さなければなりません (harus dikembalikan dalam tempo 1 minggu)</code>.",
+        "distractor": "• Opsi A: に digunakan untuk titik waktu kalender/jam pasti (misal: 1時に, 月曜日に), bukan besaran rentang durasi tanpa hari spesifik.\n• Opsi B: を menandai objek penderita.\n• Opsi D: から menandai permulaan waktu awal.",
+        "grammarRule": "Partikel Batas Jangka Waktu: [Besaran Durasi Waktu] + で (dalam tempo / dalam jangka waktu sekian)."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Sarana Alat Tulis / Media Pembuatan (De)",
+      "type": "teks",
+      "question_ja": "テストの 答案用紙ですから、名前は 鉛筆（　<strong>？</strong>　） 書かないでください。ボールペンで 書いてください。",
+      "question_ruby": "テストの 答案用紙ですから、名前は 鉛筆（　<strong>？</strong>　） 書かないでください。ボールペンで 書いてください。",
+      "question_id": "Partikel yang tepat untuk menandai pensil sebagai alat tulis yang dilarang digunakan adalah...",
+      "translation": "Karena ini adalah lembar jawaban ujian, tolong jangan menulis nama dengan pensil. Tolong tulis dengan pulpen. Partikel sarana alat adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "と"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (で).",
+        "logic": "Partikel <strong>で (de)</strong> berfungsi menandai <strong>alat, sarana, bahan, atau media yang digunakan untuk melakukan suatu tindakan</strong>: <code>鉛筆で 書かないでください (jangan menulis dengan pensil)</code>, <code>ボールペンで 書いてください (tolong tulis dengan pulpen)</code>.",
+        "distractor": "• Opsi A: を menandai teks/tulisan yang ditulis (nama = 名前を).\n• Opsi B: に menandai media kertas tempat tulisan dibubuhkan (用紙に).\n• Opsi C: と menandai kawan penyerta atau penggabungan setara.",
+        "grammarRule": "Partikel Alat Tulis & Bahasa: [Alat / Sarana / Bahasa] + で + 書きます / 話します."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Kewaspadaan Keselamatan K3 (Ni)",
+      "type": "teks",
+      "question_ja": "荷物が クレーンで つり上げられていますから、頭の 上（　<strong>？</strong>　） 注意してください。",
+      "question_ruby": "荷物が クレーンで つり上げられていますから、頭の 上（　<strong>？</strong>　） 注意してください。",
+      "question_id": "Partikel yang tepat untuk menandai area atas kepala sebagai sasaran kewaspadaan bahaya adalah...",
+      "translation": "Karena muatan barang sedang diangkat dengan derek crane, tolong perhatikan / waspada terhadap bagian atas kepala. Partikel kewaspadaan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Kata kerja kewaspadaan industri <strong>注意します（ちゅういします - berhati-hati / mewaspadai）</strong> menuntut partikel titik fokus ancaman bahaya <strong>に (ni)</strong>: <code>頭の上に 注意してください (waspadalah terhadap bagian atas kepala)</code>, <code>足元に 注意してください (waspadai langkah kaki)</code>.",
+        "distractor": "• Opsi A: を salah karena chūi suru mengarahkan atensi pada sasaran dengan に.\n• Opsi C: で menandai tempat kegiatan.\n• Opsi D: へ menandai arah fisik pergerakan.",
+        "grammarRule": "Rambu & Slogan K3 Industri: [Titik Ancaman Bahaya: 頭の上 / 足元 / 車] + に + 注意してください / 注意しろ."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk NAI Khusus Vokal Akhir -i (u ➔ wa)",
+      "type": "teks",
+      "question_ja": "工場の中は 禁煙ですから、ここで たばこを （　<strong>＿＿＿＿＿</strong>　）ください。（吸います）",
+      "question_ruby": "工場の中は 禁煙ですから、ここで たばこを （　<strong>＿＿＿＿＿</strong>　）ください。（吸います）",
+      "question_id": "Bentuk konjugasi kata kerja yang tepat untuk menyatakan instruksi larangan sopan 'jangan merokok' adalah...",
+      "translation": "Karena di dalam area pabrik bebas asap rokok (dilarang merokok), tolong jangan merokok di sini. Bentuk: 吸わないでください.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "吸いないで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "吸あないで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "吸わないで"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "吸えないで"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (吸わないで).",
+        "logic": "Verba Grup 1 yang berakhiran suku kata <strong>~い (~i)</strong> sebelum <em>~ます</em> (seperti 吸います, 買います, 歌います, 使います, 払います) memiliki aturan fonetis khusus: bunyi vokal <em>-i</em> berubah menjadi <strong>わ (wa)</strong>, BUKAN <em>あ (a)</em>. Maka: <code>吸います ➔ 吸わない ➔ 吸わないでください</code>.",
+        "distractor": "• Opsi A: 吸いないで adalah kesalahan fatal mempertahankan vokal i.\n• Opsi B: 吸あないで adalah kesalahan fonologis menulis vokal 'a' langsung tanpa konsonan 'w'.\n• Opsi D: 吸えないで adalah bentuk potensial negatif (tidak bisa menghisap).",
+        "grammarRule": "Kaidah Mutlak Grup 1 Vokal -i: [Verba akhiran ~います] ➔ ~わない (suimasu ➔ suwanai; kaimasu ➔ kawanai; tsukaimasu ➔ tsukawanai)."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk NAI Verba Irregular Grup 3 (Kimasu ➔ Konai)",
+      "type": "teks",
+      "question_ja": "明日は 工場の 定休日ですから、朝 会社へ （　<strong>＿＿＿＿＿</strong>　）。（来ます）",
+      "question_ruby": "明日は 工場の 定休日ですから、朝 会社へ （　<strong>＿＿＿＿＿</strong>　）。（来ます）",
+      "question_id": "Bentuk konjugasi kata kerja yang tepat untuk menyatakan 'tidak perlu datang' dari verba 'kimasu' adalah...",
+      "translation": "Karena besok adalah hari libur rutin pabrik, pagi hari tidak perlu datang ke perusahaan. Bentuk: 来なくてもいいです (dibaca konakutemo ii desu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "来なくてもいいです （こなくてもいいです）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "きなくてもいいです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "こないでください"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "くなくてもいいです"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (来なくてもいいです （こなくてもいいです）).",
+        "logic": "Verba <strong>来ます（きます - datang）</strong> adalah verba irregular Grup 3 yang mengalami perubahan pelafalan kanji saat diubah ke Bentuk-NAI: kanji 来 dilafalkan <strong>こ (ko)</strong>, sehingga bentuk negatifnya adalah <strong>来ない（こない - konai）</strong>. Pola tidak perlu: <code>来ない ➔ 来なくてもいいです (こなくてもいいです)</code>.",
+        "distractor": "• Opsi B: きなくてもいいです salah pelafalan (bacaan 'ki' hanya untuk bentuk-masu).\n• Opsi C: こないでください menyatakan larangan memohon ('tolong jangan datang'), bukan ungkapan dispensasi/tidak perlu.\n• Opsi D: くなくてもいいです salah pelafalan (bacaan 'ku' hanya untuk bentuk kamus 来る).",
+        "grammarRule": "Konjugasi Irregular Grup 3: 来ます（きます） ➔ Bentuk-NAI: 来ない（こない） ➔ 来なければなりません / 来なくてもいいです."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Permohonan Larangan Keselamatan K3 (~Nai de kudasai)",
+      "type": "teks",
+      "question_ja": "機械が 高速で 回転していますから、絶対に カバーを （　<strong>＿＿＿＿＿</strong>　）。（開けます）",
+      "question_ruby": "機械が 高速で 回転していますから、絶対に カバーを （　<strong>＿＿＿＿＿</strong>　）。（開けます）",
+      "question_id": "Ungkapan larangan sopan K3 yang tepat untuk 'tolong jangan membuka penutup pelindung' adalah...",
+      "translation": "Karena mesin sedang berputar dengan kecepatan tinggi, mutlak tolong jangan membuka cover penutupnya. Bentuk larangan: 開けないでください.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "開けなくてはいけません"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "開けてください"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "開けなくてもいいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "開けないでください"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (開けないでください).",
+        "logic": "Rumus <strong>instruksi permohonan larangan sopan K3</strong> adalah <strong>[Verba Bentuk-NAI] + でください (~nai de kudasai = tolong jangan...)</strong>: <code>開けます（Grup 2） ➔ 開けない ＋ でください ➔ 開けないでください</code>.",
+        "distractor": "• Opsi A: 開けなくてはいけません adalah struktur gramatikal rusak yang tidak baku.\n• Opsi B: 開けてください justru berarti menyuruh membuka (sangat berbahaya).\n• Opsi C: 開けなくてもいいです menyatakan tidak perlu membuka, kurang tegas untuk instruksi larangan bahaya mutlak.",
+        "grammarRule": "Rumus Larangan Sopan Instruksi Kerja: [Verba Bentuk-NAI] + でください (Mohon untuk tidak melakukan...)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kewajiban Mutlak Keselamatan K3 (~Nakereba narimasen)",
+      "type": "teks",
+      "question_ja": "工場長：『高所作業では、命綱と 安全帯を （　<strong>＿＿＿＿＿</strong>　）。規則ですから。』",
+      "question_ruby": "工場長：『高所作業では、命綱と 安全帯を （　<strong>＿＿＿＿＿</strong>　）。規則ですから。』",
+      "question_id": "Ungkapan kewajiban mutlak yang tepat untuk 'harus mengenakan sabuk pengaman keselamatan' adalah...",
+      "translation": "Kepala pabrik: 'Dalam pekerjaan di tempat ketinggian, wajib mengenakan tali pengaman dan sabuk keselamatan. Karena itu adalah peraturan.' Pola: つけなければなりません.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "つけないでください"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "つけなければなりません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "つけてもいいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "つけなくてもいいです"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (つけなければなりません).",
+        "logic": "Rumus <strong>kewajiban mutlak peraturan kerja pabrik</strong> dibentuk dengan pola <strong>[Verba Bentuk-NAI] buang ~い + ければなりません (~nakereba narimasen = harus / wajib...)</strong>: <code>つけます ➔ つけない ➔ つけなければなりません</code>.",
+        "distractor": "• Opsi A: つけないでください adalah larangan memakai (melanggar K3).\n• Opsi C: つけてもいいです menyatakan izin boleh memakai.\n• Opsi D: つけなくてもいいです menyatakan tidak perlu memakai (membahayakan jiwa pekerja).",
+        "grammarRule": "Rumus Kewajiban SOP Industri: [Verba Bentuk-NAI (buang ~い)] + ければなりません (Wajib / mutlak harus...)."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Izin Tidak Perlu Melakukan Tindakan (~Nakutemo ii desu)",
+      "type": "teks",
+      "question_ja": "先輩：『今日は 風が 涼しいですから、エアコンを （　<strong>＿＿＿＿＿</strong>　）よ。窓を 開けましょう。』",
+      "question_ruby": "先輩：『今日は 風が 涼しいですから、エアコンを （　<strong>＿＿＿＿＿</strong>　）よ。窓を 開けましょう。』",
+      "question_id": "Ungkapan izin tidak perlu yang tepat untuk 'tidak perlu menyalakan AC' adalah...",
+      "translation": "Senior: 'Hari ini anginnya sejuk, jadi kamu tidak perlu menyalakan AC lho. Mari kita buka jendela saja.' Pola: つけなくてもいいです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "つけなくてもいいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "つけなければなりません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "つけないでください"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "つけてはいけません"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (つけなくてもいいです).",
+        "logic": "Pola <strong>[Verba Bentuk-NAI] buang ~い + くてもいいです (~nakutemo ii desu)</strong> menyatakan <strong>tidak adanya keharusan atau fleksibilitas (tidak perlu melakukan aksi tersebut tidak apa-apa)</strong>: <code>つけます ➔ つけない ➔ つけなくてもいいです</code>.",
+        "distractor": "• Opsi B: つけなければなりません berarti 'harus menyalakan'.\n• Opsi C: つけないでください melarang secara memohon ('tolong jangan nyalakan').\n• Opsi D: つけてはいけません melarang keras aturan ('dilarang menyalakan').",
+        "grammarRule": "Rumus Tidak Perlu Dilakukan: [Verba Bentuk-NAI (buang ~い)] + くてもいいです (Tidak perlu... pun boleh)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pasangan Tanya Jawab Kewajiban vs Penolakan Dispensasi",
+      "type": "teks",
+      "question_ja": "ダダン：『研修棟の 部屋に 入る とき、靴を 脱がなければなりませんか。』<br>社員：『いいえ、（　<strong>＿＿＿＿＿</strong>　）。そのまま お入りください。』",
+      "question_ruby": "ダダン：『研修棟の 部屋に 入る とき、靴を 脱がなければなりませんか。』<br>社員：『いいえ、（　<strong>＿＿＿＿＿</strong>　）。そのまま お入りください。』",
+      "question_id": "Respons jawaban yang tepat dan logis untuk pertanyaan kewajiban di atas adalah...",
+      "translation": "Dadan: 'Saat masuk ke ruangan gedung pelatihan, apakah harus melepas sepatu?' Karyawan: 'Tidak, tidak perlu melepas sepatu. Silakan langsung masuk saja.' Respons: 脱がなくてもいいです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "脱いでもいいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "脱いではいけません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "脱がなくてもいいです"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "脱がなければなりません"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (脱がなくてもいいです).",
+        "logic": "Pertanyaan kewajiban <code>～なければなりませんか (Apakah harus...?)</code> jika dijawab secara negatif diawali dengan <em>いいえ (tidak)</em>, maka predikat penolakan kewajiban yang baku dan sopan adalah <strong>いいえ、[Verba Bentuk-NAI] + くてもいいです (Tidak, tidak perlu... kok)</strong>: <code>脱がなくてもいいです</code>.",
+        "distractor": "• Opsi A: 脱いでもいいです memberi izin melepas sepatu, tidak sinkron dengan kata 'いいえ'.\n• Opsi B: 脱いではいけません melarang melepas sepatu secara kaku.\n• Opsi D: 脱がなければなりません kontradiktif karena diawali dengan 'いいえ'.",
+        "grammarRule": "Tanya Jawab Kewajiban Bab 17: Pertanyaan: ～なければなりませんか ➔ Jawaban Negatif: いいえ、～なくてもいいです."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Transformasi Verba Prosedur Kerja ke Bentuk Kewajiban Mandatoris",
+      "type": "teks",
+      "question_ja": "作業を開始する 前に、必ず 図面を よく （　①　）、指導員に （　②　）なりません。（読みます ／ 報告します）",
+      "question_ruby": "作業を開始する 前に、必ず 図面を よく （　①　）、指導員に （　②　）なりません。（読みます ／ 報告します）",
+      "question_id": "Pasangan bentuk verba yang tepat untuk melengkapi kewajiban prosedur kerja pabrik di atas adalah...",
+      "translation": "Sebelum memulai pekerjaan, wajib membaca gambar kerja dengan seksama dan melapor kepada instruktur. Pasangan: 読んで lalu 報告しなければ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "読んで ／ 報告しなくて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "読まないで ／ 報告しても"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "読みながら ／ 報告すれば"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "読んで ／ 報告しなければ"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (読んで ／ 報告しなければ).",
+        "logic": "1) Klausa pertama merupakan tindakan pendahulu berurutan yang disambungkan dengan <strong>Bentuk-TE</strong>: <code>読んで (membaca dan...)</code>.<br>2) Klausa kedua dihubungkan langsung dengan kata <em>なりません</em> untuk menyusun pola kewajiban mutlak: <strong>報告します ➔ 報告しない ➔ 報告しなければなりません</strong>. Maka susunan yang tepat adalah <code>読んで ／ 報告しなければ</code>.",
+        "distractor": "• Opsi A: 報告しなくて tidak membentuk pola kewajiban (pola kewajiban menuntut -nakereba, bukan -nakute).\n• Opsi B: 読まないで berarti melarang membaca (berlawanan dengan keselamatan kerja).\n• Opsi C: 読みながら ／ 報告すれば tidak menyatu dengan imbuhan narimasen.",
+        "grammarRule": "Penggabungan Rangkaian Aksi & Kewajiban: [V1 Bentuk-TE]、[V2 Bentuk-NAI (~なければ)] + なります / なりません."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Rambu Bahaya Api (火気厳禁)",
+      "type": "gambar",
+      "question_ja": "工場の マークを 見て ください。この 意味は 何ですか。<br>「ここで 火を （　　　）。」",
+      "question_ruby": "工場の マークを 見て ください。この 意味は 何ですか。<br>「ここで 火を （　　　）。」",
+      "question_id": "Perhatikan rambu pabrik '火気厳禁'. Apakah artinya? 'Di sini (...) api'.",
+      "translation": "Tolong jangan menggunakan api di sini (hi o tsukawanaide kudasai).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "使ってもいいです"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "使わないでください"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "使わなければなりません"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "使いたいです"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (使わないでください).",
+        "logic": "Rambu '火気厳禁' (Dilarang Menyalakan Api / Bahan Mudah Terbakar) menuntut instruksi larangan demi keselamatan: [V-nai] ＋ ないでください.",
+        "distractor": "• Opsi A: 使ってもいいです menyatakan izin menggunakan api.\n• Opsi C: 使わなければなりません menyatakan kewajiban menyalakan api.\n• Opsi D: 使いたいです menyatakan keinginan pribadi.",
+        "grammarRule": "Instruksi Larangan Halus Bab 17: ～ないでください（jangan lakukan ...）."
+      },
+      "image": "assets/bab_17/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Rambu Larangan Sentuh (触るな)",
+      "type": "gambar",
+      "question_ja": "工場の 危険マークを 見て ください。この 意味は 何ですか。<br>「危ないですから、機械に （　　　）。」",
+      "question_ruby": "工場の 危険マークを 見て ください。この 意味は 何ですか。<br>「危ないですから、機械に （　　　）。」",
+      "question_id": "Perhatikan rambu bahaya sentuh mesin. Apakah artinya? 'Karena berbahaya, (...) mesin'.",
+      "translation": "Karena berbahaya, tolong jangan menyentuh mesin (sawaranaide kudasai).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "のらないでください"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "はいらないでください"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "さわらないでください"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "たたないでください"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (さわらないでください).",
+        "logic": "Rambu dengan gambar telapak tangan disilang bertuliskan '触るな' berarti larangan menyentuh: さわらないでください (sawaranaide kudasai).",
+        "distractor": "• Opsi A: のらないでください berarti jangan menaiki.\n• Opsi B: はいらないでください berarti jangan masuk.\n• Opsi D: たたないでください berarti jangan berdiri.",
+        "grammarRule": "Larangan Sentuh K3: 触らないでください（さわらないでください = jangan disentuh）."
+      },
+      "image": "assets/bab_17/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (覚えて)",
+      "type": "teks",
+      "question_ja": "工場の 安全規則を しっかり （ 覚えて ）ください。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "工場の 安全規則を しっかり （ 覚えて ）ください。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Tolong hafalkan/ingat peraturan keselamatan pabrik dengan baik. Pilihlah cara baca kanji '覚えて' yang tepat.",
+      "translation": "Tolong hafalkan dan ingat baik-baik tata tertib keselamatan kerja pabrik.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おぼえて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "わすれて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かんがえて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おしえて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (おぼえて).",
+        "logic": "Kanji 覚えて dibaca おぼえて (oboete) dari verba 覚える (mengingat / menghafal).",
+        "distractor": "• Opsi B: わすれて ditulis 忘れて (lupa).\n• Opsi C: かんがえて ditulis 考えて (berpikir).\n• Opsi D: おしえて ditulis 教えて (mengajar/memberitahu).",
+        "grammarRule": "Verba Belajar Bab 17: 覚えます（おぼえます = mengingat / menghafal）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (払います)",
+      "type": "teks",
+      "question_ja": "食堂で 昼ごはんの 代金を （ はらいます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "食堂で 昼ごはんの 代金を （ はらいます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Membayar ongkos makan siang di kantin. Pilihlah penulisan kanji yang tepat untuk 'haraimasu'.",
+      "translation": "Membayar biaya makan siang di kantin.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "払います"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "扱います"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "抜います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "投います"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (払います).",
+        "logic": "Kata はらいます (membayar) ditulis dengan kanji baku 払います (radikal tangan 扌 dan 厶).",
+        "distractor": "• Opsi B: 扱います dibaca あつかいます (menangani / memperlakukan).\n• Opsi C: 抜きます dibaca ぬきます (mencabut).\n• Opsi D: 投げます dibaca なげます (melempar).",
+        "grammarRule": "Transaksi Bab 17: 払います（はらいます = membayar uang/tagihan）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (残業)",
+      "type": "teks",
+      "question_ja": "きょうは 注文が 多いですから、２時間 （ ざんぎょう ）します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "きょうは 注文が 多いですから、２時間 （ ざんぎょう ）します。<br>正しい 漢字は どれですか。",
+      "question_id": "Karena banyak pesanan hari ini lembur selama 2 jam. Pilihlah kanji yang tepat untuk 'zangyou'.",
+      "translation": "Karena pesanan produksi membludak hari ini, bekerja lembur selama 2 jam.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "残業"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "残事"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "産業"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "勤業"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (残業).",
+        "logic": "Kata ざんぎょう (kerja lembur lemburan) ditulis dengan kanji baku 残業 (残 = sisa/tersisa, 業 = pekerjaan).",
+        "distractor": "• Opsi B: 残事 adalah penulisan yang keliru.\n• Opsi C: 産業 dibaca さんぎょう (industri manufaktur).\n• Opsi D: 勤業 adalah bentuk tidak baku.",
+        "grammarRule": "Istilah Kerja Lembur IMM Japan: 残業（ざんぎょう = lembur kerja）."
+      }
+    }
+  ]
+};
+
+const BAB_18_DATA = {
+  "chapter": "18",
+  "title_ja": "第１８課：動詞辞書形・可能表現（～ができる／～ことができる）・趣味表現・時間順序「～前に」",
+  "title_id": "Bab 18: Bentuk Kamus (辞書形), Pola Kemampuan / Potensi (~Ga dekiru / ~Koto ga dekiru), Pola Hobi, dan Urutan Waktu Sebelum (~Mae ni)",
+  "theme_ja": "辞書形の活用 (Bentuk Kamus - Jisho-kei), 能力・可能表現 (Potensi/Kecakapan), 趣味・嗜好 (Hobi/Minat) & 前後関係「～前に」",
+  "theme_id": "Evaluasi komprehensif Bab 18 buku IMM Japan yang menguji: perubahan konjugasi bentuk kamus (辞書形 - Jisho-kei) untuk Grup 1 (vokal -i menjadi -u: hataraku, hanasu, matsu, toru, yobu, nomu, utau), Grup 2 (buang -masu tambah -ru: taberu, neru, miru, kariru), dan Grup 3 (suru, kuru); kemampuan potensi dengan nomina ([N] が できます) dan nomina verba ([V-jisho] ことができます); perumusan hobi (しゅみは [V-jisho] ことです); ekspresi kegemaran ([V-jisho] ことが好きです); urutan waktu sebelum ([V-jisho] 前に / [N] の前に / [Jangka Waktu] 前に); kutipan ucapan langsung (「～」と言いました); serta partikel penanda objek kemampuan, pembuat nomina (koto), dan sasaran minat.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 18.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 18.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Memetik Instrumen Musik & Menggubah Lagu",
+      "type": "teks",
+      "question_ja": "ダナイさんは ギターを （　<strong>ひく</strong>　）ことが できます。また、自分で 歌を （　<strong>つくる</strong>　）ことも できます。「ひく」と「つくる」の 漢字表記は どれですか。",
+      "question_ruby": "ダナイさんは ギターを （　<strong>ひく</strong>　）ことが できます。また、自分で 歌を （　<strong>つくる</strong>　）ことも できます。「ひく」と「つくる」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'memetik/memainkan (senar gitar)' dan 'membuat / menggubah (lagu)' adalah...",
+      "translation": "Danai-san bisa memainkan gitar. Serta, ia juga bisa menciptakan lagu sendiri. Kanji yang benar: 弾く ／ 作る.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "吹く ／ 撮る"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "弾く ／ 作る"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "引く ／ 使う"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "打つ ／ 造る"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (弾く ／ 作る).",
+        "logic": "1) <strong>弾きます（ひきます - hikimasu）</strong> ditulis dengan kanji <strong>弾</strong> yang bermakna <strong>memetik atau memainkan instrumen musik petik/tuts</strong> (gitar, piano). Hati-hati jangan tertukar dengan kanji 引 (menarik / membuka kamus).<br>2) <strong>作ります（つくります - tsukurimasu）</strong> ditulis <strong>作</strong> yang bermakna <strong>membuat, menyusun, atau menggubah karya seni/lagu</strong>.",
+        "distractor": "• Opsi A: 吹く (ふく - meniup alat musik tiup seperti seruling) / 撮る (とる - memotret foto).\n• Opsi C: 引く (menarik benda / mencari di kamus) / 使う (つかう - menggunakan alat).\n• Opsi D: 打つ (memukul benda) / 造る (membuat skala industri konstruksi besar).",
+        "grammarRule": "Kosakata Musik & Kesenian: ギター／ピアノを弾きます（ひきます） & 歌／料理を作ります（つくります）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Istilah Hobi Serta Kemampuan Mengemudi",
+      "type": "teks",
+      "question_ja": "ダダンさんの （　<strong>しゅみ</strong>　）は 車の （　<strong>うんてん</strong>　）です。「しゅみ」と「うんてん」の 漢字表記と 意味は どれですか。",
+      "question_ruby": "ダダンさんの （　<strong>しゅみ</strong>　）は 車の （　<strong>うんてん</strong>　）です。「しゅみ」と「うんてん」の 漢字表記と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk kata 'hobi/kegemaran' dan 'mengemudi' adalah...",
+      "translation": "Hobi Dadan-san adalah mengemudikan mobil. Pasangan kanji: 趣味 ／ 運転.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "習慣 ／ 運動 （Kebiasaan rutin ／ Berolahraga jasmani）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "興味 ／ 運送 （Minat ketertarikan ／ Pengiriman logistik barang）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "特技 ／ 運休 （Keahlian khusus ／ Pemberhentian jadwal kereta）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "趣味 ／ 運転 （Hobi / kegemaran ／ Mengemudi / menyetir kendaraan）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (趣味 ／ 運転 （Hobi / kegemaran ／ Mengemudi / menyetir kendaraan）).",
+        "logic": "1) <strong>趣味（しゅみ - shumi）</strong> berarti <strong>kegemaran atau hobi pribadi di waktu luang</strong>.<br>2) <strong>運転（うんてん - unten）</strong> berarti <strong>mengemudi, menyetir kendaraan roda empat/alat berat</strong> (pasangannya: <code>車の運転ができます</code>).",
+        "distractor": "• Opsi A: 習慣 (kebiasaan) / 運動 (olahraga fisik).\n• Opsi B: 興味 (minat antusias) / 運送 (ekspedisi angkutan kargo).\n• Opsi C: 特技 (bakat istimewa) / 運休 (pembatalan perjalanan dinas).",
+        "grammarRule": "Kosakata Profil Diri IMM Japan: 趣味（しゅみ - hobi） & 車の運転（うんてん - mengemudi kendaraan）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Konsultasi Referensi Leksikal (Jisho o Hiku)",
+      "type": "teks",
+      "question_ja": "アグスさんは わからない 言葉が ある とき、（　<strong>辞書を 引いて</strong>　） 意味を 調べます。「引いて」の 読み方と 意味は どれですか。",
+      "question_ruby": "アグスさんは わからない 言葉が ある とき、（　<strong>辞書を 引いて</strong>　） 意味を 調べます。「引いて」の 読み方と 意味は どれですか。",
+      "question_id": "Cara baca kanji dan arti yang benar untuk frasa verba '引いて' pada kalimat di atas adalah...",
+      "translation": "Agus-san saat ada kosakata yang tidak dimengerti, membuka kamus lalu mencari artinya. Kanji 引いて dibaca hiite yang bermakna mencari di kamus.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ひいて （Membuka / mencari lema entri di dalam kamus）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おいて （Menaruh kamus di atas meja belajar）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かいて （Menulis catatan arti istilah di buku）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "きいて （Mendengarkan penjelasan arti dari orang lain）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ひいて （Membuka / mencari lema entri di dalam kamus）).",
+        "logic": "Frasa baku <strong>辞書を引きます（じしょをひきます - jisho o hikimasu）</strong> secara idiomatis bermakna <strong>membuka kamus dan menelusuri arti suatu entri leksikon</strong>. Bentuk-te adalah <code>引いて（ひいて）</code>, bentuk kamus: <code>引く（ひく）</code>.",
+        "distractor": "• Opsi B: おいて ditulis 置いて (menaruh/meletakkan).\n• Opsi C: かいて ditulis 書いて (menulis) atau 描いて (menggambar).\n• Opsi D: きいて ditulis 聞いて (mendengarkan/bertanya).",
+        "grammarRule": "Kolokasi Belajar Mandiri: 辞書を引きます（じしょをひきます - membuka/mencari kata di kamus）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Cabang Olahraga & Aktivitas Lari",
+      "type": "teks",
+      "question_ja": "ロンさんは （　<strong>すいえい</strong>　）が できます。毎朝 会社へ 行く 前に 5キロ （　<strong>はしります</strong>　）。「すいえい」と「はしります」の 漢字表記は どれですか。",
+      "question_ruby": "ロンさんは （　<strong>すいえい</strong>　）が できます。毎朝 会社へ 行く 前に 5キロ （　<strong>はしります</strong>　）。「すいえい」と「はしります」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'olahraga renang' dan 'berlari' adalah...",
+      "translation": "Ron-san bisa berenang. Setiap pagi sebelum berangkat ke perusahaan ia berlari sejauh 5 km. Kanji: 水泳 ／ 走ります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "水滴 ／ 歩きます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "海泳 ／ 渡ります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "水泳 ／ 走ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "水族 ／ 通います"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (水泳 ／ 走ります).",
+        "logic": "1) <strong>水泳（すいえい - suiei）</strong> berarti <strong>olahraga berenang</strong> (kata benda potensi: 水泳ができます / 水泳が好きです).<br>2) <strong>走ります（はしります - hashirimasu）</strong> ditulis <strong>走</strong> yang bermakna <strong>berlari</strong>. Bentuk kamus: <code>走る（はしる）</code>.",
+        "distractor": "• Opsi A: 水滴 (tetesan air) / 歩きます (berjalan kaki).\n• Opsi B: 海泳 bukan istilah olahraga baku / 渡ります (menyeberangi jalan/jembatan).\n• Opsi D: 水族 (biota air) / 通います (bolak-balik pulang pergi bekerja).",
+        "grammarRule": "Kosakata Olahraga & Kebugaran: 水泳（すいえい - renang） & 走ります（はしります - berlari）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Reparasi Mesin & Pemulihan Kerusakan",
+      "type": "teks",
+      "question_ja": "父は エンジニアですから、こわれた ラジオや 時計を （　<strong>直す</strong>　）ことが できます。「直す」の 読み方と 意味は どれですか。",
+      "question_ruby": "父は エンジニアですから、こわれた ラジオや 時計を （　<strong>直す</strong>　）ことが できます。「直す」の 読み方と 意味は どれですか。",
+      "question_id": "Cara baca kanji dan arti yang tepat untuk verba bentuk kamus '直す' adalah...",
+      "translation": "Ayah saya seorang teknisi, jadi beliau bisa memperbaiki radio atau jam yang rusak. Kanji 直す dibaca naosu yang bermakna memperbaiki.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おとす （Menjatuhkan barang hingga rusak）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "なおす （Memperbaiki / mereparasi benda yang rusak）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "うごかす （Menggerakkan roda gigi mesin produksi）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ならす （Membunyikan bel tanda bahaya darurat）"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (なおす （Memperbaiki / mereparasi benda yang rusak）).",
+        "logic": "Verba <strong>直します（なおします - naoshimasu）</strong> memiliki bentuk kamus <strong>直す（なおす - naosu）</strong> yang bermakna <strong>memperbaiki, mereparasi, atau membetulkan kerusakan pada peralatan/mesin</strong>. Sinonim formalnya adalah <em>修理します（しゅうりします）</em>.",
+        "distractor": "• Opsi A: おとす ditulis 落とす (menjatuhkan).\n• Opsi C: うごかす ditulis 動かす (menggerakkan mesin).\n• Opsi D: ならす ditulis 鳴らす (membunyikan suara/klakson).",
+        "grammarRule": "Verba Keterampilan Teknis: 機械／時計を直します（なおします） ➔ 直すことができます（bisa memperbaiki）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Prestasi Kerja & Antusiasme Minat Belajar",
+      "type": "teks",
+      "question_ja": "去年の 運動会で いい （　<strong>せいせき</strong>　）を とりました。私は 空手に （　<strong>きょうみ</strong>　）が あります。漢字表記は どれですか。",
+      "question_ruby": "去年の 運動会で いい （　<strong>せいせき</strong>　）を とりました。私は 空手に （　<strong>きょうみ</strong>　）が あります。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'prestasi/hasil evaluasi' dan 'minat/antusiasme ketertarikan' adalah...",
+      "translation": "Pada perlombaan olahraga tahun lalu meraih prestasi yang bagus. Saya memiliki ketertarikan pada seni bela diri karate. Kanji: 成績 ／ 興味.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "成功 ／ 興味"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "成績 ／ 趣味"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "成果 ／ 意味"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "成績 ／ 興味"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (成績 ／ 興味).",
+        "logic": "1) <strong>成績（せいせき - seiseki）</strong> berarti <strong>hasil nilai, performa, atau prestasi evaluasi</strong> (kolokasi: 成績をとる / 成績がいい).<br>2) <strong>興味（きょうみ - kyoumi）</strong> berarti <strong>minat atau rasa tertarik terhadap suatu bidang</strong> (kolokasi: <code>[Bidang] に 興味がある</code>).",
+        "distractor": "• Opsi A: 成功 (kesuksesan/berhasil).\n• Opsi B: 趣味 berarti hobi/kegemaran pribadi, bukan rasa ketertarikan (kyoumi).\n• Opsi C: 成果 (buah hasil usaha) / 意味 (arti/makna kata).",
+        "grammarRule": "Kosakata Minat & Evaluasi: 成績（せいせき - prestasi/skor nilai） & [Bidang] に 興味（きょうみ - minat）があります."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Penguncian Pintu & Akses Keamanan Asrama",
+      "type": "teks",
+      "question_ja": "寮の 部屋を 出る 前に、必ず ドアに （　<strong>かぎを かけます</strong>　）。「かぎを かけます」の 漢字表記と 意味は どれですか。",
+      "question_ruby": "寮の 部屋を 出る 前に、必ず ドアに （　<strong>かぎを かけます</strong>　）。「かぎを かけます」の 漢字表記と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk frasa 'kagi o kakemasu' adalah...",
+      "translation": "Sebelum keluar dari kamar asrama, wajib mengunci pintu. Kanji: 鍵を掛けます yang bermakna mengunci pintu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "鍵を掛けます （Mengunci pintu kamar demi keamanan）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "鍵を着けます （Memakai gantungan kunci dekoratif）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "鍵を開けます （Membuka gembok pintu ruangan）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "鍵を付けます （Memasang silinder kunci baru di pintu）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (鍵を掛けます （Mengunci pintu kamar demi keamanan）).",
+        "logic": "Frasa baku <strong>鍵を掛けます（かぎをかけます - kagi o kakemasu）</strong> bermakna <strong>mengunci pintu / menggembok akses ruangan</strong>. Kebalikannya adalah <em>鍵を開けます（かぎをあけます - membuka kunci pintu）</em>.",
+        "distractor": "• Opsi B: 着けます berarti mengenakan atribut pakaian.\n• Opsi C: 開けます (あけます) berarti membuka pintu yang terkunci.\n• Opsi D: 付けます berarti menyematkan atau menyalakan.",
+        "grammarRule": "Standar Keamanan Asrama & Pabrik: ドアに 鍵を掛けます（かぎをかけます - mengunci pintu） >< 鍵を開けます（membuka kunci）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Objek Potensi Nomina (Ga dekiru)",
+      "type": "teks",
+      "question_ja": "ダダンさんは 会社の フォークリフトの 運転（　<strong>？</strong>　） できます。",
+      "question_ruby": "ダダンさんは 会社の フォークリフトの 運転（　<strong>？</strong>　） できます。",
+      "question_id": "Partikel yang tepat untuk menandai kemahiran menyetir forklift sebagai objek potensi 'dekiru' adalah...",
+      "translation": "Dadan-san bisa menyetir/mengoperasikan forklift perusahaan. Partikel penanda objek kemampuan adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Pola kalimat potensi kemampuan dengan kata benda menuntut rumus <strong>[Kata Benda Keterampilan / Olahraga / Bahasa] + が + できます (ga dekimasu)</strong>: <code>運転が できます</code>, <code>日本語が できます</code>. Dalam bahasa Jepang standar, verba dekiru tidak mengambil partikel を.",
+        "distractor": "• Opsi A: を adalah interferensi bahasa ibu pembelajar; verba bentuk potensial wajib dipasangkan dengan が.\n• Opsi B: で menandai alat bantu cara.\n• Opsi D: に menandai titik lokasi keberadaan.",
+        "grammarRule": "Rumus Kemampuan Kata Benda: [Nomina Kemampuan] + が + できます / できません."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penghubung Nomina Waktu Sebelum (No mae ni)",
+      "type": "teks",
+      "question_ja": "午後の 作業（　<strong>？</strong>　） 前に、みんなで 準備体操を します。",
+      "question_ruby": "午後の 作業（　<strong>？</strong>　） 前に、みんなで 準備体操を します。",
+      "question_id": "Partikel yang tepat untuk menghubungkan kata benda kegiatan 'sagyou' dengan penanda waktu 'mae ni' adalah...",
+      "translation": "Sebelum melakukan pekerjaan sore hari, bersama-sama melakukan senam pemanasan. Partikel penghubung adalah の.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "な"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "の"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (の).",
+        "logic": "Bila menerangkan urutan waktu 'sebelum' menggunakan <strong>Kata Benda (Nomina Kegiatan)</strong>, maka nomina tersebut wajib disambungkan dengan kata <em>前に (mae ni)</em> menggunakan partikel modifikasi <strong>の (no)</strong>: <code>[Nomina] + の + 前に</code> (contoh: <code>作業の 前に</code>, <code>食事の 前に</code>). Jika menggunakan kata kerja, langsung menggunakan bentuk kamus tanpa partikel の (食べる前に).",
+        "distractor": "• Opsi A: な adalah partikel perangkai kata sifat-Na.\n• Opsi C: に salah struktur (partikel に sudah terletak setelah 前).\n• Opsi D: を menandai objek penderita verba transitif.",
+        "grammarRule": "Pembeda Rumus Sebelum: [Kata Benda] + の + 前に vs [Kata Kerja Bentuk Kamus] + 前に."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Kutipan Kalimat Langsung (To iimashita)",
+      "type": "teks",
+      "question_ja": "工場長は 朝礼で 『今日も 一日、安全第一で 頑張ろう』（　<strong>？</strong>　） 言いました。",
+      "question_ruby": "工場長は 朝礼で 『今日も 一日、安全第一で 頑張ろう』（　<strong>？</strong>　） 言いました。",
+      "question_id": "Partikel yang tepat untuk menutup kalimat kutipan langsung yang diucapkan oleh kepala pabrik adalah...",
+      "translation": "Kepala pabrik berkata pada apel pagi: 'Hari ini pun satu hari penuh, mari bersemangat dengan mengutamakan keselamatan kerja'. Partikel kutipan adalah と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (と).",
+        "logic": "Partikel <strong>と (to)</strong> berfungsi sebagai <strong>penanda isi kutipan langsung maupun tidak langsung</strong> sebelum verba komunikasi seperti <em>言います（berkata）</em>, <em>聞きます（bertanya）</em>, atau <em>思います（berpendapat）</em>: <code>『～』と 言いました</code>.",
+        "distractor": "• Opsi A: を salah karena isi wacana tuturan ditandai dengan partikel kutipan と, bukan objek penderita を.\n• Opsi B: に menandai lawan bicara yang dituju tuturan (orang に言います).\n• Opsi C: へ menandai arah pergerakan.",
+        "grammarRule": "Rumus Kutipan Kalimat: 「Kalimat Langsung / Futsuukei」 + と + 言いました（いいました）."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Penderita di Dalam Klausa Anak Koto ga Dekiru",
+      "type": "teks",
+      "question_ja": "アグスさんは 日本の 難しい 漢字（　<strong>？</strong>　） 正確に 書くことが できます。",
+      "question_ruby": "アグスさんは 日本の 難しい 漢字（　<strong>？</strong>　） 正確に 書くことが できます。",
+      "question_id": "Partikel yang tepat untuk menandai kanji sebagai objek dari kata kerja 'kaku' di dalam klausa nominalisasi kemampuan adalah...",
+      "translation": "Agus-san bisa menulis huruf kanji Jepang yang sulit secara akurat. Partikel objek kata kerja menulis adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (を).",
+        "logic": "Struktur rumus kemampuan aktivitas: <strong>[Objek] を + [Verba Bentuk Kamus] + ことが できます</strong>. Di dalam klausa verbal anak, hubungan antara objek dan verba dasarnya tetap dipertahankan dengan partikel aslinya (yaitu <strong>を</strong> untuk kata kerja transitif <em>書きます ➔ 漢字を書く</em>), sedangkan partikel <strong>が</strong> melekat pada frase nominal <em>～こと</em> sebelum <em>できます</em>.",
+        "distractor": "• Opsi B: が sudah dipakai di luar klausa anak (ことが できます); menduplikasi が di objek 漢字が書くことが dapat menimbulkan ambiguitas tata bahasa.\n• Opsi C: で menandai alat tulis (pensil/kuas).\n• Opsi D: に menandai target tujuan.",
+        "grammarRule": "Struktur Klausa Kemampuan: [Objek Penderita] + を + [Verba-Jisho] + ことが できます."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Sasaran Minat & Antusiasme (Ni)",
+      "type": "teks",
+      "question_ja": "実習生の ロンさんは、日本の 伝統的な 空手（　<strong>？</strong>　） 興味が あります。",
+      "question_ruby": "実習生の ロンさんは、日本の 伝統的な 空手（　<strong>？</strong>　） 興味が あります。",
+      "question_id": "Partikel yang tepat untuk menandai karate sebagai objek bidang ketertarikan minat adalah...",
+      "translation": "Siswa magang Ron-san memiliki ketertarikan terhadap karate tradisional Jepang. Partikel sasaran minat adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Frasa idiomatis untuk menyatakan minat atau rasa tertarik terhadap suatu bidang kajian/kegiatan menuntut partikel penanda arah atensi <strong>に (ni)</strong>: <code>[Bidang Minat] に 興味が あります (memiliki ketertarikan pada...)</code>.",
+        "distractor": "• Opsi A: を salah karena 興味 adalah kata benda rasa minat yang berpredikat あります, bukan verba transitif.\n• Opsi B: で menandai tempat aksi atau penyebab.\n• Opsi D: と menandai hubungan penyerta.",
+        "grammarRule": "Rumus Menyatakan Minat: [Topik / Objek Kajian] + に + 興味（きょうみ）があります."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Waktu Lampau Sebelum (Jangka Waktu + Mae ni Tanpa Partikel No)",
+      "type": "teks",
+      "question_ja": "私は ちょうど 1年（　<strong>？</strong>　） ジャカルタから 日本へ 来ました。",
+      "question_ruby": "私は ちょうど 1年（　<strong>？</strong>　） ジャカルタから 日本へ 来ました。",
+      "question_id": "Kata penanda waktu lampau yang tepat untuk melengkapi '1 tahun yang lalu' tanpa partikel penghubung adalah...",
+      "translation": "Saya datang ke Jepang dari Jakarta tepat 1 tahun yang lalu. Penanda waktu lampau: 前に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "の前に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "前に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "前で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "前は"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (前に).",
+        "logic": "Bila kata sebelum diawali oleh <strong>Kuantitas / Jangka Waktu Terukur</strong> (seperti <em>1年, 2か月, 3日, 10分</em>), maka kata <strong>前に (mae ni = yang lalu)</strong> langsung ditempelkan secara mandiri TANPA menyisipkan partikel <em>の</em>: <code>1年前に (1 tahun yang lalu)</code>. Bandingkan dengan kata benda kegiatan yang wajib memakai partikel の: <code>作業の前に (sebelum bekerja)</code>.",
+        "distractor": "• Opsi A: の前に salah karena setelah besaran angka jangka waktu (1年) tidak boleh disisipi partikel の.\n• Opsi C: 前で salah partikel karena untuk titik waktu lampau wajib menggunakan に.\n• Opsi D: 前は menjadikannya topik pembanding, bukan keterangan waktu terjadinya perpindahan fisik.",
+        "grammarRule": "Kaidah Jangka Waktu Lampau: [Besaran Waktu Terukur (1年 / 3ヶ月 / 10分)] + 前に (Tanpa partikel の!)."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Kamus (Jisho-kei) Verba Grup 1",
+      "type": "teks",
+      "question_ja": "「働きます」、「待ちます」、「取ります」の 辞書形（じしょけい）の 正しい 組み合わせは どれですか。",
+      "question_ruby": "「働きます」、「待ちます」、「取ります」の 辞書形（じしょけい）の 正しい 組み合わせは どれですか。",
+      "question_id": "Kombinasi bentuk kamus (Jisho-kei) yang benar untuk 'hatarakimasu', 'machimasu', dan 'torimasu' adalah...",
+      "translation": "Bentuk kamus yang tepat untuk ketiga verba Grup 1 tersebut adalah: はたらく (bekerja), まつ (menunggu), dan とる (mengambil).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "はたらく ／ まつ ／ とれる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "はたらける ／ またつ ／ とる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "はたらく ／ まてる ／ とらう"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "はたらく ／ まつ ／ とる"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (はたらく ／ まつ ／ とる).",
+        "logic": "Kaidah pembentukan <strong>Bentuk Kamus (辞書形 - Jisho-kei) Verba Grup 1</strong>:<br>- Vokal deret baris <em>-i</em> sebelum <em>~ます</em> diubah menjadi deret baris <strong>-u</strong>.<br>1) 働<strong>き</strong>ます ➔ 働<strong>く</strong>（はたらく）<br>2) 待<strong>ち</strong>ます ➔ 待<strong>つ</strong>（まつ）<br>3) 取<strong>り</strong>ます ➔ 取<strong>る</strong>（とる）<br>Maka pasangan yang sempurna adalah <strong>はたらく ／ まつ ／ とる</strong>.",
+        "distractor": "• Opsi A: とれる adalah bentuk potensial verba toru.\n• Opsi B: はたらける adalah bentuk potensial, またつ adalah kata yang rusak.\n• Opsi C: まてる adalah bentuk potensial, とらう tidak ada dalam bahasa Jepang baku.",
+        "grammarRule": "Konjugasi Bentuk Kamus Grup 1: Deret vokal [i] sebelum ~ます berubah menjadi vokal deret [u] (ki➔ku, chi➔tsu, ri➔ru, mi➔mu, bi➔bu, shi➔su, i➔u)."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Kamus (Jisho-kei) Verba Grup 2 & Grup 3",
+      "type": "teks",
+      "question_ja": "「寝ます」（Grup 2）、「来ます」（Grup 3）、「残業します」（Grup 3）の 辞書形は どれですか。",
+      "question_ruby": "「寝ます」（Grup 2）、「来ます」（Grup 3）、「残業します」（Grup 3）の 辞書形は どれですか。",
+      "question_id": "Kombinasi bentuk kamus yang benar untuk verba 'nemasu', 'kimasu', dan 'zangyou shimasu' adalah...",
+      "translation": "Bentuk kamus yang tepat: ねる (tidur), 来る - dibaca kuru (datang), dan 残業する (lembur).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ねる ／ 来る（くる） ／ 残業する"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ねてる ／ 来る（きる） ／ 残業す"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ねる ／ 来ない（こない） ／ 残業した"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ねられる ／ 来る（こる） ／ 残業させる"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ねる ／ 来る（くる） ／ 残業する).",
+        "logic": "1) <strong>Grup 2 (寝ます)</strong>: Cukup hilangkan <em>~ます</em> dan tambahkan <strong>~る</strong> ➔ <strong>寝る（ねる）</strong>.<br>2) <strong>Grup 3 Irregular (来ます)</strong>: Kanji 来 dibaca <strong>く (ku)</strong> dan ditambahkan ~る ➔ <strong>来る（くる - kuru）</strong>.<br>3) <strong>Grup 3 (～します)</strong>: Kata kerja bantu ~します berubah menjadi <strong>~する</strong> ➔ <strong>残業する（ざんぎょうする）</strong>.",
+        "distractor": "• Opsi B: 来ると書いて「きる」と読むのは間違いです（正しい読みは「くる」）。\n• Opsi C: 来ない adalah bentuk-nai; 残業した adalah bentuk-ta (lampau).\n• Opsi D: ねられる dan 残業させる adalah bentuk pasif dan kausatif.",
+        "grammarRule": "Konjugasi Bentuk Kamus Grup 2 & 3: Grup 2: Buang ~ます + る; Grup 3: します ➔ する; 来ます（きます） ➔ 来る（くる）."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Potensi Kemampuan Melakukan Tindakan (V-jisho + Koto ga dekiru)",
+      "type": "teks",
+      "question_ja": "実習生：『ダダンさんは 日本語の 新聞を （　<strong>＿＿＿＿＿</strong>　）か。』<br>ダダン：『はい、漢字の 辞書を 引けば、少し 読むことができます。』",
+      "question_ruby": "実習生：『ダダンさんは 日本語の 新聞を （　<strong>＿＿＿＿＿</strong>　）か。』<br>ダダン：『はい、漢字の 辞書を 引けば、少し 読むことができます。』",
+      "question_id": "Bentuk kalimat tanya kemampuan yang paling tepat dan baku adalah...",
+      "translation": "Trainee: 'Apakah Dadan-san bisa membaca koran bahasa Jepang?' Dadan: 'Ya, jika membuka kamus kanji, saya bisa membaca sedikit.' Bentuk: 読むことができますか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "読むことがありません"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "読まなければなりません"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "読むことが できます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "読んでもいいです"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (読むことが できます).",
+        "logic": "Pola untuk menyatakan atau menanyakan <strong>kesanggupan/potensi melakukan suatu tindakan</strong> dibentuk dari rumus <strong>[Verba Bentuk Kamus] + ことが できます（か）</strong>: <code>読みます ➔ 読む ＋ ことができますか ➔ 読むことができますか (apakah bisa membaca?)</code>.",
+        "distractor": "• Opsi A: 読むことがありません berarti 'tidak ada urusan membaca'.\n• Opsi B: 読まなければなりませんか menanyakan kewajiban ('apakah harus membaca?').\n• Opsi D: 読んでもいいですか menanyakan izin ('bolehkah membaca?').",
+        "grammarRule": "Rumus Potensi Verba: [Verba Bentuk Kamus (Jisho-kei)] + ことが できます (Dapat / mampu / bisa melakukan...)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kalimat Menyatakan Hobi (Shumi wa V-jisho koto desu)",
+      "type": "teks",
+      "question_ja": "私の 趣味は、休みの 日に 公園で 日本の 綺麗な 風景の 写真を （　<strong>＿＿＿＿＿</strong>　）です。（撮ります）",
+      "question_ruby": "私の 趣味は、休みの 日に 公園で 日本の 綺麗な 風景の 写真を （　<strong>＿＿＿＿＿</strong>　）です。（撮ります）",
+      "question_id": "Bentuk predikat yang tepat untuk melengkapi ungkapan hobi di atas adalah...",
+      "translation": "Hobi saya adalah mengambil foto pemandangan Jepang yang indah di taman pada hari libur. Bentuk hobi: 撮ることです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "撮りに行きます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "撮ること"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "撮ったこと"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "撮らなければならないこと"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (撮ること).",
+        "logic": "Pola kalimat baku untuk mendefinisikan hobi adalah <strong>私の 趣味は [Verba Bentuk Kamus] + ことです (~koto desu)</strong>. Partikel nominalisasi <em>こと</em> mengubah kata kerja menjadi kata benda agar sejajar dengan subjek <em>趣味</em>. Dari <code>撮ります ➔ 撮る ＋ ことです ➔ 撮ることです</code>.",
+        "distractor": "• Opsi A: 撮りに行きますです salah struktur karena kata kerja masu tidak boleh langsung disambung dengan desu.\n• Opsi C: 撮ったことです menyatakan pengalaman lampau, bukan identitas hobi rutin.\n• Opsi D: 撮らなければならないことです berarti kewajiban, bertentangan dengan konsep hobi.",
+        "grammarRule": "Rumus Menyatakan Hobi Bab 18: 私の 趣味は + [Verba Bentuk Kamus] + ことです."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Urutan Waktu Sebelum Aksi (V-jisho + Mae ni)",
+      "type": "teks",
+      "question_ja": "健康と 衛生の ために、食事を （　<strong>＿＿＿＿＿</strong>　）、必ず 石鹸で よく 手を 洗います。（食べます）",
+      "question_ruby": "健康と 衛生の ために、食事を （　<strong>＿＿＿＿＿</strong>　）、必ず 石鹸で よく 手を 洗います。（食べます）",
+      "question_id": "Bentuk kata kerja yang tepat untuk menyatakan urutan waktu 'sebelum makan' adalah...",
+      "translation": "Demi kesehatan dan kebersihan, sebelum makan, wajib mencuci tangan dengan bersih menggunakan sabun. Bentuk: 食べる前に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "食べた前に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "食べてから前に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食べない前に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "食べる前に"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (食べる前に).",
+        "logic": "Rumus baku urutan waktu <strong>sebelum melakukan suatu perbuatan</strong> WAJIB selalu menggunakan <strong>[Verba Bentuk Kamus (Jisho-kei)] + 前に (mae ni)</strong>, terlepas dari apakah kalimat penutupnya berbentuk masa lalu ataupun masa depan: <code>食べます ➔ 食べる ＋ 前に ➔ 食べる前に (sebelum makan)</code>. Penggunaan bentuk lampau seperti <em>*食べた前に</em> adalah <strong>KESALAHAN FATAL</strong>.",
+        "distractor": "• Opsi A: 食べた前に adalah kesalahan paling umum pembelajar asing karena sebelum kata 前に kata kerja tidak boleh berbentuk -ta.\n• Opsi B: 食べてから前に adalah penggabungan rancu antara pola kara dan mae ni.\n• Opsi C: 食べない前に salah tata bahasa.",
+        "grammarRule": "Aturan Mutlak Mae ni: [Verba Bentuk Kamus (HANYA BENTUK-U!)] + 前に、～ (Tidak pernah boleh bentuk-ta!)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Jangka Waktu Lampau vs Rangkaian Aksi Sebelum",
+      "type": "teks",
+      "question_ja": "鈴木さんは 10分（　①　）、事務所を （　②　）前に 窓を 全部 閉めました。（出る）",
+      "question_ruby": "鈴木さんは 10分（　①　）、事務所を （　②　）前に 窓を 全部 閉めました。（出る）",
+      "question_id": "Pasangan kata yang tepat untuk melengkapi ① dan ② secara berturut-turut adalah...",
+      "translation": "Suzuki-san 10 menit yang lalu, sebelum keluar dari kantor tata usaha, telah menutup semua jendela. Pasangan: 前に dan 出る.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "前に ／ 出る"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "の前に ／ 出た"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "前に ／ 出てから"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から ／ 出ます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (前に ／ 出る).",
+        "logic": "1) Keterangan waktu lampau setelah besaran menit terukur menggunakan pola tanpa partikel <em>の</em>: <code>10分前に (10 menit yang lalu)</code>.<br>2) Keterangan urutan sebelum aksi verba keluar menggunakan <strong>Bentuk Kamus</strong>: <code>出る前に (sebelum keluar)</code>.<br>Maka pasangan yang tepat adalah <strong>前に ／ 出る</strong>.",
+        "distractor": "• Opsi B: の前に salah karena setelah 10分 tidak pakai の; 出た前に salah konjugasi verba lampau.\n• Opsi C: 出てから前に adalah bentuk gabungan yang rusak.\n• Opsi D: から ／ 出ます tidak membentuk rangkaian tata bahasa yang benar.",
+        "grammarRule": "Sintesis Aturan 前に Bab 18: [Durasi Waktu] + 前に (lampau) & [Verba Jisho-kei] + 前に (sebelum perbuatan dieksekusi)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kalimat Kegemaran Melakukan Tindakan (V-jisho + Koto ga suki desu)",
+      "type": "teks",
+      "question_ja": "実習生の ロンさんは 体を 動かすことが 大好きですから、毎日 走る（　<strong>＿＿＿＿＿</strong>　） 一番 好きです。",
+      "question_ruby": "実習生の ロンさんは 体を 動かすことが 大好きですから、毎日 走る（　<strong>＿＿＿＿＿</strong>　） 一番 好きです。",
+      "question_id": "Frasa pelengkap yang tepat untuk menyatakan 'aktivitas berlari adalah yang paling disukai' adalah...",
+      "translation": "Siswa magang Ron-san sangat menyukai menggerakkan badan, oleh karena itu aktivitas berlari adalah yang paling ia sukai. Frasa: 走ることが一番好きです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ことが できるのが"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ことに して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ことが"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ことでも"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (ことが).",
+        "logic": "Untuk menyatakan kegemaran terhadap suatu perbuatan aktif, kata kerja dinominalkan dengan pola <strong>[Verba Bentuk Kamus] + ことが 好きです (~koto ga suki desu = suka melakukan...)</strong>: <code>走る ＋ ことが ＋ 一番好きです</code>.",
+        "distractor": "• Opsi A: ことが できるのが menyatakan kemampuan, bukan kegemaran murni.\n• Opsi B: ことに して adalah pola memutuskan pilihan (Bab lanjutan).\n• Opsi D: ことでも tidak membentuk konstruksi kalimat kegemaran yang baku.",
+        "grammarRule": "Rumus Kegemaran Aktivitas: [Verba Bentuk Kamus] + ことが 好きです / 大好きです."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Potensi Kemampuan (運転ができる)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。アグスさんは 何が できますか。<br>「車の （　　　）が できます。」",
+      "question_ruby": "絵（え）を 見て ください。アグスさんは 何が できますか。<br>「車の （　　　）が できます。」",
+      "question_id": "Perhatikan gambar. Agus-san mampu melakukan apa? 'Bisa (...) mobil'.",
+      "translation": "Bisa menyetir mobil (kuruma no unten ga dekimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "しゅうり"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "運転（うんてん）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "せんたく"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "そうじ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (運転（うんてん）).",
+        "logic": "Gambar menunjukkan seseorang sedang memegang setir kemudi mengendarai mobil (運転 / うんてん - unten).",
+        "distractor": "• Opsi A: しゅうり adalah mereparasi / perbaikan alat.\n• Opsi C: せんたく adalah mencuci pakaian.\n• Opsi D: そうじ adalah membersihkan lantai.",
+        "grammarRule": "Pola Potensi Bab 18: [Nomina] が できます（bisa mengoperasikan ...）."
+      },
+      "image": "assets/bab_18/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Menyatakan Hobi (本を読むこと)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。趣味は 何ですか。<br>「わたしの 趣味は （　　　）ことです。」",
+      "question_ruby": "絵（え）を 見て ください。趣味は 何ですか。<br>「わたしの 趣味は （　　　）ことです。」",
+      "question_id": "Perhatikan gambar. Apakah hobinya? 'Hobi saya adalah (...)'.",
+      "translation": "Hobi saya adalah membaca buku (hon o yomu koto desu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "スポーツを する"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "りょうりを つくる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "本を 読む（ほんをよむ）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "うたを うたう"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (本を 読む（ほんをよむ）).",
+        "logic": "Gambar menunjukkan seseorang sedang khusyuk membaca buku di meja belajar (本を読む / ほんをよむ).",
+        "distractor": "• Opsi A: スポーツを する adalah berolahraga fisik.\n• Opsi B: りょうりを つくる adalah memasak hidangan makanan.\n• Opsi D: うたを うたう adalah menyanyikan lagu.",
+        "grammarRule": "Pola Hobi Bab 18: 趣味は [V-kamus] ことです."
+      },
+      "image": "assets/bab_18/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (趣味)",
+      "type": "teks",
+      "question_ja": "わたしの （ 趣味 ）は 切手を 集める ことです。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "わたしの （ 趣味 ）は 切手を 集める ことです。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Hobi saya adalah mengoleksi prangko. Pilihlah cara baca kanji '趣味' yang tepat.",
+      "translation": "Hobi kegemaran saya adalah mengoleksi prangko surat.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "しゅみ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "きょうみ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "しゅうみ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ゆみ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (しゅみ).",
+        "logic": "Kanji 趣味 dibaca しゅみ (shumi) yang bermakna hobi atau kegemaran saat waktu luang.",
+        "distractor": "• Opsi B: きょうみ ditulis 興味 (minat ketertarikan).\n• Opsi C: しゅうみ adalah bacaan yang salah.\n• Opsi D: ゆみ adalah busur panah (弓).",
+        "grammarRule": "Kosakata Hobi Bab 18: 趣味（しゅみ = hobi pribadi）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (運転)",
+      "type": "teks",
+      "question_ja": "フォークリフトの （ うんてん ）が できます。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "フォークリフトの （ うんてん ）が できます。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Bisa mengemudikan forklift. Pilihlah penulisan kanji yang tepat untuk 'unten'.",
+      "translation": "Bisa mengoperasikan dan mengemudikan kendaraan forklift.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "運転"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "運伝"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "連転"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "運点"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (運転).",
+        "logic": "Kata うんてん (mengemudi / mengoperasikan armada) ditulis dengan kanji baku 運転 (運 = mengangkut/bergerak, 転 = memutar roda).",
+        "distractor": "• Opsi B: 運伝 salah huruf kanan (menggunakan 伝 = meneruskan).\n• Opsi C: 連転 salah huruf kiri (menggunakan 連 = bersambung).\n• Opsi D: 運点 salah huruf kanan (menggunakan 点 = titik/skor).",
+        "grammarRule": "Kualifikasi Pabrik: 運転（うんてん = mengemudikan mesin/armada）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (前に)",
+      "type": "teks",
+      "question_ja": "作業を 始める （ まえ ）に、安全確認を します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "作業を 始める （ まえ ）に、安全確認を します。<br>正しい 漢字は どれですか。",
+      "question_id": "Sebelum memulai pekerjaan, melakukan pemeriksaan keselamatan. Pilihlah kanji yang tepat untuk 'mae'.",
+      "translation": "Sebelum memulai operasi kerja, wajib melakukan pemeriksaan keselamatan kerja (safety check).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "前"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "先"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "始"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "後"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (前).",
+        "logic": "Pola kalimat urutan sebelum melakukan sesuatu adalah [V-kamus] ＋ 前に (まえに).",
+        "distractor": "• Opsi B: 先 dibaca さき (terlebih dahulu).\n• Opsi C: 始 dibaca はじめ (awal mula).\n• Opsi D: 後 dibaca あと (setelah).",
+        "grammarRule": "Pola Urutan Kerja Bab 18: [V-jisho] ＋ 前に（まえに = sebelum melakukan ...）."
+      }
+    }
+  ]
+};
+
+const BAB_19_DATA = {
+  "chapter": "19",
+  "title_ja": "第１９課：動詞た形・経験「～たことがある」・並列「～たり～たりする」・変化「～くなる／～になる」",
+  "title_id": "Bab 19: Bentuk TA (た形), Pola Pengalaman (~Ta koto ga aru), Rangkaian Tindakan Representatif (~Tari ~tari suru), dan Perubahan Kondisi (~Kunarimasu / ~Ni narimasu)",
+  "theme_ja": "た形の活用 (Konjugasi Bentuk TA), 経験表現 (Pengalaman Lampau), 並列・代表的動作 (Sampel Aktivitas) & 状態の変化 (Perubahan Kondisi)",
+  "theme_id": "Evaluasi komprehensif Bab 19 buku IMM Japan yang menguji: perubahan konjugasi bentuk lampau kasual / bentuk-ta (た形 - Ta-kei) yang mengikuti kaidah morfologis bentuk-te untuk seluruh golongan kata kerja (Grup 1: itta, nonda, matta, totta, yonda, kaetta; Grup 2: tabeta, neta, mita; Grup 3: shita, kita); pola menyatakan dan menanyakan pengalaman lampau (~ta koto ga arimasu / arimasen); pola penyebutan beberapa contoh kegiatan representatif non-kronologis (~tari ~tari shimasu/shimashita); pola pergeseran/perubahan kondisi pada kata sifat-I (~ku narimasu), kata sifat-Na, dan nomina (~ni narimasu); serta partikel penanda penyebab/alasan bencana atau sakit (de), pendakian gunung (ni), dan daftar benda pesta (ya).",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 19.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 19.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Pemulihan Kesehatan & Rawat Inap Rumah Sakit",
+      "type": "teks",
+      "question_ja": "田中さんの おばあさんの 病気が （　<strong>なおりました</strong>　）。1年間 病院に （　<strong>にゅういんして</strong>　）いました。「なおりました」と「にゅういんして」の 漢字表記は どれですか。",
+      "question_ruby": "田中さんの おばあさんの 病気が （　<strong>なおりました</strong>　）。1年間 病院に （　<strong>にゅういんして</strong>　）いました。「なおりました」と「にゅういんして」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'sembuh (dari penyakit)' dan 'masuk rawat inap di rumah sakit' adalah...",
+      "translation": "Penyakit nenek Tanaka-san sudah sembuh. Beliau sempat menjalani rawat inap di rumah sakit selama 1 tahun. Kanji yang benar: 治りました ／ 入院して.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "直りました ／ 学院して"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "替わりました ／ 通院して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "治りました ／ 入院して"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "直りました ／ 退院して"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (治りました ／ 入院して).",
+        "logic": "1) <strong>治ります（なおります - naorimasu）</strong> ditulis dengan kanji <strong>治</strong> yang bermakna <strong>sembuh atau pulih dari sakit / luka fisik</strong>. Hati-hati jangan tertukar dengan 直 (memperbaiki barang yang rusak).<br>2) <strong>入院します（にゅういんします - nyuuin shimasu）</strong> ditulis <strong>入院</strong> yang bermakna <strong>masuk dan dirawat inap di rumah sakit</strong>.",
+        "distractor": "• Opsi A: 直りました dipakai untuk reparasi mesin/alat, bukan kesembuhan biologis tubuh.\n• Opsi B: 替わりました (berganti) / 通院して (berobat jalan secara rutin).\n• Opsi D: 退院して bermakna keluar dari rumah sakit setelah sembuh.",
+        "grammarRule": "Pembeda Kanji Kesembuhan: 病気が治ります（なおります - penyakit sembuh） vs 機械を直します（なおします - memperbaiki mesin）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Keluar Rumah Sakit Serta Pemulihan Kebugaran",
+      "type": "teks",
+      "question_ja": "薬を 飲んで 元気に なって、昨日 （　<strong>たいいんしました</strong>　）。「たいいんしました」の 漢字と 意味は どれですか。",
+      "question_ruby": "薬を 飲んで 元気に なって、昨日 （　<strong>たいいんしました</strong>　）。「たいいんしました」の 漢字と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk kata 'taiin shimashita' adalah...",
+      "translation": "Meminum obat lalu menjadi sehat kembali, dan kemarin sudah keluar dari rumah sakit. Kanji: 退院しました.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "退院しました （Keluar dari rumah sakit setelah selesai rawat inap）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "通院しました （Pergi berobat jalan secara rutin ke klinik）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "病院しました （Mendirikan fasilitas gedung rumah sakit）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "大学しました （Menyelesaikan perkuliahan di perguruan tinggi）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (退院しました （Keluar dari rumah sakit setelah selesai rawat inap）).",
+        "logic": "Kata kerja <strong>退院します（たいいんします - taiin shimasu）</strong> tersusun dari kanji <strong>退 (mundur/keluar)</strong> dan <strong>院 (rumah sakit)</strong> yang berarti <strong>keluar dari rumah sakit setelah dinyatakan pulih oleh dokter</strong>. Kebalikannya adalah <em>入院します（にゅういんします - masuk rawat inap）</em>.",
+        "distractor": "• Opsi B: 通院しました berarti berobat jalan berkala tanpa menginap.\n• Opsi C: 病院 adalah kata benda fasilitas fisik (rumah sakit).\n• Opsi D: 大学 adalah perguruan tinggi / universitas.",
+        "grammarRule": "Pasangan Medis Rawat Inap: 入院します（にゅういん - masuk rawat inap） >< 退院します（たいいん - keluar dari rawat inap）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Pengalaman Wisata Olahraga Musim Dingin & Mendaki Gunung",
+      "type": "teks",
+      "question_ja": "冬休みに 長野県で （　<strong>スキー</strong>　）を しました。また、夏に 富士山に （　<strong>のぼりました</strong>　）。「のぼりました」の 漢字表記と 「スキー」の 意味は どれですか。",
+      "question_ruby": "冬休みに 長野県で （　<strong>スキー</strong>　）を しました。また、夏に 富士山に （　<strong>のぼりました</strong>　）。「のぼりました」の 漢字表記と 「スキー」の 意味は どれですか。",
+      "question_id": "Penulisan kanji untuk 'mendaki' dan arti dari 'sukii' yang benar adalah...",
+      "translation": "Pada liburan musim dingin bermain ski salju di Prefektur Nagano. Serta, pada musim panas mendaki Gunung Fuji. Kanji: 登りました, Ski: bermain ski salju.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "降りました ／ Olahraga seluncur es di danau beku"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "乗りました ／ Wisata pemandian air panas alami"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "入りました ／ Pertandingan sepak bola salju"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "登りました ／ Olahraga ski salju dengan papan luncur"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (登りました ／ Olahraga ski salju dengan papan luncur).",
+        "logic": "1) <strong>登ります（のぼります - noborimasu）</strong> ditulis <strong>登</strong> yang bermakna <strong>mendaki gunung atau memanjat tempat tinggi</strong>. Partikel tujuannya: <code>富士山に 登ります</code>.<br>2) Kata serapan katakana <strong>スキー (sukī)</strong> adalah <strong>olahraga meluncur di atas salju menggunakan papan ski</strong> (pasangan verba: スキーをします).",
+        "distractor": "• Opsi A: 降りました (turun dari kendaraan/gunung).\n• Opsi B: 乗りました (menaiki sarana transportasi).\n• Opsi C: 入りました (masuk ke dalam ruangan/onsem).",
+        "grammarRule": "Aktivitas Pengalaman Rekreasi: 富士山に登ります（のぼります - mendaki gunung） & スキーをします（bermain ski）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Kondisi Kenyang Penuh & Kondisi Waktu Gelap",
+      "type": "teks",
+      "question_ja": "たくさん 料理を 食べて、（　<strong>おなかが いっぱいに</strong>　） なりました。もう 7時ですから、外が （　<strong>くらくなりました</strong>　）。下線部の 意味は どれですか。",
+      "question_ruby": "たくさん 料理を 食べて、（　<strong>おなかが いっぱいに</strong>　） なりました。もう 7時ですから、外が （　<strong>くらくなりました</strong>　）。下線部の 意味は どれですか。",
+      "question_id": "Arti yang tepat untuk frasa 'onaka ga ippai ni' dan 'kuraku narimashita' adalah...",
+      "translation": "Memakan banyak hidangan, perut menjadi kenyang penuh. Karena sudah jam 7, di luar sudah menjadi gelap.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Perut terasa mual ／ Suasana luar menjadi dingin sekali"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Perut menjadi kenyang penuh ／ Bagian luar sudah menjadi gelap"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Perut terasa lapar ／ Bagian luar menjadi berisik sekali"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Tenggorokan menjadi haus ／ Lampu jalanan menjadi terang benderang"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (Perut menjadi kenyang penuh ／ Bagian luar sudah menjadi gelap).",
+        "logic": "1) <strong>お腹が一杯（おなかがいっぱい - onaka ga ippai）</strong> adalah ungkapan baku untuk <strong>perut kenyang / terisi penuh oleh makanan</strong>.<br>2) <strong>暗い（くらい - kurai）</strong> berarti <strong>gelap atau remang-remang</strong>. Perubahan kondisinya: <code>暗くなります（くらくなります - menjadi gelap）</code>.",
+        "distractor": "• Opsi A: Perut mual adalah 気持ちが悪い, dingin adalah 寒くなります.\n• Opsi C: Perut lapar adalah お腹がすきました, berisik adalah うるさくなります.\n• Opsi D: Haus adalah のどが渇きました (のどがかわきました), terang adalah 明るくなります.",
+        "grammarRule": "Kondisi Tubuh & Alam Bab 19: お腹がいっぱいになります（kenyang） & 外が暗くなります（luar menjadi gelap）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Kerusakan Benda Fisik & Cedera Luka Badan",
+      "type": "teks",
+      "question_ja": "地震で 家が （　<strong>こわれました</strong>　）。作業中に 転んで （　<strong>けが</strong>　）を しました。「こわれました」の 漢字表記と 「けが」の 意味は どれですか。",
+      "question_ruby": "地震で 家が （　<strong>こわれました</strong>　）。作業中に 転んで （　<strong>けが</strong>　）を しました。「こわれました」の 漢字表記と 「けが」の 意味は どれですか。",
+      "question_id": "Penulisan kanji untuk 'rusak/hancur' dan arti dari 'kega' adalah...",
+      "translation": "Akibat gempa bumi rumah hancur/rusak. Saat bekerja terjatuh lalu mengalami luka cedera. Kanji: 壊れました, arti kega: luka cedera fisik.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "倒れました ／ Sakit demam flu"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "破れました ／ Terbakar api"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "壊れました ／ Luka cedera pada bagian tubuh"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "割れました ／ Keracunan gas industri"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (壊れました ／ Luka cedera pada bagian tubuh).",
+        "logic": "1) <strong>壊れます（こわれます - kowaremasu）</strong> ditulis <strong>壊</strong> yang bermakna <strong>rusak parah, hancur, atau roboh (bangunan/mesin)</strong>.<br>2) <strong>怪我（けが - kega）</strong> bermakna <strong>luka fisik atau cedera kecelakaan kerja</strong> (kolokasi K3: <code>怪我をします - mengalami cedera luka</code>).",
+        "distractor": "• Opsi A: 倒れました (rubuh/tumbang) / demam flu adalah 風邪 (かぜ).\n• Opsi B: 破れました (robek untuk kertas/kain) / luka bakar adalah やけど.\n• Opsi D: 割れました (pecah untuk kaca/piring).",
+        "grammarRule": "Kosakata K3 Insiden Kerja: 家／機械が壊れます（こわれます - rusak） & 怪我をします（けが - cedera/luka）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Bencana Alam & Bahaya Kebakaran Industri",
+      "type": "teks",
+      "question_ja": "昨日 （　<strong>地震</strong>　）が ありました。また、近くの 工場で （　<strong>火事</strong>　）が 起きました。「地震」と「火事」の 読み方は どれですか。",
+      "question_ruby": "昨日 （　<strong>地震</strong>　）が ありました。また、近くの 工場で （　<strong>火事</strong>　）が 起きました。「地震」と「火事」の 読み方は どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk 'gempa bumi' dan 'kebakaran' adalah...",
+      "translation": "Kemarin terjadi gempa bumi. Selain itu, terjadi kebakaran di pabrik dekat sini. Kanji 地震 dibaca jishin dan 火事 dibaca kaji.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "じしん ／ かじ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ちしん ／ ひごと"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "じしん ／ ひじ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "たいふう ／ かさい"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (じしん ／ かじ).",
+        "logic": "1) <strong>地震</strong> dibaca <strong>じしん (jishin)</strong> yang berarti <strong>gempa bumi</strong>.<br>2) <strong>火事</strong> dibaca <strong>かじ (kaji)</strong> yang berarti <strong>peristiwa kebakaran</strong>. Keduanya merupakan kata benda penyebab bencana penting dalam materi Bab 19 buku IMM Japan.",
+        "distractor": "• Opsi B: ちしん ／ ひごと adalah pelafalan on-yomi dan kun-yomi yang keliru.\n• Opsi C: ひじ adalah bacaan salah (siku tangan).\n• Opsi D: たいふう adalah angin topan (台風), かさい adalah istilah resmi pemadam (火災).",
+        "grammarRule": "Kosakata Bencana & Sebab K3: 地震（じしん - gempa bumi） & 火事（かじ - bencana kebakaran）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Kebersihan Mencuci Pakaian & Membersihkan Kamar",
+      "type": "teks",
+      "question_ja": "日曜日に 部屋の （　<strong>そうじ</strong>　）を したり、作業服の （　<strong>せんたく</strong>　）を したり します。漢字表記の 組み合わせは どれですか。",
+      "question_ruby": "日曜日に 部屋の （　<strong>そうじ</strong>　）を したり、作業服の （　<strong>せんたく</strong>　）を したり します。漢字表記の 組み合わせは どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kegiatan 'membersihkan ruangan' dan 'mencuci pakaian' adalah...",
+      "translation": "Pada hari Minggu melakukan kegiatan seperti membersihkan kamar dan mencuci seragam kerja. Pasangan kanji: 掃除 ／ 洗濯.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "洗面 ／ 料理"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "整理 ／ 散歩"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "掃除 ／ 選択"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "掃除 ／ 洗濯"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (掃除 ／ 洗濯).",
+        "logic": "1) <strong>掃除（そうじ - souji）</strong> berarti <strong>membersihkan ruangan atau area kerja</strong> (掃除をします).<br>2) <strong>洗濯（せんたく - sentaku）</strong> berarti <strong>mencuci pakaian atau kain seragam</strong> (洗濯をします). Hati-hati jangan tertukar dengan kanji 選択 (pilihan/seleksi).",
+        "distractor": "• Opsi A: 洗面 (membasuh muka) / 料理 (memasak makanan).\n• Opsi B: 整理 (menata rapi barang) / 散歩 (berjalan-jalan santai).\n• Opsi C: 選択 dibaca sentaku namun bermakna memilih/menyeleksi opsi, bukan mencuci pakaian.",
+        "grammarRule": "Kegiatan Rutin Akhir Pekan: 掃除をします（そうじ - bersih-bersih） & 洗濯をします（せんたく - cuci pakaian）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Subjek Pengalaman Lampau (~Ta koto ga aru)",
+      "type": "teks",
+      "question_ja": "ウテンさんは 日本で すき焼きを 食べたこと（　<strong>？</strong>　） あります。",
+      "question_ruby": "ウテンさんは 日本で すき焼きを 食べたこと（　<strong>？</strong>　） あります。",
+      "question_id": "Partikel yang tepat untuk membentuk pola kalimat pengalaman 'pernah memakan sukiyaki' adalah...",
+      "translation": "Uten-san pernah memakan sukiyaki di Jepang. Partikel pola pengalaman adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "は"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (が).",
+        "logic": "Rumus gramatikal untuk menyatakan <strong>pengalaman pernah melakukan sesuatu di masa lalu</strong> adalah <strong>[Verba Bentuk-TA] + こと + が + あります (~ta koto ga arimasu)</strong>. Partikel <strong>が (ga)</strong> menandai fakta nominal pengalaman (<em>～こと</em>) sebagai subjek keberadaan verba <em>あります</em>.",
+        "distractor": "• Opsi A: を salah karena verba arimasu tidak mengambil partikel objek を.\n• Opsi C: は hanya digunakan sebagai variasi kontras penekanan kalimat negatif (食べたことは ありません), bukan rumus dasar afirmatif baku.\n• Opsi D: に menandai titik lokasi atau waktu.",
+        "grammarRule": "Rumus Pengalaman Lampau: [Verba Bentuk-TA] + ことが あります (Pernah melakukan...) / ことが ありません (Belum pernah...)."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Penyebab Bencana / Alasan Insiden (De)",
+      "type": "teks",
+      "question_ja": "昨夜の 非常に 強い 台風（　<strong>？</strong>　）、電車が 半日 止まりました。",
+      "question_ruby": "昨夜の 非常に 強い 台風（　<strong>？</strong>　）、電車が 半日 止まりました。",
+      "question_id": "Partikel yang tepat untuk menandai badai topan sebagai penyebab terhentinya operasional kereta api adalah...",
+      "translation": "Akibat badai topan yang sangat kuat tadi malam, kereta berhenti beroperasi selama setengah hari. Partikel penyebab bencana adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "から"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (で).",
+        "logic": "Partikel <strong>で (de)</strong> setelah kata benda fenomena alam, kecelakaan, penyakit, atau insiden berfungsi menandai <strong>penyebab atau alasan terjadinya peristiwa di luar kendali</strong>: <code>台風で (karena topan)</code>, <code>地震で (akibat gempa)</code>, <code>火事で (karena kebakaran)</code>, <code>怪我で (akibat cedera)</code>.",
+        "distractor": "• Opsi A: に salah fungsi.\n• Opsi B: を menandai objek kata kerja transitif, sedangkan 止まりました adalah kata kerja intransitif.\n• Opsi C: から digunakan untuk klausa predikatif berakar alasan subjektif (misal: 台風ですから), bukan menempel langsung pada nomina bencana tunggal tanpa だ.",
+        "grammarRule": "Partikel Sebab / Bencana Bab 19: [Nomina Bencana / Penyakit: 地震 / 火事 / 風邪 / 怪我 / 台風] + で + Akibat Terjadi."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penegas Negasi Mutlak (Ichido mo ~ta koto ga arimasen)",
+      "type": "teks",
+      "question_ja": "私は 今まで 一度（　<strong>？</strong>　） 日本の スキー場へ 行ったことが ありません。",
+      "question_ruby": "私は 今まで 一度（　<strong>？</strong>　） 日本の スキー場へ 行ったことが ありません。",
+      "question_id": "Partikel yang tepat untuk mempertegas makna negasi mutlak 'tidak pernah sekalipun' adalah...",
+      "translation": "Saya sampai saat ini belum pernah sekalipun pergi ke tempat ski di Jepang. Partikel negasi total adalah も.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "も"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "は"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (も).",
+        "logic": "Frasa <strong>一度も (ichido mo)</strong> yang diikuti bentuk negatif <strong>～たことが ありません</strong> menyatakan <strong>penyangkalan mutlak atas pengalaman (belum pernah sama sekali / belum pernah walau hanya satu kali pun)</strong>. Partikel <strong>も (mo)</strong> memberikan penekanan batas minimal.",
+        "distractor": "• Opsi B: は tidak membentuk idiom baku negasi total bersama kuantitas minimal 一度.\n• Opsi C: が salah tata bahasa di posisi setelah kuantitas.\n• Opsi D: で menandai sarana atau tempat.",
+        "grammarRule": "Rumus Negasi Total Pengalaman: 一度も（いちども） + [Verba Bentuk-TA] + ことが ありません (Sama sekali belum pernah...)."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Kontak Sasaran Pendakian (Noboru)",
+      "type": "teks",
+      "question_ja": "アグスさんは 去年の 夏休みに 富士山（　<strong>？</strong>　） 登ったことが あります。",
+      "question_ruby": "アグスさんは 去年の 夏休みに 富士山（　<strong>？</strong>　） 登ったことが あります。",
+      "question_id": "Partikel yang tepat untuk menandai Gunung Fuji sebagai sasaran pendakian dengan verba 'noborimasu' adalah...",
+      "translation": "Agus-san pernah mendaki Gunung Fuji pada liburan musim panas tahun lalu. Partikel pendakian adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Verba <strong>登ります（のぼります - mendaki/memanjat）</strong> menuntut partikel penanda titik sasaran kontak fisik puncak/permukaan <strong>に (ni)</strong>: <code>富士山に 登ります</code>, <code>山に 登ったことがあります</code>. Jangan menggunakan partikel を.",
+        "distractor": "• Opsi A: を adalah kesalahan umum pemula; verba noboru tidak berpasangan dengan を dalam tata bahasa dasar buku teks IMM Japan.\n• Opsi B: で menandai tempat kegiatan umum.\n• Opsi D: へ menandai arah pergerakan umum, namun untuk mendaki gunung spesifik menggunakan に.",
+        "grammarRule": "Pasangan Verba Pendakian: [Gunung / Tempat Tinggi] + に + 登ります（のぼります - mendaki）."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Perubahan Kondisi pada Sifat-Na & Nomina (Ni narimasu)",
+      "type": "teks",
+      "question_ja": "病院で もらった 薬を 飲んで、おばあさんは すっかり 元気（　<strong>？</strong>　） なりました。",
+      "question_ruby": "病院で もらった 薬を 飲んで、おばあさんは すっかり 元気（　<strong>？</strong>　） なりました。",
+      "question_id": "Partikel yang tepat untuk menandai perubahan kondisi pada kata sifat-Na 'genki' dengan verba 'narimashita' adalah...",
+      "translation": "Meminum obat yang diberikan dari rumah sakit, nenek sudah sepenuhnya menjadi sehat bugar. Partikel perubahan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "く"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "な"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (に).",
+        "logic": "Aturan pembentukan <strong>perubahan kondisi (menjadi...)</strong> untuk <strong>Kata Sifat-Na</strong> dan <strong>Kata Benda (Nomina)</strong> adalah menambahkan partikel hasil perubahan <strong>に (ni)</strong> sebelum verba <em>なります (narimasu)</em>: <code>元気（Kata Sifat-Na） ➔ 元気に なりました</code>, <code>医者（Nomina） ➔ 医者に なりました</code>.",
+        "distractor": "• Opsi A: く hanya digunakan untuk Kata Sifat-I (seperti 寒くなります / 赤くなります).\n• Opsi C: で salah partikel pada pola narimasu.\n• Opsi D: な digunakan saat menerangkan kata benda langsung (元気な人).",
+        "grammarRule": "Rumus Perubahan Kondisi: [Kata Sifat-Na / Nomina] + に + なります vs [Kata Sifat-I (buang ~い)] + く + なります."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pendaftaran Parsial Benda Non-Eksklusif (Ya ... Nado)",
+      "type": "teks",
+      "question_ja": "パーティーの テーブルの 上に、寿司（　①　） 刺身（　②　）が たくさん 並んでいます。",
+      "question_ruby": "パーティーの テーブルの 上に、寿司（　①　） 刺身（　②　）が たくさん 並んでいます。",
+      "question_id": "Pasangan partikel ① dan ② yang tepat untuk menyebutkan contoh daftar hidangan yang tidak tuntas adalah...",
+      "translation": "Di atas meja pesta berjejer banyak makanan seperti sushi, sashimi, dan lain-lain. Pasangan partikel: や dan など.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と ／ も"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "や ／ に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "も ／ と"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "や ／ など"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (や ／ など).",
+        "logic": "Pola <strong>[Nomina 1] や [Nomina 2] など (ya ... nado)</strong> digunakan untuk menyebutkan <strong>contoh representatif dari beberapa benda secara parsial (tidak tuntas / dan lain-lain)</strong>: <code>寿司や 刺身などが あります</code>. Berbeda dengan partikel と yang menyebutkan seluruh benda secara lengkap/tuntas.",
+        "distractor": "• Opsi A: と menandai enumerasi tuntas tanpa ada elemen lain di luar yang disebut.\n• Opsi B: や ／ に salah struktur.\n• Opsi C: も ／ と tidak membentuk pola enumerasi representatif standar.",
+        "grammarRule": "Penyebutan Contoh Daftar Benda: [Nomina A] + や + [Nomina B] + など (dan lain sebagainya)."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk TA (Ta-kei) Verba Grup 1 Pengecualian & Reguler",
+      "type": "teks",
+      "question_ja": "「行きます」、「飲みます」、「待ちます」の 正しい た形の 組み合わせは どれですか。",
+      "question_ruby": "「行きます」、「飲みます」、「待ちます」の 正しい た形の 組み合わせは どれですか。",
+      "question_id": "Kombinasi konjugasi bentuk-TA yang benar untuk 'ikimasu' (pergi), 'nomimasu' (minum), dan 'machimasu' (menunggu) adalah...",
+      "translation": "Bentuk-TA yang tepat: 行った (itta - pergi), 飲んだ (nonda - minum), dan 待った (matta - menunggu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "行った ／ 飲んだ ／ 待った"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "行いた ／ 飲んだ ／ 待いた"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "行った ／ 飲また ／ 待った"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "行いた ／ 飲みた ／ 待てた"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (行った ／ 飲んだ ／ 待った).",
+        "logic": "Kaidah konjugasi <strong>Bentuk-TA (た形)</strong> sama persis dengan aturan perubahan <strong>Bentuk-TE (て形)</strong>:<br>1) <strong>行きます</strong> adalah pengecualian irregular Grup 1: bukan <em>*行いた</em> melainkan <strong>行った（いった - itta）</strong>.<br>2) <strong>飲みます</strong> (akhiran -mi) berubah menjadi -nda: <strong>飲んだ（のんだ - nonda）</strong>.<br>3) <strong>待ちます</strong> (akhiran -chi) berubah menjadi sokuon -tta: <strong>待った（まった - matta）</strong>.<br>Maka jawabannya adalah <strong>行った ／ 飲んだ ／ 待った</strong>.",
+        "distractor": "• Opsi B: 行いた dan 待いた adalah kesalahan fatal tidak menerapkan asimilasi bunyi fonetis.\n• Opsi C: 飲また salah bentuk.\n• Opsi D: 飲みた dan 待てた adalah bentuk rusak.",
+        "grammarRule": "Aturan Konjugasi Bentuk-TA Grup 1: Aturan identik 100% dengan Bentuk-TE: 行きます ➔ 行った; ~みます/~びます ➔ ~んだ; ~ちます/~ります/~います ➔ ~った."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk TA Verba Grup 2 & Grup 3",
+      "type": "teks",
+      "question_ja": "「食べます」（Grup 2）、「来ます」（Grup 3）、「します」（Grup 3）の 正しい た形は どれですか。",
+      "question_ruby": "「食べます」（Grup 2）、「来ます」（Grup 3）、「します」（Grup 3）の 正しい た形は どれですか。",
+      "question_id": "Kombinasi bentuk-TA yang tepat untuk verba 'tabemasu', 'kimasu', dan 'shimasu' adalah...",
+      "translation": "Bentuk-TA yang benar: 食べた (tabeta), 来た - dibaca kita, dan した (shita).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "食べた ／ 来た（こた） ／ した"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "食べた ／ 来た（きた） ／ した"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "食べた ／ 来た（くた） ／ された"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "食べった ／ 来た（きた） ／ して"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (食べた ／ 来た（きた） ／ した).",
+        "logic": "1) <strong>Grup 2 (食べます)</strong>: Cukup buang <em>~ます</em> lalu tambahkan <strong>~た</strong> ➔ <strong>食べた（たべた）</strong>.<br>2) <strong>Grup 3 Irregular (来ます)</strong>: Kanji 来 dilafalkan <strong>き (ki)</strong> dalam bentuk lampau ➔ <strong>来た（きた - kita）</strong>. Waspadai bacaan palsu seperti <em>*こた</em> atau <em>*くた</em>.<br>3) <strong>Grup 3 (します)</strong>: Berubah menjadi <strong>した（shita）</strong>.",
+        "distractor": "• Opsi A: 来た ditulis dengan cara baca salah 'こた' (ko- hanya untuk bentuk-nai 来ない).\n• Opsi C: くた salah pelafalan; された adalah bentuk pasif.\n• Opsi D: 食べった salah konjugasi pada verba Grup 2; して adalah bentuk-te, bukan bentuk-ta.",
+        "grammarRule": "Konjugasi Bentuk-TA Grup 2 & 3: Grup 2: Buang ~ます + た; Grup 3: します ➔ した; 来ます（きます） ➔ 来た（きた）."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Pertanyaan Pengalaman Lampau (~Ta koto ga arimasu ka)",
+      "type": "teks",
+      "question_ja": "鈴木：『ダダンさんは、日本の 新幹線に （　<strong>＿＿＿＿＿</strong>　）か。』<br>ダダン：『はい、京都へ 行った ときに 一度 乗りました。』",
+      "question_ruby": "鈴木：『ダダンさんは、日本の 新幹線に （　<strong>＿＿＿＿＿</strong>　）か。』<br>ダダン：『はい、京都へ 行った ときに 一度 乗りました。』",
+      "question_id": "Bentuk pertanyaan pengalaman lampau yang tepat dari Suzuki-san adalah...",
+      "translation": "Suzuki: 'Apakah Dadan-san pernah menaiki kereta Shinkansen Jepang?' Dadan: 'Ya, pernah naik satu kali saat pergi ke Kyoto.' Bentuk: 乗ったことがありますか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "乗る前に 行きます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "乗ってもいいです"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "乗ったことが あります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "乗らなければなりません"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (乗ったことが あります).",
+        "logic": "Rumus menanyakan pengalaman hidup masa lalu adalah <strong>[Verba Bentuk-TA] + ことが ありますか (~ta koto ga arimasu ka = apakah pernah...?)</strong>: <code>乗ります ➔ 乗った ＋ ことがありますか ➔ 乗ったことがありますか</code>.",
+        "distractor": "• Opsi A: 乗る前に行きますか menanyakan apakah pergi sebelum naik.\n• Opsi B: 乗ってもいいですか menanyakan izin saat itu juga ('bolehkah naik?').\n• Opsi D: 乗らなければなりませんか menanyakan kewajiban ('apakah harus naik?').",
+        "grammarRule": "Rumus Tanya Pengalaman: [Verba Bentuk-TA] + ことが ありますか ➔ Respons: はい、あります / いいえ、ありません."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Tindakan Representatif Non-Kronologis (~Tari ~tari shimasu)",
+      "type": "teks",
+      "question_ja": "休みの 日には、部屋を （　①　）、家族に 手紙を （　②　） します。（掃除します ／ 書きます）",
+      "question_ruby": "休みの 日には、部屋を （　①　）、家族に 手紙を （　②　） します。（掃除します ／ 書きます）",
+      "question_id": "Bentuk kata kerja yang tepat untuk mengisi nomor ① dan ② pada pola representatif non-kronologis adalah...",
+      "translation": "Pada hari libur, saya melakukan kegiatan seperti membersihkan kamar dan menulis surat kepada keluarga. Bentuk: 掃除したり dan 書いたり.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "掃除して ／ 書いて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "掃除する ／ 書く"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "掃除したり ／ 書いたりして"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "掃除したり ／ 書いたり"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (掃除したり ／ 書いたり).",
+        "logic": "Pola <strong>[Verba 1 Bentuk-TA] + り、[Verba 2 Bentuk-TA] + り します (~tari ~tari shimasu)</strong> digunakan untuk menyebutkan <strong>beberapa perbuatan sebagai perwakilan/sampel acak tanpa terikat urutan waktu kronologis</strong>. Dari <code>掃除しました ➔ 掃除したり</code> dan <code>書きました ➔ 書いたり</code>, diikuti verba penutup <em>します</em>.",
+        "distractor": "• Opsi A: 掃除して ／ 書いて adalah pola urutan kronologis kaku (V1 lalu V2), bukan penyebutan sampel aktivitas.\n• Opsi B: 掃除する ／ 書く adalah bentuk kamus yang tidak memiliki partikel paralel.\n• Opsi C: 書いたりして menghasilkan penumpukan ganda tidak baku sebelum します.",
+        "grammarRule": "Rumus Sampel Aktivitas Acak: [V1 Bentuk-TA] + り、[V2 Bentuk-TA] + り します / しました."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Perubahan Kondisi Kata Sifat-I (~Ku narimasu)",
+      "type": "teks",
+      "question_ja": "冬に なって、朝晩の 気温が だんだん （　<strong>＿＿＿＿＿</strong>　）。（寒い）",
+      "question_ruby": "冬に なって、朝晩の 気温が だんだん （　<strong>＿＿＿＿＿</strong>　）。（寒い）",
+      "question_id": "Bentuk perubahan kondisi yang tepat untuk kata sifat-I 'samui' (dingin) adalah...",
+      "translation": "Musim dingin telah tiba, suhu udara pada pagi dan malam hari berangsur-angsur menjadi dingin. Perubahan kondisi: 寒くなりました.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "寒く なりました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "寒いに なりました"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "寒くて なりました"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "寒な なりました"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (寒く なりました).",
+        "logic": "Kaidah perubahan kondisi pada <strong>Kata Sifat-I</strong> adalah: hilangkan akhiran <strong>~い (~i)</strong> lalu gantikan dengan <strong>~く (~ku)</strong> sebelum verba <em>なります / なりました</em>: <code>寒い ➔ 寒く ＋ なりました ➔ 寒くなりました (menjadi dingin)</code>.",
+        "distractor": "• Opsi B: 寒いに adalah kesalahan umum memakai aturan kata sifat-Na pada kata sifat-I.\n• Opsi C: 寒くて adalah bentuk te penyambung, bukan penanda arah perubahan sifat.\n• Opsi D: 寒な adalah kata yang rusak.",
+        "grammarRule": "Rumus Perubahan Kondisi Sifat-I: [Kata Sifat-I (buang ~い)] + く + なります（なりました）."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Perubahan Kondisi Kata Sifat-Na & Nomina (~Ni narimasu)",
+      "type": "teks",
+      "question_ja": "みんなで 協力して 部屋を 掃除しましたから、作業場が とても （　<strong>＿＿＿＿＿</strong>　）。（綺麗）",
+      "question_ruby": "みんなで 協力して 部屋を 掃除しましたから、作業場が とても （　<strong>＿＿＿＿＿</strong>　）。（綺麗）",
+      "question_id": "Bentuk perubahan kondisi yang tepat untuk kata sifat-Na 'kirei' (bersih/rapi) adalah...",
+      "translation": "Karena bersama-sama bekerja sama membersihkan ruangan, area bengkel kerja menjadi sangat bersih dan rapi. Bentuk: 綺麗になりました.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "綺麗く なりました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "綺麗に なりました"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "綺麗で なりました"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "綺麗かった なりました"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (綺麗に なりました).",
+        "logic": "Kata <strong>綺麗（きれい - kirei）</strong> berakhiran bunyi vokal <em>-i</em> tetapi secara gramatikal merupakan <strong>Kata Sifat-Na</strong>. Oleh karena itu, perubahannya WAJIB menggunakan partikel <strong>に (ni)</strong>: <code>綺麗に なりました (menjadi bersih)</code>. Bentuk <em>*綺麗くなりました</em> adalah <strong>KESALAHAN FATAL</strong> yang sering menjebak peserta magang.",
+        "distractor": "• Opsi A: 綺麗く adalah kesalahan perangkap klasik karena kirei adalah kata sifat-Na, bukan kata sifat-I.\n• Opsi C: 綺麗で adalah bentuk penyambung sifat, bukan pembentuk verba narimasu.\n• Opsi D: 綺麗かった adalah bentuk rusak.",
+        "grammarRule": "Peringatan Khusus Kata Sifat-Na Berbunyi Akhir -i: 綺麗（きれい） & 有名（ゆうめい） ➔ 綺麗に なります / 有名に なります (Bukan ~ku!)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Gramatikal Sekuensial (~Te, ~Te) vs Sampel Acak (~Tari, ~Tari)",
+      "type": "teks",
+      "question_ja": "昨日の 日曜日は、朝から 晩まで 友達と ゲームを （　①　）、テレビを （　②　） しました。（Representasi Sampel Kegiatan）",
+      "question_ruby": "昨日の 日曜日は、朝から 晩まで 友達と ゲームを （　①　）、テレビを （　②　） しました。（Representasi Sampel Kegiatan）",
+      "question_id": "Pasangan bentuk verba yang tepat untuk menunjukkan representasi beberapa kegiatan santai di atas adalah...",
+      "translation": "Hari Minggu kemarin, dari pagi hingga malam melakukan aktivitas seperti bermain game dan menonton TV bersama teman. Pasangan: したり dan 見たり.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "して ／ 見て"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "しながら ／ 見ながら"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "したり ／ 見たり"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "したあとで ／ 見たあとで"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (したり ／ 見たり).",
+        "logic": "Perbedaan esensial:<br>1) <strong>～て、～て (Te-kei)</strong>: Menyatakan rangkaian tindakan yang dilakukan secara berurutan dan kaku menurut garis kronologis (V1 selesai dulu baru V2).<br>2) <strong>～たり、～たり します (Tari-kei)</strong>: Menyebutkan 2-3 perbuatan representatif dari sekian banyak kegiatan yang dilakukan secara santai/acak sepanjang hari. Karena diakhiri dengan kata <em>しました</em>, maka pasangannya wajib: <strong>したり ／ 見たり</strong>.",
+        "distractor": "• Opsi A: して ／ 見て tidak cocok diakhiri dengan verba 'しました' yang terpisah.\n• Opsi B: しながら menandai dua perbuatan yang dilakukan serentak pada detik yang sama.\n• Opsi D: したあとで tidak membentuk pola rangkuman hari libur.",
+        "grammarRule": "Distingsi Bab 16 vs Bab 19: [V-te, V-te, V-masu] (Urutan Garis Waktu Pasti) vs [V-tari, V-tari shimasu] (Sampel Representasi Perbuatan Bebas)."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Pengalaman Lampau (登ったことがある)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。日本の 有名な 山です。<br>「わたしは 富士山に （　　　）ことが あります。」",
+      "question_ruby": "絵（え）を 見て ください。日本の 有名な 山です。<br>「わたしは 富士山に （　　　）ことが あります。」",
+      "question_id": "Perhatikan gambar Gunung Fuji. 'Saya pernah (...) Gunung Fuji'.",
+      "translation": "Saya pernah mendaki Gunung Fuji (nobotta koto ga arimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "いった"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "登った（のぼった）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "みた"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "とまった"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (登った（のぼった）).",
+        "logic": "Gambar memperlihatkan pendakian Gunung Fuji. Verba yang tepat untuk menaiki/mendaki gunung adalah 登る (登った / のぼった - nobotta).",
+        "distractor": "• Opsi A: いった (pergi) kurang spesifik mendaki ketinggian.\n• Opsi C: みた berarti sekadar memandang.\n• Opsi D: とまった berarti menginap.",
+        "grammarRule": "Pola Pengalaman Bab 19: [V-ta] ＋ ことが あります."
+      },
+      "image": "assets/bab_19/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kegiatan Representatif (掃除をする)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。日曜日に 何を しますか。<br>「部屋の （　　　）や 洗濯を します。」",
+      "question_ruby": "絵（え）を 見て ください。日曜日に 何を しますか。<br>「部屋の （　　　）や 洗濯を します。」",
+      "question_id": "Perhatikan gambar sapu dan kain pel. Apakah yang dilakukan pada hari Minggu? 'Melakukan (...) kamar dan mencuci baju'.",
+      "translation": "Membersihkan kamar (souji) dan mencuci baju pada hari Minggu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "りょうり"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かいもの"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "掃除（そうじ）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "べんきょう"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (掃除（そうじ）).",
+        "logic": "Gambar menunjukkan peralatan kebersihan kamar (掃除 / そうじ - souji).",
+        "distractor": "• Opsi A: りょうり adalah memasak.\n• Opsi B: かいもの adalah berbelanja.\n• Opsi D: べんきょう adalah belajar buku.",
+        "grammarRule": "Representasi Kegiatan Bab 19: 掃除したり、洗濯したりします."
+      },
+      "image": "assets/bab_19/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (泊まりました)",
+      "type": "teks",
+      "question_ja": "夏休みに 友だちと 旅館に （ 泊まりました ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "夏休みに 友だちと 旅館に （ 泊まりました ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Saat libur musim panas menginap di ryokan bersama kawan. Pilihlah cara baca kanji '泊まりました' yang tepat.",
+      "translation": "Saat libur musim panas menginap di penginapan tradisional Jepang (ryokan) bersama teman.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "とまりました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "やすみました"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "すみました"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "こまりました"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (とまりました).",
+        "logic": "Kanji 泊まりました dibaca とまりました (tomarimashita) yang berarti bermalam atau menginap di suatu tempat.",
+        "distractor": "• Opsi B: やすみました ditulis 休みました (beristirahat / libur).\n• Opsi C: すみました ditulis 住みました (bermukim / menetap tinggal).\n• Opsi D: こまりました ditulis 困りました (mengalami kesulitan/kesusahan).",
+        "grammarRule": "Aktivitas Wisata Bab 19: [Hotel/Ryokan] に 泊まります（とまります = menginap）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (練習)",
+      "type": "teks",
+      "question_ja": "毎日 日本語の （ れんしゅう ）を します。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "毎日 日本語の （ れんしゅう ）を します。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Setiap hari berlatih bahasa Jepang. Pilihlah penulisan kanji yang tepat untuk 'renshuu'.",
+      "translation": "Setiap hari tekun melakukan latihan pemantapan bahasa Jepang.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "練習"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "連習"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "練集"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "錬習"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (練習).",
+        "logic": "Kata れんしゅう (latihan) ditulis dengan kanji baku 練習 (練 = mengasah/melatih kemampuan, 習 = mempelajari berulang-ulang).",
+        "distractor": "• Opsi B: 連習 salah huruf kiri (menggunakan 連 = rangkaian/seri).\n• Opsi C: 練集 salah huruf kanan (menggunakan 集 = mengumpulkan).\n• Opsi D: 錬習 adalah huruf metalurgi/peleburan.",
+        "grammarRule": "Aktivitas Belajar Mandiri: 練習（れんしゅう = latihan）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (調子)",
+      "type": "teks",
+      "question_ja": "機械の （ ちょうし ）が 悪いですから、点検します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "機械の （ ちょうし ）が 悪いですから、点検します。<br>正しい 漢字は どれですか。",
+      "question_id": "Karena kondisi mesin kurang baik, segera dilakukan inspeksi. Pilihlah kanji yang tepat untuk 'choushi'.",
+      "translation": "Karena kondisi kerja mesin bermasalah, kami segera melakukan inspeksi teknis.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "調子"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "調手"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "長子"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "頂子"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (調子).",
+        "logic": "Kata ちょうし (kondisi kerja / ritme kerja mesin atau tubuh) ditulis dengan kanji 調子 (調 = mengatur/menyelaraskan, 子 = partikel nomina).",
+        "distractor": "• Opsi B: 調手 adalah penulisan yang salah.\n• Opsi C: 長子 dibaca ちょうし bermakna anak sulung pertama.\n• Opsi D: 頂子 adalah bentuk yang salah.",
+        "grammarRule": "Kondisi Operasional Mesin: 調子（ちょうし = performa / kondisi kerja mesin）."
+      }
+    }
+  ]
+};
+
+const BAB_20_DATA = {
+  "chapter": "20",
+  "title_ja": "第２０課：普通形（だ・じゃない・だった・じゃなかった／辞書・ない・た・なかった）・命令形・禁止形・安全標識の定義",
+  "title_id": "Bab 20: Bentuk Biasa / Kasual (普通形 - Futsuukei), Bentuk Perintah (命令形), Bentuk Larangan Keras (禁止形), dan Makna Rambu K3 Industri",
+  "theme_ja": "普通形 (Futsuukei), 命令形 (Meireikei), 禁止形 (Kinshikei), 安全標識の解釈 (Makna Rambu K3 Industri) & 現場での即応指示",
+  "theme_id": "Evaluasi komprehensif Bab 20 yang menguji: konjugasi ragam biasa/kasual (普通形 - Futsuukei: da, ja nai, datta, ja nakatta untuk nomina/kata sifat-na; V-jisho, V-nai, V-ta, V-nakatta untuk verba); perubahan konjugasi bentuk perintah tegas pabrik (命令形 - Meireikei: Grup 1 vokal e seperti isoge/ugoke/kabure/kire, Grup 2 akhiran -ro seperti tomero/akero, Grup 3 shiro dan koi); perubahan konjugasi bentuk larangan keras K3 (禁止形 - Kinshikei: [V-jisho] + な seperti sawaruna/hairuna/suuna/okuna/machigaeruna); pola interpretasi dan penjelasan arti definisi rambu keselamatan kerja pabrik (「～」は ～ という意味です: 立入禁止, 禁煙, 火気厳禁, 頭上注意, 保護帽着用, 作業手順確認); serta instruksi langsung hanchou (班長) kepada siswa magang dalam hierarki operasional pabrik Jepang.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 20.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 20.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata APD Masker Debu & Material Pelat Besi Industri",
+      "type": "teks",
+      "question_ja": "班長：『アグス、（　<strong>ぼうじんマスク</strong>　）を 忘れるな。今日は （　<strong>てっぱん</strong>　）に 穴を 開けるぞ。』漢字表記の 組み合わせは どれですか。",
+      "question_ruby": "班長：『アグス、（　<strong>ぼうじんマスク</strong>　）を 忘れるな。今日は （　<strong>てっぱん</strong>　）に 穴を 開けるぞ。』漢字表記の 組み合わせは どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'masker pelindung debu' dan 'pelat besi' adalah...",
+      "translation": "Mandor: 'Agus, jangan lupa masker debu. Hari ini kita akan membuat lubang pada pelat besi.' Pasangan kanji: 防塵マスク ／ 鉄板.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "防犯布 ／ 鉄骨"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "安全帯 ／ 鉄筋"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "保護服 ／ 鋼板"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "防塵マスク ／ 鉄板"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (防塵マスク ／ 鉄板).",
+        "logic": "1) <strong>防塵マスク（ぼうじんマスク - boujin masuku）</strong> adalah perlengkapan APD esensial di bengkel manufaktur untuk <strong>menyaring partikel debu logam dan serpihan gerinda agar tidak terhirup saluran pernapasan</strong>.<br>2) <strong>鉄板（てっぱん - teppan）</strong> adalah material lembaran <strong>pelat besi / baja</strong> yang menjadi objek pengerjaan bor dan press di pabrik.",
+        "distractor": "• Opsi A: 防犯布 (kain antipencurian) / 鉄骨 (rangka baja konstruksi).\n• Opsi B: 安全帯 (sabuk pengaman ketinggian) / 鉄筋 (besi beton bertulang).\n• Opsi C: 保護服 (pakaian pelindung kimia) / 鋼板 (lembaran baja gulung).",
+        "grammarRule": "Kosakata K3 Manufaktur Bab 20: 防塵マスク（ぼうじんマスク - masker debu） & 鉄板（てっぱん - pelat besi benda kerja）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Inspeksi Rutin Alat Serta Produk Cacat (Reject)",
+      "type": "teks",
+      "question_ja": "作業の 前に 機械の （　<strong>てんけん</strong>　）を します。（　<strong>ふりょうひん</strong>　）は 別の 箱に 分けます。「てんけん」と「ふりょうひん」の 漢字表記と 意味は どれですか。",
+      "question_ruby": "作業の 前に 機械の （　<strong>てんけん</strong>　）を します。（　<strong>ふりょうひん</strong>　）は 別の 箱に 分けます。「てんけん」と「ふりょうひん」の 漢字表記と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk kata 'tenken' dan 'furyouhin' adalah...",
+      "translation": "Sebelum bekerja melakukan inspeksi/pengecekan mesin. Produk cacat/reject dipisahkan ke dalam kotak lain. Kanji: 点検 ／ 不良品.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "点灯 ／ 完成品 （Menyalakan lampu ／ Produk jadi siap kirim）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "点検 ／ 不良品 （Pemeriksaan / inspeksi rutin alat ／ Produk cacat / reject）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "点線 ／ 予備品 （Garis putus-putus ／ Komponen suku cadang cadangan）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "修理 ／ 付属品 （Perbaikan mesin besar ／ Aksesori perlengkapan tambahan）"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (点検 ／ 不良品 （Pemeriksaan / inspeksi rutin alat ／ Produk cacat / reject）).",
+        "logic": "1) <strong>点検（てんけん - tenken）</strong> berarti <strong>pemeriksaan, inspeksi rutin, atau pengecekan kelayakan alat sebelum dan sesudah operasi</strong>.<br>2) <strong>不良品（ふりょうひん - furyouhin）</strong> berarti <strong>produk cacat, rusak, atau tidak memenuhi standar mutu (reject)</strong> yang harus dipisahkan dari produk berkualitas baik (良品 - ryouhin).",
+        "distractor": "• Opsi A: 点灯 (menyalakan lampu indikator) / 完成品 (produk jadi).\n• Opsi C: 点線 (garis titik-titik) / 予備品 (spare part cadangan).\n• Opsi D: 修理 (perbaikan) / 付属品 (aksesori kelengkapan).",
+        "grammarRule": "Standar Kontrol Kualitas Pabrik: 点検（てんけん - inspeksi rutin） & 不良品（ふりょうひん - barang cacat/reject）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Operasional Pengeboran & Pembersihan Serpihan Besi",
+      "type": "teks",
+      "question_ja": "ドリルで 鉄板に （　<strong>あなを あけます</strong>　）。作業が 終わったら、ほうきで （　<strong>てつくずを はきます</strong>　）。漢字表記は どれですか。",
+      "question_ruby": "ドリルで 鉄板に （　<strong>あなを あけます</strong>　）。作業が 終わったら、ほうきで （　<strong>てつくずを はきます</strong>　）。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'membuat lubang' dan 'menyapu serpihan/gram besi' adalah...",
+      "translation": "Membuat lubang pada pelat besi menggunakan bor. Setelah pekerjaan selesai, menyapu serpihan besi menggunakan sapu. Kanji: 穴を開けます ／ 鉄くずを掃きます.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "穴を開けます ／ 鉄くずを掃きます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "空を引きます ／ 鉄粉を拭きます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "溝を削ります ／ 鉄板を洗います"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "門を閉めます ／ 針金を切ります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (穴を開けます ／ 鉄くずを掃きます).",
+        "logic": "1) <strong>穴を開けます（あなをあけます - ana o akemasu）</strong> bermakna <strong>membuat / melubangi benda kerja</strong> dengan mesin bor.<br>2) <strong>鉄くずを掃きます（てつくずをはきます - tetsukuzu o hakimasu）</strong> bermakna <strong>menyapu serpihan/sisa tatal bubut besi</strong> demi mencegah luka tusuk dan menjaga kebersihan lantai pabrik (prinsip Seisou).",
+        "distractor": "• Opsi B: 空を引きます dan 鉄粉を拭きます (mengelap serbuk) salah kanji verba pembuka lubang.\n• Opsi C: 溝を削ります (membuat alur parit) / 洗います (mencuci).\n• Opsi D: 門を閉めます (menutup gerbang) / 針金を切ります (memotong kawat).",
+        "grammarRule": "Aksi Teknis Pabrik Bab 20: 穴を開けます（あなをあけます - membuat lubang） & 鉄くずを掃きます（てつくずをはきます - menyapu serpihan besi）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Cara Baca Kanji Rambu Bahaya Akses Terlarang & Bahan Api",
+      "type": "teks",
+      "question_ja": "変電所の ドアに （　<strong>立入禁止</strong>　）と （　<strong>火気厳禁</strong>　）の 標識が あります。読み方の 組み合わせは どれですか。",
+      "question_ruby": "変電所の ドアに （　<strong>立入禁止</strong>　）と （　<strong>火気厳禁</strong>　）の 標識が あります。読み方の 組み合わせは どれですか。",
+      "question_id": "Cara baca kanji yang benar untuk rambu 'Dilarang Masuk' dan 'Dilarang Menggunakan Api' adalah...",
+      "translation": "Pada pintu gardu listrik ada rambu 'Dilarang Masuk' dan 'Dilarang Menggunakan Api'. Kanji 立入禁止 dibaca tachiiri kinshi dan 火気厳禁 dibaca kaki genkin.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "たちいりきんえん ／ かきげんし"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "りついりきんし ／ ひきげんきん"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "たちいりきんし ／ かきげんきん"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "はいりきんし ／ かきげんしん"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (たちいりきんし ／ かきげんきん).",
+        "logic": "1) <strong>立入禁止</strong> dibaca <strong>たちいりきんし (tachiiri kinshi)</strong> yang bermakna <em>dilarang masuk ke area ini</em>.<br>2) <strong>火気厳禁</strong> dibaca <strong>かきげんきん (kaki genkin)</strong> yang bermakna <em>mutlak dilarang menyalakan korek api, rokok, atau sumber percikan api terbuka</em> di sekitar area bahan mudah terbakar.",
+        "distractor": "• Opsi A: たちいりきんえん tertukar dengan rokok (禁煙).\n• Opsi B: りついりきんし ／ ひきげんきん adalah pembacaan kanji yang rusak.\n• Opsi D: はいりきんし salah cara baca on-yomi.",
+        "grammarRule": "Rambu Keselamatan K3 Vital: 立入禁止（たちいりきんし - Dilarang Masuk） & 火気厳禁（かきげんきん - Dilarang Menggunakan Api）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Standar Manajemen Industri Kerapian (5S) & Prosedur Tunjuk-Sebut (K3)",
+      "type": "teks",
+      "question_ja": "工場長：『作業の前には （　<strong>せいりせいとん</strong>　）を 徹底し、確認の ときは （　<strong>しさこしょう</strong>　）を 実行しろ。』漢字表記は どれですか。",
+      "question_ruby": "工場長：『作業の前には （　<strong>せいりせいとん</strong>　）を 徹底し、確認の ときは （　<strong>しさこしょう</strong>　）を 実行しろ。』漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk pilar 5S 'ringkas & rapi' serta metode keselamatan 'tunjuk dan sebut' adalah...",
+      "translation": "Kepala pabrik: 'Sebelum bekerja terapkan ringkas dan rapi secara menyeluruh, dan saat pemeriksaan laksanakan tunjuk dan sebut.' Pasangan kanji: 整理整頓 ／ 指差呼称.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "清掃清潔 ／ 手洗励行"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "安全第一 ／ 頭上注意"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "作業手順 ／ 足元注意"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "整理整頓 ／ 指差呼称"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (整理整頓 ／ 指差呼称).",
+        "logic": "1) <strong>整理整頓（せいりせいとん - seiri seiton）</strong> adalah dua pilar fundamental gerakan 5S di industri Jepang yang berarti <strong>memilah barang yang tidak terpakai (seiri) dan menata rapi barang yang diperlukan pada tempatnya (seiton)</strong>.<br>2) <strong>指差呼称（しさこしょう - shisa koshou）</strong> adalah <strong>metode keselamatan kerja dengan menunjuk objek sasaran dengan jari telunjuk sambil menyerukan status keamanannya dengan suara lantang (Pointing and Calling)</strong> untuk mencegah kekeliruan fatal.",
+        "distractor": "• Opsi A: 清掃清潔 (resik dan rawat) / 手洗励行 (anjuran cuci tangan higienis).\n• Opsi B: 安全第一 (utamakan keselamatan) / 頭上注意 (waspada atas kepala).\n• Opsi C: 作業手順 (prosedur instruksi kerja) / 足元注意 (waspada langkah kaki).",
+        "grammarRule": "Budaya Kerja Manufaktur Jepang: 整理整頓（せいりせいとん - Ringkas & Rapi） & 指差呼称（しさこしょう - Tunjuk dan Sebut: '...よし！'）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Meminta Maaf & Melakukan Kesalahan Operasional",
+      "type": "teks",
+      "question_ja": "失敗を したら、すぐに 先輩に （　<strong>あやまりました</strong>　）。穴の 位置を （　<strong>まちがえないで</strong>　）ください。「あやまりました」と「まちがえないで」の 漢字表記は どれですか。",
+      "question_ruby": "失敗を したら、すぐに 先輩に （　<strong>あやまりました</strong>　）。穴の 位置を （　<strong>まちがえないで</strong>　）ください。「あやまりました」と「まちがえないで」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'meminta maaf' dan 'jangan salah/keliru' adalah...",
+      "translation": "Ketika melakukan kegagalan/kesalahan, langsung meminta maaf kepada senior. Tolong jangan salah menentukan posisi lubang. Kanji: 謝りました ／ 間違えないで.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "誤りました ／ 迷わないで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "謝りました ／ 間違えないで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "祈りました ／ 乱さないで"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "断りました ／ 違わないで"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (謝りました ／ 間違えないで).",
+        "logic": "1) <strong>謝ります（あやまります - ayamarimasu）</strong> ditulis <strong>謝</strong> yang bermakna <strong>meminta maaf secara ksatria atas suatu kesalahan</strong>.<br>2) <strong>間違えます（まちがえます - machigaemasu）</strong> ditulis <strong>間違</strong> yang bermakna <strong>melakukan kekeliruan atau salah ukur</strong>. Bentuk larangan: <code>間違えないでください / 間違えるな (jangan salah)</code>.",
+        "distractor": "• Opsi A: 誤りました bermakna melakukan kekeliruan (bukan meminta maaf) / 迷わないで (jangan tersesat/bimbang).\n• Opsi C: 祈りました (berdoa) / 乱さないで (jangan membuat kacau).\n• Opsi D: 断りました (menolak permintaan) / 違わないで (jangan berbeda).",
+        "grammarRule": "Etika & Presisi Kerja Industri: ちゃんと謝ります（あやまります - minta maaf secara sopan） & 寸法を間違えません（まちがえません - tidak salah ukuran）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Istilah Struktur Hierarki Kerja Manufaktur (Hanchou)",
+      "type": "teks",
+      "question_ja": "製造ラインの チームを まとめる リーダーを （　<strong>はんちょう</strong>　）と 呼びます。「はんちょう」の 漢字表記と 意味は どれですか。",
+      "question_ruby": "製造ラインの チームを まとめる リーダーを （　<strong>はんちょう</strong>　）と 呼びます。「はんちょう」の 漢字表記と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk istilah jabatan pabrik 'hanchou' adalah...",
+      "translation": "Pemimpin yang memimpin tim lini produksi disebut hanchou. Kanji: 班長 yang bermakna kepala regu kerja / group leader.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "班長 （Kepala regu kerja / leader kelompok kerja lini produksi）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "社長 （Presiden direktur utama korporasi perusahaan）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "部長 （Kepala divisi departemen kantor manajemen）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "課長 （Kepala seksi sub-departemen administrasi）"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (班長 （Kepala regu kerja / leader kelompok kerja lini produksi）).",
+        "logic": "<strong>班長（はんちょう - hanchou）</strong> adalah sebutan untuk <strong>kepala regu kerja lapangan / mandor lini produksi</strong> yang membawahi beberapa operator pabrik secara teknis langsung sehari-hari. Tokoh Hanchou menjadi instruktur utama yang memberikan perintah kerja kepada siswa magang (Agus) di Bab 20.",
+        "distractor": "• Opsi B: 社長（しゃちょう） adalah direktur utama korporasi.\n• Opsi C: 部長（ぶちょう） adalah manajer kepala departemen.\n• Opsi D: 課長（かちょう） adalah kepala seksi operasional kantor.",
+        "grammarRule": "Struktur Hierarki Komando Industri: 社長 ➔ 工場長 ➔ 部長 ➔ 課長 ➔ 班長（はんちょう - kepala regu lini kerja langsung）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pembentuk Pola Definisi Makna Rambu (~To iu imi desu)",
+      "type": "teks",
+      "question_ja": "『禁煙』（　①　） 『ここで たばこを 吸うな』（　②　） いう 意味です。",
+      "question_ruby": "『禁煙』（　①　） 『ここで たばこを 吸うな』（　②　） いう 意味です。",
+      "question_id": "Pasangan partikel ① dan ② yang tepat untuk menyusun kalimat definisi arti rambu keselamatan di atas adalah...",
+      "translation": "'Kin'en' memiliki arti 'jangan merokok di sini'. Pasangan partikel definisi: は dan と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が ／ を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を ／ に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "は ／ と"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "に ／ で"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (は ／ と).",
+        "logic": "Pola gramatikal baku untuk menjelaskan atau mendefinisikan arti istilah/simbol adalah: <strong>「[Istilah/Rambu]」は 「[Penjelasan/Perintah/Larangan]」と いう 意味です</strong>.<br>- Partikel <strong>は (wa)</strong> mengangkat istilah rambu sebagai topik utama kalimat.<br>- Partikel <strong>と (to)</strong> menandai isi kutipan semantik yang menjelaskan arti tersebut.",
+        "distractor": "• Opsi A: が ／ を salah partikel topik dan partikel definisi.\n• Opsi B: を ／ に salah secara gramatikal.\n• Opsi D: に ／ で tidak membentuk pola interpretasi rambu baku.",
+        "grammarRule": "Rumus Menjelaskan Arti Rambu K3: 「Rambu」 は 「Makna」 と いう 意味（いみ）です."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Alokasi Larangan Penempatan Benda (Ni ... Okuna)",
+      "type": "teks",
+      "question_ja": "非常通路ですから、絶対に ここ（　<strong>？</strong>　） 重い 荷物を 置くな！",
+      "question_ruby": "非常通路ですから、絶対に ここ（　<strong>？</strong>　） 重い 荷物を 置くな！",
+      "question_id": "Partikel yang tepat untuk menandai lorong evakuasi sebagai titik peletakan barang yang dilarang adalah...",
+      "translation": "Karena ini adalah jalur evakuasi darurat, mutlak jangan menaruh barang berat di sini! Partikel titik penempatan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (に).",
+        "logic": "Verba <strong>置きます（おきます - meletakkan）</strong> baik dalam bentuk sopan maupun larangan keras <em>置くな (jangan taruh!)</em> menuntut partikel penanda titik lokasi tempat benda diletakkan <strong>に (ni)</strong>: <code>ここに 荷物を 置くな</code>.",
+        "distractor": "• Opsi B: で menandai tempat dilakukannya aksi aktif dinamis, bukan titik peletakan/penempelan benda diam.\n• Opsi C: を menandai objek barang yang diletakkan (荷物を).\n• Opsi D: から menandai titik awal perpindahan.",
+        "grammarRule": "Kaidah Penempatan Barang K3: [Tempat Penempatan] + に + [Benda] を + 置きます / 置くな (Jangan taruh!)."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Langsung yang Dikenai Instruksi Larangan Keras (O)",
+      "type": "teks",
+      "question_ja": "班長：『アグス、許可なく 機械の スイッチ（　<strong>？</strong>　） 勝手に 入れるな！』",
+      "question_ruby": "班長：『アグス、許可なく 機械の スイッチ（　<strong>？</strong>　） 勝手に 入れるな！』",
+      "question_id": "Partikel yang tepat untuk menandai saklar mesin sebagai objek langsung dari instruksi larangan keras 'ireru na' adalah...",
+      "translation": "Mandor: 'Agus, jangan sembarangan menyalakan saklar mesin tanpa izin!' Partikel objek penderita adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "と"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (を).",
+        "logic": "Meskipun verba dikonjugasikan ke dalam bentuk larangan keras <strong>禁止形（きんしけい）</strong>, hubungan relasi objek penderita dengan kata kerja transitif tetap wajib menggunakan partikel <strong>を (o)</strong>: <code>スイッチを 入れるな (jangan nyalakan saklar!)</code>.",
+        "distractor": "• Opsi A: に menandai titik tujuan pemasukan (misal: 部屋に入る).\n• Opsi B: で menandai sarana alat.\n• Opsi C: と menandai kawan penyerta atau kutipan.",
+        "grammarRule": "Struktur Larangan Keras Objek Transitif: [Objek Penderita] + を + [Verba Bentuk Kamus] + な (Dilarang keras melakukan...!)."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Ragam / Volume Suara Pelaksanaan Tuturan (De)",
+      "type": "teks",
+      "question_ja": "工場の中は 機械の 音が うるさいですから、もっと 大きい声（　<strong>？</strong>　） 報告しろ！",
+      "question_ruby": "工場の中は 機械の 音が うるさいですから、もっと 大きい声（　<strong>？</strong>　） 報告しろ！",
+      "question_id": "Partikel yang tepat untuk menandai intonasi/volume suara lantang sebagai cara pelaksanaan instruksi adalah...",
+      "translation": "Karena di dalam pabrik suara mesin bising, melaporlah dengan suara yang lebih lantang! Partikel cara/kondisi suara adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (で).",
+        "logic": "Partikel <strong>で (de)</strong> digunakan untuk menandai <strong>kondisi, media, atau sarana yang digunakan saat berbicara atau mengekspresikan sesuatu</strong>: <code>大きい声で 話します / 言ってください / 報告しろ (melaporlah DENGAN suara lantang)</code>, <code>日本語で 話せ (bicaralah dalam bahasa Jepang)</code>.",
+        "distractor": "• Opsi A: に salah struktur partikel.\n• Opsi C: を menandai topik isi laporan (hasil kerja = 結果を報告しろ).\n• Opsi D: と menandai kutipan kalimat tepat.",
+        "grammarRule": "Partikel Media Vokal & Cara: 大きい声（おおきいこえ） + で + 言え / 話せ / 報告しろ."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Frekuensi Berkala Per Satuan Waktu (Ni)",
+      "type": "teks",
+      "question_ja": "熊本県では、1年（　<strong>？</strong>　） 1度、『大声で ストレスを 解消する 大会』が あります。",
+      "question_ruby": "熊本県では、1年（　<strong>？</strong>　） 1度、『大声で ストレスを 解消する 大会』が あります。",
+      "question_id": "Partikel yang tepat untuk menandai rasio frekuensi berkala 'satu kali dalam 1 tahun' adalah...",
+      "translation": "Di Prefektur Kumamoto, 1 kali dalam 1 tahun, diadakan perkumpulan melampiaskan stres dengan bersuara lantang. Partikel rasio frekuensi waktu adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Untuk menyatakan <strong>rasio frekuensi pengulangan per satuan rentang waktu</strong>, digunakan partikel <strong>に (ni)</strong>: <code>[Satuan Waktu] + に + [Jumlah Frekuensi] + Verba</code> (contoh: <code>1年に 1度 - 1 kali dalam setahun</code>, <code>1日に 3回 - 3 kali sehari</code>).",
+        "distractor": "• Opsi A: で digunakan untuk total waktu akumulasi selesai (1週間で), bukan rasio frekuensi per periode.\n• Opsi B: を menandai objek penderita.\n• Opsi D: から menandai waktu permulaan awal.",
+        "grammarRule": "Rumus Frekuensi Waktu Berkala: [Satuan Waktu (1年 / 1か月 / 1日)] + に + [Frekuensi (1回 / 1度 / 2回)]."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Sasaran Kewaspadaan & Perhatian Diri (Ni)",
+      "type": "teks",
+      "question_ja": "日本の 冬は とても 寒いですから、体と 健康（　<strong>？</strong>　） 気を つけてください。",
+      "question_ruby": "日本の 冬は とても 寒いですから、体と 健康（　<strong>？</strong>　） 気を つけてください。",
+      "question_id": "Partikel yang tepat untuk menandai kondisi kesehatan sebagai objek perhatian dari frasa 'ki o tsukemasu' adalah...",
+      "translation": "Karena musim dingin di Jepang sangat dingin, tolong jaga dan perhatikan kondisi tubuh serta kesehatan. Partikel atensi kewaspadaan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (に).",
+        "logic": "Ungkapan baku <strong>気をつけます（きをつけます - berhati-hati / menjaga / mewaspadai）</strong> menuntut partikel penanda fokus atensi <strong>に (ni)</strong>: <code>健康に 気をつけてください</code>, <code>怪我に 気をつけろ</code>, <code>車に 気をつけてください</code>.",
+        "distractor": "• Opsi B: を sudah melekat secara idiomatis pada kata 気 (気をつけます); menduplikasi を di depan objek atensi adalah kesalahan tata bahasa.\n• Opsi C: で menandai sarana atau lokasi.\n• Opsi D: へ menandai arah perjalanan fisik.",
+        "grammarRule": "Kolokasi Kewaspadaan: [Objek yang Dijaga / Diwaspadai: 健康 / 車 / 頭の上 / 足元] + に + 気をつけてください / 気をつけろ."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Perintah Tegas (Meireikei) Verba Grup 1",
+      "type": "teks",
+      "question_ja": "「急ぎます」、「動きます」、「被ります」の 命令形（めいれいけい）の 正しい 組み合わせは どれですか。",
+      "question_ruby": "「急ぎます」、「動きます」、「被ります」の 命令形（めいれいけい）の 正しい 組み合わせは どれですか。",
+      "question_id": "Kombinasi konjugasi bentuk perintah (Meireikei) yang benar untuk 'isogimasu' (bergegas), 'ugokimasu' (bergerak), dan 'kaburimasu' (memakai topi) adalah...",
+      "translation": "Bentuk perintah (Meireikei) yang tepat untuk ketiga verba Grup 1 tersebut adalah: 急げ (isoge - bergegaslah!), 動け (ugoke - cepat bergerak!), dan 被れ (kabure - pakailah topi!).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "急ごう ／ 動こう ／ 被ろう"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "急げ ／ 動け ／ 被れ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "急ぎろ ／ 動きろ ／ 被りろ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "急が ／ 動か ／ 被ら"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (急げ ／ 動け ／ 被れ).",
+        "logic": "Kaidah pembentukan <strong>Bentuk Perintah (命令形 - Meireikei) Verba Grup 1</strong>:<br>- Bunyi vokal <em>-i</em> sebelum <em>~ます</em> diubah menjadi vokal deret <strong>-e</strong>.<br>1) 急<strong>ぎ</strong>ます ➔ 急<strong>げ</strong>（いそげ - isoge!）<br>2) 動<strong>き</strong>ます ➔ 動<strong>け</strong>（うごけ - ugoke!）<br>3) 被<strong>り</strong>ます ➔ 被<strong>れ</strong>（かぶれ - kabure!）<br>Maka pasangan yang tepat adalah <strong>急げ ／ 動け ／ 被れ</strong>.",
+        "distractor": "• Opsi A: 急ごう ／ 動こう ／ 被ろう adalah bentuk ajakan/keinginan kasual (意向形 - Ikoukei).\n• Opsi C: 急ぎろ ／ 動きろ ／ 被りろ adalah kesalahan menerapkan akhiran -ro milik Grup 2 pada Grup 1.\n• Opsi D: 急が ／ 動か ／ 被ら adalah akar bentuk-nai yang belum tuntas.",
+        "grammarRule": "Konjugasi Bentuk Perintah (命令形) Grup 1: Vokal deret [i] sebelum ~ます berubah menjadi vokal deret [e] (ki➔ke, gi➔ge, shi➔se, chi➔te, ri➔re, mi➔me, bi➔be, i➔e)."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Perintah Tegas (Meireikei) Verba Grup 2 & Grup 3",
+      "type": "teks",
+      "question_ja": "「止めます」（Grup 2）、「点検します」（Grup 3）、「来ます」（Grup 3）の 正しい 命令形は どれですか。",
+      "question_ruby": "「止めます」（Grup 2）、「点検します」（Grup 3）、「来ます」（Grup 3）の 正しい 命令形は どれですか。",
+      "question_id": "Kombinasi bentuk perintah yang tepat untuk verba 'tomemasu' (hentikan), 'tenken shimasu' (inspeksi), dan 'kimasu' (datang) adalah...",
+      "translation": "Bentuk perintah yang benar: 止めろ (tomero - hentikan!), 点検しろ (tenken shiro - periksalah!), dan 来い - dibaca koi (kemarilah!).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "止めれ ／ 点検しれ ／ 来れ（これ）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "止める ／ 点検する ／ 来る（くる）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "止めろ ／ 点検しろ ／ 来い（こい）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "止めた ／ 点検した ／ 来た（きた）"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (止めろ ／ 点検しろ ／ 来い（こい）).",
+        "logic": "1) <strong>Grup 2 (止めます)</strong>: Hilangkan <em>~ます</em> dan tambahkan <strong>~ろ</strong> ➔ <strong>止めろ（とめろ - tomero!）</strong>.<br>2) <strong>Grup 3 (～します)</strong>: Berubah menjadi <strong>~しろ (~shiro!)</strong> ➔ <strong>点検しろ（てんけんしろ）</strong>.<br>3) <strong>Grup 3 Irregular (来ます)</strong>: Mengalami perubahan bentuk khusus menjadi <strong>来い（こい - koi!）</strong>.",
+        "distractor": "• Opsi A: 止めれ dan 点検しれ adalah bentuk salah kaprah.\n• Opsi B: 止める ／ 点検する ／ 来る adalah bentuk kamus biasa (Jisho-kei).\n• Opsi D: 止めた ／ 点検した ／ 来た adalah bentuk lampau (Ta-kei).",
+        "grammarRule": "Konjugasi Bentuk Perintah Grup 2 & 3: Grup 2: Buang ~ます + ろ; Grup 3: します ➔ しろ; 来ます（きます） ➔ 来い（こい）."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Larangan Keras K3 (Kinshikei - V-jisho + Na)",
+      "type": "teks",
+      "question_ja": "先輩：『アグス、運転中の 機械の レバーに 絶対に （　<strong>＿＿＿＿＿</strong>　）！ 挟まれるぞ！』",
+      "question_ruby": "先輩：『アグス、運転中の 機械の レバーに 絶対に （　<strong>＿＿＿＿＿</strong>　）！ 挟まれるぞ！』",
+      "question_id": "Bentuk instruksi larangan keras K3 (Kinshikei) yang tepat untuk 'jangan sentuh' dari verba 'sawarimasu' adalah...",
+      "translation": "Senior: 'Agus, mutlak jangan sentuh tuas mesin yang sedang beroperasi! Bisa terjepit lho!' Bentuk larangan keras: 触るな (sawaruna!).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "触るなで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "触りな"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "触れな"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "触るな"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (触るな).",
+        "logic": "Rumus pembentukan <strong>Bentuk Larangan Keras (禁止形 - Kinshikei)</strong> untuk SEMUA golongan kata kerja (Grup 1, 2, dan 3) sangat sederhana dan seragam: <strong>[Verba Bentuk Kamus (Jisho-kei)] + な (na)</strong>.<br>Dari kata kerja <code>触ります ➔ Bentuk Kamus: 触る（さわる） ＋ な ➔ 触るな（さわるな - dilarang keras menyentuh / jangan sentuh!）</code>.",
+        "distractor": "• Opsi A: 触るなで adalah bentuk rusak gabungan dengan de.\n• Opsi B: 触りな adalah singkatan bahasa percakapan santai untuk suruhan lembut (o-sawari na), berlawanan makna dengan larangan keras.\n• Opsi C: 触れな salah karena meletakkan partikel na setelah bentuk perintah.",
+        "grammarRule": "Rumus Mutlak Larangan Keras K3 (禁止形): [Seluruh Verba Bentuk Kamus (Jisho-kei)] + な (Dilarang keras / Jangan...!)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Penjelasan Definisi Rambu K3 Industri (Tachiiri Kinshi)",
+      "type": "teks",
+      "question_ja": "実習生：『すみません。この 「立入禁止」と 書いてある 看板は どういう 意味ですか。』<br>指導員：『（　<strong>＿＿＿＿＿</strong>　） という 意味ですよ。』",
+      "question_ruby": "実習生：『すみません。この 「立入禁止」と 書いてある 看板は どういう 意味ですか。』<br>指導員：『（　<strong>＿＿＿＿＿</strong>　） という 意味ですよ。』",
+      "question_id": "Penjelasan definisi arti rambu keselamatan kerja '立入禁止' yang tepat dari instruktur adalah...",
+      "translation": "Trainee: 'Permisi. Papan penunjuk yang bertuliskan 立入禁止 ini artinya apa?' Instruktur: 'Artinya: jangan masuk ke sini.' Definisi: 「ここに入るな」という意味です.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "「ここに入るな」"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "「ここでたばこを吸うな」"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "「作業手順を確認しろ」"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "「ヘルメットをかぶれ」"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (「ここに入るな」).",
+        "logic": "Rambu <strong>立入禁止（たちいりきんし - tachiiri kinshi）</strong> secara harfiah dan regulasi industri K3 Jepang didefinisikan sebagai instruksi larangan keras masuk: <strong>「ここに入るな」（ここにはいるな - jangan masuk ke area ini!）という意味です</strong>.",
+        "distractor": "• Opsi B: 「ここでたばこを吸うな」 adalah arti dari rambu 禁煙（きんえん）.\n• Opsi C: 「作業手順を確認しろ」 adalah arti dari rambu 作業手順確認（さぎょうてじゅんかくにん）.\n• Opsi D: 「ヘルメットをかぶれ」 adalah arti dari rambu 保護帽着用（ほごぼうちゃくよう）.",
+        "grammarRule": "Definisi Rambu K3 Bab 20: 「立入禁止」は「ここに入るな」という意味です."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Biasa (普通形 - Futsuukei) Nomina & Kata Sifat-Na",
+      "type": "teks",
+      "question_ja": "「休みです」（肯定）と 「休みではありません」（否定）の 普通形（ふつうけい）の 正しい 組み合わせは どれですか。",
+      "question_ruby": "「休みです」（肯定）と 「休みではありません」（否定）の 普通形（ふつうけい）の 正しい 組み合わせは どれですか。",
+      "question_id": "Kombinasi bentuk biasa (普通形 - Futsuukei) yang tepat untuk 'yasumi desu' dan 'yasumi dewa arimasen' adalah...",
+      "translation": "Bentuk biasa (Futsuukei) yang benar: 休みだ (positif non-lampau) ／ 休みじゃない (negatif non-lampau).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "休み ／ 休みではない"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "休みだ ／ 休みじゃない"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "休みな ／ 休みくない"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "休みだ ／ 休みない"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (休みだ ／ 休みじゃない).",
+        "logic": "Kaidah konjugasi <strong>Bentuk Biasa (普通形) Nomina & Kata Sifat-Na</strong>: 1) Positif non-lampau (～です) ➔ <strong>～だ</strong>: <code>休みだ</code>; 2) Negatif non-lampau (～ではありません) ➔ <strong>～じゃない</strong>: <code>休みじゃない</code>; 3) Lampau: <code>休みだった</code>; 4) Negatif lampau: <code>休みじゃなかった</code>. Pasangan yang tepat: <strong>休みだ ／ 休みじゃない</strong>.",
+        "distractor": "• Opsi A: 休み (tanpa だ) / 休みではない (ragam formal tertulis).\n• Opsi C: 休みな (penerang nomina) / 休みくない (salah rumus kata sifat-I).\n• Opsi D: 休みない adalah bentuk rusak tidak baku.",
+        "grammarRule": "Konjugasi Futsuukei Nomina / Sifat-Na: [Positif] ~だ | [Negatif] ~じゃない | [Lampau] ~だった | [Negatif Lampau] ~じゃなかった."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Biasa (普通形 - Futsuukei) Verba & Percakapan Kasual",
+      "type": "teks",
+      "question_ja": "寮での 会話（普通形）：<br>アグス：『昨日 田中さんに （　①　）？』<br>ダダン：『ううん、（　②　）。』<br>（会いましたか ／ 会いませんでした）",
+      "question_ruby": "寮での 会話（普通形）：<br>アグス：『昨日 田中さんに （　①　）？』<br>ダダン：『ううん、（　②　）。』<br>（会いましたか ／ 会いませんでした）",
+      "question_id": "Bentuk konjugasi biasa (普通形) yang tepat untuk melengkapi percakapan di atas secara berturut-turut adalah...",
+      "translation": "Agus: 'Kemarin ketemu Tanaka-san?' Dadan: 'Nggak, nggak ketemu.' Bentuk biasa: 会った (lampau) ／ 会わなかった (negatif lampau).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "会う ／ 会わない"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "会った ／ 会わない"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "会った ／ 会わなかった"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "会って ／ 会いない"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (会った ／ 会わなかった).",
+        "logic": "Dalam ragam santai (<strong>普通形 - Futsuukei</strong>): 1) Pertanyaan lampau (会いましたか) ➔ Bentuk-TA tanpa partikel ka: <code>会った？</code>; 2) Negatif lampau (会いませんでした) diawali <em>ううん</em> ➔ Bentuk-NAKATTA: <code>会わなかった</code>. Pasangan tepat: <strong>会った ／ 会わなかった</strong>.",
+        "distractor": "• Opsi A: 会う ／ 会わない adalah bentuk non-lampau (tidak sinkron untuk peristiwa kemarin).\n• Opsi B: 会わない adalah negatif non-lampau (salah tenses waktu).\n• Opsi D: 会って (bentuk-te menggantung) / 会いない (bentuk rusak).",
+        "grammarRule": "Konjugasi Futsuukei Verba: [Non-Lampau (+)] 辞書形 (会う) | [Non-Lampau (-)] ない形 (会わない) | [Lampau (+)] た形 (会った) | [Lampau (-)] なかった形 (会わなかった)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Register Situasional (Darurat/Pabrik vs Situasi Sopan Umum)",
+      "type": "teks",
+      "question_ja": "製造ラインで 異常が 発生した 非常時の 緊迫した 状況で、班長が 叫ぶ 最も 適切な 指示は どれですか。",
+      "question_ruby": "製造ラインで 異常が 発生した 非常時の 緊迫した 状況で、班長が 叫ぶ 最も 適切な 指示は どれですか。",
+      "question_id": "Instruksi yang paling tepat dan sigap diserukan oleh mandor saat situasi darurat terjadi keanehan pada lini produksi adalah...",
+      "translation": "Bahaya! Cepat matikan saklar mesin! Kalimat komando darurat: 危ない！ すぐ機械のスイッチを切れ！.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "危ないですから、早く スイッチを 切っていただけませんか。"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "スイッチを 切らなくてもいいですよ。"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "スイッチを 切りましょうか。"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "危ない！ すぐ 機械の スイッチを 切れ！"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (危ない！ すぐ 機械の スイッチを 切れ！).",
+        "logic": "Dalam konteks komunikasi industri Jepang, <strong>Bentuk Perintah Tegas (命令形 - Meireikei)</strong> dan <strong>Bentuk Larangan Keras (禁止形 - Kinshikei)</strong> memiliki fungsi vital dalam <strong>situasi darurat keselamatan (emergency / crisis), peringatan bahaya kematian, serta komando instruksi langsung dalam hierarki pabrik</strong>. Bentuk <code>危ない！ すぐ 機械の スイッチを 切れ！</code> adalah tuturan reaksi cepat yang baku untuk mencegah kecelakaan kerja.",
+        "distractor": "• Opsi A: Terlalu bertele-tele dan lambat dalam situasi darurat bencana/kecelakaan.\n• Opsi B: Menyatakan tidak perlu mematikan mesin (membahayakan keselamatan jiwa pekerja).\n• Opsi C: Menawarkan bantuan secara santai ('bagaimana kalau kita matikan?'), tidak mencerminkan ketegasan komando keselamatan.",
+        "grammarRule": "Kegunaan Khusus Meireikei & Kinshikei dalam Masyarakat Jepang: Situasi Bahaya Darurat (緊急事態), Rambu Pabrik K3, dan Komando Teknis Mandor ke Pekerja Magang."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Perintah K3 Pabrik (ヘルメットをかぶれ)",
+      "type": "gambar",
+      "question_ja": "工場の 標識を 見て ください。現場では どうしなければ なりませんか。<br>「ヘルメットを （　　　）。」",
+      "question_ruby": "工場の 標識を 見て ください。現場では どうしなければ なりませんか。<br>「ヘルメットを （　　　）。」",
+      "question_id": "Perhatikan rambu '保護帽着用'. Di lokasi kerja harus bagaimana? 'Harus memakai helm (...)'.",
+      "translation": "Pakailah helm keselamatan pelindung kepala! (herumetto o kabure!).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ぬげ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かぶれ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "すてろ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "もて"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (かぶれ).",
+        "logic": "Rambu pabrik '保護帽着用' (Wajib Mengenakan Helm) dalam instruksi perintah tegas pabrik (Meireikei) diucapkan: かぶれ！ (dari verba かぶる = mengenakan topi/helm).",
+        "distractor": "• Opsi A: ぬげ adalah bentuk perintah melepaskan (dari 脱ぐ).\n• Opsi C: すてろ adalah bentuk perintah membuang (dari 捨てる).\n• Opsi D: もて adalah bentuk perintah memegang (dari 持つ).",
+        "grammarRule": "Bentuk Perintah Tegas Pabrik (命令形) Bab 20: かぶる ➔ かぶれ！"
+      },
+      "image": "assets/bab_20/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Instruksi Kerapihan 5S (整理整頓)",
+      "type": "gambar",
+      "question_ja": "工場の 標識「整理整頓」を 見て ください。この 意味は 何ですか。<br>「使った 工具を きちんと （　　　）。」",
+      "question_ruby": "工場の 標識「整理整頓」を 見て ください。この 意味は 何ですか。<br>「使った 工具を きちんと （　　　）。」",
+      "question_id": "Perhatikan rambu '整理整頓'. Apakah artinya? 'Peralatan yang telah digunakan tolong (...) dengan rapi'.",
+      "translation": "Rapikan dan kembalikan peralatan perkakas yang telah dipakai ke tempatnya! (katadzukero!).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "こわせ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "うれ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かたづけろ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "すてろ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (かたづけろ).",
+        "logic": "Slogan '整理整頓' (Seiri Seiton - Ringkas Rapi) bermakna merapikan dan membereskan alat kerja: 片付けろ！ (かたづけろ - katadzukero).",
+        "distractor": "• Opsi A: こわせ berarti rusaklah/hancurkanlah.\n• Opsi B: うれ berarti juallah.\n• Opsi D: すてろ berarti buanglah ke tong sampah.",
+        "grammarRule": "Instruksi 5S Manufaktur: 片付ける ➔ 片付けろ！（katadzukero = bereskan!）"
+      },
+      "image": "assets/bab_20/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (言葉)",
+      "type": "teks",
+      "question_ja": "日本の 工場の （ 言葉 ）を 早く 覚えます。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "日本の 工場の （ 言葉 ）を 早く 覚えます。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Cepat menghafal kosakata/istilah pabrik Jepang. Pilihlah cara baca kanji '言葉' yang tepat.",
+      "translation": "Cepat menghafal dan menguasai istilah-istilah bahasa pabrik Jepang.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ことば"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "げんご"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "はなし"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "こころ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (ことば).",
+        "logic": "Kanji 言葉 dibaca ことば (kotoba) yang bermakna kata, ungkapan, bahasa percakapan, atau istilah teknis.",
+        "distractor": "• Opsi B: げんご ditulis 言語 (bahasa secara linguistik formal).\n• Opsi C: はなし ditulis 話 (percakapan / cerita).\n• Opsi D: こころ ditulis 心 (hati nurani / jiwa).",
+        "grammarRule": "Kosakata Dasar Bab 20: 言葉（ことば = perkataan / kosakata kerja）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (直します)",
+      "type": "teks",
+      "question_ja": "壊れた 部品を きれいに （ なおします ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "壊れた 部品を きれいに （ なおします ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Memperbaiki suku cadang yang rusak hingga sempurna. Pilihlah penulisan kanji yang tepat untuk 'naoshimasu'.",
+      "translation": "Memperbaiki dan mereparasi komponen yang rusak dengan rapi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "直します"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "治します"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "真します"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "置します"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (直します).",
+        "logic": "Kata なおします yang bermakna memperbaiki benda fisik / alat mekanik ditulis dengan kanji 直します.",
+        "distractor": "• Opsi B: 治します khusus untuk menyembuhkan luka fisik atau penyakit medis pada tubuh manusia.\n• Opsi C: 真します adalah penulisan yang salah.\n• Opsi D: 置します adalah penulisan yang salah.",
+        "grammarRule": "Pembedaan Kanji Homofon: 直します（benda mati/mesin） vs 治します（penyakit tubuh）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (禁止)",
+      "type": "teks",
+      "question_ja": "作業エリア内での 飲食は （ きんし ）です。<br>正しい 漢字は どれですか。",
+      "question_ruby": "作業エリア内での 飲食は （ きんし ）です。<br>正しい 漢字は どれですか。",
+      "question_id": "Makan dan minum di dalam area kerja dilarang. Pilihlah kanji yang tepat untuk 'kinshi'.",
+      "translation": "Makan dan minum di dalam zona kerja adalah dilarang keras (kinshi).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "禁止"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "禁制"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "緊止"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "金止"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (禁止).",
+        "logic": "Kata きんし (larangan keras) ditulis dengan kanji baku 禁止 (禁 = tabu/pantangan terlarang, 止 = berhenti/menghentikan).",
+        "distractor": "• Opsi B: 禁制 dibaca きんせい (larangan hukum adat/negara lama).\n• Opsi C: 緊止 salah huruf depan (menggunakan 緊 = darurat tegang).\n• Opsi D: 金止 adalah bentuk yang keliru.",
+        "grammarRule": "Istilah Regulasi Pabrik Bab 20: 禁止（きんし = larangan mutlak）."
+      }
+    }
+  ]
+};
+
+const BAB_21_DATA = {
+  "chapter": "21",
+  "title_ja": "第２１課：～ながら（同時動作）・～た後で／～の後で（継起）・～ないで（付帯状況／非動作）・～と、～（確定条件／必然・道順・機械）",
+  "title_id": "Bab 21: Aktivitas Simultan (~nagara), Urutan Kegiatan (~ta ato de / ~no ato de), Keadaan Tanpa Melakukan (~naide), dan Syarat Pasti / Alamiah / Rute Jalan (~to)",
+  "theme_ja": "同時動作 (Aktivitas Simultan), 行動の順序関係 (Urutan Kejadian Setelah), 付帯非動作 (Tanpa Melakukan), 確定条件・機械操作・道案内 (Syarat Pasti ~to)",
+  "theme_id": "Evaluasi komprehensif Bab 21 yang menguji penguasaan materi: aktivitas simultan dua perbuatan yang dilakukan bersamaan dengan fokus pada aksi kedua ([V-masu stem] + ながら); urutan kejadian aksi setelah selesai ([V-ta] + 後で) dan setelah nomina ([Nomina] + の後で); keadaan melakukan suatu tindakan tanpa melakukan tindakan lain yang lazim ([V-nai] + ないで); serta hubungan sebab-akibat yang pasti terjadi secara alamiah, operasional mesin otomatis, maupun rute petunjuk jalan ([V-jisho] + と、～) dengan konteks pemagangan industri dan kehidupan sehari-hari peserta magang IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 21.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 21.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Mekar dan Gugurnya Bunga Sakura (Hanami)",
+      "type": "teks",
+      "question_ja": "田中：『四月に さくらが （　<strong>さきます</strong>　）。でも、すぐに （　<strong>ちります</strong>　）から、早く 花見を しましょう。』漢字表記の 組み合わせは どれですか。",
+      "question_ruby": "田中：『四月に さくらが （　<strong>さきます</strong>　）。でも、すぐに （　<strong>ちります</strong>　）から、早く 花見を しましょう。』漢字表記の 組み合わせは どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'sakimasu' (mekar) dan 'chirimasu' (gugur/rontok) adalah...",
+      "translation": "Tanaka: 'Pada bulan April sakura mekar. Tetapi, karena lekas gugur, mari segera melakukan hanami.' Pasangan kanji: 咲きます ／ 散ります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "折れます ／ 散ります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "咲きます ／ 降ります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "咲きます ／ 散ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "枯れます ／ 落ちます"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (咲きます ／ 散ります).",
+        "logic": "1) <strong>咲きます（さきます - sakimasu）</strong> ditulis <strong>咲</strong> yang berarti <strong>kuncup bunga mekar atau berkembang</strong>.<br>2) <strong>散ります（ちります - chirimasu）</strong> ditulis <strong>散</strong> yang berarti <strong>kelopak bunga gugur, berhamburan, atau rontok</strong> ditiup angin.",
+        "distractor": "• Opsi A: 折れます (patah/bengkok) / 散ります (gugur).\n• Opsi B: 咲きます (mekar) / 降ります (hujan/salju turun).\n• Opsi D: 枯れます (tanaman layu/kering) / 落ちます (benda jatuh).",
+        "grammarRule": "Kosakata Budaya Hanami Bab 21: 桜が咲きます（さくらがさきます - sakura mekar） & すぐに散ります（ちります - lekas gugur）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Pengoperasian Mesin & Suku Cadang Pabrik",
+      "type": "teks",
+      "question_ja": "主任：『ウテン、ここに （　<strong>ぶひん</strong>　）を 置いてから、機械を （　<strong>そうさして</strong>　）ください。』漢字表記は どれですか。",
+      "question_ruby": "主任：『ウテン、ここに （　<strong>ぶひん</strong>　）を 置いてから、機械を （　<strong>そうさして</strong>　）ください。』漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'buhin' (suku cadang/komponen) dan 'sousa shite' (mengoperasikan) adalah...",
+      "translation": "Mandor/Shunin: 'Uten, letakkan komponen di sini lalu tolong operasikan mesinnya.' Pasangan kanji: 部品 ／ 操作して.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "部品 ／ 操作して"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "材料 ／ 製造して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "器具 ／ 運転して"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "製品 ／ 整備して"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (部品 ／ 操作して).",
+        "logic": "1) <strong>部品（ぶひん - buhin）</strong> berarti <strong>komponen, suku cadang, atau onderdil mesin</strong>.<br>2) <strong>操作します（そうさします - sousa shimasu）</strong> berarti <strong>mengoperasikan, mengendalikan, atau menjalankan tuas/tombol mesin industri</strong>.",
+        "distractor": "• Opsi B: 材料 (bahan baku mentah) / 製造して (memproduksi secara massal).\n• Opsi C: 器具 (peralatan perkakas) / 運転して (mengemudikan kendaraan bermotor).\n• Opsi D: 製品 (produk jadi) / 整備して (merawat/memperbaiki mesin).",
+        "grammarRule": "Aksi Teknis Pabrik Bab 21: 部品（ぶひん - suku cadang） & 機械を操作します（きかいをそうさします - mengoperasikan mesin）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Rute Arah Menyeberang Jembatan Menuju Pos Polisi",
+      "type": "teks",
+      "question_ja": "ダダン：『すみません。（　<strong>こうばん</strong>　）は どこですか。』<br>町の人：『あそこの （　<strong>はしを わたる</strong>　）と、右に ありますよ。』漢字表記は どれですか。",
+      "question_ruby": "ダダン：『すみません。（　<strong>こうばん</strong>　）は どこですか。』<br>町の人：『あそこの （　<strong>はしを わたる</strong>　）と、右に ありますよ。』漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'kouban' (pos polisi) dan 'hashi o wataru' (menyeberang jembatan) adalah...",
+      "translation": "Dadan: 'Permisi. Pos polisi ada di mana?' Warga: 'Kalau menyeberang jembatan di sana, ada di sebelah kanan.' Pasangan kanji: 交番 ／ 橋を渡る.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "交差 ／ 道を通る"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "看板 ／ 角を曲がる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "公館 ／ 信号を待つ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "交番 ／ 橋を渡る"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (交番 ／ 橋を渡る).",
+        "logic": "1) <strong>交番（こうばん - kouban）</strong> adalah <strong>pos polisi lingkungan di Jepang</strong>.<br>2) <strong>橋を渡る（はしをわたる - hashi o wataru）</strong> berarti <strong>menyeberangi jembatan</strong> menggunakan kanji 橋 (jembatan) dan 渡 (menyeberang).",
+        "distractor": "• Opsi A: 交差 (persilangan) / 道を通る (melewati jalan).\n• Opsi B: 看板 (papan reklame) / 角を曲がる (membelok di tikungan).\n• Opsi C: 公館 (gedung perwakilan publik) / 信号を待つ (menunggu lampu lalu lintas).",
+        "grammarRule": "Petunjuk Arah Jalan Bab 21: 交番（こうばん - pos polisi） & 橋を渡ります（はしをわたります - menyeberang jembatan）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Makna & Kanji Prosedur Pemeriksaan Kesehatan Rutin (K3)",
+      "type": "teks",
+      "question_ja": "明日は センターで （　<strong>けんこうしんだん</strong>　）が ありますから、朝ごはんを 食べないで 来てください。「けんこうしんだん」の 漢字表記と 意味は どれですか。",
+      "question_ruby": "明日は センターで （　<strong>けんこうしんだん</strong>　）が ありますから、朝ごはんを 食べないで 来てください。「けんこうしんだん」の 漢字表記と 意味は どれですか。",
+      "question_id": "Penulisan kanji dan arti yang tepat untuk istilah 'kenkoushindan' adalah...",
+      "translation": "Karena besok ada medical check-up (pemeriksaan kesehatan) di pusat pelatihan, harap datang tanpa sarapan pagi. Kanji: 健康診断.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "安全確認 （Pemeriksaan keamanan alat kerja di bengkel）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "健康診断 （Pemeriksaan / medical check-up kesehatan rutin）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "衛生管理 （Pengawasan sanitasi dan kebersihan lingkungan）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "救急処置 （Tindakan pertolongan pertama pada kecelakaan）"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (健康診断 （Pemeriksaan / medical check-up kesehatan rutin）).",
+        "logic": "<strong>健康診断（けんこうしんだん - kenkoushindan）</strong> adalah <strong>pemeriksaan kesehatan medis berkala (medical check-up)</strong> yang wajib diikuti oleh peserta magang sebelum dan selama penempatan kerja di Jepang.",
+        "distractor": "• Opsi A: 安全確認（あんぜんかくにん） adalah konfirmasi keselamatan kerja.\n• Opsi C: 衛生管理（えいせいかんり） adalah manajemen kebersihan lingkungan pabrik.\n• Opsi D: 救急処置（きゅうきゅうしょち） adalah tindakan P3K darurat.",
+        "grammarRule": "Istilah Medis & Prosedur Magang: 健康診断（けんこうしんだん - medical check-up / pemeriksaan kesehatan rutin）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Mesin Tiket Otomatis Uang Pecahan Kecil & Kembalian",
+      "type": "teks",
+      "question_ja": "駅員：『切符を 買う とき、（　<strong>こまかい おかね</strong>　）が なくても、千円札を 入れると （　<strong>おつり</strong>　）が 出ます。』意味の 組み合わせは どれですか。",
+      "question_ruby": "駅員：『切符を 買う とき、（　<strong>こまかい おかね</strong>　）が なくても、千円札を 入れると （　<strong>おつり</strong>　）が 出ます。』意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk 'komakai okane' dan 'otsuri' pada mesin tiket otomatis stasiun adalah...",
+      "translation": "Petugas stasiun: 'Saat membeli tiket, meski tidak ada uang receh/pecahan kecil, jika memasukkan uang kertas 1.000 yen maka uang kembalian akan keluar.'",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Uang palsu ／ Tiket terusan bulanan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Uang logam kuno ／ Tanda terima kuitansi"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Uang receh / pecahan kecil ／ Uang kembalian"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Uang simpanan bank ／ Potongan tarif diskon"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (Uang receh / pecahan kecil ／ Uang kembalian).",
+        "logic": "1) <strong>細かいお金（こまかいおかね - komakai okane）</strong> bermakna <strong>uang pecahan kecil atau uang koin receh</strong>.<br>2) <strong>お釣り（おつり - otsuri）</strong> bermakna <strong>uang kembalian</strong> yang dikeluarkan mesin tiket otomatis setelah transaksi.",
+        "distractor": "• Opsi A: Uang palsu (偽札) / tiket terusan (定期券).\n• Opsi B: Uang kuno (古銭) / tanda terima (領収書).\n• Opsi D: Uang simpanan (貯金) / diskon potongan (割引).",
+        "grammarRule": "Transaksi Mesin Tiket Bab 21: 細かいお金（こまかいおかね - uang receh） & お釣り（おつり - uang kembalian）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Instruksi Kerja Lapangan & Buku Pedoman Manual",
+      "type": "teks",
+      "question_ja": "作業を 始める 前に、必ず 指導員の （　<strong>しじ</strong>　）を よく 聞いて、（　<strong>せつめいしょ</strong>　）を 確認してください。漢字表記は どれですか。",
+      "question_ruby": "作業を 始める 前に、必ず 指導員の （　<strong>しじ</strong>　）を よく 聞いて、（　<strong>せつめいしょ</strong>　）を 確認してください。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'shiji' (instruksi kerja) dan 'setsumeisho' (buku pedoman/petunjuk) adalah...",
+      "translation": "Sebelum memulai pekerjaan, pastikan mendengarkan instruksi instruktur dengan baik dan mengecek buku petunjuk. Pasangan kanji: 指示 ／ 説明書.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "指示 ／ 説明書"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "支持 ／ 報告書"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "合図 ／ 申請書"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "連絡 ／ 注文書"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (指示 ／ 説明書).",
+        "logic": "1) <strong>指示（しじ - shiji）</strong> berarti <strong>instruksi, arahan, atau perintah teknis dari atasan/instruktur</strong>.<br>2) <strong>説明書（せつめいしょ - setsumeisho）</strong> berarti <strong>buku petunjuk, lembar panduan, atau manual operasional alat</strong>.",
+        "distractor": "• Opsi B: 支持 (dukungan moral) / 報告書 (lembar dokumen laporan).\n• Opsi C: 合図 (tanda isyarat kode) / 申請書 (formulir pengajuan permohonan).\n• Opsi D: 連絡 (komunikasi kabar) / 注文書 (surat purchase order).",
+        "grammarRule": "Kepatuhan Kerja Pabrik Bab 21: 指示（しじ - instruksi kerja） & 説明書（せつめいしょ - manual petunjuk）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Kerapian Pembuangan Sampah & Penentuan Tempat",
+      "type": "teks",
+      "question_ja": "花見が 終わった 後で、ごみは （　<strong>きちんと</strong>　） 集めて、決められた （　<strong>ばしょ</strong>　）に 捨ててください。意味の 組み合わせは どれですか。",
+      "question_ruby": "花見が 終わった 後で、ごみは （　<strong>きちんと</strong>　） 集めて、決められた （　<strong>ばしょ</strong>　）に 捨ててください。意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk 'kichinto' dan 'basho' pada konteks tata tertib di atas adalah...",
+      "translation": "Setelah acara hanami selesai, kumpulkan sampah dengan rapi/tertib dan buanglah ke tempat/lokasi yang telah ditentukan.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Secara tergesa-gesa ／ Sudut ruangan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Dengan rapi / tertib disiplin ／ Tempat / lokasi"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Secara diam-diam ／ Pinggir jalan raya"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Dengan seenaknya ／ Bawah jembatan penyeberangan"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (Dengan rapi / tertib disiplin ／ Tempat / lokasi).",
+        "logic": "1) <strong>きちんと (kichinto)</strong> adalah kata keterangan yang berarti <strong>secara rapi, tertib, pantas, atau tanpa cacat cela</strong>.<br>2) <strong>場所（ばしょ - basho）</strong> berarti <strong>tempat, area, atau lokasi khusus</strong> yang telah dialokasikan.",
+        "distractor": "• Opsi A: Secara tergesa-gesa (急いで) / sudut ruangan (部屋の隅).\n• Opsi C: Secara diam-diam (黙って / こっそり) / pinggir jalan (道端).\n• Opsi D: Dengan seenaknya (勝手に) / bawah jembatan (橋の下).",
+        "grammarRule": "Etika Publik Budaya Jepang: きちんと（dengan tertib & rapi） & 決められた場所（ばしょ - tempat yang ditentukan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Ruang Lintasan Fisik Gerakan Menyeberang (O)",
+      "type": "teks",
+      "question_ja": "この 信号（　<strong>？</strong>　） 渡ると、左側に 郵便局と 薬屋が あります。",
+      "question_ruby": "この 信号（　<strong>？</strong>　） 渡ると、左側に 郵便局と 薬屋が あります。",
+      "question_id": "Partikel yang tepat untuk menandai lampu lalu lintas / zebra cross sebagai ruang lintasan yang diseberangi adalah...",
+      "translation": "Bila menyeberangi lampu lalu lintas ini, di sebelah kiri ada kantor pos dan apotek. Partikel ruang gerak lintas adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (を).",
+        "logic": "Kata kerja perpindahan yang melewati atau melintasi suatu area seperti <strong>渡ります（わたります - menyeberang）</strong>, <strong>歩きます（あるきます - berjalan）</strong>, dan <strong>通ります（とおります - melewati）</strong> menuntut partikel <strong>を (o)</strong> untuk menandai area ruang gerak yang dilintasi: <code>信号を渡る / 橋を渡る / 道を渡る</code>.",
+        "distractor": "• Opsi A: に menandai titik tiba atau arah tujuan statis.\n• Opsi B: で menandai tempat aksi non-perpindahan atau sarana angkutan.\n• Opsi C: へ menandai arah tujuan umum.",
+        "grammarRule": "Rumus Gerak Melintasi Ruang: [Tempat / Objek Lintasan: 道 / 橋 / 信号 / 横断歩道] + を + 渡ります / 歩きます / 通ります."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Arah Belokan pada Persimpangan Rute Jalan (E / Ni)",
+      "type": "teks",
+      "question_ja": "交差点を まっすぐ 行って、二つ目の 角を 右（　<strong>？</strong>　） 曲がってください。",
+      "question_ruby": "交差点を まっすぐ 行って、二つ目の 角を 右（　<strong>？</strong>　） 曲がってください。",
+      "question_id": "Partikel yang tepat untuk menandai arah belokan ke sebelah kanan pada tikungan jalan adalah...",
+      "translation": "Jalanlah lurus di persimpangan, lalu tolong belok ke kanan di tikungan kedua. Partikel arah belokan adalah へ (atau に).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "へ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (へ).",
+        "logic": "Untuk menandai <strong>arah tujuan pembelokan arah</strong> bersama verba <strong>曲がります（まがります - membelok）</strong>, digunakan partikel <strong>へ (e)</strong> atau <strong>に (ni)</strong>: <code>右へ曲がります (belok ke kanan)</code>, <code>左へ曲がります (belok ke kiri)</code>. Adapun titik belokan menggunakan partikel を (角を曲がる).",
+        "distractor": "• Opsi B: を digunakan untuk menandai titik tikungan yang dibelokkan (角を), bukan arah belokannya.\n• Opsi C: で menandai sarana atau tempat aktivitas.\n• Opsi D: から menandai titik awal start perpindahan.",
+        "grammarRule": "Pola Navigasi Rute Jalan: [Titik Tikungan] + を + [Arah Belok: 右 / 左] + へ／に + 曲がります."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Otomatis dari Verba Intransitif Mesin (Ga)",
+      "type": "teks",
+      "question_ja": "千円札を 入れて この ボタンを 押すと、切符と お釣り（　<strong>？</strong>　） 出ます。",
+      "question_ruby": "千円札を 入れて この ボタンを 押すと、切符と お釣り（　<strong>？</strong>　） 出ます。",
+      "question_id": "Partikel yang tepat untuk menandai uang kembalian yang muncul secara otomatis dari mesin tiket adalah...",
+      "translation": "Jika memasukkan uang kertas 1.000 yen dan menekan tombol ini, tiket dan uang kembalian akan keluar. Partikel subjek otomatis adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Verba <strong>出ます（でます - keluar）</strong> adalah kata kerja intransitif (Jidoushi). Fenomena benda yang muncul atau keluar secara otomatis dari mesin (seperti tiket, koin kembalian, atau air dispenser) ditandai oleh partikel subjek <strong>が (ga)</strong>: <code>お釣りが出ます / 切符が出ます</code>.",
+        "distractor": "• Opsi A: を hanya dipakai untuk kata kerja transitif (misal: お金を出す).\n• Opsi B: に menandai titik masuk sasaran.\n• Opsi D: で menandai alat atau sarana.",
+        "grammarRule": "Subjek Fenomena Mesin Intransitif: [Benda yang Muncul: 切符 / ジュース / お釣り] + が + 出ます."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Sarana Bahasa dalam Penulisan Surat (De)",
+      "type": "teks",
+      "question_ja": "実習生は 辞書を 引きながら、日本語（　<strong>？</strong>　） 先生に 手紙を 書きました。",
+      "question_ruby": "実習生は 辞書を 引きながら、日本語（　<strong>？</strong>　） 先生に 手紙を 書きました。",
+      "question_id": "Partikel yang tepat untuk menandai bahasa Jepang sebagai bahasa perantara dalam menulis surat adalah...",
+      "translation": "Siswa magang menulis surat kepada guru dalam bahasa Jepang sambil membuka kamus. Partikel instrumen bahasa adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (で).",
+        "logic": "Partikel <strong>で (de)</strong> digunakan untuk menandai <strong>sarana, alat, atau media bahasa</strong> yang digunakan dalam menghasilkan suatu karya tuturan atau tulisan: <code>日本語で 手紙を書きます (menulis surat DALAM bahasa Jepang)</code>.",
+        "distractor": "• Opsi A: を menandai objek isi surat (手紙を).\n• Opsi C: に menandai penerima surat (先生に).\n• Opsi D: と menandai rekan penyerta.",
+        "grammarRule": "Partikel Media Bahasa: [Bahasa: 日本語 / インドネシア語 / 英語] + で + 書きます / 話します."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Lepas Keberangkatan Meninggalkan Tempat (O)",
+      "type": "teks",
+      "question_ja": "今朝は 会社に 遅れそうでしたから、朝ごはんを 食べないで うち（　<strong>？</strong>　） 出ました。",
+      "question_ruby": "今朝は 会社に 遅れそうでしたから、朝ごはんを 食べないで うち（　<strong>？</strong>　） 出ました。",
+      "question_id": "Partikel yang tepat untuk menandai rumah sebagai titik asal yang ditinggalkan saat berangkat kerja adalah...",
+      "translation": "Tadi pagi karena hampir terlambat ke perusahaan, saya keluar meninggalkan rumah tanpa sarapan. Partikel titik lepas pisah adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (を).",
+        "logic": "Verba <strong>出ます（でます - keluar / meninggalkan）</strong> menuntut partikel <strong>を (o)</strong> untuk menandai <strong>titik tolak fisik yang ditinggalkan atau dipisahkan</strong>: <code>うちを出ます (keluar dari rumah)</code>, <code>部屋を出ます (keluar dari kamar)</code>, <code>大学を出ます (lulus dari universitas)</code>.",
+        "distractor": "• Opsi A: に menandai titik masuk/tiba (contoh: 部屋に入ります).\n• Opsi B: で menandai tempat kegiatan di dalam ruangan.\n• Opsi C: へ menandai arah tujuan yang dituju (会社へ行きます).",
+        "grammarRule": "Titik Lepas Keberangkatan: [Tempat yang Ditinggalkan: うち / 部屋 / 教室] + を + 出ます."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Kawan Interaksi dalam Percakapan Simultan (To)",
+      "type": "teks",
+      "question_ja": "アグスさんは 友達（　<strong>？</strong>　） 楽しく 話しながら、寮まで 歩いて 帰りました。",
+      "question_ruby": "アグスさんは 友達（　<strong>？</strong>　） 楽しく 話しながら、寮まで 歩いて 帰りました。",
+      "question_id": "Partikel yang tepat untuk menandai teman sebagai kawan berbicara dua arah adalah...",
+      "translation": "Agus pulang berjalan kaki ke asrama sambil mengobrol dengan gembira bersama temannya. Partikel rekan interaksi adalah と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "と"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (と).",
+        "logic": "Kata kerja interaksi dua arah seperti <strong>話します（はなします - berbicara / mengobrol）</strong> dan <strong>そうだんします (berembuk)</strong> menggunakan partikel <strong>と (to)</strong> untuk menandai mitra komunikasi: <code>友達と 話しながら (sambil berbicara DENGAN teman)</code>.",
+        "distractor": "• Opsi A: を menandai topik bahasa obrolan.\n• Opsi B: に digunakan untuk penyampaian sepihak (melapor kepada atasan: 上司に報告する).\n• Opsi D: で menandai sarana alat.",
+        "grammarRule": "Partikel Mitra Interaksi Resiprokal: [Mitra Teman / Rekan] + と + 話します / 会います / 相談します."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Aktivitas Simultan Sejajar ([V-masu stem] + Nagara)",
+      "type": "teks",
+      "question_ja": "工場の中で 機械を （　<strong>＿＿＿＿＿</strong>　）ながら、たばこを 吸ってはいけません。",
+      "question_ruby": "工場の中で 機械を （　<strong>＿＿＿＿＿</strong>　）ながら、たばこを 吸ってはいけません。",
+      "question_id": "Bentuk konjugasi kata kerja yang tepat untuk menyatakan aktivitas simultan 'sambil mengoperasikan' dari verba 'sousa shimasu' adalah...",
+      "translation": "Di dalam pabrik dilarang merokok sambil mengoperasikan mesin. Bentuk akar: 操作し (sousashi) + ながら.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "操作し"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "操作して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "操作する"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "操作した"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (操作し).",
+        "logic": "Rumus pembentukan <strong>Aktivitas Simultan (同時動作)</strong>: <strong>[Verba Bentuk-MASU tanpa ます (Stem)] + ながら, [Aksi Utama]</strong>.<br>Dari verba <code>操作します ➔ buang ます ➔ 操作し ＋ ながら ➔ 操作しながら (sambil mengoperasikan)</code>. Dalam pola ini, aksi kedua (merokok) merupakan tindakan yang dilarang keras dilakukan bersamaan.",
+        "distractor": "• Opsi B: 操作して adalah bentuk-Te (tidak dapat digabung langsung dengan nagara).\n• Opsi C: 操作する adalah bentuk kamus jisho-kei.\n• Opsi D: 操作した adalah bentuk lampau ta-kei.",
+        "grammarRule": "Rumus Mutlak Pola Simultan (~nagara): [V-masu stem (buang ます)] + ながら、[Kalimat Utama]."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Urutan Kejadian Setelah Verba Selesai ([V-ta] + Ato de)",
+      "type": "teks",
+      "question_ja": "安全教育：『作業が （　<strong>＿＿＿＿＿</strong>　） 後で、必ず 道具を 元の 場所に 片づけなさい。』",
+      "question_ruby": "安全教育：『作業が （　<strong>＿＿＿＿＿</strong>　） 後で、必ず 道具を 元の 場所に 片づけなさい。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk menyatakan 'setelah pekerjaan selesai' dari verba 'owarimasu' adalah...",
+      "translation": "Pendidikan K3: 'Setelah pekerjaan selesai, pastikan merapikan perkakas ke tempat semula.' Bentuk lampau: 終わった 後で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "終わる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "終わった"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "終わり"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "終わって"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (終わった).",
+        "logic": "Rumus tata bahasa untuk menyatakan urutan perbuatan <strong>setelah melakukan aksi A, baru melakukan aksi B</strong> dengan kata kerja adalah: <strong>[Verba Bentuk-TA (Lampau Kasual)] + 後で（あとで）</strong>.<br>Dari verba <code>終わります ➔ Bentuk-Ta: 終わった ＋ 後で ➔ 終わった後で (setelah selesai)</code>.",
+        "distractor": "• Opsi A: 終わる adalah bentuk kamus jisho-kei (pola ato de wajib menggunakan bentuk lampau -ta).\n• Opsi C: 終わり adalah masu stem.\n• Opsi D: 終わって adalah bentuk sambung te-kei.",
+        "grammarRule": "Rumus Urutan Verba Setelah Selesai: [Verba Bentuk-TA] + 後で (Setelah selesai melakukan...)."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Urutan Kejadian Setelah Nomina ([Nomina] + No Ato de)",
+      "type": "teks",
+      "question_ja": "班長：『（　<strong>ミーティング</strong>　）（　<strong>？</strong>　） 後で、15分間 休憩を します。』",
+      "question_ruby": "班長：『（　<strong>ミーティング</strong>　）（　<strong>？</strong>　） 後で、15分間 休憩を します。』",
+      "question_id": "Partikel yang tepat untuk menghubungkan kata benda 'miitingu' (rapat) dengan kata 'ato de' adalah...",
+      "translation": "Mandor: 'Setelah meeting, kita akan beristirahat selama 15 menit.' Partikel penghubung nomina adalah の.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "な"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "の"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (の).",
+        "logic": "Jika kata yang mendahului <em>後で (ato de)</em> berupa <strong>Kata Benda (Nomina Kegiatan/Waktu)</strong>, maka wajib disisipkan partikel kepemilikan <strong>の (no)</strong>: <strong>[Nomina] + の + 後で</strong>.<br>Contoh: <code>ミーティングの 後で</code>, <code>仕事の 後で</code>, <code>食事の 後で</code>, <code>散歩の 後で</code>.",
+        "distractor": "• Opsi A: な hanya dipakai untuk kata sifat-na saat menerangkan nomina.\n• Opsi B: に merusak struktur sambungan nomina.\n• Opsi C: で menandai tempat atau sarana.",
+        "grammarRule": "Rumus Sambungan Nomina Urutan Setelah: [Nomina Kegiatan: 仕事 / 食事 / 会議] + の + 後で (Setelah...)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Melakukan Tindakan Tanpa Perbuatan Lain ([V-nai] + Naide)",
+      "type": "teks",
+      "question_ja": "危険ですから、防塵マスクを （　<strong>＿＿＿＿＿</strong>　）、研磨作業を してはいけません。",
+      "question_ruby": "危険ですから、防塵マスクを （　<strong>＿＿＿＿＿</strong>　）、研磨作業を してはいけません。",
+      "question_id": "Bentuk konjugasi kata kerja yang tepat untuk menyatakan larangan 'tanpa memakai masker debu' dari verba 'tsukemasu' adalah...",
+      "translation": "Karena berbahaya, jangan melakukan pekerjaan menggerinda tanpa mengenakan masker debu! Pola tanpa melakukan: つけないで.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "つけないで"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "つけるで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "つかないで"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "つけなくて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (つけないで).",
+        "logic": "Pola <strong>[Verba Bentuk-NAI] + で (～ないで)</strong> bermakna <strong>melakukan tindakan lain tanpa melakukan perbuatan A terlebih dahulu</strong>.<br>Dari kata kerja <code>つけます（Grup 2） ➔ Bentuk-Nai: つけない ＋ で ➔ つけないで (tanpa mengenakan / memasang masker)</code>.",
+        "distractor": "• Opsi B: つけるで adalah pembentukan yang salah (bentuk kamus jisho-kei tidak dapat disambung langsung dengan partikel で untuk menyatakan makna 'tanpa').\n• Opsi C: つかないで adalah bentuk nai-de dari verba intransitif tsukimasu (menempel/menyala), bukan transitif mengenakan perlengkapan.\n• Opsi D: つけなくて adalah bentuk sambung te negatif yang menyatakan sebab/alasan (karena tidak mengenakan), bukan pola tanpa melakukan perbuatan.",
+        "grammarRule": "Rumus Tanpa Melakukan Suatu Tindakan: [Verba Bentuk-NAI] + で、～ (Tanpa melakukan...). Contoh: 手袋をしないで / 砂糖を入れないで / マスクをつけないで."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Syarat Pasti Mesin & Hubungan Kausalitas ([V-jisho] + To)",
+      "type": "teks",
+      "question_ja": "この 赤い レバーを （　<strong>＿＿＿＿＿</strong>　）と、白い レバーが 自動的に 上がります。",
+      "question_ruby": "この 赤い レバーを （　<strong>＿＿＿＿＿</strong>　）と、白い レバーが 自動的に 上がります。",
+      "question_id": "Bentuk konjugasi yang tepat untuk melengkapi pola syarat operasional mesin otomatis 'bila menurunkan tuas...' dari verba 'sagemasu' adalah...",
+      "translation": "Bila menurunkan tuas merah ini, maka tuas putih akan naik secara otomatis. Bentuk kamus: 下げる (sageru) + と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "下げた"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "下げて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "下げる"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "下げたら"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (下げる).",
+        "logic": "Pola syarat pasti alamiah atau mekanisme kerja mesin otomatis: <strong>[Verba Bentuk Kamus (Jisho-kei)] + と、[Hasil Pasti]</strong>.<br>Dari verba <code>下げます（Grup 2） ➔ Bentuk Kamus: 下げる（さげる） ＋ と ➔ 下げると (bila diturunkan, maka pasti...)</code>.",
+        "distractor": "• Opsi A: 下げた adalah bentuk lampau ta-kei.\n• Opsi B: 下げて adalah bentuk te-kei.\n• Opsi D: 下げたら adalah pengandaian kondisional umum Bab 25, sedangkan di Bab 21 difokuskan pada syarat mutlak mesin dengan partikel と.",
+        "grammarRule": "Rumus Kausalitas / Operasional Mesin Pasti: [Verba Bentuk Kamus (Jisho-kei)] + と、[Konsekuensi Pasti Otomatis]."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Petunjuk Rute Jalan Kondisi Alamiah ([V-jisho] + To)",
+      "type": "teks",
+      "question_ja": "この 道を まっすぐ （　<strong>＿＿＿＿＿</strong>　）と、右側に 市民病院と 銀行が 見えます。",
+      "question_ruby": "この 道を まっすぐ （　<strong>＿＿＿＿＿</strong>　）と、右側に 市民病院と 銀行が 見えます。",
+      "question_id": "Bentuk konjugasi yang tepat untuk petunjuk rute jalan 'bila berjalan lurus terus...' dari verba 'ikimasu' adalah...",
+      "translation": "Bila berjalan lurus menyusuri jalan ini, di sisi kanan akan terlihat rumah sakit umum dan bank. Bentuk kamus: 行く + と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "行った"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "行く"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "行って"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "行きます"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (行く).",
+        "logic": "Dalam memberikan panduan rute jalan (道案内), hubungan sebab-akibat objektif selalu menggunakan: <strong>[Verba Bentuk Kamus] + と、[Objek / Gedung yang Tampak / Ditemui]</strong>.<br>Dari verba <code>行きます ➔ Bentuk Kamus: 行く（いく） ＋ と ➔ まっすぐ行くと (bila lurus terus, maka akan...)</code>.",
+        "distractor": "• Opsi A: 行った adalah bentuk lampau (tidak digunakan bersama partikel syarat to).\n• Opsi C: 行って adalah bentuk te sambung.\n• Opsi D: 行きます adalah bentuk sopan (sebelum partikel と wajib bentuk kamus biasa).",
+        "grammarRule": "Rumus Petunjuk Rute Jalan Navigasi: [Verba Bentuk Kamus (まっすぐ行く / 橋を渡る / 角を曲がる)] + と、～が見えます／あります."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Dialog Integratif K3 & Tata Urutan Prosedur Operasional Pabrik",
+      "type": "teks",
+      "question_ja": "主任：『ウテン、まず 機械の 点検を （　①　） 後で、スイッチを 入れろ。青い ボタンを 押す（　②　）、コンベヤーが 動き出すぞ。』",
+      "question_ruby": "主任：『ウテン、まず 機械の 点検を （　①　） 後で、スイッチを 入れろ。青い ボタンを 押す（　②　）、コンベヤーが 動き出すぞ。』",
+      "question_id": "Kombinasi kata dan partikel yang tepat untuk melengkapi instruksi prosedur mandor di atas adalah...",
+      "translation": "Mandor: 'Uten, pertama-tama setelah melakukan inspeksi mesin, nyalakan saklar. Bila menekan tombol biru, konveyor akan mulai bergerak.' Pasangan: した ／ と.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "する ／ で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "して ／ に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "しない ／ から"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "した ／ と"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (した ／ と).",
+        "logic": "1) Klausa urutan verba: <code>点検を した 後で (setelah melakukan inspeksi)</code> menuntut bentuk lampau <strong>した</strong>.<br>2) Klausa mekanisme mesin: <code>ボタンを 押す と (bila tombol ditekan, maka konveyor bergerak)</code> menuntut partikel syarat mekanis pasti <strong>と</strong>.<br>Maka kombinasi yang tepat dan benar adalah <strong>した ／ と</strong>.",
+        "distractor": "• Opsi A: する adalah bentuk kamus (salah untuk ato de) / で salah partikel.\n• Opsi B: して adalah bentuk te / に salah fungsi gramatikal.\n• Opsi C: しない bermakna kontradiktif (tanpa inspeksi) yang membahayakan K3.",
+        "grammarRule": "Integrasi Kaidah Industri Bab 21: [V-ta] + 後で (Urutan setelah inspeksi) & [V-jisho] + と (Syarat pasti mesin berjalan otomatis)."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Aktivitas Simultan (聞きながら)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。どうやって 作業を しますか。<br>「指導員の 注意を （　　　）ながら 作業します。」",
+      "question_ruby": "絵（え）を 見て ください。どうやって 作業を しますか。<br>「指導員の 注意を （　　　）ながら 作業します。」",
+      "question_id": "Perhatikan gambar. Bagaimana cara melakukan pekerjaan? 'Bekerja sambil (...) peringatan instruktur'.",
+      "translation": "Bekerja sembari mendengarkan petunjuk dan peringatan instruktur (kiki-nagara sagyou shimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "はなし"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "聞き（きき）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "み"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "よみ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (聞き（きき）).",
+        "logic": "Gambar memperlihatkan trainee yang cermat mendengarkan instruksi kerja saat praktik di lapangan (聞きながら / ききながら - kikinagara).",
+        "distractor": "• Opsi A: はなしながら berarti sambil mengobrol bercerita.\n• Opsi C: みながら berarti sambil memandang.\n• Opsi D: よみながら berarti sambil membaca teks.",
+        "grammarRule": "Aktivitas Simultan Bab 21: [Verba-masu stem] + ながら（sembari/sambil）."
+      },
+      "image": "assets/bab_21/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Slogan Utama Industri (安全第一)",
+      "type": "gambar",
+      "question_ja": "工場の スローガンを 見て ください。この 漢字は 何と 読みますか。<br>「（　　　）」",
+      "question_ruby": "工場の スローガンを 見て ください。この 漢字は 何と 読みますか。<br>「（　　　）」",
+      "question_id": "Perhatikan slogan keselamatan pabrik. Bagaimanakah cara membaca kanji tersebut?",
+      "translation": "Utamakan Keselamatan Kerja! (Anzen Daiichi!).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "せいりせいとん"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かきげんきん"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "安全第一（あんぜんだいいち）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "たちいりきんし"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (安全第一（あんぜんだいいち）).",
+        "logic": "Slogan resmi di seluruh area kerja pabrik Jepang berbunyi '安全第一' (あんぜんだいいち - Anzen Daiichi = Utamakan Keselamatan Nomor Satu).",
+        "distractor": "• Opsi A: せいりせいとん ditulis 整理整頓 (ringkas dan rapi).\n• Opsi B: かきげんきん ditulis 火気厳禁 (dilarang menyalakan api).\n• Opsi D: たちいりきんし ditulis 立入禁止 (dilarang masuk).",
+        "grammarRule": "Slogan Pabrik Tertinggi: 安全第一（あんぜんだいいち = Safety First）."
+      },
+      "image": "assets/bab_21/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (思います)",
+      "type": "teks",
+      "question_ja": "あしたは 雨が 降ると （ 思います ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "あしたは 雨が 降ると （ 思います ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Saya kira/berpikir besok akan turun hujan. Pilihlah cara baca kanji '思います' yang tepat.",
+      "translation": "Saya berpendapat/menduga besok hujan akan turun.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "おもいます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "いいます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かんがえます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "たのみます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (おもいます).",
+        "logic": "Kanji 思います dibaca おもいます (omoimasu) yang bermakna merasa, berpendapat, atau mengira.",
+        "distractor": "• Opsi B: いいます ditulis 言います (berkata/berbicara).\n• Opsi C: かんがえます ditulis 考えます (memikirkan solusi/akal).\n• Opsi D: たのみます ditulis 頼みます (memohon/memesan).",
+        "grammarRule": "Pola Opini Bab 21: [Bentuk Biasa] と 思います（berpendapat bahwa ...）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (役に立ちます)",
+      "type": "teks",
+      "question_ja": "日本の 技術は 将来 とても （ やくにたちます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "日本の 技術は 将来 とても （ やくにたちます ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Keterampilan teknologi Jepang kelak di masa depan akan sangat bermanfaat. Pilihlah penulisan kanji yang tepat untuk 'yaku ni tachimasu'.",
+      "translation": "Keterampilan teknik dari Jepang akan sangat berguna dan bermanfaat bagi masa depan kita.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "役に立ちます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "使に立ちます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "役に入ちます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "役に出ちます"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (役に立ちます).",
+        "logic": "Frasa idiomatik やくにたちます (berguna/bermanfaat) ditulis dengan kanji baku 役に立ちます.",
+        "distractor": "• Opsi B: 使に立ちます salah huruf depan (menggunakan tsukau/memakai).\n• Opsi C: 役に入ちます salah huruf tengah (menggunakan iri/masuk).\n• Opsi D: 役に出ちます salah huruf tengah (menggunakan de/keluar).",
+        "grammarRule": "Ungkapan Manfaat: 役に立ちます（やくにたちます = berguna / berfaedah）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (意見)",
+      "type": "teks",
+      "question_ja": "朝礼で 自分の （ いけん ）を はっきり 言います。<br>正しい 漢字は どれですか。",
+      "question_ruby": "朝礼で 自分の （ いけん ）を はっきり 言います。<br>正しい 漢字は どれですか。",
+      "question_id": "Mengemukakan pendapat/ide sendiri secara jelas pada saat apel pagi. Pilihlah kanji yang tepat untuk 'iken'.",
+      "translation": "Mengemukakan pendapat diri sendiri secara jelas dan lugas saat apel pagi.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "意見"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "意思"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "異見"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "意言"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (意見).",
+        "logic": "Kata いけん (pendapat / opini pribadi) ditulis dengan kanji 意見 (意 = niat/kehendak hati, 見 = sudut pandang penglihatan).",
+        "distractor": "• Opsi B: 意思 dibaca いし (tekad / kehendak kemauan).\n• Opsi C: 異見 bermakna perselisihan pandangan yang berlawanan.\n• Opsi D: 意言 adalah penulisan yang salah.",
+        "grammarRule": "Komunikasi Kerja Bab 21: 意見（いけん = opini / sumbang saran）."
+      }
+    }
+  ]
+};
+
+const BAB_22_DATA = {
+  "chapter": "22",
+  "title_ja": "第２２課：連体修飾（名詞修飾：動詞普通形＋名詞）・節の主語（～が）・～の時／～時（時間・状況）",
+  "title_id": "Bab 22: Klausa Pewatas Nomina (Rentai Shuushoku: V-futsuu + Nomina), Subjek Anak Kalimat (~ga), dan Keterangan Situasi Waktu (~no toki / ~toki)",
+  "theme_ja": "名詞修飾節 (Klausa Pewatas Kata Benda), 連体修飾の主語表示 (~ga), 調理器具と動作, 状況・場面の表示 (~toki)",
+  "theme_id": "Evaluasi komprehensif Bab 22 yang menguji kemampuan siswa magang dalam: membentuk klausa pewatas nomina (連体修飾 - Rentai Shuushoku) menggunakan kata kerja ragam biasa baik bentuk lampau ([V-ta] + Nomina), bentuk sedang berlangsung ([V-te iru] + Nomina), maupun bentuk kamus kebiasaan ([V-jisho] + Nomina); kaidah partikel subjek di dalam anak kalimat pewatas yang wajib menggunakan partikel が; ungkapan keterangan situasi waktu darurat dan aktivitas ([Nomina] + の時 / [Verba] + 時); serta kosakata esensial peralatan dapur, perakitan komponen manufaktur, dan percakapan sosial dalam asrama dan tempat kerja IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 22.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 22.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Definisi Alat Dapur Pemotong Daging dan Sayur",
+      "type": "teks",
+      "question_ja": "台所に ある （　<strong>ほうちょう</strong>　）は、肉や 野菜を （　<strong>きる もの</strong>　）です。漢字表記の 組み合わせは どれですか。",
+      "question_ruby": "台所に ある （　<strong>ほうちょう</strong>　）は、肉や 野菜を （　<strong>きる もの</strong>　）です。漢字表記の 組み合わせは どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'houchou' (pisau dapur) dan 'kiru mono' (alat pemotong) adalah...",
+      "translation": "Pisau dapur yang ada di dapur adalah perkakas untuk memotong daging dan sayur. Pasangan kanji: 包丁 ／ 切る物.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "包丁 ／ 焼く物"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "包丁 ／ 切る物"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "菜箸 ／ 煮る物"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "鍋物 ／ 炊く物"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (包丁 ／ 切る物).",
+        "logic": "1) <strong>包丁（ほうちょう - houchou）</strong> adalah <strong>pisau dapur</strong> untuk keperluan memasak.<br>2) <strong>切るもの（きるもの - kiru mono）</strong> berarti <strong>benda / perkakas untuk memotong</strong> bahan masakan.",
+        "distractor": "• Opsi A: 包丁 / 焼く物 (benda pemanggang).\n• Opsi C: 菜箸 (sumpit masak panjang) / 煮る物 (makanan rebusan).\n• Opsi D: 鍋物 (masakan hotpot) / 炊く物 (benda penanak nasi).",
+        "grammarRule": "Kosakata Dapur Bab 22: 包丁（ほうちょう - pisau dapur）は肉や野菜を切る（きる）ものです."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Definisi Ketel Air dan Mendidihkan Air Panas",
+      "type": "teks",
+      "question_ja": "お茶を 淹れますから、（　<strong>やかん</strong>　）で （　<strong>おゆを わかして</strong>　）ください。漢字表記と 意味は どれですか。",
+      "question_ruby": "お茶を 淹れますから、（　<strong>やかん</strong>　）で （　<strong>おゆを わかして</strong>　）ください。漢字表記と 意味は どれですか。",
+      "question_id": "Pasangan kanji dan arti yang benar untuk kata 'yakan' dan 'oyu o wakashite' adalah...",
+      "translation": "Karena akan menyeduh teh, tolong didihkan air panas dengan ketel/ceret. Pasangan kanji: 薬缶（やかん） ／ お湯を沸かして.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "夜間 ／ スープを作る （Malam hari ／ Membuat sup kaldu）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "薬箱 ／ 薬を飲む （Kotak obat P3K ／ Meminum obat）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "鍋 ／ 野菜を煮る （Panci sayur ／ Merebus sayuran）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "薬缶 ／ お湯を沸かして （Ketel / ceret air ／ Mendidihkan air panas）"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (薬缶 ／ お湯を沸かして （Ketel / ceret air ／ Mendidihkan air panas）).",
+        "logic": "1) <strong>薬缶（やかん - yakan）</strong> bermakna <strong>ketel ceret logam penjerang air</strong>.<br>2) <strong>お湯を沸かします（おゆをわかします - oyu o wakashimasu）</strong> bermakna <strong>memanaskan air hingga mendidih</strong>.",
+        "distractor": "• Opsi A: 夜間 (waktu malam hari) / スープを作る (membuat sup).\n• Opsi B: 薬箱 (kotak obat) / 薬を飲む (minum obat).\n• Opsi C: 鍋 (panci) / 野菜を煮る (merebus sayur).",
+        "grammarRule": "Fungsi Alat Dapur: 薬缶（やかん - ketel）はお湯を沸かす（わかす）道具です."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Peralatan Dapur Wajan Penggorengan & Penanak Nasi",
+      "type": "teks",
+      "question_ja": "ナロンさんは （　<strong>フライパン</strong>　）で 卵を 焼き、（　<strong>すいはんき</strong>　）で ご飯を 炊きました。意味の 組み合わせは どれですか。",
+      "question_ruby": "ナロンさんは （　<strong>フライパン</strong>　）で 卵を 焼き、（　<strong>すいはんき</strong>　）で ご飯を 炊きました。意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk 'furaipan' dan 'suihanki' adalah...",
+      "translation": "Narong memanggang telur di wajan penggorengan dan menanak nasi di alat penanak nasi elektrik (rice cooker).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Wajan penggorengan teflon ／ Alat penanak nasi elektrik (rice cooker)"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Piring saji lonjong ／ Kompor gas portable"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Mangkuk sup keramik ／ Oven pemanggang kue"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Sendok pengaduk kuah ／ Kulkas pendingin makanan"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (Wajan penggorengan teflon ／ Alat penanak nasi elektrik (rice cooker)).",
+        "logic": "1) <strong>フライパン (furaipan)</strong> berasal dari bahasa Inggris <em>frypan</em> yang bermakna <strong>wajan penggorengan datar</strong> untuk menggoreng atau memanggang daging dan telur.<br>2) <strong>炊飯器（すいはんき - suihanki）</strong> adalah <strong>alat penanak nasi otomatis elektrik (rice cooker)</strong>.",
+        "distractor": "• Opsi B: Piring saji (大皿) / kompor gas (ガスコンロ).\n• Opsi C: Mangkuk sup (お椀) / oven pemanggang (オーブン).\n• Opsi D: Sendok kuah (お玉) / kulkas (冷蔵庫).",
+        "grammarRule": "Kosakata Memasak Bab 22: フライパン（wajan）で焼く ＆ 炊飯器（すいはんき - rice cooker）でご飯を炊く（たく）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Perakitan Manufaktur dan Pembuatan Perabot",
+      "type": "teks",
+      "question_ja": "工場長：『アグス、図面を 見ながら （　<strong>かぐ</strong>　）の 部品を 正確に （　<strong>くみたてて</strong>　）ください。』漢字表記は どれですか。",
+      "question_ruby": "工場長：『アグス、図面を 見ながら （　<strong>かぐ</strong>　）の 部品を 正確に （　<strong>くみたてて</strong>　）ください。』漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'kagu' (perabot/furnitur) dan 'kumitatete' (merakit) adalah...",
+      "translation": "Kepala pabrik: 'Agus, sambil melihat gambar kerja/blue-print, tolong rakit komponen furnitur/perabot dengan presisi.' Pasangan kanji: 家具 ／ 組み立てて.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "道具 ／ 取り付けて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "建具 ／ 分解して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "家具 ／ 組み立てて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "金物 ／ 切断して"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (家具 ／ 組み立てて).",
+        "logic": "1) <strong>家具（かぐ - kagu）</strong> berarti <strong>furnitur atau perabot perlengkapan rumah/kantor</strong> seperti meja, lemari, dan kursi.<br>2) <strong>組み立てます（くみたてます - kumitatemasu）</strong> berarti <strong>merakit komponen atau suku cadang menjadi produk utuh</strong>.",
+        "distractor": "• Opsi A: 道具 (perkakas alat) / 取り付けて (memasang perlengkapan).\n• Opsi B: 建具 (pintu/jendela kusen bangunan) / 分解して (membongkar alat).\n• Opsi D: 金物 (barang logam perangkat keras) / 切断して (memotong material).",
+        "grammarRule": "Aksi Industri Manufaktur: 家具（かぐ - perabot） ＆ コンピューター／部品を組み立てます（くみたてます - merakit）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Mengajak Rekan & Komitmen Janji Pertemuan",
+      "type": "teks",
+      "question_ja": "休日に 田中さんを 映画に （　<strong>さそいました</strong>　）が、友達と 会う （　<strong>やくそく</strong>　）が ありました。「さそいました」と「やくそく」の 漢字表記は どれですか。",
+      "question_ruby": "休日に 田中さんを 映画に （　<strong>さそいました</strong>　）が、友達と 会う （　<strong>やくそく</strong>　）が ありました。「さそいました」と「やくそく」の 漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'sasoimashita' (mengajak) dan 'yakusoku' (janji) adalah...",
+      "translation": "Pada hari libur saya mengajak Tanaka-san ke bioskop, namun beliau sudah ada janji bertemu teman. Pasangan kanji: 誘いました ／ 約束.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "頼みました ／ 予定"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "誘いました ／ 約束"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "迎えました ／ 連絡"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "送りました ／ 予約"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (誘いました ／ 約束).",
+        "logic": "1) <strong>誘います（さそいます - sasoimasu）</strong> ditulis <strong>誘</strong> yang berarti <strong>mengajak kawan pergi bersama</strong>.<br>2) <strong>約束（やくそく - yakusoku）</strong> ditulis <strong>約束</strong> yang berarti <strong>perjanjian temu atau komitmen janji</strong>.",
+        "distractor": "• Opsi A: 頼みました (meminta tolong) / 予定 (rencana/jadwal).\n• Opsi C: 迎えました (menjemput) / 連絡 (menghubungi/berkabar).\n• Opsi D: 送りました (mengirim/mengantar) / 予約 (reservasi hotel/tiket).",
+        "grammarRule": "Interaksi Sosial Percakapan: 友達を誘います（さそいます - mengajak teman） ＆ 会う約束（やくそく - janji bertemu）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Istilah Kerusakan Mesin Pabrik serta Perbaikan",
+      "type": "teks",
+      "question_ja": "機械が （　<strong>こしょうした</strong>　）ときは、自分で 触らないで 先輩に （　<strong>しゅうり</strong>　）を 頼んでください。漢字表記は どれですか。",
+      "question_ruby": "機械が （　<strong>こしょうした</strong>　）ときは、自分で 触らないで 先輩に （　<strong>しゅうり</strong>　）を 頼んでください。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'koshou shita' (rusak) dan 'shuuri' (perbaikan) adalah...",
+      "translation": "Ketika mesin mengalami kerusakan, jangan disentuh sendiri melainkan mintalah perbaikan kepada senior. Pasangan kanji: 故障した ／ 修理.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "停止した ／ 交換"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "破損した ／ 破棄"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "事故した ／ 清掃"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "故障した ／ 修理"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (故障した ／ 修理).",
+        "logic": "1) <strong>故障します（こしょうします - koshou shimasu）</strong> ditulis <strong>故障</strong> yang berarti <strong>mesin atau alat mengalami mogok, rusak, atau gagal fungsi</strong>.<br>2) <strong>修理（しゅうり - shuuri）</strong> ditulis <strong>修理</strong> yang berarti <strong>tindakan reparasi atau perbaikan mesin/peralatan</strong>.",
+        "distractor": "• Opsi A: 停止した (berhenti operasi) / 交換 (penukaran/penggantian suku cadang).\n• Opsi B: 破損した (rusak fisik hancur) / 破棄 (pembuangan/pembatalan).\n• Opsi C: 事故した (mengalami kecelakaan) / 清掃 (pembersihan).",
+        "grammarRule": "Penanganan Kendala Mesin K3: 機械が故障します（こしょうします - rusak） ＆ 修理します（しゅうりします - memperbaiki）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Benda Vas Bunga & Ungkapan Emosi Penyesalan",
+      "type": "teks",
+      "question_ja": "先生：『机の 上の （　<strong>かびん</strong>　）を 割ってしまいましたか。とても 綺麗でしたから、（　<strong>ざんねん</strong>　）ですね。』漢字表記は どれですか。",
+      "question_ruby": "先生：『机の 上の （　<strong>かびん</strong>　）を 割ってしまいましたか。とても 綺麗でしたから、（　<strong>ざんねん</strong>　）ですね。』漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'kabin' (vas bunga) dan 'zannen' (sayang sekali/menyesal) adalah...",
+      "translation": "Guru: 'Apakah vas bunga di atas meja pecah? Karena sangat indah, sungguh sayang sekali ya.' Pasangan kanji: 花瓶 ／ 残念.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "花瓶 ／ 残念"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "花壇 ／ 困難"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "植木 ／ 失望"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "花束 ／ 迷惑"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (花瓶 ／ 残念).",
+        "logic": "1) <strong>花瓶（かびん - kabin）</strong> adalah <strong>vas atau wadah tembikar/kaca tempat merangkai bunga</strong>.<br>2) <strong>残念（ざんねん - zannen）</strong> adalah kata sifat-na yang mengekspresikan <strong>rasa kecewa, kasihan, atau sayang sekali atas hal yang tidak sesuai harapan</strong>.",
+        "distractor": "• Opsi B: 花壇 (petak taman bunga) / 困難 (kesulitan berat).\n• Opsi C: 植木 (tanaman pot) / 失望 (rasa putus asa).\n• Opsi D: 花束 (buket karangan bunga) / 迷惑 (perilaku yang merepotkan orang lain).",
+        "grammarRule": "Kosakata Bab 22: 花瓶（かびん - vas bunga） ＆ 残念（ざんねん - sayang sekali / rasa penyesalan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Subjek di dalam Klausa Pewatas Nomina (Ga)",
+      "type": "teks",
+      "question_ja": "これは 先週 田中さん（　<strong>？</strong>　） 撮った 京都の お寺の 写真です。",
+      "question_ruby": "これは 先週 田中さん（　<strong>？</strong>　） 撮った 京都の お寺の 写真です。",
+      "question_id": "Partikel yang tepat untuk menandai Tanaka-san sebagai subjek pembuat/pelaku di dalam anak kalimat pemodifikasi adalah...",
+      "translation": "Ini adalah foto kuil Kyoto yang dipotret oleh Tanaka-san minggu lalu. Partikel subjek anak kalimat adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "は"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (が).",
+        "logic": "Di dalam <strong>anak kalimat pemodifikasi / klausa pewatas kata benda (連体修飾節)</strong>, pelaku yang melakukan aksi <strong>wajib ditandai dengan partikel が (ga)</strong>, BUKAN partikel は (wa).<br>Contoh: <code>これは [田中さん<strong>が</strong> 撮った] 写真です</code>. Partikel は dicadangkan untuk topik kalimat utama (これは).",
+        "distractor": "• Opsi A: は adalah penanda topik kalimat utama; penggunaan は di dalam anak kalimat klausa pewatas merusak hierarki gramatikal.\n• Opsi B: を menandai objek penderita, padahal Tanaka-san adalah subjek pelaku pemotret.\n• Opsi D: で menandai tempat atau alat.",
+        "grammarRule": "Kaidah Mutlak Subjek Klausa Pewatas: Subjek di dalam anak kalimat pewatas nomina SELALU ditandai partikel が: [Orang] + が + [Verba Bentuk Kasual] + [Nomina]."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Instrumen Alat dalam Pengerjaan Dapur (De)",
+      "type": "teks",
+      "question_ja": "ナロンさんは よく 切れる 包丁（　<strong>？</strong>　） 肉や 野菜を 細かく 切りました。",
+      "question_ruby": "ナロンさんは よく 切れる 包丁（　<strong>？</strong>　） 肉や 野菜を 細かく 切りました。",
+      "question_id": "Partikel yang tepat untuk menandai pisau dapur tajam sebagai instrumen/alat yang digunakan adalah...",
+      "translation": "Narong memotong daging dan sayur secara halus dengan pisau dapur yang tajam. Partikel alat adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "と"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (で).",
+        "logic": "Partikel <strong>で (de)</strong> menandai <strong>sarana atau instrumen perkakas yang dipakai untuk mengerjakan suatu tindakan</strong>: <code>包丁で 切ります (memotong DENGAN pisau)</code>, <code>フライパンで 焼きます (memanggang DENGAN wajan)</code>.",
+        "distractor": "• Opsi A: を menandai objek yang dipotong (肉や野菜を).\n• Opsi C: に menandai hasil potongan atau tujuan.\n• Opsi D: と menandai kawan penyerta.",
+        "grammarRule": "Partikel Instrumen Alat: [Perkakas: 包丁 / ハサミ / フライパン] + で + 動作を行います."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Permukaan Tempat Alokasi Penyajian Masakan (Ni)",
+      "type": "teks",
+      "question_ja": "ナロンさんは 焼いた 肉と 野菜を、綺麗な 白い 皿（　<strong>？</strong>　） 載せました。",
+      "question_ruby": "ナロンさんは 焼いた 肉と 野菜を、綺麗な 白い 皿（　<strong>？</strong>　） 載せました。",
+      "question_id": "Partikel yang tepat untuk menandai piring putih sebagai wadah permukaan peletakan masakan adalah...",
+      "translation": "Narong menata daging dan sayur panggang ke atas piring putih yang bersih. Partikel target peletakan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (に).",
+        "logic": "Verba <strong>載せます（のせます - menaruh/meletakkan di atas）</strong> dan <strong>並べます（ならべます - menata/menjajarkan）</strong> menggunakan partikel <strong>に (ni)</strong> untuk menandai <strong>titik akhir wadah atau permukaan tempat benda dialokasikan</strong>: <code>皿に載せました</code>, <code>テーブルに並べました</code>.",
+        "distractor": "• Opsi B: で menandai tempat berlangsungnya aksi, bukan titik permukaan wadah sasaran penempatan.\n• Opsi C: を menandai objek bahan makanan (肉と野菜を).\n• Opsi D: へ menandai arah perpindahan umum.",
+        "grammarRule": "Titik Peletakan Benda: [Permukaan / Wadah: 皿 / テーブル / 机] + に + 載せます / 並べます / 置きます."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penghubung Nomina Peristiwa dengan Waktu Terjadinya (No)",
+      "type": "teks",
+      "question_ja": "安全規則：『地震や 火事（　<strong>？</strong>　） 時は、絶対に エレベーターを 使ってはならない。』",
+      "question_ruby": "安全規則：『地震や 火事（　<strong>？</strong>　） 時は、絶対に エレベーターを 使ってはならない。』",
+      "question_id": "Partikel yang tepat untuk menghubungkan kata benda peristiwa bencana 'jishin ya kaji' dengan kata 'toki' adalah...",
+      "translation": "Aturan K3: 'Saat terjadi gempa atau kebakaran, mutlak dilarang menggunakan lift.' Partikel penghubung nomina adalah の.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "な"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "の"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (の).",
+        "logic": "Ketika kata keterangan waktu <strong>時（とき - waktu/saat）</strong> diterangkan oleh <strong>Kata Benda (Nomina Kondisi/Peristiwa)</strong>, maka wajib disambungkan dengan partikel <strong>の (no)</strong>: <strong>[Nomina] + の + 時</strong>.<br>Contoh: <code>地震の時 (saat gempa)</code>, <code>火事の時 (saat kebakaran)</code>, <code>子どもの時 (saat anak-anak)</code>, <code>病気の時 (saat sakit)</code>.",
+        "distractor": "• Opsi A: な hanya digunakan jika kata di depannya adalah kata sifat-na (misal: 暇な時).\n• Opsi B: で merusak struktur sambungan nomina.\n• Opsi C: に salah secara posisi gramatikal.",
+        "grammarRule": "Rumus Sambungan Nomina Waktu: [Nomina Bencana / Kondisi] + の + 時（とき）."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Lokasi Aktivitas Nyata dalam Klausa Pewatas (De)",
+      "type": "teks",
+      "question_ja": "友人は、自動車の 部品を 作っている 工場（　<strong>？</strong>　） 毎日 熱心に 実習して います。",
+      "question_ruby": "友人は、自動車の 部品を 作っている 工場（　<strong>？</strong>　） 毎日 熱心に 実習して います。",
+      "question_id": "Partikel yang tepat untuk menandai pabrik pembuat suku cadang mobil sebagai tempat berlangsungnya kegiatan magang adalah...",
+      "translation": "Sahabat saya magang dengan sungguh-sungguh setiap hari di pabrik yang memproduksi suku cadang mobil. Partikel tempat aktivitas adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (で).",
+        "logic": "Meskipun pabrik tersebut diterangkan oleh klausa pewatas <em>自動車の部品を作っている</em>, kata benda <em>工場 (pabrik)</em> tetap berfungsi sebagai <strong>lokasi dilakukannya aktivitas kerja aktif (実習しています)</strong>, sehingga wajib menggunakan partikel <strong>で (de)</strong>.",
+        "distractor": "• Opsi A: に hanya digunakan untuk verba keberadaan statis (います / あります) atau titik tinggal (勤めています).\n• Opsi B: を menandai objek penderita.\n• Opsi D: へ menandai arah perpindahan tujuan.",
+        "grammarRule": "Partikel Lokasi Kerja Aktif: [Klausa Pewatas + Tempat: 工場 / 会社] + で + 実習します / 働きます."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Objek Penderita dari Verba Mitsukemasu (O)",
+      "type": "teks",
+      "question_ja": "ダダン：『あっ、アグスさん、昨日 寮で 落とした 財布（　<strong>？</strong>　） 無事に 見つけましたよ！』",
+      "question_ruby": "ダダン：『あっ、アグスさん、昨日 寮で 落とした 財布（　<strong>？</strong>　） 無事に 見つけましたよ！』",
+      "question_id": "Partikel yang tepat untuk menandai dompet yang hilang sebagai sasaran dari kata kerja 'menemukan' adalah...",
+      "translation": "Dadan: 'Ah, Agus-san, dompet yang kemarin kamu jatuhkan di asrama sudah berhasil saya temukan lho!' Partikel objek adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "に"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "が"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (を).",
+        "logic": "Klausa <em>昨日寮で落とした</em> adalah anak kalimat pewatas yang menerangkan nomina <strong>財布（さいふ - dompet）</strong>. Seluruh frasa nomina modifikasi <em>[昨日寮で落とした財布]</em> menjadi objek sasaran langsung dari kata kerja transitif <strong>見つけました（みつけました - menemukan）</strong>, sehingga wajib menggunakan partikel <strong>を (o)</strong>.",
+        "distractor": "• Opsi A: に menandai titik lokasi temuan.\n• Opsi C: が menandai subjek (bila menggunakan verba intransitif 見つかりました, barulah memakai が; di sini tertulis 見つけました yang transitif).\n• Opsi D: で menandai tempat aksi.",
+        "grammarRule": "Klausa Pewatas Sebagai Objek Kalimat: [Klausa Pewatas + Nomina Objek] + を + 見つけました / 買いました / 読みました."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Klausa Pewatas Nomina Menggunakan Verba Bentuk-Ta ([V-ta] + Nomina)",
+      "type": "teks",
+      "question_ja": "アグス：『これは 先週 東京の 秋葉原で （　<strong>＿＿＿＿＿</strong>　） デジタルカメラです。』",
+      "question_ruby": "アグス：『これは 先週 東京の 秋葉原で （　<strong>＿＿＿＿＿</strong>　） デジタルカメラです。』",
+      "question_id": "Bentuk konjugasi verba yang tepat untuk menerangkan kamera yang 'telah dibeli' dari verba 'kaimasu' adalah...",
+      "translation": "Agus: 'Ini adalah kamera digital yang saya beli di Akihabara Tokyo minggu lalu.' Bentuk lampau kasual: 買った カメラ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "買う"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "買います"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "買って"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "買った"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (買った).",
+        "logic": "Dalam tata bahasa Jepang, anak kalimat pemodifikasi kata benda <strong>tidak pernah menggunakan bentuk sopan ます</strong>, melainkan menggunakan <strong>Bentuk Biasa (普通形 - Futsuukei)</strong>.<br>Karena perbuatan membeli terjadi pada waktu lampau (先週 - minggu lalu), digunakan <strong>[Verba Bentuk-TA] + Nomina</strong>: <code>買いました ➔ 買った ＋ カメラ ➔ 買ったカメラ (kamera yang dibeli)</code>.",
+        "distractor": "• Opsi A: 買う adalah bentuk non-lampau masa depan (tidak sesuai dengan 先週).\n• Opsi B: 買います adalah bentuk sopan formal (dilarang dalam klausa pewatas).\n• Opsi C: 買って adalah bentuk-te penghubung antarklausa.",
+        "grammarRule": "Rumus Klausa Pewatas Lampau: [Verba Bentuk-TA] + [Nomina yang Diterangkan]. Contoh: 撮った写真 / 作った料理 / 習った漢字."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Klausa Pewatas Nomina Aksi Sedang Berlangsung ([V-te iru] + Nomina)",
+      "type": "teks",
+      "question_ja": "指導員：『あそこで 保護帽を （　<strong>＿＿＿＿＿</strong>　） 人は、新しく 来た 実習生の アグス君ですよ。』",
+      "question_ruby": "指導員：『あそこで 保護帽を （　<strong>＿＿＿＿＿</strong>　） 人は、新しく 来た 実習生の アグス君ですよ。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk menerangkan orang yang 'sedang memakai topi pelindung/helm' dari verba 'kaburimasu' adalah...",
+      "translation": "Instruktur: 'Orang yang sedang mengenakan helm pelindung di sebelah sana itu adalah Agus-kun, siswa magang yang baru datang lho.' Bentuk sedang berlangsung: かぶっている 人.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かぶっている"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かぶった"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かぶる"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "かぶります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (かぶっている).",
+        "logic": "Untuk menerangkan orang atau subjek yang <strong>sedang dalam kondisi mengenakan atribut atau sedang melakukan aksi pada saat pembicaraan</strong>, digunakan bentuk kontinu: <strong>[Verba Bentuk-TE + いる] + Nomina</strong>.<br>Dari verba <code>被ります ➔ 被っている ＋ 人 ➔ かぶっている人 (orang yang sedang memakai helm)</code>.",
+        "distractor": "• Opsi B: かぶった bermakna aksi yang sudah lampau selesai, kurang tepat untuk mendeskripsikan ciri fisik visual saat ini.\n• Opsi C: かぶる adalah bentuk kamus habit / kebiasaan umum.\n• Opsi D: かぶります bentuk sopan (tidak boleh melekat langsung di depan kata benda).",
+        "grammarRule": "Klausa Pewatas Penampilan Fisik / Kontinu: [V-te iru (着ている / かけている / はいている / 被っている)] + 人."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Klausa Pewatas Nomina Berupa Fungsi Kegunaan ([V-jisho] + Nomina)",
+      "type": "teks",
+      "question_ja": "駅員：『あちらに ある 機械は、新幹線や 電車の 切符を （　<strong>＿＿＿＿＿</strong>　） ところです。』",
+      "question_ruby": "駅員：『あちらに ある 機械は、新幹線や 電車の 切符を （　<strong>＿＿＿＿＿</strong>　） ところです。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk menerangkan tempat 'membeli tiket kereta' dari verba 'kaimasu' adalah...",
+      "translation": "Petugas stasiun: 'Mesin yang ada di sebelah sana itu adalah tempat untuk membeli tiket shinkansen dan kereta api biasa.' Bentuk kamus: 買う ところ.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "買った"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "買いて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "買う"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "買いました"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (買う).",
+        "logic": "Untuk menerangkan kata benda yang menunjukkan <strong>tempat fungsi kegunaan umum (ところ) atau perkakas (もの)</strong>, digunakan <strong>[Verba Bentuk Kamus (Jisho-kei)] + Nomina</strong>: <code>切符を買うところ (tempat membeli tiket)</code>, <code>お湯を沸かすもの (alat untuk mendidihkan air)</code>.",
+        "distractor": "• Opsi A: 買った menunjukkan aksi yang sudah selesai di masa lalu.\n• Opsi B: 買いて adalah konjugasi te-kei yang rusak (seharusnya 買って).\n• Opsi D: 買いました adalah bentuk sopan lampau yang dilarang menerangkan nomina langsung.",
+        "grammarRule": "Rumus Definisi Fungsi Alat / Tempat: [Verba Bentuk Kamus (Jisho-kei)] + もの（Alat）／ ところ（Tempat）."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Klausa Pewatas yang Menjadi Objek Kalimat Utama",
+      "type": "teks",
+      "question_ja": "昨日の 晩ごはんは、寮で ナロンさんが （　<strong>＿＿＿＿＿</strong>　） タイ料理を みんなで 楽しく 食べました。",
+      "question_ruby": "昨日の 晩ごはんは、寮で ナロンさんが （　<strong>＿＿＿＿＿</strong>　） タイ料理を みんなで 楽しく 食べました。",
+      "question_id": "Bentuk konjugasi yang tepat untuk menerangkan masakan Thailand yang 'dibuat oleh Narong' dari verba 'tsukurimasu' adalah...",
+      "translation": "Makan malam kemarin kami makan bersama masakan Thailand yang dibuat oleh Narong di asrama dengan gembira. Bentuk lampau: 作った 料理.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "作ります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "作った"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "作って"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "作らない"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (作った).",
+        "logic": "Klausa <em>ナロンさんが作った</em> menerangkan kata benda <strong>料理 (masakan)</strong>. Karena masakan tersebut telah selesai dimasak kemarin malam (昨日の晩ごはん), digunakan bentuk biasa lampau: <strong>作った (tsukutta)</strong>: <code>[ナロンさんが作った] タイ料理を 食べました</code>.",
+        "distractor": "• Opsi A: 作ります adalah bentuk sopan non-lampau.\n• Opsi C: 作って adalah bentuk sambung te-kei.\n• Opsi D: 作らない bermakna negatif (masakan yang tidak dibuat).",
+        "grammarRule": "Struktur Klausa Pewatas Menjadi Objek: [Subjek-が + V-ta] + [Nomina Objek] + を + Verba Utama (食べた / 見た)."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Struktur Hierarki Topik Utama vs Subjek Klausa Pewatas",
+      "type": "teks",
+      "question_ja": "これ（　①　） 先月 私（　②　） 工場で 初めて 組み立てた エンジンの 模型です。",
+      "question_ruby": "これ（　①　） 先月 私（　②　） 工場で 初めて 組み立てた エンジンの 模型です。",
+      "question_id": "Pasangan partikel ① dan ② yang tepat untuk menyusun hierarki kalimat bertingkat di atas adalah...",
+      "translation": "Ini adalah miniatur mesin yang pertama kali saya rakit di pabrik bulan lalu. Pasangan partikel: は (topik utama) dan が (subjek klausa).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が ／ は"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を ／ に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に ／ を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "は ／ が"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (は ／ が).",
+        "logic": "Kalimat ini memiliki struktur kalimat bertingkat: <strong>[Topik Utama] は ＋ [[Subjek Anak Kalimat] が ～ Verba] ＋ Nomina です</strong>.<br>- Partikel ① adalah <strong>は (wa)</strong> mengangkat <em>これ</em> sebagai topik utama kalimat.<br>- Partikel ② adalah <strong>が (ga)</strong> menandai pelaku <em>私</em> di dalam anak kalimat pemodifikasi <em>私が組み立てた</em>.<br>Maka pasangan yang tepat adalah <strong>は ／ が</strong>.",
+        "distractor": "• Opsi A: が ／ は adalah susunan terbalik yang melanggar hierarki klausa bahasa Jepang.\n• Opsi B: を ／ に merusak struktur topik dan subjek.\n• Opsi C: に ／ を salah struktur partikel secara menyeluruh.",
+        "grammarRule": "Hierarki Partikel Kalimat Bertingkat: [Nomina Topik] + は + [[Subjek Anak Kalimat] + が + Verba-Kasual] + [Nomina Penjelas] + です."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Situasi Waktu Menggunakan Kata Sifat ([Keiyoushi] + Toki)",
+      "type": "teks",
+      "question_ja": "工場の中が （　<strong>＿＿＿＿＿</strong>　） ときは、無理を しないで 水分を 補給しなさい。",
+      "question_ruby": "工場の中が （　<strong>＿＿＿＿＿</strong>　） ときは、無理を しないで 水分を 補給しなさい。",
+      "question_id": "Bentuk kata sifat yang tepat untuk menerangkan saat kondisi 'panas' dari kata sifat-i 'atsui' adalah...",
+      "translation": "Saat di dalam pabrik terasa panas, jangan memaksakan diri dan minumlah air untuk rehidrasi. Bentuk sifat-i: 暑い とき.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "暑い"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "暑く"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "暑かった"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "暑さ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (暑い).",
+        "logic": "Kata sifat-I (い形容詞) langsung menyambung ke kata keterangan waktu <strong>時（とき - toki）</strong> tanpa mengubah akhiran <em>～い</em>: <strong>[I-Keiyoushi (-い)] + 時</strong>.<br>Contoh: <code>暑い時 (saat panas)</code>, <code>寒い時 (saat dingin)</code>, <code>忙しい時 (saat sibuk)</code>.",
+        "distractor": "• Opsi B: 暑く adalah bentuk konjungtif adverbial ku (misal: 暑くなります).\n• Opsi C: 暑かった adalah bentuk lampau (tidak tepat untuk pedoman instruksi umum kondisi panas saat ini).\n• Opsi D: 暑さ adalah bentuk nominalisasi (tingkat kepanasan).",
+        "grammarRule": "Sambungan Kata Sifat Waktu (~toki): [Kata Sifat-I] + 時 (暑い時) | [Kata Sifat-Na] + な時 (暇な時) | [Nomina] + の時 (病気の時)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Dialog Situasional Pemagangan & Klausa Pewatas Rencana Temu",
+      "type": "teks",
+      "question_ja": "田中：『アグスさん、今晩 一緒に 食事に 行きませんか。』<br>アグス：『すみません。今晩は 自動車工場で （　①　） 友人と （　②　） 約束が あります。』",
+      "question_ruby": "田中：『アグスさん、今晩 一緒に 食事に 行きませんか。』<br>アグス：『すみません。今晩は 自動車工場で （　①　） 友人と （　②　） 約束が あります。』",
+      "question_id": "Kombinasi bentuk kata kerja yang tepat untuk melengkapi jawaban Agus secara berturut-turut adalah...",
+      "translation": "Tanaka: 'Agus-san, nanti malam maukah makan bersama?' Agus: 'Maaf. Nanti malam saya ada janji bertemu kawan yang bekerja di pabrik mobil.' Kombinasi: 働いている ／ 会う.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "働きます ／ 会いました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "働いた ／ 会います"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "働いている ／ 会う"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "働いて ／ 会って"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (働いている ／ 会う).",
+        "logic": "1) Klausa pewatas ciri profesi teman: <code>自動車工場で 働いている 友人 (teman yang sedang/bekerja di pabrik mobil)</code> menggunakan bentuk kontinu <strong>働いている</strong>.<br>2) Klausa pewatas isi janji masa depan: <code>友人と 会う 約束 (janji untuk bertemu kawan)</code> menggunakan verba bentuk kamus rencana <strong>会う</strong>.<br>Maka pasangan yang tepat adalah <strong>働いている ／ 会う</strong>.",
+        "distractor": "• Opsi A: Keduanya menggunakan bentuk sopan formal ます yang dilarang di depan kata benda.\n• Opsi B: 働いた (lampau selesai) / 会います (bentuk formal salah).\n• Opsi D: Keduanya menggunakan bentuk te-kei yang tidak dapat menerangkan nomina secara langsung.",
+        "grammarRule": "Klausa Pewatas Ganda Percakapan Alami: [V-te iru + Nomina Teman] + と + [V-jisho + Nomina Janji] があります."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Klausa Menerangkan Alat (肉を切るナイフ)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。これは 何ですか。<br>「これは 肉を （　　　）ナイフです。」",
+      "question_ruby": "絵（え）を 見て ください。これは 何ですか。<br>「これは 肉を （　　　）ナイフです。」",
+      "question_id": "Perhatikan gambar pisau dapur. Benda apakah ini? 'Ini adalah pisau untuk (...) daging'.",
+      "translation": "Ini adalah pisau untuk memotong daging (niku o kiru naifu desu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "たべる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "切る（きる）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "やく"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "にる"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (切る（きる）).",
+        "logic": "Gambar memperlihatkan pisau dapur khusus pemotong daging (肉を切るナイフ / にくをきるないふ). Bentuk kamus 切る berfungsi menerangkan kata benda knife.",
+        "distractor": "• Opsi A: たべる berarti memakan.\n• Opsi C: やく berarti memanggang.\n• Opsi D: にる berarti merebus sup.",
+        "grammarRule": "Klausa Pewatas Nomina Bab 22: [V-jisho] ＋ [Nomina Alat] (contoh: 肉を切るナイフ)."
+      },
+      "image": "assets/bab_22/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Klausa Menerangkan Kendaraan (東京へ行くバス)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。これは どんな バスですか。<br>「これは 東京へ （　　　）バスです。」",
+      "question_ruby": "絵（え）を 見て ください。これは どんな バスですか。<br>「これは 東京へ （　　　）バスです。」",
+      "question_id": "Perhatikan gambar bus jurusan Tokyo. Bus bagaimanakah ini? 'Ini adalah bus yang (...) ke Tokyo'.",
+      "translation": "Ini adalah bus yang berangkat menuju Tokyo (Toukyou e iku basu desu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かえる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "とまる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "行く（いく）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "でる"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (行く（いく）).",
+        "logic": "Gambar menunjukkan bus antarkota dengan plang tujuan Tokyo (東京へ行くバス / とうきょうへいくばす). Verba bentuk kamus 行く menerangkan nomina basu.",
+        "distractor": "• Opsi A: かえる berarti pulang.\n• Opsi B: とまる berarti menginap / berhenti.\n• Opsi D: でる berarti keluar.",
+        "grammarRule": "Pewatas Nomina Moda: [Tujuan] へ 行く [Kendaraan]."
+      },
+      "image": "assets/bab_22/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (着て)",
+      "type": "teks",
+      "question_ja": "寒い朝は 上着を （ 着て ）工場へ 行きます。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "寒い朝は 上着を （ 着て ）工場へ 行きます。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Pada pagi yang dingin mengenakan jaket lalu pergi ke pabrik. Pilihlah cara baca kanji '着て' yang tepat.",
+      "translation": "Pada pagi hari yang dingin, mengenakan pakaian hangat/jaket lalu berangkat ke pabrik.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "きて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "はいて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かぶって"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "つけて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (きて).",
+        "logic": "Kanji 着て dibaca きて (kite) dari verba 着る (mengenakan pakaian pada badan/baju atasan).",
+        "distractor": "• Opsi B: はいて ditulis 履いて (mengenakan celana / sepatu).\n• Opsi C: かぶって ditulis 被って (mengenakan topi di kepala).\n• Opsi D: つけて ditulis 着けて (memasang aksesori/sabuk pengaman).",
+        "grammarRule": "Verba Mengenakan Pakaian: 着る（きる = baju/jaket badan atas）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (帽子)",
+      "type": "teks",
+      "question_ja": "工場の中では 必ず 作業用の （ ぼうし ）を かぶります。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "工場の中では 必ず 作業用の （ ぼうし ）を かぶります。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Di dalam pabrik wajib mengenakan topi kerja. Pilihlah penulisan kanji yang tepat untuk 'boushi'.",
+      "translation": "Di dalam area pabrik wajib mengenakan topi kerja pengaman pelindung kepala.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "帽子"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "冒子"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "巾子"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "幕子"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (帽子).",
+        "logic": "Kata ぼうし (topi) ditulis dengan kanji baku 帽子 (radikal kain 巾 di sisi kiri dan 冒).",
+        "distractor": "• Opsi B: 冒子 tidak memiliki radikal kain 巾.\n• Opsi C: 巾子 adalah penulisan yang salah.\n• Opsi D: 幕子 adalah penulisan yang keliru.",
+        "grammarRule": "Perlengkapan Kerja K3: 帽子（ぼうし = topi kerja）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (約束)",
+      "type": "teks",
+      "question_ja": "指導員と 集合時間の （ やくそく ）を しました。<br>正しい 漢字は どれですか。",
+      "question_ruby": "指導員と 集合時間の （ やくそく ）を しました。<br>正しい 漢字は どれですか。",
+      "question_id": "Membuat janji jam berkumpul dengan instruktur. Pilihlah kanji yang tepat untuk 'yakusoku'.",
+      "translation": "Telah membuat janji/kesepakatan waktu berkumpul dengan instruktur.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "約束"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "約速"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "役束"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "約則"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (約束).",
+        "logic": "Kata やくそく (janji / ikrar pertemuan) ditulis dengan kanji 約束 (約 = janji/ikatan, 束 = mengikat erat).",
+        "distractor": "• Opsi B: 約速 salah huruf kanan (menggunakan 速 = cepat).\n• Opsi C: 役束 salah huruf kiri (menggunakan 役 = peran/tugas).\n• Opsi D: 約則 salah huruf kanan (menggunakan 則 = aturan kaidah).",
+        "grammarRule": "Disiplin Waktu Jepang Bab 22: 約束（やくそく = janji / komitmen waktu）."
+      }
+    }
+  ]
+};
+
+const BAB_23_DATA = {
+  "chapter": "23",
+  "title_ja": "第２３課：埋め込み疑問文（～か／～かどうか）・～つもりです（意志・計画）・～時（辞書形・た形の使い分け）",
+  "title_id": "Bab 23: Kalimat Tanya Terselip (Embedded Questions: ~ka / ~ka dou ka), Rencana / Niat Kuat (~tsumori desu), dan Pemilihan Waktu (~jisho toki vs ~ta toki)",
+  "theme_ja": "間接疑問文 (Kalimat Tanya Terselip), 意志表明・行動計画 (~tsumori desu), 完了・未完了の時間関係 (~toki), 工場トラブル点検",
+  "theme_id": "Evaluasi komprehensif Bab 23 yang menguji kompetensi siswa magang dalam: menyusun kalimat tanya terselip (埋め込み疑問文) dengan kata tanya ([Kata Tanya] + [V-futsuu] + か、分かりません／教えてください) serta kalimat tanya terselip biner ya/tidak ([V-futsuu] + かどうか、分かりません／調べます); mengekspresikan rencana atau niat tekad yang kuat ([V-jisho / V-nai] + つもりです); membedakan secara presisi hubungan waktu sebelum perbuatan ([V-jisho] + 時) versus sesudah perbuatan tuntas ([V-ta] + 時); serta penanganan kendala mesin industri K3 saat lampu indikator menyala bersama bimbingan hanchou.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 23.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 23.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Menghitung Komponen dan Memeriksa Mesin",
+      "type": "teks",
+      "question_ja": "班長：『箱の中に 部品が 何個 あるか （　<strong>かぞえて</strong>　）、異常が ないか （　<strong>しらべて</strong>　）ください。』漢字表記は どれですか。",
+      "question_ruby": "班長：『箱の中に 部品が 何個 あるか （　<strong>かぞえて</strong>　）、異常が ないか （　<strong>しらべて</strong>　）ください。』漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'kazoete' (menghitung) dan 'shirabete' (memeriksa/meneliti) adalah...",
+      "translation": "Mandor: 'Tolong hitung ada berapa buah komponen di dalam kotak, dan periksalah apakah ada kejanggalan.' Pasangan kanji: 数えて ／ 調べて.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "数えて ／ 調べて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "計って ／ 確かめて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "集めて ／ 直して"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "並べて ／ 探して"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (数えて ／ 調べて).",
+        "logic": "1) <strong>数えます（かぞえます - kazoemasu）</strong> ditulis <strong>数</strong> yang bermakna <strong>menghitung kuantitas atau jumlah angka butir benda</strong>.<br>2) <strong>調べます（しらべます - shirabemasu）</strong> ditulis <strong>調</strong> yang bermakna <strong>memeriksa, mengecek, atau menginvestigasi kondisi fisik/data</strong>.",
+        "distractor": "• Opsi B: 計って (mengukur waktu/berat) / 確かめて (memastikan konfirmasi).\n• Opsi C: 集めて (mengumpulkan) / 直して (memperbaiki/mengoreksi).\n• Opsi D: 並べて (menata berjejer) / 探して (mencari barang hilang).",
+        "grammarRule": "Aksi Kontrol Kualitas Bab 23: 個数を数えます（かぞえます - menghitung） ＆ 異常を調べます（しらべます - memeriksa）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Dimensi Pengukuran Panjang, Bobot Berat, serta Verba Mengukur",
+      "type": "teks",
+      "question_ja": "ノギスで 鉄板の （　<strong>ながさ</strong>　）と （　<strong>おもさ</strong>　）を 正確に （　<strong>はかります</strong>　）。漢字表記は どれですか。",
+      "question_ruby": "ノギスで 鉄板の （　<strong>ながさ</strong>　）と （　<strong>おもさ</strong>　）を 正確に （　<strong>はかります</strong>　）。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk 'nagasa' (panjang), 'omosa' (berat), dan 'hakarimasu' (mengukur) adalah...",
+      "translation": "Mengukur panjang dan berat pelat besi secara akurat menggunakan jangka sorong. Pasangan kanji: 長さ ／ 重さ ／ 測ります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "深さ ／ 広さ ／ 試します"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "高さ ／ 太さ ／ 数えます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "長さ ／ 重さ ／ 測ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "厚さ ／ 軽さ ／ 調べます"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (長さ ／ 重さ ／ 測ります).",
+        "logic": "1) <strong>長さ（ながさ - nagasa）</strong> adalah bentuk nominalisasi dari kata sifat <em>長い</em> yang berarti <strong>panjang dimensi</strong>.<br>2) <strong>重さ（おもさ - omosa）</strong> adalah nominalisasi dari <em>重い</em> yang berarti <strong>bobot berat</strong>.<br>3) <strong>測ります（はかります - hakarimasu）</strong> ditulis <strong>測</strong> yang berarti <strong>mengukur dimensi panjang, lebar, volume, atau ketebalan</strong>.",
+        "distractor": "• Opsi A: 深さ (kedalaman) / 広さ (luas area) / 試します (menguji coba).\n• Opsi B: 高さ (ketinggian) / 太さ (ketebalan diameter bulat) / 数えます (menghitung angka).\n• Opsi D: 厚さ (ketebalan) / 軽さ (keentengan) / 調べます (menyelidiki).",
+        "grammarRule": "Nominalisasi Dimensi Industri (-sa): 長さ（panjang） / 重さ（berat） / 測ります（mengukur dimensi）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Lampu Indikator Mesin & Tuas yang Menurun",
+      "type": "teks",
+      "question_ja": "アグス：『班長、警告の 赤い （　<strong>ランプ</strong>　）が ついて、白い レバーが （　<strong>さがって</strong>　）います。』意味の 組み合わせは どれですか。",
+      "question_ruby": "アグス：『班長、警告の 赤い （　<strong>ランプ</strong>　）が ついて、白い レバーが （　<strong>さがって</strong>　）います。』意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk istilah 'ranpu' dan 'sagatte' pada konteks operasional mesin di atas adalah...",
+      "translation": "Agus: 'Mandor, lampu indikator peringatan warna merah menyala, dan tuas putih sedang turun ke bawah.'",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Sekring listrik otomatis ／ Rusak berantakan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Lampu indikator panel mesin ／ Turun ke bawah (intransitif)"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Tombol darurat darurat ／ Terjepit di celah roda"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Saklar daya utama ／ Berputar kencang"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (Lampu indikator panel mesin ／ Turun ke bawah (intransitif)).",
+        "logic": "1) <strong>ランプ (ranpu)</strong> mengacu pada <strong>lampu indikator atau lampu sinyal peringatan pada panel kontrol mesin industri</strong>.<br>2) <strong>下がります（さがります - sagarimasu）</strong> adalah kata kerja intransitif yang berarti <strong>bergerak turun ke bawah atau mengalami penurunan level</strong>.",
+        "distractor": "• Opsi A: Sekring (ヒューズ) / rusak berantakan (壊れる).\n• Opsi C: Tombol darurat (非常ボタン) / terjepit (挟まれる).\n• Opsi D: Saklar utama (主電源スイッチ) / berputar (回転する).",
+        "grammarRule": "Indikator Mesin Pabrik Bab 23: 赤いランプが点く（menyala） ＆ レバーが下がる（tuas turun）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Konsultasi Permasalahan serta Meminta Bantuan",
+      "type": "teks",
+      "question_ja": "困った ことが あれば、一人で 悩まないで 先輩に （　<strong>そうだんして</strong>　）、手伝いを （　<strong>たのみます</strong>　）。漢字表記は どれですか。",
+      "question_ruby": "困った ことが あれば、一人で 悩まないで 先輩に （　<strong>そうだんして</strong>　）、手伝いを （　<strong>たのみます</strong>　）。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'soudan shite' (berkonsultasi) dan 'tanomimasu' (meminta tolong) adalah...",
+      "translation": "Bila ada hal yang menyulitkan, jangan memendam sendiri melainkan berkonsultasilah dengan senior dan mintalah bantuan. Kanji: 相談して ／ 頼みます.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "挨拶して ／ 呼びます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "連絡して ／ 渡します"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "質問して ／ 伝えます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "相談して ／ 頼みます"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (相談して ／ 頼みます).",
+        "logic": "1) <strong>相談します（そうだんします - soudan shimasu）</strong> bermakna <strong>berkonsultasi / berembuk</strong> (prinsip Hou-Ren-So).<br>2) <strong>頼みます（たのみます - tanomimasu）</strong> bermakna <strong>memohon pertolongan / bantuan</strong>.",
+        "distractor": "• Opsi A: 挨拶して (salam) / 呼びます (memanggil).\n• Opsi B: 連絡して (mengabari) / 渡します (menyerahkan).\n• Opsi C: 質問して (bertanya) / 伝えます (menyampaikan).",
+        "grammarRule": "Prinsip HOU-REN-SO: 報告（lapor） ➔ 連絡（kabar） ➔ 相談（そうだん - konsultasi）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Liburan Festival Obon Musim Panas & Desa Kampung Halaman",
+      "type": "teks",
+      "question_ja": "八月の （　<strong>おぼんやすみ</strong>　）に、実習生は 田中さんの （　<strong>いなか</strong>　）へ 遊びに 行く つもりです。意味の 組み合わせは どれですか。",
+      "question_ruby": "八月の （　<strong>おぼんやすみ</strong>　）に、実習生は 田中さんの （　<strong>いなか</strong>　）へ 遊びに 行く つもりです。意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk istilah 'obon-yasumi' dan 'inaka' adalah...",
+      "translation": "Pada liburan festival Obon bulan Agustus, para siswa magang berencana pergi berlibur ke kampung halaman Tanaka-san.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Libur festival Obon (Agustus) ／ Desa kampung halaman"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Libur tahun baru ／ Kota metropolitan besar"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Libur musim gugur ／ Pusat pelatihan vokasi"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Libur akhir pekan ／ Wisata pantai kepulauan"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (Libur festival Obon (Agustus) ／ Desa kampung halaman).",
+        "logic": "1) <strong>お盆休み（おぼんやすみ）</strong> adalah <strong>libur festival Obon di pertengahan Agustus</strong> untuk mudik.<br>2) <strong>田舎（いなか）</strong> berarti <strong>daerah pedesaan / kampung halaman</strong>.",
+        "distractor": "• Opsi B: Tahun baru (正月休み) / kota metropolitan (都会).\n• Opsi C: Musim gugur (秋分の日) / pusat pelatihan (研修所).\n• Opsi D: Akhir pekan (週末) / wisata pantai (海岸).",
+        "grammarRule": "Kalender Musim Budaya Jepang: お盆休み（obon-yasumi - libur Obon Agustus） ＆ 田舎（inaka - desa/kampung halaman）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Cukup Memadai & Tepat Waktu (Mani Aimamasu)",
+      "type": "teks",
+      "question_ja": "工場長：『作業の 潤滑油は （　<strong>たります</strong>　）か。急がないと、納期の 時間に （　<strong>まにあいません</strong>　）よ。』意味の 組み合わせは どれですか。",
+      "question_ruby": "工場長：『作業の 潤滑油は （　<strong>たります</strong>　）か。急がないと、納期の 時間に （　<strong>まにあいません</strong>　）よ。』意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk 'tarimasu' dan 'maniaimasen' adalah...",
+      "translation": "Kepala pabrik: 'Apakah minyak pelumas pekerjaan cukup memadai? Kalau tidak bergegas, tidak akan keburu tepat waktu dengan batas pengiriman lho.'",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Mengalir deras ／ Tidak boleh disentuh"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Membeku keras ／ Tidak dapat dioperasikan"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Cukup / memadai ／ Tidak keburu / tidak tepat waktu"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Habis total ／ Tidak selesai diproduksi"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (Cukup / memadai ／ Tidak keburu / tidak tepat waktu).",
+        "logic": "1) <strong>足ります（たります - tarimasu）</strong> bermakna <strong>cukup, memadai, atau mencukupi kebutuhan</strong>.<br>2) <strong>間に合います（まにあいます - maniaimasu）</strong> bermakna <strong>keburu atau tiba tepat pada waktunya</strong>. Bentuk negatif <em>間に合いません</em> berarti <strong>tidak keburu / terlambat dari jadwal batas waktu yang ditentukan (deadline / 納期)</strong>.",
+        "distractor": "• Opsi A: Mengalir deras (流れる) / tidak boleh disentuh (触るな).\n• Opsi B: Membeku (凍る) / tidak dapat dioperasikan (操作できない).\n• Opsi D: Habis total (なくなる) / tidak selesai (終わらない).",
+        "grammarRule": "Waktu & Kuantitas Manufaktur: 材料・油が足ります（たります - cukup） ＆ 納期の時間に間に合います（まにあいます - tepat waktu）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kata Sifat Kejanggalan/Aneh & Verba Menetapkan Keputusan",
+      "type": "teks",
+      "question_ja": "機械の 音が （　<strong>おかしい</strong>　）ですから、使うかどうかを 班長と 相談して （　<strong>きめます</strong>　）。「おかしい」と「きめます」の 意味は どれですか。",
+      "question_ruby": "機械の 音が （　<strong>おかしい</strong>　）ですから、使うかどうかを 班長と 相談して （　<strong>きめます</strong>　）。「おかしい」と「きめます」の 意味は どれですか。",
+      "question_id": "Arti yang benar untuk kata 'okashii' dan 'kimemasu' pada kalimat di atas adalah...",
+      "translation": "Karena suara mesin terdengar aneh/janggal, kami berkonsultasi dengan mandor lalu memutuskan apakah akan memakainya atau tidak.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Sangat bising ／ Menolak pekerjaan"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Aneh / janggal tidak wajar ／ Memutuskan / menentukan pilihan"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Sangat lambat ／ Mengulangi langkah dari awal"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Cukup tenang ／ Melaporkan secara tertulis"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (Aneh / janggal tidak wajar ／ Memutuskan / menentukan pilihan).",
+        "logic": "1) <strong>おかしい (okashii)</strong> dalam konteks operasional pabrik bermakna <strong>aneh, janggal, tidak wajar, atau dicurigai mengalami gangguan teknis</strong>.<br>2) <strong>決めます（きめます - kimemasu）</strong> bermakna <strong>menetapkan, menetapkan keputusan, atau membulatkan pilihan</strong> setelah musyawarah.",
+        "distractor": "• Opsi A: Bising (うるさい) / menolak (断る).\n• Opsi C: Lambat (遅い) / mengulangi (繰り返す).\n• Opsi D: Tenang (静か) / lapor tertulis (文書で報告する).",
+        "grammarRule": "Deteksi Dini K3: 機械の調子がおかしい（aneh/tidak normal） ➔ どうするか決めます（menentukan keputusan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pembentuk Kalimat Tanya Terselip Ber-Kata Tanya (Ka)",
+      "type": "teks",
+      "question_ja": "来週の 全体会議は 何時に 始まる（　<strong>？</strong>　）、まだ 誰も 知りません。",
+      "question_ruby": "来週の 全体会議は 何時に 始まる（　<strong>？</strong>　）、まだ 誰も 知りません。",
+      "question_id": "Partikel yang tepat untuk mengunci kalimat tanya terselip 'pukul berapa akan dimulai' adalah...",
+      "translation": "Belum ada seorang pun yang mengetahui pukul berapa rapat umum minggu depan akan dimulai. Partikel embedded question adalah か.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "と"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "か"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (か).",
+        "logic": "Pola kalimat tanya terselip (間接疑問文) yang memuat <strong>Kata Tanya (何時, どこ, だれ, いくつ, どのぐらい)</strong> diakhiri dengan partikel <strong>か (ka)</strong> sebelum klausa utama: <strong>[Kata Tanya + V-futsuu] + か、分かりません / 知りません / 教えてください</strong>.<br>Contoh: <code>何時に始まる<strong>か</strong>、知りません</code>.",
+        "distractor": "• Opsi A: と digunakan untuk kutipan langsung perkataan (～と言いました).\n• Opsi B: が menandai subjek klausa.\n• Opsi C: を menandai objek penderita langsung.",
+        "grammarRule": "Rumus Kalimat Tanya Terselip Ber-Kata Tanya: [Kata Tanya (何時 / 誰 / どこ)] + [Verba Bentuk Biasa] + か、分かりません／知りません."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Struktur Kalimat Tanya Terselip Biner Ya/Tidak (Ka dou ka)",
+      "type": "teks",
+      "question_ja": "明日の 日曜日に 雨が 降る（　<strong>？</strong>　） 分かりませんから、旅行の 準備が できません。",
+      "question_ruby": "明日の 日曜日に 雨が 降る（　<strong>？</strong>　） 分かりませんから、旅行の 準備が できません。",
+      "question_id": "Bentuk partikel pilihan biner yang tepat untuk menyatakan 'apakah turun hujan atau tidak' adalah...",
+      "translation": "Karena belum tahu apakah besok hari Minggu akan turun hujan atau tidak, saya belum bisa menyiapkan barang perjalanan. Bentuk biner: かどうか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かどうか"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かだれか"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "かのどちら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "かも知れない"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (かどうか).",
+        "logic": "Untuk membentuk kalimat tanya terselip tanpa kata tanya yang menanyakan <strong>apakah suatu peristiwa terjadi atau tidak terjadi (ya atau tidak)</strong>, digunakan konstruksi: <strong>[Verba Bentuk Biasa] + かどうか (ka dou ka)</strong>.<br>Contoh: <code>雨が降る<strong>かどうか</strong>、分かりません</code>.",
+        "distractor": "• Opsi B: かだれか adalah kombinasi acak yang salah tata bahasa.\n• Opsi C: かのどちら hanya digunakan untuk memilih dua benda alternatif terpisah.\n• Opsi D: かも知れない berarti praduga kemungkinan (mungkin saja turun hujan).",
+        "grammarRule": "Rumus Kalimat Tanya Terselip Biner (Apakah ya atau tidak): [Verba Bentuk Biasa (辞書形 / た形 / ない形)] + かどうか、分かりません / 調べます."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Mitra Sasaran Konsultasi Musyawarah (Ni)",
+      "type": "teks",
+      "question_ja": "アグスさんは 日本での 生活について、指導員の 山本さん（　<strong>？</strong>　） 相談する つもりです。",
+      "question_ruby": "アグスさんは 日本での 生活について、指導員の 山本さん（　<strong>？</strong>　） 相談する つもりです。",
+      "question_id": "Partikel yang tepat untuk menandai Yamamoto-san sebagai pihak sasaran tempat berkonsultasi adalah...",
+      "translation": "Agus berniat berkonsultasi kepada instruktur Yamamoto-san mengenai kehidupan di Jepang. Partikel sasaran konsultasi adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Verba <strong>相談します（そうだんします - berkonsultasi）</strong> menuntut partikel <strong>に (ni)</strong> untuk menandai <strong>orang atau pihak ahli yang dimintai pendapat atau nasihat</strong>: <code>山本さんに 相談します (berkonsultasi KEPADA Yamamoto-san)</code>. (Catatan: bila bermusyawarah setara bersama rekan, dapat pula menggunakan と, namun sasaran atasan/ahli spesifik memakai に).",
+        "distractor": "• Opsi A: で menandai tempat dilakukannya percakapan.\n• Opsi B: を menandai topik isi konsultasi (生活のことを).\n• Opsi D: へ menandai arah perpindahan fisik.",
+        "grammarRule": "Partikel Sasaran Permohonan & Konsultasi: [Orang / Atasan / Instruktur] + に + 相談します / 頼みます / 聞きます."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Penampakan Visual Lampu Indikator Menyala (Ga)",
+      "type": "teks",
+      "question_ja": "作業中に、操作盤の 黄色い 異常ランプ（　<strong>？</strong>　） 点きましたから、すぐに 機械を 止めました。",
+      "question_ruby": "作業中に、操作盤の 黄色い 異常ランプ（　<strong>？</strong>　） 点きましたから、すぐに 機械を 止めました。",
+      "question_id": "Partikel yang tepat untuk menandai lampu indikator keanehan yang menyala secara otomatis adalah...",
+      "translation": "Saat bekerja, karena lampu indikator keanehan berwarna kuning menyala, saya segera menghentikan mesin. Partikel subjek menyala adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (が).",
+        "logic": "Kata kerja <strong>点きます（つきます - menyala）</strong> adalah verba intransitif (自動詞). Subjek fenomena lampu atau listrik yang menyala sendiri ditandai dengan partikel subjek <strong>が (ga)</strong>: <code>ランプが 点きました</code>, <code>電気が つきました</code>.",
+        "distractor": "• Opsi A: を hanya dipakai bersama verba transitif tindakan sengaja (contoh: スイッチ／電気を 点けます).\n• Opsi C: に menandai titik penempelan.\n• Opsi D: で menandai sarana atau lokasi.",
+        "grammarRule": "Partikel Subjek Intransitif Indikator: [Lampu / Fenomena: ランプ / 火 / 電気] + が + 点きます（つきます）."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Arah Tujuan Perjalanan Pulang Mudik (E / Ni)",
+      "type": "teks",
+      "question_ja": "ダダンさんは 会社の お盆休みに、インドネシアの 田舎（　<strong>？</strong>　） 飛行機で 帰る つもりです。",
+      "question_ruby": "ダダンさんは 会社の お盆休みに、インドネシアの 田舎（　<strong>？</strong>　） 飛行機で 帰る つもりです。",
+      "question_id": "Partikel yang tepat untuk menandai kampung halaman sebagai arah tujuan mudik kepulangan adalah...",
+      "translation": "Dadan berencana pulang ke kampung halamannya di Indonesia dengan pesawat pada libur festival Obon perusahaan. Partikel arah tujuan adalah へ (atau に).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "から"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (へ).",
+        "logic": "Verba perpindahan <strong>帰ります（かえります - pulang）</strong> menuntut partikel <strong>へ (e)</strong> atau <strong>に (ni)</strong> untuk menandai <strong>titik lokasi tujuan akhir perjalanan</strong>: <code>田舎へ 帰るつもりです (berencana pulang KE kampung halaman)</code>.",
+        "distractor": "• Opsi A: を menandai tempat yang ditinggalkan atau objek penderita.\n• Opsi B: で menandai moda transportasi angkutan (飛行機で).\n• Opsi C: から menandai titik awal lepas landas keberangkatan.",
+        "grammarRule": "Arah Tujuan Perjalanan: [Tujuan: 国 / 田舎 / うち] + へ／に + 帰ります / 行きます / 来ます."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pembatas Negatif Menyatakan Kuantitas Sisa (Shika)",
+      "type": "teks",
+      "question_ja": "アグス：『班長、機械の 潤滑オイルを 点検しましたが、もう 少し（　<strong>？</strong>　） 入って いません。』",
+      "question_ruby": "アグス：『班長、機械の 潤滑オイルを 点検しましたが、もう 少し（　<strong>？</strong>　） 入って いません。』",
+      "question_id": "Partikel yang tepat untuk melengkapi ungkapan pembatas negatif 'hanya tersisa sedikit saja' adalah...",
+      "translation": "Agus: 'Mandor, saya telah memeriksa oli pelumas mesin, namun sudah hanya tersisa sedikit sekali.' Partikel pembatas berkonotasi kurang adalah しか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "しか"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "だけ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "でも"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ほど"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (しか).",
+        "logic": "Partikel <strong>しか (shika)</strong> berpasangan secara mutlak dengan <strong>bentuk negatif (～ない / ～ません)</strong> untuk menyatakan makna <strong>'hanya / cuma segitu (dengan nuansa kurang memadai dari yang diharapkan)'</strong>.<br>Kombinasi baku: <code>少し + しか + 入っていません / ありません (hanya tinggal sedikit saja)</code>.",
+        "distractor": "• Opsi B: だけ berpasangan dengan bentuk positif (contoh: 少しだけ入っています); bila bertemu negatif 入っていません, maknanya menjadi tidak selaras secara idiomatik pemagangan.\n• Opsi C: でも berarti 'walaupun/meskipun'.\n• Opsi D: ほど menandai taksiran perkiraan kuantitas.",
+        "grammarRule": "Kaidah Pembatas Negatif: [Kuantitas Minim] + しか + [Verba Negatif: ありません / 入っていません] (Hanya tersisa... saja)."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Embedded Question Kuantitas ([Kata Tanya] + [V-jisho] + Ka)",
+      "type": "teks",
+      "question_ja": "検品係：『棚の 上の 箱に、製品が 何個 （　<strong>＿＿＿＿＿</strong>　）か、正確に 数えてください。』",
+      "question_ruby": "検品係：『棚の 上の 箱に、製品が 何個 （　<strong>＿＿＿＿＿</strong>　）か、正確に 数えてください。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk melengkapi kalimat tanya terselip 'ada berapa buah produk...' dari verba 'arimasu' adalah...",
+      "translation": "Petugas inspeksi: 'Tolong hitung secara akurat ada berapa buah produk di dalam kotak di atas rak.' Bentuk kamus: ある か.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あった"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "ある"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あって"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (ある).",
+        "logic": "Di dalam kalimat tanya terselip <strong>[Kata Tanya] + [Verba Bentuk Biasa (普通形)] + か</strong>, untuk menyatakan keberadaan benda mati saat ini digunakan verba bentuk kamus <strong>ある (aru)</strong>.<br>Contoh: <code>何個 あるか、数えてください (hitunglah ada berapa buah)</code>.",
+        "distractor": "• Opsi A: あります adalah bentuk formal sopan (dalam anak kalimat tanya terselip wajib menggunakan bentuk biasa / futsuukei).\n• Opsi B: あった adalah bentuk lampau (kurang pas untuk kotak yang sedang ada di hadapan saat inspeksi).\n• Opsi D: あって adalah bentuk te-kei.",
+        "grammarRule": "Rumus Embedded Question Futsuukei: [Kata Tanya: 何個 / いくつ / 何本] + [Verba Bentuk Kamus: ある / いる / 要る] + か、～."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Embedded Question Biner Operasional ([V-te iru] + Ka dou ka)",
+      "type": "teks",
+      "question_ja": "班長：『アグス、作業を 始める 前に、ボルトが ちゃんと 締まって （　<strong>＿＿＿＿＿</strong>　）かどうか、確認しろ。』",
+      "question_ruby": "班長：『アグス、作業を 始める 前に、ボルトが ちゃんと 締まって （　<strong>＿＿＿＿＿</strong>　）かどうか、確認しろ。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk melengkapi 'apakah baut terkencangkan dengan baik atau tidak' dari verba 'imasu' adalah...",
+      "translation": "Mandor: 'Agus, sebelum memulai kerja, pastikan apakah baut sudah terkencangkan dengan baik atau belum!' Bentuk kasual: いる かどうか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "います"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "いる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "いた"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "いて"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (いる).",
+        "logic": "Pola kalimat tanya terselip biner: <strong>[Verba Bentuk Biasa (Futsuukei)] + かどうか、確認する／調べる</strong>.<br>Untuk menyatakan kondisi baut yang sedang dalam keadaan terpasang kencang (締まっている), bentuk biasa dari <em>締まっています</em> adalah <strong>締まっている (shimatte iru)</strong>.<br>Maka disambungkan menjadi: <code>締まっている かどうか (apakah terkencangkan atau tidak)</code>.",
+        "distractor": "• Opsi A: います adalah bentuk sopan formal (tidak digunakan sebelum かどうか).\n• Opsi C: いた adalah bentuk lampau.\n• Opsi D: いて adalah bentuk te.",
+        "grammarRule": "Rumus Verba Kontinu Biner: [V-te iru (Bentuk Biasa)] + かどうか、確認します / 調べます."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Embedded Question Bentuk Lampau ([V-ta] + Ka / Ka dou ka)",
+      "type": "teks",
+      "question_ja": "事務所で：『すみません。今朝 届いた 荷物を、誰が （　<strong>＿＿＿＿＿</strong>　）か、覚えていますか。』",
+      "question_ruby": "事務所で：『すみません。今朝 届いた 荷物を、誰が （　<strong>＿＿＿＿＿</strong>　）か、覚えていますか。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk kalimat tanya terselip lampau 'siapa yang telah menerima...' dari verba 'uketorimasu' adalah...",
+      "translation": "Di kantor: 'Permisi. Apakah Anda ingat siapa yang telah menerima paket kiriman yang sampai tadi pagi?' Bentuk lampau: 受け取った か.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "受け取る"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "受け取ります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "受け取って"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "受け取った"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (受け取った).",
+        "logic": "Karena tindakan penerimaan paket kiriman telah terjadi tadi pagi (今朝届いた荷物), maka kata kerja di dalam kalimat tanya terselip wajib menggunakan <strong>Bentuk Biasa Lampau (た形 - Ta-kei)</strong>: <strong>[V-ta] + か、覚えていますか</strong>.<br>Dari verba <code>受け取ります ➔ 受け取った ＋ か ➔ 誰が受け取ったか (siapa yang telah menerima)</code>.",
+        "distractor": "• Opsi A: 受け取る adalah bentuk kamus non-lampau.\n• Opsi B: 受け取ります adalah bentuk sopan formal non-lampau.\n• Opsi C: 受け取って adalah bentuk te-kei.",
+        "grammarRule": "Rumus Embedded Question Lampau: [Subjek-が / Kata Tanya] + [Verba Bentuk-TA] + か／かどうか、覚えています／知っています."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Niat / Rencana Kuat Masa Depan ([V-jisho] + Tsumori desu)",
+      "type": "teks",
+      "question_ja": "実習生：『3年間の 技能実習が 終わった 後、インドネシアの 日系企業で （　<strong>＿＿＿＿＿</strong>　） つもりです。』",
+      "question_ruby": "実習生：『3年間の 技能実習が 終わった 後、インドネシアの 日系企業で （　<strong>＿＿＿＿＿</strong>　） つもりです。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk menyatakan tekad rencana kuat 'berniat untuk bekerja' dari verba 'hatarakimasu' adalah...",
+      "translation": "Siswa magang: 'Setelah pemagangan teknis 3 tahun selesai, saya berniat untuk bekerja di perusahaan Jepang yang ada di Indonesia.' Bentuk kamus: 働く つもりです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "働く"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "働いた"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "働きます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "働いて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (働く).",
+        "logic": "Pola untuk menyatakan tekad, niat, atau rencana kuat pembicara adalah: <strong>[Verba Bentuk Kamus (Jisho-kei)] + つもりです</strong>.<br>Dari verba <code>働きます ➔ Bentuk Kamus: 働く（はたらく） ＋ つもりです ➔ 働くつもりです (berniat / bertekad untuk bekerja)</code>.",
+        "distractor": "• Opsi B: 働いた adalah bentuk lampau (pola rencana masa depan tidak menggunakan ta-kei).\n• Opsi C: 働きます adalah bentuk sopan (sebelum つもり wajib bentuk biasa).\n• Opsi D: 働いて adalah bentuk te-kei.",
+        "grammarRule": "Rumus Niat Tekad Kuat Positif: [Verba Bentuk Kamus (Jisho-kei)] + つもりです (Berniat untuk...)."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Tekad Niat Tidak Melakukan ([V-nai] + Tsumori desu)",
+      "type": "teks",
+      "question_ja": "健康と 節約の ために、来月から たばこを （　<strong>＿＿＿＿＿</strong>　） つもりです。",
+      "question_ruby": "健康と 節約の ために、来月から たばこを （　<strong>＿＿＿＿＿</strong>　） つもりです。",
+      "question_id": "Bentuk konjugasi yang tepat untuk menyatakan tekad 'berniat tidak akan merokok' dari verba 'suimasu' adalah...",
+      "translation": "Demi kesehatan dan penghematan, mulai bulan depan saya berniat untuk tidak merokok. Bentuk negatif: 吸わない つもりです.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "吸う"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "吸った"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "吸わない"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "吸わなくて"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (吸わない).",
+        "logic": "Untuk menyatakan rencana tekad <strong>tidak akan melakukan sesuatu</strong>, digunakan konjugasi negatif kasual: <strong>[Verba Bentuk-NAI] + つもりです</strong>.<br>Dari kata kerja <code>吸います ➔ Bentuk-Nai: 吸わない（すわない） ＋ つもりです ➔ 吸わないつもりです (bertekad tidak akan merokok)</code>.",
+        "distractor": "• Opsi A: 吸う berniat merokok (kontradiktif dengan tujuan berhemat dan sehat).\n• Opsi B: 吸った adalah bentuk lampau.\n• Opsi D: 吸わなくて adalah bentuk te negatif sambung sebab-akibat.",
+        "grammarRule": "Rumus Tekad Niat Negatif: [Verba Bentuk-NAI] + つもりです (Berniat / Bertekad untuk TIDAK melakukan...)."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Waktu Belum Selesai vs Tuntas Selesai ([V-jisho] vs [V-ta] Toki)",
+      "type": "teks",
+      "question_ja": "① 日本へ （　<strong>いく</strong>　） とき、パスポートを 準備しました。<br>② 日本へ （　<strong>いった</strong>　） とき、富士山に 登りました。<br>二つの 文の 時間関係の 説明として 正しいのは どれですか。",
+      "question_ruby": "① 日本へ （　<strong>いく</strong>　） とき、パスポートを 準備しました。<br>② 日本へ （　<strong>いった</strong>　） とき、富士山に 登りました。<br>二つの 文の 時間関係の 説明として 正しいのは どれですか。",
+      "question_id": "Penjelasan hubungan waktu yang tepat antara kedua kalimat di atas adalah...",
+      "translation": "① Saat [sebelum] pergi ke Jepang (menyiapkan paspor). ② Saat [sudah tiba] di Jepang (mendaki Gunung Fuji).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "① dan ② sama-sama terjadi setelah tiba di Jepang"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "① SEBELUM berangkat ke Jepang; ② SETELAH berada di Jepang"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "① setelah pulang ke tanah air; ② sebelum berangkat"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "① pengandaian bersyarat; ② penyesalan masa lalu"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (① SEBELUM berangkat ke Jepang; ② SETELAH berada di Jepang).",
+        "logic": "1) <strong>[V-jisho] + 時</strong> menandai perbuatan yang <strong>belum selesai / sebelum aksi</strong> (paspor disiapkan <em>sebelum</em> pergi).<br>2) <strong>[V-ta] + 時</strong> menandai aksi yang <strong>telah tuntas / setelah berada di sana</strong> (mendaki Fuji dilakukan <em>setelah</em> tiba).",
+        "distractor": "• Opsi A: Keliru, karena kalimat ① terjadi sebelum terbang.\n• Opsi C: Menyalahi urutan kronologis waktu.\n• Opsi D: Bukan pola pengandaian atau penyesalan.",
+        "grammarRule": "Distingsi Waktu: [V-jisho] 時 = Sebelum aksi selesai | [V-ta] 時 = Sesudah aksi tuntas."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Dialog Integratif Troubleshooting Mesin K3 Pabrik",
+      "type": "teks",
+      "question_ja": "アグス：『班長、警告ランプが 点きました。』<br>班長：『よし、まず スイッチを 切って、油が 足りている（　①　） 調べろ。もし 足りなかったら、すぐに 新しい オイルを （　②　） つもりだ。』",
+      "question_ruby": "アグス：『班長、警告ランプが 点きました。』<br>班長：『よし、まず スイッチを 切って、油が 足りている（　①　） 調べろ。もし 足りなかったら、すぐに 新しい オイルを （　②　） つもりだ。』",
+      "question_id": "Kombinasi yang tepat untuk melengkapi instruksi penanganan kendala mandor di atas adalah...",
+      "translation": "Agus: 'Mandor, lampu peringatan menyala.' Mandor: 'Baik, pertama-tama matikan saklar dan periksa apakah oli cukup atau tidak. Bila kurang, saya berniat segera memasukkan oli baru.' Kombinasi: かどうか ／ 入れる.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "か ／ 入れない"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "と ／ 入れる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "から ／ 入れた"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "かどうか ／ 入れる"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (かどうか ／ 入れる).",
+        "logic": "1) Pengecekan biner status oli: <code>油が足りている かどうか 調べろ (periksalah apakah oli mencukupi atau tidak)</code> menggunakan <strong>かどうか</strong>.<br>2) Niat tindakan pengisian oli: <code>オイルを 入れる つもりだ (berniat untuk memasukkan/mengisi oli)</code> menuntut bentuk kamus <strong>入れる</strong>.<br>Maka kombinasi yang tepat adalah <strong>かどうか ／ 入れる</strong>.",
+        "distractor": "• Opsi A: か (tanpa kata tanya) salah struktur / 入れない (berniat tidak mengisi) merusak mesin.\n• Opsi B: と salah partikel / 入れる.\n• Opsi C: から salah fungsi / 入れた bentuk lampau tidak sinkron dengan tsumori.",
+        "grammarRule": "Integrasi Troubleshooting Pabrik Bab 23: [V-te iru] + かどうか調べる (Cek kecukupan sistem) ＆ [V-jisho] + つもりです (Niat penanganan perbaikan)."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Tindakan di Jalan (道を渡る)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。道を どうしますか。<br>「信号が 青ですから、道を （　　　）。」",
+      "question_ruby": "絵（え）を 見て ください。道を どうしますか。<br>「信号が 青ですから、道を （　　　）。」",
+      "question_id": "Perhatikan gambar penyeberangan jalan. Karena lampu hijau, (...) jalan.",
+      "translation": "Karena lampu lalu lintas berwarna hijau, menyeberangi jalan (michi o watarimasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まがります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "渡ります（わたります）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "とまります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "はしります"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (渡ります（わたります）).",
+        "logic": "Gambar menunjukkan pejalan kaki menyeberangi jalan di atas garis zebra cross saat lampu hijau (道を渡る / みちをわたる - michi o wataru).",
+        "distractor": "• Opsi A: まがります berarti berbelok arah.\n• Opsi C: とまります berarti berhenti melangkah.\n• Opsi D: はしります berarti berlari tergesa-gesa.",
+        "grammarRule": "Aktivitas Berlalu Lintas Bab 23: 道を 渡ります（menyeberang jalan raya）."
+      },
+      "image": "assets/bab_23/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Keterangan Tempat (働いている工場)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。ここは どんな 場所ですか。<br>「わたしが （　　　）工場です。」",
+      "question_ruby": "絵（え）を 見て ください。ここは どんな 場所ですか。<br>「わたしが （　　　）工場です。」",
+      "question_id": "Perhatikan gambar gedung tempat kerja. Tempat apakah ini? 'Pabrik tempat saya (...)'.",
+      "translation": "Ini adalah gedung pabrik tempat saya bekerja setiap hari (watashi ga hataraite iru koujou desu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "やすんでいる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "けんがくする"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "働いている（はたらいている）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あそんでいる"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (働いている（はたらいている）).",
+        "logic": "Gambar memperlihatkan kawasan industri tempat peserta magang bertugas (働いている工場 / はたらいているこうじょう).",
+        "distractor": "• Opsi A: やすんでいる berarti sedang beristirahat.\n• Opsi B: けんがくする berarti sekadar mengunjungi studi.\n• Opsi D: あそんでいる berarti sedang bermain.",
+        "grammarRule": "Klausa Penjelas Lokasi: [Subjek] が 働いている [Tempat]."
+      },
+      "image": "assets/bab_23/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (曲がる)",
+      "type": "teks",
+      "question_ja": "次の 信号を 右へ （ 曲がる ）と、交番が あります。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "次の 信号を 右へ （ 曲がる ）と、交番が あります。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Jika berbelok ke kanan di lampu merah berikutnya, ada pos polisi. Pilihlah cara baca kanji '曲がる' yang tepat.",
+      "translation": "Bila berbelok ke arah kanan di lampu merah berikutnya, akan ada pos polisi (kouban).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "まがる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "わたる"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "とおる"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "おりる"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (まがる).",
+        "logic": "Kanji 曲がる dibaca まがる (magaru) yang bermakna berbelok atau menikung.",
+        "distractor": "• Opsi B: わたる ditulis 渡る (menyeberang).\n• Opsi C: とおる ditulis 通る (melewati / melintas).\n• Opsi D: おりる ditulis 降りる (turun dari kendaraan).",
+        "grammarRule": "Arah Jalan Bab 23: [Arah] へ 曲がります（まがります = berbelok ke arah ...）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (信号)",
+      "type": "teks",
+      "question_ja": "あの （ しんごう ）を 左へ 曲がって ください。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "あの （ しんごう ）を 左へ 曲がって ください。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Tolong berbelok ke kiri di lampu lalu lintas itu. Pilihlah penulisan kanji yang tepat untuk 'shingou'.",
+      "translation": "Tolong berbeloklah ke kiri di lampu rambu lalu lintas (traffic light) di sebelah sana.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "信号"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "信吾"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "伸号"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "真号"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (信号).",
+        "logic": "Kata しんごう (sinyal / lampu rambu lalu lintas) ditulis dengan kanji 信号 (信 = pesan sinyal, 号 = tanda nomor).",
+        "distractor": "• Opsi B: 信吾 adalah nama orang.\n• Opsi C: 伸号 adalah penulisan yang salah.\n• Opsi D: 真号 adalah bentuk yang keliru.",
+        "grammarRule": "Rambu Lalu Lintas Bab 23: 信号（しんごう = lampu lalu lintas）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (交差点)",
+      "type": "teks",
+      "question_ja": "広い （ こうさてん ）では 車に 気を つけます。<br>正しい 漢字は どれですか。",
+      "question_ruby": "広い （ こうさてん ）では 車に 気を つけます。<br>正しい 漢字は どれですか。",
+      "question_id": "Di perempatan jalan yang ramai berhati-hati terhadap mobil. Pilihlah kanji yang tepat untuk 'kousaten'.",
+      "translation": "Di area persimpangan perempatan jalan yang lebar, wajib ekstra waspada terhadap mobil yang melaju.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "交差点"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "交差店"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "郊差点"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "効差点"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (交差点).",
+        "logic": "Kata こうさてん (persimpangan jalan / perempatan) ditulis dengan kanji baku 交差点 (交 = berpapasan, 差 = berbeda/silang, 点 = titik persilangan).",
+        "distractor": "• Opsi B: 交差店 salah huruf belakang (menggunakan 店 = toko/kedai).\n• Opsi C: 郊差点 salah huruf depan (menggunakan 郊 = pinggiran kota).\n• Opsi D: 効差点 salah huruf depan (menggunakan 効 = khasiat/efektif).",
+        "grammarRule": "Keselamatan Jalan Raya: 交差点（こうさてん = persimpangan jalan）."
+      }
+    }
+  ]
+};
+
+const BAB_24_DATA = {
+  "chapter": "24",
+  "title_ja": "第２４課：自他動詞の対応（自動詞・他動詞）・～てあります（結果の状態・準備）・～ています（状態の継続）・動作の前後関係（～た時）",
+  "title_id": "Bab 24: Pasangan Verba Intransitif & Transitif (Jidoushi & Tadoushi), Kondisi Hasil Kesiapan (~te arimasu), Kondisi Berlangsung (~te imasu), dan Urutan Waktu Selesai (~ta toki)",
+  "theme_ja": "自他動詞の峻別 (Distingsi Transitif/Intransitif Pabrik), ～てあります (Hasil Perbuatan Sengaja), ～ています (Kondisi Terbuka/Menyala), 点検準備 (~te okimasu)",
+  "theme_id": "Evaluasi komprehensif Bab 24 yang menguji penguasaan materi: pasangan kata kerja transitif (他動詞 - Tadoushi yang berobjek を) dan intransitif (自動詞 - Jidoushi yang bersubjek が); pola kondisi hasil perbuatan yang sengaja dipersiapkan untuk tujuan tertentu ([V-tadoushi] + てあります); pola kondisi keadaan berlanjut tanpa melihat pelaku ([V-jidoushi] + ています); pola tindakan persiapan dini sebelum pekerjaan ([V-te] + おきます); keterangan waktu kejadian lampau ([V-ta] + 時); serta penerapannya dalam inspeksi kelayakan peralatan bengkel, ruang kelas, dan keselamatan kerja IMM Japan.",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 24.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 24.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Pasangan Jidoushi/Tadoushi Lampu & Listrik Menyala Serta Padam",
+      "type": "teks",
+      "question_ja": "「電気が （　①　）」、「電気を （　②　）」、「火が （　③　）」、「火を （　④　）」の 正しい 組み合わせは どれですか。",
+      "question_ruby": "「電気が （　①　）」、「電気を （　②　）」、「火が （　③　）」、「火を （　④　）」の 正しい 組み合わせは どれですか。",
+      "question_id": "Pasangan verba transitif dan intransitif yang benar untuk menyala dan padamnya listrik/api adalah...",
+      "translation": "① 電気がつきます (listrik menyala - jidoushi), ② 電気をつけます (menyalakan listrik - tadoushi), ③ 火がきえます (api padam - jidoushi), ④ 火をけします (memadamkan api - tadoushi).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "つけます ／ つきます ／ けします ／ きえます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あきます ／ あけます ／ しまります ／ しめます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "つきます ／ とめます ／ きえます ／ こわします"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "つきます ／ つけます ／ きえます ／ けします"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (つきます ／ つけます ／ きえます ／ けします).",
+        "logic": "1) Pasangan menyala: Intransitif <strong>点きます（つきます）</strong> berpasangan dengan transitif <strong>点けます（つけます）</strong>.<br>2) Pasangan padam: Intransitif <strong>消えます（きえます）</strong> berpasangan dengan transitif <strong>消します（けします）</strong>.<br>Maka urutan ① s.d. ④ yang tepat adalah <strong>つきます ／ つけます ／ きえます ／ けします</strong>.",
+        "distractor": "• Opsi A: Urutan transitif dan intransitifnya terbalik (menukar jidoushi dan tadoushi).\n• Opsi B: Adalah pasangan buka/tutup (あきます/あけます/しまります/しめます).\n• Opsi C: Mencampurkan kata menghentikan (とめる) dan merusak (こわす).",
+        "grammarRule": "Pasangan Jidoushi-Tadoushi Listrik: が点きます（intransitif） ⇄ を点けます（transitif） | が消えます（intransitif） ⇄ を消します（transitif）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Pasangan Jidoushi/Tadoushi Pintu dan Jendela Buka serta Tutup",
+      "type": "teks",
+      "question_ja": "「ドアが （　①　）」、「ドアを （　②　）」、「窓が （　③　）」、「窓を （　④　）」の 正しい 組み合わせは どれですか。",
+      "question_ruby": "「ドアが （　①　）」、「ドアを （　②　）」、「窓が （　③　）」、「窓を （　④　）」の 正しい 組み合わせは どれですか。",
+      "question_id": "Pasangan kata kerja membuka dan menutup yang tepat untuk melengkapi kalimat di atas adalah...",
+      "translation": "① ドアがあきます (pintu terbuka - jidoushi), ② ドアをあけます (membuka pintu - tadoushi), ③ 窓がしまります (jendela tertutup - jidoushi), ④ 窓をしめます (menutup jendela - tadoushi).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あけます ／ あきます ／ しめます ／ しまります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あきます ／ あけます ／ しまります ／ しめます"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "はいります ／ いれます ／ とまります ／ とめます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "うごきます ／ うごかします ／ こわれます ／ こわします"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (あきます ／ あけます ／ しまります ／ しめます).",
+        "logic": "1) Pasangan membuka: Intransitif (が) <strong>開きます（あきます）</strong> ⇄ Transitif (を) <strong>開けます（あけます）</strong>.<br>2) Pasangan menutup: Intransitif (が) <strong>閉まります（しまります）</strong> ⇄ Transitif (を) <strong>閉めます（しめます）</strong>.<br>Kombinasi yang tepat dan berurutan adalah <strong>あきます ／ あけます ／ しまります ／ しめます</strong>.",
+        "distractor": "• Opsi A: Urutan jidoushi dan tadoushi tertukar.\n• Opsi C: Merupakan pasangan masuk/memasukkan dan berhenti/menghentikan.\n• Opsi D: Merupakan pasangan bergerak/menggerakkan dan rusak/merusak.",
+        "grammarRule": "Pasangan Buka-Tutup: が開きます（あきます） ⇄ を開けます（あけます） | が閉まります（しまります） ⇄ を閉めます（しめます）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Pasangan Jidoushi/Tadoushi Kerusakan Peralatan (Kowaremasu/Kowashimasu)",
+      "type": "teks",
+      "question_ja": "乱暴に 使って 機械を （　①　）てはいけません。もし 部品が （　②　）たら、すぐに 報告しなさい。",
+      "question_ruby": "乱暴に 使って 機械を （　①　）てはいけません。もし 部品が （　②　）たら、すぐに 報告しなさい。",
+      "question_id": "Pasangan kata kerja transitif 'merusakkan' dan intransitif 'rusak' yang tepat adalah...",
+      "translation": "Jangan merusak mesin karena pemakaian kasar! Bila komponennya rusak, segera laporkan! Pasangan: こわし (merusak - transitif) ／ こわれ (rusak - intransitif).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "こわれ ／ こわし"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おと ／ おち"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "こわし ／ こわれ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "やぶ ／ やぶれ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (こわし ／ こわれ).",
+        "logic": "1) Menjadikan mesin rusak oleh perbuatan ceroboh menggunakan kata kerja transitif: <code>機械を 壊します（こわします - kowashimasu） ➔ 壊してはいけません</code>.<br>2) Komponen yang mengalami kerusakan sendiri menggunakan kata kerja intransitif: <code>部品が 壊れます（こわれます - kowaremasu） ➔ 壊れたら</code>.<br>Maka pasangan yang tepat adalah <strong>こわし ／ こわれ</strong>.",
+        "distractor": "• Opsi A: こわれ (intransitif) dan こわし (transitif) tertukar posisinya.\n• Opsi B: おとし / おち adalah pasangan menjatuhkan / jatuh.\n• Opsi D: やぶり / やぶれ adalah merobek / robek.",
+        "grammarRule": "Pasangan Kerusakan Mesin: [Benda] を 壊します（こわします - merusakkan） ⇄ [Benda] が 壊れます（こわれます - rusak）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Pasangan Jidoushi/Tadoushi Mengunci Pintu (Kakarimasu/Kakemasu)",
+      "type": "teks",
+      "question_ja": "事務所を 出る ときは、ドアに かぎを （　①　）ます。確認すると、ちゃんとかぎが （　②　）ていました。",
+      "question_ruby": "事務所を 出る ときは、ドアに かぎを （　①　）ます。確認すると、ちゃんとかぎが （　②　）ていました。",
+      "question_id": "Pasangan kata kerja transitif 'mengunci' dan intransitif 'terkunci' yang tepat adalah...",
+      "translation": "Saat meninggalkan kantor, mengunci pintu (かぎを掛けます). Saat dicek, kuncinya sudah terkunci dengan baik (かぎが掛かっていました).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かけ ／ かかっ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "かかっ ／ かけ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "つけ ／ つかっ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "しめ ／ しまっ"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (かけ ／ かかっ).",
+        "logic": "1) Tindakan aktif mengunci pintu: <strong>かぎを 掛けます（かけます - transitif）</strong>.<br>2) Kondisi pintu yang dalam keadaan terkunci: <strong>かぎが 掛かります（かかります - intransitif） ➔ 掛かっていました</strong>.<br>Maka pasangan yang tepat adalah <strong>かけ ／ かかっ</strong>.",
+        "distractor": "• Opsi B: Terbalik antara bentuk transitif kake dan intransitif kakari.\n• Opsi C: つけ / つかっ berasal dari tsukemasu (menyalakan/memasang) dan tsukaimasu (menggunakan).\n• Opsi D: Adalah verba shimemasu/shimarimasu (menutup pintu), bukan memasang anak kunci.",
+        "grammarRule": "Penguncian Pintu K3: かぎを掛けます（かけます - mengunci） ⇄ かぎが掛かります（かかります - terkunci）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Istilah Pemadaman Listrik & Kipas Angin Ruang Kelas",
+      "type": "teks",
+      "question_ja": "突然 （　<strong>ていでん</strong>　）に なって 電気が 消え、（　<strong>せんぷうき</strong>　）も 止まりました。漢字表記は どれですか。",
+      "question_ruby": "突然 （　<strong>ていでん</strong>　）に なって 電気が 消え、（　<strong>せんぷうき</strong>　）も 止まりました。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'teiden' (mati listrik) dan 'senpuuki' (kipas angin) adalah...",
+      "translation": "Tiba-tiba terjadi pemadaman listrik sehingga lampu padam, dan kipas angin pun ikut berhenti berputar. Pasangan kanji: 停電 ／ 扇風機.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "点灯 ／ 洗濯機"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "発電 ／ 換気扇"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "断水 ／ 掃除機"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "停電 ／ 扇風機"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (停電 ／ 扇風機).",
+        "logic": "1) <strong>停電（ていでん - teiden）</strong> adalah kondisi <strong>terputusnya aliran listrik / mati lampu</strong>.<br>2) <strong>扇風機（せんぷうき - senpuuki）</strong> adalah alat elektronik <strong>kipas angin</strong> pemutar udara.",
+        "distractor": "• Opsi A: 点灯 (menyalakan lampu) / 洗濯機 (mesin cuci pakaian).\n• Opsi B: 発電 (pembangkit listrik) / 換気扇 (exhaust fan ventilasi).\n• Opsi C: 断水 (pemadaman aliran air PAM) / 掃除機 (vacuum cleaner pembersih debu).",
+        "grammarRule": "Kosakata Peralatan Kelas Bab 24: 停電（ていでん - mati listrik） ＆ 扇風機（せんぷうき - kipas angin）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji Laci Meja, Lemari, dan Menempelkan Informasi",
+      "type": "teks",
+      "question_ja": "大切な パスポートは 箪笥の （　<strong>ひきだし</strong>　）に しまい、壁には カレンダーを （　<strong>はって</strong>　）あります。漢字表記は どれですか。",
+      "question_ruby": "大切な パスポートは 箪笥の （　<strong>ひきだし</strong>　）に しまい、壁には カレンダーを （　<strong>はって</strong>　）あります。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'hikidashi' (laci) dan 'hatte' (menempelkan) adalah...",
+      "translation": "Paspor berharga disimpan di dalam laci lemari, dan di dinding tertempel kalender. Pasangan kanji: 引き出し ／ 貼って.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "差出 ／ 立てて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "引き出し ／ 貼って"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "引込 ／ 掛けて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "本棚 ／ 置いて"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (引き出し ／ 貼って).",
+        "logic": "1) <strong>引き出し（ひきだし - hikidashi）</strong> adalah <strong>laci sorong pada meja atau lemari pakaian</strong>.<br>2) <strong>貼ります（はります - harimasu）</strong> ditulis <strong>貼</strong> yang berarti <strong>menempelkan kertas, poster, atau stiker pada permukaan datar</strong> (bentuk te: 貼って).",
+        "distractor": "• Opsi A: 差出 (pengiriman surat) / 立てて (mendirikan).\n• Opsi C: 引込 (penarikan kabel) / 掛けて (menggantungkan jam/baju).\n• Opsi D: 本棚 (rak buku) / 置いて (meletakkan).",
+        "grammarRule": "Aksi Penataan Ruangan: 引き出し（ひきだし - laci）にしまう ＆ 壁にポスターを貼ります（はります - menempelkan）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Tersandung Jatuh Saat Turun Kereta & Balasan/Jawaban",
+      "type": "teks",
+      "question_ja": "駅の 階段で 足を 滑らせて （　<strong>ころびました</strong>　）。名前を 呼ばれたら、元気に （　<strong>へんじ</strong>　）を しなさい。漢字表記は どれですか。",
+      "question_ruby": "駅の 階段で 足を 滑らせて （　<strong>ころびました</strong>　）。名前を 呼ばれたら、元気に （　<strong>へんじ</strong>　）を しなさい。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'korobimashita' (tersandung/jatuh) dan 'henji' (jawaban/sahutan) adalah...",
+      "translation": "Tersandung dan jatuh di tangga stasiun karena terpeleset. Jika dipanggil nama, sahutlah jawaban dengan penuh semangat. Pasangan kanji: 転びました ／ 返事.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "倒れました ／ 案内"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "滑りました ／ 挨拶"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "転びました ／ 返事"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "折れました ／ 連絡"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (転びました ／ 返事).",
+        "logic": "1) <strong>転びます（ころびます - korobimasu）</strong> ditulis <strong>転</strong> yang bermakna <strong>tersandung, tergelincir, lalu jatuh terjerembab</strong>.<br>2) <strong>返事（へんじ - henji）</strong> adalah <strong>jawaban lisan, sahutan 'Hai!', atau balasan saat dipanggil</strong> yang menjadi etika dasar kedisiplinan pemagangan.",
+        "distractor": "• Opsi A: 倒れました (roboh/pingsan) / 案内 (pemanduan).\n• Opsi B: 滑りました (tergelincir) / 挨拶 (salam sapaan).\n• Opsi D: 折れました (patah tulang/ranting) / 連絡 (komunikasi kabar).",
+        "grammarRule": "K3 & Etika Peserta Magang: 階段で転びます（ころびます - tersandung jatuh） ＆ 「はい！」と大きな声で返事（へんじ - menyahut panggilan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Keadaan Alami Intransitif Jidoushi (Ga)",
+      "type": "teks",
+      "question_ja": "誰も いませんから、事務所の 電気（　<strong>？</strong>　） 全部 消えています。",
+      "question_ruby": "誰も いませんから、事務所の 電気（　<strong>？</strong>　） 全部 消えています。",
+      "question_id": "Partikel yang tepat untuk menandai lampu kantor yang berada dalam kondisi padam adalah...",
+      "translation": "Karena tidak ada siapa-siapa, semua lampu kantor sedang dalam keadaan padam. Partikel subjek keadaan intransitif adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (が).",
+        "logic": "Pola keadaan yang mendeskripsikan kondisi alami suatu benda menggunakan <strong>[Kata Benda] + が + [Verba Intransitif (Jidoushi)] + ています</strong>.<br>Verba <em>消えています (sedang padam)</em> adalah intransitif, sehingga subjeknya wajib ditandai oleh partikel <strong>が (ga)</strong>: <code>電気が 消えています</code>.",
+        "distractor": "• Opsi B: を hanya dipakai bila ada pelaku yang memadamkan lampu (contoh: 電気を消しました).\n• Opsi C: に menandai titik penempelan.\n• Opsi D: で menandai tempat aksi.",
+        "grammarRule": "Rumus Keadaan Benda Alami: [Nomina] + が + [Verba Intransitif (Jidoushi)] + ています (開いている / 閉まっている / 消えている)."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Objek Penderita dari Aksi Transitif Tadoushi (O)",
+      "type": "teks",
+      "question_ja": "部屋を 出る 人は、忘れずに ドア（　<strong>？</strong>　） きちんと 閉めてください。",
+      "question_ruby": "部屋を 出る 人は、忘れずに ドア（　<strong>？</strong>　） きちんと 閉めてください。",
+      "question_id": "Partikel yang tepat untuk menandai pintu sebagai sasaran perbuatan yang sengaja ditutup adalah...",
+      "translation": "Orang yang keluar ruangan harap menutup pintu dengan tertib tanpa lupa. Partikel objek tindakan sengaja adalah を.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "を"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (を).",
+        "logic": "Verba <strong>閉めます（しめます - menutup）</strong> adalah kata kerja transitif (他動詞) yang melibatkan tindakan sengaja seseorang terhadap suatu objek sasaran penderita, sehingga wajib menggunakan partikel <strong>を (o)</strong>: <code>ドアを 閉めてください</code>.",
+        "distractor": "• Opsi A: が hanya digunakan bersama verba intransitif shimarimasu (ドアが閉まる).\n• Opsi B: に menandai titik masuk/tiba.\n• Opsi C: で menandai cara atau alat.",
+        "grammarRule": "Partikel Tindakan Transitif: [Objek Sasaran: ドア / 窓 / スイッチ] + を + 閉めます / 開けます / つけます."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Hasil Perbuatan Sengaja (~te arimasu)",
+      "type": "teks",
+      "question_ja": "教室の後ろの 壁に、新しい 年の カレンダー（　<strong>？</strong>　） 掛けて あります。",
+      "question_ruby": "教室の後ろの 壁に、新しい 年の カレンダー（　<strong>？</strong>　） 掛けて あります。",
+      "question_id": "Partikel yang tepat untuk menandai kalender yang sengaja digantungkan pada dinding adalah...",
+      "translation": "Pada dinding di belakang kelas, kalender tahun baru telah sengaja digantungkan. Partikel subjek kesiapan adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (が).",
+        "logic": "Konstruksi <strong>[Nomina Benda] + が + [Verba Transitif bentuk-TE] + あります (～てあります)</strong> menyatakan <strong>kondisi suatu benda sebagai hasil perbuatan seseorang yang sengaja dilakukan untuk tujuan tertentu</strong>.<br>Subjek benda yang kondisinya terpasang/tersedia selalu ditandai oleh partikel <strong>が (ga)</strong>: <code>カレンダーが 掛けてあります</code>.",
+        "distractor": "• Opsi A: を tidak digunakan sebelum てあります (partikel を berubah menjadi が saat berkonjugasi ke bentuk てあります).\n• Opsi C: で menandai tempat aktivitas.\n• Opsi D: へ menandai arah tujuan gerak.",
+        "grammarRule": "Kaidah Mutlak Pola ~te arimasu: [Tempat] に + [Benda] が + [Verba Transitif (他動詞)] + てあります (Hasil perbuatan sengaja)."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penanda Titik Lokasi Penyimpanan Benda (Ni)",
+      "type": "teks",
+      "question_ja": "大切な 書類や パスポートは、机の 引き出し（　<strong>？</strong>　） しまって あります。",
+      "question_ruby": "大切な 書類や パスポートは、机の 引き出し（　<strong>？</strong>　） しまって あります。",
+      "question_id": "Partikel yang tepat untuk menandai laci meja sebagai titik lokasi tersimpannya dokumen penting adalah...",
+      "translation": "Dokumen penting dan paspor telah sengaja disimpan di dalam laci meja. Partikel lokasi penyimpanan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Kata kerja <strong>しまいます（ menyimpan ke tempat aman ）</strong> dalam bentuk <em>しまってあります</em> menuntut partikel <strong>に (ni)</strong> untuk menandai <strong>titik akhir wadah atau ruang tempat benda diletakkan dan tersimpan</strong>: <code>引き出しに しまってあります</code>.",
+        "distractor": "• Opsi A: で menandai tempat terjadinya aktivitas dinamis, bukan alokasi peletakan statis benda diam.\n• Opsi B: を menandai dokumen penting sebagai objek (書類を).\n• Opsi D: から menandai titik awal pengeluaran.",
+        "grammarRule": "Titik Lokasi Penyimpanan: [Wadah / Tempat: 引き出し / 金庫 / 棚] + に + しまいます / 入れてあります / 置いてあります."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Pembatas Negatif Saat Ujian Berlangsung (Shika)",
+      "type": "teks",
+      "question_ja": "試験中ですから、机の上には 鉛筆と 消しゴム（　<strong>？</strong>　） 置いて ありません。",
+      "question_ruby": "試験中ですから、机の上には 鉛筆と 消しゴム（　<strong>？</strong>　） 置いて ありません。",
+      "question_id": "Partikel yang tepat untuk menegaskan bahwa hanya pensil dan penghapus saja yang diletakkan di atas meja adalah...",
+      "translation": "Karena sedang ujian, di atas meja hanya diletakkan pensil dan penghapus saja (barang lain dilarang). Partikel pembatas eksklusif adalah しか.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "しか"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "も"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "なら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "より"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (しか).",
+        "logic": "Partikel <strong>しか (shika)</strong> berpadu dengan verba bentuk negatif <strong>置いてありません</strong> untuk menekankan pembatasan ketat: <strong>'hanya barang itu saja dan tidak ada yang lain'</strong>: <code>鉛筆と消しゴムしか 置いてありません</code>.",
+        "distractor": "• Opsi B: も berarti 'juga/pun', tidak sinkron dengan konteks aturan ketat ujian.\n• Opsi C: なら menandai pengandaian topik.\n• Opsi D: より menandai perbandingan 'daripada'.",
+        "grammarRule": "Eksklusivitas Batasan Ujian: [Benda yang Diizinkan] + しか + [Verba Negatif: 置いてありません / 持っていません]."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Penegas Negasi Mutlak Bersama Kata Tanya (Nani Mo ... Nai/Arimasen)",
+      "type": "teks",
+      "question_ja": "ホワイトボードには、何（　<strong>？</strong>　） 書いて ありません。いまから テストですから。",
+      "question_ruby": "ホワイトボードには、何（　<strong>？</strong>　） 書いて ありません。いまから テストですから。",
+      "question_id": "Partikel yang tepat untuk membentuk penyangkalan mutlak 'tidak tertulis apa pun' bersama kata tanya 'nani' adalah...",
+      "translation": "Di papan tulis putih, sama sekali tidak tertulis apa pun karena sebentar lagi akan mulai ujian. Partikel penyangkalan mutlak adalah も.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "で"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "も"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (も).",
+        "logic": "Kombinasi kata tanya <strong>何（なに） ＋ Partikel も ＋ Bentuk Negatif (～ない / ～ありません)</strong> menghasilkan makna penyangkalan mutlak <strong>'sama sekali tidak ada apa pun'</strong> atau <strong>'tidak ada satu pun yang tertulis'</strong>.<br>Kutipan langsung teks Bab 24: <code>ホワイトボードには、何<strong>も</strong> 書いてありません (Di papan tulis putih tidak tertulis apa pun)</code>. Mengingat kelas akan digunakan untuk ujian, papan tulis dikosongkan total.",
+        "distractor": "• Opsi A: が menandai subjek biasa (misal: 何かが書いてあります), bukan penyangkalan mutlak.\n• Opsi B: を menandai objek langsung aksi transitif aktif (misal: 何も書きません).\n• Opsi C: で menandai sarana alat penulisan atau tempat aktivitas.",
+        "grammarRule": "Rumus Penyangkalan Mutlak: [Kata Tanya: 何 / だれ / どこ] + も + [Verba Negatif: ありません / いません / 行きません] (Sama sekali tidak...). Contoh Bab 24: 何も書いてありません (Tidak tertulis apa pun)."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Partikel dan Verba Jidoushi vs Tadoushi",
+      "type": "teks",
+      "question_ja": "寒いですから、窓（　①　） （　②　）てください。風で 窓（　③　） （　④　）ました。",
+      "question_ruby": "寒いですから、窓（　①　） （　②　）てください。風で 窓（　③　） （　④　）ました。",
+      "question_id": "Kombinasi partikel dan verba yang tepat untuk mengisi ①, ②, ③, dan ④ secara berturut-turut adalah...",
+      "translation": "Karena dingin, tolong tutup jendelanya (窓を閉めて). Karena angin, jendela tertutup sendiri (窓が閉まりました). Pasangan: を ／ 閉めて ／ が ／ 閉まり.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "が ／ 閉めて ／ を ／ 閉まり"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "を ／ 閉めて ／ が ／ 閉まり"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "を ／ 閉まり ／ が ／ 閉めて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "が ／ 開けて ／ を ／ 開き"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (を ／ 閉めて ／ が ／ 閉まり).",
+        "logic": "1) Kalimat pertama adalah instruksi perbuatan sengaja: objek <strong>を</strong> + verba transitif <strong>閉めてください (shimete kudasai)</strong>.<br>2) Kalimat kedua adalah peristiwa alamiah tiupan angin: subjek <strong>が</strong> + verba intransitif <strong>閉まりました (shimarimashita)</strong>.<br>Maka urutan yang tepat adalah <strong>を ／ 閉めて ／ が ／ 閉まり</strong>.",
+        "distractor": "• Opsi A: Partikel を dan が tertukar secara fatal.\n• Opsi C: Memasangkan partikel transitif dengan verba intransitif (窓を閉まり adalah salah kaprah).\n• Opsi D: Berarti membuka jendela saat dingin (bertentangan secara logika kontekstual).",
+        "grammarRule": "Distingsi Mutlak Pasangan Verba: [Benda] を + 閉めます（Transitif sengaja） ⇄ [Benda] が + 閉まります（Intransitif fenomena alam）."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kondisi Alami Berlanjut ([V-jidoushi] + Te imasu)",
+      "type": "teks",
+      "question_ja": "アグス：『班長、第2ラインの プレス機械が （　<strong>＿＿＿＿＿</strong>　）います。動きません！』",
+      "question_ruby": "アグス：『班長、第2ラインの プレス機械が （　<strong>＿＿＿＿＿</strong>　）います。動きません！』",
+      "question_id": "Bentuk kata kerja intransitif yang tepat untuk menyatakan 'dalam keadaan rusak' dari verba 'kowaremasu' adalah...",
+      "translation": "Agus: 'Mandor, mesin press di lini ke-2 sedang dalam kondisi rusak. Tidak bisa bergerak!' Bentuk intransitif: 壊れて（こわれて）います.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "壊して"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "壊す"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "壊れて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "壊れる"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (壊れて).",
+        "logic": "Untuk mendeskripsikan kondisi suatu mesin atau benda yang sedang dalam keadaan rusak/cacat secara objektif tanpa menyebutkan siapa yang merusaknya, digunakan: <strong>[Benda] が + [Verba Intransitif (Jidoushi)] + ています</strong>.<br>Dari verba <code>壊れます（こわれます） ➔ 壊れて（こわれて） ＋ います ➔ 壊れています (sedang dalam keadaan rusak)</code>.",
+        "distractor": "• Opsi A: 壊して（こわして） adalah bentuk transitif (merusak); jika dipadukan dengan います berarti seseorang sedang sengaja merusak mesin.\n• Opsi B: 壊す adalah bentuk kamus transitif.\n• Opsi D: 壊れる adalah bentuk kamus intransitif.",
+        "grammarRule": "Rumus Keadaan Rusak Objektif: 機械が壊れています（こわれています - mesin dalam kondisi rusak）."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Kondisi Hasil Perbuatan Sengaja ([V-tadoushi] + Te arimasu)",
+      "type": "teks",
+      "question_ja": "部屋が 暑いですから、空気を 入れ替える ために 窓が （　<strong>＿＿＿＿＿</strong>　）あります。",
+      "question_ruby": "部屋が 暑いですから、空気を 入れ替える ために 窓が （　<strong>＿＿＿＿＿</strong>　）あります。",
+      "question_id": "Bentuk kata kerja transitif yang tepat untuk menyatakan 'jendela sengaja dibuka' dari verba 'akemasu' adalah...",
+      "translation": "Karena ruangan panas, jendela telah sengaja dibuka demi pertukaran udara. Bentuk transitif: 開けて（あけて）あります.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あけて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "あいて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "あく"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あける"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (あけて).",
+        "logic": "Pola <strong>[Nomina] が + [Verba Transitif] + てあります</strong> menyatakan kondisi hasil perbuatan sengaja demi tujuan tertentu.<br>Verba transitif membuka: <code>開けます ➔ 開けて ＋ あります ➔ 開けてあります</code>.",
+        "distractor": "• Opsi B: あいて adalah bentuk te dari verba intransitif akimasu (開いています mendeskripsikan keadaan terbuka alami).\n• Opsi C: あく adalah bentuk kamus intransitif.\n• Opsi D: あける adalah bentuk kamus transitif.",
+        "grammarRule": "Rumus Keadaan Hasil Sengaja: [Nomina] が + [Verba Transitif (他動詞)] + てあります (Sengaja dibuka)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Perbandingan Makna Mendalam [～ています] vs [～てあります]",
+      "type": "teks",
+      "question_ja": "① ドアが 閉まって います。<br>② ドアが 閉めて あります。<br>二つの 表現の ニュアンスの 違いとして 最も 適切なのは どれですか。",
+      "question_ruby": "① ドアが 閉まって います。<br>② ドアが 閉めて あります。<br>二つの 表現の ニュアンスの 違いとして 最も 適切なのは どれですか。",
+      "question_id": "Perbedaan nuansa makna yang paling tepat antara kalimat ① dan ② di atas adalah...",
+      "translation": "① 閉まっています mendeskripsikan kondisi pintu tertutup tampak mata. ② 閉めてあります mengindikasikan pintu sengaja ditutup seseorang demi tujuan tertentu.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "① pintu sengaja dikunci; ② pintu rusak"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "① lampau; ② masa depan"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "① perbuatan sengaja; ② alami"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "① kondisi tertutup tampak mata; ② sengaja ditutup seseorang demi tujuan tertentu"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (① kondisi tertutup tampak mata; ② sengaja ditutup seseorang demi tujuan tertentu).",
+        "logic": "1) <code>閉まっています (Jidoushi + te imasu)</code>: Kondisi fisik tampak mata (pintu tertutup).<br>2) <code>閉めてあります (Tadoushi + te arimasu)</code>: Sengaja ditutup seseorang demi tujuan tertentu (misal: agar AC dingin).",
+        "distractor": "• Opsi A: Bukan mengenai kunci rusak.\n• Opsi B: Keduanya mendeskripsikan kondisi saat ini.\n• Opsi C: Terbalik dari pengertian sebenarnya.",
+        "grammarRule": "Distingsi Kunci: [Jidoushi + ています] = Keadaan tampak mata | [Tadoushi + てあります] = Hasil perbuatan sengaja."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pasangan Jidoushi/Tadoushi Operasional Gerak Mesin Industri",
+      "type": "teks",
+      "question_ja": "作業員が レバーを （　①　）と、ベルトコンベヤーが （　②　）出します。",
+      "question_ruby": "作業員が レバーを （　①　）と、ベルトコンベヤーが （　②　）出します。",
+      "question_id": "Pasangan verba transitif 'menggerakkan' dan intransitif 'bergerak' yang tepat adalah...",
+      "translation": "Bila pekerja menggerakkan tuas (レバーを動かすと), ban konveyor mulai bergerak berjalan (動き出します). Pasangan: 動かす ／ 動き.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "うごく ／ うごかし"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "うごかす ／ うごき"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "うごかす ／ うごかし"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "うごいて ／ うごかして"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (うごかす ／ うごき).",
+        "logic": "1) Klausa pertama menuntut verba transitif bentuk kamus sebelum partikel と: <code>レバーを 動かします ➔ 動かす（うごかす） ＋ と</code>.<br>2) Klausa kedua menuntut verba intransitif stem sebelum 出します: <code>コンベヤーが 動きます ➔ 動き（うごき） ＋ 出します ➔ 動き出します</code>.<br>Maka kombinasi yang tepat adalah <strong>うごかす ／ うごき</strong>.",
+        "distractor": "• Opsi A: うごく adalah intransitif (tidak cocok dengan partikel を).\n• Opsi C: うごかし adalah transitif (tidak cocok dengan konveyor yang bergerak sendiri).\n• Opsi D: Bentuk te tidak cocok disambung langsung dengan partikel to maupun dashimasu.",
+        "grammarRule": "Pasangan Gerak Mesin: [Tuas/Saklar] を 動かします（Transitif） ⇄ [Mesin/Konveyor] が 動きます（Intransitif）."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Tindakan Persiapan Dini Sebelum Bekerja ([V-te] + Okimasu)",
+      "type": "teks",
+      "question_ja": "班長：『明日の 朝 すぐに 作業が できる ように、今日の うちに 材料を （　<strong>＿＿＿＿＿</strong>　）おきなさい。』",
+      "question_ruby": "班長：『明日の 朝 すぐに 作業が できる ように、今日の うちに 材料を （　<strong>＿＿＿＿＿</strong>　）おきなさい。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk menyatakan tindakan persiapan dini 'siapkanlah/tatarlah terlebih dahulu' dari verba 'narabemasu' adalah...",
+      "translation": "Mandor: 'Agar besok pagi bisa langsung bekerja, tatalah bahan-bahannya terlebih dahulu hari ini!' Bentuk te: 並べて（ならべて） おきなさい.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "並べる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "並んだ"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "並べて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "並び"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (並べて).",
+        "logic": "Pola <strong>[Verba Bentuk-TE] + おきます (～ておきます)</strong> digunakan untuk menyatakan <strong>tindakan persiapan yang diselesaikan terlebih dahulu sebelum waktu aktivitas berikutnya tiba</strong>.<br>Dari verba transitif menata: <code>並べます（ならべます） ➔ Bentuk-Te: 並べて ＋ おきなさい ➔ 並べておきなさい (tatarlah terlebih dahulu)</code>.",
+        "distractor": "• Opsi A: 並べる adalah bentuk kamus.\n• Opsi B: 並んだ adalah bentuk lampau intransitif (berbaris).\n• Opsi D: 並び adalah masu stem.",
+        "grammarRule": "Rumus Persiapan Dini K3: [Verba Transitif Bentuk-TE] + おきます (Melakukan persiapan awal demi kelancaran kerja berikutnya)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Dialog Integratif Prosedur Penataan dan Pemeriksaan K3 Pabrik",
+      "type": "teks",
+      "question_ja": "ダダン：『班長、作業が 終わりました。道具は どうしますか。』<br>班長：『使った 道具は 綺麗に （　①　）から、工具箱に （　②　）おけ。』",
+      "question_ruby": "ダダン：『班長、作業が 終わりました。道具は どうしますか。』<br>班長：『使った 道具は 綺麗に （　①　）から、工具箱に （　②　）おけ。』",
+      "question_id": "Kombinasi kata kerja yang tepat untuk melengkapi instruksi pembersihan dan persiapan mandor di atas adalah...",
+      "translation": "Dadan: 'Mandor, pekerjaan sudah selesai. Perkakasnya diapakan?' Mandor: 'Setelah dicuci bersih perkakas yang telah dipakai, simpanlah terlebih dahulu ke dalam kotak perkakas!' Kombinasi: 洗って ／ しまって.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "洗って ／ しまって"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "洗う ／ しまう"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "洗った ／ しまった"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "洗わないで ／ しまわなくて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (洗って ／ しまって).",
+        "logic": "1) Urutan tindakan mencuci sebelum menyimpan: <code>綺麗に 洗って（あらって） から (setelah mencuci bersih)</code> menggunakan pola <strong>[V-te] + から</strong>.<br>2) Tindakan persiapan penyimpanan: <code>工具箱に しまって（しまって） おけ (simpanlah ke dalam kotak alat demi kesiapan besok)</code> menggunakan bentuk perintah dari pola persiapan <strong>[V-te] + おく</strong>.<br>Maka kombinasi yang tepat adalah <strong>洗って ／ しまって</strong>.",
+        "distractor": "• Opsi B: 洗う / しまう adalah bentuk kamus (tidak dapat menyambung ke kara maupun oke).\n• Opsi C: 洗った / しまった adalah bentuk lampau.\n• Opsi D: 洗わないで (tanpa mencuci) melanggar prinsip 5S kebersihan bengkel.",
+        "grammarRule": "Integrasi 5S Pabrik Bab 24: [V-te] + から (Urutan kerja) ＆ [V-te] + おきます／おけ (Persiapan penyimpanan alat rapi)."
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kondisi Fisik Benda (電気がついている)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。部屋の 状態は どうですか。<br>「電気が （　　　）。」",
+      "question_ruby": "絵（え）を 見て ください。部屋の 状態は どうですか。<br>「電気が （　　　）。」",
+      "question_id": "Perhatikan gambar lampu menyala terang. Bagaimanakah kondisi ruangan? 'Lampu listrik (...)'.",
+      "translation": "Lampu penerangan listrik dalam kondisi sedang menyala (denki ga tsuite imasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "きえています"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "ついています"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "こわれています"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あいています"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (ついています).",
+        "logic": "Gambar memperlihatkan bohlam lampu ruangan yang memancarkan cahaya terang (電気がついています / つく - tsuku = verba intransitif menyala).",
+        "distractor": "• Opsi A: きえています berarti padam / mati.\n• Opsi C: こわれています berarti rusak hancur.\n• Opsi D: あいています berarti terbuka lebar.",
+        "grammarRule": "Status Hasil Tindakan Bab 24: [Intransitif] ＋ ています（contoh: 電気がついています）."
+      },
+      "image": "assets/bab_24/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Status Pintu Tertutup (ドアが閉まっている)",
+      "type": "gambar",
+      "question_ja": "絵（え）を 見て ください。工場の ドアは どうなっていますか。<br>「ドアが （　　　）。」",
+      "question_ruby": "絵（え）を 見て ください。工場の ドアは どうなっていますか。<br>「ドアが （　　　）。」",
+      "question_id": "Perhatikan gambar pintu terkunci rapat. Bagaimana kondisi pintu pabrik? 'Pintu (...)'.",
+      "translation": "Pintu pabrik dalam kondisi tertutup rapat (doa ga shimatte imasu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あいています"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "こわれています"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "閉まっています（しまっています）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あけてあります"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (閉まっています（しまっています）).",
+        "logic": "Gambar memperlihatkan daun pintu yang tertutup rapat tanpa celah (閉まっています / しまる - shimaru = verba intransitif tertutup).",
+        "distractor": "• Opsi A: あいています berarti terbuka.\n• Opsi B: こわれています berarti rusak engselnya.\n• Opsi D: あけてあります berarti sengaja dibiarkan terbuka oleh seseorang.",
+        "grammarRule": "Intransitif Bab 24: ドアが閉まります ➔ ドアが閉まっています."
+      },
+      "image": "assets/bab_24/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (開きます)",
+      "type": "teks",
+      "question_ja": "ボタンを 押すと、自動ドアが （ 開きます ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "ボタンを 押すと、自動ドアが （ 開きます ）。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Bila menekan tombol, pintu otomatis akan terbuka. Pilihlah cara baca kanji '開きます' yang tepat.",
+      "translation": "Jika menekan tombol ini, pintu otomatis akan terbuka dengan sendirinya.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "あきます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "しまります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "うごきます"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "とまります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (あきます).",
+        "logic": "Kanji 開きます dibaca あきます (akimasu) sebagai bentuk verba intransitif (jidoushi) untuk benda yang terbuka.",
+        "distractor": "• Opsi B: しまります ditulis 閉まります (tertutup).\n• Opsi C: うごきます ditulis 動きます (bergerak).\n• Opsi D: とまります ditulis 止まります (berhenti beroperasi).",
+        "grammarRule": "Pasangan Verba Otomatis Bab 24: 開きます（あきます = terbuka）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (切ります)",
+      "type": "teks",
+      "question_ja": "作業が 終わったら、必ず 機械の 電源を （ きります ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "作業が 終わったら、必ず 機械の 電源を （ きります ）。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Setelah pekerjaan selesai, pastikan memutus/mematikan aliran listrik mesin. Pilihlah penulisan kanji yang tepat untuk 'kirimasu'.",
+      "translation": "Setelah pekerjaan operasional selesai, pastikan mematikan (memutus sumber) daya listrik mesin.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "切ります"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "伐ります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "斬ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "判ります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (切ります).",
+        "logic": "Kata きります dalam konteks mematikan saklar daya listrik (電源を切る) ditulis dengan kanji baku 切ります.",
+        "distractor": "• Opsi B: 伐ります dibaca きります untuk menebang pohon hutan (bukan listrik).\n• Opsi C: 斬ります dibaca きります untuk menebas pedang samurai.\n• Opsi D: 判ります dibaca わかります (mengerti/paham).",
+        "grammarRule": "Operasional Mesin: 電源を切ります（でんげんをきります = mematikan tombol daya utama）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (故障)",
+      "type": "teks",
+      "question_ja": "機械が （ こしょう ）した 時は、すぐ 非常停止ボタンを 押します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "機械が （ こしょう ）した 時は、すぐ 非常停止ボタンを 押します。<br>正しい 漢字は どれですか。",
+      "question_id": "Saat mesin mengalami kerusakan malfungsi, segera tekan tombol berhenti darurat. Pilihlah kanji yang tepat untuk 'koshou'.",
+      "translation": "Bila mesin mengalami malfungsi atau kerusakan (koshou), segera tekan tombol stop darurat (emergency stop button).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "故障"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "故証"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "胡障"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "固障"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (故障).",
+        "logic": "Kata こしょう (kerusakan teknis / malfungsi alat mekanik) ditulis dengan kanji 故障 (故 = insiden/penyebab kecelakaan, 障 = rintangan/gangguan).",
+        "distractor": "• Opsi B: 故証 salah huruf kanan (menggunakan bukti 証).\n• Opsi C: 胡障 salah huruf kiri.\n• Opsi D: 固障 salah huruf kiri (menggunakan keras 固).",
+        "grammarRule": "Penanganan Masalah Mesin: 故障（こしょう = kerusakan mekanik / trouble）."
+      }
+    }
+  ]
+};
+
+const BAB_25_DATA = {
+  "chapter": "25",
+  "title_ja": "第２５課：仮定・確定条件（～たら／～だら）・逆接・譲歩（～ても／～でも）・形容詞の条件接続・初級総まとめ",
+  "title_id": "Bab 25: Pengandaian Kondisional (~tara / ~dara), Hubungan Pertentangan / Konsesif (~temo / ~demo), Bentuk Kondisional Keiyoushi, dan Rangkuman N5 IMM Japan",
+  "theme_ja": "仮定条件・確定条件 (~tara: jika/setelah), 譲歩逆接 (~temo: meskipun/walaupun), 形容詞・名詞の活用, 企業配属前の修了総合評価",
+  "theme_id": "Evaluasi komprehensif Bab 25 sebagai puncak kurikulum IMM Japan (Buku Dasar Bab 1 s.d. Bab 25). Menguji penguasaan seluruh kaidah tata bahasa tingkat N5 pemagangan: pengandaian kondisional hipotesis dan kepastian waktu ([V-ta] + ら: ～たら / ～だら: jika/bila/setelah); hubungan konsesif pengandaian berlawanan ([V-te] + も: ～ても / ～でも: meskipun/walaupun); perubahan bentuk kondisional dan konsesif pada Kata Sifat-I (-kattara / -kutemo), Kata Sifat-Na (-dattara / -demo), dan Nomina (-dattara / -demo); serta pesan penutup pembekalan disiplin kerja, K3, dan etika industri Jepang sebelum peserta magang diberangkatkan ke perusahaan penerima (受入れ企業 / 配属先).",
+  "audioSrc": null,
+  "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 25.pdf",
+  "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 25.pdf",
+  "pdfSoalUrl": null,
+  "pdfKunciUrl": null,
+  "passingGrade": 80,
+  "totalQuestions": 25,
+  "readingCount": 25,
+  "choukaiCount": 0,
+  "questions": [
+    {
+      "id": 1,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Perayaan Tahun Baru & Terbitnya Matahari Pertama",
+      "type": "teks",
+      "question_ja": "富士山に 登って、（　<strong>しょうがつ</strong>　）の 朝に （　<strong>ひので</strong>　）を 見たら、とても 綺麗でしょう。漢字表記は どれですか。",
+      "question_ruby": "富士山に 登って、（　<strong>しょうがつ</strong>　）の 朝に （　<strong>ひので</strong>　）を 見たら、とても 綺麗でしょう。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'shougatsu' (Tahun Baru) dan 'hinode' (matahari terbit) adalah...",
+      "translation": "Bila mendaki Gunung Fuji dan melihat matahari terbit pada pagi hari Tahun Baru, pasti sangat indah ya. Pasangan kanji: 正月 ／ 日の出.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "新年 ／ 日暮れ"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "節句 ／ 日の入り"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "正月 ／ 日の出"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "初詣 ／ 朝焼け"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (正月 ／ 日の出).",
+        "logic": "1) <strong>正月（しょうがつ - shougatsu）</strong> adalah perayaan <strong>Tahun Baru di Jepang (1 Januari)</strong> yang penuh tradisi suci.<br>2) <strong>日の出（ひので - hinode）</strong> adalah momen <strong>terbitnya fajar matahari</strong> (terutama <em>初日の出 - hatsuhinode</em> pada fajar 1 Januari).",
+        "distractor": "• Opsi A: 新年 (tahun baru ungkapan formal) / 日暮れ (senja sore).\n• Opsi B: 節句 (perayaan musiman) / 日の入り (matahari terbenam).\n• Opsi D: 初詣 (kunjungan doa pertama ke kuil) / 朝焼け (semburat merah langit pagi).",
+        "grammarRule": "Budaya Tahun Baru Jepang: 正月（しょうがつ - Tahun Baru） ＆ 初日の出（はつひので - matahari terbit pertama awal tahun）."
+      }
+    },
+    {
+      "id": 2,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Cuaca Cerah dan Angin yang Bertiup Kencang",
+      "type": "teks",
+      "question_ja": "明日は 天気が （　<strong>はれます</strong>　）が、強い 風が （　<strong>ふきます</strong>　）から、注意してください。漢字表記は どれですか。",
+      "question_ruby": "明日は 天気が （　<strong>はれます</strong>　）が、強い 風が （　<strong>ふきます</strong>　）から、注意してください。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'haremasu' (cuaca cerah) dan 'fukimasu' (angin bertiup) adalah...",
+      "translation": "Besok cuaca cerah namun angin kencang akan bertiup, jadi harap berhati-hati. Pasangan kanji: 晴れます ／ 吹きます.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "晴れます ／ 吹きます"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "曇ります ／ 降ります"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "暖まります ／ 渡ります"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "乾きます ／ 鳴ります"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (晴れます ／ 吹きます).",
+        "logic": "1) <strong>晴れます（はれます - haremasu）</strong> ditulis <strong>晴</strong> yang bermakna <strong>langit cerah berawan sedikit atau panas bersinar</strong>.<br>2) <strong>吹きます（ふきます - fukimasu）</strong> ditulis <strong>吹</strong> yang bermakna <strong>hembusan angin bertiup</strong>.",
+        "distractor": "• Opsi B: 曇ります (berawan mendung) / 降ります (hujan/salju turun).\n• Opsi C: 暖まります (menghangat) / 渡ります (menyeberang).\n• Opsi D: 乾きます (mengering) / 鳴ります (berdering).",
+        "grammarRule": "Fenomena Cuaca Bab 25: 天気が晴れます（はれます - cerah） ＆ 風が吹きます（ふきます - angin bertiup）."
+      }
+    },
+    {
+      "id": 3,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji & Makna Melanjutkan Belajar serta Fokus Konsentrasi Kerja",
+      "type": "teks",
+      "question_ja": "配属後も 日本語の 勉強を （　<strong>つづけて</strong>　）、作業中は 安全に （　<strong>しゅうちゅうして</strong>　）ください。漢字表記は どれですか。",
+      "question_ruby": "配属後も 日本語の 勉強を （　<strong>つづけて</strong>　）、作業中は 安全に （　<strong>しゅうちゅうして</strong>　）ください。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'tsudzukete' (melanjutkan) dan 'shuuchuu shite' (berkonsentrasi) adalah...",
+      "translation": "Setelah penempatan ke perusahaan pun lanjutkan belajar bahasa Jepang, dan selama bekerja fokuslah berkonsentrasi pada keselamatan. Pasangan kanji: 続けて ／ 集中して.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "諦めて ／ 注意して"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "始めて ／ 準備して"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "伸ばして ／ 緊張して"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "続けて ／ 集中して"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (続けて ／ 集中して).",
+        "logic": "1) <strong>続けます（つづけます - tsudzukemasu）</strong> ditulis <strong>続</strong> yang berarti <strong>meneruskan atau melanjutkan aktivitas secara konsisten</strong>.<br>2) <strong>集中します（しゅうちゅうします - shuuchuu shimasu）</strong> ditulis <strong>集中</strong> yang berarti <strong>memusatkan pikiran dan perhatian penuh (berkonsentrasi)</strong> demi mencegah kecelakaan kerja.",
+        "distractor": "• Opsi A: 諦めて (menyerah putus asa) / 注意して (berhati-hati).\n• Opsi B: 始めて (memulai) / 準備して (menyiapkan).\n• Opsi C: 伸ばして (memanjangkan/mengulur) / 緊張して (gugup tegang).",
+        "grammarRule": "Etika Sikap Siswa Magang: 勉強を続けます（つづけます - melanjutkan belajar） ＆ 作業に集中します（しゅうちゅうします - fokus konsentrasi）."
+      }
+    },
+    {
+      "id": 4,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kanji Pohon Tumbang & Sifat Kekuatan Kencang (Taoremasu/Tsuyoi)",
+      "type": "teks",
+      "question_ja": "台風の （　<strong>つよい</strong>　） 風で、庭の 大きな 木が （　<strong>たおれました</strong>　）。漢字表記は どれですか。",
+      "question_ruby": "台風の （　<strong>つよい</strong>　） 風で、庭の 大きな 木が （　<strong>たおれました</strong>　）。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'tsuyoi' (kuat/kencang) dan 'taoremashita' (roboh/tumbang) adalah...",
+      "translation": "Akibat angin topan yang kencang/kuat, pohon besar di halaman roboh/tumbang. Pasangan kanji: 強い ／ 倒れました.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "激しい ／ 壊れました"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "強い ／ 倒れました"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "重い ／ 落ちました"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "酷い ／ 破れました"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (強い ／ 倒れました).",
+        "logic": "1) <strong>強い（つよい - tsuyoi）</strong> ditulis <strong>強</strong> yang berarti <strong>bertenaga besar, kuat, atau kencang</strong>.<br>2) <strong>倒れます（たおれます - taoremasu）</strong> ditulis <strong>倒</strong> yang berarti <strong>roboh, tumbang, atau terjatuh rebah dari posisi berdiri</strong>.",
+        "distractor": "• Opsi A: 激しい (dahsyat ganas) / 壊れました (rusak hancur).\n• Opsi C: 重い (berat bobot) / 落ちました (jatuh meluncur ke bawah).\n• Opsi D: 酷い (parah/kejam) / 破れました (robek terkoyak).",
+        "grammarRule": "Bencana Alam Angin Topan: 強い風（つよいかぜ - angin kencang） ＆ 木・柱が倒れます（たおれます - roboh/tumbang）."
+      }
+    },
+    {
+      "id": 5,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Verba Penyetelan Mesin Industri & Bonus Gaji Karyawan",
+      "type": "teks",
+      "question_ja": "作業員：『温度を 細かく （　<strong>ちょうせつして</strong>　）ください。会社の 業績が 良ければ （　<strong>ボーナス</strong>　）が 出ますよ。』意味の 組み合わせは どれですか。",
+      "question_ruby": "作業員：『温度を 細かく （　<strong>ちょうせつして</strong>　）ください。会社の 業績が 良ければ （　<strong>ボーナス</strong>　）が 出ますよ。』意味の 組み合わせは どれですか。",
+      "question_id": "Arti yang tepat untuk kata 'chousetsu shite' dan 'boonasu' pada konteks industri di atas adalah...",
+      "translation": "Pekerja: 'Tolong setel/sesuaikan suhunya secara teliti. Jika kinerja perusahaan bagus, bonus insentif akan cair lho.'",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Mengganti komponen ／ Uang lembur malam"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Membersihkan tangki ／ Uang tunjangan makan"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Menyetel / menyesuaikan ukuran parameter ／ Bonus insentif tahunan perusahaan"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Mematikan darurat ／ Potongan pajak gaji"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (Menyetel / menyesuaikan ukuran parameter ／ Bonus insentif tahunan perusahaan).",
+        "logic": "1) <strong>調節します（ちょうせつします - chousetsu shimasu）</strong> bermakna <strong>menyetel, mengatur, meregulasi, atau mengondisikan besaran parameter mesin</strong> (seperti suhu, tekanan, atau kecepatan).<br>2) <strong>ボーナス (boonasu)</strong> adalah <strong>bonus gaji berkala (biasanya diberikan di musim panas dan musim dingin)</strong>.",
+        "distractor": "• Opsi A: Mengganti komponen (部品交換) / uang lembur (残業手当).\n• Opsi B: Membersihkan tangki (タンク清掃) / tunjangan makan (食事手当).\n• Opsi D: Mematikan darurat (緊急停止) / potongan pajak (税金控除).",
+        "grammarRule": "Aksi Teknis & Finansial Industri: 機械の温度・速度を調節します（ちょうせつします - menyetel） ＆ ボーナスをもらいます（bonus gaji）."
+      }
+    },
+    {
+      "id": 6,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Kosakata Waktu Sore Hari & Agenda Rencana Kerja (Yotei)",
+      "type": "teks",
+      "question_ja": "（　<strong>ゆうがた</strong>　）の 5時までに 今日の （　<strong>よてい</strong>　）を 終わらせて、現場を 清掃しなさい。漢字表記は どれですか。",
+      "question_ruby": "（　<strong>ゆうがた</strong>　）の 5時までに 今日の （　<strong>よてい</strong>　）を 終わらせて、現場を 清掃しなさい。漢字表記は どれですか。",
+      "question_id": "Pasangan kanji yang benar untuk kata 'yuugata' (sore hari) dan 'yotei' (jadwal/rencana) adalah...",
+      "translation": "Tuntaskan rencana hari ini sebelum pukul 5 sore hari, dan bersihkan area kerja bengkel! Pasangan kanji: 夕方 ／ 予定.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "夕方 ／ 予定"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "夜間 ／ 約束"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "早朝 ／ 手順"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "昼間 ／ 計画"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (夕方 ／ 予定).",
+        "logic": "1) <strong>夕方（ゆうがた - yuugata）</strong> adalah rentang waktu <strong>sore hari menjelang matahari terbenam (sekitar pukul 16:00 - 18:00)</strong>.<br>2) <strong>予定（よてい - yotei）</strong> berarti <strong>jadwal kerja, agenda, atau rencana yang telah ditetapkan sebelumnya</strong>.",
+        "distractor": "• Opsi B: 夜間 (malam hari) / 約束 (janji temu).\n• Opsi C: 早朝 (dini hari subuh) / 手順 (prosedur langkah kerja).\n• Opsi D: 昼間 (siang hari) / 計画 (rencana strategis proyek).",
+        "grammarRule": "Waktu Kerja Pabrik: 夕方（ゆうがた - sore hari） ＆ 今日の予定（よてい - jadwal/rencana kerja hari ini）."
+      }
+    },
+    {
+      "id": 7,
+      "session": "reading",
+      "section_ja": "第1部：読解・ことば（語彙）",
+      "section_id": "Sesi 1: Reading — Kotoba (Kosakata)",
+      "category": "Istilah Pemimpin Tim (Leader) & Rekan Seperjuangan Peserta Magang",
+      "type": "teks",
+      "question_ja": "研修の 班の （　<strong>リーダー</strong>　）を 務め、同じ 夢を 持つ （　<strong>なかま</strong>　）と 助け合いました。意味の 組み合わせは どれですか。",
+      "question_ruby": "研修の 班の （　<strong>リーダー</strong>　）を 務め、同じ 夢を 持つ （　<strong>なかま</strong>　）と 助け合いました。意味の 組み合わせは どれですか。",
+      "question_id": "Arti kata yang tepat untuk 'riidaa' dan 'nakama' pada kalimat di atas adalah...",
+      "translation": "Menjabat sebagai ketua kelompok (leader) pelatihan, dan saling tolong-menolong dengan rekan kawan seperjuangan yang memiliki cita-cita serupa.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "Pengawas ujian ／ Tamu korporasi"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "Penerjemah lisan ／ Dosen universitas"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "Sekretaris regu ／ Pesaing bisnis"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "Pemimpin kelompok / ketua tim ／ Teman seperjuangan / rekan kawan"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (Pemimpin kelompok / ketua tim ／ Teman seperjuangan / rekan kawan).",
+        "logic": "1) <strong>リーダー (riidaa)</strong> dari bahasa Inggris <em>leader</em> bermakna <strong>ketua regu atau pemimpin tim kerja kelompok</strong>.<br>2) <strong>仲間（なかま - nakama）</strong> bermakna <strong>sahabat karib, rekan seperjuangan, kawan satu angkatan yang bahu-membahu dalam satu tujuan</strong>.",
+        "distractor": "• Opsi A: Pengawas ujian (試験監督) / tamu korporasi (来客).\n• Opsi B: Penerjemah (通訳) / dosen (大学教授).\n• Opsi C: Sekretaris (書記) / pesaing bisnis (競争相手).",
+        "grammarRule": "Solidaritas Angkatan IMM Japan: チームのリーダー（ketua tim） ＆ 実習生の仲間（なかま - rekan seperjuangan）."
+      }
+    },
+    {
+      "id": 8,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Subjek Kondisi Alamiah dalam Klausul ~Tara (Ga)",
+      "type": "teks",
+      "question_ja": "明日 雨（　<strong>？</strong>　） 降ったら、工場の 屋外作業は 中止して 室内清掃を します。",
+      "question_ruby": "明日 雨（　<strong>？</strong>　） 降ったら、工場の 屋外作業は 中止して 室内清掃を します。",
+      "question_id": "Partikel yang tepat untuk menandai hujan sebagai subjek kondisi alamiah dalam klausa pengandaian 'futtara' adalah...",
+      "translation": "Jika besok turun hujan, pekerjaan luar ruangan pabrik dihentikan dan kami akan membersihkan bagian dalam ruangan. Partikel fenomena alam adalah が.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "が"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (が).",
+        "logic": "Dalam klausa pengandaian kondisi alamiah <strong>～たら</strong>, subjek fenomena cuaca (seperti hujan, salju, angin) wajib ditandai oleh partikel subjek <strong>が (ga)</strong>: <code>雨が 降ったら</code>, <code>雪が 降ったら</code>, <code>強い風が 吹いたら</code>.",
+        "distractor": "• Opsi A: を tidak digunakan karena furimasu adalah kata kerja intransitif fenomena alam.\n• Opsi C: に menandai waktu atau sasaran.\n• Opsi D: で menandai tempat aksi atau penyebab (雨で中止になる memakai で bila langsung melekat ke nomina tanpa kata kerja furu).",
+        "grammarRule": "Subjek Fenomena Alam Kondisional: [Fenomena Cuaca: 雨 / 雪 / 台風] + が + 降ったら / 来たら."
+      }
+    },
+    {
+      "id": 9,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Arah Tujuan Kepulangan ke Tanah Air (E / Ni)",
+      "type": "teks",
+      "question_ja": "3年間の 実習が 全部 終わったら、インドネシアの 国（　<strong>？</strong>　） 帰って 起業したいです。",
+      "question_ruby": "3年間の 実習が 全部 終わったら、インドネシアの 国（　<strong>？</strong>　） 帰って 起業したいです。",
+      "question_id": "Partikel yang tepat untuk menandai negara tanah air sebagai arah tujuan kepulangan akhir adalah...",
+      "translation": "Setelah pemagangan 3 tahun selesai seluruhnya, saya ingin pulang ke negara Indonesia dan mendirikan usaha mandiri. Partikel arah tujuan adalah へ (atau に).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "へ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "から"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (へ).",
+        "logic": "Verba pergerakan <strong>帰ります（かえります - pulang）</strong> menuntut partikel penanda arah tujuan akhir perjalanan <strong>へ (e)</strong> atau <strong>に (ni)</strong>: <code>国へ 帰ります (pulang KE tanah air)</code>.",
+        "distractor": "• Opsi A: を menandai titik yang ditinggalkan (日本を出る).\n• Opsi B: で menandai tempat aktivitas kerja (インドネシアで起業する).\n• Opsi D: から menandai asal muasal awal perjalanan.",
+        "grammarRule": "Arah Kepulangan Alumni Magang: [Tanah Air: 国 / ふるさと] + へ／に + 帰ったら（かえったら - setelah pulang ke...）."
+      }
+    },
+    {
+      "id": 10,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Titik Awal Permulaan Penempatan Perusahaan (Kara)",
+      "type": "teks",
+      "question_ja": "先生：『いよいよ 明日（　<strong>？</strong>　）、それぞれの 配属先企業での 新しい 実習が 始まりますね。』",
+      "question_ruby": "先生：『いよいよ 明日（　<strong>？</strong>　）、それぞれの 配属先企業での 新しい 実習が 始まりますね。』",
+      "question_id": "Partikel yang tepat untuk menandai hari esok sebagai titik awal permulaan fase baru kerja di perusahaan adalah...",
+      "translation": "Guru: 'Akhirnya mulai besok, pemagangan baru di perusahaan penempatan masing-masing dimulai ya.' Partikel titik awal waktu adalah から.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "から"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "まで"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "より"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "ほど"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (から).",
+        "logic": "Partikel <strong>から (kara)</strong> berfungsi menandai <strong>titik permulaan waktu atau awal dimulainya suatu tahapan masa</strong>: <code>明日から（あしたから - mulai besok）</code>, <code>来週から（らいしゅうから - mulai minggu depan）</code>.",
+        "distractor": "• Opsi B: まで menandai batas akhir waktu selesai (sampai besok).\n• Opsi C: より digunakan untuk komparasi perbandingan.\n• Opsi D: ほど menandai kisaran perkiraan.",
+        "grammarRule": "Titik Awal Waktu Penempatan: [Waktu: 明日 / 来週 / 来月] + から (Mulai...)."
+      }
+    },
+    {
+      "id": 11,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Instrumen Sarana Komunikasi Tanya Jawab (De)",
+      "type": "teks",
+      "question_ja": "企業で 困ったことや 分からないことが あれば、電話（　<strong>？</strong>　） いつでも センターに 相談してください。",
+      "question_ruby": "企業で 困ったことや 分からないことが あれば、電話（　<strong>？</strong>　） いつでも センターに 相談してください。",
+      "question_id": "Partikel yang tepat untuk menandai telepon sebagai instrumen media komunikasi konsultasi adalah...",
+      "translation": "Bila di perusahaan ada kendala atau hal yang belum dipahami, berkonsultasilah kapan saja ke pusat pelatihan lewat telepon. Partikel media komunikasi adalah で.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "に"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "と"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "で"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (で).",
+        "logic": "Partikel <strong>で (de)</strong> menandai <strong>sarana atau media telekomunikasi yang digunakan untuk berinteraksi</strong>: <code>電話で 相談してください (konsultasikanlah LEWAT telepon)</code>, <code>メールで 連絡します (menghubungi LEWAT surel)</code>.",
+        "distractor": "• Opsi A: を digunakan bila verba yang dipakai adalah kakeru (電話をかける).\n• Opsi B: に menandai lembaga penerima konsultasi (センターに).\n• Opsi C: と menandai kawan interaksi.",
+        "grammarRule": "Media Komunikasi Pendukung: [Media: 電話 / メール / 手紙] + で + 相談します / 連絡します."
+      }
+    },
+    {
+      "id": 12,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Konsesif Melekat pada Kata Benda Cuaca (Demo)",
+      "type": "teks",
+      "question_ja": "実習生：『納期が 迫っていますから、雨（　<strong>？</strong>　） 作業を 続けなければ なりません。』",
+      "question_ruby": "実習生：『納期が 迫っていますから、雨（　<strong>？</strong>　） 作業を 続けなければ なりません。』",
+      "question_id": "Partikel yang tepat untuk membentuk hubungan konsesif 'meskipun hujan...' pada kata benda 'ame' adalah...",
+      "translation": "Siswa magang: 'Karena batas pengiriman sudah mendesak, meskipun hujan kami harus tetap melanjutkan pekerjaan.' Partikel konsesif kata benda adalah でも.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "ても"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "でも"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "なら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "たら"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (でも).",
+        "logic": "Untuk menyatakan hubungan pertentangan konsesif <strong>'meskipun / walaupun'</strong> pada <strong>Kata Benda (Nomina) atau Kata Sifat-Na</strong>, digunakan partikel <strong>でも (demo)</strong>.<br>Contoh: <code>雨 + でも ➔ 雨でも (meskipun hujan)</code>, <code>日曜日 + でも ➔ 日曜日でも (meskipun hari Minggu)</code>.",
+        "distractor": "• Opsi A: ても hanya melekat pada verba bentuk-te atau kata sifat-i (-kutemo), tidak bisa langsung melekat pada nomina.\n• Opsi C: なら menyatakan syarat pengandaian topik ('kalau hujan').\n• Opsi D: たら harus didahului datta untuk kata benda (雨だったら).",
+        "grammarRule": "Rumus Konsesif Nomina: [Nomina / Kata Sifat-Na] + でも (Meskipun / Walaupun...)."
+      }
+    },
+    {
+      "id": 13,
+      "session": "reading",
+      "section_ja": "第2部：読解・助詞",
+      "section_id": "Sesi 1: Reading — Joshi (Partikel)",
+      "category": "Partikel Sarana Penumpangan Moda Rekreasi (Ni)",
+      "type": "teks",
+      "question_ja": "お盆休みに 天気が 良かったら、海の 近くで ボート（　<strong>？</strong>　） 乗って 釣りを したいです。",
+      "question_ruby": "お盆休みに 天気が 良かったら、海の 近くで ボート（　<strong>？</strong>　） 乗って 釣りを したいです。",
+      "question_id": "Partikel yang tepat untuk menandai perahu boat sebagai wahana yang dinaiki adalah...",
+      "translation": "Pada libur Obon jika cuaca bagus, saya ingin naik perahu boat di dekat laut dan memancing. Partikel menaiki kendaraan adalah に.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "を"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "で"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "に"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "へ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (に).",
+        "logic": "Verba <strong>乗ります（のります - menaiki / menumpang）</strong> menuntut partikel penanda wahana sasaran tempat menaikkan tubuh <strong>に (ni)</strong>: <code>ボートに 乗る (naik perahu boat)</code>, <code>電車に 乗る (naik kereta api)</code>.",
+        "distractor": "• Opsi A: を adalah kesalahan umum pembelajar asing (乗る adalah intransitif, bukan transitif).\n• Opsi B: で menandai kendaraan sebagai sarana perjalanan umum (ボートで行く memakai で, tetapi ボートに乗る wajib に).\n• Opsi D: へ menandai arah tujuan.",
+        "grammarRule": "Partikel Menunggangi / Menaiki Kendaraan: [Kendaraan / Perahu: 電車 / バス / ボート] + に + 乗ります（のります）."
+      }
+    },
+    {
+      "id": 14,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Kondisional Verba ([V-ta] + Ra: ~Tara)",
+      "type": "teks",
+      "question_ja": "「書きます」、「読みます」、「来ます（きます）」の 正しい 「～たら」の 組み合わせは どれですか。",
+      "question_ruby": "「書きます」、「読みます」、「来ます（きます）」の 正しい 「～たら」の 組み合わせは どれですか。",
+      "question_id": "Kombinasi konjugasi bentuk pengandaian kondisional (~tara) yang benar untuk ketiga verba tersebut adalah...",
+      "translation": "Bentuk ~tara yang tepat: 書いたら (bila menulis), 読んだら (bila membaca), dan 来たら - dibaca kitara (bila datang).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "書いたら ／ 読んだら ／ 来たら（きたら）"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "書いたら ／ 読んだら ／ 来たら（こたら）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "書きったら ／ 読みったら ／ くるたら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "書けたら ／ 読めたら ／ これたら"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (書いたら ／ 読んだら ／ 来たら（きたら）).",
+        "logic": "Kaidah pembentukan <strong>Bentuk Pengandaian Kondisional (～たら / ～だら) Verba</strong> didasarkan pada <strong>Bentuk Lampau Kasual (た形 / だ形) + ら</strong>:<br>1) 書きます ➔ 書いた ＋ ら ➔ <strong>書いたら（かいたら）</strong>.<br>2) 読みます ➔ 読んだ ＋ ら ➔ <strong>読んだら（よんだら）</strong>.<br>3) 来ます（Grup 3） ➔ 来た（きた） ＋ ら ➔ <strong>来たら（きたら）</strong>.<br>Maka kombinasi yang tepat adalah <strong>書いたら ／ 読んだら ／ 来たら（きたら）</strong>.",
+        "distractor": "• Opsi B: こたら adalah cara baca kanji yang rusak (seharusnya kitara).\n• Opsi C: Merupakan bentuk rusak yang melanggar aturan perubahan te-kei/ta-kei.\n• Opsi D: Adalah bentuk potensial bersyarat (bila bisa menulis/membaca/datang).",
+        "grammarRule": "Rumus Mutlak Kondisional Verba: [Verba Bentuk-TA / DA] + ら (書いた➔書いたら, 飲んだ➔飲んだら, 食べた➔食べたら, 来た➔来たら)."
+      }
+    },
+    {
+      "id": 15,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Kondisional Kata Sifat dan Nomina (~Tara)",
+      "type": "teks",
+      "question_ja": "「安い」（イ形容詞）、「暇」（ナ形容詞）、「日曜日」（名詞）の 正しい 「～たら」の 組み合わせは どれですか。",
+      "question_ruby": "「安い」（イ形容詞）、「暇」（ナ形容詞）、「日曜日」（名詞）の 正しい 「～たら」の 組み合わせは どれですか。",
+      "question_id": "Kombinasi bentuk kondisional (~tara) yang tepat untuk kata sifat-i, kata sifat-na, dan kata benda di atas adalah...",
+      "translation": "Bentuk ~tara yang benar: 安かったら (jika murah), 暇だったら (jika senggang), dan 日曜日だったら (jika hari Minggu).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "安かったら ／ 暇だったら ／ 日曜日なら"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "安いたら ／ 暇なら ／ 日曜日だったら"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "安いたら ／ 暇いだったら ／ 日曜日だった"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "安かったら ／ 暇だったら ／ 日曜日だったら"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (安かったら ／ 暇だったら ／ 日曜日だったら).",
+        "logic": "Aturan konjugasi <strong>～たら</strong> untuk non-verba:<br>1) <strong>Kata Sifat-I</strong>: Buang <em>～い</em> ➔ tambahkan <strong>～かったら</strong> (安<strong>かったら</strong>).<br>2) <strong>Kata Sifat-Na</strong>: Tambahkan <strong>～だったら</strong> (暇<strong>だったら</strong>).<br>3) <strong>Nomina (Kata Benda)</strong>: Tambahkan <strong>～だったら</strong> (日曜日<strong>だったら</strong>).<br>Maka pasangan yang tepat dan lengkap adalah <strong>安かったら ／ 暇だったら ／ 日曜日だったら</strong>.",
+        "distractor": "• Opsi A: 日曜日なら menggunakan partikel nara (bukan pola dasar tara).\n• Opsi B: 安いたら salah kaprah tidak mengubah vokal i menjadi kattara.\n• Opsi C: 暇いだったら salah rumus kata sifat-na.",
+        "grammarRule": "Konjugasi Kondisional Non-Verba: [Kata Sifat-I] ~かったら | [Kata Sifat-Na] ~だったら | [Nomina] ~だったら."
+      }
+    },
+    {
+      "id": 16,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Konsesif Verba Pertentangan ([V-te] + Mo: ~Temo / ~Demo)",
+      "type": "teks",
+      "question_ja": "かぜ薬を （　<strong>＿＿＿＿＿</strong>　）、まだ 熱が 下がりませんから、今日は 医者に 行きます。",
+      "question_ruby": "かぜ薬を （　<strong>＿＿＿＿＿</strong>　）、まだ 熱が 下がりませんから、今日は 医者に 行きます。",
+      "question_id": "Bentuk konjugasi yang tepat untuk menyatakan 'meskipun sudah minum obat flu...' dari verba 'nomimasu' adalah...",
+      "translation": "Meskipun sudah meminum obat flu, demamnya belum juga turun, jadi hari ini saya akan pergi ke dokter. Bentuk konsesif: 飲んでも.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "飲んだら"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "飲んでも"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "飲むても"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "飲まなくても"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (飲んでも).",
+        "logic": "Rumus hubungan konsesif (pertentangan / meskipun) untuk kata kerja: <strong>[Verba Bentuk-TE / DE] + も (～ても / ～でも)</strong>.<br>Dari verba <code>飲みます ➔ Bentuk-Te/De: 飲んで（のんで） ＋ も ➔ 飲んでも (meskipun meminum)</code>. Hasilnya berlawanan dengan harapan (demam belum turun).",
+        "distractor": "• Opsi A: 飲んだら adalah bentuk pengandaian kondisional (kalau minum); tidak sinkron dengan klausa kelanjutan demam belum turun.\n• Opsi C: 飲むても adalah kesalahan konjugasi menyambungkan bentuk kamus dengan temo (seharusnya 飲んで).\n• Opsi D: 飲まなくても berarti 'meskipun tidak minum obat'; tidak selaras dengan fakta bahwa pembicara sudah meminum obat namun demamnya belum turun.",
+        "grammarRule": "Rumus Konsesif Verba: [Verba Bentuk-TE / DE] + も (～ても / ～でも: Meskipun / Walaupun...)."
+      }
+    },
+    {
+      "id": 17,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Konjugasi Bentuk Konsesif Kata Sifat-I dan Kata Sifat-Na (~Kutemo / ~Demo)",
+      "type": "teks",
+      "question_ja": "この 工具は 値段が （　①　）ても 品質が 良いですし、操作が （　②　）でも 慣れれば 安全です。",
+      "question_ruby": "この 工具は 値段が （　①　）ても 品質が 良いですし、操作が （　②　）でも 慣れれば 安全です。",
+      "question_id": "Bentuk konjugasi yang tepat untuk melengkapi kata sifat 'takai' (mahal) dan 'fukuzatsu' (rumit) adalah...",
+      "translation": "Perkakas perkakas ini meskipun harganya mahal kualitasnya bagus, dan meskipun pengoperasiannya rumit jika terbiasa akan aman. Pasangan: 高く（ても） ／ 複雑（でも）.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "高くて ／ 複雑で"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "高い ／ 複雑な"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "高く ／ 複雑"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "高かっ ／ 複雑だっ"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (高く ／ 複雑).",
+        "logic": "1) <strong>Kata Sifat-I</strong>: Ubah <em>～い</em> menjadi <strong>～く</strong> lalu disambung <em>ても</em> ➔ <code>高<strong>く</strong>ても (meskipun mahal)</code>.<br>2) <strong>Kata Sifat-Na</strong>: Buang <em>～な</em> lalu disambung <em>でも</em> ➔ <code>複雑<strong>でも</strong> (meskipun rumit)</code>.<br>Maka pasangan yang tepat untuk mengisi titik-titik tersebut adalah <strong>高く ／ 複雑</strong>.",
+        "distractor": "• Opsi A: 高くて ／ 複雑で keliru karena kalimat soal telah menyediakan partikel konsesif ても dan でも di luar tanda kurung, sehingga jika memilih opsi A akan terjadi redundansi ganda yang salah (高くてても / 複雑ででも).\n• Opsi B: 高い (tidak diubah) / 複雑な salah kaprah.\n• Opsi D: 高かっ / 複雑だっ adalah akar bentuk tara lampau.",
+        "grammarRule": "Rumus Konsesif Kata Sifat: [Kata Sifat-I] ~く ＋ ても (高くても) | [Kata Sifat-Na] [Akar] ＋ でも (複雑でも / 静かでも)."
+      }
+    },
+    {
+      "id": 18,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Distingsi Makna Kondisional [～たら] vs Konsesif [～ても]",
+      "type": "teks",
+      "question_ja": "店員：『この 靴は いかがですか。安かったら、買いますか。』<br>客：『いいえ、（　<strong>＿＿＿＿＿</strong>　）、デザインが 好きでは ありませんから 買いません。』",
+      "question_ruby": "店員：『この 靴は いかがですか。安かったら、買いますか。』<br>客：『いいえ、（　<strong>＿＿＿＿＿</strong>　）、デザインが 好きでは ありませんから 買いません。』",
+      "question_id": "Jawaban yang tepat dan bernuansa kontras untuk melengkapi respon penolakan pembeli di atas adalah...",
+      "translation": "Pelayan: 'Bagaimana sepatu ini? Kalau murah, apakah Anda akan membelinya?' Pembeli: 'Tidak, meskipun murah, karena saya tidak suka modelnya saya tidak akan beli.' Bentuk konsesif: 安くても.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "安くても"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "安かったら"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "高かったら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "高くても"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (安くても).",
+        "logic": "Pertanyaan pelayan menggunakan kondisional <em>安かったら、買いますか (jika murah, beli?)</em>.<br>Respon penolakan kontras menyatakan bahwa <strong>bahkan dalam kondisi murah sekalipun, tetap tidak akan membelinya</strong>. Bentuk konsesif yang tepat adalah: <strong>安くても（やすくても - meskipun murah）</strong>.",
+        "distractor": "• Opsi B: 安かったら (jika murah) berlawanan dengan kalimat penolakan 'tidak akan beli'.\n• Opsi C: 高かったら (jika mahal).\n• Opsi D: 高くても (meskipun mahal) tidak menjawab tawaran sepatu murah sang pelayan.",
+        "grammarRule": "Kontras Kondisional vs Konsesif: ～たら、買います（Jika murah, beli） ⇄ ～ても、買いません（Meskipun murah, tidak beli）."
+      }
+    },
+    {
+      "id": 19,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pola Urutan Kepastian Setelah Suatu Tindakan Selesai ([V-ta] + Tara)",
+      "type": "teks",
+      "question_ja": "指導員：『センターでの 最後の 授業が （　<strong>＿＿＿＿＿</strong>　）たら、全員 荷物を 持って 事務所に 集まりなさい。』",
+      "question_ruby": "指導員：『センターでの 最後の 授業が （　<strong>＿＿＿＿＿</strong>　）たら、全員 荷物を 持って 事務所に 集まりなさい。』",
+      "question_id": "Bentuk konjugasi yang tepat untuk menyatakan urutan kepastian 'setelah pelajaran selesai' dari verba 'owarimasu' adalah...",
+      "translation": "Instruktur: 'Setelah pelajaran terakhir di pusat pelatihan selesai, semuanya bawalah barang bawaan dan berkumpullah di kantor!' Bentuk lampau tara: 終わったら.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "終わる"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "終わり"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "終われ"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "終わっ"
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah D (終わっ).",
+        "logic": "Pola <strong>[Verba Bentuk-TA] + ら (～たら)</strong> selain bermakna hipotesis 'jika', juga sering berfungsi menyatakan <strong>urutan kejadian pasti: 'setelah / begitu perbuatan A selesai dilakukan, barulah lakukan perbuatan B'</strong>.<br>Dari kata kerja <code>終わります ➔ 終わっ（おわっ） ＋ たら ➔ 終わったら (setelah selesai)</code>.",
+        "distractor": "• Opsi A: 終わる adalah bentuk kamus.\n• Opsi B: 終わり adalah stem.\n• Opsi C: 終われ adalah bentuk perintah meireikei.",
+        "grammarRule": "Fungsi Waktu Kepastian (~tara): [Verba Bentuk-TA] + ら = Setelah aksi tuntas terlaksana (授業が終わったら / 駅に着いたら / 10時になったら)."
+      }
+    },
+    {
+      "id": 20,
+      "session": "reading",
+      "section_ja": "第3部：読解・文法",
+      "section_id": "Sesi 1: Reading — Bunpo (Tata Bahasa)",
+      "category": "Pesan Penutup Kurikulum & Evaluasi Kesiapan Kerja",
+      "type": "teks",
+      "question_ja": "研修センター修了式での 先生の 訓示：<br>『皆さん、明日 配属先の 会社へ （　①　）も、毎日の 日本語の 勉強を （　②　）ください。工場では 「安全第一」を 守って、健康に 気をつけて 3年間の 実習を 頑張りましょう！』",
+      "question_ruby": "研修センター修了式での 先生の 訓示：<br>『皆さん、明日 配属先の 会社へ （　①　）も、毎日の 日本語の 勉強を （　②　）ください。工場では 「安全第一」を 守って、健康に 気をつけて 3年間の 実習を 頑張りましょう！』",
+      "question_id": "Kombinasi kata yang paling tepat untuk melengkapi amanat penutup kelulusan guru di atas adalah...",
+      "translation": "Amanat instruktur pada upacara penutupan: 'Saudara sekalian, meskipun besok telah pergi ke perusahaan penempatan, teruslah lanjutkan belajar bahasa Jepang setiap hari. Di pabrik utamakan keselamatan kerja, jaga kesehatan, dan bersemangatlah menjalani pemagangan 3 tahun!'",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "行ったら ／ やめて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "行っても ／ 続けて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "行かないで ／ 忘れて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "行けば ／ 減らして"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (行っても ／ 続けて).",
+        "logic": "1) Klausa konsesif: <code>会社へ 行っても (meskipun telah masuk bekerja ke perusahaan penempatan)</code> menggunakan konsesif <strong>行っても</strong>.<br>2) Nasehat ketekunan: <code>勉強を 続けてください (tolong lanjutkan belajar secara konsisten)</code> menggunakan <strong>続けて</strong>.<br>Kombinasi ini merupakan amanat pembekalan standar dalam teks penutup Kurikulum IMM Japan: <strong>行っても ／ 続けて</strong>.",
+        "distractor": "• Opsi A: やめて (hentikan belajar) adalah kebalikan dari tujuan pemagangan.\n• Opsi C: 行かないで (jangan pergi ke pabrik) / 忘れて (lupakan pelajaran) salah secara etika.\n• Opsi D: 減らして (kurangilah belajar) bertentangan dengan amanat instruktur.",
+        "grammarRule": "Amanat Pamungkas IMM Japan: 配属先に行っても（Meskipun sudah di perusahaan penerima）、日本語の勉強を続けてください（Tetap lanjutkan belajar）！"
+      }
+    },
+    {
+      "id": 21,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kondisional Bahaya dari Atas (落ちてきたら)",
+      "type": "gambar",
+      "question_ja": "工場の 危険マーク「頭上注意」を 見て ください。どんな 意味ですか。<br>「上から 物が （　　　）危ないですから、注意しなさい。」",
+      "question_ruby": "工場の 危険マーク「頭上注意」を 見て ください。どんな 意味ですか。<br>「上から 物が （　　　）危ないですから、注意しなさい。」",
+      "question_id": "Perhatikan rambu bahaya '頭上注意' (Awas Kepala). Apakah artinya? 'Karena berbahaya jika barang (...) dari atas, berhati-hatilah'.",
+      "translation": "Karena sangat berbahaya apabila ada benda yang jatuh dari atas (ochite kitara), selalu berhati-hatilah.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "なくなったら"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "落ちてきたら（おちてきたら）"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "とんだら"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "あがったら"
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah B (落ちてきたら（おちてきたら）).",
+        "logic": "Rambu peringatan '頭上注意' (Zujou Chuui - Awas Benda Jatuh dari Ketinggian) menggunakan pola pengandaian kondisional たら: 落ちてきたら (bila barang jatuh melayang turun).",
+        "distractor": "• Opsi A: なくなったら berarti bila habis/hilang lenyap.\n• Opsi C: とんだら berarti bila melompat/terbang.\n• Opsi D: あがったら berarti bila melambung naik.",
+        "grammarRule": "Pola Pengandaian Kondisional Bab 25: [V-ta] ＋ ら（bila / seandainya ... terjadi）."
+      },
+      "image": "assets/bab_25/reading_q21.jpeg"
+    },
+    {
+      "id": 22,
+      "session": "reading",
+      "section_ja": "第4部：読解・図解評価",
+      "section_id": "Sesi 1: Reading — Zukai (Evaluasi Bergambar)",
+      "category": "Soal Bergambar — Kondisional Kebersihan K3 (汚れたら)",
+      "type": "gambar",
+      "question_ja": "衛生マーク「手洗励行」を 見て ください。どういう 意味ですか。<br>「手が （　　　）、石けんで よく 洗いなさい。」",
+      "question_ruby": "衛生マーク「手洗励行」を 見て ください。どういう 意味ですか。<br>「手が （　　　）、石けんで よく 洗いなさい。」",
+      "question_id": "Perhatikan rambu higienitas '手洗励行' (Wajib Cuci Tangan). Apakah artinya? 'Bila tangan (...), cucilah dengan sabun'.",
+      "translation": "Bila tangan kotor berlumuran debu/minyak (yogoretara), cucilah bersih-bersih dengan sabun.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "きれいだったら"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "いたかったら"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "汚れたら（よごれたら）"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "さむかったら"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah C (汚れたら（よごれたら）).",
+        "logic": "Rambu '手洗励行' (Rajin Mencuci Tangan) menginstruksikan peserta agar segera mencuci tangan apabila kotor (汚れたら / よごれたら - yogoretara).",
+        "distractor": "• Opsi A: きれいだったら berarti bila dalam keadaan bersih.\n• Opsi B: いたかったら berarti bila terasa sakit/nyeri.\n• Opsi D: さむかったら berarti bila merasa dingin.",
+        "grammarRule": "Pengandaian Situasional Bab 25: 汚れる ➔ 汚れたら（bila kotor）."
+      },
+      "image": "assets/bab_25/reading_q22.jpeg"
+    },
+    {
+      "id": 23,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Cara Baca Kanji (考えて)",
+      "type": "teks",
+      "question_ja": "トラブルが 起きたら、あわてないで よく （ 考えて ）行動します。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_ruby": "トラブルが 起きたら、あわてないで よく （ 考えて ）行動します。<br>（　）の 漢字の 正しい 読み方は どれですか。",
+      "question_id": "Bila terjadi masalah, jangan panik dan bertindaklah setelah berpikir matang. Pilihlah cara baca kanji '考えて' yang tepat.",
+      "translation": "Bila terjadi kendala atau masalah darurat, jangan panik dan bertindaklah setelah berpikir dengan tenang dan matang.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "かんがえて"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "おぼえて"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "おしえて"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "しらべて"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (かんがえて).",
+        "logic": "Kanji 考えて dibaca かんがえて (kangaete) dari verba 考える (memikirkan / mempertimbangkan solusi nalar).",
+        "distractor": "• Opsi B: おぼえて ditulis 覚えて (mengingat).\n• Opsi C: おしえて ditulis 教えて (mengajari).\n• Opsi D: しらべて ditulis 調べて (menyelidiki / memeriksa).",
+        "grammarRule": "Verba Mental Puncak Kurikulum: 考えます（かんがえます = berpikir analitis）."
+      }
+    },
+    {
+      "id": 24,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Penulisan Kanji (準備)",
+      "type": "teks",
+      "question_ja": "あしたの 現場実習の （ じゅんび ）を しっかり します。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_ruby": "あしたの 現場実習の （ じゅんび ）を しっかり します。<br>（　）の 言葉の 正しい 漢字は どれですか。",
+      "question_id": "Melakukan persiapan praktek lapangan esok hari dengan mantap. Pilihlah penulisan kanji yang tepat untuk 'junbi'.",
+      "translation": "Melakukan persiapan matang untuk praktek kerja lapangan esok hari.",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "準備"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "準美"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "准備"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "準富"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (準備).",
+        "logic": "Kata じゅんび (persiapan operasional) ditulis dengan kanji baku 準備 (準 = standar patokan, 備 = menyiapkan sarana).",
+        "distractor": "• Opsi B: 準美 salah huruf kanan (menggunakan 美 = indah).\n• Opsi C: 准備 salah radikal kiri (menggunakan radikal es 冫 bukan air 氵).\n• Opsi D: 準富 salah huruf kanan (menggunakan 富 = kaya raya).",
+        "grammarRule": "Manajemen Kerja Pabrik: 準備（じゅんび = persiapan sarana kerja）."
+      }
+    },
+    {
+      "id": 25,
+      "session": "reading",
+      "section_ja": "第5部：読解・漢字",
+      "section_id": "Sesi 1: Reading — Kanji (Evaluasi Kanji)",
+      "category": "Soal Kanji — Pemakaian Kanji dalam Konteks (非常口)",
+      "type": "teks",
+      "question_ja": "火事や 地震の 時は （ ひじょうぐち ）から 避難します。<br>正しい 漢字は どれですか。",
+      "question_ruby": "火事や 地震の 時は （ ひじょうぐち ）から 避難します。<br>正しい 漢字は どれですか。",
+      "question_id": "Saat terjadi kebakaran atau gempa bumi, lakukan evakuasi melalui pintu darurat. Pilihlah kanji yang tepat untuk 'hijouguchi'.",
+      "translation": "Ketika terjadi bencana kebakaran atau gempa bumi hebat, segera lakukan evakuasi melalui pintu darurat (hijouguchi).",
+      "options": [
+        {
+          "id": "A",
+          "symbol": "A",
+          "text_ja": "非常口"
+        },
+        {
+          "id": "B",
+          "symbol": "B",
+          "text_ja": "非情口"
+        },
+        {
+          "id": "C",
+          "symbol": "C",
+          "text_ja": "悲常口"
+        },
+        {
+          "id": "D",
+          "symbol": "D",
+          "text_ja": "飛常口"
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": {
+        "summary": "Jawaban yang benar adalah A (非常口).",
+        "logic": "Kata ひじょうぐち (pintu keluar darurat evakuasi) ditulis dengan kanji baku 非常口 (非常 = kondisi darurat tak biasa, 口 = pintu akses keluar/masuk).",
+        "distractor": "• Opsi B: 非情口 salah huruf tengah (menggunakan perasaan 情).\n• Opsi C: 悲常口 salah huruf depan (menggunakan sedih 悲).\n• Opsi D: 飛常口 salah huruf depan (menggunakan terbang 飛).",
+        "grammarRule": "Keselamatan Bencana: 非常口（ひじょうぐち = pintu darurat / exit jalur evakuasi）."
+      }
+    }
+  ]
+};
+
 const CHAPTERS_DATA = {
   "01": BAB_01_DATA,
   "02": BAB_02_DATA,
@@ -9355,7 +27188,24 @@ const CHAPTERS_DATA = {
   "05": BAB_05_DATA,
   "06": BAB_06_DATA,
   "07": BAB_07_DATA,
-  "08": BAB_08_DATA
+  "08": BAB_08_DATA,
+  "09": BAB_09_DATA,
+  "10": BAB_10_DATA,
+  "11": BAB_11_DATA,
+  "12": BAB_12_DATA,
+  "13": BAB_13_DATA,
+  "14": BAB_14_DATA,
+  "15": BAB_15_DATA,
+  "16": BAB_16_DATA,
+  "17": BAB_17_DATA,
+  "18": BAB_18_DATA,
+  "19": BAB_19_DATA,
+  "20": BAB_20_DATA,
+  "21": BAB_21_DATA,
+  "22": BAB_22_DATA,
+  "23": BAB_23_DATA,
+  "24": BAB_24_DATA,
+  "25": BAB_25_DATA
 };
 
 if (typeof window !== "undefined") {
@@ -9369,6 +27219,23 @@ if (typeof window !== "undefined") {
   window.BAB_06_DATA = BAB_06_DATA;
   window.BAB_07_DATA = BAB_07_DATA;
   window.BAB_08_DATA = BAB_08_DATA;
+  window.BAB_09_DATA = BAB_09_DATA;
+  window.BAB_10_DATA = BAB_10_DATA;
+  window.BAB_11_DATA = BAB_11_DATA;
+  window.BAB_12_DATA = BAB_12_DATA;
+  window.BAB_13_DATA = BAB_13_DATA;
+  window.BAB_14_DATA = BAB_14_DATA;
+  window.BAB_15_DATA = BAB_15_DATA;
+  window.BAB_16_DATA = BAB_16_DATA;
+  window.BAB_17_DATA = BAB_17_DATA;
+  window.BAB_18_DATA = BAB_18_DATA;
+  window.BAB_19_DATA = BAB_19_DATA;
+  window.BAB_20_DATA = BAB_20_DATA;
+  window.BAB_21_DATA = BAB_21_DATA;
+  window.BAB_22_DATA = BAB_22_DATA;
+  window.BAB_23_DATA = BAB_23_DATA;
+  window.BAB_24_DATA = BAB_24_DATA;
+  window.BAB_25_DATA = BAB_25_DATA;
 }
 
 if (typeof module !== "undefined" && module.exports) {
@@ -9382,6 +27249,23 @@ if (typeof module !== "undefined" && module.exports) {
     BAB_05_DATA,
     BAB_06_DATA,
     BAB_07_DATA,
-    BAB_08_DATA
+    BAB_08_DATA,
+    BAB_09_DATA,
+    BAB_10_DATA,
+    BAB_11_DATA,
+    BAB_12_DATA,
+    BAB_13_DATA,
+    BAB_14_DATA,
+    BAB_15_DATA,
+    BAB_16_DATA,
+    BAB_17_DATA,
+    BAB_18_DATA,
+    BAB_19_DATA,
+    BAB_20_DATA,
+    BAB_21_DATA,
+    BAB_22_DATA,
+    BAB_23_DATA,
+    BAB_24_DATA,
+    BAB_25_DATA
   };
 }

@@ -882,7 +882,7 @@ class ChoukaiApp {
                 プラットフォーム CBT 評価試験 ・ Tryout Terpadu
               </h1>
               <p class="text-xs md:text-sm text-slate-300 mt-1 max-w-2xl">
-                Paket evaluasi terstandarisasi untuk calon peserta magang teknis IMM Japan & visa Tokutei Ginou (SSW). Bab 01 s.d. 07 (Fase Fondasi Ujian Tulis: 25 Soal) & Bab 08 (Tryout Terpadu Reading & Choukai: 33 Soal).
+                Paket evaluasi terstandarisasi untuk calon peserta magang teknis IMM Japan & visa Tokutei Ginou (SSW). Seluruh Bab 01 s.d. 25 Siap Ujian (Reading & Tryout Terpadu).
               </p>
             </div>
             <!-- Quick Stats -->
