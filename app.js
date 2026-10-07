@@ -125,9 +125,35 @@ class ChoukaiApp {
     });
   }
 
+  getCurrentQuestion() {
+    return this.currentChapter && this.currentChapter.questions
+      ? this.currentChapter.questions[this.currentQuestionIdx]
+      : null;
+  }
+
+  getCurrentQuestionAudioSrc() {
+    const q = this.getCurrentQuestion();
+    return q && q.audioSrc ? q.audioSrc : (this.currentChapter ? this.currentChapter.audioSrc : "");
+  }
+
+  loadQuestionAudio(idx) {
+    if (idx !== undefined) this.currentQuestionIdx = idx;
+    const q = this.getCurrentQuestion();
+    const targetSrc = q && q.audioSrc ? q.audioSrc : (this.currentChapter ? this.currentChapter.audioSrc : "");
+    if (targetSrc && (!this.audio.src || !this.audio.src.endsWith(targetSrc))) {
+      this.audio.src = targetSrc;
+      this.audio.currentTime = 0;
+      this.audio.playbackRate = this.playbackRate;
+    }
+    this.updateAudioProgress();
+    this.renderAudioButtons();
+    this.renderAudioHeaderInfo();
+  }
+
   playAudio() {
-    if (!this.audio.src || !this.audio.src.includes(this.currentChapter.audioSrc)) {
-      this.audio.src = this.currentChapter.audioSrc;
+    const targetSrc = this.getCurrentQuestionAudioSrc();
+    if (targetSrc && (!this.audio.src || !this.audio.src.endsWith(targetSrc))) {
+      this.audio.src = targetSrc;
       this.audio.playbackRate = this.playbackRate;
     }
     this.audio.play().catch((e) => console.log("Audio play prevented:", e));
@@ -145,6 +171,16 @@ class ChoukaiApp {
     }
   }
 
+  playQuestionAudio(qId) {
+    const q = this.currentChapter.questions.find((item) => item.id === qId);
+    if (!q) return;
+    const targetSrc = q.audioSrc || this.currentChapter.audioSrc;
+    this.audio.src = targetSrc;
+    this.audio.currentTime = 0;
+    this.audio.playbackRate = this.playbackRate;
+    this.audio.play().catch((e) => console.log("Audio play prevented:", e));
+  }
+
   seekAudio(seconds) {
     if (isNaN(seconds) || !isFinite(seconds) || !this.audio.duration) return;
     this.audio.currentTime = Math.max(0, Math.min(seconds, this.audio.duration));
@@ -152,21 +188,7 @@ class ChoukaiApp {
 
   seekAndPlayAudio(seconds) {
     if (isNaN(seconds) || !isFinite(seconds)) return;
-    if (!this.audio.src || !this.audio.src.includes(this.currentChapter.audioSrc)) {
-      this.audio.src = this.currentChapter.audioSrc;
-      this.audio.playbackRate = this.playbackRate;
-    }
-    if (this.audio.duration) {
-      this.audio.currentTime = Math.max(0, Math.min(seconds, this.audio.duration));
-    } else {
-      this.audio.addEventListener(
-        "loadedmetadata",
-        () => {
-          this.audio.currentTime = Math.max(0, Math.min(seconds, this.audio.duration));
-        },
-        { once: true }
-      );
-    }
+    this.seekAudio(seconds);
     this.playAudio();
   }
 
@@ -187,9 +209,16 @@ class ChoukaiApp {
     const curTimeEl = document.getElementById("audio-current-time");
     const totalTimeEl = document.getElementById("audio-total-time");
     const scrubber = document.getElementById("audio-scrubber");
+    const q = this.getCurrentQuestion();
 
     if (curTimeEl) curTimeEl.textContent = this.formatTime(this.audio.currentTime);
-    if (totalTimeEl && this.audio.duration) totalTimeEl.textContent = this.formatTime(this.audio.duration);
+    if (totalTimeEl) {
+      if (this.audio.duration && !isNaN(this.audio.duration)) {
+        totalTimeEl.textContent = this.formatTime(this.audio.duration);
+      } else if (q && q.audioDuration) {
+        totalTimeEl.textContent = q.audioDuration;
+      }
+    }
     if (scrubber && this.audio.duration) {
       scrubber.value = (this.audio.currentTime / this.audio.duration) * 100;
     }
@@ -201,6 +230,14 @@ class ChoukaiApp {
     playBtn.innerHTML = this.isPlaying
       ? `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`
       : `<svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+  }
+
+  renderAudioHeaderInfo() {
+    const titleEl = document.getElementById("audio-header-title");
+    const q = this.getCurrentQuestion();
+    if (titleEl && q) {
+      titleEl.textContent = `Audio Soal ${q.id}`;
+    }
   }
 
   renderAudioSpeedBadge() {
@@ -218,17 +255,16 @@ class ChoukaiApp {
     this.mode = mode;
     this.view = "exam";
 
-    // Reset audio
+    // Reset audio to current question
     this.pauseAudio();
-    this.audio.src = this.currentChapter.audioSrc;
-    this.audio.currentTime = 0;
+    this.loadQuestionAudio(0);
 
     // Reset timer
     if (this.timerInterval) clearInterval(this.timerInterval);
     if (this.mode === "shiken") {
       this.timerSeconds = 600; // 10 menit
       this.startTimer();
-      // Auto-start audio in official exam mode
+      // Auto-start audio for question 1 in official exam mode
       this.playAudio();
     }
 
@@ -267,7 +303,13 @@ class ChoukaiApp {
 
   goToQuestion(idx) {
     if (idx >= 0 && idx < this.currentChapter.questions.length) {
+      const wasPlaying = this.isPlaying;
+      this.pauseAudio();
       this.currentQuestionIdx = idx;
+      this.loadQuestionAudio(idx);
+      if (wasPlaying && this.mode === "shiken") {
+        this.playAudio();
+      }
       this.renderQuestionContent();
       this.renderQuestionNav();
     }
@@ -607,10 +649,13 @@ class ChoukaiApp {
               <button id="audio-play-btn" onclick="window.app.togglePlayPause()" class="w-10 h-10 rounded-full bg-sky-500 hover:bg-sky-400 text-white flex items-center justify-center transition shrink-0 shadow">
                 <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </button>
-              <div class="text-xs font-mono flex items-center gap-1 text-slate-300">
-                <span id="audio-current-time">00:00</span>
-                <span>/</span>
-                <span id="audio-total-time">${this.currentChapter.audioDuration || "08:35"}</span>
+              <div>
+                <div class="text-[11px] font-bold text-sky-400 font-mono tracking-wide" id="audio-header-title">Audio Soal ${q.id}</div>
+                <div class="text-xs font-mono flex items-center gap-1 text-slate-300">
+                  <span id="audio-current-time">00:00</span>
+                  <span>/</span>
+                  <span id="audio-total-time">${q.audioDuration || "00:50"}</span>
+                </div>
               </div>
             </div>
 
@@ -624,8 +669,9 @@ class ChoukaiApp {
               <button id="audio-speed-btn" onclick="const r = window.app.playbackRate === 1.0 ? 0.8 : (window.app.playbackRate === 0.8 ? 1.2 : 1.0); window.app.setPlaybackRate(r);" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded text-xs font-mono font-bold transition">
                 1.0x
               </button>
-              <span class="text-[10px] text-slate-400 font-jp px-2 py-0.5 bg-slate-800/70 rounded">
-                Azure Neural (EBU R128)
+              <span class="text-[10px] text-slate-400 font-jp px-2 py-0.5 bg-slate-800/70 rounded flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Audio Per Soal
               </span>
             </div>
           </div>
@@ -736,12 +782,10 @@ class ChoukaiApp {
           <span class="text-xs text-slate-500 font-jp">${q.section_ja}</span>
         </div>
         <div class="flex items-center gap-2">
-          ${q.audioTimestamp ? `
-          <button onclick="window.app.seekAndPlayAudio(${q.audioStartSeconds})" class="px-2.5 py-1 rounded bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs font-semibold transition flex items-center gap-1.5 shadow-sm" title="Putar audio soal ${q.id} (${q.audioTimestamp})">
+          <button onclick="window.app.playQuestionAudio(${q.id})" class="px-2.5 py-1 rounded bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs font-semibold transition flex items-center gap-1.5 shadow-sm" title="Putar audio soal ${q.id} (${q.audioDuration || '00:50'})">
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <span>Audio Soal (${q.audioTimestamp})</span>
+            <span>Putar Audio (${q.audioDuration || "00:50"})</span>
           </button>
-          ` : ""}
           <span class="text-[11px] text-slate-400 font-mono">Poin: 12.5</span>
         </div>
       </div>
@@ -813,11 +857,10 @@ class ChoukaiApp {
           <div class="text-xs text-slate-600 dark:text-slate-400 mb-3 flex flex-wrap items-center gap-x-4 gap-y-1">
             <div>Jawaban Anda: <strong class="${isCorrect ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}">${userAns ? "Opsi " + userAns : "Tidak Dijawab"}</strong></div>
             <div>Kunci Jawaban: <strong class="text-sky-600 dark:text-sky-400">Opsi ${q.correctAnswer}</strong></div>
-            ${q.audioTimestamp ? `
-            <button onclick="window.app.seekAndPlayAudio(${q.audioStartSeconds})" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 font-mono">
+            <button onclick="window.app.playQuestionAudio(${q.id})" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 font-mono font-semibold">
               <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              Dengar Ulang (${q.audioTimestamp})
-            </button>` : ""}
+              Dengar Ulang Audio Soal ${q.id} (${q.audioDuration || "00:50"})
+            </button>
           </div>
 
           <!-- Dialogue script disclosure -->
