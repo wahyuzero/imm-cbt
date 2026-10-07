@@ -120,6 +120,12 @@ class ChoukaiApp {
   }
 
   viewSavedResult(chapterNum) {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    this.cancelAutoNext();
+    this.pauseAudio();
     const saved = this.progress[chapterNum];
     if (!saved) return;
     if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[chapterNum]) {
@@ -129,6 +135,17 @@ class ChoukaiApp {
     }
     this.currentResult = saved;
     this.view = "result";
+    this.render();
+  }
+
+  goToDashboard() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    this.cancelAutoNext();
+    this.pauseAudio();
+    this.view = "dashboard";
     this.render();
   }
 
@@ -475,7 +492,14 @@ class ChoukaiApp {
       this.renderTimerDisplay();
       if (this.timerSeconds <= 0) {
         clearInterval(this.timerInterval);
-        alert("Waktu ujian telah berakhir! Lembar jawaban akan dikumpulkan secara otomatis.");
+        this.timerInterval = null;
+        if (typeof alert === "function") {
+          try {
+            alert("Waktu ujian telah berakhir! Lembar jawaban akan dikumpulkan secara otomatis.");
+          } catch (e) {
+            console.warn("Alert dialog prevented:", e);
+          }
+        }
         this.submitExam();
       }
     }, 1000);
@@ -622,28 +646,42 @@ class ChoukaiApp {
       minute: "2-digit",
     });
 
+    const hasChoukai = (r.choukaiTotal || 0) > 0;
     let itemsStr = "";
     qList.forEach((q) => {
       const isCorrect = r.answers[q.id] === q.correctAnswer;
       const mark = isCorrect ? "✅ [BENAR]" : "❌ [SALAH]";
       const userAns = r.answers[q.id] ? `Opsi ${r.answers[q.id]}` : "Tidak dijawab";
-      const sessionTag = (q.session === "reading" || q.id <= 25) ? "Reading" : "Choukai";
-      itemsStr += `• [${sessionTag}] Soal ${q.id}: ${mark} (Pilihan: ${userAns} | Kunci: ${q.correctAnswer})\n`;
+      const sessionTag = hasChoukai ? ((q.session === "reading" || q.id <= 25) ? "[Reading] " : "[Choukai] ") : "";
+      itemsStr += `• ${sessionTag}Soal ${q.id}: ${mark} (Pilihan: ${userAns} | Kunci: ${q.correctAnswer})\n`;
     });
 
     const statusBadge = r.passed ? "LULUS (合格) 🎉" : "REMEDIAL / BELUM LULUS (再試) ⚠️";
     const modeText = r.mode === "shiken" ? "Simulasi CBT" : "Latihan Mandiri";
 
+    let headerTitle = "";
+    let scoreSection = "";
+    if (hasChoukai) {
+      headerTitle = `🎌 *LAPORAN EVALUASI IMM JAPAN (TRYOUT TERPADU)*\n`;
+      scoreSection =
+        `📖 *Skor Reading (読解):* *${r.readingScore.toFixed(1)} / 100* (${r.readingCorrect}/${r.readingTotal} Benar)\n` +
+        `🎧 *Skor Choukai (聴解):* *${r.choukaiScore.toFixed(1)} / 100* (${r.choukaiCorrect}/${r.choukaiTotal} Benar)\n` +
+        `📊 *Skor Akhir Tryout:* *${r.score.toFixed(1)} / 100*\n`;
+    } else {
+      headerTitle = `🎌 *LAPORAN EVALUASI IMM JAPAN (UJIAN TULIS)*\n`;
+      scoreSection =
+        `📖 *Skor Ujian Tulis (Reading):* *${r.readingScore.toFixed(1)} / 100* (${r.readingCorrect}/${r.readingTotal} Benar • Bobot 4.0 Poin/Soal)\n` +
+        `📊 *Skor Akhir:* *${r.score.toFixed(1)} / 100*\n`;
+    }
+
     const msg =
-      `🎌 *LAPORAN EVALUASI IMM JAPAN (TRYOUT TERPADU)*\n` +
+      headerTitle +
       `━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
       `👤 *Peserta:* ${this.profile.name || "Siswa"}\n` +
       `🏷️ *Kelas/No:* ${this.profile.classNo || "-"}\n` +
       `🎯 *Modul:* ${this.currentChapter.title_ja} (${this.currentChapter.title_id})\n` +
       `⏱️ *Mode:* ${modeText}\n` +
-      `📖 *Skor Reading (読解):* *${r.readingScore.toFixed(1)} / 100* (${r.readingCorrect}/${r.readingTotal} Benar)\n` +
-      `🎧 *Skor Choukai (聴解):* *${r.choukaiScore.toFixed(1)} / 100* (${r.choukaiCorrect}/${r.choukaiTotal} Benar)\n` +
-      `📊 *Skor Akhir Tryout:* *${r.score.toFixed(1)} / 100*\n` +
+      scoreSection +
       `🏆 *Status:* *${statusBadge}*\n` +
       `📌 *Passing Grade:* 80.0 Poin\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
@@ -844,7 +882,7 @@ class ChoukaiApp {
                 プラットフォーム CBT 評価試験 ・ Tryout Terpadu
               </h1>
               <p class="text-xs md:text-sm text-slate-300 mt-1 max-w-2xl">
-                Paket evaluasi terstandarisasi untuk calon peserta magang teknis IMM Japan & visa Tokutei Ginou (SSW). 33 butir soal per bab (Sesi 1 Reading: 25 Soal & Sesi 2 Choukai: 8 Soal).
+                Paket evaluasi terstandarisasi untuk calon peserta magang teknis IMM Japan & visa Tokutei Ginou (SSW). Bab 01 s.d. 07 (Fase Fondasi Ujian Tulis: 25 Soal) & Bab 08 (Tryout Terpadu Reading & Choukai: 33 Soal).
               </p>
             </div>
             <!-- Quick Stats -->
@@ -909,7 +947,7 @@ class ChoukaiApp {
         <!-- Top Exam Header -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-3 mb-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-3">
-            <button onclick="window.app.view = 'dashboard'; window.app.pauseAudio(); window.app.render();" class="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium flex items-center gap-1">
+            <button onclick="window.app.goToDashboard()" class="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium flex items-center gap-1">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
               Kembali
             </button>
@@ -1246,6 +1284,48 @@ class ChoukaiApp {
             ` : ""}
           </div>
 
+          ${q.image ? `
+            <div class="my-3">
+              <div class="relative inline-block border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-950 p-2 cursor-zoom-in" onclick="window.app.openModal('image_zoom', '${q.image}')">
+                <img src="${q.image}" alt="Soal ${q.id}" class="max-h-48 mx-auto rounded object-contain">
+                <span class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-slate-900/80 text-white text-[9px] rounded backdrop-blur font-mono flex items-center gap-1">
+                  <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  Perbesar
+                </span>
+              </div>
+            </div>
+          ` : ""}
+
+          <!-- Pilihan Opsi Review -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 my-2.5">
+            ${q.options.map((opt) => {
+              const isSelected = userAns === opt.id;
+              const isTargetCorrect = q.correctAnswer === opt.id;
+              let optBorder = "border-slate-200 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300";
+              let badgeColor = "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400";
+              let tag = "";
+              if (isTargetCorrect) {
+                optBorder = "border-emerald-300 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-semibold";
+                badgeColor = "bg-emerald-600 text-white";
+                tag = `<span class="ml-auto text-[10px] text-emerald-700 dark:text-emerald-300 font-bold font-mono">✓ Kunci</span>`;
+              } else if (isSelected && !isCorrect) {
+                optBorder = "border-rose-300 dark:border-rose-800 bg-rose-50/60 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-semibold";
+                badgeColor = "bg-rose-600 text-white";
+                tag = `<span class="ml-auto text-[10px] text-rose-700 dark:text-rose-300 font-bold font-mono">✕ Pilihan Anda</span>`;
+              }
+              const optCleanJa = opt.text_ja.replace(/^[①②③④\d]+[\s.、]*\s*/, "");
+              return `
+                <div class="p-2 rounded-lg border ${optBorder} flex items-center gap-2 text-xs">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold font-jp shrink-0 ${badgeColor}">
+                    ${opt.symbol || opt.id}
+                  </span>
+                  <span class="font-jp text-[11.5px]">${optCleanJa}</span>
+                  ${tag}
+                </div>
+              `;
+            }).join("")}
+          </div>
+
           ${isChoukai && dialogueScriptHTML ? `
             <details class="bg-white dark:bg-slate-800/80 rounded-lg p-3 my-2.5 border border-slate-200 dark:border-slate-700 shadow-2xs">
               <summary class="cursor-pointer text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
@@ -1372,7 +1452,7 @@ class ChoukaiApp {
             <button onclick="window.app.startExam(window.app.currentChapter, 'renshuu')" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition">
               Ulangi Tryout
             </button>
-            <button onclick="window.app.view = 'dashboard'; window.app.render();" class="px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+            <button onclick="window.app.goToDashboard()" class="px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition">
               Kembali ke Dashboard
             </button>
           </div>
@@ -1400,7 +1480,7 @@ class ChoukaiApp {
             <div class="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/80 rounded-xl p-6 text-center text-emerald-800 dark:text-emerald-200 shadow-xs">
               <div class="text-3xl mb-1.5">🎉</div>
               <h4 class="font-bold text-sm">Luar Biasa! Sempurna (100 / 100)</h4>
-              <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">Seluruh 33 butir soal (Reading & Choukai) berhasil Anda kuasai dengan tepat.</p>
+              <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">${(r.choukaiTotal || 0) > 0 ? `Seluruh ${r.totalCount} butir soal (Reading & Choukai) berhasil Anda kuasai dengan tepat.` : `Seluruh ${r.totalCount} butir soal (Reading) berhasil Anda kuasai dengan tepat.`}</p>
             </div>
             `
           }
