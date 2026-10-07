@@ -228,7 +228,7 @@ const BAB_08_DATA = {
       question_ruby: "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>はどの<ruby>帽子<rt>ぼうし</rt></ruby>をかぶりますか。",
       question_romaji: "Otoko no hito wa dono boushi o kaburimasu ka.",
       question_id: "Laki-laki tersebut akan mengenakan topi yang mana?",
-      image: "assets/bab_08/q1.png",
+      image: "assets/bab_08/q1.webp",
       options: [
         { id: "1", symbol: "①", text_ja: "① 古い白い帽子（めがねなし）", text_id: "Topi putih usang (tanpa kacamata)" },
         { id: "2", symbol: "②", text_ja: "② 古い白い帽子（めがねあり）", text_id: "Topi putih usang (dengan kacamata)" },
@@ -289,7 +289,7 @@ const BAB_08_DATA = {
       question_ruby: "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>のカバンはどれですか。",
       question_romaji: "Otoko no hito no kaban wa dore desu ka.",
       question_id: "Tas milik laki-laki tersebut yang mana?",
-      image: "assets/bab_08/q2.png",
+      image: "assets/bab_08/q2.webp",
       options: [
         { id: "1", symbol: "①", text_ja: "① 上の棚の大きい黒いカバン", text_id: "Rak atas: tas hitam besar" },
         { id: "2", symbol: "②", text_ja: "② 上の棚の小さい白いカバン", text_id: "Rak atas: tas putih kecil" },
@@ -362,7 +362,7 @@ const BAB_08_DATA = {
       question_ruby: "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>はどの<ruby>弁当<rt>べんとう</rt></ruby>を<ruby>買<rt>か</rt></ruby>いますか。",
       question_romaji: "Otoko no hito wa dono bentou o kaimasu ka.",
       question_id: "Laki-laki tersebut akan membeli bento yang mana?",
-      image: "assets/bab_08/q3.png",
+      image: "assets/bab_08/q3.webp",
       options: [
         { id: "1", symbol: "①", text_ja: "① 肉の弁当（800円）", text_id: "Bento Daging (800 yen)" },
         { id: "2", symbol: "②", text_ja: "② 魚の弁当（500円）", text_id: "Bento Ikan (500 yen)" },
@@ -429,7 +429,7 @@ const BAB_08_DATA = {
       question_ruby: "<ruby>明日<rt>あした</rt></ruby>のミーティングは<ruby>何時<rt>なんじ</rt></ruby>に<ruby>始<rt>はじ</rt></ruby>まりますか。",
       question_romaji: "Ashita no miitingu wa nanji ni hajimarimasu ka.",
       question_id: "Rapat besok akan dimulai pada pukul berapa?",
-      image: "assets/bab_08/q4.png",
+      image: "assets/bab_08/q4.webp",
       options: [
         { id: "1", symbol: "①", text_ja: "① 7時30分（07:30）", text_id: "Pukul 07:30 (Mulai pembersihan)" },
         { id: "2", symbol: "②", text_ja: "② 8時00分（08:00）", text_id: "Pukul 08:00 (Rapat dimulai)" },
