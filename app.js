@@ -523,7 +523,6 @@ class ChoukaiApp {
             </div>
             <h3 class="font-jp font-bold text-sm text-slate-900 dark:text-slate-100 mb-1 leading-snug">${ch.title_ja}</h3>
             <p class="text-xs text-slate-600 dark:text-slate-400 mb-2">${ch.title_id}</p>
-            <p class="text-[11px] text-slate-500 dark:text-slate-500 line-clamp-2">${ch.topic_id}</p>
           </div>
           <div>
             ${actionButton}
@@ -607,8 +606,7 @@ class ChoukaiApp {
             </button>
             <div class="h-4 w-px bg-slate-300 dark:bg-slate-700"></div>
             <div>
-              <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400 font-jp uppercase">${this.currentChapter.title_ja}</span>
-              <h2 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">${this.currentChapter.title_id}</h2>
+              <h2 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 font-jp">${this.currentChapter.title_ja}</h2>
             </div>
           </div>
 
@@ -620,7 +618,7 @@ class ChoukaiApp {
                 Latihan (練習)
               </button>
               <button onclick="window.app.startExam(window.app.currentChapter, 'shiken')" class="px-2.5 py-1 rounded transition ${this.mode === "shiken" ? "bg-rose-600 text-white shadow-sm font-bold" : "text-slate-500"}">
-                CBT Resmi (試験)
+                Simulasi CBT (試験)
               </button>
             </div>
 
@@ -765,7 +763,6 @@ class ChoukaiApp {
           </span>
           <div class="text-left flex-1">
             <div class="font-jp font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100">${optCleanJa}</div>
-            <div class="text-[11px] text-slate-500 mt-0.5">${opt.text_id}</div>
           </div>
         </button>
       `;
@@ -794,7 +791,6 @@ class ChoukaiApp {
         <h3 class="text-base sm:text-lg font-bold font-jp text-slate-900 dark:text-slate-100 leading-relaxed">
           ${questionTextDisplay}
         </h3>
-        <p class="text-xs text-slate-500 mt-1 italic">${q.question_romaji} &bull; ${q.question_id}</p>
       </div>
 
       ${visualHTML}
