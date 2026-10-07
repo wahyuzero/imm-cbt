@@ -27,6 +27,7 @@ class ChoukaiApp {
     this.audio = new Audio();
     this.isPlaying = false;
     this.playbackRate = 1.0;
+    this.pendingSeek = null;
 
     // View state
     this.view = "dashboard"; // 'dashboard' | 'exam' | 'result'
@@ -44,6 +45,8 @@ class ChoukaiApp {
     // Deep linking via URL hash
     if (window.location.hash === "#exam" || window.location.hash === "#bab-08") {
       this.startExam(BAB_08_DATA, "renshuu");
+    } else if (window.location.hash === "#result" && this.progress["08"]) {
+      this.viewSavedResult("08");
     } else if (window.location.hash === "#result-demo") {
       this.startExam(BAB_08_DATA, "shiken");
       // Populate mock full-score demo
@@ -94,9 +97,14 @@ class ChoukaiApp {
 
   saveExamResult(result) {
     this.progress[result.chapter] = {
+      chapter: result.chapter,
       score: result.score,
       readingScore: result.readingScore,
       choukaiScore: result.choukaiScore,
+      readingCorrect: result.readingCorrect,
+      readingTotal: result.readingTotal,
+      choukaiCorrect: result.choukaiCorrect,
+      choukaiTotal: result.choukaiTotal,
       passed: result.passed,
       correctCount: result.correctCount,
       totalCount: result.totalCount,
@@ -105,6 +113,14 @@ class ChoukaiApp {
       mode: result.mode,
     };
     localStorage.setItem("choukai_progress", JSON.stringify(this.progress));
+  }
+
+  viewSavedResult(chapterNum) {
+    const saved = this.progress[chapterNum];
+    if (!saved) return;
+    this.currentResult = saved;
+    this.view = "result";
+    this.render();
   }
 
   // ==========================================
@@ -125,9 +141,17 @@ class ChoukaiApp {
   // ==========================================
   setupAudioListeners() {
     this.audio.addEventListener("timeupdate", () => this.updateAudioProgress());
+    this.audio.addEventListener("loadedmetadata", () => {
+      if (this.pendingSeek !== null && this.audio.duration && !isNaN(this.audio.duration)) {
+        this.seekAudio(this.pendingSeek);
+        this.pendingSeek = null;
+      }
+      this.updateAudioProgress();
+    });
     this.audio.addEventListener("ended", () => {
       this.isPlaying = false;
       this.renderAudioButtons();
+      this.updateResultAudioBtn(null, false);
       this.handleAudioEnded();
     });
     this.audio.addEventListener("play", () => {
@@ -137,6 +161,7 @@ class ChoukaiApp {
     this.audio.addEventListener("pause", () => {
       this.isPlaying = false;
       this.renderAudioButtons();
+      this.updateResultAudioBtn(null, false);
     });
   }
 
@@ -154,6 +179,7 @@ class ChoukaiApp {
   loadQuestionAudio(idx) {
     if (idx !== undefined) this.currentQuestionIdx = idx;
     this.cancelAutoNext();
+    this.pendingSeek = null;
     const q = this.getCurrentQuestion();
     if (!q) return;
 
@@ -180,12 +206,21 @@ class ChoukaiApp {
       this.audio.src = targetSrc;
       this.audio.playbackRate = this.playbackRate;
     }
-    this.audio.play().catch((e) => console.log("Audio play prevented:", e));
+    this.isPlaying = true;
+    this.renderAudioButtons();
+    this.audio.play().catch((e) => {
+      this.isPlaying = false;
+      this.renderAudioButtons();
+      console.log("Audio play prevented:", e);
+    });
   }
 
   pauseAudio() {
+    this.isPlaying = false;
     this.audio.pause();
     this.cancelAutoNext();
+    this.renderAudioButtons();
+    this.updateResultAudioBtn(null, false);
   }
 
   togglePlayPause() {
@@ -205,11 +240,66 @@ class ChoukaiApp {
     this.audio.src = q.audioSrc;
     this.audio.currentTime = 0;
     this.audio.playbackRate = this.playbackRate;
-    this.audio.play().catch((e) => console.log("Audio play prevented:", e));
+    this.isPlaying = true;
+    this.renderAudioButtons();
+    this.audio.play().catch((e) => {
+      this.isPlaying = false;
+      this.renderAudioButtons();
+      console.log("Audio play prevented:", e);
+    });
+  }
+
+  toggleResultAudio(qId) {
+    const q = this.currentChapter.questions.find((item) => item.id === qId);
+    if (!q || !q.audioSrc) return;
+
+    if (this.isPlaying && this.audio.src && this.audio.src.endsWith(q.audioSrc)) {
+      this.pauseAudio();
+      this.updateResultAudioBtn(qId, false);
+    } else {
+      this.cancelAutoNext();
+      this.audio.src = q.audioSrc;
+      this.audio.currentTime = 0;
+      this.audio.playbackRate = this.playbackRate;
+      this.isPlaying = true;
+      this.updateResultAudioBtn(qId, true);
+      this.audio.play().catch((e) => {
+        this.isPlaying = false;
+        this.updateResultAudioBtn(qId, false);
+        console.log("Audio play error:", e);
+      });
+    }
+  }
+
+  updateResultAudioBtn(qId, isPlayingNow) {
+    document.querySelectorAll('[id^="result-audio-btn-"]').forEach((btn) => {
+      const match = btn.id.match(/result-audio-btn-(\d+)/);
+      if (match) {
+        const id = parseInt(match[1], 10);
+        const itemQ = this.currentChapter.questions.find((x) => x.id === id);
+        const dur = itemQ ? (itemQ.audioDuration || "00:50") : "00:50";
+        if (id === qId && isPlayingNow) {
+          btn.innerHTML = `
+            <svg class="w-3 h-3 fill-current text-rose-500 animate-pulse" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <span class="text-rose-600 dark:text-rose-400 font-bold">Jeda Audio (${dur})</span>
+          `;
+        } else {
+          btn.innerHTML = `
+            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Dengar Ulang Audio Soal ${id} (${dur})</span>
+          `;
+        }
+      }
+    });
   }
 
   seekAudio(seconds) {
-    if (isNaN(seconds) || !isFinite(seconds) || !this.audio.duration) return;
+    if (isNaN(seconds) || !isFinite(seconds)) return;
+    if (!this.audio.duration || isNaN(this.audio.duration)) {
+      this.pendingSeek = seconds;
+      return;
+    }
+    this.pendingSeek = null;
     this.audio.currentTime = Math.max(0, Math.min(seconds, this.audio.duration));
   }
 
@@ -649,10 +739,21 @@ class ChoukaiApp {
         : "";
 
       const actionButton = ch.available
-        ? `<button onclick="window.app.startExam(BAB_08_DATA, 'renshuu')" class="w-full mt-3 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-            ${isCompleted ? "Ulangi Tryout" : "Mulai Tryout Bab 08"}
-          </button>`
+        ? (isCompleted
+            ? `<div class="grid grid-cols-2 gap-2 mt-3">
+                <button onclick="window.app.viewSavedResult('${ch.num}')" class="py-2 px-2 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  Lihat Hasil
+                </button>
+                <button onclick="window.app.startExam(BAB_08_DATA, 'renshuu')" class="py-2 px-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  Ulangi
+                </button>
+              </div>`
+            : `<button onclick="window.app.startExam(BAB_08_DATA, 'renshuu')" class="w-full mt-3 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                Mulai Tryout Bab 08
+              </button>`)
         : `<button disabled class="w-full mt-3 py-2 px-3 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-md text-xs font-semibold cursor-not-allowed">
             Terkunci (Segera Hadir)
           </button>`;
@@ -879,7 +980,7 @@ class ChoukaiApp {
         }
 
         html += `
-          <button onclick="window.app.goToQuestion(${qIdx})" class="w-8 h-8 rounded-md border text-xs font-mono font-bold flex items-center justify-center shrink-0 transition ${bgClass}" title="Soal ${q.id} (${q.category || ''})">
+          <button data-qidx="${qIdx}" onclick="window.app.goToQuestion(${qIdx})" class="w-8 h-8 rounded-md border text-xs font-mono font-bold flex items-center justify-center shrink-0 transition ${bgClass}" title="Soal ${q.id} (${q.category || ''})">
             ${q.id}
           </button>
         `;
@@ -927,6 +1028,13 @@ class ChoukaiApp {
         </div>
       </div>
     `;
+
+    setTimeout(() => {
+      const activeBtn = navEl.querySelector(`button[data-qidx="${this.currentQuestionIdx}"]`);
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }, 40);
   }
 
   renderQuestionContent() {
@@ -1073,9 +1181,9 @@ class ChoukaiApp {
             <div>Jawaban Anda: <strong class="${isCorrect ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}">${userAns ? "Opsi " + userAns : "Tidak Dijawab"}</strong></div>
             <div>Kunci Jawaban: <strong class="text-sky-600 dark:text-sky-400">Opsi ${q.correctAnswer}</strong></div>
             ${isChoukai ? `
-              <button onclick="window.app.playQuestionAudio(${q.id})" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 font-mono font-semibold">
+              <button onclick="window.app.toggleResultAudio(${q.id})" id="result-audio-btn-${q.id}" class="text-[11px] text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 font-mono font-semibold">
                 <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                Dengar Ulang Audio Soal ${q.id} (${q.audioDuration || "00:50"})
+                <span>Dengar Ulang Audio Soal ${q.id} (${q.audioDuration || "00:50"})</span>
               </button>
             ` : ""}
           </div>
