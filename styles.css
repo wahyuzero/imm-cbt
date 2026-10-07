@@ -1,0 +1,158 @@
+/* ==========================================================================
+   IMM JAPAN CHOUKAI LAB — CBT WEB STYLESHEET
+   Style: Tokyo Metro Utilitarian & Tactile Editorial
+   Dials: ENERGY 1 / RHYTHM 2 / MOTION 1
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-jp: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+
+  /* Tokyo Metro Blue / Utilitarian Ink Palette */
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-elevated: #ffffff;
+
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-focus: #0284c7;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+
+  --brand-blue: #0284c7;
+  --brand-blue-hover: #0369a1;
+  --brand-blue-subtle: #e0f2fe;
+
+  --accent-navy: #0f172a;
+  --accent-emerald: #059669;
+  --accent-amber: #d97706;
+  --accent-rose: #e11d48;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #090d16;
+  --bg-surface: #111827;
+  --bg-subtle: #1f2937;
+  --bg-elevated: #1e293b;
+
+  --border-light: #1f2937;
+  --border-medium: #374151;
+  --border-focus: #38bdf8;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  --brand-blue: #38bdf8;
+  --brand-blue-hover: #0284c7;
+  --brand-blue-subtle: #0c4a6e;
+
+  --accent-navy: #f8fafc;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-jp {
+  font-family: var(--font-jp);
+}
+
+ruby {
+  ruby-align: center;
+}
+
+ruby rt {
+  font-size: 0.65em;
+  color: var(--brand-blue);
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Audio Scrubber & Tactile Controller */
+input[type="range"].audio-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--border-medium);
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].audio-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--brand-blue);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"].audio-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Tactile Question Option Cards */
+.option-btn {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid var(--border-light);
+  background-color: var(--bg-surface);
+  text-align: left;
+}
+
+.option-btn:hover {
+  border-color: var(--border-medium);
+  background-color: var(--bg-subtle);
+}
+
+.option-btn.selected {
+  border-color: var(--brand-blue);
+  background-color: var(--brand-blue-subtle);
+  box-shadow: 0 0 0 1px var(--brand-blue);
+}
+
+.option-btn.correct {
+  border-color: var(--accent-emerald) !important;
+  background-color: rgba(5, 150, 105, 0.1) !important;
+}
+
+.option-btn.incorrect {
+  border-color: var(--accent-rose) !important;
+  background-color: rgba(225, 29, 72, 0.1) !important;
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+/* Print Tweaks */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

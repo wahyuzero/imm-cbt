@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMM JAPAN 聴解 LAB ｜ Interactive CBT Listening Platform</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Tactile & Japanese Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Top App Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <a href="#dashboard" onclick="window.app.view = 'dashboard'; window.app.render();" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-sky-700 text-white flex items-center justify-center font-black font-jp text-sm shadow-sm">
+            聴
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-black text-sm tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-sky-600 transition">IMM JAPAN</span>
+              <span class="px-1.5 py-0.2 bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 rounded text-[10px] font-bold font-mono">LAB</span>
+            </div>
+            <div class="text-[10px] text-slate-500 font-jp leading-none hidden sm:block">聴解評価試験 ・ CBT Listening Engine</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right Nav Controls -->
+      <div class="flex items-center gap-2.5">
+        <!-- Student Profile Button -->
+        <button id="header-profile-btn" onclick="window.app.openModal('onboarding')" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-xs">
+          <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-[11px] font-bold">学</span>
+          <span class="hidden sm:inline font-medium text-slate-700 dark:text-slate-300">Profil Siswa</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="window.app.toggleTheme()" title="Toggle Dark/Light Mode" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dynamic SPA View Container -->
+  <main id="app" class="flex-1"></main>
+
+  <!-- Global Modal Container -->
+  <div id="modal-container"></div>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 transition-colors mt-auto">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2 font-jp">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>IMM JAPAN 研修生テキスト 準拠 ｜ 聴解シミュレーション</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>Microsoft Azure Neural TTS</span>
+        <span>&bull;</span>
+        <span>EBU R128 Broadcast Audio</span>
+        <span>&bull;</span>
+        <span>JLPT N5 / JFT-Basic A2</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
