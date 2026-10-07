@@ -392,7 +392,7 @@ class ChoukaiApp {
       `👤 *Peserta:* ${this.profile.name || "Siswa"}\n` +
       `🏷️ *Kelas/No:* ${this.profile.classNo || "-"}\n` +
       `🎯 *Modul:* ${this.currentChapter.title_ja} (${this.currentChapter.title_id})\n` +
-      `⏱️ *Mode:* ${r.mode === "shiken" ? "Ujian Resmi CBT" : "Latihan Mandiri"}\n` +
+      `⏱️ *Mode:* ${r.mode === "shiken" ? "Simulasi CBT" : "Latihan Mandiri"}\n` +
       `📊 *Skor Akhir:* *${r.score.toFixed(1)} / 100*\n` +
       `🏆 *Status:* *${statusBadge}*\n` +
       `📌 *Passing Grade:* 80.0 Poin (Minimal 7 dari 8 Benar)\n` +
