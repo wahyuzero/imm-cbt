@@ -10521,7 +10521,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Predikat kesukaan (辛い料理が好きです), alasan menggunakan ~から (仕事がありますから), adverbia derajat (全然辛くない = sama sekali tidak pedas; 少しだけ辛い = hanya sedikit pedas)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q1.webp?v=19"
+        "image": "assets/bab_09/q1.webp?v=20"
     },
     {
         "id": 27,
@@ -10596,7 +10596,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Predikat kemahiran (全然できません / 少しできます), kepemilikan (ギターがありません / マイクがあります), kesukaan (歌が大好きです)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q2.webp?v=19"
+        "image": "assets/bab_09/q2.webp?v=20"
     },
     {
         "id": 28,
@@ -10671,7 +10671,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Kepemilikan (車はありません / 自転車があります), pemahaman (道がよく分かりません), alasan ~から (危ないですから / 運動にもなります)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q3.webp?v=4"
+        "image": "assets/bab_09/q3.webp?v=20"
     },
     {
         "id": 29,
@@ -10752,7 +10752,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Adverbia pemahaman (だいたい分かります = sebagian besar paham; 全然分かりません = sama sekali tidak paham), kepemilikan sarana (辞書アプリがあります)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q4.webp?v=4"
+        "image": "assets/bab_09/q4.webp?v=20"
     },
     {
         "id": 30,
@@ -12188,7 +12188,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Posisi spasial (上・下・左・右・隣), partikel tempat penempatan (~に置いてください), dan alasan pembatalan (~ですから)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q1.webp?v=4"
+        "image": "assets/bab_10/q1.webp?v=20"
     },
     {
         "id": 27,
@@ -12269,7 +12269,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Eksistensi benda mati (~にありますか・あります), letak benda (机の上、引き出しの中), pembatasan (~しかありません), dan negasi keberadaan (~にはない)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q2.webp?v=4"
+        "image": "assets/bab_10/q2.webp?v=20"
     },
     {
         "id": 28,
@@ -12350,7 +12350,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Eksistensi manusia (~にいます), posisi relatif (後ろ・前・間), dan pola penyambung dua entitas (~と~の間)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q3.webp?v=4"
+        "image": "assets/bab_10/q3.webp?v=20"
     },
     {
         "id": 29,
@@ -12431,7 +12431,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Lokasi fasilitas umum (駅の近く、駅の前、スーパーの前), relasi ruang (その間、隣ではありません), partikel keberadaan (~にあります)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q4.webp?v=4"
+        "image": "assets/bab_10/q4.webp?v=20"
     },
     {
         "id": 30,
@@ -13891,7 +13891,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Satuan benda silindris (本: 1本・2本・3本・4本), penanya kuantitas (何本), dan kata akumulasi total (全部で)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q1.webp?v=4"
+        "image": "assets/bab_11/q1.webp?v=20"
     },
     {
         "id": 27,
@@ -13978,7 +13978,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Satuan lembaran tipis (枚: 1枚・2枚・3枚・5枚), penanda pembatalan keputusan (やっぱり～にしてください), dan pembatasan (~だけ)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q2.webp?v=4"
+        "image": "assets/bab_11/q2.webp?v=20"
     },
     {
         "id": 28,
@@ -14065,7 +14065,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Satuan mesin/kendaraan (台: 1台・2台・3台・4台), kata tanya kuantitas (何台), dan pembatasan kondisi (~だけ)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q3.webp?v=4"
+        "image": "assets/bab_11/q3.webp?v=20"
     },
     {
         "id": 29,
@@ -14152,7 +14152,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Durasi waktu (時間: 1時間・2時間・3時間), kata tanya durasi (何時間), kontras harian vs hari ini (いつもは～ですが、今日は～)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q4.webp?v=4"
+        "image": "assets/bab_11/q4.webp?v=20"
     },
     {
         "id": 30,
