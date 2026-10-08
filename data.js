@@ -12188,7 +12188,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Posisi spasial (上・下・左・右・隣), partikel tempat penempatan (~に置いてください), dan alasan pembatalan (~ですから)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q1.webp?v=22"
+        "image": "assets/bab_10/q1.webp?v=23"
     },
     {
         "id": 27,
@@ -12269,7 +12269,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Eksistensi benda mati (~にありますか・あります), letak benda (机の上、引き出しの中), pembatasan (~しかありません), dan negasi keberadaan (~にはない)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q2.webp?v=22"
+        "image": "assets/bab_10/q2.webp?v=23"
     },
     {
         "id": 28,
@@ -12350,7 +12350,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Eksistensi manusia (~にいます), posisi relatif (後ろ・前・間), dan pola penyambung dua entitas (~と~の間)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q3.webp?v=22"
+        "image": "assets/bab_10/q3.webp?v=23"
     },
     {
         "id": 29,
@@ -12431,7 +12431,7 @@ const BAB_10_DATA = {
             "grammarRule": "Pola Bab 10: Lokasi fasilitas umum (駅の近く、駅の前、スーパーの前), relasi ruang (その間、隣ではありません), partikel keberadaan (~にあります)."
         },
         "session": "choukai",
-        "image": "assets/bab_10/q4.webp?v=22"
+        "image": "assets/bab_10/q4.webp?v=23"
     },
     {
         "id": 30,
@@ -13891,7 +13891,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Satuan benda silindris (本: 1本・2本・3本・4本), penanya kuantitas (何本), dan kata akumulasi total (全部で)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q1.webp?v=22"
+        "image": "assets/bab_11/q1.webp?v=23"
     },
     {
         "id": 27,
@@ -13978,7 +13978,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Satuan lembaran tipis (枚: 1枚・2枚・3枚・5枚), penanda pembatalan keputusan (やっぱり～にしてください), dan pembatasan (~だけ)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q2.webp?v=22"
+        "image": "assets/bab_11/q2.webp?v=23"
     },
     {
         "id": 28,
@@ -14065,7 +14065,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Satuan mesin/kendaraan (台: 1台・2台・3台・4台), kata tanya kuantitas (何台), dan pembatasan kondisi (~だけ)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q3.webp?v=22"
+        "image": "assets/bab_11/q3.webp?v=23"
     },
     {
         "id": 29,
@@ -14152,7 +14152,7 @@ const BAB_11_DATA = {
             "grammarRule": "Pola Bab 11: Durasi waktu (時間: 1時間・2時間・3時間), kata tanya durasi (何時間), kontras harian vs hari ini (いつもは～ですが、今日は～)."
         },
         "session": "choukai",
-        "image": "assets/bab_11/q4.webp?v=22"
+        "image": "assets/bab_11/q4.webp?v=23"
     },
     {
         "id": 30,
