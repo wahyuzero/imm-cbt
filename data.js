@@ -10596,7 +10596,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Predikat kemahiran (全然できません / 少しできます), kepemilikan (ギターがありません / マイクがあります), kesukaan (歌が大好きです)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q2.webp?v=4"
+        "image": "assets/bab_09/q2.webp?v=5"
     },
     {
         "id": 28,
