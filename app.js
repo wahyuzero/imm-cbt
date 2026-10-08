@@ -39,7 +39,7 @@ class ChoukaiApp {
 
   pdfUrl(url) {
     if (!url) return "";
-    return url.includes("?") ? url : `${url}?v=25`;
+    return url.includes("?") ? url : `${url}?v=26`;
   }
 
   init() {
@@ -1102,7 +1102,7 @@ class ChoukaiApp {
         }
 
         html += `
-          <button data-qidx="${qIdx}" onclick="window.app.goToQuestion(${qIdx})" class="w-8 h-8 rounded-md border text-xs font-mono font-bold flex items-center justify-center shrink-0 transition ${bgClass}" title="Soal ${q.id} (${q.category || ''})">
+          <button data-qidx="${qIdx}" onclick="window.app.goToQuestion(${qIdx})" class="w-8 h-8 rounded-md border text-xs font-mono font-bold flex items-center justify-center shrink-0 transition ${bgClass}" title="Soal ${q.id}">
             ${q.id}
           </button>
         `;
@@ -1221,7 +1221,6 @@ class ChoukaiApp {
             SOAL ${q.id}
           </span>
           <span class="text-xs text-slate-600 dark:text-slate-400 font-jp font-semibold">${q.section_ja}</span>
-          ${q.category ? `<span class="hidden sm:inline text-[11px] text-slate-400 font-jp">&bull; ${q.category}</span>` : ""}
         </div>
         <div class="flex items-center gap-2">
           ${isChoukai ? `
