@@ -15594,7 +15594,7 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: N1 のほうが N2 より Adj です (N1 lebih ... daripada N2)."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q1.webp?v=29"
+        "image": "assets/bab_12/q1.webp?v=30"
     },
     {
         "id": 27,
@@ -15669,7 +15669,7 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: Bentuk lampau kata benda/sifat-na (昨日はカレーでした) dan perbandingan (AよりBのほうがいい)."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q2.webp?v=29"
+        "image": "assets/bab_12/q2.webp?v=30"
     },
     {
         "id": 28,
@@ -15750,7 +15750,7 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: [Kelompok]の中でどれが一番 Adj ですか ➔ ~のほうが Adj です."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q3.webp?v=29"
+        "image": "assets/bab_12/q3.webp?v=30"
     },
     {
         "id": 29,
@@ -15825,7 +15825,7 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: A と B と どちらが Adj ですか ➔ ~のほうが Adj です."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q4.webp?v=29"
+        "image": "assets/bab_12/q4.webp?v=30"
     },
     {
         "id": 30,
@@ -17255,7 +17255,7 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [Nomina] が ほしいです (Menginginkan sesuatu) & [V-stem]たい (Ingin melakukan)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q1.webp?v=29"
+        "image": "assets/bab_13/q1.webp?v=30"
     },
     {
         "id": 27,
@@ -17330,7 +17330,7 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [Tempat] へ [V-stem] に 行きます (Pergi ke suatu tempat untuk suatu tujuan: 服を買いに行きます)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q2.webp?v=29"
+        "image": "assets/bab_13/q2.webp?v=30"
     },
     {
         "id": 28,
@@ -17405,7 +17405,7 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [V-stem]たいです (Ingin melakukan sesuatu: アイスクリームが食べたいです)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q3.webp?v=29"
+        "image": "assets/bab_13/q3.webp?v=30"
     },
     {
         "id": 29,
@@ -17480,7 +17480,7 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [Tempat] へ [V-stem] に 行きます (郵便局へ小包を送りに行きます) & [V-stem]たいです (送りたいですから)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q4.webp?v=29"
+        "image": "assets/bab_13/q4.webp?v=30"
     },
     {
         "id": 30,
@@ -18910,7 +18910,7 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Bentuk TE permohonan instruksi kerja (～てください: かけてください、外してください)."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q1.webp?v=29"
+        "image": "assets/bab_14/q1.webp?v=30"
     },
     {
         "id": 27,
@@ -18985,7 +18985,7 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Bentuk TE permohonan bawa (持ってきてください) dan partikel koreksi alur (やっぱり)."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q2.webp?v=29"
+        "image": "assets/bab_14/q2.webp?v=30"
     },
     {
         "id": 28,
@@ -19060,7 +19060,7 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Menawarkan bantuan (～ましょうか: 持ちましょうか) dan memohon bantuan (～てくれますか / 運んでくれますか)."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q3.webp?v=29"
+        "image": "assets/bab_14/q3.webp?v=30"
     },
     {
         "id": 29,
@@ -19135,7 +19135,7 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Bentuk TE sedang berlangsung (～ています: 読んでいました [lampau] vs 拭いています [sekarang])."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q4.webp?v=29"
+        "image": "assets/bab_14/q4.webp?v=30"
     },
     {
         "id": 30,
@@ -20559,7 +20559,7 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Larangan keras K3 (～てはいけません: 入ってはいけません)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q1.webp?v=29"
+        "image": "assets/bab_15/q1.webp?v=30"
     },
     {
         "id": 27,
@@ -20634,7 +20634,7 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Meminta & memberi izin (～てもいいですか ➔ ～てもいいですよ)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q2.webp?v=29"
+        "image": "assets/bab_15/q2.webp?v=30"
     },
     {
         "id": 28,
@@ -20709,7 +20709,7 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Status kondisi berkelanjutan mengenakan pakaian (かぶっています、かけています、着ています、履いています) & larangan (入ってはいけません)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q3.webp?v=29"
+        "image": "assets/bab_15/q3.webp?v=30"
     },
     {
         "id": 29,
@@ -20784,7 +20784,7 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Izin & larangan (～てもいいですか ➔ ～てはいけません) serta keharusan status (つけていなければなりません)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q4.webp?v=29"
+        "image": "assets/bab_15/q4.webp?v=30"
     },
     {
         "id": 30,
