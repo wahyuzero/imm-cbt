@@ -39,7 +39,7 @@ class ChoukaiApp {
 
   pdfUrl(url) {
     if (!url) return "";
-    return url.includes("?") ? url : `${url}?v=26`;
+    return url.includes("?") ? url : `${url}?v=27`;
   }
 
   init() {
@@ -861,18 +861,18 @@ class ChoukaiApp {
 
       const pdfCardLinks = ch.available
         ? `<div class="flex items-center gap-2 mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px]">
-            <a href="${pdfReadingSoal}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="Unduh Lembar Soal PDF">
+            <a href="${pdfReadingSoal}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="${ch.choukaiQuestions > 0 ? 'Unduh Lembar Soal Tryout Terpadu 33 Soal PDF' : 'Unduh Lembar Soal PDF'}">
               <svg class="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Soal PDF
+              ${ch.choukaiQuestions > 0 ? 'Soal Tryout (33)' : 'Soal PDF'}
             </a>
             <span class="text-slate-300 dark:text-slate-700">&bull;</span>
-            <a href="${pdfReadingKunci}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="Unduh Kunci & Pembahasan PDF">
+            <a href="${pdfReadingKunci}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="${ch.choukaiQuestions > 0 ? 'Unduh Kunci & Pembahasan Tryout Terpadu 33 Soal PDF' : 'Unduh Kunci & Pembahasan PDF'}">
               <svg class="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Kunci PDF
+              ${ch.choukaiQuestions > 0 ? 'Kunci Tryout' : 'Kunci PDF'}
             </a>
             ${ch.choukaiQuestions > 0 ? `
               <span class="text-slate-300 dark:text-slate-700">&bull;</span>
-              <a href="${this.pdfUrl(`assets/pdf/Soal Choukai Bab ${ch.num}.pdf`)}" target="_blank" class="text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1" title="Unduh Soal Choukai PDF">
+              <a href="${this.pdfUrl(`assets/pdf/Soal Choukai Bab ${ch.num}.pdf`)}" target="_blank" class="text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1" title="Unduh Khusus Soal Choukai PDF">
                 Choukai
               </a>
             ` : ""}
@@ -1462,13 +1462,13 @@ class ChoukaiApp {
             ${this.currentChapter.pdfReadingSoalUrl ? `
               <a href="${this.pdfUrl(this.currentChapter.pdfReadingSoalUrl)}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                 <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-                Soal Reading PDF
+                ${(this.currentChapter.choukaiCount > 0 || this.currentChapter.choukaiQuestions > 0) ? 'Soal Tryout PDF (33 Soal)' : 'Soal PDF (25 Soal)'}
               </a>
             ` : ""}
             ${this.currentChapter.pdfReadingKunciUrl ? `
               <a href="${this.pdfUrl(this.currentChapter.pdfReadingKunciUrl)}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-                <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-                Kunci Reading PDF
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                ${(this.currentChapter.choukaiCount > 0 || this.currentChapter.choukaiQuestions > 0) ? 'Kunci Tryout PDF (33 Soal)' : 'Kunci PDF (25 Soal)'}
               </a>
             ` : ""}
             ${this.currentChapter.pdfSoalUrl ? `
