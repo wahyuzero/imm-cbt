@@ -15526,8 +15526,8 @@ const BAB_12_DATA = {
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "01:00",
-        "audioStartSeconds": 60.0,
+        "audioTimestamp": "00:17",
+        "audioStartSeconds": 17.4,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q1.mp3",
         "audioDuration": "00:55",
         "question_ja": "二人は名古屋の工場へ何で行きますか。",
@@ -15594,15 +15594,15 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: N1 のほうが N2 より Adj です (N1 lebih ... daripada N2)."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q1.webp?v=28"
+        "image": "assets/bab_12/q1.webp?v=29"
     },
     {
         "id": 27,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "02:00",
-        "audioStartSeconds": 120.0,
+        "audioTimestamp": "01:19",
+        "audioStartSeconds": 79.4,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q2.mp3",
         "audioDuration": "00:49",
         "question_ja": "男の人は食堂で何を食べますか。",
@@ -15669,15 +15669,15 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: Bentuk lampau kata benda/sifat-na (昨日はカレーでした) dan perbandingan (AよりBのほうがいい)."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q2.webp?v=28"
+        "image": "assets/bab_12/q2.webp?v=29"
     },
     {
         "id": 28,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "03:00",
-        "audioStartSeconds": 180.0,
+        "audioTimestamp": "02:15",
+        "audioStartSeconds": 135.9,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q3.mp3",
         "audioDuration": "00:50",
         "question_ja": "男の人はどの箱を使いますか。",
@@ -15750,15 +15750,15 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: [Kelompok]の中でどれが一番 Adj ですか ➔ ~のほうが Adj です."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q3.webp?v=28"
+        "image": "assets/bab_12/q3.webp?v=29"
     },
     {
         "id": 29,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "04:00",
-        "audioStartSeconds": 240.0,
+        "audioTimestamp": "03:12",
+        "audioStartSeconds": 192.9,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q4.mp3",
         "audioDuration": "00:48",
         "question_ja": "男の人は明日、どの服を着ていきますか。",
@@ -15825,15 +15825,15 @@ const BAB_12_DATA = {
             "grammarRule": "Pola Bab 12: A と B と どちらが Adj ですか ➔ ~のほうが Adj です."
         },
         "session": "choukai",
-        "image": "assets/bab_12/q4.webp?v=28"
+        "image": "assets/bab_12/q4.webp?v=29"
     },
     {
         "id": 30,
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "05:00",
-        "audioStartSeconds": 300.0,
+        "audioTimestamp": "04:22",
+        "audioStartSeconds": 262.1,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q5.mp3",
         "audioDuration": "00:48",
         "question_ja": "千葉のアパートはどうして東京のアパートよりいいですか。",
@@ -15906,8 +15906,8 @@ const BAB_12_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "06:00",
-        "audioStartSeconds": 360.0,
+        "audioTimestamp": "05:16",
+        "audioStartSeconds": 316.8,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q6.mp3",
         "audioDuration": "00:44",
         "question_ja": "昨日の天気はどうでしたか。",
@@ -15980,8 +15980,8 @@ const BAB_12_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "07:00",
-        "audioStartSeconds": 420.0,
+        "audioTimestamp": "06:07",
+        "audioStartSeconds": 367.7,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q7.mp3",
         "audioDuration": "00:58",
         "question_ja": "二人はどの会社からボルトを注文しますか。",
@@ -16060,8 +16060,8 @@ const BAB_12_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "08:00",
-        "audioStartSeconds": 480.0,
+        "audioTimestamp": "07:12",
+        "audioStartSeconds": 432.9,
         "audioSrc": "assets/audio/bab_12/Choukai_Bab_12_Q8.mp3",
         "audioDuration": "00:54",
         "question_ja": "ダダンさんはスポーツの中で何が一番好きですか。",
@@ -17181,8 +17181,8 @@ const BAB_13_DATA = {
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "01:00",
-        "audioStartSeconds": 60.0,
+        "audioTimestamp": "00:17",
+        "audioStartSeconds": 17.4,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q1.mp3",
         "audioDuration": "00:53",
         "question_ja": "ダダンさんは今、何が一番ほしいですか。",
@@ -17255,15 +17255,15 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [Nomina] が ほしいです (Menginginkan sesuatu) & [V-stem]たい (Ingin melakukan)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q1.webp?v=28"
+        "image": "assets/bab_13/q1.webp?v=29"
     },
     {
         "id": 27,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "02:00",
-        "audioStartSeconds": 120.0,
+        "audioTimestamp": "01:17",
+        "audioStartSeconds": 77.2,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q2.mp3",
         "audioDuration": "00:53",
         "question_ja": "二人は日曜日、どこへ服を買いに行きますか。",
@@ -17330,15 +17330,15 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [Tempat] へ [V-stem] に 行きます (Pergi ke suatu tempat untuk suatu tujuan: 服を買いに行きます)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q2.webp?v=28"
+        "image": "assets/bab_13/q2.webp?v=29"
     },
     {
         "id": 28,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "03:00",
-        "audioStartSeconds": 180.0,
+        "audioTimestamp": "02:17",
+        "audioStartSeconds": 137.7,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q3.mp3",
         "audioDuration": "00:51",
         "question_ja": "男の人は売店で何を買いますか。",
@@ -17405,15 +17405,15 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [V-stem]たいです (Ingin melakukan sesuatu: アイスクリームが食べたいです)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q3.webp?v=28"
+        "image": "assets/bab_13/q3.webp?v=29"
     },
     {
         "id": 29,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "04:00",
-        "audioStartSeconds": 240.0,
+        "audioTimestamp": "03:15",
+        "audioStartSeconds": 195.6,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q4.mp3",
         "audioDuration": "00:49",
         "question_ja": "男の人は郵便局で何をしますか。",
@@ -17480,15 +17480,15 @@ const BAB_13_DATA = {
             "grammarRule": "Pola Bab 13: [Tempat] へ [V-stem] に 行きます (郵便局へ小包を送りに行きます) & [V-stem]たいです (送りたいですから)."
         },
         "session": "choukai",
-        "image": "assets/bab_13/q4.webp?v=28"
+        "image": "assets/bab_13/q4.webp?v=29"
     },
     {
         "id": 30,
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "05:00",
-        "audioStartSeconds": 300.0,
+        "audioTimestamp": "04:25",
+        "audioStartSeconds": 265.5,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q5.mp3",
         "audioDuration": "00:51",
         "question_ja": "アグスさんはゴールデンウィークに何をしたいですか。",
@@ -17567,8 +17567,8 @@ const BAB_13_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "06:00",
-        "audioStartSeconds": 360.0,
+        "audioTimestamp": "05:23",
+        "audioStartSeconds": 323.6,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q6.mp3",
         "audioDuration": "00:46",
         "question_ja": "ダダンさんは昼休みにどこへ何をしに行きますか。",
@@ -17641,8 +17641,8 @@ const BAB_13_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "07:00",
-        "audioStartSeconds": 420.0,
+        "audioTimestamp": "06:16",
+        "audioStartSeconds": 376.9,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q7.mp3",
         "audioDuration": "00:56",
         "question_ja": "二人は山田さんに何をプレゼントしますか。",
@@ -17715,8 +17715,8 @@ const BAB_13_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "08:00",
-        "audioStartSeconds": 480.0,
+        "audioTimestamp": "07:19",
+        "audioStartSeconds": 439.8,
         "audioSrc": "assets/audio/bab_13/Choukai_Bab_13_Q8.mp3",
         "audioDuration": "01:01",
         "question_ja": "シギットさんは日本にいる間に何を習いたいですか。",
@@ -18842,8 +18842,8 @@ const BAB_14_DATA = {
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "01:00",
-        "audioStartSeconds": 60.0,
+        "audioTimestamp": "00:17",
+        "audioStartSeconds": 17.5,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q1.mp3",
         "audioDuration": "00:54",
         "question_ja": "男の人は機械を動かす前に、まず何をしなければなりませんか。",
@@ -18910,15 +18910,15 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Bentuk TE permohonan instruksi kerja (～てください: かけてください、外してください)."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q1.webp?v=28"
+        "image": "assets/bab_14/q1.webp?v=29"
     },
     {
         "id": 27,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "02:00",
-        "audioStartSeconds": 120.0,
+        "audioTimestamp": "01:18",
+        "audioStartSeconds": 78.7,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q2.mp3",
         "audioDuration": "00:46",
         "question_ja": "男の人は工具箱から何を持って行きますか。",
@@ -18985,15 +18985,15 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Bentuk TE permohonan bawa (持ってきてください) dan partikel koreksi alur (やっぱり)."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q2.webp?v=28"
+        "image": "assets/bab_14/q2.webp?v=29"
     },
     {
         "id": 28,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "03:00",
-        "audioStartSeconds": 180.0,
+        "audioTimestamp": "02:11",
+        "audioStartSeconds": 131.7,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q3.mp3",
         "audioDuration": "00:44",
         "question_ja": "男の人はこれから何をしますか。",
@@ -19060,15 +19060,15 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Menawarkan bantuan (～ましょうか: 持ちましょうか) dan memohon bantuan (～てくれますか / 運んでくれますか)."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q3.webp?v=28"
+        "image": "assets/bab_14/q3.webp?v=29"
     },
     {
         "id": 29,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "04:00",
-        "audioStartSeconds": 240.0,
+        "audioTimestamp": "03:02",
+        "audioStartSeconds": 182.9,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q4.mp3",
         "audioDuration": "00:47",
         "question_ja": "ダダンさんは今、何をしていますか。",
@@ -19135,15 +19135,15 @@ const BAB_14_DATA = {
             "grammarRule": "Pola Bab 14: Bentuk TE sedang berlangsung (～ています: 読んでいました [lampau] vs 拭いています [sekarang])."
         },
         "session": "choukai",
-        "image": "assets/bab_14/q4.webp?v=28"
+        "image": "assets/bab_14/q4.webp?v=29"
     },
     {
         "id": 30,
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "05:00",
-        "audioStartSeconds": 300.0,
+        "audioTimestamp": "04:11",
+        "audioStartSeconds": 251.6,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q5.mp3",
         "audioDuration": "00:56",
         "question_ja": "アグスさんは帰る前に、一番最後に何をしなければなりませんか。",
@@ -19216,8 +19216,8 @@ const BAB_14_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "06:00",
-        "audioStartSeconds": 360.0,
+        "audioTimestamp": "05:14",
+        "audioStartSeconds": 314.4,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q6.mp3",
         "audioDuration": "00:51",
         "question_ja": "ナロンさんはこの後、まずだれに連絡しますか。",
@@ -19290,8 +19290,8 @@ const BAB_14_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "07:00",
-        "audioStartSeconds": 420.0,
+        "audioTimestamp": "06:12",
+        "audioStartSeconds": 372.6,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q7.mp3",
         "audioDuration": "00:54",
         "question_ja": "シギットさんは日誌のどこを書き直しますか。",
@@ -19364,8 +19364,8 @@ const BAB_14_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "08:00",
-        "audioStartSeconds": 480.0,
+        "audioTimestamp": "07:13",
+        "audioStartSeconds": 433.6,
         "audioSrc": "assets/audio/bab_14/Choukai_Bab_14_Q8.mp3",
         "audioDuration": "00:58",
         "question_ja": "二人はこれから寮までどうやって帰りますか。",
@@ -20491,8 +20491,8 @@ const BAB_15_DATA = {
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "01:00",
-        "audioStartSeconds": 60.0,
+        "audioTimestamp": "00:17",
+        "audioStartSeconds": 17.4,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q1.mp3",
         "audioDuration": "00:51",
         "question_ja": "クレーンが動いているとき、絶対に何をしてはいけませんか。",
@@ -20559,15 +20559,15 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Larangan keras K3 (～てはいけません: 入ってはいけません)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q1.webp?v=28"
+        "image": "assets/bab_15/q1.webp?v=29"
     },
     {
         "id": 27,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "02:00",
-        "audioStartSeconds": 120.0,
+        "audioTimestamp": "01:15",
+        "audioStartSeconds": 75.3,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q2.mp3",
         "audioDuration": "00:50",
         "question_ja": "工場の中で、何をしてもいいですか。",
@@ -20634,15 +20634,15 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Meminta & memberi izin (～てもいいですか ➔ ～てもいいですよ)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q2.webp?v=28"
+        "image": "assets/bab_15/q2.webp?v=29"
     },
     {
         "id": 28,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "03:00",
-        "audioStartSeconds": 180.0,
+        "audioTimestamp": "02:12",
+        "audioStartSeconds": 132.1,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q3.mp3",
         "audioDuration": "00:59",
         "question_ja": "作業ラインに入る人は、どの格好をしていなければなりませんか。",
@@ -20665,7 +20665,7 @@ const BAB_15_DATA = {
             {
                 "id": "3",
                 "symbol": "③",
-                "text_ja": "④ 反射ベストを着ていない人",
+                "text_ja": "③ 反射ベストを着ていない人",
                 "text_id": "Orang yang tidak memakai rompi reflektif"
             },
             {
@@ -20709,15 +20709,15 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Status kondisi berkelanjutan mengenakan pakaian (かぶっています、かけています、着ています、履いています) & larangan (入ってはいけません)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q3.webp?v=28"
+        "image": "assets/bab_15/q3.webp?v=29"
     },
     {
         "id": 29,
         "type": "gambar",
         "section_ja": "第1部：聴解・イラスト理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
-        "audioTimestamp": "04:00",
-        "audioStartSeconds": 240.0,
+        "audioTimestamp": "03:17",
+        "audioStartSeconds": 197.7,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q4.mp3",
         "audioDuration": "00:52",
         "question_ja": "身分証明書（社員証）は、どこにつけていなければなりませんか。",
@@ -20784,15 +20784,15 @@ const BAB_15_DATA = {
             "grammarRule": "Pola Bab 15: Izin & larangan (～てもいいですか ➔ ～てはいけません) serta keharusan status (つけていなければなりません)."
         },
         "session": "choukai",
-        "image": "assets/bab_15/q4.webp?v=28"
+        "image": "assets/bab_15/q4.webp?v=29"
     },
     {
         "id": 30,
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "05:00",
-        "audioStartSeconds": 300.0,
+        "audioTimestamp": "04:31",
+        "audioStartSeconds": 271.0,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q5.mp3",
         "audioDuration": "00:55",
         "question_ja": "寮の台所のガスコンロを使ってはいけない時間はいつですか。",
@@ -20865,8 +20865,8 @@ const BAB_15_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "06:00",
-        "audioStartSeconds": 360.0,
+        "audioTimestamp": "05:32",
+        "audioStartSeconds": 332.9,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q6.mp3",
         "audioDuration": "01:01",
         "question_ja": "アグスさんは病院へ行く前に、何を持っていかなければなりませんか。",
@@ -20945,8 +20945,8 @@ const BAB_15_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "07:00",
-        "audioStartSeconds": 420.0,
+        "audioTimestamp": "06:41",
+        "audioStartSeconds": 401.4,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q7.mp3",
         "audioDuration": "00:53",
         "question_ja": "シギットさんについて、会話の内容と合っているものはどれですか。",
@@ -21025,8 +21025,8 @@ const BAB_15_DATA = {
         "type": "teks",
         "section_ja": "第2部：聴解・会話・課題理解",
         "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
-        "audioTimestamp": "08:00",
-        "audioStartSeconds": 480.0,
+        "audioTimestamp": "07:41",
+        "audioStartSeconds": 461.7,
         "audioSrc": "assets/audio/bab_15/Choukai_Bab_15_Q8.mp3",
         "audioDuration": "00:53",
         "question_ja": "油が付いたウエス（布）は、どこに捨てなければなりませんか。",
