@@ -1,7 +1,7 @@
 /**
  * IMM JAPAN CBT PLATFORM ENGINE
  * Paket Tryout Terpadu: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal) — Total 33 Soal
- * Format EPS-TOPIK Terstandarisasi untuk Calon Pemagang IMM Japan & SSW Tokutei Ginou.
+ * Format Terstandarisasi untuk Calon Pemagang IMM Japan & SSW Tokutei Ginou.
  * Zero-dependency, client-side state in localStorage, reactive Vanilla JS.
  */
 
@@ -906,7 +906,7 @@ class ChoukaiApp {
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <span class="px-2.5 py-0.5 bg-sky-500/20 text-sky-300 border border-sky-400/30 rounded text-xs font-semibold tracking-wide uppercase font-jp">
-                IMM JAPAN 研修生カリキュラム ｜ EPS-TOPIK TRYOUT
+                IMM JAPAN 研修生カリキュラム
               </span>
               <h1 class="text-xl md:text-2xl font-black font-jp mt-2 tracking-tight">
                 プラットフォーム CBT 評価試験 ・ Tryout Terpadu
