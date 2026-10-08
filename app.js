@@ -37,6 +37,11 @@ class ChoukaiApp {
     this.init();
   }
 
+  pdfUrl(url) {
+    if (!url) return "";
+    return url.includes("?") ? url : `${url}?v=25`;
+  }
+
   init() {
     this.applyTheme(this.theme);
     this.setupAudioListeners();
@@ -831,8 +836,8 @@ class ChoukaiApp {
         : "";
 
       const chData = typeof CHAPTERS_DATA !== "undefined" ? CHAPTERS_DATA[ch.num] : null;
-      const pdfReadingSoal = chData ? chData.pdfReadingSoalUrl : `assets/pdf/Salinan Soal Bab ${ch.num}.pdf`;
-      const pdfReadingKunci = chData ? chData.pdfReadingKunciUrl : `assets/pdf/Kunci dan Pembahasan Bab ${ch.num}.pdf`;
+      const pdfReadingSoal = this.pdfUrl(chData ? chData.pdfReadingSoalUrl : `assets/pdf/Salinan Soal Bab ${ch.num}.pdf`);
+      const pdfReadingKunci = this.pdfUrl(chData ? chData.pdfReadingKunciUrl : `assets/pdf/Kunci dan Pembahasan Bab ${ch.num}.pdf`);
 
       const actionButton = ch.available
         ? (isCompleted
@@ -867,7 +872,7 @@ class ChoukaiApp {
             </a>
             ${ch.choukaiQuestions > 0 ? `
               <span class="text-slate-300 dark:text-slate-700">&bull;</span>
-              <a href="assets/pdf/Soal Choukai Bab ${ch.num}.pdf" target="_blank" class="text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1" title="Unduh Soal Choukai PDF">
+              <a href="${this.pdfUrl(`assets/pdf/Soal Choukai Bab ${ch.num}.pdf`)}" target="_blank" class="text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1" title="Unduh Soal Choukai PDF">
                 Choukai
               </a>
             ` : ""}
@@ -940,19 +945,19 @@ class ChoukaiApp {
             <p class="text-xs text-slate-500">Pilih modul bab tryout yang ingin Anda kerjakan di bawah ini</p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="${BAB_08_DATA.pdfReadingSoalUrl || 'assets/pdf/Salinan Soal Bab 08.pdf'}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
+            <a href="${this.pdfUrl(BAB_08_DATA.pdfReadingSoalUrl || 'assets/pdf/Salinan Soal Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
               <svg class="w-3.5 h-3.5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               Soal Reading PDF
             </a>
-            <a href="${BAB_08_DATA.pdfReadingKunciUrl || 'assets/pdf/Kunci dan Pembahasan Bab 08.pdf'}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
+            <a href="${this.pdfUrl(BAB_08_DATA.pdfReadingKunciUrl || 'assets/pdf/Kunci dan Pembahasan Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
               <svg class="w-3.5 h-3.5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               Kunci Reading PDF
             </a>
-            <a href="${BAB_08_DATA.pdfSoalUrl || 'assets/pdf/Soal Choukai Bab 08.pdf'}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
+            <a href="${this.pdfUrl(BAB_08_DATA.pdfSoalUrl || 'assets/pdf/Soal Choukai Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
               <svg class="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               Soal Choukai PDF
             </a>
-            <a href="${BAB_08_DATA.pdfKunciUrl || 'assets/pdf/Kunci dan Pembahasan Choukai Bab 08.pdf'}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
+            <a href="${this.pdfUrl(BAB_08_DATA.pdfKunciUrl || 'assets/pdf/Kunci dan Pembahasan Choukai Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
               <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               Kunci Choukai PDF
             </a>
@@ -1456,25 +1461,25 @@ class ChoukaiApp {
               Kirim Nilai ke Sensei via WhatsApp
             </button>
             ${this.currentChapter.pdfReadingSoalUrl ? `
-              <a href="${this.currentChapter.pdfReadingSoalUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+              <a href="${this.pdfUrl(this.currentChapter.pdfReadingSoalUrl)}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                 <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
                 Soal Reading PDF
               </a>
             ` : ""}
             ${this.currentChapter.pdfReadingKunciUrl ? `
-              <a href="${this.currentChapter.pdfReadingKunciUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+              <a href="${this.pdfUrl(this.currentChapter.pdfReadingKunciUrl)}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                 <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
                 Kunci Reading PDF
               </a>
             ` : ""}
             ${this.currentChapter.pdfSoalUrl ? `
-              <a href="${this.currentChapter.pdfSoalUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+              <a href="${this.pdfUrl(this.currentChapter.pdfSoalUrl)}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                 <svg class="w-4 h-4 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
                 Soal Choukai PDF
               </a>
             ` : ""}
             ${this.currentChapter.pdfKunciUrl ? `
-              <a href="${this.currentChapter.pdfKunciUrl}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+              <a href="${this.pdfUrl(this.currentChapter.pdfKunciUrl)}" target="_blank" class="px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                 <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
                 Kunci Choukai PDF
               </a>
