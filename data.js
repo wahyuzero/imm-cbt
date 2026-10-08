@@ -132,31 +132,31 @@ const CHAPTERS_INDEX = [
   },
   {
     "num": "10",
-    "title_ja": "第10課：存在と位置表現",
-    "title_id": "Bab 10: Keberadaan & Letak Benda",
-    "topic_id": "います / あります, Posisi Atas, Bawah, Dalam, Luar, Samping",
+    "title_ja": "第10課：存在と位置表現（読解・聴解）",
+    "title_id": "Bab 10: Tryout Terpadu Reading & Choukai",
+    "topic_id": "Tryout Terpadu EPS-TOPIK: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal)",
     "available": true,
-    "totalQuestions": 25,
-    "audioDuration": "50:00",
+    "totalQuestions": 33,
+    "audioDuration": "08:41",
+    "examDuration": "60:00",
     "passingScore": 80,
     "badge": "Tersedia",
-    "examDuration": "50:00",
     "readingQuestions": 25,
-    "choukaiQuestions": 0
+    "choukaiQuestions": 8
   },
   {
     "num": "11",
-    "title_ja": "第11課：数量詞と期間",
-    "title_id": "Bab 11: Satuan Bilangan & Jangka Waktu",
-    "topic_id": "Hitungan Jumlah Barang, Orang, Jam, Hari, Frekuensi",
+    "title_ja": "第11課：数量詞と期間（読解・聴解）",
+    "title_id": "Bab 11: Tryout Terpadu Reading & Choukai",
+    "topic_id": "Tryout Terpadu EPS-TOPIK: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal)",
     "available": true,
-    "totalQuestions": 25,
-    "audioDuration": "50:00",
+    "totalQuestions": 33,
+    "audioDuration": "08:38",
+    "examDuration": "60:00",
     "passingScore": 80,
     "badge": "Tersedia",
-    "examDuration": "50:00",
     "readingQuestions": 25,
-    "choukaiQuestions": 0
+    "choukaiQuestions": 8
   },
   {
     "num": "12",
@@ -11487,6 +11487,657 @@ const BAB_10_DATA = {
         "grammarRule": "Arah K3 Industri: 右（みぎ = kanan） vs 左（ひだり = kiri）."
       }
     }
+,
+{
+        "id": 26,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "01:00",
+        "audioStartSeconds": 60.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q1.mp3",
+        "audioDuration": "00:55",
+        "question_ja": "男の人は安全用ヘルメットをどこに置きますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>安全用<rt>あんぜんよう</rt></ruby>ヘルメットをどこに<ruby>置<rt>お</rt></ruby>きますか。",
+        "question_romaji": "Otoko no hito wa anzen-you herumetto o doko ni okimasu ka.",
+        "question_id": "Laki-laki tersebut akan meletakkan helm pengaman di mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 上の棚の左側（工具箱の隣）",
+                "text_id": "Rak atas sisi kiri (di samping kotak alat)"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 上の棚の右側",
+                "text_id": "Rak atas sisi kanan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 下の棚の左側（軍手の隣）",
+                "text_id": "Rak bawah sisi kiri (di samping sarung tangan)"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 下の棚の右側",
+                "text_id": "Rak bawah sisi kanan"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "田中さん、今日の作業が終わりました。この白いヘルメットはどこに置きますか。",
+                "romaji": "Tanaka-san, kyou no sagyou ga owarimashita. Kono shiroi herumetto wa doko ni okimasu ka.",
+                "text_id": "Tanaka-san, pekerjaan hari ini sudah selesai. Helm putih ini diletakkan di mana ya?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "お疲れさま。あそこの棚の上に置いてください。右の所です。",
+                "romaji": "Otsukaresama. Asoko no tana no ue ni oite kudasai. Migi no tokoro desu.",
+                "text_id": "Terima kasih atas kerja kerasnya. Tolong letakkan di atas rak sebelah sana, di bagian sebelah kanan."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "上の棚の右ですね。",
+                "romaji": "Ue no tana no migi desu ne.",
+                "text_id": "Rak atas bagian kanan ya."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "あ、ちょっと待って。上の棚は工具箱がいっぱいですから、下の棚にしてください。軍手の隣、左の所です。",
+                "romaji": "A, chotto matte. Ue no tana wa kougubako ga ippai desu kara, shita no tana ni shite kudasai. Gunte no tonari, hidari no tokoro desu.",
+                "text_id": "Ah, tunggu sebentar. Karena rak atas sudah penuh kotak perkakas, taruh di rak bawah saja. Di sebelah sarung tangan, bagian sebelah kiri."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "下の棚の左ですね。軍手の隣ですね。わかりました。",
+                "romaji": "Shita no tana no hidari desu ne. Gunte no tonari desu ne. Wakarimashita.",
+                "text_id": "Rak bawah sebelah kiri ya. Di samping sarung tangan kan. Baik, saya mengerti."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (Rak bawah sisi kiri, di samping sarung tangan).",
+            "logic": "Tanaka awalnya meminta Agus menaruh helm di rak atas bagian kanan ('上の棚の右'). Namun terjadi perubahan keputusan (decision flip): Tanaka membatalkan niat tersebut karena rak atas sudah penuh kotak perkakas ('上の棚は工具箱がいっぱいですから'). Tanaka mengarahkan Agus ke rak bawah sisi kiri di samping sarung tangan kerja ('下の棚にしてください。軍手の隣、左の所です'). Agus mengonfirmasi '下の棚の左ですね'.",
+            "distractor": "• Opsi ①: Salah. Rak atas penuh dengan kotak perkakas.\n• Opsi ②: Salah. Awalnya diusulkan, namun dibatalkan oleh Tanaka.\n• Opsi ④: Salah. Sisi kanan rak bawah bukan posisi yang diarahkan.",
+            "grammarRule": "Pola Bab 10: Posisi spasial (上・下・左・右・隣), partikel tempat penempatan (~に置いてください), dan alasan pembatalan (~ですから)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_10/q1.webp?v=4"
+    },
+    {
+        "id": 27,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "02:00",
+        "audioStartSeconds": 120.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q2.mp3",
+        "audioDuration": "00:53",
+        "question_ja": "男の人の電卓（でんたく）はどこにありますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>の<ruby>電卓<rt>でんたく</rt></ruby>はどこにありますか。",
+        "question_romaji": "Otoko no hito no dentaku wa doko ni arimasu ka.",
+        "question_id": "Kalkulator milik laki-laki tersebut ada di mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 机の上、パソコンの右側",
+                "text_id": "Di atas meja, di sebelah kanan komputer"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 机の上、電話の横",
+                "text_id": "Di atas meja, di samping telepon"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 机の引き出しの中",
+                "text_id": "Di dalam laci meja"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 机の下、ゴミ箱の隣",
+                "text_id": "Di bawah meja, di samping tempat sampah"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "鈴木さん、私の計算用の電卓が見当たりません。どこにありますか。",
+                "romaji": "Suzuki-san, watashi no keisan-you no dentaku ga miatarimasen. Doko ni arimasu ka.",
+                "text_id": "Suzuki-san, kalkulator hitung saya tidak kelihatan. Ada di mana ya?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "机の上にありませんか。パソコンの右ですよ。",
+                "romaji": "Tsukue no ue ni arimasen ka. Pasokon no migi desu yo.",
+                "text_id": "Bukankah ada di atas meja? Di sebelah kanan komputer itu lho."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "パソコンの右にはノートとペンしかありません。机の上にはないですね。",
+                "romaji": "Pasokon no migi niwa nooto to pen shika arimasen. Tsukue no ue niwa nai desu ne.",
+                "text_id": "Di sebelah kanan komputer hanya ada buku catatan dan pulpen. Di atas meja tidak ada ya."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "あ、すみません！さっき私が借りました。机の上の段の引き出しの中にありますよ。",
+                "romaji": "A, sumimasen! Sakki watashi ga karimashita. Tsukue no ue no dan no hikidashi no naka ni arimasu yo.",
+                "text_id": "Ah, maaf! Tadi saya pinjam. Ada di dalam laci meja susun paling atas lho."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "引き出しの中ですね。…あ、ありました！ありがとうございます。",
+                "romaji": "Hikidashi no naka desu ne. ...A, arimashita! Arigatou gozaimasu.",
+                "text_id": "Di dalam laci ya. ...Ah, ada! Terima kasih banyak."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (Di dalam laci meja / 机の引き出しの中).",
+            "logic": "Suzuki awalnya mengira kalkulator berada di atas meja sebelah kanan komputer ('机の上…パソコンの右'). Dadan memeriksa dan menyatakan bahwa di atas meja tidak ada kalkulator ('机の上にはないですね'). Suzuki lalu teringat bahwa ia telah meminjamnya dan menyimpannya di dalam laci meja ('引き出しの中にありますよ'). Dadan menemukan kalkulator tersebut di dalam laci.",
+            "distractor": "• Opsi ①: Salah. Di samping kanan komputer hanya ada buku dan pena.\n• Opsi ②: Salah. Telepon bukan tempat kalkulator ditaruh.\n• Opsi ④: Salah. Di bawah meja samping tempat sampah bukan tempat yang disebutkan.",
+            "grammarRule": "Pola Bab 10: Eksistensi benda mati (~にありますか・あります), letak benda (机の上、引き出しの中), pembatasan (~しかありません), dan negasi keberadaan (~にはない)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_10/q2.webp?v=4"
+    },
+    {
+        "id": 28,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "03:00",
+        "audioStartSeconds": 180.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q3.mp3",
+        "audioDuration": "00:54",
+        "question_ja": "実習生のアグスさんはどこに並んでいますか。",
+        "question_ruby": "<ruby>実習生<rt>じっしゅうせい</rt></ruby>のアグスさんはどこに<ruby>並<rt>なら</rt></ruby>んでいますか。",
+        "question_romaji": "Jisshuusei no Agus-san wa doko ni narande imasu ka.",
+        "question_id": "Anak magang Agus berbaris di sebelah mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 鈴木さんの後ろ（一番左）",
+                "text_id": "Di belakang Suzuki-san (paling kiri)"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 田中さんと山田さんの間",
+                "text_id": "Di antara Tanaka-san dan Yamada-san"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 山田さんの前",
+                "text_id": "Di depan Yamada-san"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 田中さんの右隣（一番右）",
+                "text_id": "Di sebelah kanan Tanaka-san (paling kanan)"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "ナロンさん、朝礼の列でアグスさんはどこにいますか。鈴木さんの後ろですか。",
+                "romaji": "Narong-san, chourei no retsu de Agus-san wa doko ni imasu ka. Suzuki-san no ushiro desu ka.",
+                "text_id": "Narong-san, di barisan apel pagi, Agus ada di mana? Apakah di belakang Suzuki-san?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "いいえ、鈴木さんの後ろにはダダンさんがいますよ。",
+                "romaji": "Iie, Suzuki-san no ushiro niwa Dadan-san ga imasu yo.",
+                "text_id": "Bukan, di belakang Suzuki-san ada Dadan-san kok."
+            },
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "そうですか。山田さんの前ですか。",
+                "romaji": "Sou desu ka. Yamada-san no mae desu ka.",
+                "text_id": "Begitu ya. Apakah di depan Yamada-san?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "山田さんの前ではありません。あそこです。田中さんと山田さんの間にいます。青い帽子をかぶっています。",
+                "romaji": "Yamada-san no mae dewa arimasen. Asoko desu. Tanaka-san to Yamada-san no aida ni imasu. Aoi boushi o kabutte imasu.",
+                "text_id": "Bukan di depan Yamada-san. Di sebelah sana. Ada di antara Tanaka-san dan Yamada-san. Dia mengenakan topi biru."
+            },
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "ああ、田中さんと山田さんの間ですね。見えました。ありがとう。",
+                "romaji": "Aa, Tanaka-san to Yamada-san no aida desu ne. Miemashita. Arigatou.",
+                "text_id": "Ah, di antara Tanaka-san dan Yamada-san ya. Kelihatan. Terima kasih."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (Di antara Tanaka-san dan Yamada-san / 田中さんと山田さんの間).",
+            "logic": "Instruktur menduga Agus berada di belakang Suzuki-san, namun Narong membantah dan menyebut bahwa orang di belakang Suzuki adalah Dadan ('鈴木さんの後ろにはダダンさんがいます'). Instruktur menduga lagi apakah di depan Yamada-san, yang kembali dibantah ('山田さんの前ではありません'). Narong menjelaskan posisi Agus yang sebenarnya: berada di antara Tanaka-san dan Yamada-san ('田中さんと山田さんの間にいます').",
+            "distractor": "• Opsi ①: Salah. Di belakang Suzuki-san adalah posisi Dadan.\n• Opsi ③: Salah. Narong membantah posisi di depan Yamada-san.\n• Opsi ④: Salah. Agus tidak berada di paling kanan luar barisan.",
+            "grammarRule": "Pola Bab 10: Eksistensi manusia (~にいます), posisi relatif (後ろ・前・間), dan pola penyambung dua entitas (~と~の間)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_10/q3.webp?v=4"
+    },
+    {
+        "id": 29,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "04:00",
+        "audioStartSeconds": 240.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q4.mp3",
+        "audioDuration": "00:49",
+        "question_ja": "病院（びょういん）はどこにありますか。",
+        "question_ruby": "<ruby>病院<rt>びょういん</rt></ruby>はどこにありますか。",
+        "question_romaji": "Byouin wa doko ni arimasu ka.",
+        "question_id": "Rumah sakit / klinik ada di sebelah mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① スーパーの隣（駅の向かい）",
+                "text_id": "Di samping supermarket (seberang stasiun)"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 銀行と郵便局の間",
+                "text_id": "Di antara bank dan kantor pos"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 駅の真後ろ、公園の隣",
+                "text_id": "Tepat di belakang stasiun, di samping taman"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 郵便局の右隣（通りの角）",
+                "text_id": "Di samping kanan kantor pos (sudut jalan)"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "田中さん、熱がありますから病院へ行きたいです。病院はどこにありますか。",
+                "romaji": "Tanaka-san, netsu ga arimasu kara byouin e ikitai desu. Byouin wa doko ni arimasu ka.",
+                "text_id": "Tanaka-san, karena saya demam, saya ingin pergi ke klinik/rumah sakit. Rumah sakit ada di mana ya?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "駅の近くですよ。駅の前に大きいスーパーがありますね。",
+                "romaji": "Eki no chikaku desu yo. Eki no mae ni ookii suupaa ga arimasu ne.",
+                "text_id": "Di dekat stasiun kok. Di depan stasiun ada supermarket besar kan."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい、スーパーの隣ですか。",
+                "romaji": "Hai, suupaa no tonari desu ka.",
+                "text_id": "Ya, apakah di sebelah supermarket?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "いいえ、スーパーの隣ではありません。スーパーの前に銀行と郵便局があります。病院はその間ですよ。",
+                "romaji": "Iie, suupaa no tonari dewa arimasen. Suupaa no mae ni ginkou to yuubinkyoku ga arimasu. Byouin wa sono aida desu yo.",
+                "text_id": "Bukan, bukan di samping supermarket. Di depan supermarket ada bank dan kantor pos. Rumah sakit ada di antara keduanya."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "銀行と郵便局の間ですね。わかりました。ありがとうございます。",
+                "romaji": "Ginkou to yuubinkyoku no aida desu ne. Wakarimashita. Arigatou gozaimasu.",
+                "text_id": "Di antara bank dan kantor pos ya. Saya mengerti. Terima kasih banyak."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (Di antara bank dan kantor pos / 銀行と郵便局の間).",
+            "logic": "Sigit menduga rumah sakit berada di sebelah supermarket ('スーパーの隣ですか'). Tanaka mengoreksi bahwa rumah sakit bukan di sebelah supermarket, melainkan di depan supermarket di antara bank dan kantor pos ('スーパーの前に銀行と郵便局があります。病院はその間ですよ'). Maka lokasi tepat rumah sakit adalah di antara bank dan kantor pos.",
+            "distractor": "• Opsi ①: Salah. Tanaka membantah letak di sebelah supermarket.\n• Opsi ③: Salah. Posisi di belakang stasiun dekat taman tidak disebutkan dalam petunjuk jalan.\n• Opsi ④: Salah. Rumah sakit berada di antara bank dan kantor pos, bukan di sebelah kanan kantor pos.",
+            "grammarRule": "Pola Bab 10: Lokasi fasilitas umum (駅の近く、駅の前、スーパーの前), relasi ruang (その間、隣ではありません), partikel keberadaan (~にあります)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_10/q4.webp?v=4"
+    },
+    {
+        "id": 30,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "05:00",
+        "audioStartSeconds": 300.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q5.mp3",
+        "audioDuration": "00:49",
+        "question_ja": "白い猫は今どこにいますか。",
+        "question_ruby": "<ruby>白<rt>しろ</rt></ruby>い<ruby>猫<rt>ねこ</rt></ruby>は<ruby>今<rt>いま</rt></ruby>どこにいますか。",
+        "question_romaji": "Shiroi neko wa ima doko ni imasu ka.",
+        "question_id": "Kucing putih sekarang berada di mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 寮の部屋の中",
+                "text_id": "Di dalam kamar asrama"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 寮の玄関の前",
+                "text_id": "Di depan pintu masuk asrama"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 庭の大きい木の下",
+                "text_id": "Di bawah pohon besar di halaman"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 車の下",
+                "text_id": "Di bawah mobil"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "鈴木さん、あの白い猫はどこにいますか。部屋の中ですか。",
+                "romaji": "Suzuki-san, ano shiroi neko wa doko ni imasu ka. Heya no naka desu ka.",
+                "text_id": "Suzuki-san, kucing putih itu ada di mana ya? Apakah ada di dalam kamar?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "アグスさん、寮の中に動物は入れませんよ。さっき玄関の前にいました。",
+                "romaji": "Agus-san, ryou no naka ni doubutsu wa hairemasen yo. Sakki genkan no mae ni imashita.",
+                "text_id": "Agus-san, hewan tidak boleh masuk ke dalam asrama lho. Tadi ada di depan pintu masuk."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "今も玄関にいますか。",
+                "romaji": "Ima mo genkan ni imasu ka.",
+                "text_id": "Apakah sekarang masih ada di pintu masuk?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "いいえ、雨が降ってきましたから、庭の大きい木の下へ行きましたよ。あそこに座っています。",
+                "romaji": "Iie, ame ga futte kimashita kara, niwa no ookii ki no shita e ikimashita yo. Asoko ni suwatte imasu.",
+                "text_id": "Tidak, karena hujan mulai turun, dia pergi ke bawah pohon besar di halaman lho. Sedang duduk di sana."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "あ、本当ですね。木の下にいますね。見えました。",
+                "romaji": "A, hontou desu ne. Ki no shita ni imasu ne. Miemashita.",
+                "text_id": "Ah, betul ya. Ada di bawah pohon ya. Sudah kelihatan."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (Di bawah pohon besar di halaman / 庭の大きい木の下).",
+            "logic": "Agus bertanya apakah kucing ada di dalam kamar, namun Suzuki mengingatkan bahwa hewan dilarang masuk ke asrama ('寮の中に動物は入れません'). Suzuki menyebut kucing tadi sempat ada di depan pintu masuk ('さっき玄関の前にいました'), tetapi karena hujan mulai turun, kucing berpindah ke bawah pohon besar di halaman ('庭の大きい木の下へ行きました'). Agus melihatnya duduk di bawah pohon tersebut.",
+            "distractor": "• Opsi ①: Salah. Hewan dilarang masuk kamar asrama.\n• Opsi ②: Salah. Di depan pintu masuk adalah posisi tadi (さっき), bukan posisi sekarang (今).\n• Opsi ④: Salah. Mobil tidak disebutkan dalam percakapan.",
+            "grammarRule": "Pola Bab 10: Eksistensi hewan/makhluk bernyawa (~にいます), posisi tempat (部屋の中、玄関の前、木の下), dan perubahan letak akibat situasi cuaca."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 31,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "06:00",
+        "audioStartSeconds": 360.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q6.mp3",
+        "audioDuration": "00:45",
+        "question_ja": "地下の倉庫（ちかのそうこ）に何がありますか。",
+        "question_ruby": "<ruby>地下<rt>ちか</rt></ruby>の<ruby>倉庫<rt>そうこ</rt></ruby>に<ruby>何<rt>なに</rt></ruby>がありますか。",
+        "question_romaji": "Chika no souko ni nani ga arimasu ka.",
+        "question_id": "Apa yang ada di gudang bawah tanah?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 古い機械と段ボール箱",
+                "text_id": "Mesin lama dan kotak kardus"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② ペンキ缶と予備のヘルメット",
+                "text_id": "Kaleng cat dan helm cadangan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 掃除機と作業用の机",
+                "text_id": "Vacuum cleaner dan meja kerja"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 何もありません",
+                "text_id": "Tidak ada apa-apa"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "ダダンさん、地下の倉庫の片付けはどうですか。もう何もありませんか。",
+                "romaji": "Dadan-san, chika no souko no katadzuke wa dou desu ka. Mou nani mo arimasen ka.",
+                "text_id": "Dadan-san, bagaimana pembersihan gudang bawah tanah? Apakah sudah tidak ada apa-apa lagi?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "古い機械と段ボール箱は、午前中に外へ出しました。",
+                "romaji": "Furui kikai to danboorubako wa, gozenchuu ni soto e dashimashita.",
+                "text_id": "Mesin lama dan kardus sudah saya keluarkan ke luar pada pagi hari."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "そうですか。机も出しましたか。",
+                "romaji": "Sou desu ka. Tsukue mo dashimashita ka.",
+                "text_id": "Begitu ya. Apakah meja juga sudah dikeluarkan?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい、出しました。でも、棚にペンキ缶と予備のヘルメットがまだあります。",
+                "romaji": "Hai, dashimashita. Demo, tana ni penkikan to yobi no herumetto ga mada arimasu.",
+                "text_id": "Ya, sudah dikeluarkan. Tetapi, di rak masih ada kaleng cat dan helm cadangan."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "わかりました。ペンキ缶とヘルメットは明日片付けましょう。",
+                "romaji": "Wakarimashita. Penkikan to herumetto wa ashita katadzukemashou.",
+                "text_id": "Baiklah. Kaleng cat dan helm mari kita bereskan besok."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (Kaleng cat dan helm cadangan / ペンキ缶と予備のヘルメット).",
+            "logic": "Yamada menanyakan apakah gudang sudah benar-benar kosong ('もう何もありませんか'). Dadan mengklarifikasi bahwa mesin lama, kardus, dan meja sudah dikeluarkan ('古い機械と段ボール箱は外へ出しました', '机も出しました'). Namun, di rak gudang masih terdapat kaleng cat dan helm cadangan ('棚にペンキ缶と予備のヘルメットがまだあります').",
+            "distractor": "• Opsi ①: Salah. Mesin lama dan kardus sudah dikeluarkan pada pagi hari.\n• Opsi ③: Salah. Meja kerja sudah dikeluarkan dan vacuum cleaner tidak disebutkan.\n• Opsi ④: Salah. Gudang belum sepenuhnya kosong karena masih ada barang tersisa.",
+            "grammarRule": "Pola Bab 10: Pertanyaan keberadaan (何がありますか), penyangkalan mutlak (何もありません), penegasan sisa (~がまだあります), dan partikel letak (~にあります)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 32,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "07:00",
+        "audioStartSeconds": 420.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q7.mp3",
+        "audioDuration": "00:51",
+        "question_ja": "今、第2会議室にだれがいますか。",
+        "question_ruby": "<ruby>今<rt>いま</rt></ruby>、<ruby>第2会議室<rt>だいにかいぎしつ</rt></ruby>にだれがいますか。",
+        "question_romaji": "Ima, daini kaigi-shitsu ni dare ga imasu ka.",
+        "question_id": "Sekarang, siapa yang ada di ruang rapat 2?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 工場長と田中さん",
+                "text_id": "Kepala Pabrik dan Tanaka-san"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 実習生のナロンさんとシギットさん",
+                "text_id": "Anak magang Narong dan Sigit"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 鈴木先生と実習生全員",
+                "text_id": "Guru Suzuki dan seluruh anak magang"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ だれもいません",
+                "text_id": "Tidak ada siapa-siapa"
+            }
+        ],
+        "correctAnswer": "4",
+        "dialogue": [
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "鈴木さん、すみません。今、第2会議室で勉強してもいいですか。だれかいますか。",
+                "romaji": "Suzuki-san, sumimasen. Ima, daini kaigi-shitsu de benkyou shite mo ii desu ka. Dareka imasu ka.",
+                "text_id": "Suzuki-san, permisi. Apakah sekarang boleh belajar di ruang rapat 2? Apakah ada seseorang di sana?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "さっきまで工場長と田中さんがミーティングをしていましたよ。",
+                "romaji": "Sakki made kouchouchou to Tanaka-san ga miitingu o shite imashita yo.",
+                "text_id": "Sampai tadi kepala pabrik dan Tanaka-san sedang rapat di sana lho."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "あ、今もいますか。",
+                "romaji": "A, ima mo imasu ka.",
+                "text_id": "Ah, apakah sekarang mereka masih ada di sana?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "いいえ、10分前に終わりましたから、今はだれもいませんよ。静かですから、どうぞ使ってください。",
+                "romaji": "Iie, juppun mae ni owarimashita kara, ima wa dare mo imasen yo. Shizuka desu kara, douzo tsukatte kudasai.",
+                "text_id": "Tidak, karena sudah selesai 10 menit yang lalu, sekarang tidak ada siapa-siapa kok. Di sana tenang, silakan pakai."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "だれもいませんね。わかりました。ありがとうございます！",
+                "romaji": "Dare mo imasen ne. Wakarimashita. Arigatou gozaimasu!",
+                "text_id": "Tidak ada siapa-siapa ya. Baik. Terima kasih banyak!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ④ (Tidak ada siapa-siapa / だれもいません).",
+            "logic": "Narong bertanya apakah ada orang di ruang rapat 2 ('だれかいますか'). Suzuki menjelaskan bahwa sebelumnya kepala pabrik dan Tanaka memang rapat di sana ('さっきまで…いました'), tetapi rapat sudah berakhir 10 menit yang lalu. Oleh karena itu, saat ini ruangan tersebut kosong tanpa ada seorang pun ('今はだれもいませんよ').",
+            "distractor": "• Opsi ①: Salah. Kepala pabrik dan Tanaka sudah selesai rapat dan meninggalkan ruangan 10 menit lalu.\n• Opsi ② & ③: Narong baru akan memakai ruangan, bukan sudah ada di dalam.",
+            "grammarRule": "Pola Bab 10: Kata ganti tak tentu (だれかいますか = apakah ada seseorang) vs penyangkalan total orang (だれもいません = tidak ada siapa-siapa). Waktu lampau (さっきまで) vs sekarang (今は)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 33,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "08:00",
+        "audioStartSeconds": 480.0,
+        "audioSrc": "assets/audio/bab_10/Choukai_Bab_10_Q8.mp3",
+        "audioDuration": "00:54",
+        "question_ja": "アグスさんはこれからどこへ書類（しょるい）を取りに行きますか。",
+        "question_ruby": "アグスさんはこれからどこへ<ruby>書類<rt>しょるい</rt></ruby>を<ruby>取<rt>と</rt></ruby>りに<ruby>行<rt>い</rt></ruby>きますか。",
+        "question_romaji": "Agus-san wa korekara doko e shorui o tori ni ikimasu ka.",
+        "question_id": "Agus selanjutnya akan pergi mengambil dokumen ke mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 事務所のコピー機の横",
+                "text_id": "Di samping mesin fotokopi kantor"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 山田さんの机の引き出しの中",
+                "text_id": "Di dalam laci meja Yamada-san"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 休憩所の本棚の上",
+                "text_id": "Di atas rak buku ruang istirahat"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 受付のカウンターの前",
+                "text_id": "Di depan loket meja resepsionis"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "アグスさん、先週の安全点検の書類はどこにありますか。",
+                "romaji": "Agus-san, senshuu no anzen tenken no shorui wa doko ni arimasu ka.",
+                "text_id": "Agus-san, dokumen inspeksi keselamatan minggu lalu ada di mana ya?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "山田さんの机の上に置きましたよ。",
+                "romaji": "Yamada-san no tsukue no ue ni okimashita yo.",
+                "text_id": "Saya letakkan di atas meja Yamada-san lho."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "え？机の上にはありませんね。引き出しの中ですか。",
+                "romaji": "E? Tsukue no ue niwa arimasen ne. Hikidashi no naka desu ka.",
+                "text_id": "Eh? Di atas meja tidak ada tuh. Apakah di dalam laci?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "いいえ、引き出しには入れていません。…あ、思い出しました！さっき事務所のコピー機を使いましたから、コピー機の横に置いたままです。",
+                "romaji": "Iie, hikidashi niwa irete imasen. ...A, omoidashimashita! Sakki jimusho no kopiiki o tsukaimashita kara, kopiiki no yoko ni oita mama desu.",
+                "text_id": "Bukan, saya tidak memasukkannya ke laci. ...Ah, saya baru ingat! Tadi saya memakai mesin fotokopi kantor, jadi tertinggal diletakkan di samping mesin fotokopi."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "そうですか。じゃあ、早く取ってきてください。",
+                "romaji": "Sou desu ka. Jaa, hayaku totte kite kudasai.",
+                "text_id": "Begitu ya. Kalau begitu tolong cepat ambil ke sana."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい、今すぐ行ってきます！",
+                "romaji": "Hai, ima sugu itte kimasu!",
+                "text_id": "Baik, saya segera pergi sekarang!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (Di samping mesin fotokopi kantor / 事務所のコピー機の横).",
+            "logic": "Agus awalnya mengira dokumen ada di atas meja Yamada. Yamada memeriksa dan menyatakan dokumen tidak ada di meja maupun di laci. Agus teringat bahwa setelah memakai mesin fotokopi kantor, ia meninggalkan dokumen tersebut di samping mesin fotokopi ('コピー機の横に置いたままです'). Yamada menyuruhnya mengambilnya segera, dan Agus bergegas ke sana.",
+            "distractor": "• Opsi ②: Salah. Agus menegaskan dokumen tidak dimasukkan ke dalam laci.\n• Opsi ③ & ④: Ruang istirahat dan resepsionis sama sekali tidak terkait.",
+            "grammarRule": "Pola Bab 10: Kata penunjuk posisi samping (横・隣), lokasi mesin kantor (コピー機の横), dan kata kerja arah/tujuan (~へ取りに行きます)."
+        },
+        "session": "choukai"
+    }
   ]
 };
 
@@ -12532,6 +13183,675 @@ const BAB_11_DATA = {
         "distractor": "• Opsi B: 時問 salah huruf kanan (menggunakan 問 = toi/tanya).\n• Opsi C: 時簡 salah huruf kanan (menggunakan 簡 = kanji sederhana).\n• Opsi D: 寺間 salah huruf kiri (menggunakan 寺 = kuil).",
         "grammarRule": "Durasi Waktu Bab 11: ～時間（じかん = selama ... jam）."
       }
+    }
+,
+{
+        "id": 26,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "01:00",
+        "audioStartSeconds": 60.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q1.mp3",
+        "audioDuration": "00:51",
+        "question_ja": "男の人は缶コーヒーを何本買いますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>缶<rt>かん</rt></ruby>コーヒーを<ruby>何本<rt>なんぼん</rt></ruby><ruby>買<rt>か</rt></ruby>いますか。",
+        "question_romaji": "Otoko no hito wa kan-koohii o nanbon kaimasu ka.",
+        "question_id": "Laki-laki tersebut akan membeli berapa kaleng kopi?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 2本",
+                "text_id": "2 kaleng"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 3本",
+                "text_id": "3 kaleng"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 4本",
+                "text_id": "4 kaleng"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 5本",
+                "text_id": "5 kaleng"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ダダンさん、自販機に行きますか。缶コーヒーを買ってきてくれませんか。",
+                "romaji": "Dadan-san, jihanki ni ikimasu ka. Kan-koohii o katte kite kuremasen ka.",
+                "text_id": "Dadan-san, mau pergi ke mesin penjual otomatis ya? Boleh tolong belikan kopi kaleng?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "いいですよ。何本ですか。",
+                "romaji": "Ii desu yo. Nanbon desu ka.",
+                "text_id": "Boleh saja. Mau berapa kaleng?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "私と山田さんの分で、2本お願いします。",
+                "romaji": "Watashi to Yamada-san no bun de, nihon onegai shimasu.",
+                "text_id": "Untuk saya dan Yamada-san, tolong 2 kaleng ya."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "わかりました。私も1本飲みますから、3本ですね。",
+                "romaji": "Wakarimashita. Watashi mo ippon nomimasu kara, sanbon desu ne.",
+                "text_id": "Baik. Saya juga mau minum 1 kaleng, jadi 3 kaleng ya."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "あ、アグスさんも事務所にいますよ。アグスさんの分も1本頼みます。",
+                "romaji": "A, Agus-san mo jimusho ni imasu yo. Agus-san no bun mo ippon tanomimasu.",
+                "text_id": "Ah, Agus-san juga ada di kantor lho. Tolong belikan 1 kaleng untuk Agus-san juga."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい、じゃあ全部で4本ですね。買ってきます！",
+                "romaji": "Hai, jaa zenbu de yonbon desu ne. Katte kimasu!",
+                "text_id": "Baik, kalau begitu totalnya 4 kaleng ya. Saya belikan sekarang!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (4本 / 4 kaleng).",
+            "logic": "Perhitungan kuantitas dilakukan bertahap secara kumulatif: Tanaka meminta 2 kaleng untuk dirinya dan Yamada ('私と山田さんの分で、2本'). Dadan ingin 1 kaleng untuk dirinya sendiri, sehingga subtotal menjadi 3 kaleng ('私も1本…3本ですね'). Tanaka lalu teringat bahwa Agus juga ada di kantor dan menitipkan 1 kaleng lagi ('アグスさんの分も1本'). Dadan menyimpulkan total yang dibeli adalah 4 kaleng ('全部で4本ですね').",
+            "distractor": "• Opsi ①: 2 kaleng hanya pesanan awal untuk Tanaka dan Yamada.\n• Opsi ②: 3 kaleng adalah sebelum menambahkan pesanan Agus.\n• Opsi ④: 5 kaleng merupakan distraktor kelebihan hitungan.",
+            "grammarRule": "Pola Bab 11: Satuan benda silindris (本: 1本・2本・3本・4本), penanya kuantitas (何本), dan kata akumulasi total (全部で)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_11/q1.webp?v=4"
+    },
+    {
+        "id": 27,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "02:00",
+        "audioStartSeconds": 120.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q2.mp3",
+        "audioDuration": "00:53",
+        "question_ja": "女の人は84円の切手を何枚買いますか。",
+        "question_ruby": "<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は84<ruby>円<rt>えん</rt></ruby>の<ruby>切手<rt>きって</rt></ruby>を<ruby>何枚<rt>なんまい</rt></ruby><ruby>買<rt>か</rt></ruby>いますか。",
+        "question_romaji": "Onna no hito wa hachijuuyo-en no kitte o nanmai kaimasu ka.",
+        "question_id": "Wanita tersebut membeli berapa lembar perangko 84 yen?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 2枚",
+                "text_id": "2 lembar"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 3枚",
+                "text_id": "3 lembar"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 5枚",
+                "text_id": "5 lembar"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 8枚",
+                "text_id": "8 lembar"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "すみません、84円の切手を5枚ください。",
+                "romaji": "Sumimasen, hachijuuyo-en no kitte o gomai kudasai.",
+                "text_id": "Permisi, tolong beri saya 5 lembar perangko 84 yen."
+            },
+            {
+                "speaker": "Tenchou (店員)",
+                "text_ja": "はい、84円の切手が5枚ですね。",
+                "romaji": "Hai, hachijuuyo-en no kitte ga gomai desu ne.",
+                "text_id": "Baik, perangko 84 yen 5 lembar ya."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "あ、手紙は3通だけ出しますから、やっぱり3枚にしてください。",
+                "romaji": "A, tegami wa santsuu dake dashimasu kara, yappari sanmai ni shite kudasai.",
+                "text_id": "Ah, karena surat yang dikirim hanya 3 pucuk, saya minta 3 lembar saja."
+            },
+            {
+                "speaker": "Tenchou (店員)",
+                "text_ja": "3枚ですね。かしこまりました。他にはいかがですか。",
+                "romaji": "Sanmai desu ne. Kashikomarimashita. Hoka niwa ikaga desu ka.",
+                "text_id": "3 lembar ya. Baik. Ada yang lain?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "それと、はがきを2枚ください。",
+                "romaji": "Soreto, hagaki o nimai kudasai.",
+                "text_id": "Selain itu, tolong beri saya 2 lembar kartu pos."
+            },
+            {
+                "speaker": "Tenchou (店員)",
+                "text_ja": "はい、84円の切手3枚とはがき2枚ですね。ありがとうございます。",
+                "romaji": "Hai, hachijuuyo-en no kitte sanmai to hagaki nimai desu ne. Arigatou gozaimasu.",
+                "text_id": "Baik, perangko 84 yen 3 lembar dan kartu pos 2 lembar ya. Terima kasih banyak."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (3枚 / 3 lembar).",
+            "logic": "Suzuki awalnya memesan 5 lembar perangko 84 yen ('84円の切手を5枚ください'). Namun ia melakukan pembatalan keputusan (decision flip) setelah menyadari surat yang dikirim hanya ada 3 pucuk ('やっぱり3枚にしてください'). Adapun 2 lembar adalah jumlah kartu pos (はがき), bukan perangko 84 yen. Maka jumlah perangko 84 yen yang dibeli adalah 3 lembar.",
+            "distractor": "• Opsi ①: 2 lembar adalah jumlah kartu pos (はがき).\n• Opsi ③: 5 lembar adalah permintaan awal sebelum dibatalkan.\n• Opsi ④: 8 lembar adalah angka jebakan nominal.",
+            "grammarRule": "Pola Bab 11: Satuan lembaran tipis (枚: 1枚・2枚・3枚・5枚), penanda pembatalan keputusan (やっぱり～にしてください), dan pembatasan (~だけ)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_11/q2.webp?v=4"
+    },
+    {
+        "id": 28,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "03:00",
+        "audioStartSeconds": 180.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q3.mp3",
+        "audioDuration": "00:53",
+        "question_ja": "今、動いている機械は何台ですか。",
+        "question_ruby": "<ruby>今<rt>いま</rt></ruby>、<ruby>動<rt>うご</rt></ruby>いている<ruby>機械<rt>きかい</rt></ruby>は<ruby>何台<rt>なんだい</rt></ruby>ですか。",
+        "question_romaji": "Ima, ugoite iru kikai wa nandai desu ka.",
+        "question_id": "Sekarang, berapa unit mesin yang sedang beroperasi?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 1台",
+                "text_id": "1 unit"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 2台",
+                "text_id": "2 unit"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 3台",
+                "text_id": "3 unit"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 4台",
+                "text_id": "4 unit"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "シギットさん、工場の機械は全部で4台ありますね。今、何台動いていますか。",
+                "romaji": "Sigit-san, koujou no kikai wa zenbu de yondai arimasu ne. Ima, nandai ugoite imasu ka.",
+                "text_id": "Sigit-san, mesin di pabrik totalnya ada 4 unit kan. Sekarang berapa unit yang sedang beroperasi?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "朝は3台動いていました。でも、1台は10時に故障しましたから、止めました。",
+                "romaji": "Asa wa sandai ugoite imashita. Demo, ichidai wa juuji ni koushou shimashita kara, tomemashita.",
+                "text_id": "Pagi tadi ada 3 unit yang jalan. Tetapi 1 unit rusak jam 10, jadi dimatikan."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "そうですか。もう1台はどうですか。",
+                "romaji": "Sou desu ka. Mou ichidai wa dou desu ka.",
+                "text_id": "Begitu ya. Kalau 1 unit sisanya bagaimana?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "もう1台は定期点検中ですから、動いていません。",
+                "romaji": "Mou ichidai wa teiki tenkenchuu desu kara, ugoite imasen.",
+                "text_id": "1 unit sisanya sedang dalam inspeksi rutin berkala, jadi tidak beroperasi."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "じゃあ、今動いているのは2台だけですね。",
+                "romaji": "Jaa, ima ugoite iru no wa nidai dake desu ne.",
+                "text_id": "Kalau begitu, yang beroperasi sekarang hanya 2 unit saja ya."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい、2台だけです。安全に作業しています。",
+                "romaji": "Hai, nidai dake desu. Anzen ni sagyou shite imasu.",
+                "text_id": "Ya, hanya 2 unit saja. Kami bekerja dengan aman."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (2台 / 2 unit).",
+            "logic": "Total mesin di pabrik adalah 4 unit. Pagi hari ada 3 unit yang beroperasi. Namun 1 unit mengalami kerusakan pada jam 10 sehingga dimatikan (1台は故障しましたから、止めました). Sedangkan 1 unit lainnya sedang dalam proses inspeksi (点検中). Maka unit yang beroperasi saat ini adalah 3 - 1 = 2 unit saja ('今動いているのは2台だけですね').",
+            "distractor": "• Opsi ①: 1 unit adalah jumlah mesin yang rusak.\n• Opsi ③: 3 unit adalah jumlah mesin yang jalan tadi pagi.\n• Opsi ④: 4 unit adalah jumlah total seluruh mesin pabrik.",
+            "grammarRule": "Pola Bab 11: Satuan mesin/kendaraan (台: 1台・2台・3台・4台), kata tanya kuantitas (何台), dan pembatasan kondisi (~だけ)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_11/q3.webp?v=4"
+    },
+    {
+        "id": 29,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "04:00",
+        "audioStartSeconds": 240.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q4.mp3",
+        "audioDuration": "00:52",
+        "question_ja": "男の人は今日、何時間残業（ざんぎょう）をしますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>今日<rt>きょう</rt></ruby>、<ruby>何時間<rt>なんじかん</rt></ruby><ruby>残業<rt>ざんぎょう</rt></ruby>をしますか。",
+        "question_romaji": "Otoko no hito wa kyou, nanjikan zangyou o shimasu ka.",
+        "question_id": "Laki-laki tersebut hari ini akan lembur berapa jam?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 1時間",
+                "text_id": "1 jam"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 2時間",
+                "text_id": "2 jam"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 3時間",
+                "text_id": "3 jam"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 4時間",
+                "text_id": "4 jam"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "アグスさん、今日の仕事の後、残業をしますか。",
+                "romaji": "Agus-san, kyou no shigoto no ato, zangyou o shimasu ka.",
+                "text_id": "Agus-san, setelah pekerjaan hari ini selesai, apakah kamu lembur?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい、製品がたくさんありますから、残業をしますよ。",
+                "romaji": "Hai, seihin ga takusan arimasu kara, zangyou o shimasu yo.",
+                "text_id": "Ya, karena produknya banyak, saya akan lembur."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "何時間しますか。3時間ですか。",
+                "romaji": "Nanjikan shimasu ka. Sanjikan desu ka.",
+                "text_id": "Berapa jam kamu lembur? Apakah 3 jam?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "いいえ、3時間は長すぎますよ。いつもは1時間だけですが、今日は2時間します。",
+                "romaji": "Iie, sanjikan wa nagasugimasu yo. Itsumo wa ichijikan dake desu ga, kyou wa nijikan shimasu.",
+                "text_id": "Bukan, 3 jam terlalu lama. Biasanya hanya 1 jam saja, tapi hari ini saya lembur 2 jam."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "2時間ですね。私も2時間残業します。一緒にがんばりましょう。",
+                "romaji": "Nijikan desu ne. Watashi mo nijikan zangyou shimasu. Issho ni gambarimashou.",
+                "text_id": "2 jam ya. Saya juga lembur 2 jam. Mari bersemangat bersama."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい、がんばりましょう！",
+                "romaji": "Hai, gambarimashou!",
+                "text_id": "Ya, mari bersemangat!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (2時間 / 2 jam).",
+            "logic": "Narong bertanya apakah Agus lembur 3 jam ('何時間しますか。3時間ですか'). Agus menolak opsi 3 jam karena terlalu panjang ('いいえ、3時間は長すぎますよ'). Agus menjelaskan bahwa biasanya ia hanya lembur 1 jam, namun khusus hari ini ia lembur selama 2 jam ('いつもは1時間だけですが、今日は2時間します'). Narong pun sepakat ikut lembur 2 jam.",
+            "distractor": "• Opsi ①: 1 jam adalah durasi lembur rutin harian biasa (いつも).\n• Opsi ③: 3 jam ditolak secara tegas karena dinilai terlalu lama.\n• Opsi ④: 4 jam tidak pernah disebutkan dalam pembicaraan.",
+            "grammarRule": "Pola Bab 11: Durasi waktu (時間: 1時間・2時間・3時間), kata tanya durasi (何時間), kontras harian vs hari ini (いつもは～ですが、今日は～)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_11/q4.webp?v=4"
+    },
+    {
+        "id": 30,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "05:00",
+        "audioStartSeconds": 300.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q5.mp3",
+        "audioDuration": "00:48",
+        "question_ja": "ナロンさんの家族は全部で何人ですか。",
+        "question_ruby": "ナロンさんのご<ruby>家族<rt>かぞく</rt></ruby>は<ruby>全部<rt>ぜんぶ</rt></ruby>で<ruby>何人<rt>なんにん</rt></ruby>ですか。",
+        "question_romaji": "Narong-san no kazoku wa zenbu de nannin desu ka.",
+        "question_id": "Berapa jumlah total anggota keluarga Narong?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 4人",
+                "text_id": "4 orang"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 5人",
+                "text_id": "5 orang"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 6人",
+                "text_id": "6 orang"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 7人",
+                "text_id": "7 orang"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ナロンさん、ご家族は何人ですか。",
+                "romaji": "Narong-san, gokazoku wa nannin desu ka.",
+                "text_id": "Narong-san, ada berapa orang anggota keluargamu?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "タイの家族は、両親と姉が1人、弟が2人、そして私です。",
+                "romaji": "Tai no kazoku wa, ryoushin to ane ga hitori, otouto ga futari, soshite watashi desu.",
+                "text_id": "Keluarga saya di Thailand adalah kedua orang tua, 1 orang kakak perempuan, 2 orang adik laki-laki, dan saya."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ええと、お父さんとお母さん、お姉さんが1人、弟さんが2人、そしてナロンさんですね。",
+                "romaji": "Eeto, otousan to okaasan, oneesan ga hitori, otoutosan ga futari, soshite Narong-san desu ne.",
+                "text_id": "Hmm, ayah dan ibu, kakak perempuan 1 orang, adik laki-laki 2 orang, dan Narong-san ya."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "はい、全部で6人です。兄弟が多いですから、家はいつもにぎやかですよ。",
+                "romaji": "Hai, zenbu de rokunin desu. Kyoudai ga ooi desu kara, ie wa itsumo nigiyaka desu yo.",
+                "text_id": "Ya, totalnya ada 6 orang. Karena saudaranya banyak, rumah selalu ramai."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "そうですか。にぎやかでいいですね。",
+                "romaji": "Sou desu ka. Nigiyaka de ii desu ne.",
+                "text_id": "Begitu ya. Ramai dan menyenangkan ya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (6人 / 6 orang).",
+            "logic": "Narong menjabarkan silsilah anggota keluarganya di Thailand: kedua orang tua (両親 = ayah dan ibu = 2 orang), 1 kakak perempuan ('姉が1人'), 2 adik laki-laki ('弟が2人'), dan Narong sendiri ('そして私'). Tanaka mengonfirmasi dan Narong menegaskan: '全部で6人です' (Totalnya ada 6 orang).",
+            "distractor": "• Opsi ①: 4 orang adalah jika hanya menghitung saudara tanpa orang tua.\n• Opsi ②: 5 orang adalah jika lupa menghitung diri Narong sendiri.\n• Opsi ④: 7 orang adalah kesalahan hitung distractor.",
+            "grammarRule": "Pola Bab 11: Satuan orang (人: ひとり・ふたり・さんにん・よにん・ごにん・ろくにん), kata tanya jumlah orang (何人), dan istilah keluarga (両親・姉・弟)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 31,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "06:00",
+        "audioStartSeconds": 360.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q6.mp3",
+        "audioDuration": "00:51",
+        "question_ja": "アグスさんは日本へ来てから、どのくらい経ちましたか。",
+        "question_ruby": "アグスさんは<ruby>日本<rt>にほん</rt></ruby>へ<ruby>来<rt>き</rt></ruby>てから、どのくらい<ruby>経<rt>た</rt></ruby>ちましたか。",
+        "question_romaji": "Agus-san wa Nihon e kite kara, dono kurai tachimashita ka.",
+        "question_id": "Sudah berapa lama sejak Agus datang ke Jepang?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 6か月",
+                "text_id": "6 bulan"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 1年",
+                "text_id": "1 tahun"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 2年",
+                "text_id": "2 tahun"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 3年",
+                "text_id": "3 tahun"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "アグスさん、日本語の会話がとても上手ですね。日本にどのくらいいますか。",
+                "romaji": "Agus-san, Nihongo no kaiwa ga totemo jouzu desu ne. Nihon ni dono kurai imasu ka.",
+                "text_id": "Agus-san, percakapan bahasa Jepangmu pintar sekali ya. Sudah berapa lama kamu ada di Jepang?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "ありがとうございます。でも、まだ1年ですよ。去年の10月に来ました。",
+                "romaji": "Arigatou gozaimasu. Demo, mada ichinen desu yo. Kyonen no juugatsu ni kimashita.",
+                "text_id": "Terima kasih banyak. Tapi baru 1 tahun kok. Saya datang bulan Oktober tahun lalu."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "実習はあとどのくらいですか。",
+                "romaji": "Jisshuu wa ato dono kurai desu ka.",
+                "text_id": "Masa pemaganganmu tinggal berapa lama lagi?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "実習期間は全部で3年ですから、あと2年あります。毎日がんばります。",
+                "romaji": "Jisshuu kikan wa zenbu de sannen desu kara, ato ninen arimasu. Mainichi gambarimasu.",
+                "text_id": "Masa magang totalnya 3 tahun, jadi masih ada 2 tahun lagi. Saya bersemangat setiap hari."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "そうですか。これからもがんばってくださいね。",
+                "romaji": "Sou desu ka. Korekara mo gambatte kudasai ne.",
+                "text_id": "Begitu ya. Ke depannya tetap semangat terus ya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (1年 / 1 tahun).",
+            "logic": "Suzuki menanyakan berapa lama Agus sudah tinggal di Jepang ('日本にどのくらいいますか'). Agus menjawab bahwa ia baru tinggal selama 1 tahun ('まだ1年ですよ。去年の10月に来ました'). Agus juga menerangkan bahwa total kontrak magang adalah 3 tahun ('全部で3年'), dan waktu tersisa tinggal 2 tahun ('あと2年あります'). Karena pertanyaan menguji lama waktu sejak tiba di Jepang, jawabannya adalah 1 tahun.",
+            "distractor": "• Opsi ①: 6 bulan adalah pengecoh waktu.\n• Opsi ③: 2 tahun adalah sisa masa magang yang belum dijalani (あと2年).\n• Opsi ④: 3 tahun adalah masa total program kontrak pemagangan (全部で3年).",
+            "grammarRule": "Pola Bab 11: Satuan tahun (年: 1年・2年・3年), kata tanya durasi (どのくらい), kata penunjuk sisa (あと～年), dan penanda totalitas (全部で～年)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 32,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "07:00",
+        "audioStartSeconds": 420.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q7.mp3",
+        "audioDuration": "00:49",
+        "question_ja": "男の人は1週間に何回ジムで運動しますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は1<ruby>週間<rt>しゅうかん</rt></ruby>に<ruby>何回<rt>なんかい</rt></ruby>ジムで<ruby>運動<rt>うんどう</rt></ruby>しますか。",
+        "question_romaji": "Otoko no hito wa isshuukan ni nankai jimu de undou shimasu ka.",
+        "question_id": "Berapa kali dalam seminggu laki-laki tersebut berolahraga di gym?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 1回だけ",
+                "text_id": "Hanya 1 kali"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 2回",
+                "text_id": "2 kali"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 3回",
+                "text_id": "3 kali"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 毎日",
+                "text_id": "Setiap hari"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "田中さんはいつも元気ですね。何かスポーツをしていますか。",
+                "romaji": "Tanaka-san wa itsumo genki desu ne. Nanika supootsu o shite imasu ka.",
+                "text_id": "Tanaka-san selalu bersemangat ya. Apakah Anda melakukan suatu olahraga?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ええ、仕事の後、近くのジムで運動をしていますよ。",
+                "romaji": "Ee, shigoto no ato, chikaku no jimu de undou o shite imasu yo.",
+                "text_id": "Ya, sepulang kerja saya berolahraga di tempat gym dekat sini lho."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "毎日ですか。",
+                "romaji": "Mainichi desu ka.",
+                "text_id": "Apakah setiap hari?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "いいえ、毎日は大変ですから無理ですよ。火曜日と木曜日の夜、週に2回だけ行きます。土曜日と日曜日は家で休みます。",
+                "romaji": "Iie, mainichi wa taihen desu kara muri desu yo. Kayoubi to mokuyoubi no yoru, shuu ni nikai dake ikimasu. Doyoubi to nichiyoubi wa ie de yasumimasu.",
+                "text_id": "Tidak, kalau setiap hari berat jadi mustahil. Malam Selasa dan Kamis, seminggu hanya pergi 2 kali saja. Sabtu dan Minggu beristirahat di rumah."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "1週間に2回ですね。健康的ですね。",
+                "romaji": "Isshuukan ni nikai desu ne. Kenkouteki desu ne.",
+                "text_id": "Seminggu 2 kali ya. Sangat sehat ya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (2回 / 2 kali).",
+            "logic": "Dadan mengira Tanaka pergi berolahraga setiap hari ('毎日ですか'). Tanaka membantah karena terlalu melelahkan ('毎日は大変ですから無理ですよ'). Tanaka menyatakan bahwa ia hanya pergi pada malam Selasa dan Kamis, yaitu 2 kali dalam seminggu ('週に2回だけ行きます'). Akhir pekan (Sabtu-Minggu) ia istirahat di rumah. Maka frekuensinya adalah 2 kali seminggu.",
+            "distractor": "• Opsi ①: 1 kali tidak sesuai dengan jadwal Selasa dan Kamis.\n• Opsi ③: 3 kali merupakan distraktor angka.\n• Opsi ④: Setiap hari (毎日) dibantah dengan tegas oleh Tanaka.",
+            "grammarRule": "Pola Bab 11: Frekuensi dalam kurun waktu (1週間に～回 / 週に2回), satuan frekuensi (回: 1回・2回・3回), dan pembatasan frekuensi (~だけ)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 33,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "08:00",
+        "audioStartSeconds": 480.0,
+        "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q8.mp3",
+        "audioDuration": "00:49",
+        "question_ja": "寮から会社まで、自転車でどのくらいかかりますか。",
+        "question_ruby": "<ruby>寮<rt>りょう</rt></ruby>から<ruby>会社<rt>かいしゃ</rt></ruby>まで、<ruby>自転車<rt>じてんしゃ</rt></ruby>でどのくらいかかりますか。",
+        "question_romaji": "Ryou kara kaisha made, jitensha de dono kurai kakarimasu ka.",
+        "question_id": "Dari asrama ke perusahaan, berapa lama waktu yang dibutuhkan jika naik sepeda?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 10分",
+                "text_id": "10 menit"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 15分",
+                "text_id": "15 menit"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 30分",
+                "text_id": "30 menit"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 1時間",
+                "text_id": "1 jam"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "シギットさん、寮から会社までどうやって行きますか。",
+                "romaji": "Sigit-san, ryou kara kaisha made dou yatte ikimasu ka.",
+                "text_id": "Sigit-san, bagaimana caramu berangkat dari asrama ke tempat kerja/perusahaan?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "私はいつも自転車で行きますよ。",
+                "romaji": "Watashi wa itsumo jitensha de ikimasu yo.",
+                "text_id": "Saya selalu pergi naik sepeda lho."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "時間はどのくらいかかりますか。30分ぐらいですか。",
+                "romaji": "Jikan wa dono kurai kakarimasu ka. Sanjuppun gurai desu ka.",
+                "text_id": "Berapa lama waktu yang dihabiskan? Apakah sekitar 30 menit?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "いいえ、歩くと30分かかりますが、自転車なら15分で着きますよ。道も広いですから走りやすいです。",
+                "romaji": "Iie, aruku to sanjuppun kakarimasu ga, jitensha nara juugofun de tsukimasu yo. Michi mo hiroi desu kara hashiriyasui desu.",
+                "text_id": "Tidak, kalau jalan kaki memang butuh 30 menit, tapi kalau sepeda hanya 15 menit sudah sampai lho. Jalannya juga lebar jadi nyaman."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "15分ですか。近いですね！私も自転車を買います。",
+                "romaji": "Juugofun desu ka. Chikai desu ne! Watashi mo jitensha o kaimasu.",
+                "text_id": "15 menit ya. Dekat ya! Saya juga akan beli sepeda."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (15分 / 15 menit).",
+            "logic": "Narong menanyakan waktu tempuh dari asrama ke perusahaan dan menduga butuh 30 menit ('30分ぐらいですか'). Sigit meluruskan bahwa 30 menit adalah jika berjalan kaki ('歩くと30分かかりますが'), sedangkan jika mengendarai sepeda hanya memakan waktu 15 menit ('自転車なら15分で着きますよ'). Pertanyaan secara spesifik menanyakan durasi dengan sepeda (自転車でどのくらい), sehingga jawaban yang benar adalah 15 menit.",
+            "distractor": "• Opsi ①: 10 menit merupakan distraktor angka.\n• Opsi ③: 30 menit adalah durasi jika menempuh perjalanan dengan berjalan kaki (歩く).\n• Opsi ④: 1 jam jauh terlalu lama.",
+            "grammarRule": "Pola Bab 11: Kata tanya lama waktu (~どのくらいかかりますか), satuan menit (分: 15分・30分), partikel sarana (~で), dan syarat perbandingan (~なら)."
+        },
+        "session": "choukai"
     }
   ]
 };
