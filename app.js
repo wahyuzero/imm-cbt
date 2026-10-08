@@ -48,7 +48,7 @@ class ChoukaiApp {
   pdfUrl(url) {
     if (!url) return "";
     const clean = encodeURI(url);
-    return clean.includes("?") ? clean : `${clean}?v=39`;
+    return clean.includes("?") ? clean : `${clean}?v=40`;
   }
 
   init() {
@@ -60,7 +60,7 @@ class ChoukaiApp {
     const hash = window.location.hash;
     const babMatch = hash.match(/^#bab-(\d{1,2})$/);
     const resultMatch = hash.match(/^#result-(\d{1,2})$/);
-    const kosakataMatch = hash.match(/^#kosakata(?:-(\d{1,2}))?$/);
+    const kosakataMatch = hash.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
     if (babMatch) {
       const bNum = babMatch[1].padStart(2, "0");
       if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
@@ -72,7 +72,7 @@ class ChoukaiApp {
         this.viewSavedResult(bNum);
       }
     } else if (kosakataMatch) {
-      const bNum = kosakataMatch[1] ? kosakataMatch[1].padStart(2, "0") : "01";
+      const bNum = kosakataMatch[1] ? (kosakataMatch[1] === "all" ? "all" : kosakataMatch[1].padStart(2, "0")) : "01";
       this.goToKosakata(bNum);
     } else if (hash === "#exam" || hash === "#bab-08") {
       this.startExam(BAB_08_DATA, "renshuu");
@@ -99,9 +99,9 @@ class ChoukaiApp {
 
     window.addEventListener("hashchange", () => {
       const h = window.location.hash;
-      const km = h.match(/^#kosakata(?:-(\d{1,2}))?$/);
+      const km = h.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
       if (km) {
-        const bNum = km[1] ? km[1].padStart(2, "0") : (this.kosakataBab || "01");
+        const bNum = km[1] ? (km[1] === "all" ? "all" : km[1].padStart(2, "0")) : (this.kosakataBab || "01");
         if (this.view !== "kosakata" || this.kosakataBab !== bNum) {
           this.goToKosakata(bNum);
         }
@@ -256,6 +256,17 @@ class ChoukaiApp {
     const utterance = new SpeechSynthesisUtterance(cleanText || text);
     utterance.lang = "ja-JP";
     utterance.rate = 0.88;
+
+    try {
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        const jaVoice = voices.find((v) => v.lang === "ja-JP" || (v.lang && v.lang.startsWith("ja")));
+        if (jaVoice) {
+          utterance.voice = jaVoice;
+        }
+      }
+    } catch (e) {}
+
     window.speechSynthesis.speak(utterance);
   }
 
@@ -1754,12 +1765,14 @@ class ChoukaiApp {
     const btnEl = document.getElementById(`word-check-${wordKey}`);
     const isMem = Boolean(this.memorizedWords[wordKey]);
     if (cardEl) {
+      const memClasses = ["border-emerald-400", "dark:border-emerald-600", "bg-emerald-50/30", "dark:bg-emerald-950/20"];
+      const unmemClasses = ["border-slate-200", "dark:border-slate-800", "bg-white", "dark:bg-slate-900"];
       if (isMem) {
-        cardEl.classList.add("border-emerald-400", "dark:border-emerald-600", "bg-emerald-50/30", "dark:bg-emerald-950/20");
-        cardEl.classList.remove("border-slate-200", "dark:border-slate-800");
+        unmemClasses.forEach((c) => cardEl.classList.remove(c));
+        memClasses.forEach((c) => cardEl.classList.add(c));
       } else {
-        cardEl.classList.remove("border-emerald-400", "dark:border-emerald-600", "bg-emerald-50/30", "dark:bg-emerald-950/20");
-        cardEl.classList.add("border-slate-200", "dark:border-slate-800");
+        memClasses.forEach((c) => cardEl.classList.remove(c));
+        unmemClasses.forEach((c) => cardEl.classList.add(c));
       }
     }
     if (btnEl) {
