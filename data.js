@@ -118,17 +118,17 @@ const CHAPTERS_INDEX = [
   },
   {
     "num": "09",
-    "title_ja": "第9課：好き・嫌い・上手・下手",
-    "title_id": "Bab 09: Kesukaan & Kemahiran",
-    "topic_id": "Kesenangan, Olahraga, Kemampuan Bahasa, Alasan (~から)",
+    "title_ja": "第9課：嗜好・能力・所有（読解・聴解）",
+    "title_id": "Bab 09: Tryout Terpadu Reading & Choukai",
+    "topic_id": "Tryout Terpadu EPS-TOPIK: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal)",
     "available": true,
-    "totalQuestions": 25,
-    "audioDuration": "50:00",
+    "totalQuestions": 33,
+    "audioDuration": "08:04",
+    "examDuration": "60:00",
     "passingScore": 80,
     "badge": "Tersedia",
-    "examDuration": "50:00",
     "readingQuestions": 25,
-    "choukaiQuestions": 0
+    "choukaiQuestions": 8
   },
   {
     "num": "10",
@@ -9400,19 +9400,19 @@ const BAB_08_DATA = {
 
 const BAB_09_DATA = {
   "chapter": "09",
-  "title_ja": "第９課：嗜好・能力・所有（すき・きらい・上手・下手・あります・分かります）",
-  "title_id": "Bab 09: Kesukaan, Kemahiran, Kepemilikan, Pemahaman (Ga) & Alasan (Kara)",
-  "theme_ja": "対象の助詞「が」 (Taishou no Joshi 'Ga') & 理由表現 (Riyuu Hyougen)",
-  "theme_id": "Evaluasi penguasaan kosakata hobi, cita rasa, kemampuan, kepemilikan properti/waktu, serta pola tata bahasa objek partikel (が) pada predikat kesukaan (すき/きらい), kemahiran (上手/下手), kepemilikan (あります), pemahaman (分かります), kata tanya alasan (どうして), kalimat sebab-akibat (～から), dan adverbia derajat (よく, だいたい, 少し, あまり, ぜんぜん) pada Bab 9 buku IMM Japan.",
-  "audioSrc": null,
+  "title_ja": "第9課 総合評価試験（読解・聴解）",
+  "title_id": "Tryout Terpadu Bab 09 (Reading & Choukai)",
+  "theme_ja": "嗜好・能力・所有（すき・きらい・上手・下手・あります・分かります）",
+  "theme_id": "Evaluasi Sesi 1 Reading (25 Soal) dan Sesi 2 Choukai (8 Soal) materi kesukaan, kemahiran, kepemilikan, pemahaman, partikel objek (が), alasan (～から, どうして), dan adverbia derajat.",
+  "audioSrc": "assets/Choukai_Bab_09.mp3",
   "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 09.pdf",
   "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 09.pdf",
-  "pdfSoalUrl": null,
-  "pdfKunciUrl": null,
+  "pdfSoalUrl": "assets/pdf/Soal Choukai Bab 09.pdf",
+  "pdfKunciUrl": "assets/pdf/Kunci dan Pembahasan Choukai Bab 09.pdf",
   "passingGrade": 80,
-  "totalQuestions": 25,
+  "totalQuestions": 33,
   "readingCount": 25,
-  "choukaiCount": 0,
+  "choukaiCount": 8,
   "questions": [
     {
       "id": 1,
@@ -10440,6 +10440,627 @@ const BAB_09_DATA = {
         "distractor": "• Opsi B: 料里 salah huruf kanan.\n• Opsi C: 料金 dibaca りょうきん (biaya / ongkos).\n• Opsi D: 科理 salah huruf kiri (menggunakan ka/ilmu pengetahuan).",
         "grammarRule": "Aktivitas Asrama Bab 9: 料理（りょうり = masakan）."
       }
+    }
+,
+{
+        "id": 26,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "01:00",
+        "audioStartSeconds": 60.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q1.mp3",
+        "audioDuration": "00:50",
+        "question_ja": "男の人はどのラーメンを食べますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>はどのラーメンを<ruby>食<rt>た</rt></ruby>べますか。",
+        "question_romaji": "Otoko no hito wa dono raamen o tabemasu ka.",
+        "question_id": "Laki-laki tersebut akan memakan ramen yang mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 甘口ラーメン（辛さ 0）",
+                "text_id": "Ramen rasa manis/tidak pedas (level 0)"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 中辛ラーメン（少し辛い）",
+                "text_id": "Ramen pedas sedang / sedikit pedas (level 1)"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 激辛ラーメン（とても辛い）",
+                "text_id": "Ramen super pedas (level 3)"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 和風うどん（辛くない）",
+                "text_id": "Udon khas Jepang (tidak pedas)"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "鈴木さん、私は辛い料理が好きですから、この激辛ラーメンにします。",
+                "romaji": "Suzuki-san, watashi wa karai ryouri ga suki desu kara, kono gekikara raamen ni shimasu.",
+                "text_id": "Suzuki-san, karena saya suka makanan pedas, saya pilih ramen super pedas ini."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "激辛はおなかが痛くなりますよ。明日も仕事がありますから、中辛はどうですか。",
+                "romaji": "Gekikara wa onaka ga itaku narimasu yo. Ashita mo shigoto ga arimasu kara, chuukara wa dou desu ka.",
+                "text_id": "Yang super pedas bisa bikin sakit perut lho. Besok juga ada kerja, bagaimana dengan yang pedas sedang?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "明日仕事がありますから、おなかが痛いのは困りますね。甘口はどうですか。",
+                "romaji": "Ashita shigoto ga arimasu kara, onaka ga itai no wa komarimasu ne. Amakuchi wa dou desu ka.",
+                "text_id": "Karena besok ada kerja, kalau sakit perut repot ya. Bagaimana dengan yang manis?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "甘口は全然辛くないですよ。中辛は少しだけ辛いです。",
+                "romaji": "Amakuchi wa zenzen karakunai desu yo. Chuukara wa sukoshi dake karai desu.",
+                "text_id": "Yang manis sama sekali tidak pedas lho. Yang pedas sedang hanya sedikit pedas."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "じゃあ、少し辛い中辛ラーメンにします。",
+                "romaji": "Jaa, sukoshi karai chuukara raamen ni shimasu.",
+                "text_id": "Kalau begitu, saya pilih ramen pedas sedang yang sedikit pedas."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (中辛ラーメン / Ramen pedas sedang).",
+            "logic": "Dadan menyukai makanan pedas dan awalnya memilih ramen super pedas (激辛ラーメン). Suzuki mengingatkan risiko sakit perut menjelang kerja besok ('明日も仕事がありますから'). Dadan membatalkan niatnya dan sempat bertanya tentang varian manis (甘口), tetapi Suzuki menjelaskan bahwa varian itu sama sekali tidak pedas ('全然辛くない'). Akhirnya Dadan memilih ramen pedas sedang (中辛ラーメン) yang sedikit pedas ('少し辛い中辛ラーメンにします').",
+            "distractor": "• Opsi ①: Salah. Varian manis (甘口) sama sekali tidak pedas (全然辛くない) sehingga tidak dipilih Dadan.\n• Opsi ③: Salah. Ramen super pedas (激辛) dibatalkan karena besok ada pekerjaan di pabrik.\n• Opsi ④: Salah. Udon tidak menjadi pilihan dalam percakapan.",
+            "grammarRule": "Pola Bab 9: Predikat kesukaan (辛い料理が好きです), alasan menggunakan ~から (仕事がありますから), adverbia derajat (全然辛くない = sama sekali tidak pedas; 少しだけ辛い = hanya sedikit pedas)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_09/q1.webp?v=4"
+    },
+    {
+        "id": 27,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "02:00",
+        "audioStartSeconds": 120.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q2.mp3",
+        "audioDuration": "00:44",
+        "question_ja": "男の人は寮のパーティーで何をしますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>寮<rt>りょう</rt></ruby>のパーティーで<ruby>何<rt>なに</rt></ruby>をしますか。",
+        "question_romaji": "Otoko no hito wa ryou no paatii de nani o shimasu ka.",
+        "question_id": "Laki-laki tersebut akan melakukan apa di pesta asrama?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① ギターを弾きます",
+                "text_id": "Bermain gitar"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② ピアノを弾きます",
+                "text_id": "Bermain piano"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 歌を歌います（カラオケ）",
+                "text_id": "Menyanyi lagu (karaoke)"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 写真を撮ります（カメラ）",
+                "text_id": "Mengambil foto (kamera)"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "シギットさん、寮のパーティーでピアノを弾きませんか。",
+                "romaji": "Sigit-san, ryou no paatii de piano o hikimasen ka.",
+                "text_id": "Sigit-san, maukah bermain piano di pesta asrama?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "ピアノは全然できませんよ。ギターは少しできますが、今ギターがありません。",
+                "romaji": "Piano wa zenzen dekimasen yo. Gitaa wa sukoshi dekimasu ga, ima gitaa ga arimasen.",
+                "text_id": "Piano sama sekali tidak bisa lho. Gitar sedikit bisa, tapi sekarang tidak ada gitar."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "そうですか。食堂にマイクがありますから、歌はどうですか。",
+                "romaji": "Sou desu ka. Shokudou ni maiku ga arimasu kara, uta wa dou desu ka.",
+                "text_id": "Begitu ya. Karena di kantin ada mikrofon, bagaimana dengan menyanyi?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "歌は大好きですから、よく歌います。じゃあ、歌を歌います！",
+                "romaji": "Uta wa daisuki desu kara, yoku utaimasu. Jaa, uta o utaimasu!",
+                "text_id": "Karena saya sangat suka menyanyi, saya sering menyanyi. Kalau begitu, saya akan menyanyi!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (歌を歌います / Menyanyi lagu).",
+            "logic": "Tanaka mengusulkan bermain piano, namun Sigit tidak bisa ('ピアノは全然できません'). Sigit bisa bermain gitar sedikit tetapi saat ini tidak ada instrumen gitar di asrama ('今ギターがありません'). Tanaka menyarankan menyanyi karena ada mikrofon di kantin. Karena Sigit sangat gemar menyanyi ('歌は大好きですから、よく歌います'), Sigit memutuskan untuk menyanyi di pesta.",
+            "distractor": "• Opsi ①: Salah. Sigit bisa sedikit bermain gitar, tetapi tidak memiliki instrumen gitar di asrama.\n• Opsi ②: Salah. Sigit sama sekali tidak bisa bermain piano (全然できません).\n• Opsi ④: Salah. Kamera tidak dibahas sama sekali.",
+            "grammarRule": "Pola Bab 9: Predikat kemahiran (全然できません / 少しできます), kepemilikan (ギターがありません / マイクがあります), kesukaan (歌が大好きです)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_09/q2.webp?v=4"
+    },
+    {
+        "id": 28,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "03:00",
+        "audioStartSeconds": 180.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q3.mp3",
+        "audioDuration": "00:47",
+        "question_ja": "男の人は新しい工場へ何で行きますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>新<rt>あたら</rt></ruby>しい<ruby>工場<rt>こうじょう</rt></ruby>へ<ruby>何<rt>なに</rt></ruby>で<ruby>行<rt>い</rt></ruby>きますか。",
+        "question_romaji": "Otoko no hito wa atarashii koujou e nani de ikimasu ka.",
+        "question_id": "Laki-laki tersebut akan pergi ke pabrik baru naik apa?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 自転車で行きます",
+                "text_id": "Pergi naik sepeda"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② オートバイで行きます",
+                "text_id": "Pergi naik sepeda motor"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 自動車で行きます",
+                "text_id": "Pergi naik mobil"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 歩いて行きます",
+                "text_id": "Pergi dengan berjalan kaki"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "アグスさん、新しい工場へは何で行きますか。車がありますか。",
+                "romaji": "Agus-san, atarashii koujou e wa nani de ikimasu ka. Kuruma ga arimasu ka.",
+                "text_id": "Agus-san, ke pabrik baru mau pergi naik apa? Apakah punya mobil?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "車はありません。バイクはありますが、道がまだよく分かりませんから危ないです。",
+                "romaji": "Kuruma wa arimasen. Baiku wa arimasu ga, michi ga mada yoku wakarimasen kara abunai desu.",
+                "text_id": "Mobil tidak punya. Motor ada, tapi karena jalan belum begitu paham berbahaya."
+            },
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "安全が一番ですから、バイクはやめましょう。自転車はどうですか。",
+                "romaji": "Anzen ga ichiban desu kara, baiku wa yamemashou. Jitensha wa dou desu ka.",
+                "text_id": "Karena keselamatan nomor satu, batalkan naik motor. Bagaimana dengan sepeda?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "自転車がありますから、自転車で行きます。運動にもなります。",
+                "romaji": "Jitensha ga arimasu kara, jitensha de ikimasu. Undou ni mo narimasu.",
+                "text_id": "Karena punya sepeda, saya pergi naik sepeda. Jadi olahraga juga."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (自転車で行きます / Pergi naik sepeda).",
+            "logic": "Agus tidak punya mobil (車はありません). Agus punya motor, tapi karena belum paham jalan di Jepang (道がまだよく分かりませんから), mengendarai motor dibatalkan demi keselamatan. Karena Agus memiliki sepeda (自転車がありますから) dan menyehatkan, ia memutuskan pergi ke pabrik naik sepeda.",
+            "distractor": "• Opsi ②: Salah. Motor dibatalkan karena belum paham medan jalan (道がよく分かりませんから危ない).\n• Opsi ③: Salah. Agus tidak memiliki mobil (車はありません).\n• Opsi ④: Salah. Berjalan kaki tidak dipilih dalam percakapan.",
+            "grammarRule": "Pola Bab 9: Kepemilikan (車はありません / 自転車があります), pemahaman (道がよく分かりません), alasan ~から (危ないですから / 運動にもなります)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_09/q3.webp?v=4"
+    },
+    {
+        "id": 29,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "04:00",
+        "audioStartSeconds": 240.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q4.mp3",
+        "audioDuration": "00:44",
+        "question_ja": "男の人はどの本を借りますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>はどの<ruby>本<rt>ほん</rt></ruby>を<ruby>借<rt>か</rt></ruby>りますか。",
+        "question_romaji": "Otoko no hito wa dono hon o karimasu ka.",
+        "question_id": "Laki-laki tersebut akan meminjam buku yang mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① ひらがなの本",
+                "text_id": "Buku Hiragana"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② カタカナの本",
+                "text_id": "Buku Katakana"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 日本語の辞書",
+                "text_id": "Kamus bahasa Jepang"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 漢字の本",
+                "text_id": "Buku Kanji"
+            }
+        ],
+        "correctAnswer": "4",
+        "dialogue": [
+            {
+                "speaker": "Sensei (先生)",
+                "text_ja": "ナロンさん、図書室でどの本を借りますか。",
+                "romaji": "Narong-san, toshoshitsu de dono hon o karimasu ka.",
+                "text_id": "Narong-san, di perpustakaan mau pinjam buku yang mana?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "ひらがなとカタカナはだいたい分かりますから、大丈夫です。",
+                "romaji": "Hiragana to katakana wa daitai wakarimasu kara, daijoubu desu.",
+                "text_id": "Karena Hiragana dan Katakana sebagian besar sudah paham, tidak apa-apa."
+            },
+            {
+                "speaker": "Sensei (先生)",
+                "text_ja": "辞書はどうですか。厚い辞書もありますよ。",
+                "romaji": "Jisho wa dou desu ka. Atsui jisho mo arimasu yo.",
+                "text_id": "Bagaimana dengan kamus? Ada juga kamus tebal lho."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "辞書アプリがありますから、いりません。漢字がまだ全然分かりませんから、漢字の本を借ります。",
+                "romaji": "Jisho apuri ga arimasu kara, irimasen. Kanji ga mada zenzen wakarimasen kara, kanji no hon o karimasu.",
+                "text_id": "Karena ada aplikasi kamus tidak perlu. Karena kanji masih sama sekali belum paham, saya pinjam buku kanji."
+            },
+            {
+                "speaker": "Sensei (先生)",
+                "text_ja": "じゃあ、この初級の漢字の本にしましょう。",
+                "romaji": "Jaa, kono shokyuu no kanji no hon ni shimashou.",
+                "text_id": "Kalau begitu, mari pilih buku kanji pemula ini."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ④ (漢字の本 / Buku Kanji).",
+            "logic": "Narong sudah memahami garis besar Hiragana dan Katakana ('だいたい分かりますから、大丈夫です'). Kamus tebal juga tidak dipinjam karena ia sudah memiliki aplikasi kamus ('辞書アプリがありますから'). Karena kanji masih sama sekali belum ia pahami ('漢字がまだ全然分かりませんから'), Narong meminjam buku kanji tingkat dasar.",
+            "distractor": "• Opsi ①: Salah. Hiragana sudah dipahami secara garis besar (だいたい分かります).\n• Opsi ②: Salah. Katakana sudah dikuasai dan tidak perlu dipinjam.\n• Opsi ③: Salah. Kamus fisik tidak dipinjam karena sudah memiliki aplikasi kamus di ponsel.",
+            "grammarRule": "Pola Bab 9: Adverbia pemahaman (だいたい分かります = sebagian besar paham; 全然分かりません = sama sekali tidak paham), kepemilikan sarana (辞書アプリがあります)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_09/q4.webp?v=4"
+    },
+    {
+        "id": 30,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "05:00",
+        "audioStartSeconds": 300.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q5.mp3",
+        "audioDuration": "00:44",
+        "question_ja": "男の人はどうして日曜日に映画を見に行きませんか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>はどうして<ruby>日曜日<rt>にちようび</rt></ruby>に<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>きませんか。",
+        "question_romaji": "Otoko no hito wa doushite nichiyoubi ni eiga o mi ni ikimasen ka.",
+        "question_id": "Mengapa laki-laki tersebut tidak pergi menonton film pada hari Minggu?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 映画があまり好きではありませんから",
+                "text_id": "Karena tidak begitu suka menonton film"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② お金が全然ありませんから",
+                "text_id": "Karena sama sekali tidak punya uang"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 日曜日に工場で残業がありますから",
+                "text_id": "Karena ada lembur kerja di pabrik pada hari Minggu"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 友達と会う約束がありますから",
+                "text_id": "Karena ada janji bertemu dengan teman"
+            }
+        ],
+        "correctAnswer": "4",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "ダダンさん、日曜日に一緒に映画館へ映画を見に行きませんか。",
+                "romaji": "Dadan-san, nichiyoubi ni issho ni eigakan e eiga o mi ni ikimasen ka.",
+                "text_id": "Dadan-san, maukah pergi nonton film bersama ke bioskop hari Minggu?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "アクション映画が大好きですから行きたいですが、日曜日は友達と会う約束があります。",
+                "romaji": "Akushon eiga ga daisuki desu kara ikitai desu ga, nichiyoubi wa tomodachi to au yakusoku ga arimasu.",
+                "text_id": "Karena sangat suka film aksi saya ingin pergi, tapi hari Minggu ada janji bertemu teman."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "そうですか。友達と約束があるなら、仕方がないですね。",
+                "romaji": "Sou desu ka. Tomodachi to yakusoku ga aru nara, shikata ga nai desu ne.",
+                "text_id": "Begitu ya. Kalau ada janji dengan teman apa boleh buat ya."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "すみません。また来週一緒に行きましょう。",
+                "romaji": "Sumimasen. Mata raishuu issho ni ikimashou.",
+                "text_id": "Maaf ya. Mari pergi bersama minggu depan."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ④ (友達と会う約束がありますから / Karena ada janji bertemu dengan teman).",
+            "logic": "Dadan menyukai film aksi dan ingin menonton ('アクション映画が大好きですから行きたい'). Namun pada hari Minggu Dadan telah memiliki janji bertemu dengan teman ('日曜日は友達と会う約束があります'). Oleh karena itu, alasan Dadan menolak ajakan bioskop adalah karena ada janji temu dengan teman.",
+            "distractor": "• Opsi ①: Salah. Dadan sangat menyukai film aksi (アクション映画が大好き).\n• Opsi ②: Salah. Faktor uang tidak dibicarakan sama sekali.\n• Opsi ③: Salah. Tidak ada jadwal kerja lembur pada hari Minggu.",
+            "grammarRule": "Pola Bab 9: Pertanyaan alasan (どうして), jawaban sebab ~から (約束があります), keberadaan jadwal (約束があります), predikat kesukaan (大好き)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 31,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "06:00",
+        "audioStartSeconds": 360.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q6.mp3",
+        "audioDuration": "00:45",
+        "question_ja": "アグスさんは日本語の何が上手ですか。",
+        "question_ruby": "アグスさんは<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>何<rt>なに</rt></ruby>が<ruby>上手<rt>じょうず</rt></ruby>ですか。",
+        "question_romaji": "Agus-san wa Nihongo no nani ga jouzu desu ka.",
+        "question_id": "Agus mahir dalam hal apa pada bahasa Jepang?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 漢字の読み書き",
+                "text_id": "Membaca dan menulis kanji"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 日本語の会話（話すこと）",
+                "text_id": "Percakapan bahasa Jepang (berbicara)"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 日本の新聞を読むこと",
+                "text_id": "Membaca surat kabar Jepang"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 難しい文法の試験",
+                "text_id": "Ujian tata bahasa yang sulit"
+            }
+        ],
+        "correctAnswer": "2",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "アグスさん、さっきの朝礼のスピーチ、日本語の会話が本当に上手でしたよ。",
+                "romaji": "Agus-san, sakki no chourei no supiichi, Nihongo no kaiwa ga hontou ni jouzu deshita yo.",
+                "text_id": "Agus-san, pidato apel pagi tadi, percakapan bahasa Jepangnya benar-benar mahir lho."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "ありがとうございます。人と話すのが好きですから、毎日よく話します。",
+                "romaji": "Arigatou gozaimasu. Hito to hanasu no ga suki desu kara, mainichi yoku hanashimasu.",
+                "text_id": "Terima kasih. Karena suka berbicara dengan orang, setiap hari saya banyak bicara."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "漢字はどうですか。新聞の漢字は分かりますか。",
+                "romaji": "Kanji wa dou desu ka. Shinbun no kanji wa wakarimasu ka.",
+                "text_id": "Bagaimana dengan kanji? Apakah mengerti kanji surat kabar?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "新聞の漢字は全然分かりませんが、日常の会話はだいたい分かります。",
+                "romaji": "Shinbun no kanji wa zenzen wakarimasen ga, nichijou no kaiwa wa daitai wakarimasu.",
+                "text_id": "Kanji koran sama sekali tidak paham, tapi percakapan sehari-hari sebagian besar paham."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ② (日本語の会話 / Percakapan bahasa Jepang).",
+            "logic": "Yamada memuji bahwa percakapan bahasa Jepang Agus sangat mahir ('日本語の会話が本当に上手でしたよ'). Agus mengonfirmasi bahwa ia suka berbicara dan percakapan sehari-hari ia pahami ('日常の会話はだいたい分かります'), sementara kanji koran sama sekali tidak paham ('全然分かりません'). Maka yang dikuasai secara mahir adalah percakapan lisan.",
+            "distractor": "• Opsi ①: Salah. Membaca dan menulis kanji belum dikuasai secara mahir oleh Agus.\n• Opsi ③: Salah. Kanji surat kabar sama sekali tidak dipahami oleh Agus (全然分かりません).\n• Opsi ④: Salah. Ujian tata bahasa tidak dibahas dalam dialog.",
+            "grammarRule": "Pola Bab 9: Predikat kemahiran (会話が上手), adverbia derajat pemahaman (全然分かりません / だいたい分かります), kesukaan (話すのが好き)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 32,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "07:00",
+        "audioStartSeconds": 420.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q7.mp3",
+        "audioDuration": "00:48",
+        "question_ja": "男の人は病院の後で、何をしますか。",
+        "question_ruby": "<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>病院<rt>びょういん</rt></ruby>の<ruby>後<rt>あと</rt></ruby>で、<ruby>何<rt>なに</rt></ruby>をしますか。",
+        "question_romaji": "Otoko no hito wa byouin no ato de, nani o shimasu ka.",
+        "question_id": "Setelah dari rumah sakit, apa yang akan dilakukan laki-laki tersebut?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 寮の部屋でゆっくり休みます",
+                "text_id": "Beristirahat dengan tenang di kamar asrama"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 会社へ行って仕事をします",
+                "text_id": "Pergi ke kantor dan bekerja"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 薬局で薬を買って、すぐ現場に戻ります",
+                "text_id": "Beli obat di apotek lalu segera kembali ke tempat kerja"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 友達と食堂でごはんを食べます",
+                "text_id": "Makan di kantin bersama teman"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "指導員、今朝から熱がありますから、病院へ行きたいです。",
+                "romaji": "Shidouin, kesa kara netsu ga arimasu kara, byouin e ikitai desu.",
+                "text_id": "Pembimbing, sejak pagi ada demam, jadi saya ingin pergi ke RS."
+            },
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "顔が赤いですね。すぐに病院へ行ってください。病院の後は仕事に来ますか。",
+                "romaji": "Kao ga akai desu ne. Sugu ni byouin e itte kudasai. Byouin no ato wa shigoto ni kimasu ka.",
+                "text_id": "Wajahmu merah ya. Segera pergi ke RS. Setelah RS apakah datang bekerja?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "いいえ、熱が高いですから、薬をもらって、寮の部屋でゆっくり休みたいです。",
+                "romaji": "Iie, netsu ga takai desu kara, kusuri o moratte, ryou no heya de yukkuri yasumitai desu.",
+                "text_id": "Tidak, karena demamnya tinggi, setelah dapat obat saya ingin istirahat di kamar asrama."
+            },
+            {
+                "speaker": "Shidouin (指導員)",
+                "text_ja": "わかりました。今日は無理をしないで、寮でしっかり寝てください。",
+                "romaji": "Wakarimashita. Kyou wa muri o shinaide, ryou de shikkari nete kudasai.",
+                "text_id": "Baiklah. Hari ini jangan memaksakan diri, tidurlah yang nyenyak di asrama."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (寮の部屋でゆっくり休みます / Beristirahat dengan tenang di kamar asrama).",
+            "logic": "Narong demam ('熱がありますから') dan meminta izin ke RS. Shidouin menanyakan apakah setelah dari RS akan datang bekerja. Narong menjawab bahwa karena demam tinggi, setelah mendapatkan obat ia ingin beristirahat di kamar asrama ('寮の部屋でゆっくり休みたいです'). Shidouin menyetujui izin istirahat tersebut.",
+            "distractor": "• Opsi ②: Salah. Narong tidak datang bekerja karena demam tinggi.\n• Opsi ③: Salah. Narong tidak kembali ke area kerja.\n• Opsi ④: Salah. Narong sedang sakit dan tidak pergi makan bersama teman.",
+            "grammarRule": "Pola Bab 9: Kondisi fisik (熱があります = ada demam), alasan ~から (熱が高いですから), permohonan istirahat di asrama."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 33,
+        "type": "cerita",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "08:00",
+        "audioStartSeconds": 480.0,
+        "audioSrc": "assets/audio/bab_09/Choukai_Bab_09_Q8.mp3",
+        "audioDuration": "00:50",
+        "question_ja": "二人は今週の土曜日に何をしますか。",
+        "question_ruby": "<ruby>二人<rt>ふたり</rt></ruby>は<ruby>今週<rt>こんしゅう</rt></ruby>の<ruby>土曜日<rt>どようび</rt></ruby>に<ruby>何<rt>なに</rt></ruby>をしますか。",
+        "question_romaji": "Futari wa konshuu no doyoubi ni nani o shimasu ka.",
+        "question_id": "Apa yang akan dilakukan kedua orang tersebut pada hari Sabtu minggu ini?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 公園でテニスをします",
+                "text_id": "Bermain tenis di taman"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 映画館で映画を見ます",
+                "text_id": "Menonton film di bioskop"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 体育館でバドミントンをします",
+                "text_id": "Bermain bulutangkis di gedung olahraga (gymnasium)"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 寮でゲームをします",
+                "text_id": "Bermain game di asrama"
+            }
+        ],
+        "correctAnswer": "3",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "シギットさん、土曜日に公園でテニスをしませんか。",
+                "romaji": "Sigit-san, doyoubi ni kouen de tenisu o shimasen ka.",
+                "text_id": "Sigit-san, maukah main tenis di taman hari Sabtu?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "テニスですか。でも、私はラケットがありません。",
+                "romaji": "Tenisu desu ka. Demo, watashi wa raketto ga arimasen.",
+                "text_id": "Tenis ya. Tapi, saya tidak punya raket."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "じゃあ、バドミントンはどうですか。寮にラケットがたくさんありますよ。",
+                "romaji": "Jaa, badominton wa dou desu ka. Ryou ni raketto ga takusan arimasu yo.",
+                "text_id": "Kalau begitu, bagaimana dengan bulutangkis? Di asrama banyak raket lho."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "バドミントンは上手ですから好きです！でも土曜日は雨が降りますよ。",
+                "romaji": "Badominton wa jouzu desu kara suki desu! Demo doyoubi wa ame ga furimasu yo.",
+                "text_id": "Bulutangkis saya mahir jadi suka! Tapi hari Sabtu akan hujan lho."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "じゃあ、会社の近くの体育館でバドミントンをしましょう。",
+                "romaji": "Jaa, kaisha no chikaku no taiikukan de badominton o shimashou.",
+                "text_id": "Kalau begitu, mari bermain bulutangkis di gedung olahraga dekat kantor."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい、そうしましょう！",
+                "romaji": "Hai, sou shimashou!",
+                "text_id": "Ya, mari begitu!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ③ (体育館でバドミントンをします / Bermain bulutangkis di gedung olahraga).",
+            "logic": "Suzuki awalnya mengajak bermain tenis di taman, namun Sigit tidak punya raket ('ラケットがありません'). Suzuki mengusulkan bulutangkis karena di asrama banyak raket ('寮にラケットがたくさんあります'). Sigit menyukai bulutangkis karena mahir ('上手ですから好きです'). Namun karena hari Sabtu hujan ('雨が降ります'), mereka sepakat bermain bulutangkis di gedung olahraga tertutup ('体育館でバドミントンをしましょう').",
+            "distractor": "• Opsi ①: Salah. Tenis dibatalkan karena tidak ada raket tenis dan cuaca hujan di taman.\n• Opsi ②: Salah. Mereka tidak berencana pergi ke bioskop.\n• Opsi ④: Salah. Mereka berolahraga di gymnasium, bukan bermain game di asrama.",
+            "grammarRule": "Pola Bab 9: Kepemilikan (ラケットがありません / たくさんあります), kemahiran (上手ですから), kesukaan (好きです), alasan cuaca ~から (雨が降りますから), penentuan lokasi (~で)."
+        },
+        "session": "choukai"
     }
   ]
 };
