@@ -258,45 +258,45 @@ const CHAPTERS_INDEX = [
   },
   {
     "num": "19",
-    "title_ja": "第19課：た形と経験",
-    "title_id": "Bab 19: Bentuk Ta & Pengalaman",
-    "topic_id": "～たことがあります, ～たり～たりします, ～くなります",
+    "title_ja": "第19課：た形と経験（読解・聴解）",
+    "title_id": "Bab 19: Tryout Terpadu Reading & Choukai",
+    "topic_id": "Tryout Terpadu: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal)",
     "available": true,
-    "totalQuestions": 25,
-    "audioDuration": "50:00",
+    "totalQuestions": 33,
+    "audioDuration": "08:58",
+    "examDuration": "60:00",
     "passingScore": 80,
     "badge": "Tersedia",
-    "examDuration": "50:00",
     "readingQuestions": 25,
-    "choukaiQuestions": 0
+    "choukaiQuestions": 8
   },
   {
     "num": "20",
-    "title_ja": "第20課：普通形と会話",
-    "title_id": "Bab 20: Bentuk Biasa (Futsuukei)",
-    "topic_id": "Percakapan Kasual antar Rekan Asrama & Pabrik",
+    "title_ja": "第20課：普通形と会話（読解・聴解）",
+    "title_id": "Bab 20: Tryout Terpadu Reading & Choukai",
+    "topic_id": "Tryout Terpadu: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal)",
     "available": true,
-    "totalQuestions": 25,
-    "audioDuration": "50:00",
+    "totalQuestions": 33,
+    "audioDuration": "08:40",
+    "examDuration": "60:00",
     "passingScore": 80,
     "badge": "Tersedia",
-    "examDuration": "50:00",
     "readingQuestions": 25,
-    "choukaiQuestions": 0
+    "choukaiQuestions": 8
   },
   {
     "num": "21",
-    "title_ja": "第21課：意見と推量",
-    "title_id": "Bab 21: Pendapat & Dugaan",
-    "topic_id": "～と思います, ～と言いました, ～でしょう",
+    "title_ja": "第21課：同時動作と順序・条件（読解・聴解）",
+    "title_id": "Bab 21: Tryout Terpadu Reading & Choukai",
+    "topic_id": "Tryout Terpadu: Sesi 1 Reading (25 Soal) & Sesi 2 Choukai (8 Soal)",
     "available": true,
-    "totalQuestions": 25,
-    "audioDuration": "50:00",
+    "totalQuestions": 33,
+    "audioDuration": "08:53",
+    "examDuration": "60:00",
     "passingScore": 80,
     "badge": "Tersedia",
-    "examDuration": "50:00",
     "readingQuestions": 25,
-    "choukaiQuestions": 0
+    "choukaiQuestions": 8
   },
   {
     "num": "22",
@@ -26076,19 +26076,19 @@ const BAB_18_DATA = {
 
 const BAB_19_DATA = {
   "chapter": "19",
-  "title_ja": "第１９課：動詞た形・経験「～たことがある」・並列「～たり～たりする」・変化「～くなる／～になる」",
-  "title_id": "Bab 19: Bentuk TA (た形), Pola Pengalaman (~Ta koto ga aru), Rangkaian Tindakan Representatif (~Tari ~tari suru), dan Perubahan Kondisi (~Kunarimasu / ~Ni narimasu)",
-  "theme_ja": "た形の活用 (Konjugasi Bentuk TA), 経験表現 (Pengalaman Lampau), 並列・代表的動作 (Sampel Aktivitas) & 状態の変化 (Perubahan Kondisi)",
-  "theme_id": "Evaluasi komprehensif Bab 19 buku IMM Japan yang menguji: perubahan konjugasi bentuk lampau kasual / bentuk-ta (た形 - Ta-kei) yang mengikuti kaidah morfologis bentuk-te untuk seluruh golongan kata kerja (Grup 1: itta, nonda, matta, totta, yonda, kaetta; Grup 2: tabeta, neta, mita; Grup 3: shita, kita); pola menyatakan dan menanyakan pengalaman lampau (~ta koto ga arimasu / arimasen); pola penyebutan beberapa contoh kegiatan representatif non-kronologis (~tari ~tari shimasu/shimashita); pola pergeseran/perubahan kondisi pada kata sifat-I (~ku narimasu), kata sifat-Na, dan nomina (~ni narimasu); serta partikel penanda penyebab/alasan bencana atau sakit (de), pendakian gunung (ni), dan daftar benda pesta (ya).",
-  "audioSrc": null,
+  "title_ja": "第19課 総合評価試験（読解・聴解）",
+  "title_id": "Tryout Terpadu Bab 19 (Reading & Choukai)",
+  "theme_ja": "動詞た形・経験「～たことがある」・並列「～たり～たりする」・変化「～くなる／～になる」",
+  "theme_id": "Bentuk TA (た形), Pengalaman (~Ta koto ga aru), Aktivitas Bergantian (~Tari ~tari suru), Perubahan Kondisi (~Kunarimasu / ~Ni narimasu)",
+  "audioSrc": "assets/Choukai_Bab_19.mp3",
   "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 19.pdf",
   "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 19.pdf",
-  "pdfSoalUrl": null,
-  "pdfKunciUrl": null,
+  "pdfSoalUrl": "assets/pdf/Soal Choukai Bab 19.pdf",
+  "pdfKunciUrl": "assets/pdf/Kunci dan Pembahasan Choukai Bab 19.pdf",
   "passingGrade": 80,
-  "totalQuestions": 25,
+  "totalQuestions": 33,
   "readingCount": 25,
-  "choukaiCount": 0,
+  "choukaiCount": 8,
   "questions": [
     {
       "id": 1,
@@ -27117,24 +27117,627 @@ const BAB_19_DATA = {
         "grammarRule": "Kondisi Operasional Mesin: 調子（ちょうし = performa / kondisi kerja mesin）."
       }
     }
+,
+{
+        "id": 26,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "01:00",
+        "audioStartSeconds": 60.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q1.mp3",
+        "audioDuration": "00:52",
+        "question_ja": "ナロンさんは日本で何を経験したことがありますか。",
+        "question_ruby": "ナロンさんは<ruby>日本<rt>にほん</rt></ruby>で<ruby>何<rt>なに</rt></ruby>を<ruby>経験<rt>けいけん</rt></ruby>したことがありますか。",
+        "question_romaji": "Narong-san wa Nihon de nani o keiken shita koto ga arimasu ka.",
+        "question_id": "Pengalaman apa yang PERNAH dialami oleh Narong di Jepang?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 新幹線に乗って京都へ行ったことがある",
+                "text_id": "Pernah naik kereta cepat Shinkansen ke Kyoto"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 富士山に登ったことがある",
+                "text_id": "Pernah mendaki Gunung Fuji"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 国内線の飛行機に乗ったことがある",
+                "text_id": "Pernah naik pesawat penerbangan domestik"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 大型フェリーで海を渡ったことがある",
+                "text_id": "Pernah menyeberang laut dengan kapal feri besar"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "ナロンさん、日本へ来てからもう半年ですね。富士山に登ったことがありますか。",
+                "romaji": "Narong-san, Nihon e kite kara mou hantoshi desu ne. Fujisan ni nobotta koto ga arimasu ka.",
+                "text_id": "Narong-san, sudah setengah tahun ya sejak kamu datang ke Jepang. Apakah kamu pernah mendaki Gunung Fuji?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "いいえ、富士山はまだ登ったことがありません。でも、去年の秋休みに新幹線に乗って京都へ行ったことがあります。",
+                "romaji": "Iie, Fujisan wa mada nobotta koto ga arimasen. Demo, kyonen no aki-yasumi ni shinkansen ni notte Kyouto e itta koto ga arimasu.",
+                "text_id": "Belum, saya belum pernah mendaki Gunung Fuji. Tapi, saat liburan musim gugur tahun lalu saya pernah naik Shinkansen ke Kyoto."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "へえ、新幹線はどうでしたか。速かったでしょう。",
+                "romaji": "Hee, shinkansen wa dou deshita ka. Hayakatta deshou.",
+                "text_id": "Wah, bagaimana Shinkansen? Sangat cepat kan."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "はい、とても速くて乗り心地が良かったです。飛行機やフェリーはまだ乗っていません。",
+                "romaji": "Hai, totemo hayakute norigokochi ga yokatta desu. Hikouki ya ferii wa mada notte imasen.",
+                "text_id": "Ya, sangat cepat dan nyaman sekali. Pesawat dan feri belum pernah saya naiki."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (新幹線に乗って京都へ行ったことがある / Pernah naik Shinkansen ke Kyoto).",
+            "logic": "Suzuki awalnya menanyakan apakah Narong pernah mendaki Gunung Fuji (富士山に登ったことがありますか). Narong melakukan penyangkalan tegas (いいえ、富士山はまだ登ったことがありません), tetapi beralih menyatakan pengalaman otentiknya dengan pola bentu-ta koto ga aru: '去年の秋休みに新幹線に乗って京都へ行ったことがあります' (saat libur musim gugur lalu pernah naik Shinkansen ke Kyoto). Pesawat dan feri juga ditegaskan belum pernah.",
+            "distractor": "• Opsi ②: Gunung Fuji belum pernah didaki (まだ登ったことがありません).\n• Opsi ③: Belum pernah naik penerbangan domestik.\n• Opsi ④: Belum pernah menyeberang dengan feri.",
+            "grammarRule": "Pola Bab 19: Menyatakan pengalaman lampau ([V-ta] ことがあります: 乗ったことがあります / 登ったことがありません)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_19/q1.webp?v=35"
+    },
+    {
+        "id": 27,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "02:00",
+        "audioStartSeconds": 120.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q2.mp3",
+        "audioDuration": "00:51",
+        "question_ja": "ダダンさんは休みの日に寮で何をしますか。",
+        "question_ruby": "ダダンさんは<ruby>休<rt>やす</rt></ruby>みの<ruby>日<rt>ひ</rt></ruby>に<ruby>寮<rt>りょう</rt></ruby>で<ruby>何<rt>なに</rt></ruby>をしますか。",
+        "question_romaji": "Dadan-san wa yasumi no hi ni ryou de nani o shimasu ka.",
+        "question_id": "Apa yang dilakukan Dadan di asrama pada hari libur?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 部屋を掃除したり、洗濯したりする",
+                "text_id": "Membersihkan kamar dan mencuci pakaian"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 料理を作ったり、買い物に行ったりする",
+                "text_id": "Memasak dan pergi berbelanja ke supermarket"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 映画を見たり、ラーメンを食べに行ったりする",
+                "text_id": "Menonton film dan pergi makan ramen"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ サッカーをしたり、ジョギングをしたりする",
+                "text_id": "Bermain sepak bola dan jogging"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ダダンさん、日曜日は天気が良かったですね。外へ出かけましたか。",
+                "romaji": "Dadan-san, nichiyoubi wa tenki ga yokatta desu ne. Soto e dekakemashita ka.",
+                "text_id": "Dadan-san, cuaca hari Minggu kemarin cerah ya. Apakah kamu bepergian keluar?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "いいえ、平日の仕事で疲れましたから、どこへも行きませんでした。寮の部屋を掃除したり、洗濯したりしました。",
+                "romaji": "Iie, heijitsu no shigoto de tsukaremashita kara, doko e mo ikimasen deshita. Ryou no heya o souji shitari, sentaku shitari shimashita.",
+                "text_id": "Tidak, karena lelah bekerja di hari kerja biasa, saya tidak pergi ke mana pun. Saya membersihkan kamar asrama dan mencuci pakaian."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "そうですか。料理を作ったり、買い物に行ったりはしませんでしたか。",
+                "romaji": "Sou desu ka. Ryouri o tsukuttari, kaimono ni ittari wa shimasen deshita ka.",
+                "text_id": "Begitu ya. Apakah kamu tidak memasak atau pergi berbelanja?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "土曜日に買い物を済ませましたから、日曜日は部屋の掃除と洗濯だけをしてゆっくり休みました。",
+                "romaji": "Doyoubi ni kaimono o sumasemashita kara, nichiyoubi wa heya no souji to sentaku dake o shite yukkuri yasumimashita.",
+                "text_id": "Karena belanja sudah selesai di hari Sabtu, hari Minggu saya hanya bersih-bersih kamar dan mencuci pakaian lalu istirahat santai."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (部屋を掃除したり、洗濯したりする / Membersihkan kamar dan mencuci pakaian).",
+            "logic": "Dadan menerangkan sampel kegiatannya di asrama menggunakan pola ~tari ~tari shimashita: '寮の部屋を掃除したり、洗濯したりしました' (membersihkan kamar asrama dan mencuci pakaian). Belanja sudah diselesaikan pada hari Sabtu sehingga pada hari Minggu tidak berbelanja atau memasak masakan khusus.",
+            "distractor": "• Opsi ②: Belanja sudah diselesaikan Sabtu, bukan kegiatan hari Minggu.\n• Opsi ③: Tidak pergi menonton bioskop atau makan di luar.\n• Opsi ④: Tidak berolahraga sepak bola atau jogging.",
+            "grammarRule": "Pola Bab 19: Menyebutkan beberapa contoh kegiatan secara representatif tanpa urutan waktu mutlak ([V-ta] り [V-ta] りします: 掃除したり、洗濯したりしました)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_19/q2.webp?v=35"
+    },
+    {
+        "id": 28,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "03:00",
+        "audioStartSeconds": 180.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q3.mp3",
+        "audioDuration": "00:53",
+        "question_ja": "長野の工場では来月から天候がどうなりますか。",
+        "question_ruby": "<ruby>長野<rt>ながの</rt></ruby>の<ruby>工場<rt>こうじょう</rt></ruby>では<ruby>来月<rt>らいげつ</rt></ruby>から<ruby>天候<rt>てんこう</rt></ruby>がどうなりますか。",
+        "question_romaji": "Nagano no koujou dewa raigetsu kara tenkou ga dou narimasu ka.",
+        "question_id": "Bagaimana kondisi cuaca di pabrik Nagano mulai bulan depan?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 雪が降って非常に寒くなる",
+                "text_id": "Turun salju dan menjadi sangat dingin"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 暖かくなって桜の花が咲く",
+                "text_id": "Menjadi hangat dan bunga sakura bermekaran"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 気温が上がって蒸し暑くなる",
+                "text_id": "Suhu naik dan menjadi sangat panas lembap"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 涼しくなって紅葉がきれいになる",
+                "text_id": "Menjadi sejuk dan daun-daun memerah indah"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "山田さん、最近朝晩の風が冷たくなりましたね。",
+                "romaji": "Yamada-san, saikin asa-ban no kaze ga tsumetaku narimashita ne.",
+                "text_id": "Yamada-san, akhir-akhir ini angin pagi dan malam menjadi dingin ya."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "ええ、秋が終わって来月から冬に入りますから、どんどん寒くなりますよ。長野は雪もたくさん降ります。",
+                "romaji": "Ee, aki ga owatte raigetsu kara fuyu ni hairimasu kara, dondon samuku narimasu yo. Nagano wa yuki mo takusan furimasu.",
+                "text_id": "Iya, karena musim gugur berakhir dan mulai bulan depan masuk musim dingin, cuaca akan terus menjadi dingin. Di Nagano salju juga akan turun lebat."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "雪ですか！インドネシアには雪がありませんから、初めて見ます。防寒着が必要ですね。",
+                "romaji": "Yuki desu ka! Indonesia ni wa yuki ga arimasen kara, hajimete mimasu. Boukan-gi ga hitsuyou desu ne.",
+                "text_id": "Salju ya! Karena di Indonesia tidak ada salju, ini pertama kalinya saya melihat. Perlu pakaian penahan dingin ya."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "そうです。路面も凍って滑りやすくなりますから、通勤のときは足元に気をつけてくださいね。",
+                "romaji": "Sou desu. Romen mo kootte suberiyasuku narimasu kara, tsuukin no toki wa ashimoto ni ki o tsukete kudasai ne.",
+                "text_id": "Tepat sekali. Permukaan jalan juga membeku dan menjadi licin, jadi saat berangkat kerja berhati-hatilah pada langkah kakimu ya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (雪が降って非常に寒くなる / Turun salju dan menjadi sangat dingin).",
+            "logic": "Yamada menjelaskan perubahan musim di wilayah Nagano menggunakan pola ~ku narimasu: '来月から冬に入りますから、どんどん寒くなりますよ。長野は雪もたくさん降ります' (karena bulan depan masuk musim dingin, cuaca makin menjadi dingin. Di Nagano salju juga banyak turun).",
+            "distractor": "• Opsi ②: Menjadi hangat dan sakura mekar adalah musim semi (haru).\n• Opsi ③: Suhu naik dan lembap adalah musim panas (natsu).\n• Opsi ④: Sejuk dan momiji memerah adalah musim gugur yang sudah selesai.",
+            "grammarRule": "Pola Bab 19: Perubahan kondisi pada kata sifat-I ([I-adj (-i)] + くなります: 寒くなります、冷たくなりました)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_19/q3.webp?v=35"
+    },
+    {
+        "id": 29,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "04:00",
+        "audioStartSeconds": 240.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q4.mp3",
+        "audioDuration": "00:56",
+        "question_ja": "シギットさんは母国の訓練校でどんな作業をしたことがありますか。",
+        "question_ruby": "シギットさんは<ruby>母国<rt>ぼこく</rt></ruby>の<ruby>訓練校<rt>くんれんこう</rt></ruby>でどんな<ruby>作業<rt>さぎょう</rt></ruby>をしたことがありますか。",
+        "question_romaji": "Sigit-san wa bokoku no kunrenkou de donna sagyou o shita koto ga arimasu ka.",
+        "question_id": "Pekerjaan teknis apa yang PERNAH dilakukan Sigit di balai latihan negara asal?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① ボール盤で金属板に穴を開けたことがある",
+                "text_id": "Pernah mengebor lubang pada pelat logam dengan mesin bor tekan"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 大型旋盤で鉄の丸棒を削ったことがある",
+                "text_id": "Pernah membubut batang besi silinder dengan mesin bubut besar"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ アーク溶接機で鉄骨をつなげたことがある",
+                "text_id": "Pernah menyambung rangka baja dengan mesin las busur listrik"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ フォークリフトで荷物を運搬したことがある",
+                "text_id": "Pernah mengangkut muatan barang dengan forklift"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "シギットさん、午後の加工ラインで作業を頼みたいのですが、旋盤を使ったことがありますか。",
+                "romaji": "Sigit-san, gogo no kakou-rain de sagyou o tanomitai no desu ga, senban o tsukatta koto ga arimasu ka.",
+                "text_id": "Sigit-san, saya ingin meminta bantuan pekerjaan di lini pemesinan siang ini, apakah kamu pernah menggunakan mesin bubut?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "旋盤ですか。いいえ、旋盤はまだ使ったことがありません。",
+                "romaji": "Senban desu ka. Iie, senban wa mada tsukatta koto ga arimasen.",
+                "text_id": "Mesin bubut ya? Tidak, mesin bubut belum pernah saya gunakan."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "そうですか。では、ボール盤で穴を開ける作業はどうですか。",
+                "romaji": "Sou desu ka. Dewa, booruban de ana o akeru sagyou wa dou desu ka.",
+                "text_id": "Begitu ya. Kalau pekerjaan membuat lubang dengan mesin bor tekan bagaimana?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい！インドネシアの訓練校でボール盤を使って金属板に穴を開けたことがあります。",
+                "romaji": "Hai! Indonesia no kunrenkou de booruban o tsukatte kinzokuban ni ana o aketa koto ga arimasu.",
+                "text_id": "Ya! Di balai latihan kerja Indonesia, saya pernah membuat lubang pada pelat logam menggunakan mesin bor tekan."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "よし、じゃあ今日はボール盤の穴開け作業を担当してください。",
+                "romaji": "Yoshi, jaa kyou wa booruban no ana-ake sagyou o tantou shite kudasai.",
+                "text_id": "Bagus, kalau begitu hari ini silakan bertanggung jawab atas pekerjaan melubangi dengan mesin bor tekan."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (ボール盤で金属板に穴を開けたことがある / Pernah mengebor pelat logam dengan mesin bor tekan).",
+            "logic": "Tanaka awalnya menanyakan pengalaman menggunakan mesin bubut (旋盤を使ったことがありますか). Sigit menyangkal (いいえ、旋盤はまだ使ったことがありません). Lalu Tanaka menanyakan mesin bor tekan (ボール盤), dan Sigit dengan tegas mengonfirmasi pengalaman lampaunya: 'インドネシアの訓練校でボール盤を使って金属板に穴を開けたことがあります' (pernah mengebor pelat logam dengan mesin bor tekan).",
+            "distractor": "• Opsi ②: Mesin bubut belum pernah dipakai (まだ使ったことがありません).\n• Opsi ③: Las listrik tidak disebutkan oleh Sigit.\n• Opsi ④: Pengoperasian forklift tidak dibahas.",
+            "grammarRule": "Pola Bab 19: Pengalaman teknis industri ([V-ta] ことがあります: 穴を開けたことがあります) dan kosakata perkakas mesin pabrik (ボール盤 - mesin bor tekan, 旋盤 - mesin bubut)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_19/q4.webp?v=35"
+    },
+    {
+        "id": 30,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "05:00",
+        "audioStartSeconds": 300.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q5.mp3",
+        "audioDuration": "01:03",
+        "question_ja": "アグスさんは温泉に入る前に、必ず何をしなければなりませんか。",
+        "question_ruby": "アグスさんは<ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、<ruby>必<rt>かなら</rt></ruby>ず<ruby>何<rt>なに</rt></ruby>をしなければなりませんか。",
+        "question_romaji": "Agus-san wa onsen ni hairu mae ni, kanarazu nani o shinakereba narimasen ka.",
+        "question_id": "Sebelum masuk ke dalam bak air panas onsen, apa yang WAJIB dilakukan Agus?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 体や頭をきれいに洗ってから湯船に入る",
+                "text_id": "Membasuh dan mencuci badan serta rambut hingga bersih sebelum masuk bak berendam"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 水着を着たまま湯船に入る",
+                "text_id": "Masuk ke dalam bak berendam dengan tetap memakai baju renang"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 大きなバスタオルを湯船の中に入れる",
+                "text_id": "Memasukkan handuk mandi besar ke dalam bak air panas"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 湯船の中でシャンプーを使って髪を洗う",
+                "text_id": "Mencuci rambut menggunakan sampo di dalam bak berendam"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "アグスさん、今度の連休に近くの温泉へ行きませんか。日本の温泉に入ったことがありますか。",
+                "romaji": "Agus-san, kondo no renkyuu ni chikaku no onsen e ikimasen ka. Nihon no onsen ni haitta koto ga arimasu ka.",
+                "text_id": "Agus-san, pada libur panjang nanti mau pergi ke onsen dekat sini tidak? Apakah kamu pernah masuk onsen Jepang?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "いいえ、まだ一度も入ったことがありません。温泉の入り方のルールを教えてください。",
+                "romaji": "Iie, mada ichido mo haitta koto ga arimasen. Onsen no hairikata no ruuru o oshiete kudasai.",
+                "text_id": "Belum, saya belum pernah masuk sekali pun. Tolong ajari saya aturan cara masuk onsen."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "はい。日本の温泉では水着を着てはいけません。そして一番大切なのは、湯船に入る前に、洗い場で体や頭をきれいに洗うことです。タオルも湯船に入れてはいけませんよ。",
+                "romaji": "Hai. Nihon no onsen dewa mizugi o kite wa ikemasen. Soshite ichiban taisetsu na no wa, yubune ni hairu mae ni, araiba de karada ya atama o kirei ni arau koto desu. Taoru mo yubune ni irete wa ikemasen yo.",
+                "text_id": "Baik. Di onsen Jepang tidak boleh memakai baju renang. Dan yang paling penting adalah, sebelum masuk bak berendam, wajib membasuh badan dan kepala hingga bersih di tempat basuh. Handuk juga tidak boleh dimasukkan ke bak air panas lho."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "わかりました。まず体を洗ってきれいにしてから、お湯に入りますね。",
+                "romaji": "Wakarimashita. Mazu karada o aratte kirei ni shite kara, oyu ni hairimasu ne.",
+                "text_id": "Saya paham. Pertama-tama saya basuh badan hingga bersih, setelah itu baru masuk berendam ya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (体や頭をきれいに洗ってから湯船に入る / Membasuh dan mencuci badan serta rambut hingga bersih sebelum masuk bak berendam).",
+            "logic": "Yamada menerangkan etika krusial onsen Jepang: '一番大切なのは、湯船に入る前に、洗い場で体や頭をきれいに洗うことです' (yang paling penting adalah mencuci badan dan kepala hingga bersih sebelum masuk bak berendam). Memakai baju renang atau memasukkan handuk ke dalam bak justru dilarang keras.",
+            "distractor": "• Opsi ②: Dilarang memakai pakaian renang di pemandian onsen tradisional.\n• Opsi ③: Handuk dilarang dimasukkan ke dalam air bak berendam.\n• Opsi ④: Keramas harus dilakukan di tempat cuci (洗い場), bukan di dalam bak pemandian.",
+            "grammarRule": "Pola Bab 19 & Bab 18: Pengalaman ([V-ta] ことがありますか) dan etika urutan waktu ([V-jisho] 前に: 湯船に入る前に体を洗います)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 31,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "06:00",
+        "audioStartSeconds": 360.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q6.mp3",
+        "audioDuration": "00:52",
+        "question_ja": "ナロンさんは連休に東京で何をしましたか。",
+        "question_ruby": "ナロンさんは<ruby>連休<rt>れんきゅう</rt></ruby>に<ruby>東京<rt>とうきょう</rt></ruby>で<ruby>何<rt>なに</rt></ruby>をしましたか。",
+        "question_romaji": "Narong-san wa renkyuu ni Toukyou de nani o shimashita ka.",
+        "question_id": "Apa yang dilakukan Narong di Tokyo selama libur panjang?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 浅草の神社へ行ったり、本場の寿司を食べたりした",
+                "text_id": "Pergi ke kuil Asakusa dan menyantap sushi otentik Jepang"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 東京タワーに登ったり、遊園地で遊んだりした",
+                "text_id": "Menaiki Menara Tokyo dan bermain di taman hiburan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 秋葉原で電化製品を買ったり、アニメ映画を見たりした",
+                "text_id": "Membeli barang elektronik di Akihabara dan menonton film anime"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 新宿のデパートで買い物をしたり、カラオケに行ったりした",
+                "text_id": "Berbelanja di department store Shinjuku dan pergi berkaraoke"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "ナロンさん、ゴールデンウィークの休みはどうでしたか。東京へ行きましたね。",
+                "romaji": "Narong-san, gouruden-wiiku no yasumi wa dou deshita ka. Toukyou e ikimashita ne.",
+                "text_id": "Narong-san, bagaimana liburan Golden Week-mu? Kamu pergi ke Tokyo ya."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "はい、とても楽しかったです！浅草の有名な神社へ行ったり、築地で本場のおいしい寿司を食べたりしました。",
+                "romaji": "Hai, totemo tanoshikatta desu! Asakusa no yuumei na jinja e ittari, Tsukiji de honba no oishii sushi o tabetari shimashita.",
+                "text_id": "Ya, sangat menyenangkan! Saya mengunjungi kuil terkenal di Asakusa dan menyantap sushi lezat yang otentik di Tsukiji."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "いいですね！東京タワーや秋葉原にも行きましたか。",
+                "romaji": "Ii desu ne! Toukyou Tawaa ya Akihabara ni mo ikimashita ka.",
+                "text_id": "Bagus sekali! Apakah kamu pergi ke Tokyo Tower atau Akihabara juga?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "人が多かったですから、タワーや秋葉原へは行きませんでした。神社参拝とお寿司だけで大満足でした。",
+                "romaji": "Hito ga ookatta desu kara, tawaa ya Akihabara e wa ikimasen deshita. Jinja sanpai to osushi dake de daimanzoku deshita.",
+                "text_id": "Karena orangnya sangat ramai, saya tidak pergi ke Tokyo Tower atau Akihabara. Hanya dengan ziarah kuil dan sushi saya sudah sangat puas."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (浅草の神社へ行ったり、本場の寿司を食べたりした / Pergi ke kuil Asakusa dan menyantap sushi otentik).",
+            "logic": "Narong merangkum dua aktivitas utamanya dengan pola ~tari ~tari shimashita: '浅草の有名な神社へ行ったり、築地で本場のおいしい寿司を食べたりしました' (pergi ke kuil Asakusa dan menyantap sushi otentik di Tsukiji). Narong membatalkan pergi ke Tokyo Tower atau Akihabara karena terlalu padat lautan manusia (人が多かったですから、行きませんでした).",
+            "distractor": "• Opsi ②: Menara Tokyo tidak dikunjungi karena terlalu ramai.\n• Opsi ③: Akihabara dibatalkan karena pengunjung membludak.\n• Opsi ④: Belanja department store Shinjuku dan karaoke tidak dilakukan.",
+            "grammarRule": "Pola Bab 19: Menyatakan perbuatan representatif ([V-ta] り [V-ta] りしました: 行ったり、食べたりしました)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 32,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "07:00",
+        "audioStartSeconds": 420.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q7.mp3",
+        "audioDuration": "00:59",
+        "question_ja": "ダダンさんの日本語と日本の生活について、会話の内容と合っているものはどれですか。",
+        "question_ruby": "ダダンさんの<ruby>日本語<rt>にほんご</rt></ruby>と<ruby>日本<rt>にほん</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>について、<ruby>会話<rt>かいわ</rt></ruby>の<ruby>内容<rt>ないよう</rt></ruby>と<ruby>合<rt>あ</rt></ruby>っているものはどれですか。",
+        "question_romaji": "Dadan-san no Nihongo to Nihon no seikatsu ni tsuite, kaiwa no naiyou to atte iru mono wa dore desu ka.",
+        "question_id": "Mengenai bahasa Jepang dan kehidupan Dadan di Jepang, manakah yang SESUAI dengan isi percakapan?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 日本語の発音や会話が上手になり、工場の生活にも慣れた",
+                "text_id": "Pelafalan dan percakapan bahasa Jepangnya menjadi mahir, dan sudah terbiasa dengan kehidupan pabrik"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 漢字の勉強が難しくなって、日本語を話すのが嫌いになった",
+                "text_id": "Belajar kanji menjadi sulit, sehingga menjadi benci berbicara bahasa Jepang"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 日本の食事が口に合わなくて、体が弱くなった",
+                "text_id": "Makanan Jepang tidak cocok di lidah, sehingga tubuhnya menjadi lemah"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ まだ日本語が全く話せなくて、毎日困っている",
+                "text_id": "Masih sama sekali tidak bisa berbahasa Jepang dan setiap hari kesulitan"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ダダンさん、日本に来て7ヶ月が経ちましたね。朝礼の返事や報告がとても上手になりましたよ。",
+                "romaji": "Dadan-san, Nihon ni kite nana-kagetsu ga tachimashita ne. Chourei no henji ya houkoku ga totemo jouzu ni narimashita yo.",
+                "text_id": "Dadan-san, sudah berlalu 7 bulan sejak kamu tiba di Jepang ya. Respon dan laporan apel pagimu sudah menjadi sangat mahir lho."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "ありがとうございます！毎晩寮で日本語を勉強していますから、少しずつ話せるようになりました。生活もすっかり慣れました。",
+                "romaji": "Arigatou gozaimasu! Mainichi ryou de Nihongo o benkyou shite imasu kara, sukoshizutsu hanaseru you ni narimashita. Seikatsu mo sukkari naremashita.",
+                "text_id": "Terima kasih banyak! Karena setiap malam saya belajar bahasa Jepang di asrama, saya sudah bisa berbicara sedikit demi sedikit. Kehidupan juga sudah sepenuhnya terbiasa."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "日本の冬は寒くなりますが、体調は大丈夫ですか。",
+                "romaji": "Nihon no fuyu wa samuku narimasu ga, taichou wa daijoubu desu ka.",
+                "text_id": "Musim dingin Jepang menjadi sangat dingin, apakah kondisi kesehatanmu baik-baik saja?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい、ご飯をたくさん食べて運動していますから、病気にもならず元気になりました。",
+                "romaji": "Hai, gohan o takusan tabete undou shite imasu kara, byouki ni mo narazu genki ni narimashita.",
+                "text_id": "Siap, karena saya banyak makan nasi dan berolahraga, saya tidak sakit dan tubuh saya menjadi bugar."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (日本語の発音や会話が上手になり、工場の生活にも慣れた / Percakapan bahasa Jepangnya menjadi mahir dan terbiasa dengan kehidupan pabrik).",
+            "logic": "Tanaka memuji kemajuan Dadan: '報告がとても上手になりましたよ' (laporan menjadi sangat mahir - kata sifat-na + ni narimasu). Dadan mengonfirmasi dirinya semakin lancar berbahasa Jepang, kehidupan sudah terbiasa (生活もすっかり慣れました), dan tubuhnya menjadi semakin sehat (元気になりました).",
+            "distractor": "• Opsi ②: Dadan tidak membenci bahasa Jepang, justru rajin belajar tiap malam.\n• Opsi ③: Tubuhnya sehat bugar dan makan lahap, bukan menjadi lemah.\n• Opsi ④: Dadan sudah mahir berbicara dan memberi laporan saat apel pagi.",
+            "grammarRule": "Pola Bab 19: Perubahan kondisi pada kata sifat-Na dan kata benda ([Na-adj / N] + になります: 上手になりました、元気になりました)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 33,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "08:00",
+        "audioStartSeconds": 480.0,
+        "audioSrc": "assets/audio/bab_19/Choukai_Bab_19_Q8.mp3",
+        "audioDuration": "00:55",
+        "question_ja": "来週の工場の予定について、実習生はどうなりますか。",
+        "question_ruby": "<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>工場<rt>こうじょう</rt></ruby>の<ruby>予定<rt>よてい</rt></ruby>について、<ruby>実習生<rt>じっしゅうせい</rt></ruby>はどうなりますか。",
+        "question_romaji": "Raishuu no koujou no yotei ni tsuite, jisshuusei wa dou narimasu ka.",
+        "question_id": "Mengenai jadwal pabrik minggu depan, bagaimana kondisi yang akan dialami para siswa magang?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 注文が増えて仕事が忙しくなり、残業が1時間長くなる",
+                "text_id": "Pesanan meningkat sehingga pekerjaan menjadi sibuk, dan lembur bertambah panjang 1 jam"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 仕事が暇になって、定時より1時間早く帰れる",
+                "text_id": "Pekerjaan menjadi senggang sehingga boleh pulang 1 jam lebih awal dari jam normal"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 工場が休みになり、1週間連休になる",
+                "text_id": "Pabrik libur total sehingga libur panjang selama 1 minggu"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 全員別の工場へ配置換えになる",
+                "text_id": "Seluruh peserta magang dimutasi pindah ke pabrik cabang lain"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "皆さん、朝礼で大事な連絡があります。来週から自動車部品の注文が急に増えました。",
+                "romaji": "Minasan, chourei de daiji na renraku ga arimasu. Raishuu kara jidousha buhin no chuumon ga kyuu ni fuemashita.",
+                "text_id": "Semuanya, ada pengumuman penting di apel pagi. Mulai minggu depan pesanan komponen mobil tiba-tiba bertambah banyak."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "注文が増えたら、ラインの仕事が忙しくなりますね。",
+                "romaji": "Chuumon ga fuetara, rain no shigoto ga isogashiku narimasu ne.",
+                "text_id": "Jika pesanan bertambah, pekerjaan di lini produksi akan menjadi sibuk ya."
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "その通りです。大変忙しくなりますから、来週の月曜日から金曜日まで、毎日1時間の残業をお願いしたいです。体調管理をしっかりしてください。",
+                "romaji": "Sono toori desu. Taihen isogashiku narimasu kara, raishuu no getsuyoubi kara kin'youbi made, mainichi ichi-jikan no zangyou o onegai shitai desu. Taichou kanri o shikkari shite kudasai.",
+                "text_id": "Tepat sekali. Karena akan menjadi sangat sibuk, dari hari Senin sampai Jumat minggu depan, kami mohon bantuan kerja lembur 1 jam setiap hari. Jagalah kondisi fisik kalian dengan baik."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい、わかりました！安全第一で頑張ります。",
+                "romaji": "Hai, wakarimashita! Anzen daiichi de gambarimasu.",
+                "text_id": "Siap, kami mengerti! Kami akan bersemangat dengan mengutamakan keselamatan kerja nomor satu."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (注文が増えて仕事が忙しくなり、残業が1時間長くなる / Pesanan naik sehingga pekerjaan menjadi sibuk, dan lembur 1 jam).",
+            "logic": "Yamada mengumumkan lonjakan pesanan suku cadang mobil sehingga situasi kerja berubah menjadi sangat sibuk: '大変忙しくなりますから、来週の月曜日から金曜日まで、毎日1時間の残業をお願いしたいです' (karena akan menjadi sangat sibuk, dari Senin hingga Jumat dimohon lembur 1 jam tiap hari).",
+            "distractor": "• Opsi ②: Pekerjaan tidak senggang (暇), melainkan melonjak sibuk.\n• Opsi ③: Tidak ada libur panjang 1 minggu.\n• Opsi ④: Tidak ada mutasi pabrik cabang.",
+            "grammarRule": "Pola Bab 19: Perubahan situasi pada kata sifat-I ([I-adj] 忙しくなります: isogashiku narimasu) dan kosakata operasional pabrik (注文 - pesanan, 残業 - kerja lembur)."
+        },
+        "session": "choukai"
+    }
   ]
 };
 
 const BAB_20_DATA = {
   "chapter": "20",
-  "title_ja": "第２０課：普通形（だ・じゃない・だった・じゃなかった／辞書・ない・た・なかった）・命令形・禁止形・安全標識の定義",
-  "title_id": "Bab 20: Bentuk Biasa / Kasual (普通形 - Futsuukei), Bentuk Perintah (命令形), Bentuk Larangan Keras (禁止形), dan Makna Rambu K3 Industri",
-  "theme_ja": "普通形 (Futsuukei), 命令形 (Meireikei), 禁止形 (Kinshikei), 安全標識の解釈 (Makna Rambu K3 Industri) & 現場での即応指示",
-  "theme_id": "Evaluasi komprehensif Bab 20 yang menguji: konjugasi ragam biasa/kasual (普通形 - Futsuukei: da, ja nai, datta, ja nakatta untuk nomina/kata sifat-na; V-jisho, V-nai, V-ta, V-nakatta untuk verba); perubahan konjugasi bentuk perintah tegas pabrik (命令形 - Meireikei: Grup 1 vokal e seperti isoge/ugoke/kabure/kire, Grup 2 akhiran -ro seperti tomero/akero, Grup 3 shiro dan koi); perubahan konjugasi bentuk larangan keras K3 (禁止形 - Kinshikei: [V-jisho] + な seperti sawaruna/hairuna/suuna/okuna/machigaeruna); pola interpretasi dan penjelasan arti definisi rambu keselamatan kerja pabrik (「～」は ～ という意味です: 立入禁止, 禁煙, 火気厳禁, 頭上注意, 保護帽着用, 作業手順確認); serta instruksi langsung hanchou (班長) kepada siswa magang dalam hierarki operasional pabrik Jepang.",
-  "audioSrc": null,
+  "title_ja": "第20課 総合評価試験（読解・聴解）",
+  "title_id": "Tryout Terpadu Bab 20 (Reading & Choukai)",
+  "theme_ja": "普通形会話・命令形・禁止形・安全標識の定義「～という意味です」",
+  "theme_id": "Bentuk Biasa (普通形), Perintah (命令形), Larangan Keras (禁止形), Makna Rambu K3 (~To iu imi desu)",
+  "audioSrc": "assets/Choukai_Bab_20.mp3",
   "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 20.pdf",
   "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 20.pdf",
-  "pdfSoalUrl": null,
-  "pdfKunciUrl": null,
+  "pdfSoalUrl": "assets/pdf/Soal Choukai Bab 20.pdf",
+  "pdfKunciUrl": "assets/pdf/Kunci dan Pembahasan Choukai Bab 20.pdf",
   "passingGrade": 80,
-  "totalQuestions": 25,
+  "totalQuestions": 33,
   "readingCount": 25,
-  "choukaiCount": 0,
+  "choukaiCount": 8,
   "questions": [
     {
       "id": 1,
@@ -28163,24 +28766,621 @@ const BAB_20_DATA = {
         "grammarRule": "Istilah Regulasi Pabrik Bab 20: 禁止（きんし = larangan mutlak）."
       }
     }
+,
+{
+        "id": 26,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "01:00",
+        "audioStartSeconds": 60.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q1.mp3",
+        "audioDuration": "00:51",
+        "question_ja": "指導員が説明している標識はどれですか。",
+        "question_ruby": "<ruby>指導員<rt>しどういん</rt></ruby>が<ruby>説明<rt>せつめい</rt></ruby>している<ruby>標識<rt>ひょうしき</rt></ruby>はどれですか。",
+        "question_romaji": "Shidouin ga setsumei shite iru hyoushiki wa dore desu ka.",
+        "question_id": "Rambu keselamatan yang sedang dijelaskan oleh instruktur adalah yang mana?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 「立入禁止」（入るなという意味）",
+                "text_id": "Rambu '立入禁止' (Bermakna dilarang keras masuk)"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 「禁煙」（タバコを吸うなという意味）",
+                "text_id": "Rambu '禁煙' (Bermakna dilarang merokok)"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 「火気厳禁」（火を使うなという意味）",
+                "text_id": "Rambu '火気厳禁' (Bermakna dilarang keras menyalakan api)"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 「頭上注意」（頭の上に気をつけろという意味）",
+                "text_id": "Rambu '頭上注意' (Bermakna awas benturan kepala)"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "アグスさん、高圧変電室のドアに赤い看板が貼ってありますね。読めますか。",
+                "romaji": "Agus-san, kouatsu henden-shitsu no doa ni akai看板 ga hatte arimasu ne. Yomemasu ka.",
+                "text_id": "Agus-san, ada papan tanda warna merah tertempel di pintu ruang trafo listrik tegangan tinggi ya. Bisa membaca tulisan itu?"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "「たちいりきんし」と書いてあります。これはどういう意味ですか。",
+                "romaji": "Tachiiri-kinshi to kaite arimasu. Kore wa dou iu imi desu ka.",
+                "text_id": "Tertulis 'Tachiiri-kinshi'. Ini artinya apa ya?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "これは「関係者以外、絶対に中へ入るな」という意味です。感電の危険がありますから、許可がない人は入ってはいけません。",
+                "romaji": "Kore wa 'kankeisha igai, zettai ni naka e hairuna' to iu imi desu. Kanden no kiken ga arimasu kara, kyoka ga nai hito wa haitte wa ikemasen.",
+                "text_id": "Ini bermakna 'selain staf berwenang, jangan pernah masuk ke dalam!'. Karena ada bahaya sengatan listrik fatal, orang tanpa izin dilarang masuk."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "わかりました！「入るな」という意味ですね。しっかり覚えます。",
+                "romaji": "Wakarimashita! 'Hairuna' to iu imi desu ne. Shikkari oboemasu.",
+                "text_id": "Saya paham! Bermakna 'jangan masuk', ya. Akan saya ingat baik-baik."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (「立入禁止」／入るなという意味 / Rambu 'Dilarang Masuk').",
+            "logic": "Tanaka menjelaskan tanda merah di pintu ruang trafo listrik: '「たちいりきんし」... これは「関係者以外、絶対に中へ入るな」という意味です' (Tachiiri-kinshi bermakna jangan pernah masuk ke dalam).",
+            "distractor": "• Opsi ②: 禁煙 bermakna larangan merokok (吸うな).\n• Opsi ③: 火気厳禁 bermakna larangan menyalakan api (火を使うな).\n• Opsi ④: 頭上注意 bermakna peringatan benturan di atas kepala.",
+            "grammarRule": "Pola Bab 20: Menjelaskan makna definisi simbol ([Kata/Tanda] は ～ という意味です) dan bentuk larangan keras K3 (禁止形: 入るな)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_20/q1.webp?v=35"
+    },
+    {
+        "id": 27,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "02:00",
+        "audioStartSeconds": 120.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q2.mp3",
+        "audioDuration": "00:47",
+        "question_ja": "班長は何をするように命令しましたか。",
+        "question_ruby": "<ruby>班長<rt>はんちょう</rt></ruby>は<ruby>何<rt>なに</rt></ruby>をするように<ruby>命令<rt>めいれい</rt></ruby>しましたか。",
+        "question_romaji": "Hanchou wa nani o suru you ni meirei shimashita ka.",
+        "question_id": "Tindakan apa yang DIPERINTAHKAN oleh mandor untuk segera dilakukan?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 赤い非常停止ボタンを押して機械を止める",
+                "text_id": "Menekan tombol merah emergency stop dan menghentikan mesin"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 安全カバーを開けて中をのぞき込む",
+                "text_id": "Membuka penutup pengaman dan mengintip ke dalam mesin"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 電源プラグを引っ張ってコンセントを抜く",
+                "text_id": "Menarik kabel dan mencabut stopkontak listrik"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ そのまま作業を続けて機械の様子を見る",
+                "text_id": "Tetap melanjutkan pekerjaan dan memantau gerak mesin"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "アグス！そのプレス機から変な音がしているぞ！危ない！",
+                "romaji": "Agus! Sono puresu-ki kara hen na oto ga shite iru zo! Abunai!",
+                "text_id": "Agus! Mesin press itu mengeluarkan suara aneh! Bahaya!"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "えっ、本当です！どうすればいいですか。",
+                "romaji": "E', hontou desu! Dou sureba ii desu ka.",
+                "text_id": "Eh, benar sekali! Apa yang harus saya lakukan?"
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "急げ！右側の赤い非常停止ボタンを押せ！機械を止めろ！カバーは絶対に開けるな！",
+                "romaji": "Isoge! Migigawa no akai hijou-teishi botan o ose! Kikai o tomero! Kabaa wa zettai ni akeruna!",
+                "text_id": "Cepat! Tekan tombol merah darurat di sebelah kanan! Hentikan mesin! Penutup pengaman jangan pernah dibuka!"
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい！非常ボタンを押しました！機械が止まりました！",
+                "romaji": "Hai! Hijou botan o oshimashita! Kikai ga tomarimashita!",
+                "text_id": "Siap! Tombol darurat sudah ditekan! Mesin sudah berhenti!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (赤い非常停止ボタンを押して機械を止める / Menekan tombol merah emergency stop dan menghentikan mesin).",
+            "logic": "Yamada meneriakkan instruksi darurat menggunakan bentuk perintah (命令形 - Meireikei): '急げ！右側の赤い非常停止ボタンを押せ！機械を止めろ！' (Cepat! Tekan tombol emergency stop merah! Hentikan mesin!). Membuka cover dilarang keras dengan bentuk kinshikei (カバーは絶対に開けるな).",
+            "distractor": "• Opsi ②: Dilarang membuka cover (開けるな).\n• Opsi ③: Mencabut steker kabel tidak diperintahkan dan berbahaya.\n• Opsi ④: Dilarang melanjutkan pekerjaan saat ada suara aneh.",
+            "grammarRule": "Pola Bab 20: Bentuk perintah pabrik (命令形: 押せ / 止めろ / 急げ) dan larangan keras (禁止形: 開けるな)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_20/q2.webp?v=35"
+    },
+    {
+        "id": 28,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "03:00",
+        "audioStartSeconds": 180.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q3.mp3",
+        "audioDuration": "00:52",
+        "question_ja": "点検中の機械について、指導員は何を禁止しましたか。",
+        "question_ruby": "<ruby>点検中<rt>てんけんちゅう</rt></ruby>の<ruby>機械<rt>きかい</rt></ruby>について、<ruby>指導員<rt>しどういん</rt></ruby>は<ruby>何<rt>なに</rt></ruby>を<ruby>禁止<rt>きんし</rt></ruby>しましたか。",
+        "question_romaji": "Tenkenchuu no kikai ni tsuite, shidouin wa nani o kinshi shimashita ka.",
+        "question_id": "Mengenai mesin yang sedang diinspeksi, apa yang DILARANG KERAS oleh instruktur?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 点検中なので絶対にスイッチを入れて動かしてはいけない",
+                "text_id": "Dilarang keras menyalakan switch dan menggerakkan mesin karena sedang inspeksi"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 機械のまわりに黄色いロープを張ってはいけない",
+                "text_id": "Dilarang memasang tali pembatas kuning di sekitar mesin"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 作業服やヘルメットを脱いではいけない",
+                "text_id": "Dilarang melepas seragam kerja dan helm keselamatan"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 工具箱を床の上に置いてはいけない",
+                "text_id": "Dilarang meletakkan kotak perkakas di atas lantai"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ダダンさん、この旋盤の操作パネルに「点検中」の札が掛けてありますね。",
+                "romaji": "Dadan-san, kono senban no sousa paneru ni 'tenkenchuu' no fuda ga kakete arimasu ne.",
+                "text_id": "Dadan-san, di panel kendali mesin bubut ini digantung plang bertuliskan 'Sedang Diinspeksi' ya."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい、鈴木さんが機械の奥で刃物の清掃と修理をしています。",
+                "romaji": "Hai, Suzuki-san ga kikai no oku de hamono no seisou to shuuri o shite imasu.",
+                "text_id": "Ya, Suzuki-san sedang membersihkan dan memperbaiki mata pisau di bagian dalam mesin."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ですから、絶対に電源スイッチに触るな！動かすな！もし動かしたら鈴木さんが大怪我をするぞ。",
+                "romaji": "Desukara, zettai ni dengen suitchi ni sawaruna! Ugokasuna! Moshi ugokashitara Suzuki-san ga oogega o suru zo.",
+                "text_id": "Oleh karena itu, jangan pernah menyentuh switch daya! Jangan gerakkan! Jika sampai bergerak, Suzuki-san akan cedera parah."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい！触るな、動かすなですね！絶対に手を触れません！",
+                "romaji": "Hai! Sawaruna, ugokasuna desu ne! Zettai ni te o furemasen!",
+                "text_id": "Siap! Jangan sentuh, jangan gerakkan! Saya sama sekali tidak akan menyentuh!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (点検中なので絶対にスイッチを入れて動かしてはいけない / Dilarang menyalakan switch karena sedang inspeksi).",
+            "logic": "Tanaka menegaskan aturan LOTO (Lockout/Tagout) menggunakan bentuk larangan keras (禁止形 - Kinshikei): '絶対に電源スイッチに触るな！動かすな！' (jangan pernah menyentuh switch daya! Jangan menggerakkan!). Karena Suzuki sedang berada di dalam mesin, menyalakan mesin berisiko kecelakaan fatal.",
+            "distractor": "• Opsi ②: Memasang tali pembatas kuning justru dianjurkan.\n• Opsi ③: Seragam dan helm tetap harus dipakai tapi bukan poin larangan spesifik mesin di sini.\n• Opsi ④: Kotak perkakas tidak dibahas.",
+            "grammarRule": "Pola Bab 20: Bentuk larangan keras K3 (禁止形: [V-jisho] + な -> 触るな、動かすな) untuk keselamatan kerja industri."
+        },
+        "session": "choukai",
+        "image": "assets/bab_20/q3.webp?v=35"
+    },
+    {
+        "id": 29,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "04:00",
+        "audioStartSeconds": 240.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q4.mp3",
+        "audioDuration": "00:45",
+        "question_ja": "ナロンさんは日曜日に何をすると言っていますか。",
+        "question_ruby": "ナロンさんは<ruby>日曜日<rt>にちようび</rt></ruby>に<ruby>何<rt>なに</rt></ruby>をすると<ruby>言<rt>い</rt></ruby>っていますか。",
+        "question_romaji": "Narong-san wa nichiyoubi ni nani o suru to itte imasu ka.",
+        "question_id": "Apa yang dikatakan Narong akan dia lakukan pada hari Minggu?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 寮の部屋でゆっくり日本の映画を見る",
+                "text_id": "Santai menonton film Jepang di kamar asrama"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 電車で渋谷へ行って買い物をする",
+                "text_id": "Naik kereta ke Shibuya untuk berbelanja"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 運動場で仲間とフットサルをする",
+                "text_id": "Bermain futsal bersama rekan di lapangan olahraga"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 近くの川へ行って魚釣りをする",
+                "text_id": "Pergi ke sungai dekat untuk memancing ikan"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "ナロン、今度の日曜日、どこか行く？渋谷で買い物しない？",
+                "romaji": "Narong, kondo no nichiyoubi, dokoka iku? Shibuya de kaimono shinai?",
+                "text_id": "Narong, hari Minggu besok kamu mau pergi ke suatu tempat? Mau belanja di Shibuya bareng?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "ううん、行かない。最近残業が多くて疲れたから、どこへも出かけないよ。",
+                "romaji": "Uun, ikanai. Saikin zangyou ga ookute tsukareta kara, doko e mo dekakenai yo.",
+                "text_id": "Enggak, aku gak pergi. Akhir-akhir ini lembur banyak dan capek, jadi gak mau keluar ke mana-mana."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "そうか。じゃあ部屋で何するの？",
+                "romaji": "Sou ka. Jaa heya de nani suru no?",
+                "text_id": "Oh gitu ya. Terus di kamar mau ngapain?"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "ベッドでゆっくり休んで、パソコンで日本の映画を見るつもりだよ。",
+                "romaji": "Beddo de yukkuri yasunde, pasokon de Nihon no eiga o miru tsumori da yo.",
+                "text_id": "Rencananya mau istirahat santai di tempat tidur, terus nonton film Jepang di laptop."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (寮の部屋でゆっくり日本の映画を見る / Menonton film Jepang di kamar asrama).",
+            "logic": "Percakapan terjadi dalam ragam kasual (普通形 - Futsuukei) antar sesama siswa magang. Agus mengajak ke Shibuya (渋谷で買い物しない？), namun Narong menolak secara santai (ううん、行かない). Narong menyatakan aktivitasnya di kamar: 'ベッドでゆっくり休んで、パソコンで日本の映画を見るつもりだよ' (istirahat santai dan nonton film Jepang di laptop).",
+            "distractor": "• Opsi ②: Ajakan belanja ke Shibuya ditolak oleh Narong.\n• Opsi ③: Tidak bermain futsal karena lelah sehabis lembur.\n• Opsi ④: Memancing tidak disebutkan.",
+            "grammarRule": "Pola Bab 20: Percakapan ragam kasual sesama rekan asrama (普通形: 行く？ / 行かない / 疲れたから / 見るつもりだよ)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_20/q4.webp?v=35"
+    },
+    {
+        "id": 30,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "05:00",
+        "audioStartSeconds": 300.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q5.mp3",
+        "audioDuration": "00:57",
+        "question_ja": "測定器に貼ってある「使用禁止」のシールはどういう意味ですか。",
+        "question_ruby": "<ruby>測定器<rt>そくていき</rt></ruby>に<ruby>貼<rt>は</rt></ruby>ってある「<ruby>使用禁止<rt>しようきんし</rt></ruby>」のシールはどういう<ruby>意味<rt>いみ</rt></ruby>ですか。",
+        "question_romaji": "Sokuteiki ni hatte aru 'Shiyou Kinshi' no shiiru wa dou iu imi desu ka.",
+        "question_id": "Stiker bertuliskan '使用禁止' yang tertempel pada alat ukur bermakna apa?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 精度が狂って故障しているから、使ってはいけないという意味",
+                "text_id": "Bermakna tidak boleh digunakan karena akurasinya melenceng dan sedang rusak"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 誰でも自由に使っていいという意味",
+                "text_id": "Bermakna siapa pun bebas menggunakannya"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 使った後に油を差して掃除しろという意味",
+                "text_id": "Bermakna setelah dipakai harus diberi minyak pelumas dan dibersihkan"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 新しい測定器だから大切に扱えという意味",
+                "text_id": "Bermakna alat ukur baru sehingga harus diperlakukan dengan hati-hati"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "鈴木さん、この棚にあるマイクロメーターを使ってもいいですか。",
+                "romaji": "Suzuki-san, kono tana ni aru maikuromeetaa o tsukatte mo ii desu ka.",
+                "text_id": "Suzuki-san, bolehkah saya memakai micrometer yang ada di rak ini?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "あ、シギットさん、それには赤い「使用禁止」のシールが貼ってあるでしょう。使ってはいけませんよ。",
+                "romaji": "A, Sigit-san, sore ni wa akai 'Shiyou Kinshi' no shiiru ga hatte aru deshou. Tsukatte wa ikemasen yo.",
+                "text_id": "Ah, Sigit-san, pada alat itu ada stiker merah 'Shiyou Kinshi' tertempel kan. Tidak boleh digunakan lho."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "「しようきんし」ですか。どういう意味ですか。",
+                "romaji": "Shiyou Kinshi desu ka. Dou iu imi desu ka.",
+                "text_id": "'Shiyou Kinshi' ya? Apa artinya?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "それは「目盛りの精度が狂っているから、使うな」という意味です。間違った測定をしたら不良品ができてしまいますから、隣の青いシールの測定器を使ってください。",
+                "romaji": "Sore wa 'memori no seido ga kurutte iru kara, tsukauna' to iu imi desu. Machigatta sokutei o shitara furyouhin ga dekite shimaimasu kara, tonari no aoi shiiru no sokuteiki o tsukatte kudasai.",
+                "text_id": "Itu bermakna 'jangan gunakan karena akurasi skala ukurnya melenceng!'. Jika pengukuran salah akan menimbulkan produk cacat, jadi pakailah alat ukur berstiker biru di sebelahnya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (精度が狂って故障しているから、使ってはいけないという意味 / Bermakna tidak boleh dipakai karena skala rusak).",
+            "logic": "Suzuki menjelaskan definisi rambu '使用禁止' (Shiyou Kinshi): 'それは「目盛りの精度が狂っているから、使うな」という意味です' (artinya jangan dipakai karena skala rusak/melenceng). Sebagai gantinya disuruh memakai alat ukur bertanda biru yang presisi.",
+            "distractor": "• Opsi ②: Bukan berarti boleh dipakai bebas, justru dilarang keras.\n• Opsi ③: Bukan petunjuk pemberian oli pembersih.\n• Opsi ④: Bukan alat ukur baru, melainkan alat rusak.",
+            "grammarRule": "Pola Bab 20: Pola penjelasan arti tanda (「～」は ～ という意味です: 使うなという意味です)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 31,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "06:00",
+        "audioStartSeconds": 360.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q6.mp3",
+        "audioDuration": "00:52",
+        "question_ja": "二人の明日の勤務について、会話の内容と合っているものはどれですか。",
+        "question_ruby": "<ruby>二人<rt>ふたり</rt></ruby>の<ruby>明日<rt>あした</rt></ruby>の<ruby>勤務<rt>きんむ</rt></ruby>について、<ruby>会話<rt>かいわ</rt></ruby>の<ruby>内容<rt>ないよう</rt></ruby>と<ruby>合<rt>あ</rt></ruby>っているものはどれですか。",
+        "question_romaji": "Futari no ashita no kinmu ni tsuite, kaiwa no naiyou to atte iru mono wa dore desu ka.",
+        "question_id": "Mengenai dinas kerja mereka berdua besok, manakah yang SESUAI dengan isi percakapan?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 残業がなく定時で終わり、仕事の後でスーパーへ行く",
+                "text_id": "Tidak ada lembur dan selesai tepat jam normal, setelah kerja akan pergi ke supermarket"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 夜遅くまで2時間の残業があり、外食に行く",
+                "text_id": "Ada lembur 2 jam sampai larut malam dan pergi makan di luar"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 明日は工場が急に休みになり、寮で寝る",
+                "text_id": "Besok pabrik tiba-tiba libur dan mereka tidur di asrama"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 明日は夜勤シフトに変更になる",
+                "text_id": "Besok jadwal shift berubah menjadi giliran shift malam"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "アグス、明日の仕事の後、一緒に駅前のスーパーへ行かない？調味料が切れたんだ。",
+                "romaji": "Agus, ashita no shigoto no ato, issho ni eki-mae no suupaa e ikanai? Choumiryou ga kireta n da.",
+                "text_id": "Agus, besok sepulang kerja mau pergi bareng ke supermarket depan stasiun gak? Bumbu dapurku habis nih."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "いいね。でも明日って残業あるかな？",
+                "romaji": "Ii ne. Demo ashita tte zangyou aru ka na?",
+                "text_id": "Boleh juga. Tapi besok ada lembur gak ya?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "さっき班長に聞いたけど、明日はラインのメンテナンスがあるから残業はないよ。5時の定時で終わるって。",
+                "romaji": "Sakki hanchou ni kiita kedo, ashita wa rain no mentenansu ga aru kara zangyou wa nai yo. Go-ji no teiji de owaru tte.",
+                "text_id": "Tadi aku tanya mandor, besok ada pemeliharaan lini produksi jadi gak ada lembur. Jam 5 tepat sudah selesai."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "やった！じゃあ5時に仕事が終わったら、すぐ一緒に行こう！",
+                "romaji": "Yatta! Jaa go-ji ni shigoto ga owattara, sugu issho ni ikou!",
+                "text_id": "Asyik! Kalau gitu pas selesai kerja jam 5, langsung berangkat bareng ya!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (残業がなく定時で終わり、仕事の後でスーパーへ行く / Tidak ada lembur dan jam 5 pulang lalu belanja).",
+            "logic": "Dadan mengabarkan informasi dari mandor dalam ragam biasa: '明日はラインのメンテナンスがあるから残業はないよ。5時の定時で終わるって' (besok ada maintenance jadi tidak ada lembur, selesai jam 5 tepat). Karena pulang tepat waktu, keduanya sepakat belanja bumbu ke supermarket depan stasiun.",
+            "distractor": "• Opsi ②: Tidak ada lembur 2 jam.\n• Opsi ③: Pabrik tetap buka operasional normal, bukan libur.\n• Opsi ④: Tidak ada perubahan ke jadwal shift malam.",
+            "grammarRule": "Pola Bab 20: Bentuk biasa ragam kasual (普通形: 切れたんだ / 残業はないよ / 終わるって)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 32,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "07:00",
+        "audioStartSeconds": 420.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q7.mp3",
+        "audioDuration": "00:56",
+        "question_ja": "重い部品を台車で運ぶとき、班長は何を注意しましたか。",
+        "question_ruby": "<ruby>重<rt>おも</rt></ruby>い<ruby>部品<rt>ぶひん</rt></ruby>を<ruby>台車<rt>だいしゃ</rt></ruby>で<ruby>運<rt>はこ</rt></ruby>ぶとき、<ruby>班長<rt>はんちょう</rt></ruby>は<ruby>何<rt>なに</rt></ruby>を<ruby>注意<rt>ちゅうい</rt></ruby>しましたか。",
+        "question_romaji": "Omoi buhin o daisha de hakobu toki, hanchou wa nani o chuui shimashita ka.",
+        "question_id": "Saat membawa komponen berat dengan troli dorong, hal apa yang DIPERINGATKAN oleh mandor?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 走るな、ゆっくり押して曲がり角で指差し確認をしろ",
+                "text_id": "Jangan lari, dorong perlahan dan lakukan tunjuk-sebut di tikungan"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 急いで早く走って次の工程へ届けろ",
+                "text_id": "Cepat berlari kencang dan antarkan ke proses berikutnya"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 台車を使わずに手で抱えて一人で運べ",
+                "text_id": "Jangan pakai troli melainkan angkat sendiri dengan tangan"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 部品を高く積んで前が見えない状態で進め",
+                "text_id": "Tumpuk komponen tinggi-tinggi dan maju meski pandangan depan tertutup"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "これより組み立てラインへ鋳物部品を運搬する。ナロン、よく聞け！",
+                "romaji": "Kore yori kumitate-rain e imono-buhin o unpan suru. Narong, yoku kike!",
+                "text_id": "Mulai sekarang kita angkut komponen besi cor ke lini perakitan. Narong, dengarkan baik-baik!"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "はい、班長！よろしくお願いします！",
+                "romaji": "Hai, hanchou! Yoroshiku onegai shimasu!",
+                "text_id": "Siap, Mandor! Mohon arahannya!"
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "台車を押すときは、通路を絶対に走るな！荷物が崩れたら重大事故になる。曲がり角では必ず一旦止まって「右よし、左よし」と指差し確認をしろ！",
+                "romaji": "Daisha o osu toki wa, tsuuro o zettai ni hashiruna! Nimotsu ga kuzuretara juudai jiko ni naru. Magarikado dewa kanarazu ittan tomatte 'Migi yoshi, hidari yoshi' to yubisashi kakunin o shiro!",
+                "text_id": "Saat mendorong troli, jangan pernah berlari di lorong! Jika muatan runtuh akan menjadi kecelakaan fatal. Di tikungan wajib berhenti sejenak dan lakukan tunjuk-sebut 'Kanan aman, kiri aman!'"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "はい！走るな、一旦止まって指差し呼称をしろですね！守ります！",
+                "romaji": "Hai! Hashiruna, ittan tomatte yubisashi koshou o shiro desu ne! Mamorimasu!",
+                "text_id": "Siap! Jangan lari, berhenti sejenak dan lakukan tunjuk-sebut! Akan saya patuhi!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (走るな、ゆっくり押して曲がり角で指差し確認をしろ / Jangan lari, dorong perlahan dan tunjuk-sebut di tikungan).",
+            "logic": "Mandor memberikan instruksi keselamatan transportasi material: '通路を絶対に走るな！... 曲がり角では必ず一旦止まって「右よし、左よし」と指差し確認をしろ！' (jangan lari di lorong! Di tikungan wajib berhenti sejenak dan lakukan tunjuk-sebut!).",
+            "distractor": "• Opsi ②: Dilarang berlari terburu-buru (走るな).\n• Opsi ③: Troli wajib digunakan, dilarang mengangkat beban berat manual.\n• Opsi ④: Menumpuk barang hingga menutupi pandangan dilarang keras.",
+            "grammarRule": "Pola Bab 20: Bentuk larangan (禁止形: 走るな) dan perintah tegas industri (命令形: 聞け、指差し確認をしろ)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 33,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "08:00",
+        "audioStartSeconds": 480.0,
+        "audioSrc": "assets/audio/bab_20/Choukai_Bab_20_Q8.mp3",
+        "audioDuration": "01:01",
+        "question_ja": "防災訓練で説明された「非常口」のマークはどういう意味ですか。",
+        "question_ruby": "<ruby>防災訓練<rt>ぼうさいくんれん</rt></ruby>で<ruby>説明<rt>せつめい</rt></ruby>された「<ruby>非常口<rt>ひじょうぐち</rt></ruby>」のマークはどういう<ruby>意味<rt>いみ</rt></ruby>ですか。",
+        "question_romaji": "Bousai kunren de setsumei sareta 'Hijouguchi' no maaku wa dou iu imi desu ka.",
+        "question_id": "Tanda '非常口' (Pintu Keluar Darurat) yang dijelaskan dalam simulasi bencana bermakna apa?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 地震や火事のとき、外へ安全に逃げる出口という意味",
+                "text_id": "Bermakna pintu keluar untuk melarikan diri ke luar dengan aman saat gempa atau kebakaran"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 普段の出退勤で毎日通らなければならない玄関という意味",
+                "text_id": "Bermakna pintu masuk utama yang harus dilewati setiap hari saat berangkat dan pulang kerja"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 危険な薬品を保管して鍵を掛ける倉庫という意味",
+                "text_id": "Bermakna gudang penyimpanan bahan kimia berbahaya yang selalu dikunci"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ ゴミを分別して捨てる集積所という意味",
+                "text_id": "Bermakna tempat pengumpulan dan pemilahan sampah"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "実習生の皆さん、今日の午後は工場の総合防災訓練です。緑色の人が走っているマークが見えますね。",
+                "romaji": "Jisshuusei no minasan, kyou no gogo wa koujou no sougou bousai kunren desu. Midori-iro no hito ga hashitte iru maaku ga miemasu ne.",
+                "text_id": "Para siswa magang sekalian, siang ini ada pelatihan terpadu pencegahan bencana pabrik. Kalian bisa melihat lambang orang berlari warna hijau itu ya."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい、ドアの上にあります。「非常口」と書いてあります。",
+                "romaji": "Hai, doa no ue ni arimasu. 'Hijouguchi' to kaite arimasu.",
+                "text_id": "Ya, ada di atas pintu. Tertulis 'Hijouguchi'."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "そうです。これは「地震や火事などの非常時に、外の避難場所へ逃げる出口」という意味です。普段は荷物を置かないでください。",
+                "romaji": "Sou desu. Kore wa 'jishin ya kaji nado no hijouji ni, soto no hinanbasho e nigeru deguchi' to iu imi desu. Fudan wa nimotsu o okanaide kudasai.",
+                "text_id": "Tepat sekali. Ini bermakna 'pintu keluar untuk melarikan diri ke area evakuasi luar saat darurat seperti gempa atau kebakaran'. Sehari-hari jangan letakkan barang di depannya ya."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "わかりました！逃げるための出口ですね。避難ルートをしっかり覚えます。",
+                "romaji": "Wakarimashita! Nigeru tame no deguchi desu ne. Hinan ruuto o shikkari oboemasu.",
+                "text_id": "Saya paham! Pintu keluar untuk melarikan diri ya. Saya akan menghafal rute evakuasi ini dengan baik."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (地震や火事のとき、外へ安全に逃げる出口という意味 / Pintu keluar evakuasi darurat saat gempa/kebakaran).",
+            "logic": "Suzuki menguraikan fungsi tanda '非常口' (Hijouguchi): 'これは「地震や火事などの非常時に、外の避難場所へ逃げる出口」という意味です' (artinya adalah pintu keluar untuk evakuasi ke tempat aman di luar ruangan saat keadaan darurat).",
+            "distractor": "• Opsi ②: Bukan pintu masuk utama sehari-hari.\n• Opsi ③: Bukan gudang penyimpanan bahan kimia.\n• Opsi ④: Bukan tempat pemilahan sampah.",
+            "grammarRule": "Pola Bab 20: Pola definisi makna simbol keselamatan (「～」は ～ という意味です: 逃げる出口という意味です) dan kosakata K3 kebencanaan (防災訓練 - simulasi bencana, 避難 - evakuasi)."
+        },
+        "session": "choukai"
+    }
   ]
 };
 
 const BAB_21_DATA = {
   "chapter": "21",
-  "title_ja": "第２１課：～ながら（同時動作）・～た後で／～の後で（継起）・～ないで（付帯状況／非動作）・～と、～（確定条件／必然・道順・機械）",
-  "title_id": "Bab 21: Aktivitas Simultan (~nagara), Urutan Kegiatan (~ta ato de / ~no ato de), Keadaan Tanpa Melakukan (~naide), dan Syarat Pasti / Alamiah / Rute Jalan (~to)",
-  "theme_ja": "同時動作 (Aktivitas Simultan), 行動の順序関係 (Urutan Kejadian Setelah), 付帯非動作 (Tanpa Melakukan), 確定条件・機械操作・道案内 (Syarat Pasti ~to)",
-  "theme_id": "Evaluasi komprehensif Bab 21 yang menguji penguasaan materi: aktivitas simultan dua perbuatan yang dilakukan bersamaan dengan fokus pada aksi kedua ([V-masu stem] + ながら); urutan kejadian aksi setelah selesai ([V-ta] + 後で) dan setelah nomina ([Nomina] + の後で); keadaan melakukan suatu tindakan tanpa melakukan tindakan lain yang lazim ([V-nai] + ないで); serta hubungan sebab-akibat yang pasti terjadi secara alamiah, operasional mesin otomatis, maupun rute petunjuk jalan ([V-jisho] + と、～) dengan konteks pemagangan industri dan kehidupan sehari-hari peserta magang IMM Japan.",
-  "audioSrc": null,
+  "title_ja": "第21課 総合評価試験（読解・聴解）",
+  "title_id": "Tryout Terpadu Bab 21 (Reading & Choukai)",
+  "theme_ja": "同時動作「～ながら」・順序「～た後で」・付帯状況「～ないで」・確定条件・道案内「～と」",
+  "theme_id": "Simultan (~Nagara), Urutan (~Ta ato de), Tanpa Melakukan (~Naide), Syarat / Rute Jalan (~To)",
+  "audioSrc": "assets/Choukai_Bab_21.mp3",
   "pdfReadingSoalUrl": "assets/pdf/Salinan Soal Bab 21.pdf",
   "pdfReadingKunciUrl": "assets/pdf/Kunci dan Pembahasan Bab 21.pdf",
-  "pdfSoalUrl": null,
-  "pdfKunciUrl": null,
+  "pdfSoalUrl": "assets/pdf/Soal Choukai Bab 21.pdf",
+  "pdfKunciUrl": "assets/pdf/Kunci dan Pembahasan Choukai Bab 21.pdf",
   "passingGrade": 80,
-  "totalQuestions": 25,
+  "totalQuestions": 33,
   "readingCount": 25,
-  "choukaiCount": 0,
+  "choukaiCount": 8,
   "questions": [
     {
       "id": 1,
@@ -29208,6 +30408,603 @@ const BAB_21_DATA = {
         "distractor": "• Opsi B: 意思 dibaca いし (tekad / kehendak kemauan).\n• Opsi C: 異見 bermakna perselisihan pandangan yang berlawanan.\n• Opsi D: 意言 adalah penulisan yang salah.",
         "grammarRule": "Komunikasi Kerja Bab 21: 意見（いけん = opini / sumbang saran）."
       }
+    }
+,
+{
+        "id": 26,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "01:00",
+        "audioStartSeconds": 60.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q1.mp3",
+        "audioDuration": "00:56",
+        "question_ja": "工場の中で、ダダンさんは何をして指導員に注意されましたか。",
+        "question_ruby": "<ruby>工場<rt>こうじょう</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で、ダダンさんは<ruby>何<rt>なに</rt></ruby>をして<ruby>指導員<rt>しどういん</rt></ruby>に<ruby>注意<rt>ちゅうい</rt></ruby>されましたか。",
+        "question_romaji": "Koujou no naka de, Dadan-san wa nani o shite shidouin ni chuui saremashita ka.",
+        "question_id": "Di dalam pabrik, tindakan apa yang dilakukan Dadan sehingga ditegur oleh instruktur?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① スマートフォンを操作しながら通路を歩いた",
+                "text_id": "Berjalan di lorong pabrik sambil memainkan smartphone"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 仲間とおしゃべりをしながら機械を動かした",
+                "text_id": "Mengoperasikan mesin sambil asyik mengobrol dengan rekan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ イヤホンで音楽を聴きながら部品を運んだ",
+                "text_id": "Mengangkut komponen sambil mendengarkan musik dengan earphone"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ お茶を飲みながら製品の検査をした",
+                "text_id": "Melakukan inspeksi produk sambil minum teh"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ダダンさん、ちょっと止まりなさい！通路で何をしているんですか。",
+                "romaji": "Dadan-san, chotto tomarinasai! Tsuuro de nani o shite iru n desu ka.",
+                "text_id": "Dadan-san, berhenti sebentar! Apa yang sedang kamu lakukan di lorong?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "あ、田中指導員！母国からのメッセージを確認していました。",
+                "romaji": "A, Tanaka shidouin! Bokoku kara no messeeji o kakunin shite imashita.",
+                "text_id": "Ah, Pak Instruktur Tanaka! Saya sedang memeriksa pesan dari negara asal."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "スマートフォンを見ながら歩いてはいけません！フォークリフトが曲がり角から来たらぶつかって大事故になりますよ。「ながら歩き」は工場内絶対禁止です。",
+                "romaji": "Sumaatofon o minagara aruite wa ikemasen! Fookurifuto ga magarikado kara kitara butsukatte dai-jiko ni narimasu yo. 'Nagara-aruki' wa koujounai zettai kinshi desu.",
+                "text_id": "Tidak boleh berjalan sambil melihat smartphone! Jika ada forklift datang dari tikungan, kamu bisa tertabrak dan celaka fatal. 'Berjalan sambil beraktivitas' dilarang mutlak di dalam pabrik."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "大変申し訳ありませんでした！スマホをポケットにしまって、前をしっかり見て歩きます。",
+                "romaji": "Taihen moushiwake arimasen deshita! Sumaho o poketto ni shimatte, mae o shikkari mite arukimasu.",
+                "text_id": "Mohon maaf yang sebesar-besarnya! Saya akan simpan ponsel ke kantong, dan berjalan dengan memandang ke depan dengan saksama."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (スマートフォンを操作しながら通路を歩いた / Berjalan di lorong sambil memainkan ponsel).",
+            "logic": "Tanaka menegur Dadan yang melakukan aktivitas simultan berbahaya di jalur kerja pabrik: 'スマートフォンを見ながら歩いてはいけません！...「ながら歩き」は工場内絶対禁止です' (tidak boleh berjalan sambil melihat smartphone! Berjalan sambil meleng dilarang keras di pabrik).",
+            "distractor": "• Opsi ②: Dadan tidak sedang mengobrol sambil mengoperasikan mesin.\n• Opsi ③: Tidak memakai earphone mendengarkan musik.\n• Opsi ④: Tidak sedang minum teh.",
+            "grammarRule": "Pola Bab 21: Aktivitas simultan dua tindakan berbarengan ([V-stem] ながら: 見ながら歩きます) dan aturan K3 industri."
+        },
+        "session": "choukai",
+        "image": "assets/bab_21/q1.webp?v=35"
+    },
+    {
+        "id": 27,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "02:00",
+        "audioStartSeconds": 120.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q2.mp3",
+        "audioDuration": "01:01",
+        "question_ja": "金属板に穴を開けた後で、作業員はまず何をしなければなりませんか。",
+        "question_ruby": "<ruby>金属板<rt>きんぞくばん</rt></ruby>に<ruby>穴<rt>あな</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けた<ruby>後<rt>あと</rt></ruby>で、<ruby>作業員<rt>さぎょういん</rt></ruby>はまず<ruby>何<rt>なに</rt></ruby>をしなければなりませんか。",
+        "question_romaji": "Kinzokuban ni ana o aketa ato de, sagyouin wa mazu nani o shinakereba narimasen ka.",
+        "question_id": "Setelah melubangi pelat logam, apa yang PERTAMA KALI harus dilakukan pekerja?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① ヤスリを使って穴の縁（ふち）のバリをきれいに削り取る",
+                "text_id": "Menggunakan kikir untuk membersihkan dan meratakan sisa geram logam (burr) di pinggiran lubang"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② ノギスを使って穴の内径を細かく測定する",
+                "text_id": "Menggunakan jangka sorong untuk mengukur diameter lubang secara rinci"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ スプレーガンで金属の表面に防錆塗料を塗る",
+                "text_id": "Menyemprotkan cat anti-karat ke permukaan logam dengan spray gun"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 完成した製品を出荷用の段ボール箱に詰める",
+                "text_id": "Memasukkan produk jadi ke dalam kotak kardus pengiriman"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "アグスさん、ボール盤で鉄板の穴開け加工が終わりましたね。",
+                "romaji": "Agus-san, booruban de teppan no ana-ake kakou ga owarimashita ne.",
+                "text_id": "Agus-san, pengerjaan membuat lubang pada pelat besi dengan bor tekan sudah selesai ya."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい、図面の通りに20枚の穴開けが終わりました。次はノギスで測定しますか。",
+                "romaji": "Hai, zumen no toori ni ni-juu-mai no ana-ake ga owarimashita. Tsugi wa nogisu de sokutei shimasu ka.",
+                "text_id": "Siap, pelubangan 20 lembar sesuai gambar kerja sudah selesai. Apakah berikutnya diukur dengan jangka sorong?"
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "測定の前に、もっと大切な工程があります。穴を開けた後で、必ず平ヤスリを使って穴の縁のバリをきれいに削り落としてください。バリが残っていると次の工程の人が手を切ってしまいます。",
+                "romaji": "Sokutei no mae ni, motto taisetsu na koutei ga arimasu. Ana o aketa ato de, kanarazu hira-yasuri o tsukatte ana no fuchi no bari o kirei ni kezuri-otoshite kudasai. Bari ga nokotte iru to tsugi no koutei no hito ga te o kitte shimaimasu.",
+                "text_id": "Sebelum pengukuran, ada tahapan proses yang jauh lebih penting. Setelah melubangi, wajib memakai kikir plat untuk mengikis bersih sisa geram (burr) di tepian lubang. Jika geram tersisa, pekerja di proses berikutnya bisa teriris tangannya."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "わかりました！穴を開けた後で、まずヤスリでバリ取り作業をします！",
+                "romaji": "Wakarimashita! Ana o aketa ato de, mazu yasuri de baritori sagyou o shimasu!",
+                "text_id": "Saya paham! Setelah melubangi, pertama-tama saya kikir dan bersihkan geramnya!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (ヤスリを使って穴の縁のバリをきれいに削り取る / Membersihkan sisa geram/burr logam dengan kikir).",
+            "logic": "Agus mengira setelah mengebor langsung mengukur dengan jangka sorong (測定しますか). Namun Yamada mengoreksi urutan wajib menggunakan pola ~ta ato de: '穴を開けた後で、必ず平ヤスリを使って穴の縁のバリをきれいに削り落としてください' (setelah melubangi, pastikan mengikis sisa geram/burr dengan kikir plat) demi mencegah luka iris.",
+            "distractor": "• Opsi ②: Pengukuran jangka sorong dilakukan setelah proses deburring (バリ取り).\n• Opsi ③: Pengecatan anti-karat adalah proses akhir.\n• Opsi ④: Pengemasan kardus dilakukan saat produk rampung.",
+            "grammarRule": "Pola Bab 21: Urutan tindakan kronologis setelah selesai ([V-ta] 後で: 穴を開けた後で、バリを削ります) dan istilah teknik industri (バリ - geram/burr sisa potong, ヤスリ - kikir)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_21/q2.webp?v=35"
+    },
+    {
+        "id": 28,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "03:00",
+        "audioStartSeconds": 180.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q3.mp3",
+        "audioDuration": "01:01",
+        "question_ja": "グラインダーを使うとき、絶対に何をしてはいけませんか。",
+        "question_ruby": "グラインダーを<ruby>使<rt>つか</rt></ruby>うとき、<ruby>絶対<rt>ぜったい</rt></ruby>に<ruby>何<rt>なに</rt></ruby>をしてはいけませんか。",
+        "question_romaji": "Guraindaa o tsukau toki, zettai ni nani o shite wa ikemasen ka.",
+        "question_id": "Saat menggunakan mesin gerinda, apa tindakan yang DILARANG KERAS dilakukan?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 保護メガネをかけないでグラインダーを回して作業する",
+                "text_id": "Menjalankan mesin gerinda dan bekerja tanpa mengenakan kacamata pelindung"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 安全靴を履かないで工場のフロアに入る",
+                "text_id": "Memasuki lantai pabrik tanpa mengenakan sepatu keselamatan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ ヘルメットをかぶらないで朝礼に並ぶ",
+                "text_id": "Berbaris saat apel pagi tanpa mengenakan helm"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 防塵マスクをつけないでほうきで掃き掃除をする",
+                "text_id": "Menyapu dengan sapu tanpa memakai masker anti-debu"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "シギットさん、午後から高速グラインダーでバリ取り作業ですね。保護具の準備はできましたか。",
+                "romaji": "Sigit-san, gogo kara kousoku guraindaa de baritori sagyou desu ne. Hogogu no junbi wa dekimashita ka.",
+                "text_id": "Sigit-san, mulai siang nanti kamu mengerjakan pembersihan geram dengan gerinda putaran tinggi ya. Apakah APD sudah disiapkan?"
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい、革手袋と耳栓を用意しました。",
+                "romaji": "Hai, kawa-tebukuro to mimisen o youi shimashita.",
+                "text_id": "Siap, saya sudah menyiapkan sarung tangan kulit dan penutup telinga (earplug)."
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "ちょっと待ってください！保護メガネはどこですか。保護メガネをかけないでグラインダーを使っては絶対にダメですよ！激しい火花や金属の粉が飛んで目に刺さる危険があります。",
+                "romaji": "Chotto matte kudasai! Hogo-megane wa doko desu ka. Hogo-megane o kakenaide guraindaa o tsukatte wa zettai ni dame desu yo! Hageshii hibana ya kinzoku no kona ga tonde me ni sasaru kiken ga arimasu.",
+                "text_id": "Tunggu sebentar! Di mana kacamata pelindungmu? Jangan pernah menggunakan mesin gerinda tanpa memakai kacamata pelindung! Ada bahaya fatal percikan api hebat dan serbuk logam melayang menusuk mata."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "あ、すみません！保護メガネを忘れていました。今すぐロッカーから取ってきて、しっかりかけて作業します！",
+                "romaji": "A, sumimasen! Hogo-megane o wasurete imashita. Ima sugu rokkaa kara totte kite, shikkari kakete sagyou shimasu!",
+                "text_id": "Ah, maafkan saya! Saya lupa kacamata pelindung. Saya segera ambil dari loker sekarang dan memakainya dengan benar saat bekerja!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (保護メガネをかけないでグラインダーを回して作業する / Bekerja dengan gerinda tanpa memakai kacamata pelindung).",
+            "logic": "Suzuki menegaskan larangan keselamatan K3 krusial dengan pola ~naide: '保護メガネをかけないでグラインダーを使っては絶対にダメですよ！' (sama sekali tidak boleh memakai gerinda tanpa mengenakan kacamata pelindung) karena bahaya percikan api dan serpihan logam menusuk mata.",
+            "distractor": "• Opsi ②: Sepatu keselamatan sudah dipakai, bukan hal yang ditegur.\n• Opsi ③: Helm sudah dipakai.\n• Opsi ④: Menyapu debu tidak dibahas pada konteks mesin gerinda.",
+            "grammarRule": "Pola Bab 21: Kondisi penyerta tanpa melakukan ([V-nai] ないで: かけないで作業します) dan keselamatan mata kerja logam."
+        },
+        "session": "choukai",
+        "image": "assets/bab_21/q3.webp?v=35"
+    },
+    {
+        "id": 29,
+        "type": "gambar",
+        "section_ja": "第1部：聴解・イラスト理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Ilustrasi",
+        "audioTimestamp": "04:00",
+        "audioStartSeconds": 240.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q4.mp3",
+        "audioDuration": "00:57",
+        "question_ja": "案内された郵便局はどこにありますか。",
+        "question_ruby": "<ruby>案内<rt>あんない</rt></ruby>された<ruby>郵便局<rt>ゆうびんきょく</rt></ruby>はどこにありますか。",
+        "question_romaji": "Annai sareta yuubinkyoku wa doko ni arimasu ka.",
+        "question_id": "Di manakah lokasi kantor pos sesuai dengan petunjuk arah jalan yang diberikan?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 駅前の交差点を右へ曲がると、すぐ左側にある",
+                "text_id": "Belok kanan di persimpangan depan stasiun, kantor pos ada tepat di sebelah kiri"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 駅前の交差点を左へ曲がると、すぐ右側にある",
+                "text_id": "Belok kiri di persimpangan depan stasiun, kantor pos ada tepat di sebelah kanan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 交差点をまっすぐ行くと、突き当たりにある",
+                "text_id": "Lurus melewati persimpangan, kantor pos ada di ujung jalan buntu"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 駅前の交差点を右へ曲がると、すぐ右側にある",
+                "text_id": "Belok kanan di persimpangan depan stasiun, kantor pos ada tepat di sebelah kanan"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "すみません、田中さん。母国へ手紙を出したいのですが、近くに郵便局はありますか。",
+                "romaji": "Sumimasen, Tanaka-san. Bokoku e tegami o dashitai no desu ga, chikaku ni yuubinkyoku wa arimasu ka.",
+                "text_id": "Permisi, Pak Tanaka. Saya ingin mengirim surat ke negara asal, apakah ada kantor pos di dekat sini?"
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "郵便局ですね。駅前の大通りをまっすぐ行って、最初の信号のある交差点を右へ曲がると、すぐ左側にありますよ。赤いポストが目印です。",
+                "romaji": "Yuubinkyoku desu ne. Eki-mae no oodoori o massugu itte, saisho no shingou no aru kousaten o migi e magaru to, sugu hidarigawa ni arimasu yo. Akai posuto ga mejirushi desu.",
+                "text_id": "Kantor pos ya. Jalan lurus saja di jalan raya depan stasiun, lalu kalau belok ke kanan di persimpangan lampu merah pertama, kantor pos ada persis di sebelah kirimu. Tandanya ada kotak pos merah."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "交差点を右へ曲がると、左側ですね。わかりました。左へ曲がるのではありませんね。",
+                "romaji": "Kousaten o migi e magaru to, hidarigawa desu ne. Wakarimashita. Hidari e magaru no dewa arimasen ne.",
+                "text_id": "Kalau belok kanan di persimpangan, ada di sebelah kiri ya. Saya mengerti. Bukan belok ke kiri kan ya."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ええ、左へ曲がると銀行に行ってしまいますから、必ず右へ曲がってくださいね。",
+                "romaji": "Ee, hidari e magaru to ginkou ni itte shimaimasu kara, kanarazu migi e magatte kudasai ne.",
+                "text_id": "Betul, kalau belok kiri nanti malah ke bank, jadi pastikan belok kanan ya."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (駅前の交差点を右へ曲がると、すぐ左側にある / Belok kanan di persimpangan, ada tepat di sebelah kiri).",
+            "logic": "Tanaka memberikan petunjuk arah rute menggunakan partikel syarat pasti ~to: '交差点を右へ曲がると、すぐ左側にありますよ' (kalau belok kanan di persimpangan, ada di sebelah kiri). Tanaka menegaskan jika belok kiri akan sampai di bank (左へ曲がると銀行に行ってしまいます).",
+            "distractor": "• Opsi ②: Belok kiri mengarah ke bank, bukan kantor pos.\n• Opsi ③: Berjalan lurus terus bukan rute menuju kantor pos.\n• Opsi ④: Kantor pos berada di sebelah kiri jalan (左側), bukan sebelah kanan.",
+            "grammarRule": "Pola Bab 21: Petunjuk rute jalan dengan syarat kepastian ([V-jisho] と: 右へ曲がると、左側にあります) dan kosakata navigasi kota (交差点 - persimpangan, 信号 - lampu merah)."
+        },
+        "session": "choukai",
+        "image": "assets/bab_21/q4.webp?v=35"
+    },
+    {
+        "id": 30,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "05:00",
+        "audioStartSeconds": 300.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q5.mp3",
+        "audioDuration": "00:58",
+        "question_ja": "ダダンさんは毎晩寮の部屋で何をしながら日本語を勉強していますか。",
+        "question_ruby": "ダダンさんは<ruby>毎晩<rt>まいばん</rt></ruby><ruby>寮<rt>りょう</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>で<ruby>何<rt>なに</rt></ruby>をしながら<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>していますか。",
+        "question_romaji": "Dadan-san wa mainiban ryou no heya de nani o shinagara Nihongo o benkyou shite imasu ka.",
+        "question_id": "Setiap malam di kamar asrama, Dadan belajar bahasa Jepang sambil melakukan apa?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 日本のニュースラジオを聴きながら、手帳に新出単語をメモしている",
+                "text_id": "Sambil mendengarkan siaran radio berita Jepang, mencatat kosakata baru ke buku catatan"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② テレビのアニメを見ながら、お菓子を食べている",
+                "text_id": "Sambil menonton anime di televisi, menyantap makanan ringan"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 友達とおしゃべりしながら、教科書を声に出して読んでいる",
+                "text_id": "Sambil mengobrol dengan teman, membaca buku pelajaran dengan bersuara"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ スマホでゲームをしながら、漢字ドリルを書いている",
+                "text_id": "Sambil bermain game di smartphone, menulis latihan kanji"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "ダダンさん、最近日本語の聴解力がすごく伸びましたね。どんな勉強法をしていますか。",
+                "romaji": "Dadan-san, saikin Nihongo no choukairyoku ga sugoku nobimashita ne. Donna benkyouhou o shite imasu ka.",
+                "text_id": "Dadan-san, akhir-akhir ini kemampuan listening bahasa Jepangmu meningkat pesat ya. Metode belajar seperti apa yang kamu lakukan?"
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい！毎晩寝る前に、ラジオでNHKの日本語ニュースを聴きながら、わからない単語を手帳にメモしています。",
+                "romaji": "Hai! Mainiban neru mae ni, rajio de NHK no Nihongo nyuusu o kikinagara, wakaranai tango o techou ni memo shite imasu.",
+                "text_id": "Siap! Setiap malam sebelum tidur, sambil mendengarkan siaran berita bahasa Jepang NHK di radio, saya mencatat kata-kata yang tidak saya pahami ke dalam buku saku."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "素晴らしいですね！テレビを見ながらダラダラ勉強するより、ラジオを聴きながらメモを取る方が集中できますね。",
+                "romaji": "Subarashii desu ne! Terebi o minagara daradara benkyou suru yori, rajio o kikinagara memo o toru hou ga shuuchuu dekimasu ne.",
+                "text_id": "Luar biasa sekali! Daripada belajar bermalas-malasan sambil nonton televisi, mendengarkan radio sambil mencatat jauh lebih membuat konsentrasi ya."
+            },
+            {
+                "speaker": "Dadan (ダダン)",
+                "text_ja": "はい、耳と手の両方を使いますから、言葉を早く覚えることができます。",
+                "romaji": "Hai, mimi to te no ryouhou o tsukaimasu kara, kotoba o hayaku oboeru koto ga dekimasu.",
+                "text_id": "Ya, karena memanfaatkan telinga sekaligus tangan, saya bisa menghafal kosakata dengan cepat."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (日本のニュースラジオを聴きながら、手帳に新出単語をメモしている / Mendengarkan berita radio sambil mencatat kosakata baru).",
+            "logic": "Dadan menerangkan kebiasaan belajarnya dengan pola ~nagara: 'ラジオでNHKの日本語ニュースを聴きながら、わからない単語を手帳にメモしています' (sambil mendengarkan berita radio, mencatat kata-kata sulit ke buku saku).",
+            "distractor": "• Opsi ②: Menonton televisi sambil ngemil tidak dilakukan.\n• Opsi ③: Tidak mengobrol sambil membaca buku.\n• Opsi ④: Tidak bermain game smartphone.",
+            "grammarRule": "Pola Bab 21: Dua perbuatan simultan ([V-stem] ながら: 聴きながらメモします)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 31,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "06:00",
+        "audioStartSeconds": 360.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q6.mp3",
+        "audioDuration": "01:02",
+        "question_ja": "アグスさんはアーク溶接の作業が終わった後で、必ず何をしなければなりませんか。",
+        "question_ruby": "アグスさんはアーク<ruby>溶接<rt>ようせつ</rt></ruby>の<ruby>作業<rt>さぎょう</rt></ruby>が<ruby>終<rt>お</rt></ruby>わった<ruby>後<rt>あと</rt></ruby>で、<ruby>必<rt>かなら</rt></ruby>ず<ruby>何<rt>なに</rt></ruby>をしなければなりませんか。",
+        "question_romaji": "Agus-san wa aaku-yousetsu no sagyou ga owatta ato de, kanarazu nani o shinakereba narimasen ka.",
+        "question_id": "Setelah pekerjaan pengelasan busur listrik selesai, apa yang WAJIB dilakukan Agus?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① 溶接機の主電源を切り、火の粉がないか15分間確認する",
+                "text_id": "Mematikan sakelar utama mesin las, lalu memeriksa percikan bara api selama 15 menit"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 電源を入れたままにして、すぐに休憩室へ行く",
+                "text_id": "Membiarkan daya listrik menyala dan langsung pergi ke ruang istirahat"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 熱い鉄骨に素手で触れて温度を確かめる",
+                "text_id": "Menyentuh rangka besi yang masih panas dengan tangan telanjang untuk mengecek suhu"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 防火シートを片付けてすぐに帰宅する",
+                "text_id": "Membereskan terpal tahan api dan langsung pulang ke rumah"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "アグスさん、溶接作業は火災の危険が高いですから、後片付けの手順がとても大切です。",
+                "romaji": "Agus-san, yousetsu sagyou wa kasai no kiken ga takai desu kara, ato-kataduke no tejun ga totemo taisetsu desu.",
+                "text_id": "Agus-san, pekerjaan mengelas memiliki risiko kebakaran tinggi, jadi prosedur pembersihan setelahnya sangat krusial."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "はい、溶接が終わった後で、まず何をすればいいですか。",
+                "romaji": "Hai, yousetsu ga owatta ato de, mazu nani o sureba ii desu ka.",
+                "text_id": "Siap, setelah pengelasan selesai, apa yang pertama kali harus saya lakukan?"
+            },
+            {
+                "speaker": "Yamada (山田)",
+                "text_ja": "溶接機の主電源を切った後で、周囲に火の粉や燃えかすが残っていないか、必ず15分間見回りをして確認してください。これが終わるまで作業場を離れてはいけません。",
+                "romaji": "Yousetsuki no shu-dengen o kitta ato de, shuui ni hinoko ya moekasu ga nokotte inai ka, kanarazu juu-go-funkan mimawari o shite kakunin shite kudasai. Kore ga owaru made sagyouba o hanarete wa ikemasen.",
+                "text_id": "Setelah mematikan sakelar utama mesin las, wajib patroli berkeliling selama 15 menit untuk memastikan tidak ada percikan api atau bara yang tertinggal di sekitar. Sebelum ini tuntas, dilarang meninggalkan area kerja."
+            },
+            {
+                "speaker": "Agus (アグス)",
+                "text_ja": "わかりました！電源を切った後で、火の粉がないか15分間しっかり安全確認をします！",
+                "romaji": "Wakarimashita! Dengen o kitta ato de, hinoko ga nai ka juu-go-funkan shikkari anzen kakunin o shimasu!",
+                "text_id": "Saya paham! Setelah mematikan daya, saya akan pastikan tidak ada percikan bara api selama 15 menit penuh!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (溶接機の主電源を切り、火の粉がないか15分間確認する / Mematikan saklar utama dan memantau percikan api selama 15 menit).",
+            "logic": "Yamada menegaskan prosedur K3 proteksi kebakaran: '溶接機の主電源を切った後で、周囲に火の粉や燃えかすが残っていないか、必ず15分間見回りをして確認してください' (setelah mematikan saklar utama mesin las, wajib berkeliling 15 menit memastikan tidak ada percikan bara api). Dilarang meninggalkan tempat kerja sebelum verifikasi tuntas.",
+            "distractor": "• Opsi ②: Dilarang membiarkan saklar daya menyala dan kabur istirahat.\n• Opsi ③: Menyentuh besi panas dengan tangan kosong sangat berbahaya luka bakar fatal.\n• Opsi ④: Dilarang langsung pulang tanpa pemantauan bara api.",
+            "grammarRule": "Pola Bab 21: Keterangan urutan waktu setelah tindakan ([V-ta] 後で: 切った後で確認します) dan K3 pencegahan kebakaran (火災防止)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 32,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "07:00",
+        "audioStartSeconds": 420.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q7.mp3",
+        "audioDuration": "00:58",
+        "question_ja": "寮を出かけるとき、実習生は何をしてはいけませんか。",
+        "question_ruby": "<ruby>寮<rt>りょう</rt></ruby>を<ruby>出<rt>で</rt></ruby>かけるとき、<ruby>実習生<rt>じっしゅうせい</rt></ruby>は<ruby>何<rt>なに</rt></ruby>をしてはいけませんか。",
+        "question_romaji": "Ryou o dekakeru toki, jisshuusei wa nani o shite wa ikemasen ka.",
+        "question_id": "Saat bepergian keluar asrama, apa hal yang DILARANG dilakukan oleh siswa magang?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① ドアの鍵を掛けないでそのまま部屋を出かけること",
+                "text_id": "Bepergian meninggalkan kamar begitu saja tanpa mengunci pintu"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② エアコンの電源を切ってから出かけること",
+                "text_id": "Bepergian setelah mematikan daya AC"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 部屋の窓を閉めてから出かけること",
+                "text_id": "Bepergian setelah menutup jendela kamar"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ 在留カードを財布に入れて持って行くこと",
+                "text_id": "Membawa Kartu Izin Tinggal (Zairyu Card) di dalam dompet"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "ナロンさん、休みの日に買い物へ出かけるときの寮の防犯ルールについて確認しますね。",
+                "romaji": "Narong-san, yasumi no hi ni kaimono e dekakeru toki no ryou no bouhan ruuru ni tsuite kakunin shimasu ne.",
+                "text_id": "Narong-san, mari kita konfirmasi aturan keamanan pencegahan pencurian asrama saat bepergian belanja di hari libur ya."
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "はい、鈴木指導員。何に気をつけたらいいですか。",
+                "romaji": "Hai, Suzuki shidouin. Nani ni ki o tsuketara ii desu ka.",
+                "text_id": "Siap, Ibu Instruktur Suzuki. Hal apa yang harus saya perhatikan?"
+            },
+            {
+                "speaker": "Suzuki (鈴木)",
+                "text_ja": "最近、近所のコンビニへ行く短い時間でも、部屋の鍵を掛けないで出かける人がいて困っています。泥棒が入る危険がありますから、鍵を掛けないで出かけては絶対にダメですよ。",
+                "romaji": "Saikin, kinjo no konbini e iku mijikai jikan demo, heya no kagi o kakenaide dekakeru hito ga ite komatte imasu. Dorobou ga hairu kiken ga arimasu kara, kagi o kakenaide dekakete wa zettai ni dame desu yo.",
+                "text_id": "Akhir-akhir ini, bahkan saat pergi sebentar ke minimarket terdekat, ada orang yang keluar tanpa mengunci pintu kamar dan itu sangat mengkhawatirkan. Karena ada bahaya pencuri masuk, dilarang keras pergi keluar tanpa mengunci pintu!"
+            },
+            {
+                "speaker": "Narong (ナロン)",
+                "text_ja": "わかりました！5分だけの外出でも、必ず鍵を掛けてから出かけます。",
+                "romaji": "Wakarimashita! Go-fun dake no gaishutsu demo, kanarazu kagi o kakete kara dekakemasu.",
+                "text_id": "Saya paham! Meskipun hanya bepergian keluar 5 menit saja, saya pasti mengunci pintu dulu sebelum pergi."
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (ドアの鍵を掛けないでそのまま部屋を出かけること / Meninggalkan kamar tanpa mengunci pintu).",
+            "logic": "Suzuki menegaskan larangan kelalaian keamanan asrama dengan pola ~naide: '鍵を掛けないで出かけては絶対にダメですよ' (sama sekali tidak boleh pergi keluar tanpa mengunci pintu kamar) karena rawan tindak pencurian.",
+            "distractor": "• Opsi ②: Mematikan AC justru kewajiban penghematan energi.\n• Opsi ③: Menutup jendela adalah hal yang wajib dilakukan.\n• Opsi ④: Membawa Zairyu Card adalah kewajiban hukum mutlak di Jepang.",
+            "grammarRule": "Pola Bab 21: Keadaan penyerta tanpa melakukan ([V-nai] ないで: 鍵を掛けないで出かけます) dan aturan pencegahan kejahatan (防犯 - bouhan)."
+        },
+        "session": "choukai"
+    },
+    {
+        "id": 33,
+        "type": "teks",
+        "section_ja": "第2部：聴解・会話・課題理解",
+        "section_id": "Sesi 2: Choukai — Pemahaman Percakapan",
+        "audioTimestamp": "08:00",
+        "audioStartSeconds": 480.0,
+        "audioSrc": "assets/audio/bab_21/Choukai_Bab_21_Q8.mp3",
+        "audioDuration": "01:01",
+        "question_ja": "コンベアの機械について、緑のボタンを3秒間長押しするとどうなりますか。",
+        "question_ruby": "コンベアの<ruby>機械<rt>きかい</rt></ruby>について、<ruby>緑<rt>みどり</rt></ruby>のボタンを3<ruby>秒間<rt>びょうかん</rt></ruby><ruby>長押<rt>ながお</rt></ruby>しするとどうなりますか。",
+        "question_romaji": "Konbea no kikai ni tsuite, midori no botan o san-byoukan naga-oshi suru to dou narimasu ka.",
+        "question_id": "Mengenai mesin conveyor, apa yang terjadi jika tombol hijau ditekan lama selama 3 detik?",
+        "options": [
+            {
+                "id": "1",
+                "symbol": "①",
+                "text_ja": "① ブザーが鳴って警告灯が光り、搬送ラインが自動で動き出す",
+                "text_id": "Buzzer berbunyi lampu peringatan menyala, dan lini conveyor mulai bergerak otomatis"
+            },
+            {
+                "id": "2",
+                "symbol": "②",
+                "text_ja": "② 機械が急停止して工場の電気がすべて消える",
+                "text_id": "Mesin berhenti mendadak dan semua lampu listrik pabrik padam"
+            },
+            {
+                "id": "3",
+                "symbol": "③",
+                "text_ja": "③ 非常ベルが鳴り響いてスプリンクラーから水が出る",
+                "text_id": "Bel darurat berdering nyaring dan air keluar dari sprinkler"
+            },
+            {
+                "id": "4",
+                "symbol": "④",
+                "text_ja": "④ モーターが逆回転して部品が床に落ちる",
+                "text_id": "Motor berputar terbalik sehingga komponen berjatuhan ke lantai"
+            }
+        ],
+        "correctAnswer": "1",
+        "dialogue": [
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "シギットさん、今日から部品の自動搬送コンベアの操作を担当してもらいます。",
+                "romaji": "Sigit-san, kyou kara buhin no jidou hansou konbea no sousa o tantou shite moraimasu.",
+                "text_id": "Sigit-san, mulai hari ini kamu bertugas mengoperasikan conveyor pembawa suku cadang otomatis."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "はい！動かし方を教えてください。",
+                "romaji": "Hai! Ugokashikata o oshiete kudasai.",
+                "text_id": "Siap! Tolong ajari cara menjalankannya."
+            },
+            {
+                "speaker": "Tanaka (田中)",
+                "text_ja": "まず、コンベアの上に障害物がないか指差し確認をします。そのあと、この緑の始動ボタンを3秒間長押ししてください。3秒押すと、ブザーが鳴って黄色のパトランプが光り、自動でラインがゆっくり動き出します。",
+                "romaji": "Mazu, konbea no ue ni shougaibutsu ga nai ka yubisashi kakunin o shimasu. Sono ato, kono midori no shidou botan o san-byoukan naga-oshi shite kudasai. San-byou osu to, buzaa ga natte kiiro no patoranpu ga hikari, jidou de rain ga yukkuri ugokidashimasu.",
+                "text_id": "Pertama-tama, lakukan tunjuk-sebut memastikan tidak ada rintangan di atas conveyor. Setelah itu, tekan lama tombol start hijau ini selama 3 detik. Kalau ditekan 3 detik, buzzer akan berbunyi, lampu rotari kuning berkedip, dan lini akan otomatis mulai bergerak perlahan."
+            },
+            {
+                "speaker": "Sigit (シギット)",
+                "text_ja": "緑のボタンを3秒押すと、ブザーが鳴って動き出すんですね。わかりました！",
+                "romaji": "Midori no botan o san-byou osu to, buzaa ga natte ugokidasu n desu ne. Wakarimashita!",
+                "text_id": "Kalau menekan tombol hijau selama 3 detik, buzzer berbunyi lalu mesin mulai bergerak ya. Saya paham!"
+            }
+        ],
+        "explanation": {
+            "summary": "Jawaban yang benar adalah ① (ブザーが鳴って警告灯が光り、搬送ラインが自動で動き出す / Buzzer berbunyi, lampu sinyal berkedip, lini conveyor jalan otomatis).",
+            "logic": "Tanaka menjelaskan hubungan operasional mesin otomatis dengan syarat pasti ~to: 'この緑の始動ボタンを3秒間長押ししてください。3秒押すと、ブザーが鳴って黄色のパトランプが光り、自動でラインがゆっくり動き出します' (jika menekan tombol hijau 3 detik, buzzer berbunyi, lampu berkedip, lini conveyor otomatis mulai jalan).",
+            "distractor": "• Opsi ②: Bukan mematikan darurat listrik pabrik.\n• Opsi ③: Bukan memicu sprinkler air pemadam kebakaran.\n• Opsi ④: Motor bergerak maju normal, bukan berbalik arah.",
+            "grammarRule": "Pola Bab 21: Syarat kepastian operasional mesin otomatis ([V-jisho] と、～: 押すと、動き出します) dan kosakata mekanik pabrik (長押し - tekan lama, 搬送コンベア - conveyor pembawa)."
+        },
+        "session": "choukai"
     }
   ]
 };
