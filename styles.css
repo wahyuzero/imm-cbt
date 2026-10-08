@@ -156,3 +156,16 @@ input[type="range"].audio-range::-webkit-slider-thumb:hover {
     display: none !important;
   }
 }
+
+/* Flashcard Study Mode Toggles */
+.reveal-hidden .hidden-prompt {
+  display: none !important;
+}
+.reveal-hidden .hidden-content {
+  display: block !important;
+}
+.reading-box:not(.reveal-hidden) .hidden-content,
+.meaning-box:not(.reveal-hidden) .hidden-content {
+  display: none;
+}
+

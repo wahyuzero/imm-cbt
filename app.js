@@ -30,16 +30,25 @@ class ChoukaiApp {
     this.pendingSeek = null;
 
     // View state
-    this.view = "dashboard"; // 'dashboard' | 'exam' | 'result'
+    this.view = "dashboard"; // 'dashboard' | 'exam' | 'result' | 'kosakata'
     this.activeModal = null; // 'onboarding' | 'confirm_submit' | 'image_zoom'
     this.modalData = null;
+
+    // Kosakata State
+    this.kosakataBab = "01";
+    this.kosakataFilter = "all";
+    this.kosakataSearch = "";
+    this.hideReading = false;
+    this.hideMeaning = false;
+    this.memorizedWords = this.loadMemorizedWords();
 
     this.init();
   }
 
   pdfUrl(url) {
     if (!url) return "";
-    return url.includes("?") ? url : `${url}?v=38`;
+    const clean = encodeURI(url);
+    return clean.includes("?") ? clean : `${clean}?v=39`;
   }
 
   init() {
@@ -51,6 +60,7 @@ class ChoukaiApp {
     const hash = window.location.hash;
     const babMatch = hash.match(/^#bab-(\d{1,2})$/);
     const resultMatch = hash.match(/^#result-(\d{1,2})$/);
+    const kosakataMatch = hash.match(/^#kosakata(?:-(\d{1,2}))?$/);
     if (babMatch) {
       const bNum = babMatch[1].padStart(2, "0");
       if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
@@ -61,6 +71,9 @@ class ChoukaiApp {
       if (this.progress[bNum]) {
         this.viewSavedResult(bNum);
       }
+    } else if (kosakataMatch) {
+      const bNum = kosakataMatch[1] ? kosakataMatch[1].padStart(2, "0") : "01";
+      this.goToKosakata(bNum);
     } else if (hash === "#exam" || hash === "#bab-08") {
       this.startExam(BAB_08_DATA, "renshuu");
     } else if (hash === "#result" && this.progress["08"]) {
@@ -83,6 +96,21 @@ class ChoukaiApp {
         this.openModal("onboarding");
       }
     }
+
+    window.addEventListener("hashchange", () => {
+      const h = window.location.hash;
+      const km = h.match(/^#kosakata(?:-(\d{1,2}))?$/);
+      if (km) {
+        const bNum = km[1] ? km[1].padStart(2, "0") : (this.kosakataBab || "01");
+        if (this.view !== "kosakata" || this.kosakataBab !== bNum) {
+          this.goToKosakata(bNum);
+        }
+      } else if (h === "#dashboard" || h === "") {
+        if (this.view !== "dashboard") {
+          this.goToDashboard();
+        }
+      }
+    });
   }
 
   // ==========================================
@@ -160,6 +188,30 @@ class ChoukaiApp {
     this.render();
   }
 
+  loadMemorizedWords() {
+    try {
+      const data = localStorage.getItem("choukai_memorized_words");
+      return data ? JSON.parse(data) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  toggleWordMemorized(wordKey) {
+    if (this.memorizedWords[wordKey]) {
+      delete this.memorizedWords[wordKey];
+    } else {
+      this.memorizedWords[wordKey] = true;
+    }
+    try {
+      localStorage.setItem("choukai_memorized_words", JSON.stringify(this.memorizedWords));
+    } catch (e) {
+      console.warn("Gagal menyimpan progress kosakata ke localStorage:", e);
+    }
+    this.updateKosakataStatsUI();
+    this.updateKosakataCardUI(wordKey);
+  }
+
   goToDashboard() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
@@ -169,6 +221,42 @@ class ChoukaiApp {
     this.pauseAudio();
     this.view = "dashboard";
     this.render();
+    try {
+      history.replaceState(null, "", "#dashboard");
+    } catch (e) {}
+  }
+
+  goToKosakata(babNum) {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    this.cancelAutoNext();
+    this.pauseAudio();
+    if (babNum) {
+      this.kosakataBab = babNum.toString().padStart(2, "0");
+    } else if (!this.kosakataBab) {
+      this.kosakataBab = "01";
+    }
+    this.view = "kosakata";
+    this.render();
+    try {
+      history.replaceState(null, "", `#kosakata-${this.kosakataBab}`);
+    } catch (e) {}
+  }
+
+  playWordAudio(text) {
+    if (!("speechSynthesis" in window)) {
+      alert("Browser Anda belum mendukung Web Speech Audio Synthesis.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    // Hilangkan furigana dalam kurung untuk audio pelafalan Jepang bersih
+    const cleanText = text.replace(/（[^）]*）|\([^)]*\)/g, "").trim();
+    const utterance = new SpeechSynthesisUtterance(cleanText || text);
+    utterance.lang = "ja-JP";
+    utterance.rate = 0.88;
+    window.speechSynthesis.speak(utterance);
   }
 
   // ==========================================
@@ -800,6 +888,9 @@ class ChoukaiApp {
       this.renderAudioVisibility();
     } else if (this.view === "result") {
       appEl.innerHTML = this.renderResultHTML();
+    } else if (this.view === "kosakata") {
+      appEl.innerHTML = this.renderKosakataHTML();
+      this.bindKosakataEvents();
     }
 
     this.renderHeaderProfile();
@@ -841,34 +932,45 @@ class ChoukaiApp {
 
       const actionButton = ch.available
         ? (isCompleted
-            ? `<div class="grid grid-cols-2 gap-2 mt-3">
-                <button onclick="window.app.viewSavedResult('${ch.num}')" class="py-2 px-2 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                  Lihat Hasil
+            ? `<div class="grid grid-cols-5 gap-1.5 mt-3">
+                <button onclick="window.app.viewSavedResult('${ch.num}')" class="col-span-2 py-2 px-1 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
+                  Hasil
                 </button>
-                <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="py-2 px-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-2 py-2 px-1 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
                   Ulangi
                 </button>
+                <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
+                  語
+                </button>
               </div>`
-            : `<button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="w-full mt-3 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-                Mulai Bab ${ch.num}
-              </button>`)
+            : `<div class="grid grid-cols-5 gap-1.5 mt-3">
+                <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-4 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                  Mulai Bab ${ch.num}
+                </button>
+                <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
+                  語
+                </button>
+              </div>`)
         : `<button disabled class="w-full mt-3 py-2 px-3 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-md text-xs font-semibold cursor-not-allowed">
             Terkunci (Segera Hadir)
           </button>`;
 
       const pdfCardLinks = ch.available
-        ? `<div class="flex items-center gap-2 mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px]">
+        ? `<div class="flex items-center flex-wrap gap-x-2 gap-y-1 mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px]">
             <a href="${pdfReadingSoal}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="${ch.choukaiQuestions > 0 ? 'Unduh Lembar Soal Tryout Terpadu 33 Soal PDF' : 'Unduh Lembar Soal PDF'}">
               <svg class="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              ${ch.choukaiQuestions > 0 ? 'Soal Tryout (33)' : 'Soal PDF'}
+              ${ch.choukaiQuestions > 0 ? 'Soal Tryout' : 'Soal PDF'}
             </a>
             <span class="text-slate-300 dark:text-slate-700">&bull;</span>
             <a href="${pdfReadingKunci}" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" title="${ch.choukaiQuestions > 0 ? 'Unduh Kunci & Pembahasan Tryout Terpadu 33 Soal PDF' : 'Unduh Kunci & Pembahasan PDF'}">
               <svg class="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               ${ch.choukaiQuestions > 0 ? 'Kunci Tryout' : 'Kunci PDF'}
+            </a>
+            <span class="text-slate-300 dark:text-slate-700">&bull;</span>
+            <a href="${this.pdfUrl(`assets/pdf/Daftar Kosakata Bab ${ch.num}.pdf`)}" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1" title="Unduh Lembar Hafalan Kosakata Bab ${ch.num} PDF">
+              <svg class="w-3 h-3 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+              Kosakata
             </a>
             ${ch.choukaiQuestions > 0 ? `
               <span class="text-slate-300 dark:text-slate-700">&bull;</span>
@@ -942,9 +1044,17 @@ class ChoukaiApp {
               <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
               Katalog Bab Lengkap (Bab 01 s.d. Bab 25)
             </h2>
-            <p class="text-xs text-slate-500">Pilih modul bab tryout yang ingin Anda kerjakan di bawah ini</p>
+            <p class="text-xs text-slate-500">Pilih modul bab tryout atau buka hafalan kosakata di bawah ini</p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
+            <button onclick="window.app.goToKosakata('01')" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Buka Modul Hafalan Kosakata Interaktif">
+              <span class="font-jp">語</span>
+              Hafalan Kosakata (876 Kata)
+            </button>
+            <a href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold hover:bg-emerald-100 transition flex items-center gap-1 shadow-sm" title="Unduh Lembar Setoran Lengkap Bab 01-25 (57 Halaman)">
+              <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+              Bundle Kosakata (57 Hal)
+            </a>
             <a href="${this.pdfUrl(BAB_08_DATA.pdfReadingSoalUrl || 'assets/pdf/Salinan Soal Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
               <svg class="w-3.5 h-3.5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               Soal Reading PDF
@@ -1547,6 +1657,501 @@ class ChoukaiApp {
         </div>
       </div>
     `;
+  }
+
+  // ==========================================
+  // SCREEN 4: HAFALAN KOSAKATA (単語帳)
+  // ==========================================
+  getMemorizedStats() {
+    let targetWords = [];
+    if (this.kosakataBab === "all") {
+      if (typeof KOSAKATA_DATA !== "undefined") {
+        for (let b = 1; b <= 25; b++) {
+          if (KOSAKATA_DATA[b] && KOSAKATA_DATA[b].words) {
+            targetWords = targetWords.concat(KOSAKATA_DATA[b].words);
+          }
+        }
+      }
+    } else {
+      const bInt = parseInt(this.kosakataBab, 10);
+      if (typeof KOSAKATA_DATA !== "undefined" && KOSAKATA_DATA[bInt] && KOSAKATA_DATA[bInt].words) {
+        targetWords = KOSAKATA_DATA[bInt].words;
+      }
+    }
+    const total = targetWords.length;
+    let memorized = 0;
+    targetWords.forEach((w) => {
+      const key = `${w.bab}_${w.id}`;
+      if (this.memorizedWords[key]) memorized++;
+    });
+    const percentage = total > 0 ? Math.round((memorized / total) * 100) : 0;
+    return { total, memorized, percentage };
+  }
+
+  getCategoryBadgeClass(kategori) {
+    switch (kategori) {
+      case "Kata Kerja":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300 border-blue-200 dark:border-blue-800";
+      case "Kata Sifat":
+        return "bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border-amber-200 dark:border-amber-800";
+      case "Istilah Industri / K3":
+        return "bg-rose-100 text-rose-800 dark:bg-rose-950/80 dark:text-rose-300 border-rose-200 dark:border-rose-800";
+      case "Ungkapan & Salam":
+        return "bg-purple-100 text-purple-800 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800";
+      case "Kata Ganti":
+      case "Kata Ganti Tunjuk":
+      case "Kata Ganti Tempat":
+        return "bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800";
+      case "Kata Tanya":
+        return "bg-indigo-100 text-indigo-800 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800";
+      case "Kata Benda":
+        return "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300 border-slate-300 dark:border-slate-700";
+      default:
+        return "bg-teal-100 text-teal-800 dark:bg-teal-950/80 dark:text-teal-300 border-teal-200 dark:border-teal-800";
+    }
+  }
+
+  getFilteredKosakataWords() {
+    if (typeof KOSAKATA_DATA === "undefined") return [];
+    let list = [];
+    if (this.kosakataBab === "all") {
+      for (let b = 1; b <= 25; b++) {
+        if (KOSAKATA_DATA[b] && KOSAKATA_DATA[b].words) {
+          list = list.concat(KOSAKATA_DATA[b].words);
+        }
+      }
+    } else {
+      const bInt = parseInt(this.kosakataBab, 10);
+      if (KOSAKATA_DATA[bInt] && KOSAKATA_DATA[bInt].words) {
+        list = KOSAKATA_DATA[bInt].words.slice();
+      }
+    }
+
+    if (this.kosakataFilter !== "all") {
+      list = list.filter((w) => w.kategori === this.kosakataFilter);
+    }
+
+    if (this.kosakataSearch && this.kosakataSearch.trim() !== "") {
+      const q = this.kosakataSearch.trim().toLowerCase();
+      list = list.filter((w) => {
+        return (
+          (w.raw && w.raw.toLowerCase().includes(q)) ||
+          (w.kanji && w.kanji.toLowerCase().includes(q)) ||
+          (w.hiragana && w.hiragana.toLowerCase().includes(q)) ||
+          (w.romaji && w.romaji.toLowerCase().includes(q)) ||
+          (w.arti && w.arti.toLowerCase().includes(q)) ||
+          (w.contoh && w.contoh.toLowerCase().includes(q)) ||
+          (w.contoh_arti && w.contoh_arti.toLowerCase().includes(q))
+        );
+      });
+    }
+
+    return list;
+  }
+
+  updateKosakataCardUI(wordKey) {
+    const cardEl = document.getElementById(`word-card-${wordKey}`);
+    const btnEl = document.getElementById(`word-check-${wordKey}`);
+    const isMem = Boolean(this.memorizedWords[wordKey]);
+    if (cardEl) {
+      if (isMem) {
+        cardEl.classList.add("border-emerald-400", "dark:border-emerald-600", "bg-emerald-50/30", "dark:bg-emerald-950/20");
+        cardEl.classList.remove("border-slate-200", "dark:border-slate-800");
+      } else {
+        cardEl.classList.remove("border-emerald-400", "dark:border-emerald-600", "bg-emerald-50/30", "dark:bg-emerald-950/20");
+        cardEl.classList.add("border-slate-200", "dark:border-slate-800");
+      }
+    }
+    if (btnEl) {
+      btnEl.className = `px-2 py-0.5 rounded text-xs font-bold flex items-center gap-1 transition ${
+        isMem
+          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+          : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+      }`;
+      btnEl.innerHTML = isMem
+        ? `<svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Dihafal`
+        : `<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/></svg> Belum`;
+    }
+  }
+
+  updateKosakataStatsUI() {
+    const stats = this.getMemorizedStats();
+    const countEl = document.getElementById("kosakata-stats-count");
+    const percentEl = document.getElementById("kosakata-stats-percent");
+    const barEl = document.getElementById("kosakata-stats-bar");
+    if (countEl) countEl.innerText = `${stats.memorized} / ${stats.total}`;
+    if (percentEl) percentEl.innerText = `${stats.percentage}%`;
+    if (barEl) barEl.style.width = `${stats.percentage}%`;
+  }
+
+  markVisibleWordsMemorized(status) {
+    const words = this.getFilteredKosakataWords();
+    words.forEach((w) => {
+      const key = `${w.bab}_${w.id}`;
+      if (status) {
+        this.memorizedWords[key] = true;
+      } else {
+        delete this.memorizedWords[key];
+      }
+    });
+    try {
+      localStorage.setItem("choukai_memorized_words", JSON.stringify(this.memorizedWords));
+    } catch (e) {}
+    this.refreshKosakataGrid();
+  }
+
+  renderKosakataCardsHTML(words) {
+    if (!words || words.length === 0) {
+      return `
+        <div class="col-span-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 text-center shadow-xs">
+          <div class="text-3xl mb-2">🔍</div>
+          <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">Tidak ada kosakata yang cocok</h4>
+          <p class="text-xs text-slate-500 mt-1">Coba sesuaikan kata kunci pencarian atau ubah filter kategori gramatikal.</p>
+          <button onclick="window.app.resetKosakataFilters()" class="mt-4 px-3 py-1.5 bg-sky-600 text-white rounded text-xs font-semibold hover:bg-sky-700 transition">
+            Reset Filter
+          </button>
+        </div>
+      `;
+    }
+
+    return words.map((w) => {
+      const key = `${w.bab}_${w.id}`;
+      const isMem = Boolean(this.memorizedWords[key]);
+      const badgeCls = this.getCategoryBadgeClass(w.kategori);
+
+      return `
+        <div id="word-card-${key}" class="border ${isMem ? "border-emerald-400 dark:border-emerald-600 bg-emerald-50/30 dark:bg-emerald-950/20" : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"} rounded-xl p-3.5 flex flex-col justify-between transition-all duration-150 hover:shadow-md hover:border-sky-400">
+          <div>
+            <!-- Header Tag & Checkbox -->
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-1.5">
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold font-mono bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                  Bab ${String(w.bab).padStart(2, '0')} #${w.id}
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeCls}">
+                  ${w.kategori}
+                </span>
+              </div>
+              <button id="word-check-${key}" onclick="window.app.toggleWordMemorized('${key}')" class="px-2 py-0.5 rounded text-xs font-bold flex items-center gap-1 transition ${
+                isMem
+                  ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+              }" title="Tandai sudah dihafal atau belum">
+                ${isMem
+                  ? `<svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Dihafal`
+                  : `<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/></svg> Belum`
+                }
+              </button>
+            </div>
+
+            <!-- Kanji / Japanese Word -->
+            <div class="flex items-start justify-between gap-2 mt-1">
+              <h3 class="font-jp font-bold text-lg text-slate-900 dark:text-slate-100 tracking-wide leading-tight">
+                ${w.kanji || w.raw}
+              </h3>
+              <button onclick="window.app.playWordAudio('${w.hiragana || w.raw}')" class="p-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800 transition shrink-0 shadow-2xs" title="Putar Pelafalan Suara Asli (TTS)">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+            </div>
+
+            <!-- Reading Section (Hiragana & Romaji) -->
+            <div class="mt-1.5">
+              ${this.hideReading
+                ? `<div class="reading-box cursor-pointer p-1.5 rounded bg-slate-100 dark:bg-slate-800/80 border border-dashed border-slate-300 dark:border-slate-700 text-xs transition select-none hover:border-sky-400" onclick="this.classList.toggle('reveal-hidden')">
+                     <span class="hidden-prompt text-[11px] text-slate-500 flex items-center gap-1 font-medium">
+                       <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                       Klik lihat cara baca
+                     </span>
+                     <div class="hidden-content font-jp text-xs font-semibold text-sky-700 dark:text-sky-300">
+                       ${w.hiragana} <span class="text-[11px] text-slate-400 font-mono font-normal">(${w.romaji})</span>
+                     </div>
+                   </div>`
+                : `<div class="font-jp text-xs font-semibold text-sky-700 dark:text-sky-300">
+                     ${w.hiragana} <span class="text-[11px] text-slate-400 font-mono font-normal">(${w.romaji})</span>
+                   </div>`
+              }
+            </div>
+
+            <!-- Meaning Section (Indonesian) -->
+            <div class="mt-2">
+              ${this.hideMeaning
+                ? `<div class="meaning-box cursor-pointer p-1.5 rounded bg-slate-100 dark:bg-slate-800/80 border border-dashed border-slate-300 dark:border-slate-700 text-xs transition select-none hover:border-sky-400" onclick="this.classList.toggle('reveal-hidden')">
+                     <span class="hidden-prompt text-[11px] text-slate-500 flex items-center gap-1 font-medium">
+                       <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
+                       Klik lihat arti
+                     </span>
+                     <div class="hidden-content text-xs font-semibold text-slate-800 dark:text-slate-200 leading-snug">
+                       ${w.arti}
+                     </div>
+                   </div>`
+                : `<div class="text-xs font-semibold text-slate-800 dark:text-slate-200 leading-snug">
+                     ${w.arti}
+                   </div>`
+              }
+            </div>
+          </div>
+
+          <!-- Example Context Sentence -->
+          ${w.contoh ? `
+            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-800/40 rounded-lg p-2 text-[11px]">
+              <div class="flex items-start justify-between gap-1.5 font-jp text-slate-700 dark:text-slate-300 leading-tight">
+                <span>${w.contoh}</span>
+                <button onclick="window.app.playWordAudio('${w.contoh}')" class="text-slate-400 hover:text-sky-600 transition shrink-0 p-0.5" title="Putar audio contoh">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+              ${w.contoh_arti ? `<div class="text-[10px] text-slate-500 mt-1 italic">${w.contoh_arti}</div>` : ""}
+            </div>
+          ` : ""}
+        </div>
+      `;
+    }).join("");
+  }
+
+  renderKosakataHTML() {
+    const isAll = this.kosakataBab === "all";
+    const bInt = parseInt(this.kosakataBab, 10);
+    const chData = !isAll && typeof KOSAKATA_DATA !== "undefined" ? KOSAKATA_DATA[bInt] : null;
+    const stats = this.getMemorizedStats();
+    const words = this.getFilteredKosakataWords();
+
+    const pdfBabUrl = this.pdfUrl(
+      isAll ? "assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf" : `assets/pdf/Daftar Kosakata Bab ${this.kosakataBab}.pdf`
+    );
+    const pdfBundleUrl = this.pdfUrl("assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf");
+
+    // Build Chapter options
+    let babOptionsHTML = `<option value="all" ${isAll ? "selected" : ""}>Semua Bab (Bab 01 s.d. 25 — 876 Kosakata)</option>`;
+    for (let i = 1; i <= 25; i++) {
+      const bStr = String(i).padStart(2, "0");
+      const d = typeof KOSAKATA_DATA !== "undefined" ? KOSAKATA_DATA[i] : null;
+      const count = d ? d.total_words : 0;
+      const title = d ? d.title_id : `Bab ${bStr}`;
+      babOptionsHTML += `<option value="${bStr}" ${this.kosakataBab === bStr ? "selected" : ""}>Bab ${bStr}: ${title} (${count} kata)</option>`;
+    }
+
+    // Categories list
+    const categories = [
+      "all",
+      "Kata Benda",
+      "Kata Kerja",
+      "Kata Sifat",
+      "Istilah Industri / K3",
+      "Ungkapan & Salam",
+      "Kata Ganti",
+      "Kata Ganti Tunjuk",
+      "Kata Ganti Tempat",
+      "Kata Tanya",
+      "Kata Keterangan",
+      "Kata Sambung",
+      "Kata Bantu Bilangan",
+      "Keterangan / Partikel"
+    ];
+
+    let catOptionsHTML = categories.map((cat) => {
+      const label = cat === "all" ? "Semua Kategori Gramatikal" : cat;
+      return `<option value="${cat}" ${this.kosakataFilter === cat ? "selected" : ""}>${label}</option>`;
+    }).join("");
+
+    return `
+      <div class="max-w-6xl mx-auto px-4 py-6">
+        <!-- Top Navigation & Breadcrumb -->
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="flex items-center gap-2">
+            <button onclick="window.app.goToDashboard()" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold flex items-center gap-1 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+              Kembali ke Dashboard
+            </button>
+            <span class="text-slate-300 dark:text-slate-700">/</span>
+            <span class="text-xs font-bold text-slate-500 font-jp">単語帳 (Tango-chou)</span>
+          </div>
+
+          <!-- PDF Download Action Buttons -->
+          <div class="flex items-center gap-2">
+            <a id="btn-download-bab-pdf" href="${pdfBabUrl}" target="_blank" class="px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs" title="Unduh Lembar Setoran Hafalan Kosakata Bab ${isAll ? 'Lengkap' : this.kosakataBab} PDF Siap Cetak">
+              <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+              <span>${isAll ? "PDF Lengkap (57 Hal)" : `PDF Bab ${this.kosakataBab}`}</span>
+            </a>
+            <a href="${pdfBundleUrl}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Unduh Lembar Hafalan Bundle Lengkap Bab 01 s.d. 25 (57 Halaman)">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>Bundle Lengkap (57 Hal)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Banner Card -->
+        <div class="bg-gradient-to-r from-emerald-900 to-slate-900 rounded-xl p-5 text-white mb-6 shadow-md border border-slate-800">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 rounded text-xs font-semibold uppercase tracking-wider font-jp">
+                  IMM JAPAN テキスト 語彙集
+                </span>
+                <span class="text-xs text-slate-300">876 Kosakata Resmi</span>
+              </div>
+              <h1 class="text-lg md:text-xl font-black font-jp mt-1.5 tracking-tight">
+                ${isAll ? "単語帳 ｜ Seluruh Kosakata Bab 01 s.d. Bab 25" : (chData ? chData.title_jp : `Bab ${this.kosakataBab}`)}
+              </h1>
+              <p class="text-xs text-slate-300 mt-1 max-w-2xl">
+                ${isAll ? "Modul hafalan kosakata lengkap untuk persiapan setoran berkala siswa magang LPK & evaluasi Tokutei Ginou SSW." : (chData ? chData.title_id : "")}
+              </p>
+            </div>
+
+            <!-- Stats & Progress -->
+            <div class="bg-slate-800/90 border border-slate-700/80 rounded-lg p-3 shrink-0 flex flex-col justify-center min-w-[200px]">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-slate-400 font-medium">Progres Hafalan:</span>
+                <span id="kosakata-stats-count" class="font-bold font-mono text-emerald-300">${stats.memorized} / ${stats.total}</span>
+              </div>
+              <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                <div id="kosakata-stats-bar" class="bg-emerald-500 h-full transition-all duration-300" style="width: ${stats.percentage}%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-slate-400 mt-1">
+                <span>Dikuasai</span>
+                <span id="kosakata-stats-percent" class="font-bold text-white">${stats.percentage}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Control Toolbar -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 mb-6 shadow-sm space-y-3">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <!-- Chapter Selector -->
+            <div class="md:col-span-4">
+              <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Pilih Bab:</label>
+              <select id="kosakata-bab-select" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500">
+                ${babOptionsHTML}
+              </select>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="md:col-span-4">
+              <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Kategori Gramatikal:</label>
+              <select id="kosakata-cat-select" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500">
+                ${catOptionsHTML}
+              </select>
+            </div>
+
+            <!-- Instant Search Box -->
+            <div class="md:col-span-4">
+              <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Pencarian Cepat:</label>
+              <div class="relative">
+                <input id="kosakata-search-input" type="text" placeholder="Cari Kanji, Hiragana, Romaji, Arti..." value="${this.kosakataSearch}" class="w-full pl-8 pr-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500">
+                <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Toolbar (Toggles & Batch Actions) -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-slate-500 text-[11px] font-medium">Mode Uji Hafalan (Flashcard):</span>
+              <button id="toggle-hide-reading" class="px-2.5 py-1 rounded-md border text-xs font-semibold transition flex items-center gap-1 ${
+                this.hideReading
+                  ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-700"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-200"
+              }">
+                <span>${this.hideReading ? "🙈 Cara Baca Tersembunyi" : "👁️ Cara Baca Terlihat"}</span>
+              </button>
+              <button id="toggle-hide-meaning" class="px-2.5 py-1 rounded-md border text-xs font-semibold transition flex items-center gap-1 ${
+                this.hideMeaning
+                  ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-700"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-200"
+              }">
+                <span>${this.hideMeaning ? "🙈 Arti Tersembunyi" : "👁️ Arti Terlihat"}</span>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button onclick="window.app.markVisibleWordsMemorized(true)" class="px-2.5 py-1 text-emerald-700 dark:text-emerald-400 hover:underline text-xs font-semibold">
+                ✓ Tandai Semua Selesai
+              </button>
+              <span class="text-slate-300 dark:text-slate-700">&bull;</span>
+              <button onclick="window.app.markVisibleWordsMemorized(false)" class="px-2.5 py-1 text-slate-500 hover:underline text-xs font-semibold">
+                Reset Tanda Bab
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Word List Counter & Status -->
+        <div class="flex items-center justify-between mb-3 text-xs text-slate-500">
+          <div>
+            Menampilkan <strong id="kosakata-counter" class="text-slate-800 dark:text-slate-200">${words.length}</strong> butir kosakata
+          </div>
+          <div class="text-[11px] italic">
+            Tips: Gunakan tombol 🔊 untuk mendengarkan pelafalan penutur asli Jepang.
+          </div>
+        </div>
+
+        <!-- Cards Grid Container -->
+        <div id="kosakata-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3.5">
+          ${this.renderKosakataCardsHTML(words)}
+        </div>
+      </div>
+    `;
+  }
+
+  bindKosakataEvents() {
+    const babSelect = document.getElementById("kosakata-bab-select");
+    const catSelect = document.getElementById("kosakata-cat-select");
+    const searchInput = document.getElementById("kosakata-search-input");
+    const toggleReading = document.getElementById("toggle-hide-reading");
+    const toggleMeaning = document.getElementById("toggle-hide-meaning");
+
+    if (babSelect) {
+      babSelect.addEventListener("change", (e) => {
+        this.kosakataBab = e.target.value;
+        try {
+          history.replaceState(null, "", `#kosakata-${this.kosakataBab}`);
+        } catch (err) {}
+        this.render();
+      });
+    }
+
+    if (catSelect) {
+      catSelect.addEventListener("change", (e) => {
+        this.kosakataFilter = e.target.value;
+        this.refreshKosakataGrid();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        this.kosakataSearch = e.target.value;
+        this.refreshKosakataGrid();
+      });
+    }
+
+    if (toggleReading) {
+      toggleReading.addEventListener("click", () => {
+        this.hideReading = !this.hideReading;
+        this.render();
+      });
+    }
+
+    if (toggleMeaning) {
+      toggleMeaning.addEventListener("click", () => {
+        this.hideMeaning = !this.hideMeaning;
+        this.render();
+      });
+    }
+  }
+
+  refreshKosakataGrid() {
+    const grid = document.getElementById("kosakata-grid");
+    const counter = document.getElementById("kosakata-counter");
+    const words = this.getFilteredKosakataWords();
+    if (grid) grid.innerHTML = this.renderKosakataCardsHTML(words);
+    if (counter) counter.innerText = words.length;
+    this.updateKosakataStatsUI();
+  }
+
+  resetKosakataFilters() {
+    this.kosakataFilter = "all";
+    this.kosakataSearch = "";
+    this.render();
   }
 
   // MODAL RENDERER
