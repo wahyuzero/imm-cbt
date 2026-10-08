@@ -10521,7 +10521,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Predikat kesukaan (辛い料理が好きです), alasan menggunakan ~から (仕事がありますから), adverbia derajat (全然辛くない = sama sekali tidak pedas; 少しだけ辛い = hanya sedikit pedas)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q1.webp?v=4"
+        "image": "assets/bab_09/q1.webp?v=18"
     },
     {
         "id": 27,
@@ -10596,7 +10596,7 @@ const BAB_09_DATA = {
             "grammarRule": "Pola Bab 9: Predikat kemahiran (全然できません / 少しできます), kepemilikan (ギターがありません / マイクがあります), kesukaan (歌が大好きです)."
         },
         "session": "choukai",
-        "image": "assets/bab_09/q2.webp?v=5"
+        "image": "assets/bab_09/q2.webp?v=18"
     },
     {
         "id": 28,
