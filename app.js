@@ -39,7 +39,7 @@ class ChoukaiApp {
 
   pdfUrl(url) {
     if (!url) return "";
-    return url.includes("?") ? url : `${url}?v=27`;
+    return url.includes("?") ? url : `${url}?v=28`;
   }
 
   init() {
