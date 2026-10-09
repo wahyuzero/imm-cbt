@@ -1060,11 +1060,11 @@ class ChoukaiApp {
           <div class="flex flex-wrap items-center gap-2">
             <button onclick="window.app.goToKosakata('01')" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Buka Modul Hafalan Kosakata Interaktif">
               <span class="font-jp">語</span>
-              Hafalan Kosakata (876 Kata)
+              Hafalan Kosakata (1.500 Kata)
             </button>
-            <a href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold hover:bg-emerald-100 transition flex items-center gap-1 shadow-sm" title="Unduh Lembar Setoran Lengkap Bab 01-25 (57 Halaman)">
+            <a href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold hover:bg-emerald-100 transition flex items-center gap-1 shadow-sm" title="Unduh Lembar Setoran Lengkap Bab 01-25 (76 Halaman)">
               <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Bundle Kosakata (57 Hal)
+              Bundle Kosakata (76 Hal)
             </a>
             <a href="${this.pdfUrl(BAB_08_DATA.pdfReadingSoalUrl || 'assets/pdf/Salinan Soal Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
               <svg class="w-3.5 h-3.5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
@@ -1708,11 +1708,15 @@ class ChoukaiApp {
       case "Istilah Industri / K3":
         return "bg-rose-100 text-rose-800 dark:bg-rose-950/80 dark:text-rose-300 border-rose-200 dark:border-rose-800";
       case "Ungkapan & Salam":
+      case "Ungkapan / Salam":
         return "bg-purple-100 text-purple-800 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800";
       case "Kata Ganti":
       case "Kata Ganti Tunjuk":
       case "Kata Ganti Tempat":
         return "bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800";
+      case "Bilangan":
+      case "Kata Bantu Bilangan":
+        return "bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 border-amber-200 dark:border-amber-800";
       case "Kata Tanya":
         return "bg-indigo-100 text-indigo-800 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800";
       case "Kata Benda":
@@ -1739,7 +1743,11 @@ class ChoukaiApp {
     }
 
     if (this.kosakataFilter !== "all") {
-      list = list.filter((w) => w.kategori === this.kosakataFilter);
+      if (this.kosakataFilter === "Ungkapan / Salam" || this.kosakataFilter === "Ungkapan & Salam") {
+        list = list.filter((w) => w.kategori === "Ungkapan / Salam" || w.kategori === "Ungkapan & Salam");
+      } else {
+        list = list.filter((w) => w.kategori === this.kosakataFilter);
+      }
     }
 
     if (this.kosakataSearch && this.kosakataSearch.trim() !== "") {
@@ -1933,8 +1941,13 @@ class ChoukaiApp {
     );
     const pdfBundleUrl = this.pdfUrl("assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf");
 
+    // Total words count
+    const totalAllWords = typeof KOSAKATA_DATA !== "undefined"
+      ? Object.values(KOSAKATA_DATA).reduce((sum, ch) => sum + (ch.words ? ch.words.length : 0), 0)
+      : 1500;
+
     // Build Chapter options
-    let babOptionsHTML = `<option value="all" ${isAll ? "selected" : ""}>Semua Bab (Bab 01 s.d. 25 — 876 Kosakata)</option>`;
+    let babOptionsHTML = `<option value="all" ${isAll ? "selected" : ""}>Semua Bab (Bab 01 s.d. 25 — ${totalAllWords} Kosakata)</option>`;
     for (let i = 1; i <= 25; i++) {
       const bStr = String(i).padStart(2, "0");
       const d = typeof KOSAKATA_DATA !== "undefined" ? KOSAKATA_DATA[i] : null;
@@ -1950,7 +1963,7 @@ class ChoukaiApp {
       "Kata Kerja",
       "Kata Sifat",
       "Istilah Industri / K3",
-      "Ungkapan & Salam",
+      "Ungkapan / Salam",
       "Kata Ganti",
       "Kata Ganti Tunjuk",
       "Kata Ganti Tempat",
@@ -1958,6 +1971,8 @@ class ChoukaiApp {
       "Kata Keterangan",
       "Kata Sambung",
       "Kata Bantu Bilangan",
+      "Bilangan",
+      "Kata Penjelas",
       "Keterangan / Partikel"
     ];
 
@@ -1983,11 +1998,11 @@ class ChoukaiApp {
           <div class="flex items-center gap-2">
             <a id="btn-download-bab-pdf" href="${pdfBabUrl}" target="_blank" class="px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs" title="Unduh Lembar Setoran Hafalan Kosakata Bab ${isAll ? 'Lengkap' : this.kosakataBab} PDF Siap Cetak">
               <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              <span>${isAll ? "PDF Lengkap (57 Hal)" : `PDF Bab ${this.kosakataBab}`}</span>
+              <span>${isAll ? "PDF Lengkap (76 Hal)" : `PDF Bab ${this.kosakataBab}`}</span>
             </a>
-            <a href="${pdfBundleUrl}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Unduh Lembar Hafalan Bundle Lengkap Bab 01 s.d. 25 (57 Halaman)">
+            <a href="${pdfBundleUrl}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Unduh Lembar Hafalan Bundle Lengkap Bab 01 s.d. 25 (76 Halaman)">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span>Bundle Lengkap (57 Hal)</span>
+              <span>Bundle Lengkap (76 Hal)</span>
             </a>
           </div>
         </div>
@@ -2000,7 +2015,7 @@ class ChoukaiApp {
                 <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 rounded text-xs font-semibold uppercase tracking-wider font-jp">
                   IMM JAPAN テキスト 語彙集
                 </span>
-                <span class="text-xs text-slate-300">876 Kosakata Resmi</span>
+                <span class="text-xs text-slate-300">${totalAllWords} Kosakata Resmi</span>
               </div>
               <h1 class="text-lg md:text-xl font-black font-jp mt-1.5 tracking-tight">
                 ${isAll ? "単語帳 ｜ Seluruh Kosakata Bab 01 s.d. Bab 25" : (chData ? chData.title_jp : `Bab ${this.kosakataBab}`)}
