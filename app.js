@@ -27,6 +27,8 @@ class ChoukaiApp {
     this.audio = new Audio();
     this.audio.defaultPlaybackRate = 0.8;
     this.audio.preservesPitch = true;
+    if ("webkitPreservesPitch" in this.audio) this.audio.webkitPreservesPitch = true;
+    if ("mozPreservesPitch" in this.audio) this.audio.mozPreservesPitch = true;
     this.isPlaying = false;
     this.playbackRate = 1.0; // Dilabeli 1.0x (Normal/Standar), memainkan audio pada tempo 0.8x nyaman
     this.defaultTempo = 0.8;
@@ -51,7 +53,7 @@ class ChoukaiApp {
   pdfUrl(url) {
     if (!url) return "";
     const clean = encodeURI(url);
-    return clean.includes("?") ? clean : `${clean}?v=42`;
+    return clean.includes("?") ? clean : `${clean}?v=43`;
   }
 
   init() {
@@ -296,6 +298,7 @@ class ChoukaiApp {
   setupAudioListeners() {
     this.audio.addEventListener("timeupdate", () => this.updateAudioProgress());
     this.audio.addEventListener("loadedmetadata", () => {
+      this.applyAudioRateAndPitch();
       if (this.pendingSeek !== null && this.audio.duration && !isNaN(this.audio.duration)) {
         this.seekAudio(this.pendingSeek);
         this.pendingSeek = null;
@@ -310,10 +313,7 @@ class ChoukaiApp {
     });
     this.audio.addEventListener("play", () => {
       this.isPlaying = true;
-      const effectiveRate = this.getEffectivePlaybackRate();
-      if (this.audio.playbackRate !== effectiveRate) {
-        this.audio.playbackRate = effectiveRate;
-      }
+      this.applyAudioRateAndPitch();
       this.renderAudioButtons();
     });
     this.audio.addEventListener("pause", () => {
@@ -346,10 +346,7 @@ class ChoukaiApp {
       if (!this.audio.src || !this.audio.src.endsWith(targetSrc)) {
         this.audio.src = targetSrc;
         this.audio.currentTime = 0;
-        const effectiveRate = this.getEffectivePlaybackRate();
-        this.audio.defaultPlaybackRate = effectiveRate;
-        this.audio.playbackRate = effectiveRate;
-        this.audio.preservesPitch = true;
+        this.applyAudioRateAndPitch();
       }
     } else {
       this.pauseAudio();
@@ -366,10 +363,7 @@ class ChoukaiApp {
     if (targetSrc && (!this.audio.src || !this.audio.src.endsWith(targetSrc))) {
       this.audio.src = targetSrc;
     }
-    const effectiveRate = this.getEffectivePlaybackRate();
-    this.audio.defaultPlaybackRate = effectiveRate;
-    this.audio.playbackRate = effectiveRate;
-    this.audio.preservesPitch = true;
+    this.applyAudioRateAndPitch();
     this.isPlaying = true;
     this.renderAudioButtons();
     this.audio.play().catch((e) => {
@@ -403,10 +397,7 @@ class ChoukaiApp {
     this.cancelAutoNext();
     this.audio.src = q.audioSrc;
     this.audio.currentTime = 0;
-    const effectiveRate = this.getEffectivePlaybackRate();
-    this.audio.defaultPlaybackRate = effectiveRate;
-    this.audio.playbackRate = effectiveRate;
-    this.audio.preservesPitch = true;
+    this.applyAudioRateAndPitch();
     this.isPlaying = true;
     this.renderAudioButtons();
     this.audio.play().catch((e) => {
@@ -427,10 +418,7 @@ class ChoukaiApp {
       this.cancelAutoNext();
       this.audio.src = q.audioSrc;
       this.audio.currentTime = 0;
-      const effectiveRate = this.getEffectivePlaybackRate();
-      this.audio.defaultPlaybackRate = effectiveRate;
-      this.audio.playbackRate = effectiveRate;
-      this.audio.preservesPitch = true;
+      this.applyAudioRateAndPitch();
       this.isPlaying = true;
       this.updateResultAudioBtn(qId, true);
       this.audio.play().catch((e) => {
@@ -487,24 +475,44 @@ class ChoukaiApp {
       0.8: 0.65,  // 0.8x (Santai / Lambat) -> dimainkan pada tempo 0.65x
       1.2: 1.0,   // 1.2x (Cepat / Native Asli) -> dimainkan pada tempo 1.0x
     };
-    if (typeof rate === "number" && map[rate] !== undefined) {
-      return map[rate];
+    const numRate = parseFloat(rate);
+    if (!isNaN(numRate)) {
+      const rounded = Math.round(numRate * 10) / 10;
+      if (map[rounded] !== undefined) {
+        return map[rounded];
+      }
+      return rounded * 0.8;
     }
-    return typeof rate === "number" ? rate * 0.8 : 0.8;
+    return 0.8;
   }
 
-  setPlaybackRate(rate) {
-    this.playbackRate = rate;
-    const effectiveRate = this.getEffectivePlaybackRate(rate);
+  applyAudioRateAndPitch() {
+    const effectiveRate = this.getEffectivePlaybackRate();
     this.audio.defaultPlaybackRate = effectiveRate;
     this.audio.playbackRate = effectiveRate;
     this.audio.preservesPitch = true;
+    if ("webkitPreservesPitch" in this.audio) this.audio.webkitPreservesPitch = true;
+    if ("mozPreservesPitch" in this.audio) this.audio.mozPreservesPitch = true;
+  }
+
+  setPlaybackRate(rate) {
+    this.playbackRate = typeof rate === "string" ? parseFloat(rate) : rate;
+    this.applyAudioRateAndPitch();
     this.renderAudioSpeedBadge();
   }
 
   cyclePlaybackRate() {
-    const nextRate = this.playbackRate === 1.0 ? 0.8 : (this.playbackRate === 0.8 ? 1.2 : 1.0);
+    const cur = Math.round(Number(this.playbackRate) * 10) / 10;
+    const nextRate = cur === 1.0 ? 0.8 : (cur === 0.8 ? 1.2 : 1.0);
     this.setPlaybackRate(nextRate);
+  }
+
+  getAudioSpeedTitle(rate = this.playbackRate) {
+    const cur = Math.round(Number(rate) * 10) / 10;
+    const desc = cur === 1.0
+      ? "Tempo Standar 0.8x (Nyaman)"
+      : (cur === 0.8 ? "Tempo Santai 0.65x (Lebih Lambat)" : "Tempo Cepat 1.0x (Native Asli)");
+    return `Kecepatan Audio: ${cur.toFixed(1)}x (${desc})`;
   }
 
   formatTime(secs) {
@@ -553,15 +561,13 @@ class ChoukaiApp {
     const badge = document.getElementById("audio-speed-btn");
     if (badge) {
       badge.textContent = `${Number(this.playbackRate).toFixed(1)}x`;
-      const desc = this.playbackRate === 1.0
-        ? "Tempo Standar 0.8x (Nyaman)"
-        : (this.playbackRate === 0.8 ? "Tempo Santai 0.65x (Lebih Lambat)" : "Tempo Cepat 1.0x (Native Asli)");
-      badge.title = `Kecepatan Audio: ${Number(this.playbackRate).toFixed(1)}x (${desc})`;
+      badge.title = this.getAudioSpeedTitle();
     }
   }
 
   // Jeda antar-soal 5 detik otomatis untuk Choukai
   handleAudioEnded() {
+    if (this.view !== "exam") return;
     const q = this.getCurrentQuestion();
     if (!q || q.session !== "choukai") return;
     const nextIdx = this.currentQuestionIdx + 1;
@@ -1218,7 +1224,7 @@ class ChoukaiApp {
 
             <!-- Speed & Audio Badge -->
             <div class="flex items-center gap-2 shrink-0">
-              <button id="audio-speed-btn" onclick="window.app.cyclePlaybackRate();" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded text-xs font-mono font-bold transition" title="Kecepatan Audio: ${Number(this.playbackRate).toFixed(1)}x (Tempo Standar 0.8x)">
+              <button id="audio-speed-btn" onclick="window.app.cyclePlaybackRate();" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded text-xs font-mono font-bold transition" title="${this.getAudioSpeedTitle()}">
                 ${Number(this.playbackRate).toFixed(1)}x
               </button>
               <span class="text-[10px] text-slate-400 font-jp px-2 py-0.5 bg-slate-800/70 rounded flex items-center gap-1">
