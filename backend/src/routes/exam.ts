@@ -7,6 +7,7 @@ import {
   examSessions,
   examAnswers,
   systemSettings,
+  userChapterAccess,
 } from "../db/schema.js";
 import { eq, and, asc } from "drizzle-orm";
 import crypto from "crypto";
@@ -41,6 +42,27 @@ examRouter.post("/exam/start", authMiddleware, async (c) => {
 
     if (!chapter) {
       return c.json({ success: false, error: "Bab ujian tidak ditemukan." }, 404);
+    }
+
+    // 2b. Verify per-student granular chapter access permission
+    if (user.role !== "admin") {
+      const accessRecord = await db.query.userChapterAccess.findFirst({
+        where: and(
+          eq(userChapterAccess.userId, user.id),
+          eq(userChapterAccess.chapterNum, chapterNum)
+        ),
+      });
+
+      if (accessRecord && !accessRecord.isAllowed) {
+        return c.json(
+          {
+            success: false,
+            error: "Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas.",
+            userRestricted: true,
+          },
+          403
+        );
+      }
     }
 
     if (!chapter.isUnlocked && user.role !== "admin") {

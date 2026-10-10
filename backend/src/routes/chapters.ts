@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { db } from "../db/index.js";
-import { chapters, examSessions } from "../db/schema.js";
+import { chapters, examSessions, userChapterAccess } from "../db/schema.js";
 import { asc, eq, and, desc, or } from "drizzle-orm";
 import { auth } from "../lib/auth.js";
 
@@ -12,9 +12,10 @@ chaptersRouter.get("/chapters", async (c) => {
       orderBy: [asc(chapters.chapterNum)],
     });
 
-    // Check optional authenticated user to attach personal best scores
+    // Check optional authenticated user to attach personal best scores & per-student access restrictions
     const session = await auth.api.getSession({ headers: c.req.raw.headers });
     const userBestScores: Record<string, any> = {};
+    const userAccessMap = new Map<string, boolean>();
 
     if (session && session.user) {
       const userSessions = await db.query.examSessions.findMany({
@@ -36,12 +37,30 @@ chaptersRouter.get("/chapters", async (c) => {
           };
         }
       }
+
+      if (session.user.role !== "admin") {
+        const accessList = await db.query.userChapterAccess.findMany({
+          where: eq(userChapterAccess.userId, session.user.id),
+        });
+        for (const a of accessList) {
+          userAccessMap.set(a.chapterNum, a.isAllowed);
+        }
+      }
     }
 
-    const mapped = allChapters.map((ch) => ({
-      ...ch,
-      userScore: userBestScores[ch.chapterNum] || null,
-    }));
+    const mapped = allChapters.map((ch) => {
+      const isAllowedForUser = userAccessMap.has(ch.chapterNum)
+        ? userAccessMap.get(ch.chapterNum)!
+        : true;
+      const isUserRestricted = !isAllowedForUser;
+
+      return {
+        ...ch,
+        isUnlocked: isUserRestricted ? false : ch.isUnlocked,
+        userRestricted: isUserRestricted,
+        userScore: userBestScores[ch.chapterNum] || null,
+      };
+    });
 
     return c.json({ success: true, data: mapped });
   } catch (err: any) {
@@ -60,8 +79,31 @@ chaptersRouter.get("/chapters/:chapterNum", async (c) => {
       return c.json({ success: false, error: "Bab tidak ditemukan." }, 404);
     }
 
-    return c.json({ success: true, data: ch });
+    const session = await auth.api.getSession({ headers: c.req.raw.headers });
+    let isUserRestricted = false;
+
+    if (session && session.user && session.user.role !== "admin") {
+      const accessRecord = await db.query.userChapterAccess.findFirst({
+        where: and(
+          eq(userChapterAccess.userId, session.user.id),
+          eq(userChapterAccess.chapterNum, chapterNum)
+        ),
+      });
+      if (accessRecord && !accessRecord.isAllowed) {
+        isUserRestricted = true;
+      }
+    }
+
+    return c.json({
+      success: true,
+      data: {
+        ...ch,
+        isUnlocked: isUserRestricted ? false : ch.isUnlocked,
+        userRestricted: isUserRestricted,
+      },
+    });
   } catch (err: any) {
     return c.json({ success: false, error: err.message }, 500);
   }
 });
+

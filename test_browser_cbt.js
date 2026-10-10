@@ -12,7 +12,7 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=53`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=54`;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -793,7 +793,7 @@ async function runTests() {
       assert(qAudioRate === 0.8, `Bab ${bStr} audio plays at comfortable 0.8x tempo baseline`);
       assert(qPitch === true, `Bab ${bStr} audio pitch preservation is enabled`);
       const audioSrcInApp = await cdp.eval('window.app.audio.src');
-      assert(audioSrcInApp.includes('?v=53'), `Bab ${bStr} Q26 audio src includes cache buster ?v=53 (actual: ${audioSrcInApp})`);
+      assert(audioSrcInApp.includes('?v=54'), `Bab ${bStr} Q26 audio src includes cache buster ?v=54 (actual: ${audioSrcInApp})`);
 
       // 3. Complete all 33 questions and submit
       await cdp.eval(`(async () => {
@@ -967,8 +967,112 @@ async function runTests() {
     const reloginOk = await cdp.eval('window.app.isAuthenticated && window.app.view === "dashboard"');
     assert(reloginOk, 'Re-login round-trip successfully restores full dashboard access');
 
+    // TEST 27: Per-Student Granular Chapter Access Control (Sensei UI & Student Lockout)
+    console.log('\n--- TEST 27: Per-Student Granular Chapter Access Control (Sensei UI & Student Lockout) ---');
+    // 1. Switch to Sensei Admin
+    await cdp.eval('window.app.logout()');
+    await wait(200);
+    await cdp.eval('window.app.fillAndLogin("sensei.wahyu", "123456")');
+    await wait(300);
+    const isAdminNow = await cdp.eval('window.app.currentUser?.role === "admin"');
+    assert(isAdminNow, 'Sensei Admin logged in successfully');
+
+    // 2. Open Admin Panel -> Tab Manajemen Siswa
+    await cdp.eval('window.app.openAdminPanel("users")');
+    await wait(250);
+    const usersTabActive = await cdp.eval('window.app.activeModal === "admin_panel" && window.app.adminTab === "users"');
+    assert(usersTabActive, 'Admin Panel opened to Manajemen Siswa tab');
+
+    // 3. Verify [Akses Bab] button exists on student row
+    const hasAksesBabBtn = await cdp.eval('Boolean(document.querySelector("button[onclick*=\'openStudentChapterAccessModal\']"))');
+    assert(hasAksesBabBtn, 'Tombol [Akses Bab] is rendered on student rows');
+
+    // 4. Open modal dialog "Pengaturan Hak Akses Bab" for Ahmad Syahroni
+    await cdp.eval('window.app.openStudentChapterAccessModal("usr_ahmad", "Ahmad Syahroni")');
+    await wait(250);
+    const accessModalOpen = await cdp.eval('window.app.activeModal === "student_chapter_access"');
+    assert(accessModalOpen, 'Modal dialog Pengaturan Hak Akses Bab successfully opened');
+
+    const modalTitle = await cdp.eval('document.querySelector("#modal-container h3")?.innerText || ""');
+    assert(modalTitle.includes('Pengaturan Hak Akses Bab') && modalTitle.includes('Ahmad Syahroni'), 'Modal displays "Pengaturan Hak Akses Bab: Ahmad Syahroni"');
+
+    const toggleCh05Exists = await cdp.eval('Boolean(document.getElementById("access-toggle-05"))');
+    assert(toggleCh05Exists, 'Bab 05 toggle exists in modal grid');
+
+    // 5. Restrict Bab 05 for Ahmad: uncheck Bab 05 toggle and click Simpan
+    await cdp.eval(`
+      const cb05 = document.getElementById("access-toggle-05");
+      if (cb05) {
+        cb05.checked = false;
+        window.app.toggleStudentChapterAccess("05");
+      }
+      window.__savedAlert = null;
+      window.alert = function(msg) { window.__savedAlert = msg; };
+      window.app.saveStudentChapterAccess();
+    `);
+    await wait(300);
+    const saveAlertMsg = await cdp.eval('window.__savedAlert');
+    assert(Boolean(saveAlertMsg && saveAlertMsg.includes('berhasil disimpan')), 'Hak akses bab saved with success confirmation');
+
+    // 6. Log out Sensei and log in as Ahmad Syahroni
+    await cdp.eval('window.app.closeModal(); window.app.logout();');
+    await wait(200);
+    await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
+    await wait(300);
+    await cdp.eval('window.app.goToDashboard()');
+    await wait(200);
+
+    // 7. Verify Bab 05 displays badge '🔒 Dibatasi Pengawas' and tombol 'Mulai' is disabled
+    const b5DibatasiBadge = await cdp.eval(`(() => {
+      const btn = Array.from(document.querySelectorAll("button")).find(b => b.innerText.includes("Dibatasi Pengawas"));
+      return Boolean(btn && btn.disabled);
+    })()`);
+    assert(b5DibatasiBadge, 'Bab 05 card on student dashboard displays badge "🔒 Dibatasi Pengawas" and disabled button');
+
+    // 8. Attempting to start Bab 05 directly triggers restriction alert
+    await cdp.eval(`
+      window.__restrictAlert = null;
+      window.alert = function(msg) { window.__restrictAlert = msg; };
+      window.app.promptStartExam("05");
+    `);
+    const restrictAlert = await cdp.eval('window.__restrictAlert');
+    assert(Boolean(restrictAlert && restrictAlert.includes('Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas')), 'Direct promptStartExam on Bab 05 rejected with restriction alert');
+
+    // 9. Other student (narong.sakda) can still access Bab 05
+    await cdp.eval('window.app.logout();');
+    await wait(200);
+    await cdp.eval('window.app.fillAndLogin("narong.sakda", "123456")');
+    await wait(300);
+    await cdp.eval('window.app.goToDashboard()');
+    await wait(200);
+    const narongB5Restricted = await cdp.eval('Boolean(window.app.userRestrictedChapters["05"])');
+    assert(!narongB5Restricted, 'Other student (Narong Sakda) is NOT restricted from Bab 05');
+
+    // 10. Sensei restores Bab 05 access for Ahmad
+    await cdp.eval('window.app.logout();');
+    await wait(200);
+    await cdp.eval('window.app.fillAndLogin("sensei.wahyu", "123456")');
+    await wait(300);
+    await cdp.eval('window.app.openStudentChapterAccessModal("usr_ahmad", "Ahmad Syahroni")');
+    await wait(250);
+    await cdp.eval(`
+      window.app.setAllStudentChapterAccess(true);
+      window.app.saveStudentChapterAccess();
+    `);
+    await wait(250);
+
+    // 11. Ahmad logs back in, verifies Bab 05 is unlocked again
+    await cdp.eval('window.app.closeModal(); window.app.logout();');
+    await wait(200);
+    await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
+    await wait(300);
+    await cdp.eval('window.app.goToDashboard()');
+    await wait(200);
+    const b5UnlockedNow = await cdp.eval('!window.app.userRestrictedChapters["05"] && !document.body.innerText.includes("Dibatasi Pengawas")');
+    assert(b5UnlockedNow, 'Bab 05 access successfully restored and unlocked on Ahmad dashboard');
+
     console.log('\n================================================================');
-    console.log(' ALL 26 CBT BROWSER AUTOMATION TESTS PASSED WITH 100% SUCCESS!');
+    console.log(' ALL 27 CBT BROWSER AUTOMATION TESTS PASSED WITH 100% SUCCESS!');
     console.log('================================================================');
   } catch (err) {
     console.error('\n[FATAL ERROR] Test suite failed:', err.message);

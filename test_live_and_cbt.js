@@ -317,6 +317,149 @@ async function runApiVerification() {
   assert(ahmadRecord.totalExams >= 2, "Ahmad must have at least 2 completed exams (including terminated)");
   console.log(`[PASS] Ahmad Syahroni has ${ahmadRecord.totalExams} completed exams recorded in Manajemen Siswa`);
 
+  // TEST 17B: Per-Student Chapter Access Control (Sensei API & Server-Authoritative Lockout)
+  console.log("\n[TEST 17B] Per-Student Chapter Access Control (Sensei API & Server-Authoritative Lockout)");
+
+  // 1. Sensei retrieves chapter access for Ahmad
+  const ahmadAccessRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    headers: { Cookie: adminCookie },
+  });
+  assert.strictEqual(ahmadAccessRes.status, 200, "Sensei get chapter access returns 200");
+  const ahmadAccessJson = await ahmadAccessRes.json();
+  assert.strictEqual(ahmadAccessJson.success, true, "Success should be true");
+  const chaptersList = Array.isArray(ahmadAccessJson.data) ? ahmadAccessJson.data : ahmadAccessJson.chapters;
+  assert.strictEqual(chaptersList.length, 25, "Must return 25 chapters");
+
+  // 2. Sensei restricts Bab 05 specifically for Ahmad
+  const restrictRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ chapterNum: "05", isAllowed: false }),
+  });
+  assert.strictEqual(restrictRes.status, 200, "Sensei restrict chapter returns 200");
+  const restrictJson = await restrictRes.json();
+  assert.strictEqual(restrictJson.success, true, "Success should be true");
+
+  // 3. Ahmad checks GET /api/v1/chapters: Bab 05 must have isUnlocked: false and userRestricted: true
+  const ahmadChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  assert.strictEqual(ahmadChaptersRes.status, 200, "Chapters endpoint returns 200");
+  const ahmadChaptersJson = await ahmadChaptersRes.json();
+  const ahmadBab05 = ahmadChaptersJson.data.find((c) => c.chapterNum === "05");
+  assert(Boolean(ahmadBab05), "Bab 05 found in chapters");
+  assert.strictEqual(ahmadBab05.isUnlocked, false, "Bab 05 must be isUnlocked: false for restricted student");
+  assert.strictEqual(ahmadBab05.userRestricted, true, "Bab 05 must be userRestricted: true for restricted student");
+  console.log("[PASS] Bab 05 locked with userRestricted: true for Ahmad Syahroni");
+
+  // 4. Ahmad tries to start exam for Bab 05 (POST /api/v1/exam/start): Must return 403 Forbidden!
+  const ahmadStartB5Res = await fetch(`${BASE_URL}/api/v1/exam/start`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({ chapterNum: "05", mode: "renshuu" }),
+  });
+  assert.strictEqual(ahmadStartB5Res.status, 403, "Starting restricted chapter must return 403 Forbidden");
+  const ahmadStartB5Json = await ahmadStartB5Res.json();
+  assert(ahmadStartB5Json.error.includes("Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas"), "Error must specify chapter access restriction by pengawas");
+  console.log("[PASS] Server-authoritative rejection: POST /api/v1/exam/start Bab 05 returned 403 Forbidden");
+
+  // 5. Verify other student can still access Bab 05
+  const student2Username = "student.test.acc";
+  await fetch(`${BASE_URL}/api/v1/admin/users`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({
+      name: "Siswa Penguji 2",
+      username: student2Username,
+      pin: "123456",
+      className: "Kelas 24-B",
+      role: "student",
+    }),
+  });
+
+  const student2LoginRes = await fetch(`${BASE_URL}/api/auth/sign-in/username`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username: student2Username, password: "123456" }),
+  });
+  assert.strictEqual(student2LoginRes.status, 200, "Student 2 login succeeds");
+  const student2Cookie = student2LoginRes.headers.get("set-cookie") || "";
+
+  // Student 2 checks chapters: Bab 05 must be isUnlocked: true and userRestricted: false
+  const s2ChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: student2Cookie },
+  });
+  const s2ChaptersJson = await s2ChaptersRes.json();
+  const s2Bab05 = s2ChaptersJson.data.find((c) => c.chapterNum === "05");
+  assert.strictEqual(s2Bab05.isUnlocked, true, "Bab 05 must be unlocked for other student");
+  assert.strictEqual(s2Bab05.userRestricted, false, "Bab 05 must NOT be restricted for other student");
+
+  // Student 2 starts exam for Bab 05: 200 OK!
+  const s2StartRes = await fetch(`${BASE_URL}/api/v1/exam/start`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: student2Cookie,
+    },
+    body: JSON.stringify({ chapterNum: "05", mode: "renshuu" }),
+  });
+  assert.strictEqual(s2StartRes.status, 200, "Other student can start Bab 05 with 200 OK");
+  console.log("[PASS] Other student is NOT affected by per-student restriction and started Bab 05 successfully");
+
+  // Clean up student 2
+  const s2UsersRes = await fetch(`${BASE_URL}/api/v1/admin/users`, {
+    headers: { Cookie: adminCookie },
+  });
+  const s2UsersJson = await s2UsersRes.json();
+  const s2UserObj = s2UsersJson.data.find((u) => u.username === student2Username);
+  if (s2UserObj) {
+    await fetch(`${BASE_URL}/api/v1/admin/users/${s2UserObj.id}`, {
+      method: "DELETE",
+      headers: { Cookie: adminCookie },
+    });
+  }
+
+  // 6. Sensei restores access to Bab 05 for Ahmad
+  const restoreRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ chapterNum: "05", isAllowed: true }),
+  });
+  assert.strictEqual(restoreRes.status, 200, "Restore access returns 200");
+
+  // 7. Ahmad verifies Bab 05 is unlocked again
+  const ahmadRestoredChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  const ahmadRestoredChaptersJson = await ahmadRestoredChaptersRes.json();
+  const restoredBab05 = ahmadRestoredChaptersJson.data.find((c) => c.chapterNum === "05");
+  assert.strictEqual(restoredBab05.isUnlocked, true, "Bab 05 must be unlocked again after restore");
+  assert.strictEqual(restoredBab05.userRestricted, false, "Bab 05 must not be userRestricted after restore");
+
+  // Ahmad can start Bab 05 again
+  const ahmadRestartB5Res = await fetch(`${BASE_URL}/api/v1/exam/start`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({ chapterNum: "05", mode: "renshuu" }),
+  });
+  assert.strictEqual(ahmadRestartB5Res.status, 200, "Ahmad can start Bab 05 again after access restored");
+  console.log("[PASS] Access restoration verified: Ahmad Syahroni can access and start Bab 05 again");
+
   // TEST 18: Student Logout & Backend Session Revocation (POST /api/auth/sign-out)
   console.log("\n[TEST 18] Student Logout & Backend Session Revocation");
   const logoutRes = await fetch(`${BASE_URL}/api/auth/sign-out`, {

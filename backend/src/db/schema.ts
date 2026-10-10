@@ -177,3 +177,16 @@ export const userVocabularyProgress = pgTable("user_vocabulary_progress", {
   // UNIQUE INDEX untuk toggle checklist hafalan kata:
   userVocabUniqueIdx: uniqueIndex("user_vocab_unique_idx").on(table.userId, table.vocabularyId),
 }));
+
+// =========================================================================
+// 7. USER CHAPTER ACCESS (PEMBATASAN AKSES BAB PER-SISWA)
+// =========================================================================
+export const userChapterAccess = pgTable("user_chapter_access", {
+  id: text("id").primaryKey(),                       // e.g. "uca_${userId}_${chapterNum}"
+  userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+  chapterNum: text("chapter_num").notNull().references(() => chapters.chapterNum, { onDelete: "cascade" }),
+  isAllowed: boolean("is_allowed").default(true).notNull(), // true = dibolehkan, false = dibatasi khusus
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => ({
+  userChapterAccessUniqueIdx: uniqueIndex("user_chapter_access_user_ch_idx").on(table.userId, table.chapterNum),
+}));
