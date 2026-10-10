@@ -137,6 +137,18 @@ async function runTests() {
       await wait(250);
     }
 
+    async function performLogin(username, pin) {
+      await cdp.eval(`window.app.fillAndLogin(${JSON.stringify(username)}, ${JSON.stringify(pin)})`);
+      let isAuth = false;
+      for (let i = 0; i < 40; i++) {
+        isAuth = await cdp.eval('Boolean(window.app && window.app.isAuthenticated)');
+        if (isAuth) break;
+        await wait(150);
+      }
+      assert(isAuth, `Login succeeded for user: ${username}`);
+    }
+
+  if (!process.env.TEST_ONLY || process.env.TEST_ONLY !== '27') {
     // TEST 1: Strict Auth Gate on Initial Launch
     console.log('\n--- TEST 1: Strict Auth Gate on Initial Launch & Route Interception ---');
     const isGateView = await cdp.eval('window.app ? window.app.view === "auth_gate" : false');
@@ -186,8 +198,8 @@ async function runTests() {
 
     // TEST 2: Student Login via Auth Gate & Dashboard Unlock
     console.log('\n--- TEST 2: Student Login via Auth Gate & Profile Persistence ---');
-    await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
-    await wait(350);
+    await performLogin("ahmad.syahroni", "123456");
+    await wait(200);
 
     const isAuthNow = await cdp.eval('window.app.isAuthenticated');
     assert(isAuthNow, 'User successfully authenticated via Strict Auth Gate');
@@ -962,18 +974,17 @@ async function runTests() {
     assert(headerHiddenAfterLogout, 'Navigation header re-hidden upon logout');
 
     // Re-login to verify round-trip
-    await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
-    await wait(300);
+    await performLogin("ahmad.syahroni", "123456");
     const reloginOk = await cdp.eval('window.app.isAuthenticated && window.app.view === "dashboard"');
     assert(reloginOk, 'Re-login round-trip successfully restores full dashboard access');
+  }
 
     // TEST 27: Per-Student Granular Chapter Access Control (Sensei UI & Student Lockout)
     console.log('\n--- TEST 27: Per-Student Granular Chapter Access Control (Sensei UI & Student Lockout) ---');
     // 1. Switch to Sensei Admin
     await cdp.eval('window.app.logout()');
     await wait(200);
-    await cdp.eval('window.app.fillAndLogin("sensei.wahyu", "123456")');
-    await wait(300);
+    await performLogin("sensei.wahyu", "123456");
     const isAdminNow = await cdp.eval('window.app.currentUser?.role === "admin"');
     assert(isAdminNow, 'Sensei Admin logged in successfully');
 
@@ -1034,8 +1045,7 @@ async function runTests() {
     // 6. Log out Sensei and log in as Ahmad Syahroni
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
-    await wait(400);
+    await performLogin("ahmad.syahroni", "123456");
     await cdp.eval('window.app.goToDashboard()');
     await wait(300);
 
@@ -1058,8 +1068,7 @@ async function runTests() {
     // 9. Other student (narong.sakda) can still access Bab 05
     await cdp.eval('window.app.logout();');
     await wait(200);
-    await cdp.eval('window.app.fillAndLogin("narong.sakda", "123456")');
-    await wait(400);
+    await performLogin("narong.sakda", "123456");
     await cdp.eval('window.app.goToDashboard()');
     await wait(300);
     const narongB5Restricted = await cdp.eval('Boolean(window.app.userRestrictedChapters["05"])');
@@ -1068,8 +1077,7 @@ async function runTests() {
     // 10. Sensei restores Bab 05 access for Ahmad
     await cdp.eval('window.app.logout();');
     await wait(200);
-    await cdp.eval('window.app.fillAndLogin("sensei.wahyu", "123456")');
-    await wait(400);
+    await performLogin("sensei.wahyu", "123456");
     await cdp.eval('window.app.openAdminPanel("users")');
     for (let i = 0; i < 30; i++) {
       const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
@@ -1082,26 +1090,36 @@ async function runTests() {
       if (ready) break;
       await wait(150);
     }
-    await cdp.eval(`(async () => {
-      window.app.setAllStudentChapterAccess(true);
-      window.__savedAlert = null;
-      window.alert = function(msg) { window.__savedAlert = msg; };
-      await window.app.saveStudentChapterAccess();
+    const saveResult = await cdp.eval(`(async () => {
+      try {
+        window.app.setAllStudentChapterAccess(true);
+        window.__savedAlert = null;
+        window.alert = function(msg) { window.__savedAlert = msg; };
+        await window.app.saveStudentChapterAccess();
+        return { alert: window.__savedAlert, student: window.app.selectedStudentForAccess, error: null };
+      } catch (err) {
+        return { alert: window.__savedAlert, student: window.app.selectedStudentForAccess, error: err.message };
+      }
     })()`);
-    for (let i = 0; i < 25; i++) {
-      const restoreAlert = await cdp.eval('window.__savedAlert');
+    let restoreAlert = saveResult.alert;
+    for (let i = 0; i < 30; i++) {
       if (restoreAlert) break;
+      restoreAlert = await cdp.eval('window.__savedAlert');
       await wait(150);
     }
+    assert(Boolean(restoreAlert && restoreAlert.includes('berhasil disimpan')), 'Hak akses bab restored with success confirmation');
 
     // 11. Ahmad logs back in, verifies Bab 05 is unlocked again
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
-    await wait(400);
+    await performLogin("ahmad.syahroni", "123456");
     await cdp.eval('window.app.goToDashboard()');
-    await wait(300);
-    const b5UnlockedNow = await cdp.eval('!window.app.userRestrictedChapters["05"] && !document.body.innerText.includes("Dibatasi Pengawas")');
+    let b5UnlockedNow = false;
+    for (let i = 0; i < 30; i++) {
+      b5UnlockedNow = await cdp.eval('Boolean(window.app && !window.app.userRestrictedChapters["05"] && !document.getElementById("app")?.innerText.includes("Dibatasi Pengawas"))');
+      if (b5UnlockedNow) break;
+      await wait(150);
+    }
     assert(b5UnlockedNow, 'Bab 05 access successfully restored and unlocked on Ahmad dashboard');
 
     console.log('\n================================================================');
