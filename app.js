@@ -67,7 +67,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "49";
+    return "50";
   }
 
   audioUrl(url) {
@@ -837,7 +837,9 @@ class ChoukaiApp {
 
     // Start server session if authenticated on http
     if (this.currentUser && window.location.protocol.startsWith("http")) {
-      fetch("/api/v1/exam/start", {
+      this.currentExamSession = null;
+      this.pendingSavePromises = [];
+      this.startExamPromise = fetch("/api/v1/exam/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chapterNum: chNum, mode }),
@@ -846,14 +848,22 @@ class ChoukaiApp {
         .then((json) => {
           if (json.success && json.data?.session) {
             this.currentExamSession = json.data.session;
+            return this.currentExamSession;
           } else if (!json.success && this.currentUser.role !== "admin") {
             alert(json.error || "Gagal memulai sesi ujian di server.");
             this.goToDashboard();
+            return null;
           }
         })
-        .catch((e) => console.warn("Server exam session init warning:", e));
+        .catch((e) => {
+          console.warn("Server exam session init warning:", e);
+          return null;
+        });
+      return this.startExamPromise;
     } else {
       this.currentExamSession = null;
+      this.startExamPromise = null;
+      this.pendingSavePromises = [];
     }
   }
 
@@ -894,28 +904,41 @@ class ChoukaiApp {
     this.renderQuestionNav();
 
     // Real-time server auto-save
-    if (this.currentExamSession && window.location.protocol.startsWith("http")) {
+    if (window.location.protocol.startsWith("http") && this.currentUser) {
       const chNum = String(this.currentChapter?.chapter || "08").padStart(2, "0");
       const dbQId = `q_${chNum}_${String(questionId).padStart(2, "0")}`;
-      fetch("/api/v1/exam/answer", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId: this.currentExamSession.id,
-          questionId: dbQId,
-          selectedOption: optionId,
-        }),
-      })
-        .then(async (res) => {
-          if (!res.ok) {
-            const errData = await res.json().catch(() => ({}));
-            if (errData.error && errData.error.includes("TERMINATED_BY_ADMIN")) {
-              alert("Ujian telah dihentikan & dikumpulkan oleh Sensei/Pengawas.");
-              this.submitExam();
-            }
-          }
+
+      const doSave = (session) => {
+        if (!session) return;
+        return fetch("/api/v1/exam/answer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: session.id,
+            questionId: dbQId,
+            selectedOption: optionId,
+          }),
         })
-        .catch((e) => console.warn("Auto-save network error:", e));
+          .then(async (res) => {
+            if (!res.ok) {
+              const errData = await res.json().catch(() => ({}));
+              if (errData.error && errData.error.includes("TERMINATED_BY_ADMIN")) {
+                alert("Ujian telah dihentikan & dikumpulkan oleh Sensei/Pengawas.");
+                this.submitExam();
+              }
+            }
+          })
+          .catch((e) => console.warn("Auto-save network error:", e));
+      };
+
+      if (!this.pendingSavePromises) this.pendingSavePromises = [];
+
+      if (this.currentExamSession) {
+        this.pendingSavePromises.push(doSave(this.currentExamSession));
+      } else if (this.startExamPromise) {
+        const p = this.startExamPromise.then((sess) => doSave(sess));
+        this.pendingSavePromises.push(p);
+      }
     }
   }
 
@@ -1033,17 +1056,31 @@ class ChoukaiApp {
     this.view = "result";
     this.render();
 
-    // Server-authoritative submit if exam session active
-    if (this.currentExamSession && window.location.protocol.startsWith("http")) {
-      const activeSessionId = this.currentExamSession.id;
-      this.currentExamSession = null;
-      fetch("/api/v1/exam/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId: activeSessionId }),
-      })
-        .then((res) => res.json())
-        .then((json) => {
+    // Server-authoritative submit if exam session active or pending
+    if (window.location.protocol.startsWith("http") && (this.currentExamSession || this.startExamPromise)) {
+      this.submitExamPromise = (async () => {
+        let activeSession = this.currentExamSession;
+        if (!activeSession && this.startExamPromise) {
+          activeSession = await this.startExamPromise;
+        }
+        this.currentExamSession = null;
+        this.startExamPromise = null;
+
+        if (!activeSession) return;
+
+        if (this.pendingSavePromises && this.pendingSavePromises.length > 0) {
+          const saves = [...this.pendingSavePromises];
+          this.pendingSavePromises = [];
+          await Promise.allSettled(saves);
+        }
+
+        try {
+          const res = await fetch("/api/v1/exam/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sessionId: activeSession.id }),
+          });
+          const json = await res.json();
           if (json.success && json.data) {
             this.currentResult.score = json.data.totalScore;
             this.currentResult.readingScore = json.data.readingScore;
@@ -1052,8 +1089,11 @@ class ChoukaiApp {
             this.saveExamResult(this.currentResult);
             if (this.view === "result") this.render();
           }
-        })
-        .catch((e) => console.warn("Backend submit error:", e));
+        } catch (e) {
+          console.warn("Backend submit error:", e);
+        }
+      })();
+      return this.submitExamPromise;
     }
   }
 
