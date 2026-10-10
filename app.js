@@ -69,6 +69,14 @@ class ChoukaiApp {
     this.init();
   }
 
+  get adminUsers() {
+    return this.adminUsersData;
+  }
+
+  set adminUsers(val) {
+    this.adminUsersData = val;
+  }
+
   static get VERSION() {
     return "54";
   }

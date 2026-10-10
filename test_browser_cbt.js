@@ -979,7 +979,11 @@ async function runTests() {
 
     // 2. Open Admin Panel -> Tab Manajemen Siswa
     await cdp.eval('window.app.openAdminPanel("users")');
-    await wait(250);
+    for (let i = 0; i < 30; i++) {
+      const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
+      if (len > 0) break;
+      await wait(150);
+    }
     const usersTabActive = await cdp.eval('window.app.activeModal === "admin_panel" && window.app.adminTab === "users"');
     assert(usersTabActive, 'Admin Panel opened to Manajemen Siswa tab');
 
@@ -987,9 +991,18 @@ async function runTests() {
     const hasAksesBabBtn = await cdp.eval('Boolean(document.querySelector("button[onclick*=\'openStudentChapterAccessModal\']"))');
     assert(hasAksesBabBtn, 'Tombol [Akses Bab] is rendered on student rows');
 
-    // 4. Open modal dialog "Pengaturan Hak Akses Bab" for Ahmad Syahroni
-    await cdp.eval('window.app.openStudentChapterAccessModal("usr_ahmad", "Ahmad Syahroni")');
-    await wait(250);
+    // 4. Open modal dialog "Pengaturan Hak Akses Bab" for Ahmad Syahroni (dynamically resolving ID)
+    const ahmadInfo = await cdp.eval(`(() => {
+      const list = window.app.adminUsersData || window.app.adminUsers || [];
+      const u = list.find(x => x.username === 'ahmad.syahroni' || (x.name && x.name.includes('Ahmad')));
+      return u ? { id: u.id, name: u.name } : { id: 'usr_ahmad', name: 'Ahmad Syahroni' };
+    })()`);
+    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(ahmadInfo.id)}, ${JSON.stringify(ahmadInfo.name)})`);
+    for (let i = 0; i < 30; i++) {
+      const ready = await cdp.eval('Boolean(window.app.studentChapterAccessData && document.getElementById("access-toggle-05"))');
+      if (ready) break;
+      await wait(150);
+    }
     const accessModalOpen = await cdp.eval('window.app.activeModal === "student_chapter_access"');
     assert(accessModalOpen, 'Modal dialog Pengaturan Hak Akses Bab successfully opened');
 
@@ -1000,7 +1013,7 @@ async function runTests() {
     assert(toggleCh05Exists, 'Bab 05 toggle exists in modal grid');
 
     // 5. Restrict Bab 05 for Ahmad: uncheck Bab 05 toggle and click Simpan
-    await cdp.eval(`
+    await cdp.eval(`(async () => {
       const cb05 = document.getElementById("access-toggle-05");
       if (cb05) {
         cb05.checked = false;
@@ -1008,19 +1021,23 @@ async function runTests() {
       }
       window.__savedAlert = null;
       window.alert = function(msg) { window.__savedAlert = msg; };
-      window.app.saveStudentChapterAccess();
-    `);
-    await wait(300);
-    const saveAlertMsg = await cdp.eval('window.__savedAlert');
+      await window.app.saveStudentChapterAccess();
+    })()`);
+    let saveAlertMsg = null;
+    for (let i = 0; i < 25; i++) {
+      saveAlertMsg = await cdp.eval('window.__savedAlert');
+      if (saveAlertMsg) break;
+      await wait(150);
+    }
     assert(Boolean(saveAlertMsg && saveAlertMsg.includes('berhasil disimpan')), 'Hak akses bab saved with success confirmation');
 
     // 6. Log out Sensei and log in as Ahmad Syahroni
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
     await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
-    await wait(300);
+    await wait(400);
     await cdp.eval('window.app.goToDashboard()');
-    await wait(200);
+    await wait(300);
 
     // 7. Verify Bab 05 displays badge '🔒 Dibatasi Pengawas' and tombol 'Mulai' is disabled
     const b5DibatasiBadge = await cdp.eval(`(() => {
@@ -1042,9 +1059,9 @@ async function runTests() {
     await cdp.eval('window.app.logout();');
     await wait(200);
     await cdp.eval('window.app.fillAndLogin("narong.sakda", "123456")');
-    await wait(300);
+    await wait(400);
     await cdp.eval('window.app.goToDashboard()');
-    await wait(200);
+    await wait(300);
     const narongB5Restricted = await cdp.eval('Boolean(window.app.userRestrictedChapters["05"])');
     assert(!narongB5Restricted, 'Other student (Narong Sakda) is NOT restricted from Bab 05');
 
@@ -1052,22 +1069,38 @@ async function runTests() {
     await cdp.eval('window.app.logout();');
     await wait(200);
     await cdp.eval('window.app.fillAndLogin("sensei.wahyu", "123456")');
-    await wait(300);
-    await cdp.eval('window.app.openStudentChapterAccessModal("usr_ahmad", "Ahmad Syahroni")');
-    await wait(250);
-    await cdp.eval(`
+    await wait(400);
+    await cdp.eval('window.app.openAdminPanel("users")');
+    for (let i = 0; i < 30; i++) {
+      const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
+      if (len > 0) break;
+      await wait(150);
+    }
+    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(ahmadInfo.id)}, ${JSON.stringify(ahmadInfo.name)})`);
+    for (let i = 0; i < 30; i++) {
+      const ready = await cdp.eval('Boolean(window.app.studentChapterAccessData && document.getElementById("access-toggle-05"))');
+      if (ready) break;
+      await wait(150);
+    }
+    await cdp.eval(`(async () => {
       window.app.setAllStudentChapterAccess(true);
-      window.app.saveStudentChapterAccess();
-    `);
-    await wait(250);
+      window.__savedAlert = null;
+      window.alert = function(msg) { window.__savedAlert = msg; };
+      await window.app.saveStudentChapterAccess();
+    })()`);
+    for (let i = 0; i < 25; i++) {
+      const restoreAlert = await cdp.eval('window.__savedAlert');
+      if (restoreAlert) break;
+      await wait(150);
+    }
 
     // 11. Ahmad logs back in, verifies Bab 05 is unlocked again
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
     await cdp.eval('window.app.fillAndLogin("ahmad.syahroni", "123456")');
-    await wait(300);
+    await wait(400);
     await cdp.eval('window.app.goToDashboard()');
-    await wait(200);
+    await wait(300);
     const b5UnlockedNow = await cdp.eval('!window.app.userRestrictedChapters["05"] && !document.body.innerText.includes("Dibatasi Pengawas")');
     assert(b5UnlockedNow, 'Bab 05 access successfully restored and unlocked on Ahmad dashboard');
 
