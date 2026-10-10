@@ -16,6 +16,7 @@ import { eq, desc, asc, and, sql, or, ilike } from "drizzle-orm";
 import { hashPassword } from "better-auth/crypto";
 import crypto from "crypto";
 import { AppEnv } from "../types.js";
+import { resetAndSeedOfficialAccounts, INITIAL_USERS } from "../db/seed.js";
 
 export const adminRouter = new Hono<AppEnv>();
 
@@ -189,6 +190,20 @@ adminRouter.post("/admin/users/:id/reset-pin", async (c) => {
       success: true,
       message: `PIN pengguna ${targetUser.name} berhasil di-reset menjadi "${newPin}" dan seluruh sesi aktif telah dicabut.`,
       newPin: newPin,
+    });
+  } catch (err: any) {
+    return c.json({ success: false, error: err.message }, 500);
+  }
+});
+
+// Admin resets all users to official 19 accounts (clean slate)
+adminRouter.post("/admin/reset-system-users", async (c) => {
+  try {
+    await resetAndSeedOfficialAccounts(true);
+    return c.json({
+      success: true,
+      message: `Seluruh data pengguna lama berhasil dibersihkan dan ${INITIAL_USERS.length} akun resmi (2 Sensei + 17 Siswa) telah disiapkan.`,
+      count: INITIAL_USERS.length,
     });
   } catch (err: any) {
     return c.json({ success: false, error: err.message }, 500);
