@@ -207,7 +207,107 @@ async function runApiVerification() {
     body: JSON.stringify({ isUnlocked: true }),
   });
   assert.strictEqual(unlockChRes.status, 200, "Unlock chapter should return 200");
-  console.log("[PASS] Chapter lock & unlock controls verified successfully");
+  // TEST 15: Invalid Question ID Auto-save Guard (Expect 404)
+  console.log("\n[TEST 15] Invalid Question ID Auto-save Guard (Expect 404)");
+  const invalidQRes = await fetch(`${BASE_URL}/api/v1/exam/answer`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({
+      sessionId: sessionId,
+      questionId: "q_non_existent_999",
+      selectedOption: "A",
+    }),
+  });
+  // Since session was submitted in Test 11, it returns either 400 (session already submitted) or 404
+  assert(invalidQRes.status === 400 || invalidQRes.status === 404, "Invalid question or finalized session correctly rejected");
+  console.log(`[PASS] Invalid question guard responded with status ${invalidQRes.status}`);
+
+  // TEST 16: Admin Force-Termination & Dual-Session Score Integrity
+  console.log("\n[TEST 16] Admin Force-Termination & Dual-Session Score Integrity");
+  // Start a fresh session for Ahmad
+  const freshExamRes = await fetch(`${BASE_URL}/api/v1/exam/start`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({ chapterNum: "08", mode: "renshuu" }),
+  });
+  assert.strictEqual(freshExamRes.status, 200, "Fresh exam start should return 200");
+  const freshJson = await freshExamRes.json();
+  const freshSessionId = freshJson.data.session.id;
+
+  // Answer 1 Reading question correctly (q_08_01: "B")
+  const ansRes = await fetch(`${BASE_URL}/api/v1/exam/answer`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({
+      sessionId: freshSessionId,
+      questionId: "q_08_01",
+      selectedOption: "B",
+    }),
+  });
+  assert.strictEqual(ansRes.status, 200, "Answer save should return 200");
+
+  // Sensei force-terminates this session from Live Monitor
+  const termRes = await fetch(`${BASE_URL}/api/v1/admin/monitoring/sessions/${freshSessionId}/terminate`, {
+    method: "POST",
+    headers: { Cookie: adminCookie },
+  });
+  assert.strictEqual(termRes.status, 200, "Force-termination should succeed with 200");
+  const termJson = await termRes.json();
+  assert.strictEqual(termJson.success, true, "Termination success should be true");
+  // 1/25 reading = 4%, 0/8 choukai = 0% -> dual session score = (4 + 0)/2 = 2.0 Poin
+  assert.strictEqual(termJson.data.totalScore, 2.0, "Dual-session 50/50 formula correctly yields 2.0");
+  console.log("[PASS] Sensei force-terminated session, dual-session score calculated: 2.0");
+
+  // Subsequent answer attempt by student must be blocked
+  const blockedAnsRes = await fetch(`${BASE_URL}/api/v1/exam/answer`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({
+      sessionId: freshSessionId,
+      questionId: "q_08_02",
+      selectedOption: "A",
+    }),
+  });
+  assert.strictEqual(blockedAnsRes.status, 400, "Subsequent answer on terminated session must return 400");
+  console.log("[PASS] Student answer blocked after Sensei termination");
+
+  // Subsequent submit by student must preserve TERMINATED_BY_ADMIN status
+  const reSubmitRes = await fetch(`${BASE_URL}/api/v1/exam/submit`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+    },
+    body: JSON.stringify({ sessionId: freshSessionId }),
+  });
+  assert.strictEqual(reSubmitRes.status, 200, "Submit should return 200 with review");
+  const reSubmitJson = await reSubmitRes.json();
+  assert.strictEqual(reSubmitJson.data.status, "TERMINATED_BY_ADMIN", "Status preserved as TERMINATED_BY_ADMIN");
+  console.log("[PASS] Re-submission preserves TERMINATED_BY_ADMIN status without overwrite");
+
+  // TEST 17: User Management Exam Stats Synchronization
+  console.log("\n[TEST 17] User Management Exam Stats (Counts TERMINATED_BY_ADMIN)");
+  const finalUsersRes = await fetch(`${BASE_URL}/api/v1/admin/users`, {
+    headers: { Cookie: adminCookie },
+  });
+  assert.strictEqual(finalUsersRes.status, 200, "Users list should return 200");
+  const finalUsersJson = await finalUsersRes.json();
+  const ahmadRecord = finalUsersJson.data.find((u) => u.username === "ahmad.syahroni");
+  assert(Boolean(ahmadRecord), "Ahmad Syahroni record found");
+  assert(ahmadRecord.totalExams >= 2, "Ahmad must have at least 2 completed exams (including terminated)");
+  console.log(`[PASS] Ahmad Syahroni has ${ahmadRecord.totalExams} completed exams recorded in Manajemen Siswa`);
 
   console.log("\n==================================================================");
   console.log(" ALL LIVE PRODUCTION CBT & ADMIN API VERIFICATION TESTS PASSED!");

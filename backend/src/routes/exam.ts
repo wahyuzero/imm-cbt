@@ -168,7 +168,11 @@ examRouter.post("/exam/answer", authMiddleware, async (c) => {
       where: eq(questions.id, questionId),
     });
 
-    const isCorrect = q ? String(q.correctAnswer) === String(selectedOption) : false;
+    if (!q) {
+      return c.json({ success: false, error: "ID Soal tidak valid." }, 404);
+    }
+
+    const isCorrect = String(q.correctAnswer) === String(selectedOption);
 
     // PostgreSQL UPSERT on conflict (session_id, question_id)
     await db
@@ -268,28 +272,33 @@ examRouter.post("/exam/submit", authMiddleware, async (c) => {
 
     const totalQuestions = chapterQuestions.length || 1;
     const totalCorrect = readingCorrect + choukaiCorrect;
-    const finalScore = Number(((totalCorrect / totalQuestions) * 100).toFixed(2));
     const readingScore = readingTotal > 0 ? Number(((readingCorrect / readingTotal) * 100).toFixed(2)) : 0;
     const choukaiScore = choukaiTotal > 0 ? Number(((choukaiCorrect / choukaiTotal) * 100).toFixed(2)) : 0;
+    const finalScore = choukaiTotal > 0
+      ? Number(((readingScore + choukaiScore) / 2).toFixed(2))
+      : readingScore;
     const passingScore = chapter?.passingScore || 80;
     const isPassed = finalScore >= passingScore;
 
     const now = new Date();
     const timeSpentSeconds = Math.max(0, Math.floor((now.getTime() - new Date(session.startedAt).getTime()) / 1000));
+    const isAlreadyFinalized = session.status === "SUBMITTED" || session.status === "TERMINATED_BY_ADMIN";
 
-    // Update session record
-    await db
-      .update(examSessions)
-      .set({
-        status: "SUBMITTED",
-        submittedAt: now,
-        timeSpentSeconds: timeSpentSeconds,
-        readingScore: String(readingScore),
-        choukaiScore: String(choukaiScore),
-        totalScore: String(finalScore),
-        isPassed: isPassed,
-      })
-      .where(eq(examSessions.id, sessionId));
+    // Only update session record if not already finalized
+    if (!isAlreadyFinalized) {
+      await db
+        .update(examSessions)
+        .set({
+          status: "SUBMITTED",
+          submittedAt: now,
+          timeSpentSeconds: timeSpentSeconds,
+          readingScore: String(readingScore),
+          choukaiScore: String(choukaiScore),
+          totalScore: String(finalScore),
+          isPassed: isPassed,
+        })
+        .where(eq(examSessions.id, sessionId));
+    }
 
     return c.json({
       success: true,
@@ -307,8 +316,9 @@ examRouter.post("/exam/submit", authMiddleware, async (c) => {
         totalQuestions,
         passingScore: passingScore,
         isPassed: isPassed,
-        timeSpentSeconds: timeSpentSeconds,
-        submittedAt: now,
+        timeSpentSeconds: isAlreadyFinalized ? (session.timeSpentSeconds || timeSpentSeconds) : timeSpentSeconds,
+        submittedAt: isAlreadyFinalized ? (session.submittedAt || now) : now,
+        status: isAlreadyFinalized ? session.status : "SUBMITTED",
         review: detailedReview,
       },
     });

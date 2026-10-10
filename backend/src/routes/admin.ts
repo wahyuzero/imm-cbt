@@ -44,7 +44,7 @@ adminRouter.get("/admin/users", async (c) => {
         avgScore: sql<number>`round(avg(${examSessions.totalScore}::numeric), 2)::float`,
       })
       .from(examSessions)
-      .where(eq(examSessions.status, "SUBMITTED"))
+      .where(or(eq(examSessions.status, "SUBMITTED"), eq(examSessions.status, "TERMINATED_BY_ADMIN")))
       .groupBy(examSessions.userId);
 
     const statsMap = new Map(stats.map((s) => [s.userId, s]));
@@ -420,9 +420,11 @@ adminRouter.post("/admin/monitoring/sessions/:id/terminate", async (c) => {
 
     const totalQuestions = chapterQuestions.length || 1;
     const totalCorrect = readingCorrect + choukaiCorrect;
-    const finalScore = Number(((totalCorrect / totalQuestions) * 100).toFixed(2));
     const readingScore = readingTotal > 0 ? Number(((readingCorrect / readingTotal) * 100).toFixed(2)) : 0;
     const choukaiScore = choukaiTotal > 0 ? Number(((choukaiCorrect / choukaiTotal) * 100).toFixed(2)) : 0;
+    const finalScore = choukaiTotal > 0
+      ? Number(((readingScore + choukaiScore) / 2).toFixed(2))
+      : readingScore;
     const passingScore = chapter?.passingScore || 80;
     const isPassed = finalScore >= passingScore;
 

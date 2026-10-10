@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { db } from "../db/index.js";
 import { chapters, examSessions } from "../db/schema.js";
-import { asc, eq, and, desc } from "drizzle-orm";
+import { asc, eq, and, desc, or } from "drizzle-orm";
 import { auth } from "../lib/auth.js";
 
 export const chaptersRouter = new Hono();
@@ -18,7 +18,10 @@ chaptersRouter.get("/chapters", async (c) => {
 
     if (session && session.user) {
       const userSessions = await db.query.examSessions.findMany({
-        where: eq(examSessions.userId, session.user.id),
+        where: and(
+          eq(examSessions.userId, session.user.id),
+          or(eq(examSessions.status, "SUBMITTED"), eq(examSessions.status, "TERMINATED_BY_ADMIN"))
+        ),
         orderBy: [desc(examSessions.totalScore)],
       });
 
