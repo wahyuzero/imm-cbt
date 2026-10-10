@@ -53,7 +53,7 @@ class ChoukaiApp {
   pdfUrl(url) {
     if (!url) return "";
     const clean = encodeURI(url);
-    return clean.includes("?") ? clean : `${clean}?v=44`;
+    return clean.includes("?") ? clean : `${clean}?v=45`;
   }
 
   init() {
