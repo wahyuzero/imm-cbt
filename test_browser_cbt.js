@@ -206,6 +206,7 @@ async function runTests() {
 
     const isDashboardNow = await cdp.eval('window.app.view === "dashboard"');
     assert(isDashboardNow, 'Application full view unlocked to dashboard');
+    await cdp.captureScreenshot('/tmp/dashboard_live_verified.png');
 
     const isHeaderVisibleNow = await cdp.eval('!document.getElementById("app-header").classList.contains("hidden")');
     assert(isHeaderVisibleNow, 'App navigation header revealed upon successful authentication');
