@@ -406,6 +406,8 @@ export async function resetAndSeedOfficialAccounts(forcePurge = false) {
 
   if (needsPurge) {
     console.log("Purging old user accounts and recreating clean slate with official 19 users...");
+    // Clear foreign key reference from system_settings before purging users
+    await client`UPDATE "system_settings" SET "updated_by" = NULL;`;
     // Deleting all users cascades to account, session, exam_sessions, and user_chapter_access
     await client`DELETE FROM "user";`;
   } else {
