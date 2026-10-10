@@ -67,7 +67,7 @@ export const systemSettings = pgTable("system_settings", {
   globalExamLock: boolean("global_exam_lock").default(false).notNull(),       // Sakelar Darurat Kunci Semua
   announcement: text("announcement"),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
-  updatedBy: text("updated_by").references(() => user.id),
+  updatedBy: text("updated_by").references(() => user.id, { onDelete: "set null" }),
 });
 
 // =========================================================================
