@@ -67,7 +67,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "51";
+    return "52";
   }
 
   audioUrl(url) {
@@ -780,6 +780,33 @@ class ChoukaiApp {
   // ==========================================
   // EXAM LOGIC & TIMER
   // ==========================================
+  promptStartExam(chapterDataOrNum) {
+    let chNum = typeof chapterDataOrNum === "string" ? chapterDataOrNum : (chapterDataOrNum?.chapter || "08");
+    chNum = String(chNum).padStart(2, "0");
+
+    if (!this.isAuthenticated) {
+      this.targetHash = `#bab-${chNum}`;
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
+
+    // Guard against locked chapters for students
+    if (this.currentUser && this.currentUser.role !== "admin") {
+      if (this.systemStatus?.globalExamLock) {
+        alert("Ujian sedang dikunci secara global oleh Sensei. Hubungi pengawas ujian.");
+        return;
+      }
+      if (this.chaptersStatus[chNum] === false) {
+        alert(`Bab ${chNum} sedang dikunci oleh Sensei. Hubungi pengawas ujian.`);
+        return;
+      }
+    }
+
+    this.openModal("mode_select", chNum);
+  }
+
   startExam(chapterDataOrNum, mode = "renshuu") {
     let chapterData = chapterDataOrNum;
     let chNum = typeof chapterDataOrNum === "string" ? chapterDataOrNum : (chapterDataOrNum?.chapter || "08");
@@ -1561,7 +1588,7 @@ class ChoukaiApp {
                     <button onclick="window.app.viewSavedResult('${ch.num}')" class="col-span-2 py-2 px-1 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
                       Hasil
                     </button>
-                    <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-2 py-2 px-1 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
+                    <button onclick="window.app.promptStartExam('${ch.num}')" class="col-span-2 py-2 px-1 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
                       Ulangi
                     </button>
                     <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
@@ -1569,7 +1596,7 @@ class ChoukaiApp {
                     </button>
                   </div>`
                 : `<div class="grid grid-cols-5 gap-1.5 mt-3">
-                    <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-4 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                    <button onclick="window.app.promptStartExam('${ch.num}')" class="col-span-4 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
                       Mulai Bab ${ch.num}
                     </button>
@@ -1729,29 +1756,32 @@ class ChoukaiApp {
           </div>
 
           <!-- Mode Badge & Controls -->
-          <div class="flex items-center gap-3">
-            <!-- Mode Switcher -->
-            <div class="bg-slate-100 dark:bg-slate-800 p-0.5 rounded-md flex items-center text-xs font-semibold">
-              <button onclick="window.app.startExam(window.app.currentChapter, 'renshuu')" class="px-2.5 py-1 rounded transition ${this.mode === "renshuu" ? "bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-300 shadow-sm font-bold" : "text-slate-500"}">
-                Latihan (練習)
-              </button>
-              <button onclick="window.app.startExam(window.app.currentChapter, 'shiken')" class="px-2.5 py-1 rounded transition ${this.mode === "shiken" ? "bg-rose-600 text-white shadow-sm font-bold" : "text-slate-500"}">
-                Simulasi CBT (試験)
-              </button>
-            </div>
+          <div class="flex items-center gap-2.5">
+            <!-- Active Mode Badge -->
+            ${
+              this.mode === "shiken"
+                ? `<div id="exam-mode-badge" class="bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300 px-2.5 py-1 rounded text-xs font-bold font-jp flex items-center gap-1.5 shadow-2xs" title="Mode Simulasi CBT (Resmi IMM Japan)">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span>試験 Ujian CBT</span>
+                  </div>`
+                : `<div id="exam-mode-badge" class="bg-sky-50 dark:bg-sky-950/60 border border-sky-300 dark:border-sky-800 text-sky-700 dark:text-sky-300 px-2.5 py-1 rounded text-xs font-bold font-jp flex items-center gap-1.5 shadow-2xs" title="Mode Latihan (Bebas Waktu)">
+                    <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                    <span>練習 Latihan</span>
+                  </div>`
+            }
 
             <!-- Timer (if Mode Shiken) -->
             ${
               this.mode === "shiken"
-                ? `<div class="bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 px-2.5 py-1 rounded text-xs font-mono font-bold text-rose-700 dark:text-rose-300 flex items-center gap-1">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                ? `<div class="bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 px-2.5 py-1 rounded text-xs font-mono font-bold text-rose-700 dark:text-rose-300 flex items-center gap-1 shadow-2xs">
+                    <svg class="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     <span id="exam-timer-display">${this.currentChapter.questions.some(item => item.session === "choukai") ? "60:00" : "50:00"}</span>
                   </div>`
                 : ""
             }
 
             <!-- Furigana Toggle -->
-            <button id="furigana-toggle-btn" onclick="window.app.toggleFurigana()" class="px-2 py-1 border border-slate-300 dark:border-slate-700 rounded text-xs font-jp text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800" title="Toggle Furigana / Kana Display">
+            <button id="furigana-toggle-btn" onclick="window.app.toggleFurigana()" class="px-2 py-1 border border-slate-300 dark:border-slate-700 rounded text-xs font-jp text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition" title="Toggle Furigana / Kana Display">
               かな <span class="text-[10px] text-slate-400 font-bold">${this.showFurigana ? "ON" : "OFF"}</span>
             </button>
           </div>
@@ -2219,7 +2249,7 @@ class ChoukaiApp {
                 Kunci Choukai PDF
               </a>
             ` : ""}
-            <button onclick="window.app.startExam(window.app.currentChapter, 'renshuu')" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition">
+            <button onclick="window.app.promptStartExam(window.app.currentChapter?.chapter || '08')" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition">
               Ulangi Tryout
             </button>
             <button onclick="window.app.goToDashboard()" class="px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition">
@@ -3933,6 +3963,99 @@ class ChoukaiApp {
               <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 text-sm font-bold">&times;</button>
             </div>
             <img src="${this.modalData}" alt="Zoom" class="w-full max-h-[80vh] object-contain rounded">
+          </div>
+        </div>
+      `;
+    } else if (this.activeModal === "mode_select") {
+      const chNum = String(this.modalData || "08").padStart(2, "0");
+      const chData = typeof CHAPTERS_DATA !== "undefined" ? CHAPTERS_DATA[chNum] : null;
+      const chTitle = chData?.title_ja || `第${parseInt(chNum, 10)}課`;
+      const chTitleId = chData?.title_id || `Bab ${chNum}`;
+      const totalQ = chData?.questions?.length || (parseInt(chNum, 10) >= 8 ? 33 : 25);
+      const hasChoukai = chData?.questions ? chData.questions.some(q => q.session === "choukai") : (parseInt(chNum, 10) >= 8);
+      const timerMinutes = hasChoukai ? 60 : 50;
+
+      container.innerHTML = `
+        <div id="modal-mode-select-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay" onclick="window.app.closeModal()">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl relative" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="flex items-start justify-between pb-3.5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black font-jp text-base shadow-sm">
+                  試
+                </div>
+                <div>
+                  <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                    Pilih Mode Ujian ｜ Bab ${chNum}
+                  </h3>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    ${chTitle} • ${chTitleId} (${totalQ} Butir Soal)
+                  </p>
+                </div>
+              </div>
+              <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-2xl font-bold p-1 leading-none transition" title="Batal">&times;</button>
+            </div>
+
+            <!-- Mode Selection Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-4">
+              <!-- Mode Latihan (Renshuu) -->
+              <div id="modal-opt-renshuu" role="button" tabindex="0" onclick="window.app.closeModal(); window.app.startExam('${chNum}', 'renshuu');" class="group relative p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 bg-slate-50/60 dark:bg-slate-800/40 hover:bg-sky-50/50 dark:hover:bg-sky-950/40 transition-all cursor-pointer shadow-xs hover:shadow-md text-left flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-bold font-jp bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800">
+                      <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                      練習 Latihan
+                    </span>
+                    <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                      ⏱️ Bebas Waktu
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
+                    Mode Latihan (練習)
+                  </h4>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Tanpa hitung mundur waktu (bebas waktu), fokus pemahaman materi & latihan mandiri.
+                  </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs font-bold text-sky-600 dark:text-sky-400">
+                  <span>Mulai Latihan</span>
+                  <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+              </div>
+
+              <!-- Mode Simulasi CBT (Shiken) -->
+              <div id="modal-opt-shiken" role="button" tabindex="0" onclick="window.app.closeModal(); window.app.startExam('${chNum}', 'shiken');" class="group relative p-4 rounded-xl border-2 border-rose-200 dark:border-rose-900/60 hover:border-rose-500 dark:hover:border-rose-500 bg-rose-50/40 dark:bg-rose-950/20 hover:bg-rose-50/80 dark:hover:bg-rose-950/50 transition-all cursor-pointer shadow-xs hover:shadow-md text-left flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-bold font-jp bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800">
+                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                      試験 Ujian CBT
+                    </span>
+                    <span class="text-[11px] font-bold font-mono text-rose-600 dark:text-rose-400">
+                      ⏱️ ${timerMinutes} Menit
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition">
+                    Mode Simulasi CBT (試験)
+                  </h4>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Timer resmi berjalan mundur (${timerMinutes} menit Bab ${parseInt(chNum, 10) < 8 ? '01–07' : '08–25'}), otomatis submit saat waktu habis, simulasi ketat standar IMM Japan.
+                  </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-rose-200/60 dark:border-rose-900/40 flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400">
+                  <span>Mulai Simulasi CBT</span>
+                  <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer / Cancel -->
+            <div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+              <span class="text-slate-400 text-[11px]">Tekan <kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 font-mono text-[10px]">Esc</kbd> untuk membatalkan</span>
+              <button id="modal-mode-cancel-btn" onclick="window.app.closeModal()" class="px-4 py-2 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold rounded-lg transition">
+                Batal
+              </button>
+            </div>
           </div>
         </div>
       `;
