@@ -84,6 +84,7 @@ class ChoukaiApp {
     this.setupKeyboardShortcuts();
     this.checkAuthSession();
     this.fetchSystemStatus();
+    this.fetchChaptersStatus();
 
     // Deep linking via URL hash
     const hash = window.location.hash;
@@ -239,6 +240,15 @@ class ChoukaiApp {
     }
     this.updateKosakataStatsUI();
     this.updateKosakataCardUI(wordKey);
+
+    // Sync to PostgreSQL backend if authenticated
+    if (this.currentUser && window.location.protocol.startsWith("http")) {
+      const parts = String(wordKey).split("_");
+      if (parts.length >= 2) {
+        const vId = `vocab_${parts[0].padStart(2, "0")}_${parts[1].padStart(2, "0")}`;
+        fetch(`/api/v1/vocabulary/${vId}/toggle`, { method: "POST" }).catch((e) => console.warn(e));
+      }
+    }
   }
 
   goToDashboard() {
@@ -664,12 +674,29 @@ class ChoukaiApp {
   // ==========================================
   startExam(chapterDataOrNum, mode = "renshuu") {
     let chapterData = chapterDataOrNum;
+    let chNum = typeof chapterDataOrNum === "string" ? chapterDataOrNum : (chapterDataOrNum?.chapter || "08");
     if (typeof chapterDataOrNum === "string" && typeof CHAPTERS_DATA !== "undefined") {
       chapterData = CHAPTERS_DATA[chapterDataOrNum] || chapterData;
     }
     if (!chapterData && typeof BAB_08_DATA !== "undefined") {
       chapterData = BAB_08_DATA;
+      chNum = "08";
     }
+
+    chNum = String(chNum).padStart(2, "0");
+
+    // Guard against locked chapters for students
+    if (this.currentUser && this.currentUser.role !== "admin") {
+      if (this.systemStatus?.globalExamLock) {
+        alert("Ujian sedang dikunci secara global oleh Sensei. Hubungi pengawas ujian.");
+        return;
+      }
+      if (this.chaptersStatus[chNum] === false) {
+        alert(`Bab ${chNum} sedang dikunci oleh Sensei. Hubungi pengawas ujian.`);
+        return;
+      }
+    }
+
     this.currentChapter = chapterData;
     this.currentQuestionIdx = 0;
     this.answers = {};
@@ -691,6 +718,27 @@ class ChoukaiApp {
     }
 
     this.render();
+
+    // Start server session if authenticated on http
+    if (this.currentUser && window.location.protocol.startsWith("http")) {
+      fetch("/api/v1/exam/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chapterNum: chNum, mode }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.success && json.data?.session) {
+            this.currentExamSession = json.data.session;
+          } else if (!json.success && this.currentUser.role !== "admin") {
+            alert(json.error || "Gagal memulai sesi ujian di server.");
+            this.goToDashboard();
+          }
+        })
+        .catch((e) => console.warn("Server exam session init warning:", e));
+    } else {
+      this.currentExamSession = null;
+    }
   }
 
   startTimer() {
@@ -728,6 +776,31 @@ class ChoukaiApp {
     this.answers[questionId] = optionId;
     this.renderQuestionContent();
     this.renderQuestionNav();
+
+    // Real-time server auto-save
+    if (this.currentExamSession && window.location.protocol.startsWith("http")) {
+      const chNum = String(this.currentChapter?.chapter || "08").padStart(2, "0");
+      const dbQId = `q_${chNum}_${String(questionId).padStart(2, "0")}`;
+      fetch("/api/v1/exam/answer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId: this.currentExamSession.id,
+          questionId: dbQId,
+          selectedOption: optionId,
+        }),
+      })
+        .then(async (res) => {
+          if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            if (errData.error && errData.error.includes("TERMINATED_BY_ADMIN")) {
+              alert("Ujian telah dihentikan & dikumpulkan oleh Sensei/Pengawas.");
+              this.submitExam();
+            }
+          }
+        })
+        .catch((e) => console.warn("Auto-save network error:", e));
+    }
   }
 
   toggleFurigana() {
@@ -843,6 +916,29 @@ class ChoukaiApp {
     this.currentResult = result;
     this.view = "result";
     this.render();
+
+    // Server-authoritative submit if exam session active
+    if (this.currentExamSession && window.location.protocol.startsWith("http")) {
+      const activeSessionId = this.currentExamSession.id;
+      this.currentExamSession = null;
+      fetch("/api/v1/exam/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: activeSessionId }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.success && json.data) {
+            this.currentResult.score = json.data.totalScore;
+            this.currentResult.readingScore = json.data.readingScore;
+            this.currentResult.choukaiScore = json.data.choukaiScore;
+            this.currentResult.passed = json.data.isPassed;
+            this.saveExamResult(this.currentResult);
+            if (this.view === "result") this.render();
+          }
+        })
+        .catch((e) => console.warn("Backend submit error:", e));
+    }
   }
 
   // ==========================================
@@ -1027,31 +1123,42 @@ class ChoukaiApp {
       const pdfReadingSoal = this.pdfUrl(chData ? chData.pdfReadingSoalUrl : `assets/pdf/Salinan Soal Bab ${ch.num}.pdf`);
       const pdfReadingKunci = this.pdfUrl(chData ? chData.pdfReadingKunciUrl : `assets/pdf/Kunci dan Pembahasan Bab ${ch.num}.pdf`);
 
-      const actionButton = ch.available
-        ? (isCompleted
+      const isLockedBySensei = Boolean(this.currentUser && this.currentUser.role !== "admin" && (this.systemStatus?.globalExamLock || this.chaptersStatus[ch.num] === false));
+
+      const actionButton = !ch.available
+        ? `<button disabled class="w-full mt-3 py-2 px-3 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-md text-xs font-semibold cursor-not-allowed">
+            Terkunci (Segera Hadir)
+          </button>`
+        : (isLockedBySensei
             ? `<div class="grid grid-cols-5 gap-1.5 mt-3">
-                <button onclick="window.app.viewSavedResult('${ch.num}')" class="col-span-2 py-2 px-1 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
-                  Hasil
-                </button>
-                <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-2 py-2 px-1 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
-                  Ulangi
+                <button disabled class="col-span-4 py-2 px-2 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1" title="Bab ini sedang dikunci oleh Pengawas">
+                  🔒 Terkunci Sensei
                 </button>
                 <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
                   語
                 </button>
               </div>`
-            : `<div class="grid grid-cols-5 gap-1.5 mt-3">
-                <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-4 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-                  Mulai Bab ${ch.num}
-                </button>
-                <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
-                  語
-                </button>
-              </div>`)
-        : `<button disabled class="w-full mt-3 py-2 px-3 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-md text-xs font-semibold cursor-not-allowed">
-            Terkunci (Segera Hadir)
-          </button>`;
+            : (isCompleted
+                ? `<div class="grid grid-cols-5 gap-1.5 mt-3">
+                    <button onclick="window.app.viewSavedResult('${ch.num}')" class="col-span-2 py-2 px-1 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
+                      Hasil
+                    </button>
+                    <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-2 py-2 px-1 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-sm" title="Ulangi tryout bab ini">
+                      Ulangi
+                    </button>
+                    <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
+                      語
+                    </button>
+                  </div>`
+                : `<div class="grid grid-cols-5 gap-1.5 mt-3">
+                    <button onclick="window.app.startExam('${ch.num}', 'renshuu')" class="col-span-4 py-2 px-3 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                      Mulai Bab ${ch.num}
+                    </button>
+                    <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
+                      語
+                    </button>
+                  </div>`));
 
       const pdfCardLinks = ch.available
         ? `<div class="flex items-center flex-wrap gap-x-2 gap-y-1 mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px]">
@@ -2287,6 +2394,7 @@ class ChoukaiApp {
           this.profile.name = this.currentUser.name;
           this.profile.classNo = this.currentUser.className || this.profile.classNo || "LPK";
           localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+          this.fetchChaptersStatus();
         }
       } else {
         this.currentUser = null;
@@ -2309,6 +2417,31 @@ class ChoukaiApp {
     } catch (e) {
       // offline fallback
     }
+  }
+
+  async fetchChaptersStatus() {
+    if (!window.location.protocol.startsWith("http")) return;
+    try {
+      const res = await fetch("/api/v1/chapters");
+      const json = await res.json();
+      if (json.success && json.data) {
+        for (const ch of json.data) {
+          this.chaptersStatus[ch.chapterNum] = ch.isUnlocked;
+          if (ch.userScore && (!this.progress[ch.chapterNum] || ch.userScore.totalScore > this.progress[ch.chapterNum].score)) {
+            this.progress[ch.chapterNum] = {
+              chapter: ch.chapterNum,
+              score: ch.userScore.totalScore,
+              readingScore: ch.userScore.readingScore,
+              choukaiScore: ch.userScore.choukaiScore,
+              passed: ch.userScore.isPassed,
+            };
+          }
+        }
+        if (this.view === "dashboard") {
+          this.render();
+        }
+      }
+    } catch (e) {}
   }
 
   updateHeaderAuthUI() {
