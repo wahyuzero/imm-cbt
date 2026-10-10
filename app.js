@@ -47,6 +47,18 @@ class ChoukaiApp {
     this.hideMeaning = false;
     this.memorizedWords = this.loadMemorizedWords();
 
+    // Multi-Role & Better Auth State
+    this.currentUser = null;
+    this.currentSession = null;
+    this.serverSessionId = null;
+    this.systemStatus = { allowRegistration: true, globalExamLock: false, announcement: "" };
+    this.adminTab = "live";
+    this.liveMonitoringData = [];
+    this.liveMonitoringInterval = null;
+    this.adminUsersData = [];
+    this.adminResultsData = [];
+    this.chaptersStatus = {};
+
     this.init();
   }
 
@@ -70,6 +82,8 @@ class ChoukaiApp {
     this.applyTheme(this.theme);
     this.setupAudioListeners();
     this.setupKeyboardShortcuts();
+    this.checkAuthSession();
+    this.fetchSystemStatus();
 
     // Deep linking via URL hash
     const hash = window.location.hash;
@@ -907,6 +921,10 @@ class ChoukaiApp {
   }
 
   closeModal() {
+    if (this.liveMonitoringInterval) {
+      clearInterval(this.liveMonitoringInterval);
+      this.liveMonitoringInterval = null;
+    }
     this.activeModal = null;
     this.modalData = null;
     const container = document.getElementById("modal-container");
@@ -2254,6 +2272,678 @@ class ChoukaiApp {
     this.render();
   }
 
+  // ==========================================
+  // BETTER AUTH & SENSEI ADMIN ENGINE
+  // ==========================================
+  async checkAuthSession() {
+    if (!window.location.protocol.startsWith("http")) return;
+    try {
+      const res = await fetch("/api/v1/auth/me");
+      const json = await res.json();
+      if (json.success && json.data) {
+        this.currentUser = json.data.user;
+        this.currentSession = json.data.session;
+        if (this.currentUser && this.currentUser.name) {
+          this.profile.name = this.currentUser.name;
+          this.profile.classNo = this.currentUser.className || this.profile.classNo || "LPK";
+          localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+        }
+      } else {
+        this.currentUser = null;
+        this.currentSession = null;
+      }
+    } catch (e) {
+      // offline / mock fallback
+    }
+    this.updateHeaderAuthUI();
+  }
+
+  async fetchSystemStatus() {
+    if (!window.location.protocol.startsWith("http")) return;
+    try {
+      const res = await fetch("/api/v1/system/status");
+      const json = await res.json();
+      if (json.success && json.data) {
+        this.systemStatus = json.data;
+      }
+    } catch (e) {
+      // offline fallback
+    }
+  }
+
+  updateHeaderAuthUI() {
+    const adminBtn = document.getElementById("header-admin-btn");
+    const authText = document.getElementById("header-auth-text");
+    const profileBtn = document.getElementById("header-profile-btn");
+
+    if (adminBtn) {
+      if (this.currentUser && this.currentUser.role === "admin") {
+        adminBtn.classList.remove("hidden");
+      } else {
+        adminBtn.classList.add("hidden");
+      }
+    }
+
+    if (authText) {
+      if (this.currentUser) {
+        const shortName = this.currentUser.username || this.currentUser.name.split(" ")[0];
+        authText.innerText = shortName;
+      } else {
+        authText.innerText = "Masuk";
+      }
+    }
+
+    if (profileBtn && this.currentUser) {
+      const span = profileBtn.querySelector("span:not(.bg-sky-600)");
+      if (span) span.innerText = this.currentUser.name;
+    }
+  }
+
+  openAuthModal(mode = "auth_login") {
+    if (this.currentUser) {
+      if (confirm(`Login sebagai ${this.currentUser.name} (${this.currentUser.role === "admin" ? "Sensei/Pengawas" : "Siswa"}).\nApakah Anda ingin keluar (Logout)?`)) {
+        this.logout();
+      }
+      return;
+    }
+    this.activeModal = mode;
+    this.renderModal();
+  }
+
+  async login(username, pin, errElId = "login-error-msg") {
+    const errEl = document.getElementById(errElId);
+    if (errEl) errEl.classList.add("hidden");
+    try {
+      const res = await fetch("/api/auth/sign-in/username", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password: pin }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        const msg = data.message || data.error?.message || "Username atau PIN salah.";
+        if (errEl) {
+          errEl.innerText = msg;
+          errEl.classList.remove("hidden");
+        } else {
+          alert(msg);
+        }
+        return false;
+      }
+      await this.checkAuthSession();
+      this.closeModal();
+      if (this.currentUser?.role === "admin") {
+        this.openAdminPanel("live");
+      } else {
+        this.render();
+      }
+      return true;
+    } catch (e) {
+      if (errEl) {
+        errEl.innerText = "Gagal menghubungi server API.";
+        errEl.classList.remove("hidden");
+      }
+      return false;
+    }
+  }
+
+  async logout() {
+    try {
+      await fetch("/api/auth/sign-out", { method: "POST" });
+    } catch (e) {}
+    this.currentUser = null;
+    this.currentSession = null;
+    this.updateHeaderAuthUI();
+    this.closeModal();
+    this.goToDashboard();
+  }
+
+  async registerStudent(formData, errElId = "reg-error-msg") {
+    const errEl = document.getElementById(errElId);
+    if (errEl) errEl.classList.add("hidden");
+    try {
+      const res = await fetch("/api/v1/auth/register-student", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        const msg = data.error || "Gagal melakukan pendaftaran.";
+        if (errEl) {
+          errEl.innerText = msg;
+          errEl.classList.remove("hidden");
+        } else {
+          alert(msg);
+        }
+        return false;
+      }
+      // Auto login after registration
+      await this.login(formData.username, formData.pin, errElId);
+      return true;
+    } catch (e) {
+      if (errEl) {
+        errEl.innerText = "Koneksi server gagal.";
+        errEl.classList.remove("hidden");
+      }
+      return false;
+    }
+  }
+
+  openAdminPanel(tab = "live") {
+    this.activeModal = "admin_panel";
+    this.adminTab = tab;
+    this.renderModal();
+    this.switchAdminTab(tab);
+  }
+
+  switchAdminTab(tab) {
+    this.adminTab = tab;
+    if (this.liveMonitoringInterval) {
+      clearInterval(this.liveMonitoringInterval);
+      this.liveMonitoringInterval = null;
+    }
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane) return;
+
+    document.querySelectorAll(".admin-tab-btn").forEach((btn) => {
+      const target = btn.getAttribute("data-tab");
+      if (target === tab) {
+        btn.className = "admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg bg-sky-600 text-white shadow-xs transition";
+      } else {
+        btn.className = "admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition";
+      }
+    });
+
+    if (tab === "live") {
+      this.fetchLiveMonitoring();
+      this.liveMonitoringInterval = setInterval(() => this.fetchLiveMonitoring(), 5000);
+    } else if (tab === "users") {
+      this.fetchAdminUsers();
+    } else if (tab === "lock") {
+      this.fetchChaptersLockStatus();
+    } else if (tab === "results") {
+      this.fetchAdminResults();
+    }
+  }
+
+  async fetchLiveMonitoring() {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane || this.adminTab !== "live") return;
+    try {
+      const res = await fetch("/api/v1/admin/monitoring/live");
+      const json = await res.json();
+      this.liveMonitoringData = json.data || [];
+    } catch (e) {
+      this.liveMonitoringData = [];
+    }
+    this.renderLiveMonitoringPane();
+  }
+
+  renderLiveMonitoringPane() {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane) return;
+    const items = this.liveMonitoringData;
+    pane.innerHTML = `
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-bold text-slate-800 dark:text-slate-200">
+            Siswa Sedang Ujian: <strong>${items.length} Peserta</strong>
+          </span>
+        </div>
+        <button onclick="window.app.fetchLiveMonitoring()" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-semibold flex items-center gap-1 transition">
+          🔄 Refresh
+        </button>
+      </div>
+      ${items.length === 0 ? `
+        <div class="py-12 text-center text-slate-400">
+          <p class="text-sm font-semibold">Tidak ada ujian yang sedang berlangsung.</p>
+          <p class="text-xs mt-1">Kartu siswa akan muncul otomatis saat tryout dimulai di lab.</p>
+        </div>
+      ` : `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[60vh] overflow-y-auto pr-1">
+          ${items.map((s) => `
+            <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-xs flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="font-extrabold text-sm text-slate-900 dark:text-slate-100">${s.studentName}</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold ${s.isExpired ? 'bg-rose-100 text-rose-700' : 'bg-sky-100 text-sky-700'}">
+                    ${s.isExpired ? 'Waktu Habis' : s.remainingMinutes + 'm tersisa'}
+                  </span>
+                </div>
+                <div class="text-[11px] text-slate-500 mt-0.5">
+                  ${s.username} • ${s.className} • <strong>Bab ${s.chapterNum} (${s.mode})</strong>
+                </div>
+                <div class="mt-3">
+                  <div class="flex justify-between text-[11px] font-bold mb-1">
+                    <span>Progres Terjawab</span>
+                    <span>${s.answeredCount} / ${s.totalQuestions} Soal (${s.progressPercent}%)</span>
+                  </div>
+                  <div class="w-full h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full transition-all" style="width: ${s.progressPercent}%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
+                <button onclick="window.app.terminateStudentExam('${s.sessionId}')" class="px-2.5 py-1.5 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-900/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-md text-xs font-bold transition">
+                  🛑 Paksa Kumpulkan
+                </button>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `}
+    `;
+  }
+
+  async terminateStudentExam(sessionId) {
+    if (!confirm("Paksa kumpulkan lembar jawaban siswa ini? Nilai akan dihitung dari soal yang sudah terjawab.")) return;
+    try {
+      const res = await fetch(`/api/v1/admin/monitoring/sessions/${sessionId}/terminate`, { method: "POST" });
+      const data = await res.json();
+      if (data.success) {
+        alert("Sesi ujian berhasil dihentikan & dikumpulkan!");
+        this.fetchLiveMonitoring();
+      } else {
+        alert(data.error || "Gagal menghentikan sesi.");
+      }
+    } catch (e) {
+      alert("Koneksi gagal.");
+    }
+  }
+
+  async fetchAdminUsers(q = "") {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane || this.adminTab !== "users") return;
+    try {
+      const url = q ? `/api/v1/admin/users?q=${encodeURIComponent(q)}` : "/api/v1/admin/users";
+      const res = await fetch(url);
+      const json = await res.json();
+      this.adminUsersData = json.data || [];
+    } catch (e) {
+      this.adminUsersData = [];
+    }
+    this.renderAdminUsersPane(q);
+  }
+
+  renderAdminUsersPane(searchQ = "") {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane) return;
+    const users = this.adminUsersData;
+    pane.innerHTML = `
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <input id="admin-user-search-input" type="text" placeholder="Cari nama, username, kelas..." value="${searchQ}" onkeydown="if(event.key==='Enter') window.app.fetchAdminUsers(this.value)" class="px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none w-56">
+          <button onclick="window.app.fetchAdminUsers(document.getElementById('admin-user-search-input').value)" class="px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-lg hover:bg-slate-200">Cari</button>
+        </div>
+        <button onclick="document.getElementById('add-user-form-card').classList.toggle('hidden')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-xs">
+          + Tambah Siswa Baru
+        </button>
+      </div>
+
+      <!-- Add User Form (hidden by default) -->
+      <div id="add-user-form-card" class="hidden mb-4 p-4 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/30">
+        <h4 class="text-xs font-bold text-sky-900 dark:text-sky-300 mb-2">Form Tambah Siswa LPK</h4>
+        <form onsubmit="event.preventDefault(); window.app.adminCreateStudentFromForm();" class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+          <input id="new-user-name" type="text" required placeholder="Nama Lengkap" class="px-2.5 py-1.5 text-xs rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+          <input id="new-user-uname" type="text" required placeholder="Username (misal: ahmad.syahroni)" class="px-2.5 py-1.5 text-xs rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-mono">
+          <input id="new-user-pin" type="text" required placeholder="PIN (default: 123456)" value="123456" class="px-2.5 py-1.5 text-xs rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-mono">
+          <input id="new-user-class" type="text" placeholder="Kelas / Angkatan" value="Angkatan 35-A" class="px-2.5 py-1.5 text-xs rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+          <div class="sm:col-span-4 flex justify-end gap-2 mt-1">
+            <button type="button" onclick="document.getElementById('add-user-form-card').classList.add('hidden')" class="px-3 py-1 text-xs border rounded text-slate-600">Batal</button>
+            <button type="submit" class="px-4 py-1 text-xs bg-sky-600 text-white font-bold rounded">Simpan Siswa</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Users Table -->
+      <div class="max-h-[55vh] overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-xl">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 sticky top-0">
+            <tr>
+              <th class="p-2.5">Nama & Username</th>
+              <th class="p-2.5">Peran</th>
+              <th class="p-2.5">Kelas</th>
+              <th class="p-2.5 text-center">Ujian Selesai</th>
+              <th class="p-2.5 text-center">Rata-rata</th>
+              <th class="p-2.5 text-right">Aksi</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            ${users.map((u) => `
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <td class="p-2.5">
+                  <div class="font-bold text-slate-900 dark:text-slate-100">${u.name}</div>
+                  <div class="text-[11px] text-slate-500 font-mono">${u.username}</div>
+                </td>
+                <td class="p-2.5">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold ${u.role === 'admin' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'}">
+                    ${u.role === 'admin' ? 'Sensei (Admin)' : 'Siswa'}
+                  </span>
+                </td>
+                <td class="p-2.5 text-slate-600 dark:text-slate-400">${u.className}</td>
+                <td class="p-2.5 text-center font-bold">${u.totalExams || 0}</td>
+                <td class="p-2.5 text-center font-bold ${u.avgScore >= 80 ? 'text-emerald-600' : 'text-slate-700 dark:text-slate-300'}">${u.avgScore ? u.avgScore.toFixed(1) : '-'}</td>
+                <td class="p-2.5 text-right space-x-1">
+                  <button onclick="window.app.adminResetPin('${u.id}', '${u.name}')" class="px-2 py-1 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 rounded text-[11px] font-semibold" title="Reset PIN ke 123456">
+                    🔑 Reset PIN
+                  </button>
+                  ${this.currentUser?.id !== u.id ? `
+                    <button onclick="window.app.adminDeleteUser('${u.id}', '${u.name}')" class="px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-[11px] font-semibold" title="Hapus Akun">
+                      🗑️
+                    </button>
+                  ` : ''}
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  async adminCreateStudentFromForm() {
+    const name = document.getElementById("new-user-name").value;
+    const username = document.getElementById("new-user-uname").value;
+    const pin = document.getElementById("new-user-pin").value;
+    const className = document.getElementById("new-user-class").value;
+    try {
+      const res = await fetch("/api/v1/admin/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, username, pin, className, role: "student" }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert("Siswa baru berhasil ditambahkan!");
+        this.fetchAdminUsers();
+      } else {
+        alert(data.error || "Gagal menambahkan siswa.");
+      }
+    } catch (e) {
+      alert("Koneksi gagal.");
+    }
+  }
+
+  async adminResetPin(userId, userName) {
+    if (!confirm(`Reset PIN untuk siswa "${userName}" ke default (123456)?`)) return;
+    try {
+      const res = await fetch(`/api/v1/admin/users/${userId}/reset-pin`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pin: "123456" }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(data.message || "PIN berhasil di-reset menjadi 123456.");
+      } else {
+        alert(data.error || "Gagal mereset PIN.");
+      }
+    } catch (e) {
+      alert("Koneksi gagal.");
+    }
+  }
+
+  async adminDeleteUser(userId, userName) {
+    if (!confirm(`Hapus pengguna "${userName}" secara permanen? Data nilai tryout juga akan dihapus.`)) return;
+    try {
+      const res = await fetch(`/api/v1/admin/users/${userId}`, { method: "DELETE" });
+      const data = await res.json();
+      if (data.success) {
+        alert("Pengguna berhasil dihapus!");
+        this.fetchAdminUsers();
+      } else {
+        alert(data.error || "Gagal menghapus pengguna.");
+      }
+    } catch (e) {
+      alert("Koneksi gagal.");
+    }
+  }
+
+  async fetchChaptersLockStatus() {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane || this.adminTab !== "lock") return;
+    try {
+      await this.fetchSystemStatus();
+      const res = await fetch("/api/v1/chapters");
+      const json = await res.json();
+      if (json.success && json.data) {
+        for (const ch of json.data) {
+          this.chaptersStatus[ch.chapterNum] = ch.isUnlocked;
+        }
+      }
+    } catch (e) {}
+    this.renderLockControlsPane();
+  }
+
+  renderLockControlsPane() {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane) return;
+    pane.innerHTML = `
+      <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+        <!-- Sakelar Master Sistem -->
+        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40">
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 mb-3 uppercase tracking-wider">
+            Sakelar Utama Sistem (Master Control)
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Registrasi Mandiri Siswa</div>
+                <div class="text-[11px] text-slate-500">Izinkan siswa membuat akun sendiri di web CBT</div>
+              </div>
+              <button onclick="window.app.toggleRegistration(!window.app.systemStatus.allowRegistration)" class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${this.systemStatus.allowRegistration ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'}">
+                ${this.systemStatus.allowRegistration ? 'DIBUKA (ON)' : 'DITUTUP (OFF)'}
+              </button>
+            </div>
+
+            <div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Kunci Global Seluruh Ujian</div>
+                <div class="text-[11px] text-slate-500">Kunci semua tryout di seluruh laboratorium</div>
+              </div>
+              <button onclick="window.app.toggleGlobalExamLock(!window.app.systemStatus.globalExamLock)" class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${this.systemStatus.globalExamLock ? 'bg-rose-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'}">
+                ${this.systemStatus.globalExamLock ? 'TERKUNCI (LOCKED)' : 'TERBUKA (NORMAL)'}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aksi Massal Bab -->
+        <div class="flex items-center justify-between gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60">
+          <div>
+            <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Aksi Massal Bab Ujian</div>
+            <div class="text-[11px] text-slate-500">Buka atau kunci seluruh Bab 01 s.d. Bab 25 serentak</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="window.app.lockAllChapters()" class="px-3 py-1.5 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-bold transition">
+              🔒 Kunci Semua Bab
+            </button>
+            <button onclick="window.app.unlockAllChapters()" class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 rounded-lg text-xs font-bold transition">
+              🔓 Buka Semua Bab
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid 25 Bab -->
+        <div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 mb-2.5 uppercase tracking-wider">
+            Status Kunci Per Bab (Bab 01 s.d. 25)
+          </h4>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            ${Array.from({ length: 25 }, (_, i) => {
+              const num = String(i + 1).padStart(2, "0");
+              const isUnlocked = this.chaptersStatus[num] !== false;
+              return `
+                <div class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-between text-xs">
+                  <span class="font-bold">Bab ${num}</span>
+                  <button onclick="window.app.toggleChapterLock('${num}', ${!isUnlocked})" class="px-2 py-0.5 rounded text-[10px] font-bold transition ${isUnlocked ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' : 'bg-rose-100 text-rose-800 hover:bg-rose-200'}">
+                    ${isUnlocked ? 'Terbuka' : 'Kunci'}
+                  </button>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  async toggleRegistration(allow) {
+    try {
+      const res = await fetch("/api/v1/admin/settings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ allowRegistration: allow }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        this.systemStatus.allowRegistration = allow;
+        this.renderLockControlsPane();
+      }
+    } catch (e) {}
+  }
+
+  async toggleGlobalExamLock(lock) {
+    try {
+      const res = await fetch("/api/v1/admin/settings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ globalExamLock: lock }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        this.systemStatus.globalExamLock = lock;
+        this.renderLockControlsPane();
+      }
+    } catch (e) {}
+  }
+
+  async lockAllChapters() {
+    if (!confirm("Kunci seluruh Bab 01 s.d. 25 untuk semua siswa?")) return;
+    try {
+      await fetch("/api/v1/admin/chapters/lock-all", { method: "POST" });
+      for (let i = 1; i <= 25; i++) {
+        this.chaptersStatus[String(i).padStart(2, "0")] = false;
+      }
+      this.renderLockControlsPane();
+    } catch (e) {}
+  }
+
+  async unlockAllChapters() {
+    if (!confirm("Buka seluruh Bab 01 s.d. 25 untuk semua siswa?")) return;
+    try {
+      await fetch("/api/v1/admin/chapters/unlock-all", { method: "POST" });
+      for (let i = 1; i <= 25; i++) {
+        this.chaptersStatus[String(i).padStart(2, "0")] = true;
+      }
+      this.renderLockControlsPane();
+    } catch (e) {}
+  }
+
+  async toggleChapterLock(chapterNum, isUnlocked) {
+    try {
+      const res = await fetch(`/api/v1/admin/chapters/${chapterNum}/lock`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isUnlocked }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        this.chaptersStatus[chapterNum] = isUnlocked;
+        this.renderLockControlsPane();
+      }
+    } catch (e) {}
+  }
+
+  async fetchAdminResults(chapter = "", className = "") {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane || this.adminTab !== "results") return;
+    try {
+      let url = "/api/v1/admin/monitoring/results?";
+      if (chapter) url += `chapter=${chapter}&`;
+      if (className) url += `class=${encodeURIComponent(className)}&`;
+      const res = await fetch(url);
+      const json = await res.json();
+      this.adminResultsData = json.data || [];
+    } catch (e) {
+      this.adminResultsData = [];
+    }
+    this.renderAdminResultsPane(chapter, className);
+  }
+
+  renderAdminResultsPane(selectedChapter = "", selectedClass = "") {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane) return;
+    const items = this.adminResultsData;
+    pane.innerHTML = `
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <select id="admin-result-ch-filter" onchange="window.app.fetchAdminResults(this.value, document.getElementById('admin-result-cls-filter').value)" class="px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+            <option value="">Semua Bab</option>
+            ${Array.from({ length: 25 }, (_, i) => {
+              const num = String(i + 1).padStart(2, "0");
+              return `<option value="${num}" ${selectedChapter === num ? 'selected' : ''}>Bab ${num}</option>`;
+            }).join("")}
+          </select>
+          <input id="admin-result-cls-filter" type="text" placeholder="Filter kelas..." value="${selectedClass}" onkeydown="if(event.key==='Enter') window.app.fetchAdminResults(document.getElementById('admin-result-ch-filter').value, this.value)" class="px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 w-32">
+        </div>
+        <button onclick="window.app.exportResultsCsv()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs">
+          📥 Unduh Rekap Nilai (CSV)
+        </button>
+      </div>
+
+      <div class="max-h-[55vh] overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-xl">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 sticky top-0">
+            <tr>
+              <th class="p-2.5">Waktu Submit</th>
+              <th class="p-2.5">Nama Siswa</th>
+              <th class="p-2.5">Kelas</th>
+              <th class="p-2.5">Bab</th>
+              <th class="p-2.5 text-center">Reading</th>
+              <th class="p-2.5 text-center">Choukai</th>
+              <th class="p-2.5 text-center">Total</th>
+              <th class="p-2.5 text-center">Hasil</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            ${items.length === 0 ? `
+              <tr>
+                <td colspan="8" class="p-8 text-center text-slate-400">Belum ada data pengerjaan tryout.</td>
+              </tr>
+            ` : items.map((r) => `
+              <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <td class="p-2.5 text-slate-500 text-[11px]">${r.submittedAt ? new Date(r.submittedAt).toLocaleDateString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '-'}</td>
+                <td class="p-2.5 font-bold text-slate-900 dark:text-slate-100">${r.studentName}</td>
+                <td class="p-2.5 text-slate-600 dark:text-slate-400">${r.className}</td>
+                <td class="p-2.5 font-mono">Bab ${r.chapterNum}</td>
+                <td class="p-2.5 text-center">${r.readingScore || '0'}</td>
+                <td class="p-2.5 text-center">${r.choukaiScore || '0'}</td>
+                <td class="p-2.5 text-center font-bold">${r.totalScore || '0'}</td>
+                <td class="p-2.5 text-center">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold ${r.isPassed ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                    ${r.isPassed ? 'LULUS' : 'REMEDIAL'}
+                  </span>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  exportResultsCsv() {
+    const ch = document.getElementById("admin-result-ch-filter")?.value || "";
+    const cls = document.getElementById("admin-result-cls-filter")?.value || "";
+    let url = "/api/v1/admin/monitoring/results/export?format=csv";
+    if (ch) url += `&chapter=${ch}`;
+    if (cls) url += `&class=${encodeURIComponent(cls)}`;
+    window.open(url, "_blank");
+  }
+
   // MODAL RENDERER
   renderModal() {
     const container = document.getElementById("modal-container");
@@ -2319,6 +3009,171 @@ class ChoukaiApp {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      `;
+    } else if (this.activeModal === "auth_login") {
+      container.innerHTML = `
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay" onclick="window.app.closeModal()">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-sm w-full p-6 shadow-2xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-300 flex items-center justify-center text-base font-bold font-jp">
+                  登
+                </span>
+                <div>
+                  <h3 class="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                    Masuk Platform CBT
+                  </h3>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Kredensial Siswa & Pengawas IMM Japan</p>
+                </div>
+              </div>
+              <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 text-lg font-bold leading-none">&times;</button>
+            </div>
+
+            <div id="login-error-msg" class="hidden mb-3 p-2 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-xs"></div>
+
+            <form onsubmit="event.preventDefault(); window.app.login(document.getElementById('login-username').value, document.getElementById('login-pin').value);" class="space-y-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Username Siswa / Sensei:</label>
+                <input id="login-username" type="text" required placeholder="misal: ahmad.syahroni" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">PIN / Password (6-Digit):</label>
+                <input id="login-pin" type="password" required placeholder="PIN atau Password" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition shadow-sm mt-2">
+                Masuk ke Sistem CBT
+              </button>
+            </form>
+
+            <!-- Quick Demo Accounts -->
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
+              <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Akses Cepat Pengujian:</div>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="document.getElementById('login-username').value='ahmad.syahroni'; document.getElementById('login-pin').value='123456'; window.app.login('ahmad.syahroni', '123456');" class="py-1.5 px-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded text-[11px] font-semibold text-center transition">
+                  👤 Siswa Demo
+                </button>
+                <button type="button" onclick="document.getElementById('login-username').value='sensei.wahyu'; document.getElementById('login-pin').value='123456'; window.app.login('sensei.wahyu', '123456');" class="py-1.5 px-2 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded text-[11px] font-semibold text-center transition">
+                  👨‍🏫 Sensei Admin
+                </button>
+              </div>
+              ${this.systemStatus.allowRegistration ? `
+                <div class="text-center pt-2">
+                  <button type="button" onclick="window.app.openAuthModal('auth_register')" class="text-xs text-sky-600 dark:text-sky-400 font-semibold hover:underline">
+                    Belum punya akun? Daftar mandiri di sini &rarr;
+                  </button>
+                </div>
+              ` : `
+                <div class="text-center text-[11px] text-slate-400 pt-1">
+                  Pendaftaran mandiri siswa sedang ditutup oleh Sensei.
+                </div>
+              `}
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (this.activeModal === "auth_register") {
+      container.innerHTML = `
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay" onclick="window.app.closeModal()">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-sm w-full p-6 shadow-2xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-base font-bold font-jp">
+                  生
+                </span>
+                <div>
+                  <h3 class="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                    Pendaftaran Siswa Baru
+                  </h3>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Buat akun untuk merekam nilai tryout LPK</p>
+                </div>
+              </div>
+              <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 text-lg font-bold leading-none">&times;</button>
+            </div>
+
+            <div id="reg-error-msg" class="hidden mb-3 p-2 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-xs"></div>
+
+            <form onsubmit="event.preventDefault(); window.app.registerStudent({
+              name: document.getElementById('reg-name').value,
+              username: document.getElementById('reg-username').value,
+              pin: document.getElementById('reg-pin').value,
+              className: document.getElementById('reg-class').value,
+              email: document.getElementById('reg-email').value,
+            });" class="space-y-2.5">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Lengkap Siswa:</label>
+                <input id="reg-name" type="text" required placeholder="Contoh: Dadan Ramdani" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Username (Login LPK):</label>
+                <input id="reg-username" type="text" required placeholder="Contoh: dadan.ramdani" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">PIN 6-Digit:</label>
+                <input id="reg-pin" type="password" required placeholder="Contoh: 123456" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Kelas / Angkatan:</label>
+                <input id="reg-class" type="text" placeholder="Angkatan 35-A" value="Angkatan 35-A" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Email (Opsional):</label>
+                <input id="reg-email" type="email" placeholder="dadan@contoh.com" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 focus:outline-none">
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md text-xs font-bold transition shadow-sm mt-2">
+                Daftar & Masuk ke Lab
+              </button>
+            </form>
+
+            <div class="mt-3 text-center">
+              <button type="button" onclick="window.app.openAuthModal('auth_login')" class="text-xs text-slate-500 hover:underline">
+                Sudah punya akun? Masuk di sini
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (this.activeModal === "admin_panel") {
+      container.innerHTML = `
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 modal-overlay" onclick="window.app.closeModal()">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-4xl w-full p-5 sm:p-6 shadow-2xl flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center font-black font-jp text-base shadow-sm">
+                  先
+                </div>
+                <div>
+                  <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                    Panel Kontrol Sensei CBT IMM Japan
+                  </h3>
+                  <p class="text-[11px] text-slate-500">Live Monitor • Manajemen Siswa • Kontrol Kunci • Rekap Nilai</p>
+                </div>
+              </div>
+              <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1 leading-none">&times;</button>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="flex items-center gap-1.5 my-3 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/60 overflow-x-auto">
+              <button data-tab="live" onclick="window.app.switchAdminTab('live')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'live' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                📡 Live Monitor
+              </button>
+              <button data-tab="users" onclick="window.app.switchAdminTab('users')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'users' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                👥 Manajemen Siswa
+              </button>
+              <button data-tab="lock" onclick="window.app.switchAdminTab('lock')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'lock' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                🔒 Kontrol Ujian & Sakelar
+              </button>
+              <button data-tab="results" onclick="window.app.switchAdminTab('results')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'results' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                📊 Rekap Nilai & Ekspor CSV
+              </button>
+            </div>
+
+            <!-- Dynamic Tab Content Pane -->
+            <div id="admin-tab-content" class="flex-1 overflow-y-auto">
+              <!-- Loaded dynamically via switchAdminTab -->
+            </div>
           </div>
         </div>
       `;
