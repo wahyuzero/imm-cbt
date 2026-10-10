@@ -204,6 +204,14 @@ export async function runMigrations() {
     ON "user_chapter_access" ("user_id", "chapter_num");
   `;
 
+  await client`
+    ALTER TABLE "user" ADD COLUMN IF NOT EXISTS "pdf_access_allowed" BOOLEAN DEFAULT true NOT NULL;
+  `;
+
+  await client`
+    ALTER TABLE "user_chapter_access" ADD COLUMN IF NOT EXISTS "is_pdf_allowed" BOOLEAN DEFAULT true NOT NULL;
+  `;
+
   console.log("PostgreSQL table migrations completed successfully.");
 }
 

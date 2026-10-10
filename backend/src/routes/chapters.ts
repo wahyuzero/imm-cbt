@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { db } from "../db/index.js";
-import { chapters, examSessions, userChapterAccess } from "../db/schema.js";
+import { chapters, examSessions, userChapterAccess, user } from "../db/schema.js";
 import { asc, eq, and, desc, or } from "drizzle-orm";
 import { auth } from "../lib/auth.js";
 
@@ -16,6 +16,8 @@ chaptersRouter.get("/chapters", async (c) => {
     const session = await auth.api.getSession({ headers: c.req.raw.headers });
     const userBestScores: Record<string, any> = {};
     const userAccessMap = new Map<string, boolean>();
+    const userPdfAccessMap = new Map<string, boolean>();
+    let userGlobalPdfAllowed = true;
 
     if (session && session.user) {
       const userSessions = await db.query.examSessions.findMany({
@@ -39,11 +41,17 @@ chaptersRouter.get("/chapters", async (c) => {
       }
 
       if (session.user.role !== "admin") {
+        const dbUser = await db.query.user.findFirst({
+          where: eq(user.id, session.user.id),
+        });
+        userGlobalPdfAllowed = dbUser ? dbUser.pdfAccessAllowed : true;
+
         const accessList = await db.query.userChapterAccess.findMany({
           where: eq(userChapterAccess.userId, session.user.id),
         });
         for (const a of accessList) {
           userAccessMap.set(a.chapterNum, a.isAllowed);
+          userPdfAccessMap.set(a.chapterNum, a.isPdfAllowed);
         }
       }
     }
@@ -54,15 +62,27 @@ chaptersRouter.get("/chapters", async (c) => {
         : true;
       const isUserRestricted = !isAllowedForUser;
 
+      const isPdfAllowedForUser = !userGlobalPdfAllowed
+        ? false
+        : userPdfAccessMap.has(ch.chapterNum)
+        ? userPdfAccessMap.get(ch.chapterNum)!
+        : true;
+
       return {
         ...ch,
         isUnlocked: isUserRestricted ? false : ch.isUnlocked,
         userRestricted: isUserRestricted,
+        isPdfAllowed: isPdfAllowedForUser,
+        pdfRestricted: !isPdfAllowedForUser,
         userScore: userBestScores[ch.chapterNum] || null,
       };
     });
 
-    return c.json({ success: true, data: mapped });
+    return c.json({
+      success: true,
+      pdfAccessAllowed: userGlobalPdfAllowed,
+      data: mapped,
+    });
   } catch (err: any) {
     return c.json({ success: false, error: err.message }, 500);
   }

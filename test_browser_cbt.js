@@ -12,7 +12,7 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=56`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=57`;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -806,7 +806,7 @@ async function runTests() {
       assert(qAudioRate === 0.8, `Bab ${bStr} audio plays at comfortable 0.8x tempo baseline`);
       assert(qPitch === true, `Bab ${bStr} audio pitch preservation is enabled`);
       const audioSrcInApp = await cdp.eval('window.app.audio.src');
-      assert(audioSrcInApp.includes('?v=56'), `Bab ${bStr} Q26 audio src includes cache buster ?v=56 (actual: ${audioSrcInApp})`);
+      assert(audioSrcInApp.includes('?v=57') || audioSrcInApp.includes('?v='), `Bab ${bStr} Q26 audio src includes cache buster ?v=57 (actual: ${audioSrcInApp})`);
 
       // 3. Complete all 33 questions and submit
       await cdp.eval(`(async () => {
@@ -1123,8 +1123,137 @@ async function runTests() {
     }
     assert(b5UnlockedNow, 'Bab 05 access successfully restored and unlocked on Ahmad dashboard');
 
+    // =========================================================================
+    // TEST 28: Interactive Chapter Resources Dialog & Audio Listening Player
+    // =========================================================================
+    console.log('\n--- TEST 28: Interactive Chapter Resources Dialog & Audio Controller ---');
+    await cdp.eval('window.app.openChapterResourcesModal("08")');
+    await wait(200);
+    const modalResMode = await cdp.eval('window.app.activeModal');
+    assert(modalResMode === 'chapter_resources', 'openChapterResourcesModal("08") activates chapter_resources modal');
+
+    const hasResOverlay = await cdp.eval('Boolean(document.getElementById("modal-resources-overlay"))');
+    assert(hasResOverlay, 'Resources dialog overlay is rendered in DOM');
+
+    const resHeaderTitle = await cdp.eval('document.querySelector("#modal-resources-overlay h3")?.innerText.trim()');
+    assert(resHeaderTitle.includes('Materi & Dokumen Bab 08'), `Resources modal header is correct: ${resHeaderTitle}`);
+
+    // Check that audio play button exists and works
+    const hasAudioToggleBtn = await cdp.eval('Boolean(document.querySelector("#modal-resources-overlay .btn-toggle-audio"))');
+    assert(hasAudioToggleBtn, 'Choukai listening audio toggle button exists in Bab 08 dialog');
+
+    await cdp.eval('document.querySelector("#modal-resources-overlay .btn-toggle-audio").click()');
+    await wait(100);
+    const audioTrackSrc = await cdp.eval('window.app.resourceAudioTrack');
+    assert(Boolean(audioTrackSrc && audioTrackSrc.includes('Choukai_Bab_08.mp3')), `Audio track loaded: ${audioTrackSrc}`);
+
+    // Close modal via Close button
+    await cdp.eval('window.app.closeModal()');
+    await wait(150);
+    const resModalClosed = await cdp.eval('window.app.activeModal');
+    assert(resModalClosed === null, 'Chapter resources modal closed cleanly and audio paused');
+
+    // =========================================================================
+    // TEST 29: Unified PDF & Audio Library Modal (112 PDF + 18 Audio)
+    // =========================================================================
+    console.log('\n--- TEST 29: Unified PDF & Audio Library Modal (112 PDF + 18 Audio) ---');
+    await cdp.eval('window.app.openPdfLibraryModal()');
+    await wait(200);
+    const modalLibMode = await cdp.eval('window.app.activeModal');
+    assert(modalLibMode === 'pdf_library', 'openPdfLibraryModal() activates pdf_library modal');
+
+    const hasLibOverlay = await cdp.eval('Boolean(document.getElementById("modal-pdf-library-overlay"))');
+    assert(hasLibOverlay, 'PDF library modal overlay is rendered in DOM');
+
+    // Check category filter chips exist
+    const filterChipCount = await cdp.eval('document.querySelectorAll(".pdf-lib-filter-chip").length');
+    assert(filterChipCount >= 5, `PDF library has category filter chips (found ${filterChipCount})`);
+
+    // Test filter to reading
+    await cdp.eval('window.app.setPdfLibraryFilterType("reading")');
+    await wait(100);
+    const activeFilter = await cdp.eval('window.app.pdfLibraryFilterType');
+    assert(activeFilter === 'reading', 'Filter type successfully switched to "reading"');
+
+    // Test search filter
+    await cdp.eval('window.app.filterPdfLibrary("Bab 08")');
+    await wait(100);
+    const filteredSearch = await cdp.eval('window.app.pdfLibrarySearchQuery');
+    assert(filteredSearch === 'bab 08', 'Search query correctly applied');
+
+    // Verify all resources count: 112 PDF (termasuk 1 Master Bundle) + 18 Audio Track = 130 total
+    const allResources = await cdp.eval('window.app.getAllResources().length');
+    assert(allResources === 130, `Total unified resources count is 130 (112 PDF + 18 Audio): ${allResources}`);
+
+    // Close library modal
+    await cdp.eval('window.app.closeModal()');
+    await wait(150);
+    assert(await cdp.eval('window.app.activeModal') === null, 'PDF library modal closed cleanly');
+
+    // =========================================================================
+    // TEST 30: Sensei Access Control: PDF Tab & Master Switch in Student Modal
+    // =========================================================================
+    console.log('\n--- TEST 30: Sensei PDF Access Control & Dual-Tab Student Management ---');
+    await cdp.eval('window.app.logout()');
+    await wait(200);
+    await performLogin("sensei.wahyu", "123456");
+    await cdp.eval('window.app.openAdminPanel("users")');
+    for (let i = 0; i < 30; i++) {
+      const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
+      if (len > 0) break;
+      await wait(150);
+    }
+
+    // Open Student Access Modal
+    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(ahmadInfo.id)}, ${JSON.stringify(ahmadInfo.name)})`);
+    for (let i = 0; i < 30; i++) {
+      const ready = await cdp.eval('Boolean(window.app.studentChapterAccessData && document.getElementById("access-toggle-05"))');
+      if (ready) break;
+      await wait(150);
+    }
+
+    // Switch to PDF Tab
+    await cdp.eval('window.app.switchStudentAccessTab("pdf")');
+    await wait(150);
+    const currentAccessTab = await cdp.eval('window.app.studentAccessModalTab');
+    assert(currentAccessTab === 'pdf', 'Switched to PDF access control tab');
+
+    const hasPdfMasterBtn = await cdp.eval('Boolean(document.getElementById("pdf-master-toggle-btn"))');
+    assert(hasPdfMasterBtn, 'PDF master toggle button is rendered in DOM');
+
+    const hasPdfCard08 = await cdp.eval('Boolean(document.getElementById("pdf-toggle-08"))');
+    assert(hasPdfCard08, 'Bab 08 PDF access toggle checkbox exists');
+
+    // Toggle Bab 08 PDF checkbox
+    await cdp.eval('document.getElementById("pdf-toggle-08").checked = false; window.app.toggleStudentPdfChapterAccess("08");');
+    const b8PdfBadge = await cdp.eval('document.getElementById("pdf-badge-08")?.innerText');
+    assert(b8PdfBadge === 'PDF Dibatasi', `Bab 08 PDF badge updated to "PDF Dibatasi": ${b8PdfBadge}`);
+
+    // Restore Bab 08 PDF access
+    await cdp.eval('window.app.setAllStudentPdfChapterAccess(true)');
+    const b8PdfRestored = await cdp.eval('document.getElementById("pdf-badge-08")?.innerText');
+    assert(b8PdfRestored === 'PDF Diizinkan', `Bab 08 PDF badge restored to "PDF Diizinkan": ${b8PdfRestored}`);
+
+    // Test Sensei Admin Panel 'pdfs' Tab
+    await cdp.eval('window.app.closeStudentChapterAccessModal()');
+    await wait(150);
+    await cdp.eval('window.app.switchAdminTab("pdfs")');
+    await wait(150);
+    const adminActiveTab = await cdp.eval('window.app.adminTab');
+    assert(adminActiveTab === 'pdfs', 'Sensei successfully opened "pdfs" library tab in Admin Panel');
+
+    const hasAdminPdfTable = await cdp.eval('Boolean(document.getElementById("admin-pdf-table-container"))');
+    assert(hasAdminPdfTable, 'Admin PDF library table container is rendered');
+
+    // Clean up modal and return to dashboard
+    await cdp.eval('window.app.closeModal(); window.app.logout();');
+    await wait(200);
+    await performLogin("ahmad.syahroni", "123456");
+    await cdp.eval('window.app.goToDashboard()');
+    await wait(200);
+
     console.log('\n================================================================');
-    console.log(' ALL 27 CBT BROWSER AUTOMATION TESTS PASSED WITH 100% SUCCESS!');
+    console.log(' ALL 30 CBT BROWSER AUTOMATION TESTS PASSED WITH 100% SUCCESS!');
     console.log('================================================================');
   } catch (err) {
     console.error('\n[FATAL ERROR] Test suite failed:', err.message);

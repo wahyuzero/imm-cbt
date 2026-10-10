@@ -63,6 +63,15 @@ class ChoukaiApp {
     this.adminResultsData = [];
     this.chaptersStatus = {};
     this.userRestrictedChapters = {};
+    this.userRestrictedPdfs = {};
+    this.isUserPdfAccessAllowed = true;
+    this.pdfLibrarySearchQuery = "";
+    this.pdfLibraryFilterType = "all";
+    this.selectedChapterForResources = null;
+    this.studentAccessModalTab = "exam";
+    this.selectedStudentPdfMasterAllowed = true;
+    this.resourceAudio = new Audio();
+    this.resourceAudioPlaying = false;
     this.selectedStudentForAccess = null;
     this.studentChapterAccessData = null;
 
@@ -78,7 +87,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "56";
+    return "57";
   }
 
   audioUrl(url) {
@@ -1272,6 +1281,7 @@ class ChoukaiApp {
       clearInterval(this.liveMonitoringInterval);
       this.liveMonitoringInterval = null;
     }
+    this.pauseResourceAudio();
     this.activeModal = null;
     this.modalData = null;
     const container = document.getElementById("modal-container");
@@ -1739,7 +1749,18 @@ class ChoukaiApp {
           </div>
           <div>
             ${actionButton}
-            ${pdfCardLinks}
+            <button type="button" onclick="window.app.openChapterResourcesModal('${ch.num}')" class="w-full mt-2.5 py-1.5 px-2 bg-slate-100 hover:bg-slate-200/90 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 rounded-md text-[11px] font-bold transition flex items-center justify-between border border-slate-200/90 dark:border-slate-700 shadow-2xs group" title="Buka Dokumen PDF & Audio Belajar Bab ${ch.num}">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-sky-500 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                Dokumen & Audio Bab ${ch.num}
+              </span>
+              <span class="px-1.5 py-0.2 rounded text-[10px] font-mono ${ch.choukaiQuestions > 0 ? 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300' : 'bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}">
+                ${ch.choukaiQuestions > 0 ? '5 Dokumen + 🎧' : '3 Dokumen'}
+              </span>
+            </button>
+            <div class="hidden" aria-hidden="true">
+              ${pdfCardLinks}
+            </div>
           </div>
         </div>
       `;
@@ -1788,29 +1809,17 @@ class ChoukaiApp {
             <p class="text-xs text-slate-500">Pilih modul bab tryout atau buka hafalan kosakata di bawah ini</p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <button onclick="window.app.goToKosakata('01')" class="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-xs font-bold transition flex items-center gap-1 shadow-sm" title="Buka Modul Hafalan Kosakata Interaktif">
+            <button onclick="window.app.openPdfLibraryModal()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Buka Bank Dokumen PDF Lengkap (112 File)">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+              📚 Bank Dokumen PDF (112 File)
+            </button>
+            <button onclick="window.app.goToKosakata('01')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Buka Modul Hafalan Kosakata Interaktif">
               <span class="font-jp">語</span>
               Hafalan Kosakata (1.500 Kata)
             </button>
-            <a href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300 rounded text-xs font-bold hover:bg-emerald-100 transition flex items-center gap-1 shadow-sm" title="Unduh Lembar Setoran Lengkap Bab 01-25 (76 Halaman)">
+            <a href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}" target="_blank" class="px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-50 transition flex items-center gap-1.5 shadow-xs" title="Unduh Lembar Setoran Lengkap Bab 01-25 (76 Halaman)">
               <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               Bundle Kosakata (76 Hal)
-            </a>
-            <a href="${this.pdfUrl(BAB_08_DATA.pdfReadingSoalUrl || 'assets/pdf/Salinan Soal Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
-              <svg class="w-3.5 h-3.5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Soal Reading PDF
-            </a>
-            <a href="${this.pdfUrl(BAB_08_DATA.pdfReadingKunciUrl || 'assets/pdf/Kunci dan Pembahasan Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
-              <svg class="w-3.5 h-3.5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Kunci Reading PDF
-            </a>
-            <a href="${this.pdfUrl(BAB_08_DATA.pdfSoalUrl || 'assets/pdf/Soal Choukai Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
-              <svg class="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Soal Choukai PDF
-            </a>
-            <a href="${this.pdfUrl(BAB_08_DATA.pdfKunciUrl || 'assets/pdf/Kunci dan Pembahasan Choukai Bab 08.pdf')}" target="_blank" class="px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-medium hover:bg-slate-50 transition flex items-center gap-1 shadow-sm">
-              <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
-              Kunci Choukai PDF
             </a>
           </div>
         </div>
@@ -2997,9 +3006,13 @@ class ChoukaiApp {
         const res = await fetch("/api/v1/chapters");
         const json = await res.json();
         if (json.success && json.data) {
+          if (json.pdfAccessAllowed !== undefined) {
+            this.isUserPdfAccessAllowed = Boolean(json.pdfAccessAllowed);
+          }
           for (const ch of json.data) {
             this.chaptersStatus[ch.chapterNum] = ch.isUnlocked;
             this.userRestrictedChapters[ch.chapterNum] = Boolean(ch.userRestricted);
+            this.userRestrictedPdfs[ch.chapterNum] = Boolean(ch.pdfRestricted);
             if (ch.userScore && (!this.progress[ch.chapterNum] || ch.userScore.totalScore > this.progress[ch.chapterNum].score)) {
               this.progress[ch.chapterNum] = {
                 chapter: ch.chapterNum,
@@ -3020,6 +3033,10 @@ class ChoukaiApp {
       if (this.currentUser && this.currentUser.role !== "admin") {
         const mockAccess = JSON.parse(localStorage.getItem("imm_mock_chapter_access") || "{}");
         const userAccess = mockAccess[this.currentUser.id] || mockAccess[this.currentUser.username] || {};
+        const mockPdfAccess = JSON.parse(localStorage.getItem("imm_mock_pdf_access") || "{}");
+        const userPdfAccess = mockPdfAccess[this.currentUser.id] || mockPdfAccess[this.currentUser.username] || {};
+        this.isUserPdfAccessAllowed = userPdfAccess.master !== false;
+
         for (let i = 1; i <= 25; i++) {
           const num = String(i).padStart(2, "0");
           if (userAccess[num] === false) {
@@ -3028,9 +3045,12 @@ class ChoukaiApp {
           } else {
             this.userRestrictedChapters[num] = false;
           }
+          this.userRestrictedPdfs[num] = userPdfAccess.master === false || userPdfAccess[num] === false;
         }
       } else {
         this.userRestrictedChapters = {};
+        this.userRestrictedPdfs = {};
+        this.isUserPdfAccessAllowed = true;
       }
       if (this.view === "dashboard") {
         this.render();
@@ -3339,6 +3359,8 @@ class ChoukaiApp {
       this.fetchChaptersLockStatus();
     } else if (tab === "results") {
       this.fetchAdminResults();
+    } else if (tab === "pdfs") {
+      this.renderAdminPdfLibraryPane();
     }
   }
 
@@ -3628,12 +3650,14 @@ class ChoukaiApp {
   }
 
   // =========================================================================
-  // MANAJEMEN HAK AKSES BAB PER-SISWA (STUDENT CHAPTER ACCESS)
+  // MANAJEMEN HAK AKSES BAB & PDF PER-SISWA (STUDENT ACCESS CONTROL)
   // =========================================================================
 
   async openStudentChapterAccessModal(userId, userName) {
     this.selectedStudentForAccess = { id: userId, name: userName };
     this.studentChapterAccessData = null;
+    this.studentAccessModalTab = "cbt";
+    this.selectedStudentPdfMasterAllowed = true;
     this.activeModal = "student_chapter_access";
     this.renderModal();
 
@@ -3643,6 +3667,9 @@ class ChoukaiApp {
         const json = await res.json();
         const list = Array.isArray(json.data) ? json.data : (json.chapters || []);
         this.studentChapterAccessData = list;
+        if (json.user && json.user.pdfAccessAllowed !== undefined) {
+          this.selectedStudentPdfMasterAllowed = Boolean(json.user.pdfAccessAllowed);
+        }
       } catch (e) {
         console.error("Failed to fetch chapter access:", e);
         this.studentChapterAccessData = [];
@@ -3651,11 +3678,16 @@ class ChoukaiApp {
       // Offline / file:// fallback
       const mockAccess = JSON.parse(localStorage.getItem("imm_mock_chapter_access") || "{}");
       const userAccess = mockAccess[userId] || {};
+      const mockPdfAccess = JSON.parse(localStorage.getItem("imm_mock_pdf_access") || "{}");
+      const userPdfAccess = mockPdfAccess[userId] || {};
+      this.selectedStudentPdfMasterAllowed = userPdfAccess.master !== false;
+
       const list = CHAPTERS_INDEX.map((ch) => ({
         chapterNum: ch.num,
         titleJa: ch.title_ja,
         titleId: ch.title_id,
         isAllowed: userAccess[ch.num] !== false,
+        isPdfAllowed: userPdfAccess.master === false ? false : userPdfAccess[ch.num] !== false,
       }));
       this.studentChapterAccessData = list;
     }
@@ -3667,6 +3699,11 @@ class ChoukaiApp {
     this.openAdminPanel("users");
   }
 
+  switchStudentAccessTab(tab) {
+    this.studentAccessModalTab = tab;
+    this.renderStudentChapterAccessModalContent();
+  }
+
   setAllStudentChapterAccess(isAllowed) {
     const list = typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : [];
     for (const ch of list) {
@@ -3676,6 +3713,10 @@ class ChoukaiApp {
         cb.checked = isAllowed;
         this.updateAccessCardVisual(num, isAllowed);
       }
+      if (this.studentChapterAccessData) {
+        const item = this.studentChapterAccessData.find((x) => x.chapterNum === num);
+        if (item) item.isAllowed = isAllowed;
+      }
     }
   }
 
@@ -3683,6 +3724,10 @@ class ChoukaiApp {
     const cb = document.getElementById(`access-toggle-${chNum}`);
     if (cb) {
       this.updateAccessCardVisual(chNum, cb.checked);
+      if (this.studentChapterAccessData) {
+        const item = this.studentChapterAccessData.find((x) => x.chapterNum === chNum);
+        if (item) item.isAllowed = cb.checked;
+      }
     }
   }
 
@@ -3707,16 +3752,89 @@ class ChoukaiApp {
     }
   }
 
+  toggleStudentPdfMasterAccess(allowed) {
+    this.selectedStudentPdfMasterAllowed = Boolean(allowed);
+    const masterSwitch = document.getElementById("pdf-master-toggle-btn");
+    if (masterSwitch) {
+      if (this.selectedStudentPdfMasterAllowed) {
+        masterSwitch.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-emerald-600 text-white shadow-xs";
+        masterSwitch.innerText = "AKTIF (Bisa Buka PDF)";
+      } else {
+        masterSwitch.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-rose-600 text-white shadow-xs";
+        masterSwitch.innerText = "DIKUNCI (Semua PDF Diblokir)";
+      }
+    }
+    const banner = document.getElementById("pdf-master-desc");
+    if (banner) {
+      banner.innerText = this.selectedStudentPdfMasterAllowed
+        ? "Hak akses PDF terbuka. Anda dapat mengatur pembatasan per bab di bawah ini."
+        : "Hak akses PDF dikunci secara global. Siswa ini tidak dapat membuka dokumen PDF apapun.";
+    }
+  }
+
+  toggleStudentPdfChapterAccess(chNum) {
+    const cb = document.getElementById(`pdf-toggle-${chNum}`);
+    if (cb) {
+      this.updatePdfCardVisual(chNum, cb.checked);
+      if (this.studentChapterAccessData) {
+        const item = this.studentChapterAccessData.find((x) => x.chapterNum === chNum);
+        if (item) item.isPdfAllowed = cb.checked;
+      }
+    }
+  }
+
+  updatePdfCardVisual(chNum, isAllowed) {
+    const card = document.getElementById(`pdf-card-${chNum}`);
+    const badge = document.getElementById(`pdf-badge-${chNum}`);
+    if (card) {
+      if (isAllowed) {
+        card.className = "pdf-ch-card p-3 rounded-xl border border-sky-300 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/20 transition flex flex-col justify-between";
+      } else {
+        card.className = "pdf-ch-card p-3 rounded-xl border border-rose-300 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/20 transition flex flex-col justify-between opacity-80";
+      }
+    }
+    if (badge) {
+      if (isAllowed) {
+        badge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300";
+        badge.innerText = "PDF Diizinkan";
+      } else {
+        badge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300";
+        badge.innerText = "PDF Dibatasi";
+      }
+    }
+  }
+
+  setAllStudentPdfChapterAccess(isAllowed) {
+    const list = typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : [];
+    for (const ch of list) {
+      const num = ch.num;
+      const cb = document.getElementById(`pdf-toggle-${num}`);
+      if (cb) {
+        cb.checked = isAllowed;
+        this.updatePdfCardVisual(num, isAllowed);
+      }
+      if (this.studentChapterAccessData) {
+        const item = this.studentChapterAccessData.find((x) => x.chapterNum === num);
+        if (item) item.isPdfAllowed = isAllowed;
+      }
+    }
+  }
+
   async saveStudentChapterAccess() {
     if (!this.selectedStudentForAccess) return;
     const userId = this.selectedStudentForAccess.id;
     const accessMap = {};
+    const pdfMap = {};
 
     const list = typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : [];
     for (const ch of list) {
       const num = ch.num;
-      const cb = document.getElementById(`access-toggle-${num}`);
-      accessMap[num] = cb ? Boolean(cb.checked) : true;
+      const cbCbt = document.getElementById(`access-toggle-${num}`);
+      const cbPdf = document.getElementById(`pdf-toggle-${num}`);
+      const existing = (this.studentChapterAccessData || []).find((x) => x.chapterNum === num);
+
+      accessMap[num] = cbCbt ? Boolean(cbCbt.checked) : (existing ? existing.isAllowed !== false : true);
+      pdfMap[num] = cbPdf ? Boolean(cbPdf.checked) : (existing ? existing.isPdfAllowed !== false : true);
     }
 
     const saveBtn = document.getElementById("btn-save-chapter-access");
@@ -3725,26 +3843,32 @@ class ChoukaiApp {
       saveBtn.innerText = "Menyimpan...";
     }
 
+    const payload = {
+      pdfAccessAllowed: this.selectedStudentPdfMasterAllowed,
+      chapters: accessMap,
+      pdfChapters: pdfMap,
+    };
+
     if (window.location.protocol.startsWith("http")) {
       try {
         const res = await fetch(`/api/v1/admin/users/${userId}/chapter-access`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chapters: accessMap }),
+          body: JSON.stringify(payload),
         });
         const json = await res.json();
         if (json.success) {
-          alert(`Hak akses bab untuk siswa "${this.selectedStudentForAccess.name}" berhasil disimpan!`);
+          alert(`Hak akses ujian & dokumen PDF untuk siswa "${this.selectedStudentForAccess.name}" berhasil disimpan!`);
           this.closeStudentChapterAccessModal();
         } else {
-          alert(json.error || "Gagal menyimpan hak akses bab.");
+          alert(json.error || "Gagal menyimpan hak akses.");
           if (saveBtn) {
             saveBtn.disabled = false;
             saveBtn.innerText = "💾 Simpan";
           }
         }
       } catch (e) {
-        alert("Koneksi gagal saat menyimpan hak akses bab.");
+        alert("Koneksi gagal saat menyimpan hak akses.");
         if (saveBtn) {
           saveBtn.disabled = false;
           saveBtn.innerText = "💾 Simpan";
@@ -3758,17 +3882,28 @@ class ChoukaiApp {
         mockAccess[this.selectedStudentForAccess.username] = accessMap;
       }
       localStorage.setItem("imm_mock_chapter_access", JSON.stringify(mockAccess));
+
+      const mockPdfAccess = JSON.parse(localStorage.getItem("imm_mock_pdf_access") || "{}");
+      const pdfObj = { master: this.selectedStudentPdfMasterAllowed, ...pdfMap };
+      mockPdfAccess[userId] = pdfObj;
+      if (this.selectedStudentForAccess.username) {
+        mockPdfAccess[this.selectedStudentForAccess.username] = pdfObj;
+      }
+      localStorage.setItem("imm_mock_pdf_access", JSON.stringify(mockPdfAccess));
+
       // Update local state if the current user is this student
       if (this.currentUser && (this.currentUser.id === userId || this.currentUser.name === this.selectedStudentForAccess.name)) {
+        this.isUserPdfAccessAllowed = this.selectedStudentPdfMasterAllowed;
         for (let i = 1; i <= 25; i++) {
           const num = String(i).padStart(2, "0");
           this.userRestrictedChapters[num] = accessMap[num] === false;
+          this.userRestrictedPdfs[num] = !this.selectedStudentPdfMasterAllowed || pdfMap[num] === false;
           if (accessMap[num] === false) {
             this.chaptersStatus[num] = false;
           }
         }
       }
-      alert(`Hak akses bab untuk siswa "${this.selectedStudentForAccess.name}" berhasil disimpan!`);
+      alert(`Hak akses ujian & dokumen PDF untuk siswa "${this.selectedStudentForAccess.name}" berhasil disimpan!`);
       this.closeStudentChapterAccessModal();
     }
   }
@@ -3782,54 +3917,165 @@ class ChoukaiApp {
       pane.innerHTML = `
         <div class="py-16 text-center text-slate-400">
           <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-sky-600 mb-2"></div>
-          <p class="text-xs font-semibold">Memuat izin bab siswa...</p>
+          <p class="text-xs font-semibold">Memuat data hak akses siswa...</p>
         </div>
       `;
       return;
     }
 
     const accessMap = {};
+    const pdfMap = {};
     for (const item of data) {
       accessMap[item.chapterNum] = item.isAllowed !== false;
+      pdfMap[item.chapterNum] = item.isPdfAllowed !== false;
     }
 
-    pane.innerHTML = `
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-h-[55vh] overflow-y-auto p-1">
-        ${CHAPTERS_INDEX.map((ch) => {
-          const isAllowed = accessMap[ch.num] !== false;
-          return `
-            <div id="access-card-${ch.num}" class="access-ch-card p-3 rounded-xl border ${isAllowed ? 'border-emerald-300 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-rose-300 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/20 opacity-80'} transition flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between mb-1.5">
-                  <span class="text-xs font-black font-jp text-slate-900 dark:text-slate-100">
-                    Bab ${ch.num}
-                  </span>
-                  <span id="access-badge-${ch.num}" class="px-2 py-0.5 rounded text-[10px] font-bold ${isAllowed ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300'}">
-                    ${isAllowed ? 'Diizinkan' : 'Dibatasi'}
-                  </span>
-                </div>
-                <div class="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title="${ch.title_ja}">
-                  ${ch.title_ja}
-                </div>
-                <div class="text-[10px] text-slate-500 truncate" title="${ch.title_id}">
-                  ${ch.title_id}
-                </div>
+    const currentTab = this.studentAccessModalTab || "cbt";
+
+    if (currentTab === "pdf") {
+      pane.innerHTML = `
+        <div class="space-y-4">
+          <!-- Master Switch Hak Akses PDF -->
+          <div class="p-4 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black uppercase tracking-wider text-sky-900 dark:text-sky-200">
+                  Sakelar Utama Hak Akses PDF Siswa
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${this.selectedStudentPdfMasterAllowed ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'}">
+                  ${this.selectedStudentPdfMasterAllowed ? 'Aktif' : 'Diblokir'}
+                </span>
               </div>
-              <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-                <label for="access-toggle-${ch.num}" class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 cursor-pointer">
-                  Izinkan Akses
-                </label>
-                <input
-                  id="access-toggle-${ch.num}"
-                  type="checkbox"
-                  ${isAllowed ? 'checked' : ''}
-                  onchange="window.app.toggleStudentChapterAccess('${ch.num}')"
-                  class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer"
-                >
-              </div>
+              <p id="pdf-master-desc" class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                ${this.selectedStudentPdfMasterAllowed
+                  ? 'Hak akses PDF terbuka. Anda dapat mengatur pembatasan per bab di bawah ini.'
+                  : 'Hak akses PDF dikunci secara global. Siswa ini tidak dapat membuka dokumen PDF apapun.'}
+              </p>
             </div>
-          `;
-        }).join("")}
+            <button
+              id="pdf-master-toggle-btn"
+              type="button"
+              onclick="window.app.toggleStudentPdfMasterAccess(!window.app.selectedStudentPdfMasterAllowed)"
+              class="px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs ${this.selectedStudentPdfMasterAllowed ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-rose-600 text-white hover:bg-rose-700'}"
+            >
+              ${this.selectedStudentPdfMasterAllowed ? 'AKTIF (Bisa Buka PDF)' : 'DIKUNCI (Semua PDF Diblokir)'}
+            </button>
+          </div>
+
+          <!-- Quick Action Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(true)" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
+                ✅ Izinkan Semua PDF Bab
+              </button>
+              <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
+                🔒 Kunci Semua PDF Bab
+              </button>
+            </div>
+            <span class="text-[11px] text-slate-500 italic">
+              Mengatur izin Salinan Soal, Kunci Pembahasan, Kosakata, dan Choukai PDF per bab
+            </span>
+          </div>
+
+          <!-- Grid 25 Bab PDF -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-h-[45vh] overflow-y-auto p-1">
+            ${CHAPTERS_INDEX.map((ch) => {
+              const isAllowed = pdfMap[ch.num] !== false;
+              const hasChoukai = parseInt(ch.num, 10) >= 8;
+              return `
+                <div id="pdf-card-${ch.num}" class="pdf-ch-card p-3 rounded-xl border ${isAllowed ? 'border-sky-300 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/20' : 'border-rose-300 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/20 opacity-80'} transition flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                      <span class="text-xs font-black font-jp text-slate-900 dark:text-slate-100">
+                        Bab ${ch.num}
+                      </span>
+                      <span id="pdf-badge-${ch.num}" class="px-2 py-0.5 rounded text-[10px] font-bold ${isAllowed ? 'bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300'}">
+                        ${isAllowed ? 'PDF Diizinkan' : 'PDF Dibatasi'}
+                      </span>
+                    </div>
+                    <div class="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title="${ch.title_ja}">
+                      ${ch.title_ja}
+                    </div>
+                    <div class="text-[10px] text-slate-500 mt-1">
+                      ${hasChoukai ? '5 Dokumen + 🎧 Audio' : '3 Dokumen PDF'}
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                    <label for="pdf-toggle-${ch.num}" class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 cursor-pointer">
+                      Akses Dokumen
+                    </label>
+                    <input
+                      id="pdf-toggle-${ch.num}"
+                      type="checkbox"
+                      ${isAllowed ? 'checked' : ''}
+                      onchange="window.app.toggleStudentPdfChapterAccess('${ch.num}')"
+                      class="w-4 h-4 text-sky-600 rounded border-slate-300 focus:ring-sky-500 cursor-pointer"
+                    >
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    // Default: CBT Tab
+    pane.innerHTML = `
+      <div class="space-y-4">
+        <!-- Quick Action Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="window.app.setAllStudentChapterAccess(true)" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
+              ✅ Izinkan Semua Ujian
+            </button>
+            <button type="button" onclick="window.app.setAllStudentChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
+              🔒 Kunci Semua Ujian
+            </button>
+          </div>
+          <span class="text-[11px] text-slate-500 italic">
+            Bab yang dibatasi tidak akan bisa dikerjakan oleh siswa ini saat ujian di lab
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-h-[50vh] overflow-y-auto p-1">
+          ${CHAPTERS_INDEX.map((ch) => {
+            const isAllowed = accessMap[ch.num] !== false;
+            return `
+              <div id="access-card-${ch.num}" class="access-ch-card p-3 rounded-xl border ${isAllowed ? 'border-emerald-300 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-rose-300 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/20 opacity-80'} transition flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-xs font-black font-jp text-slate-900 dark:text-slate-100">
+                      Bab ${ch.num}
+                    </span>
+                    <span id="access-badge-${ch.num}" class="px-2 py-0.5 rounded text-[10px] font-bold ${isAllowed ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300'}">
+                      ${isAllowed ? 'Diizinkan' : 'Dibatasi'}
+                    </span>
+                  </div>
+                  <div class="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title="${ch.title_ja}">
+                    ${ch.title_ja}
+                  </div>
+                  <div class="text-[10px] text-slate-500 truncate" title="${ch.title_id}">
+                    ${ch.title_id}
+                  </div>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                  <label for="access-toggle-${ch.num}" class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 cursor-pointer">
+                    Izinkan Ujian
+                  </label>
+                  <input
+                    id="access-toggle-${ch.num}"
+                    type="checkbox"
+                    ${isAllowed ? 'checked' : ''}
+                    onchange="window.app.toggleStudentChapterAccess('${ch.num}')"
+                    class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer"
+                  >
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
       </div>
     `;
   }
@@ -4077,6 +4323,536 @@ class ChoukaiApp {
     window.open(url, "_blank");
   }
 
+  // =========================================================================
+  // BANK DOKUMEN PDF & AUDIO LISTENING TERPADU (112 PDF + 18 AUDIO)
+  // =========================================================================
+
+  renderAdminPdfLibraryPane() {
+    const pane = document.getElementById("admin-tab-content");
+    if (!pane) return;
+    const all = this.getAllResources();
+    const pdfs = all.filter((r) => r.ext === "pdf");
+    const audios = all.filter((r) => r.ext === "mp3");
+
+    pane.innerHTML = `
+      <div class="space-y-4">
+        <!-- Header Info -->
+        <div class="p-4 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black uppercase tracking-wider text-sky-900 dark:text-sky-200">
+                Pusat Bank Dokumen & Audio CBT IMM Japan
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">
+                ${pdfs.length} PDF • ${audios.length} Audio Track
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+              Sensei memiliki akses penuh ke seluruh lembar soal, kunci pembahasan, hafalan kotoba, dan audio listening tanpa batasan.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+              Master Bundle Kosakata (76 Hal)
+            </a>
+            <button onclick="window.app.openPdfLibraryModal()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+              🔍 Buka Tampilan Library
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <input
+            id="admin-pdf-search-input"
+            type="text"
+            placeholder="Cari berdasarkan bab atau kata kunci (contoh: Bab 08, Kunci, Choukai)..."
+            oninput="window.app.filterAdminPdfTable(this.value)"
+            class="flex-1 min-w-[200px] px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-sky-500"
+          >
+          <span class="text-[11px] text-slate-500">
+            Total 25 Bab Terintegrasi
+          </span>
+        </div>
+
+        <!-- Table Container -->
+        <div id="admin-pdf-table-container" class="max-h-[55vh] overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-xl">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead class="bg-slate-100 dark:bg-slate-800 sticky top-0 z-10 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+              <tr>
+                <th class="p-2.5 font-bold">Bab</th>
+                <th class="p-2.5 font-bold">Judul / Materi</th>
+                <th class="p-2.5 font-bold">Dokumen Reading</th>
+                <th class="p-2.5 font-bold">Dokumen Choukai</th>
+                <th class="p-2.5 font-bold text-center">Audio Listening</th>
+              </tr>
+            </thead>
+            <tbody id="admin-pdf-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+              ${CHAPTERS_INDEX.map((ch) => {
+                const res = this.getChapterResources(ch.num);
+                const rSoal = res.find((r) => r.type === "reading_soal");
+                const rKunci = res.find((r) => r.type === "reading_kunci");
+                const rKosa = res.find((r) => r.type === "kosakata");
+                const cSoal = res.find((r) => r.type === "choukai_soal");
+                const cKunci = res.find((r) => r.type === "choukai_kunci");
+                const cAudio = res.find((r) => r.type === "choukai_audio");
+
+                return `
+                  <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition">
+                    <td class="p-2.5 font-mono font-bold whitespace-nowrap">
+                      Bab ${ch.num}
+                    </td>
+                    <td class="p-2.5">
+                      <div class="font-bold truncate max-w-[180px]">${ch.title_ja}</div>
+                      <div class="text-[10px] text-slate-500 truncate max-w-[180px]">${ch.title_id}</div>
+                    </td>
+                    <td class="p-2.5">
+                      <div class="flex flex-wrap gap-1.5">
+                        <a href="${rSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-[10px] font-semibold hover:underline">
+                          📄 Soal
+                        </a>
+                        <a href="${rKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline">
+                          🔑 Kunci
+                        </a>
+                        <a href="${rKosa.url}" target="_blank" class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-[10px] font-semibold hover:underline">
+                          📖 Kotoba
+                        </a>
+                      </div>
+                    </td>
+                    <td class="p-2.5">
+                      ${cSoal ? `
+                        <div class="flex flex-wrap gap-1.5">
+                          <a href="${cSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-[10px] font-semibold hover:underline">
+                            🎧 Soal
+                          </a>
+                          <a href="${cKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline">
+                            🔑 Kunci
+                          </a>
+                        </div>
+                      ` : `
+                        <span class="text-slate-400 text-[10px] italic">- (Bab 01-07 Reading Only)</span>
+                      `}
+                    </td>
+                    <td class="p-2.5 text-center">
+                      ${cAudio ? `
+                        <button
+                          type="button"
+                          data-src="${cAudio.url}"
+                          onclick="window.app.toggleResourceAudio('${cAudio.url}', 'Audio Choukai Bab ${ch.num}')"
+                          class="btn-toggle-audio px-2.5 py-1 rounded-lg bg-sky-100 hover:bg-sky-200 dark:bg-sky-950/80 dark:hover:bg-sky-900 border border-sky-300 dark:border-sky-800 text-sky-800 dark:text-sky-300 text-[11px] font-bold transition inline-flex items-center gap-1 shadow-xs"
+                        >
+                          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg> Putar
+                        </button>
+                      ` : `
+                        <span class="text-slate-400 text-[10px]">-</span>
+                      `}
+                    </td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  filterAdminPdfTable(query) {
+    const q = (query || "").trim().toLowerCase();
+    const rows = document.querySelectorAll("#admin-pdf-tbody tr");
+    rows.forEach((r) => {
+      const text = r.innerText.toLowerCase();
+      r.style.display = text.includes(q) ? "" : "none";
+    });
+  }
+
+  getChapterResources(chapterNum) {
+    const num = String(chapterNum || "01").padStart(2, "0");
+    const numInt = parseInt(num, 10);
+    const hasChoukai = numInt >= 8;
+    const resources = [
+      {
+        id: `reading_soal_${num}`,
+        type: "reading_soal",
+        category: "reading",
+        title: `Salinan Soal Bab ${num}`,
+        description: `Dokumen lembar soal ujian reading Bab ${num}`,
+        url: this.pdfUrl(`assets/pdf/Salinan Soal Bab ${num}.pdf`),
+        ext: "pdf",
+        icon: "reading",
+      },
+      {
+        id: `reading_kunci_${num}`,
+        type: "reading_kunci",
+        category: "reading",
+        title: `Kunci dan Pembahasan Bab ${num}`,
+        description: `Kunci jawaban resmi & lembar pembahasan Bab ${num}`,
+        url: this.pdfUrl(`assets/pdf/Kunci dan Pembahasan Bab ${num}.pdf`),
+        ext: "pdf",
+        icon: "kunci",
+      },
+      {
+        id: `kosakata_${num}`,
+        type: "kosakata",
+        category: "kosakata",
+        title: `Daftar Kosakata Bab ${num}`,
+        description: `Daftar kosakata kotoba & terjemahan Bab ${num}`,
+        url: this.pdfUrl(`assets/pdf/Daftar Kosakata Bab ${num}.pdf`),
+        ext: "pdf",
+        icon: "kosakata",
+      },
+    ];
+
+    if (hasChoukai) {
+      resources.push(
+        {
+          id: `choukai_soal_${num}`,
+          type: "choukai_soal",
+          category: "choukai",
+          title: `Soal Choukai Bab ${num}`,
+          description: `Lembar naskah soal mendengarkan Choukai Bab ${num}`,
+          url: this.pdfUrl(`assets/pdf/Soal Choukai Bab ${num}.pdf`),
+          ext: "pdf",
+          icon: "choukai",
+        },
+        {
+          id: `choukai_kunci_${num}`,
+          type: "choukai_kunci",
+          category: "choukai",
+          title: `Kunci dan Pembahasan Choukai Bab ${num}`,
+          description: `Kunci jawaban dan skrip listening Choukai Bab ${num}`,
+          url: this.pdfUrl(`assets/pdf/Kunci dan Pembahasan Choukai Bab ${num}.pdf`),
+          ext: "pdf",
+          icon: "kunci",
+        },
+        {
+          id: `choukai_audio_${num}`,
+          type: "choukai_audio",
+          category: "audio",
+          title: `Audio Listening Choukai Bab ${num}`,
+          description: `Track rekaman suara penutur asli Jepang Bab ${num}`,
+          url: `assets/Choukai_Bab_${num}.mp3`,
+          ext: "mp3",
+          icon: "audio",
+        }
+      );
+    }
+    return resources;
+  }
+
+  getAllResources() {
+    const list = [
+      {
+        id: "bundle_kosakata_all",
+        type: "bundle",
+        category: "kosakata",
+        chapterNum: "00",
+        title: "Daftar Kosakata Lengkap Bab 01-25",
+        description: "Bundel master lembar setoran kosakata 1.500 kata (76 Halaman)",
+        url: this.pdfUrl("assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf"),
+        ext: "pdf",
+        icon: "bundle",
+        pageCount: "76 Halaman",
+      },
+    ];
+    for (let i = 1; i <= 25; i++) {
+      const num = String(i).padStart(2, "0");
+      const items = this.getChapterResources(num);
+      for (const item of items) {
+        list.push({ ...item, chapterNum: num });
+      }
+    }
+    return list;
+  }
+
+  openChapterResourcesModal(chapterNum) {
+    this.selectedChapterForResources = String(chapterNum || "08").padStart(2, "0");
+    this.activeModal = "chapter_resources";
+    this.renderModal();
+  }
+
+  openPdfLibraryModal(filterType = "all") {
+    this.pdfLibraryFilterType = filterType;
+    this.pdfLibrarySearchQuery = "";
+    this.activeModal = "pdf_library";
+    this.renderModal();
+  }
+
+  setPdfLibraryFilterType(type) {
+    this.pdfLibraryFilterType = type;
+    document.querySelectorAll(".pdf-lib-filter-chip").forEach((btn) => {
+      const t = btn.getAttribute("data-type");
+      if (t === type) {
+        btn.className = "pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-600 text-white shadow-xs transition";
+      } else {
+        btn.className = "pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition";
+      }
+    });
+    this.renderPdfLibraryContent();
+  }
+
+  filterPdfLibrary(query) {
+    this.pdfLibrarySearchQuery = (query || "").trim().toLowerCase();
+    this.renderPdfLibraryContent();
+  }
+
+  renderPdfLibraryContent() {
+    const container = document.getElementById("pdf-library-grid");
+    if (!container) return;
+
+    const query = this.pdfLibrarySearchQuery || "";
+    const filter = this.pdfLibraryFilterType || "all";
+    const isMasterRestricted = this.currentUser && this.currentUser.role !== "admin" && !this.isUserPdfAccessAllowed;
+
+    const filteredChapters = CHAPTERS_INDEX.filter((ch) => {
+      const num = ch.num;
+      const resList = this.getChapterResources(num);
+
+      // Check category match
+      let matchesCategory = true;
+      if (filter !== "all") {
+        matchesCategory = resList.some((r) => r.category === filter);
+      }
+      if (!matchesCategory) return false;
+
+      // Check search query match
+      if (query) {
+        const inCh = `bab ${num}`.includes(query) || ch.title_ja.toLowerCase().includes(query) || ch.title_id.toLowerCase().includes(query);
+        const inRes = resList.some((r) => r.title.toLowerCase().includes(query) || r.description.toLowerCase().includes(query));
+        return inCh || inRes;
+      }
+      return true;
+    });
+
+    if (filteredChapters.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full py-16 text-center text-slate-400">
+          <div class="text-3xl mb-2">🔍</div>
+          <p class="text-sm font-semibold">Tidak ditemukan dokumen yang cocok.</p>
+          <p class="text-xs mt-1">Coba gunakan kata kunci pencarian lain atau pilih tab filter "Semua".</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filteredChapters.map((ch) => {
+      const num = ch.num;
+      const isRestricted = isMasterRestricted || (this.currentUser && this.currentUser.role !== "admin" && this.userRestrictedPdfs[num]);
+      const resList = this.getChapterResources(num);
+      const displayResources = filter === "all" ? resList : resList.filter((r) => r.category === filter);
+      const audioRes = resList.find((r) => r.type === "choukai_audio");
+
+      return `
+        <div class="p-4 rounded-xl border ${isRestricted ? 'border-rose-200 dark:border-rose-900/60 bg-rose-50/30 dark:bg-rose-950/20' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80'} shadow-xs flex flex-col justify-between transition hover:shadow-md">
+          <div>
+            <!-- Bab Header -->
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-slate-700/60">
+              <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs font-mono">
+                  ${num}
+                </span>
+                <div>
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                    Bab ${num} • ${ch.title_ja}
+                  </h4>
+                  <div class="text-[10px] text-slate-500 truncate max-w-[200px]" title="${ch.title_id}">
+                    ${ch.title_id}
+                  </div>
+                </div>
+              </div>
+              <div>
+                ${isRestricted ? `
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">
+                    🔒 Dibatasi
+                  </span>
+                ` : `
+                  <button onclick="window.app.openChapterResourcesModal('${num}')" class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 hover:bg-sky-100 transition">
+                    Dialog Bab &rarr;
+                  </button>
+                `}
+              </div>
+            </div>
+
+            <!-- List of Documents in this Chapter -->
+            <div class="space-y-1.5 my-2.5">
+              ${displayResources.map((item) => {
+                if (item.ext === "mp3") {
+                  return `
+                    <div class="p-2 rounded-lg bg-sky-50/60 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex items-center justify-between gap-2">
+                      <div class="flex items-center gap-2 min-w-0">
+                        <span class="text-sm">🎧</span>
+                        <div class="min-w-0">
+                          <div class="text-[11px] font-bold text-sky-900 dark:text-sky-200 truncate">${item.title}</div>
+                          <div class="text-[10px] text-sky-700 dark:text-sky-400 truncate">Audio Penutur Asli Choukai</div>
+                        </div>
+                      </div>
+                      ${isRestricted ? `
+                        <span class="text-[10px] text-rose-600 font-bold">Terkunci</span>
+                      ` : `
+                        <button
+                          type="button"
+                          data-src="${item.url}"
+                          onclick="window.app.toggleResourceAudio('${item.url}', 'Audio Choukai Bab ${num}')"
+                          class="btn-toggle-audio px-2.5 py-1 rounded-md bg-sky-600 hover:bg-sky-700 text-white text-[10px] font-bold transition flex items-center gap-1 shadow-xs"
+                        >
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg> Putar
+                        </button>
+                      `}
+                    </div>
+                  `;
+                }
+
+                // PDF Resource Item
+                const badgeColor =
+                  item.category === "reading" ? "bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-300 dark:border-indigo-800" :
+                  item.category === "choukai" ? "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800" :
+                  "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800";
+
+                return `
+                  <div class="p-1.5 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 hover:bg-slate-50 dark:hover:bg-slate-700/40 transition">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                      <span class="px-1.5 py-0.2 rounded text-[9px] font-bold border uppercase ${badgeColor}">
+                        ${item.type.includes("kunci") ? "Kunci" : item.category}
+                      </span>
+                      <span class="text-[11px] font-medium text-slate-800 dark:text-slate-200 truncate" title="${item.title}">
+                        ${item.title}
+                      </span>
+                    </div>
+                    <div>
+                      ${isRestricted ? `
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-400">
+                          🔒
+                        </span>
+                      ` : `
+                        <a
+                          href="${item.url}"
+                          target="_blank"
+                          class="px-2 py-0.5 rounded bg-slate-100 hover:bg-sky-100 dark:bg-slate-700 dark:hover:bg-sky-900/60 text-slate-700 hover:text-sky-700 dark:text-slate-300 dark:hover:text-sky-300 text-[10px] font-bold transition flex items-center gap-1"
+                          title="Buka Dokumen PDF di tab baru"
+                        >
+                          Buka &rarr;
+                        </a>
+                      `}
+                    </div>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+
+          <!-- Bottom Action / Summary -->
+          <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500">
+              ${resList.length > 3 ? '5 PDF + 🎧 Audio' : '3 Dokumen PDF'}
+            </span>
+            ${!isRestricted ? `
+              <button onclick="window.app.openChapterResourcesModal('${num}')" class="text-sky-600 dark:text-sky-400 font-bold hover:underline">
+                Buka Dialog &rarr;
+              </button>
+            ` : `
+              <span class="text-rose-500 font-semibold text-[10px]">Akses Dibatasi</span>
+            `}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // Audio Player Controller Methods
+  playResourceAudio(src, title) {
+    if (!this.resourceAudio) {
+      this.resourceAudio = new Audio();
+      this.resourceAudio.addEventListener("timeupdate", () => this.updateResourceAudioUI());
+      this.resourceAudio.addEventListener("ended", () => this.updateResourceAudioUI());
+      this.resourceAudio.addEventListener("play", () => this.updateResourceAudioUI());
+      this.resourceAudio.addEventListener("pause", () => this.updateResourceAudioUI());
+    }
+    if (this.resourceAudioTrack !== src) {
+      this.resourceAudio.src = src;
+      this.resourceAudio.playbackRate = this.resourceAudioPlaybackRate || 1.0;
+      this.resourceAudioTrack = src;
+      this.resourceAudioTitle = title || "Audio Choukai";
+    }
+    this.resourceAudio.play().catch((e) => console.warn("Audio play prevented:", e));
+    this.updateResourceAudioUI();
+  }
+
+  pauseResourceAudio() {
+    if (this.resourceAudio) {
+      this.resourceAudio.pause();
+      this.updateResourceAudioUI();
+    }
+  }
+
+  toggleResourceAudio(src, title) {
+    if (this.resourceAudio && this.resourceAudioTrack === src && !this.resourceAudio.paused) {
+      this.pauseResourceAudio();
+    } else {
+      this.playResourceAudio(src, title);
+    }
+  }
+
+  seekResourceAudio(deltaSec) {
+    if (this.resourceAudio && !isNaN(this.resourceAudio.duration)) {
+      this.resourceAudio.currentTime = Math.max(0, Math.min(this.resourceAudio.duration, this.resourceAudio.currentTime + deltaSec));
+      this.updateResourceAudioUI();
+    }
+  }
+
+  cycleResourceAudioRate() {
+    const rates = [1.0, 1.2, 1.5, 0.8];
+    const current = this.resourceAudioPlaybackRate || 1.0;
+    const nextIdx = (rates.indexOf(current) + 1) % rates.length;
+    this.resourceAudioPlaybackRate = rates[nextIdx];
+    if (this.resourceAudio) {
+      this.resourceAudio.playbackRate = this.resourceAudioPlaybackRate;
+    }
+    const btn = document.getElementById("res-audio-rate-btn");
+    if (btn) btn.innerText = `${this.resourceAudioPlaybackRate}x`;
+    const btnModal = document.getElementById("ch-audio-rate-btn");
+    if (btnModal) btnModal.innerText = `${this.resourceAudioPlaybackRate}x`;
+  }
+
+  updateResourceAudioUI() {
+    const playBtns = document.querySelectorAll(".btn-toggle-audio");
+    const isPlaying = this.resourceAudio && !this.resourceAudio.paused;
+    const currentTrack = this.resourceAudioTrack;
+
+    playBtns.forEach((btn) => {
+      const track = btn.getAttribute("data-src");
+      if (track === currentTrack) {
+        btn.innerHTML = isPlaying
+          ? `<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg> Pause`
+          : `<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg> Putar`;
+      } else {
+        btn.innerHTML = `<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg> Putar`;
+      }
+    });
+
+    const playerBar = document.getElementById("active-audio-bar");
+    if (playerBar) {
+      if (currentTrack) {
+        playerBar.classList.remove("hidden");
+        const titleEl = document.getElementById("res-audio-bar-title");
+        if (titleEl) titleEl.innerText = this.resourceAudioTitle || "Audio Listening Choukai";
+        const timeEl = document.getElementById("res-audio-bar-time");
+        if (timeEl && this.resourceAudio) {
+          const cur = Math.floor(this.resourceAudio.currentTime || 0);
+          const dur = Math.floor(this.resourceAudio.duration || 0);
+          const format = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+          timeEl.innerText = `${format(cur)} / ${isNaN(dur) || dur === 0 ? '--:--' : format(dur)}`;
+        }
+        const barPlayBtn = document.getElementById("res-audio-bar-play-btn");
+        if (barPlayBtn) {
+          barPlayBtn.innerText = isPlaying ? "⏸️ Pause" : "▶️ Putar";
+        }
+      } else {
+        playerBar.classList.add("hidden");
+      }
+    }
+  }
+
   // MODAL RENDERER
   renderModal() {
     const container = document.getElementById("modal-container");
@@ -4289,6 +5065,9 @@ class ChoukaiApp {
               <button data-tab="results" onclick="window.app.switchAdminTab('results')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'results' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
                 📊 Rekap Nilai & Ekspor CSV
               </button>
+              <button data-tab="pdfs" onclick="window.app.switchAdminTab('pdfs')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'pdfs' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                📚 Bank Dokumen PDF
+              </button>
             </div>
 
             <!-- Dynamic Tab Content Pane -->
@@ -4313,28 +5092,31 @@ class ChoukaiApp {
                   <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
                     Pengaturan Hak Akses Bab: <span class="text-sky-600 dark:text-sky-400">${studentName}</span>
                   </h3>
-                  <p class="text-[11px] text-slate-500">Pilih bab mana saja yang boleh dikerjakan siswa ini. Bab yang dinonaktifkan akan terkunci khusus untuk akunnya.</p>
+                  <p class="text-[11px] text-slate-500">Atur izin ujian CBT tryout dan pembatasan bank dokumen PDF materi/kunci per siswa.</p>
                 </div>
               </div>
               <button onclick="window.app.closeStudentChapterAccessModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1 leading-none">&times;</button>
             </div>
 
-            <!-- Toolbar Quick Actions -->
-            <div class="flex flex-wrap items-center justify-between gap-2 my-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-              <div class="flex items-center gap-2">
-                <button type="button" onclick="window.app.setAllStudentChapterAccess(true)" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-                  ✅ Izinkan Semua
-                </button>
-                <button type="button" onclick="window.app.setAllStudentChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-                  🔒 Kunci Semua
-                </button>
-              </div>
-              <div class="text-[11px] text-slate-500 italic">
-                Default: Siswa memiliki akses penuh (mengikuti status umum bab)
-              </div>
+            <!-- Dual Tab Selector -->
+            <div class="flex items-center gap-2 my-2.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+              <button
+                type="button"
+                onclick="window.app.switchStudentAccessTab('cbt')"
+                class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${this.studentAccessModalTab === 'cbt' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}"
+              >
+                📝 Hak Akses Ujian CBT
+              </button>
+              <button
+                type="button"
+                onclick="window.app.switchStudentAccessTab('pdf')"
+                class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${this.studentAccessModalTab === 'pdf' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}"
+              >
+                📚 Hak Akses Dokumen PDF
+              </button>
             </div>
 
-            <!-- Grid Container -->
+            <!-- Dynamic Grid Container -->
             <div id="student-access-grid-container" class="flex-1 overflow-y-auto">
               <!-- Loaded dynamically via renderStudentChapterAccessModalContent -->
             </div>
@@ -4352,6 +5134,315 @@ class ChoukaiApp {
         </div>
       `;
       this.renderStudentChapterAccessModalContent();
+    } else if (this.activeModal === "chapter_resources") {
+      const num = this.selectedChapterForResources || "08";
+      const chMeta = (typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : []).find((x) => x.num === num) || {
+        num,
+        title_ja: `第${parseInt(num, 10)}課`,
+        title_id: `Bab ${num}`,
+      };
+      const resList = this.getChapterResources(num);
+      const isRestricted = this.currentUser && this.currentUser.role !== "admin" && (!this.isUserPdfAccessAllowed || this.userRestrictedPdfs[num]);
+      const rSoal = resList.find((r) => r.type === "reading_soal");
+      const rKunci = resList.find((r) => r.type === "reading_kunci");
+      const rKosa = resList.find((r) => r.type === "kosakata");
+      const cSoal = resList.find((r) => r.type === "choukai_soal");
+      const cKunci = resList.find((r) => r.type === "choukai_kunci");
+      const cAudio = resList.find((r) => r.type === "choukai_audio");
+
+      container.innerHTML = `
+        <div id="modal-resources-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 modal-overlay" onclick="window.app.closeModal()">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full p-5 sm:p-6 shadow-2xl relative flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="flex items-start justify-between pb-3.5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black font-jp text-base shadow-sm">
+                  文
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                      Materi & Dokumen Bab ${num}
+                    </h3>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isRestricted ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300' : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300'}">
+                      ${isRestricted ? '🔒 Dibatasi Pengawas' : (cAudio ? '5 Dokumen + 🎧 Audio' : '3 Dokumen PDF')}
+                    </span>
+                  </div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    ${chMeta.title_ja} • ${chMeta.title_id}
+                  </p>
+                </div>
+              </div>
+              <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-2xl font-bold p-1 leading-none transition" title="Tutup">&times;</button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="space-y-4 my-4 overflow-y-auto pr-1">
+              ${isRestricted ? `
+                <div class="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 text-xs flex items-start gap-2.5">
+                  <span class="text-lg leading-none">🔒</span>
+                  <div>
+                    <div class="font-bold">Akses Dokumen Bab Ini Sedang Dibatasi</div>
+                    <div class="text-[11px] mt-0.5 text-rose-700 dark:text-rose-400">Pengawas/Sensei membatasi hak akses file PDF materi & kunci untuk akun Anda. Anda tetap dapat mengerjakan soal ujian tryout.</div>
+                  </div>
+                </div>
+              ` : ""}
+
+              <!-- Section 1: Listening Choukai (If available) -->
+              ${cAudio ? `
+                <div class="p-4 rounded-xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/40 dark:bg-sky-950/20">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-bold">🎧</span>
+                      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                        Choukai Listening Engine (Mendengarkan)
+                      </h4>
+                    </div>
+                    <span class="text-[11px] font-mono text-slate-500">Bab ${num} MP3</span>
+                  </div>
+
+                  <!-- Mini Audio Player -->
+                  <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/80 flex flex-wrap items-center justify-between gap-3 shadow-xs mb-3">
+                    <div class="flex items-center gap-2.5">
+                      <button
+                        type="button"
+                        data-src="${cAudio.url}"
+                        onclick="window.app.toggleResourceAudio('${cAudio.url}', 'Audio Choukai Bab ${num}')"
+                        class="btn-toggle-audio px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
+                      >
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg> Putar Audio
+                      </button>
+                      <button type="button" onclick="window.app.seekResourceAudio(-10)" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold" title="Mundur 10 Detik">
+                        ⏪ -10s
+                      </button>
+                      <button type="button" onclick="window.app.seekResourceAudio(10)" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold" title="Maju 10 Detik">
+                        +10s ⏩
+                      </button>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button id="ch-audio-rate-btn" type="button" onclick="window.app.cycleResourceAudioRate()" class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-xs font-bold font-mono" title="Ubah Kecepatan Suara">
+                        ${this.resourceAudioPlaybackRate || 1.0}x
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Choukai Documents -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                      <div>
+                        <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Soal Choukai PDF</div>
+                        <div class="text-[10px] text-slate-500">Naskah soal bergambar listening</div>
+                      </div>
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                        <a href="${cSoal.url}" target="_blank" class="px-2.5 py-1 rounded-md bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 text-xs font-bold border border-rose-200 dark:border-rose-800 transition">
+                          Buka &rarr;
+                        </a>
+                      `}
+                    </div>
+                    <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                      <div>
+                        <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Kunci Choukai PDF</div>
+                        <div class="text-[10px] text-slate-500">Kunci & transkrip audio lengkap</div>
+                      </div>
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                        <a href="${cKunci.url}" target="_blank" class="px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800 transition">
+                          Buka &rarr;
+                        </a>
+                      `}
+                    </div>
+                  </div>
+                </div>
+              ` : ""}
+
+              <!-- Section 2: Reading & Kosakata Documents -->
+              <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 mb-3">
+                  Dokumen Reading & Kosakata (読解・語彙)
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <!-- Soal Reading -->
+                  <div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Soal Reading PDF</div>
+                      <div class="text-[10px] text-slate-500 mt-0.5">Lembar naskah soal bab</div>
+                    </div>
+                    <div class="mt-3">
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                        <a href="${rSoal.url}" target="_blank" class="w-full py-1.5 px-2.5 rounded-md bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800 transition text-center block">
+                          Buka Soal &rarr;
+                        </a>
+                      `}
+                    </div>
+                  </div>
+
+                  <!-- Kunci Reading -->
+                  <div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Kunci Reading PDF</div>
+                      <div class="text-[10px] text-slate-500 mt-0.5">Kunci jawaban & pembahasan</div>
+                    </div>
+                    <div class="mt-3">
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                        <a href="${rKunci.url}" target="_blank" class="w-full py-1.5 px-2.5 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800 transition text-center block">
+                          Buka Kunci &rarr;
+                        </a>
+                      `}
+                    </div>
+                  </div>
+
+                  <!-- Kosakata Bab -->
+                  <div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Kosakata Bab PDF</div>
+                      <div class="text-[10px] text-slate-500 mt-0.5">Lembar daftar kata bab ${num}</div>
+                    </div>
+                    <div class="mt-3">
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                        <a href="${rKosa.url}" target="_blank" class="w-full py-1.5 px-2.5 rounded-md bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-xs font-bold border border-amber-200 dark:border-amber-800 transition text-center block">
+                          Buka Kosakata &rarr;
+                        </a>
+                      `}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+              <button onclick="window.app.closeModal(); window.app.promptStartExam('${num}');" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg transition shadow-xs flex items-center gap-1.5">
+                <span>Mulai Ujian Bab ${num}</span>
+                <span>&rarr;</span>
+              </button>
+              <button onclick="window.app.closeModal()" class="px-4 py-2 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold rounded-lg transition">
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (this.activeModal === "pdf_library") {
+      const isMasterRestricted = this.currentUser && this.currentUser.role !== "admin" && !this.isUserPdfAccessAllowed;
+      container.innerHTML = `
+        <div id="modal-pdf-library-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 modal-overlay" onclick="window.app.closeModal()">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-5xl w-full p-5 sm:p-6 shadow-2xl relative flex flex-col max-h-[92vh]" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black font-jp text-lg shadow-sm">
+                  書
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
+                      Bank Dokumen PDF & Audio Listening IMM Japan
+                    </h3>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">
+                      112 PDF • 18 Track Audio
+                    </span>
+                  </div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    Pusat repositori seluruh lembar soal, kunci jawaban, setoran kosakata, dan rekaman listening bab 01 s.d. 25.
+                  </p>
+                </div>
+              </div>
+              <button onclick="window.app.closeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-2xl font-bold p-1 leading-none transition" title="Tutup">&times;</button>
+            </div>
+
+            <!-- Master Restriction Alert (If applicable) -->
+            ${isMasterRestricted ? `
+              <div class="my-2.5 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 text-xs flex items-center gap-2">
+                <span class="text-base">⚠️</span>
+                <span>Akses seluruh bank dokumen PDF sedang dinonaktifkan khusus untuk akun Anda oleh Sensei/Pengawas.</span>
+              </div>
+            ` : ""}
+
+            <!-- Search & Filter Controls -->
+            <div class="my-3 space-y-2.5">
+              <div class="flex flex-wrap items-center justify-between gap-2.5">
+                <!-- Search Box -->
+                <div class="flex-1 min-w-[240px] relative">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    🔍
+                  </span>
+                  <input
+                    id="pdf-lib-search-input"
+                    type="text"
+                    value="${this.pdfLibrarySearchQuery || ''}"
+                    placeholder="Cari dokumen, bab, atau materi (contoh: Bab 08, Kosakata, Choukai)..."
+                    oninput="window.app.filterPdfLibrary(this.value)"
+                    class="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  >
+                </div>
+
+                <!-- Master Bundle Quick Link -->
+                <div>
+                  <a
+                    href="${this.pdfUrl('assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf')}"
+                    target="_blank"
+                    class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
+                    title="Unduh 76 Halaman Setoran Kosakata Bab 01-25"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                    Master Kosakata (76 Hal)
+                  </a>
+                </div>
+              </div>
+
+              <!-- Filter Category Chips -->
+              <div class="flex flex-wrap items-center gap-1.5">
+                <button data-type="all" onclick="window.app.setPdfLibraryFilterType('all')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'all' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
+                  Semua Dokumen (112 File)
+                </button>
+                <button data-type="reading" onclick="window.app.setPdfLibraryFilterType('reading')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'reading' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
+                  📄 Soal & Kunci Reading (50 PDF)
+                </button>
+                <button data-type="choukai" onclick="window.app.setPdfLibraryFilterType('choukai')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'choukai' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
+                  🎧 Soal & Kunci Choukai (36 PDF)
+                </button>
+                <button data-type="kosakata" onclick="window.app.setPdfLibraryFilterType('kosakata')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'kosakata' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
+                  📖 Daftar Kosakata (26 PDF)
+                </button>
+                <button data-type="audio" onclick="window.app.setPdfLibraryFilterType('audio')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'audio' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
+                  🔊 Rekaman Audio Listening (18 MP3)
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Grid Container -->
+            <div id="pdf-library-grid" class="flex-1 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pr-1 py-1">
+              <!-- Loaded dynamically via renderPdfLibraryContent -->
+            </div>
+
+            <!-- Floating Active Audio Player Bar -->
+            <div id="active-audio-bar" class="hidden mt-3 p-2.5 rounded-xl bg-slate-900 text-white flex items-center justify-between gap-3 shadow-lg border border-slate-800 text-xs">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center text-xs font-bold">🎧</span>
+                <div class="min-w-0">
+                  <div id="res-audio-bar-title" class="font-bold truncate text-xs text-white">Audio Listening</div>
+                  <div id="res-audio-bar-time" class="text-[10px] text-slate-400 font-mono">00:00 / 00:00</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="window.app.seekResourceAudio(-10)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold" title="Mundur 10s">⏪</button>
+                <button id="res-audio-bar-play-btn" type="button" onclick="window.app.toggleResourceAudio(window.app.resourceAudioTrack)" class="px-3 py-1 rounded bg-sky-600 hover:bg-sky-700 text-xs font-bold">▶️ Putar</button>
+                <button type="button" onclick="window.app.seekResourceAudio(10)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold" title="Maju 10s">⏩</button>
+                <button id="res-audio-rate-btn" type="button" onclick="window.app.cycleResourceAudioRate()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold font-mono">1.0x</button>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+              <span>Total 112 File PDF + 18 Track Audio Tersedia</span>
+              <button onclick="window.app.closeModal()" class="px-4 py-2 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold rounded-lg transition">
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      this.renderPdfLibraryContent();
+      this.updateResourceAudioUI();
     } else if (this.activeModal === "confirm_submit") {
       const answeredCount = Object.keys(this.answers).length;
       const totalCount = this.currentChapter.questions.length;
