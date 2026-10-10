@@ -28,10 +28,16 @@ authRouter.get("/system/status", async (c) => {
 authRouter.get("/auth/me", authMiddleware, async (c) => {
   const currentUser = c.get("user");
   const currentSession = c.get("session");
+  const dbUser = await db.query.user.findFirst({
+    where: eq(user.id, currentUser.id),
+  });
   return c.json({
     success: true,
     data: {
-      user: currentUser,
+      user: {
+        ...currentUser,
+        pdfAccessAllowed: dbUser ? dbUser.pdfAccessAllowed : true,
+      },
       session: currentSession,
     },
   });

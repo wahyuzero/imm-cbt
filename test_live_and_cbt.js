@@ -496,6 +496,83 @@ async function runApiVerification() {
   assert.strictEqual(ahmadRestartB5Res.status, 200, "Ahmad can start Bab 05 again after access restored");
   console.log("[PASS] Access restoration verified: Ahmad Syahroni can access and start Bab 05 again");
 
+  // TEST 17B: Per-Student PDF Access Control (Master Switch & Per-Chapter PDF Permissions)
+  console.log("\n[TEST 17B] Per-Student PDF Access Control (Sensei API & Student Chapters Endpoint)");
+
+  // 1. Sensei inspects Ahmad's PDF access
+  const ahmadPdfAccessRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    headers: { Cookie: adminCookie },
+  });
+  assert.strictEqual(ahmadPdfAccessRes.status, 200, "Sensei gets chapter access with 200");
+  const ahmadPdfAccessJson = await ahmadPdfAccessRes.json();
+  assert.strictEqual(typeof ahmadPdfAccessJson.user.pdfAccessAllowed, "boolean", "user.pdfAccessAllowed is boolean");
+  const bab08PdfItem = ahmadPdfAccessJson.data.find((c) => c.chapterNum === "08");
+  assert.strictEqual(bab08PdfItem.isPdfAllowed, true, "Bab 08 isPdfAllowed initially true");
+
+  // 2. Sensei restricts Bab 08 PDF for Ahmad
+  const restrictPdfB8Res = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ chapterNum: "08", isPdfAllowed: false }),
+  });
+  assert.strictEqual(restrictPdfB8Res.status, 200, "Sensei restricts Bab 08 PDF with 200");
+
+  // 3. Ahmad inspects chapters and verifies Bab 08 PDF is restricted
+  const ahmadPdfChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  const ahmadPdfChaptersJson = await ahmadPdfChaptersRes.json();
+  const b8PdfChapter = ahmadPdfChaptersJson.data.find((c) => c.chapterNum === "08");
+  assert.strictEqual(b8PdfChapter.isPdfAllowed, false, "Bab 08 isPdfAllowed is false for Ahmad");
+  assert.strictEqual(b8PdfChapter.pdfRestricted, true, "Bab 08 pdfRestricted is true for Ahmad");
+  const b01PdfChapter = ahmadPdfChaptersJson.data.find((c) => c.chapterNum === "01");
+  assert.strictEqual(b01PdfChapter.isPdfAllowed, true, "Bab 01 isPdfAllowed remains true");
+  console.log("[PASS] Per-chapter PDF restriction verified: Bab 08 PDF restricted for Ahmad while Bab 01 remains open");
+
+  // 4. Sensei tests master lock switch (pdfAccessAllowed: false)
+  const masterLockPdfRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ pdfAccessAllowed: false }),
+  });
+  assert.strictEqual(masterLockPdfRes.status, 200, "Master PDF lock returns 200");
+
+  // 5. Ahmad inspects chapters under master PDF lock
+  const ahmadMasterLockedRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  const ahmadMasterLockedJson = await ahmadMasterLockedRes.json();
+  assert.strictEqual(ahmadMasterLockedJson.pdfAccessAllowed, false, "Root pdfAccessAllowed is false for Ahmad");
+  assert.strictEqual(ahmadMasterLockedJson.data[0].isPdfAllowed, false, "All chapters have isPdfAllowed: false under master lock");
+  console.log("[PASS] Master PDF lock verified: all PDF access globally restricted for Ahmad");
+
+  // 6. Sensei restores full PDF access (pdfAccessAllowed: true, pdfAction: 'allow_all')
+  const restorePdfRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ pdfAccessAllowed: true, pdfAction: "allow_all" }),
+  });
+  assert.strictEqual(restorePdfRes.status, 200, "Restore PDF access returns 200");
+
+  // 7. Ahmad verifies PDF access is fully restored
+  const ahmadRestoredPdfRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  const ahmadRestoredPdfJson = await ahmadRestoredPdfRes.json();
+  assert.strictEqual(ahmadRestoredPdfJson.pdfAccessAllowed, true, "Root pdfAccessAllowed is true after restore");
+  const b8RestoredPdf = ahmadRestoredPdfJson.data.find((c) => c.chapterNum === "08");
+  assert.strictEqual(b8RestoredPdf.isPdfAllowed, true, "Bab 08 isPdfAllowed is true after restore");
+  console.log("[PASS] Full PDF access restoration verified: Ahmad can access all PDF documents again");
+
   // TEST 18: Student Logout & Backend Session Revocation (POST /api/auth/sign-out)
   console.log("\n[TEST 18] Student Logout & Backend Session Revocation");
   const logoutRes = await fetch(`${BASE_URL}/api/auth/sign-out`, {

@@ -46,6 +46,7 @@ export const auth = betterAuth({
     additionalFields: {
       role: { type: "string", defaultValue: "student" },
       className: { type: "string", required: false },
+      pdfAccessAllowed: { type: "boolean", defaultValue: true, required: false },
     },
   },
   trustedOrigins: [

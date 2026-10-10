@@ -221,12 +221,14 @@ adminRouter.get("/admin/users/:id/chapter-access", async (c) => {
     });
 
     const accessMap = new Map(userAccessList.map((a) => [a.chapterNum, a.isAllowed]));
+    const pdfAccessMap = new Map(userAccessList.map((a) => [a.chapterNum, a.isPdfAllowed]));
 
     const chapterList = allChapters.map((ch) => ({
       chapterNum: ch.chapterNum,
       titleJa: ch.titleJa,
       titleId: ch.titleId,
       isAllowed: accessMap.has(ch.chapterNum) ? accessMap.get(ch.chapterNum)! : true,
+      isPdfAllowed: pdfAccessMap.has(ch.chapterNum) ? pdfAccessMap.get(ch.chapterNum)! : true,
       isGeneralUnlocked: ch.isUnlocked,
     }));
 
@@ -239,7 +241,9 @@ adminRouter.get("/admin/users/:id/chapter-access", async (c) => {
         username: targetUser.username,
         role: targetUser.role,
         className: targetUser.className || "-",
+        pdfAccessAllowed: targetUser.pdfAccessAllowed ?? true,
       },
+      pdfAccessAllowed: targetUser.pdfAccessAllowed ?? true,
       chapters: chapterList,
     });
   } catch (err: any) {
@@ -247,7 +251,7 @@ adminRouter.get("/admin/users/:id/chapter-access", async (c) => {
   }
 });
 
-// Update chapter access permissions for a specific student
+// Update chapter & PDF access permissions for a specific student
 adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
   try {
     const targetUserId = c.req.param("id");
@@ -262,65 +266,121 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
 
     const body = await c.req.json().catch(() => ({}));
 
+    // 1. Update user-level master PDF switch if provided
+    if (typeof body.pdfAccessAllowed === "boolean") {
+      await db
+        .update(user)
+        .set({ pdfAccessAllowed: body.pdfAccessAllowed, updatedAt: new Date() })
+        .where(eq(user.id, targetUserId));
+    }
+
     const allChapters = await db.query.chapters.findMany({
       orderBy: [asc(chapters.chapterNum)],
     });
     const validChapterSet = new Set(allChapters.map((ch) => ch.chapterNum));
 
-    const updates: { chapterNum: string; isAllowed: boolean }[] = [];
+    // Existing user chapter access records
+    const existingList = await db.query.userChapterAccess.findMany({
+      where: eq(userChapterAccess.userId, targetUserId),
+    });
+    const existingMap = new Map(existingList.map((a) => [a.chapterNum, a]));
 
+    const updatesMap = new Map<string, { chapterNum: string; isAllowed?: boolean; isPdfAllowed?: boolean }>();
+
+    function getOrCreateUpdate(chNum: string) {
+      const cleanNum = String(chNum).padStart(2, "0");
+      if (!updatesMap.has(cleanNum)) {
+        updatesMap.set(cleanNum, { chapterNum: cleanNum });
+      }
+      return updatesMap.get(cleanNum)!;
+    }
+
+    // Exam access updates
     if (body.chapterNum !== undefined && body.isAllowed !== undefined) {
-      updates.push({
-        chapterNum: String(body.chapterNum).padStart(2, "0"),
-        isAllowed: Boolean(body.isAllowed),
-      });
+      getOrCreateUpdate(body.chapterNum).isAllowed = Boolean(body.isAllowed);
     } else if (Array.isArray(body.restrictedChapters)) {
       const restrictedSet = new Set(body.restrictedChapters.map((n: any) => String(n).padStart(2, "0")));
       for (const ch of allChapters) {
-        updates.push({ chapterNum: ch.chapterNum, isAllowed: !restrictedSet.has(ch.chapterNum) });
+        getOrCreateUpdate(ch.chapterNum).isAllowed = !restrictedSet.has(ch.chapterNum);
       }
     } else if (Array.isArray(body.allowedChapters)) {
       const allowedSet = new Set(body.allowedChapters.map((n: any) => String(n).padStart(2, "0")));
       for (const ch of allChapters) {
-        updates.push({ chapterNum: ch.chapterNum, isAllowed: allowedSet.has(ch.chapterNum) });
+        getOrCreateUpdate(ch.chapterNum).isAllowed = allowedSet.has(ch.chapterNum);
       }
     } else if (Array.isArray(body.chapters)) {
       for (const item of body.chapters) {
         if (item && item.chapterNum !== undefined) {
-          updates.push({
-            chapterNum: String(item.chapterNum).padStart(2, "0"),
-            isAllowed: Boolean(item.isAllowed),
-          });
+          const up = getOrCreateUpdate(item.chapterNum);
+          if (item.isAllowed !== undefined) up.isAllowed = Boolean(item.isAllowed);
+          if (item.isPdfAllowed !== undefined) up.isPdfAllowed = Boolean(item.isPdfAllowed);
         }
       }
     } else if (body.chapters && typeof body.chapters === "object") {
       for (const [k, v] of Object.entries(body.chapters)) {
-        updates.push({
-          chapterNum: String(k).padStart(2, "0"),
-          isAllowed: Boolean(v),
-        });
+        const up = getOrCreateUpdate(k);
+        if (typeof v === "boolean") {
+          up.isAllowed = Boolean(v);
+        } else if (typeof v === "object" && v !== null) {
+          const vObj = v as any;
+          if (vObj.isAllowed !== undefined) up.isAllowed = Boolean(vObj.isAllowed);
+          if (vObj.isPdfAllowed !== undefined) up.isPdfAllowed = Boolean(vObj.isPdfAllowed);
+        }
       }
     } else if (Array.isArray(body.chapterAccess)) {
       for (const item of body.chapterAccess) {
         if (item && item.chapterNum !== undefined) {
-          updates.push({
-            chapterNum: String(item.chapterNum).padStart(2, "0"),
-            isAllowed: Boolean(item.isAllowed),
-          });
+          const up = getOrCreateUpdate(item.chapterNum);
+          if (item.isAllowed !== undefined) up.isAllowed = Boolean(item.isAllowed);
+          if (item.isPdfAllowed !== undefined) up.isPdfAllowed = Boolean(item.isPdfAllowed);
         }
       }
     } else if (body.action === "allow_all") {
       for (const ch of allChapters) {
-        updates.push({ chapterNum: ch.chapterNum, isAllowed: true });
+        getOrCreateUpdate(ch.chapterNum).isAllowed = true;
       }
     } else if (body.action === "lock_all") {
       for (const ch of allChapters) {
-        updates.push({ chapterNum: ch.chapterNum, isAllowed: false });
+        getOrCreateUpdate(ch.chapterNum).isAllowed = false;
       }
     }
 
+    // Granular PDF updates
+    if (body.chapterNum !== undefined && body.isPdfAllowed !== undefined) {
+      getOrCreateUpdate(body.chapterNum).isPdfAllowed = Boolean(body.isPdfAllowed);
+    } else if (Array.isArray(body.pdfChapters)) {
+      for (const item of body.pdfChapters) {
+        if (item && item.chapterNum !== undefined) {
+          getOrCreateUpdate(item.chapterNum).isPdfAllowed = Boolean(item.isPdfAllowed);
+        }
+      }
+    } else if (body.pdfChapters && typeof body.pdfChapters === "object") {
+      for (const [k, v] of Object.entries(body.pdfChapters)) {
+        getOrCreateUpdate(k).isPdfAllowed = Boolean(v);
+      }
+    } else if (body.pdfAction === "allow_all") {
+      for (const ch of allChapters) {
+        getOrCreateUpdate(ch.chapterNum).isPdfAllowed = true;
+      }
+    } else if (body.pdfAction === "lock_all") {
+      for (const ch of allChapters) {
+        getOrCreateUpdate(ch.chapterNum).isPdfAllowed = false;
+      }
+    }
+
+    const updates = Array.from(updatesMap.values());
+
+    // If only user-level pdfAccessAllowed was modified and no chapter updates
+    if (updates.length === 0 && typeof body.pdfAccessAllowed === "boolean") {
+      return c.json({
+        success: true,
+        message: `Hak akses PDF untuk siswa "${targetUser.name}" berhasil diperbarui menjadi ${body.pdfAccessAllowed ? "Aktif" : "Dibatasi"}.`,
+        pdfAccessAllowed: body.pdfAccessAllowed,
+      });
+    }
+
     if (updates.length === 0) {
-      return c.json({ success: false, error: "Format data pembaruan hak akses bab tidak valid." }, 400);
+      return c.json({ success: false, error: "Format data pembaruan hak akses bab/PDF tidak valid." }, 400);
     }
 
     const invalidUpdates = updates.filter((up) => !validChapterSet.has(up.chapterNum));
@@ -335,13 +395,19 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
     }
 
     const now = new Date();
-    const rows = updates.map((up) => ({
-      id: `uca_${targetUserId}_${up.chapterNum}`,
-      userId: targetUserId,
-      chapterNum: up.chapterNum,
-      isAllowed: up.isAllowed,
-      updatedAt: now,
-    }));
+    const rows = updates.map((up) => {
+      const existing = existingMap.get(up.chapterNum);
+      const isAllowedVal = up.isAllowed !== undefined ? up.isAllowed : (existing ? existing.isAllowed : true);
+      const isPdfAllowedVal = up.isPdfAllowed !== undefined ? up.isPdfAllowed : (existing ? existing.isPdfAllowed : true);
+      return {
+        id: `uca_${targetUserId}_${up.chapterNum}`,
+        userId: targetUserId,
+        chapterNum: up.chapterNum,
+        isAllowed: isAllowedVal,
+        isPdfAllowed: isPdfAllowedVal,
+        updatedAt: now,
+      };
+    });
 
     await db
       .insert(userChapterAccess)
@@ -350,13 +416,14 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
         target: [userChapterAccess.userId, userChapterAccess.chapterNum],
         set: {
           isAllowed: sql`EXCLUDED.is_allowed`,
+          isPdfAllowed: sql`EXCLUDED.is_pdf_allowed`,
           updatedAt: now,
         },
       });
 
     return c.json({
       success: true,
-      message: `Hak akses bab untuk siswa "${targetUser.name}" berhasil diperbarui.`,
+      message: `Hak akses bab & PDF untuk siswa "${targetUser.name}" berhasil diperbarui.`,
       updatedCount: updates.length,
       data: updates,
     });
