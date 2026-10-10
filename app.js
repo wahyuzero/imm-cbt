@@ -87,7 +87,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "57";
+    return "59";
   }
 
   audioUrl(url) {
@@ -3176,18 +3176,18 @@ class ChoukaiApp {
         { id: "usr_stefanni_haryanto", name: "Stefanni Haryanto", username: "stefanni.haryanto", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_heru_prayoga", name: "Heru Prayoga", username: "heru.prayoga", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_fikri_muzakki", name: "Fikri Muzakki", username: "fikri.muzakki", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_wahyu_jaka", name: "Wahyu Jaka Permadi", username: "wahyu.jaka", role: "student", className: "Angkatan 35-A", password: "Wahyu2026!" },
-        { id: "usr_andre_ananta", name: "Andre Ananta Wianddin", username: "andre.ananta", role: "student", className: "Angkatan 35-A", password: "AndreA2026!" },
+        { id: "usr_wahyu_jaka", name: "Wahyu Jaka Permadi", username: "wahyu.jaka", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_andre_ananta", name: "Andre Ananta Wianddin", username: "andre.ananta", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_andi_saputra", name: "Andi Saputra", username: "andi.saputra", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_candra_afiansah", name: "Candra Afiansah", username: "candra.afiansah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_syarifudin_asyrof", name: "Syarifudin Asyrof", username: "syarifudin.asyrof", role: "student", className: "Angkatan 35-A", password: "Syarifudin2026!" },
-        { id: "usr_andre_purnomo", name: "Andre Purnomo", username: "andre.purnomo", role: "student", className: "Angkatan 35-A", password: "AndreP2026!" },
+        { id: "usr_syarifudin_asyrof", name: "Syarifudin Asyrof", username: "syarifudin.asyrof", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_andre_purnomo", name: "Andre Purnomo", username: "andre.purnomo", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_desi_wiyanti", name: "Desi Wiyanti", username: "desi.wiyanti", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_aprilianzah", name: "Aprilianzah", username: "aprilianzah", role: "student", className: "Angkatan 35-A", password: "Aprilianzah2026!" },
+        { id: "usr_aprilianzah", name: "Aprilianzah", username: "aprilianzah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_farrel_ardiansyah", name: "Muhammad Farrel Ardiansyah", username: "farrel.ardiansyah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_hayyu_pradana", name: "Hayyu Alunafa Pradana", username: "hayyu.pradana", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
         { id: "usr_ahmad_choirul", name: "Ahmad Choirul Muallif", username: "ahmad.choirul", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A", password: "Hamdani2026!" },
+        { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
       ];
 
       const foundOfficial = officialAccounts.find((acc) => acc.username === u && acc.password === p);

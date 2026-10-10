@@ -1019,7 +1019,7 @@ async function runTests() {
     assert(accessModalOpen, 'Modal dialog Pengaturan Hak Akses Bab successfully opened');
 
     const modalTitle = await cdp.eval('document.querySelector("#modal-container h3")?.innerText || ""');
-    assert(modalTitle.includes('Pengaturan Hak Akses Bab') && modalTitle.includes('Ahmad Syahroni'), 'Modal displays "Pengaturan Hak Akses Bab: Ahmad Syahroni"');
+    assert(modalTitle.includes('Pengaturan Hak Akses Bab') && modalTitle.includes('Heru Prayoga'), 'Modal displays "Pengaturan Hak Akses Bab: Heru Prayoga"');
 
     const toggleCh05Exists = await cdp.eval('Boolean(document.getElementById("access-toggle-05"))');
     assert(toggleCh05Exists, 'Bab 05 toggle exists in modal grid');
