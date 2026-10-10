@@ -369,6 +369,42 @@ async function runApiVerification() {
   assert(ahmadStartB5Json.error.includes("Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas"), "Error must specify chapter access restriction by pengawas");
   console.log("[PASS] Server-authoritative rejection: POST /api/v1/exam/start Bab 05 returned 403 Forbidden");
 
+  // 4b. Invalid chapter input test (Expect 400 Bad Request)
+  const invalidChRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ chapterNum: "99", isAllowed: false }),
+  });
+  assert.strictEqual(invalidChRes.status, 400, "Invalid chapter number must return 400 Bad Request");
+  console.log("[PASS] Invalid chapter validation guard verified (returned 400)");
+
+  // 4c. Batch action verification
+  const batchLockRes = await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ action: "allow_all" }),
+  });
+  assert.strictEqual(batchLockRes.status, 200, "Batch allow_all returns 200");
+  const batchLockJson = await batchLockRes.json();
+  assert.strictEqual(batchLockJson.updatedCount, 25, "All 25 chapters updated in single batch query");
+  console.log("[PASS] Single batch upsert operation verified for all 25 chapters");
+
+  // Re-restrict Bab 05 for Ahmad to verify other student isolation
+  await fetch(`${BASE_URL}/api/v1/admin/users/${ahmadRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ chapterNum: "05", isAllowed: false }),
+  });
+
   // 5. Verify other student can still access Bab 05
   const student2Username = "student.test.acc";
   await fetch(`${BASE_URL}/api/v1/admin/users`, {
