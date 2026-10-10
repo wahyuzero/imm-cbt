@@ -271,9 +271,11 @@ async function runTests() {
     const modalAfterCancel = await cdp.eval('window.app.activeModal');
     assert(modalAfterCancel === null, 'Mode selection dialog closed via Batal button');
 
-    // Test promptStartExam for pure reading Bab 01 shows 50 Menit
-    await cdp.eval('window.app.promptStartExam("01")');
+    // Test promptStartExam for pure reading Bab 01 shows 50 Menit (test with number 1 to verify numeric handling)
+    await cdp.eval('window.app.promptStartExam(1)');
     await wait(150);
+    const modalTitleText01 = await cdp.eval('document.querySelector("#modal-mode-select-overlay h3")?.innerText.trim()');
+    assert(modalTitleText01.includes('Pilih Mode Ujian ｜ Bab 01'), `Numeric input 1 opens Bab 01 dialog: ${modalTitleText01}`);
     const shikenCardText01 = await cdp.eval('document.getElementById("modal-opt-shiken").innerText');
     assert(shikenCardText01.includes('50 Menit'), 'Bab 01 Shiken card displays 50 Menit timer duration');
 
@@ -285,7 +287,21 @@ async function runTests() {
     const modalAfterEscMode = await cdp.eval('window.app.activeModal');
     assert(modalAfterEscMode === null, 'Mode selection dialog closed via Escape key');
 
-    // Test opening dialog and launching Mode Latihan
+    // Test keyboard selection (Enter key on #modal-opt-shiken)
+    await cdp.eval('window.app.promptStartExam(8)');
+    await wait(150);
+    await cdp.eval(`
+      document.getElementById("modal-opt-shiken").dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', bubbles: true }));
+    `);
+    await wait(300);
+    const viewFromKeyLaunch = await cdp.eval('window.app.view');
+    const modeFromKeyLaunch = await cdp.eval('window.app.mode');
+    assert(viewFromKeyLaunch === 'exam', 'Exam started via keyboard Enter key on modal card');
+    assert(modeFromKeyLaunch === 'shiken', 'Mode set to shiken via keyboard Enter key on modal card');
+
+    // Return to dashboard and test click on #modal-opt-renshuu
+    await cdp.eval('window.app.goToDashboard()');
+    await wait(200);
     await cdp.eval('window.app.promptStartExam("08")');
     await wait(150);
     await cdp.eval('document.getElementById("modal-opt-renshuu").click()');
@@ -297,6 +313,14 @@ async function runTests() {
     assert(viewFromDialog === 'exam', 'Exam view started from mode selection dialog');
     assert(modeFromDialog === 'renshuu', 'Mode set to renshuu from mode selection dialog');
     assert(modalClosedAfterLaunch, 'Mode selection dialog closed upon exam launch');
+
+    // Test programmatic startExam robustness with number and unpadded string
+    await cdp.eval('window.app.startExam(1, "renshuu")');
+    const b01NumTotal = await cdp.eval('window.app.currentChapter?.questions?.length');
+    assert(b01NumTotal === 25, 'Programmatic startExam(1, "renshuu") resolves Bab 01 with 25 questions');
+    await cdp.eval('window.app.startExam("1", "shiken")');
+    const b01StrTotal = await cdp.eval('window.app.currentChapter?.questions?.length');
+    assert(b01StrTotal === 25, 'Programmatic startExam("1", "shiken") resolves Bab 01 with 25 questions');
 
     // TEST 5: Start Exam in Mode Renshuu (33 Soal)
     console.log('\n--- TEST 5: Exam Mode Renshuu (33 Soal Tryout Terpadu) ---');
