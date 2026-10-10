@@ -12,7 +12,7 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=48`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=49`;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -132,7 +132,7 @@ async function runTests() {
     await cdp.send('Runtime.enable');
 
     for (let i = 0; i < 40; i++) {
-      const isReady = await cdp.eval('typeof window.app !== "undefined" && window.app.view === "auth_gate"');
+      const isReady = await cdp.eval('typeof window.app !== "undefined" && window.app.view === "auth_gate" && !window.app.authChecking');
       if (isReady) break;
       await wait(250);
     }
@@ -161,6 +161,19 @@ async function runTests() {
     assert(viewAfterHashAttempt === 'auth_gate', 'URL hash #bab-08 intercepted and locked to auth_gate');
     await cdp.eval('window.location.hash = ""; window.app.targetHash = null;');
     await wait(100);
+
+    // Route Interception for #admin while unauthenticated
+    await cdp.eval('window.location.hash = "#admin"');
+    await wait(200);
+    const viewAfterAdminHash = await cdp.eval('window.app.view');
+    assert(viewAfterAdminHash === 'auth_gate', 'URL hash #admin intercepted and locked to auth_gate');
+    await cdp.eval('window.location.hash = ""; window.app.targetHash = null;');
+    await wait(100);
+
+    // Direct openAdminPanel call while unauthenticated must be blocked
+    await cdp.eval('window.app.openAdminPanel("live")');
+    const modalAfterUnauthAdmin = await cdp.eval('window.app.activeModal');
+    assert(modalAfterUnauthAdmin === null, 'Direct openAdminPanel call blocked when unauthenticated');
 
     // Invalid Login Guard
     const failedLoginResult = await cdp.eval('window.app.login("siswa.salah", "000000", "gate-login-error")');
@@ -685,7 +698,7 @@ async function runTests() {
       assert(qAudioRate === 0.8, `Bab ${bStr} audio plays at comfortable 0.8x tempo baseline`);
       assert(qPitch === true, `Bab ${bStr} audio pitch preservation is enabled`);
       const audioSrcInApp = await cdp.eval('window.app.audio.src');
-      assert(audioSrcInApp.includes('?v=48'), `Bab ${bStr} Q26 audio src includes cache buster ?v=48 (actual: ${audioSrcInApp})`);
+      assert(audioSrcInApp.includes('?v=49'), `Bab ${bStr} Q26 audio src includes cache buster ?v=49 (actual: ${audioSrcInApp})`);
 
       // 3. Complete all 33 questions and submit
       await cdp.eval(`(() => {

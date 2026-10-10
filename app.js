@@ -67,7 +67,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "48";
+    return "49";
   }
 
   audioUrl(url) {
@@ -89,6 +89,7 @@ class ChoukaiApp {
 
     // Strict Auth Gate: Start strictly locked
     this.view = "auth_gate";
+    this.authChecking = true;
     this.updateAppGateUI();
     this.render();
 
@@ -121,6 +122,16 @@ class ChoukaiApp {
     const babMatch = hash.match(/^#bab-(\d{1,2})$/);
     const resultMatch = hash.match(/^#result-(\d{1,2})$/);
     const kosakataMatch = hash.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
+
+    if (hash === "#admin") {
+      if (this.currentUser?.role === "admin") {
+        this.goToDashboard();
+        this.openAdminPanel("live");
+      } else {
+        this.goToDashboard();
+      }
+      return;
+    }
 
     if (babMatch) {
       const bNum = babMatch[1].padStart(2, "0");
@@ -180,6 +191,16 @@ class ChoukaiApp {
     const km = h.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
     const bm = h.match(/^#bab-(\d{1,2})$/);
     const rm = h.match(/^#result-(\d{1,2})$/);
+
+    if (h === "#admin") {
+      if (this.currentUser?.role === "admin") {
+        this.goToDashboard();
+        this.openAdminPanel("live");
+      } else {
+        this.goToDashboard();
+      }
+      return;
+    }
 
     if (bm) {
       const bNum = bm[1].padStart(2, "0");
@@ -1103,7 +1124,12 @@ class ChoukaiApp {
   // MODAL & UI CONTROLS
   // ==========================================
   openModal(modalName, data = null) {
-    if (!this.isAuthenticated && modalName === "onboarding") {
+    if (!this.isAuthenticated) {
+      if (modalName !== "auth_login" && modalName !== "auth_register") {
+        return;
+      }
+    }
+    if (modalName === "admin_panel" && (!this.isAuthenticated || !this.currentUser || this.currentUser.role !== "admin")) {
       return;
     }
     this.activeModal = modalName;
@@ -1166,6 +1192,12 @@ class ChoukaiApp {
   render() {
     const appEl = document.getElementById("app");
     if (!appEl) return;
+
+    if (this.authChecking) {
+      appEl.innerHTML = this.renderAuthCheckingHTML();
+      this.updateAppGateUI();
+      return;
+    }
 
     if (!this.isAuthenticated) {
       appEl.innerHTML = this.renderAuthGateHTML();
@@ -1255,6 +1287,31 @@ class ChoukaiApp {
         err.classList.remove("hidden");
       }
     }
+  }
+
+  renderAuthCheckingHTML() {
+    return `
+      <div class="min-h-[calc(100vh-3.5rem)] flex items-center justify-center p-4 sm:p-6 relative select-none">
+        <div class="relative w-full max-w-sm bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl shadow-xl p-8 text-center">
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-sky-700 text-white flex items-center justify-center font-black font-jp text-xl shadow-md animate-pulse">
+            試
+          </div>
+          <h2 class="mt-4 font-black text-sm tracking-tight text-slate-900 dark:text-slate-100 font-jp">
+            IMM JAPAN CBT LAB
+          </h2>
+          <p class="text-[11px] text-slate-500 font-jp mt-1">
+            総合評価試験 ・ Reading & Choukai Engine
+          </p>
+          <div class="mt-6 flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <svg class="animate-spin h-4 w-4 text-sky-600 dark:text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Memeriksa status sesi login...</span>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   renderAuthGateHTML() {
@@ -2725,8 +2782,14 @@ class ChoukaiApp {
   // ==========================================
   async checkAuthSession() {
     if (window.location.protocol.startsWith("http")) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
       try {
-        const res = await fetch("/api/v1/auth/me", { credentials: "include" });
+        const res = await fetch("/api/v1/auth/me", {
+          credentials: "include",
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
         if (res.ok) {
           const json = await res.json();
           if (json.success && json.data && json.data.user) {
@@ -2750,6 +2813,7 @@ class ChoukaiApp {
           this.isAuthenticated = false;
         }
       } catch (e) {
+        clearTimeout(timeoutId);
         this.currentUser = null;
         this.currentSession = null;
         this.isAuthenticated = false;
@@ -2816,6 +2880,7 @@ class ChoukaiApp {
 
   updateHeaderAuthUI() {
     const adminBtn = document.getElementById("header-admin-btn");
+    const authBtn = document.getElementById("header-auth-btn");
     const authText = document.getElementById("header-auth-text");
     const profileBtn = document.getElementById("header-profile-btn");
     const logoutBtn = document.getElementById("header-logout-btn");
@@ -2825,6 +2890,14 @@ class ChoukaiApp {
         adminBtn.classList.remove("hidden");
       } else {
         adminBtn.classList.add("hidden");
+      }
+    }
+
+    if (authBtn) {
+      if (this.isAuthenticated) {
+        authBtn.classList.add("hidden");
+      } else {
+        authBtn.classList.remove("hidden");
       }
     }
 
@@ -2884,6 +2957,7 @@ class ChoukaiApp {
         const res = await fetch("/api/auth/sign-in/username", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify({ username: u, password: p }),
         });
         const data = await res.json();
@@ -2898,6 +2972,13 @@ class ChoukaiApp {
           return false;
         }
         await this.checkAuthSession();
+        if (!this.isAuthenticated || !this.currentUser) {
+          if (errEl) {
+            errEl.innerText = "Sesi gagal diverifikasi setelah masuk.";
+            errEl.classList.remove("hidden");
+          }
+          return false;
+        }
       } catch (e) {
         if (errEl) {
           errEl.innerText = "Gagal menghubungi server API.";
@@ -2949,7 +3030,9 @@ class ChoukaiApp {
       }
     }
 
-    this.isAuthenticated = true;
+    if (!this.isAuthenticated) {
+      return false;
+    }
     this.closeModal();
     this.updateAppGateUI();
 
@@ -2974,6 +3057,7 @@ class ChoukaiApp {
         await fetch("/api/auth/sign-out", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify({}),
         });
       } catch (e) {}
@@ -2981,6 +3065,7 @@ class ChoukaiApp {
     this.currentUser = null;
     this.currentSession = null;
     this.isAuthenticated = false;
+    this.authChecking = false;
     this.closeModal();
     this.view = "auth_gate";
     try {
@@ -3053,6 +3138,12 @@ class ChoukaiApp {
   }
 
   openAdminPanel(tab = "live") {
+    if (!this.isAuthenticated || !this.currentUser || this.currentUser.role !== "admin") {
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
     this.activeModal = "admin_panel";
     this.adminTab = tab;
     this.renderModal();
