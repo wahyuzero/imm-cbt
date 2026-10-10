@@ -12,7 +12,7 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=51`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=52`;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -240,6 +240,64 @@ async function runTests() {
       'Local PDF files exist on disk'
     );
 
+    // TEST 4B: Mode Selection Dialog (promptStartExam)
+    console.log('\n--- TEST 4B: Mode Selection Dialog promptStartExam from Dashboard ---');
+    await cdp.eval('window.app.goToDashboard()');
+    await wait(200);
+
+    // Call promptStartExam for Bab 08
+    await cdp.eval('window.app.promptStartExam("08")');
+    await wait(200);
+    const activeModalMode = await cdp.eval('window.app.activeModal');
+    assert(activeModalMode === 'mode_select', 'promptStartExam("08") opens mode_select modal dialog');
+
+    const hasModalOverlay = await cdp.eval('Boolean(document.getElementById("modal-mode-select-overlay"))');
+    assert(hasModalOverlay, 'Mode selection dialog overlay rendered in DOM');
+
+    const modalTitleText = await cdp.eval('document.querySelector("#modal-mode-select-overlay h3")?.innerText.trim()');
+    assert(modalTitleText.includes('Pilih Mode Ujian ｜ Bab 08'), `Modal header title is correct: ${modalTitleText}`);
+
+    const hasOptRenshuu = await cdp.eval('Boolean(document.getElementById("modal-opt-renshuu"))');
+    const hasOptShiken = await cdp.eval('Boolean(document.getElementById("modal-opt-shiken"))');
+    assert(hasOptRenshuu && hasOptShiken, 'Dialog contains both interactive options (Mode Latihan & Mode Simulasi CBT)');
+
+    // Check Bab 08 Shiken shows 60 Menit
+    const shikenCardText08 = await cdp.eval('document.getElementById("modal-opt-shiken").innerText');
+    assert(shikenCardText08.includes('60 Menit'), 'Bab 08 Shiken card displays 60 Menit timer duration');
+
+    // Test dismiss/cancel via Batal button
+    await cdp.eval('document.getElementById("modal-mode-cancel-btn").click()');
+    await wait(150);
+    const modalAfterCancel = await cdp.eval('window.app.activeModal');
+    assert(modalAfterCancel === null, 'Mode selection dialog closed via Batal button');
+
+    // Test promptStartExam for pure reading Bab 01 shows 50 Menit
+    await cdp.eval('window.app.promptStartExam("01")');
+    await wait(150);
+    const shikenCardText01 = await cdp.eval('document.getElementById("modal-opt-shiken").innerText');
+    assert(shikenCardText01.includes('50 Menit'), 'Bab 01 Shiken card displays 50 Menit timer duration');
+
+    // Test dismiss via Escape key
+    await cdp.eval(`
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', code: 'Escape' }));
+    `);
+    await wait(150);
+    const modalAfterEscMode = await cdp.eval('window.app.activeModal');
+    assert(modalAfterEscMode === null, 'Mode selection dialog closed via Escape key');
+
+    // Test opening dialog and launching Mode Latihan
+    await cdp.eval('window.app.promptStartExam("08")');
+    await wait(150);
+    await cdp.eval('document.getElementById("modal-opt-renshuu").click()');
+    await wait(300);
+
+    const viewFromDialog = await cdp.eval('window.app.view');
+    const modeFromDialog = await cdp.eval('window.app.mode');
+    const modalClosedAfterLaunch = await cdp.eval('window.app.activeModal === null');
+    assert(viewFromDialog === 'exam', 'Exam view started from mode selection dialog');
+    assert(modeFromDialog === 'renshuu', 'Mode set to renshuu from mode selection dialog');
+    assert(modalClosedAfterLaunch, 'Mode selection dialog closed upon exam launch');
+
     // TEST 5: Start Exam in Mode Renshuu (33 Soal)
     console.log('\n--- TEST 5: Exam Mode Renshuu (33 Soal Tryout Terpadu) ---');
     await cdp.eval('window.app.startExam(BAB_08_DATA, "renshuu")');
@@ -250,11 +308,17 @@ async function runTests() {
     assert(currentView === 'exam', 'View changed to exam');
     assert(totalQuestions === 33, `Total tryout questions count is 33 (actual: ${totalQuestions})`);
 
-    // Verify mode switcher button text
-    const hasSimulasiCbtBtn = await cdp.eval('Array.from(document.querySelectorAll("button")).some(b => b.innerText.includes("Simulasi CBT (試験)"))');
-    const hasCbtResmiBtn = await cdp.eval('Array.from(document.querySelectorAll("button")).some(b => b.innerText.includes("CBT Resmi (試験)"))');
-    assert(hasSimulasiCbtBtn, 'Mode button updated to Simulasi CBT (試験)');
-    assert(!hasCbtResmiBtn, 'Old CBT Resmi (試験) button removed');
+    // Verify active mode badge & removal of mid-exam switcher buttons
+    const modeBadgeText = await cdp.eval('document.getElementById("exam-mode-badge")?.innerText.trim()');
+    assert(modeBadgeText.includes('Latihan'), 'Exam header displays active mode badge [練習 Latihan]');
+
+    const hasResetSwitcher = await cdp.eval(`
+      Array.from(document.querySelectorAll('#app button')).some(b => {
+        const onclick = b.getAttribute('onclick') || '';
+        return onclick.includes('startExam') && (b.innerText.includes('Simulasi CBT') || b.innerText.includes('Latihan'));
+      })
+    `);
+    assert(!hasResetSwitcher, 'Mode switcher buttons cleanly removed from exam header to prevent accidental test reset');
 
     // Verify question subtitle (Romaji & translation) is removed during exam
     const questionTextContainer = await cdp.eval('document.getElementById("question-content-container").innerText');
@@ -491,6 +555,9 @@ async function runTests() {
     await cdp.eval('window.app.startExam(BAB_08_DATA, "shiken")');
     await wait(300);
 
+    const shikenBadgeText = await cdp.eval('document.getElementById("exam-mode-badge")?.innerText.trim()');
+    assert(shikenBadgeText.includes('試験 Ujian CBT'), 'Exam header displays active mode badge [試験 Ujian CBT] in Shiken mode');
+
     const timerText = await cdp.eval('document.getElementById("exam-timer-display").innerText.trim()');
     assert(timerText === '60:00', `Countdown timer active in Shiken mode: ${timerText}`);
 
@@ -702,7 +769,7 @@ async function runTests() {
       assert(qAudioRate === 0.8, `Bab ${bStr} audio plays at comfortable 0.8x tempo baseline`);
       assert(qPitch === true, `Bab ${bStr} audio pitch preservation is enabled`);
       const audioSrcInApp = await cdp.eval('window.app.audio.src');
-      assert(audioSrcInApp.includes('?v=51'), `Bab ${bStr} Q26 audio src includes cache buster ?v=51 (actual: ${audioSrcInApp})`);
+      assert(audioSrcInApp.includes('?v=52'), `Bab ${bStr} Q26 audio src includes cache buster ?v=52 (actual: ${audioSrcInApp})`);
 
       // 3. Complete all 33 questions and submit
       await cdp.eval(`(async () => {
