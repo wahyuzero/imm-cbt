@@ -10,6 +10,7 @@ import {
   questions,
   examSessions,
   examAnswers,
+  userChapterAccess,
 } from "../db/schema.js";
 import { eq, desc, asc, and, sql, or, ilike } from "drizzle-orm";
 import { hashPassword } from "better-auth/crypto";
@@ -188,6 +189,162 @@ adminRouter.post("/admin/users/:id/reset-pin", async (c) => {
       success: true,
       message: `PIN pengguna ${targetUser.name} berhasil di-reset menjadi "${newPin}" dan seluruh sesi aktif telah dicabut.`,
       newPin: newPin,
+    });
+  } catch (err: any) {
+    return c.json({ success: false, error: err.message }, 500);
+  }
+});
+
+// =========================================================================
+// 1B. MANAJEMEN HAK AKSES BAB PER-SISWA (PER-STUDENT CHAPTER ACCESS)
+// =========================================================================
+
+// Get chapter access permissions for a specific student
+adminRouter.get("/admin/users/:id/chapter-access", async (c) => {
+  try {
+    const targetUserId = c.req.param("id");
+
+    const targetUser = await db.query.user.findFirst({
+      where: eq(user.id, targetUserId),
+    });
+
+    if (!targetUser) {
+      return c.json({ success: false, error: "Pengguna tidak ditemukan." }, 404);
+    }
+
+    const allChapters = await db.query.chapters.findMany({
+      orderBy: [asc(chapters.chapterNum)],
+    });
+
+    const userAccessList = await db.query.userChapterAccess.findMany({
+      where: eq(userChapterAccess.userId, targetUserId),
+    });
+
+    const accessMap = new Map(userAccessList.map((a) => [a.chapterNum, a.isAllowed]));
+
+    const chapterList = allChapters.map((ch) => ({
+      chapterNum: ch.chapterNum,
+      titleJa: ch.titleJa,
+      titleId: ch.titleId,
+      isAllowed: accessMap.has(ch.chapterNum) ? accessMap.get(ch.chapterNum)! : true,
+      isGeneralUnlocked: ch.isUnlocked,
+    }));
+
+    return c.json({
+      success: true,
+      data: chapterList,
+      user: {
+        id: targetUser.id,
+        name: targetUser.name,
+        username: targetUser.username,
+        role: targetUser.role,
+        className: targetUser.className || "-",
+      },
+      chapters: chapterList,
+    });
+  } catch (err: any) {
+    return c.json({ success: false, error: err.message }, 500);
+  }
+});
+
+// Update chapter access permissions for a specific student
+adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
+  try {
+    const targetUserId = c.req.param("id");
+
+    const targetUser = await db.query.user.findFirst({
+      where: eq(user.id, targetUserId),
+    });
+
+    if (!targetUser) {
+      return c.json({ success: false, error: "Pengguna tidak ditemukan." }, 404);
+    }
+
+    const body = await c.req.json().catch(() => ({}));
+
+    const updates: { chapterNum: string; isAllowed: boolean }[] = [];
+
+    if (body.chapterNum !== undefined && body.isAllowed !== undefined) {
+      updates.push({
+        chapterNum: String(body.chapterNum).padStart(2, "0"),
+        isAllowed: Boolean(body.isAllowed),
+      });
+    } else if (Array.isArray(body.restrictedChapters)) {
+      const restrictedSet = new Set(body.restrictedChapters.map((n: any) => String(n).padStart(2, "0")));
+      for (let i = 1; i <= 25; i++) {
+        const num = String(i).padStart(2, "0");
+        updates.push({ chapterNum: num, isAllowed: !restrictedSet.has(num) });
+      }
+    } else if (Array.isArray(body.allowedChapters)) {
+      const allowedSet = new Set(body.allowedChapters.map((n: any) => String(n).padStart(2, "0")));
+      for (let i = 1; i <= 25; i++) {
+        const num = String(i).padStart(2, "0");
+        updates.push({ chapterNum: num, isAllowed: allowedSet.has(num) });
+      }
+    } else if (Array.isArray(body.chapters)) {
+      for (const item of body.chapters) {
+        if (item && item.chapterNum !== undefined) {
+          updates.push({
+            chapterNum: String(item.chapterNum).padStart(2, "0"),
+            isAllowed: Boolean(item.isAllowed),
+          });
+        }
+      }
+    } else if (body.chapters && typeof body.chapters === "object") {
+      for (const [k, v] of Object.entries(body.chapters)) {
+        updates.push({
+          chapterNum: String(k).padStart(2, "0"),
+          isAllowed: Boolean(v),
+        });
+      }
+    } else if (Array.isArray(body.chapterAccess)) {
+      for (const item of body.chapterAccess) {
+        if (item && item.chapterNum !== undefined) {
+          updates.push({
+            chapterNum: String(item.chapterNum).padStart(2, "0"),
+            isAllowed: Boolean(item.isAllowed),
+          });
+        }
+      }
+    } else if (body.action === "allow_all") {
+      for (let i = 1; i <= 25; i++) {
+        updates.push({ chapterNum: String(i).padStart(2, "0"), isAllowed: true });
+      }
+    } else if (body.action === "lock_all") {
+      for (let i = 1; i <= 25; i++) {
+        updates.push({ chapterNum: String(i).padStart(2, "0"), isAllowed: false });
+      }
+    }
+
+    if (updates.length === 0) {
+      return c.json({ success: false, error: "Format data pembaruan hak akses bab tidak valid." }, 400);
+    }
+
+    const now = new Date();
+    for (const up of updates) {
+      await db
+        .insert(userChapterAccess)
+        .values({
+          id: `uca_${targetUserId}_${up.chapterNum}`,
+          userId: targetUserId,
+          chapterNum: up.chapterNum,
+          isAllowed: up.isAllowed,
+          updatedAt: now,
+        })
+        .onConflictDoUpdate({
+          target: [userChapterAccess.userId, userChapterAccess.chapterNum],
+          set: {
+            isAllowed: up.isAllowed,
+            updatedAt: now,
+          },
+        });
+    }
+
+    return c.json({
+      success: true,
+      message: `Hak akses bab untuk siswa "${targetUser.name}" berhasil diperbarui.`,
+      updatedCount: updates.length,
+      data: updates,
     });
   } catch (err: any) {
     return c.json({ success: false, error: err.message }, 500);

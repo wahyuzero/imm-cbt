@@ -189,6 +189,21 @@ export async function runMigrations() {
     ON "user_vocabulary_progress" ("user_id", "vocabulary_id");
   `;
 
+  await client`
+    CREATE TABLE IF NOT EXISTS "user_chapter_access" (
+      "id" TEXT PRIMARY KEY,
+      "user_id" TEXT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+      "chapter_num" TEXT NOT NULL REFERENCES "chapters"("chapter_num") ON DELETE CASCADE,
+      "is_allowed" BOOLEAN DEFAULT true NOT NULL,
+      "updated_at" TIMESTAMP DEFAULT now() NOT NULL
+    );
+  `;
+
+  await client`
+    CREATE UNIQUE INDEX IF NOT EXISTS "user_chapter_access_user_ch_idx"
+    ON "user_chapter_access" ("user_id", "chapter_num");
+  `;
+
   console.log("PostgreSQL table migrations completed successfully.");
 }
 
