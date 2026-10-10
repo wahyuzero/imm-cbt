@@ -46,6 +46,14 @@ async function runApiVerification() {
   assert.strictEqual(vocabJson.count, 60, "Bab 1 vocabulary count must be exactly 60 words");
   console.log(`[PASS] Returned ${vocabJson.count} vocabulary words for Bab 1`);
 
+  // TEST 3B: Strict Auth Check: GET /api/v1/auth/me without session (Expect 401)
+  console.log("\n[TEST 3B] Strict Auth Check: GET /api/v1/auth/me without session (Expect 401)");
+  const unauthMeRes = await fetch(`${BASE_URL}/api/v1/auth/me`);
+  assert.strictEqual(unauthMeRes.status, 401, "Unauthenticated /api/v1/auth/me must return 401 Unauthorized");
+  const unauthMeJson = await unauthMeRes.json();
+  assert.strictEqual(unauthMeJson.success, false, "success must be false");
+  console.log("[PASS] Strict Auth Gate backend guard verified: 401 returned when not logged in");
+
   // TEST 4: Student Login via Better Auth (ahmad.syahroni / 123456)
   console.log("\n[TEST 4] Student Login: ahmad.syahroni + 123456");
   const studentLoginRes = await fetch(`${BASE_URL}/api/auth/sign-in/username`, {
@@ -308,6 +316,24 @@ async function runApiVerification() {
   assert(Boolean(ahmadRecord), "Ahmad Syahroni record found");
   assert(ahmadRecord.totalExams >= 2, "Ahmad must have at least 2 completed exams (including terminated)");
   console.log(`[PASS] Ahmad Syahroni has ${ahmadRecord.totalExams} completed exams recorded in Manajemen Siswa`);
+
+  // TEST 18: Student Logout & Backend Session Revocation (POST /api/auth/sign-out)
+  console.log("\n[TEST 18] Student Logout & Backend Session Revocation");
+  const logoutRes = await fetch(`${BASE_URL}/api/auth/sign-out`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: studentCookie,
+      Origin: BASE_URL,
+    },
+    body: JSON.stringify({}),
+  });
+  assert.strictEqual(logoutRes.status, 200, "Logout should succeed with 200");
+  const afterLogoutRes = await fetch(`${BASE_URL}/api/v1/auth/me`, {
+    headers: { Cookie: studentCookie },
+  });
+  assert.strictEqual(afterLogoutRes.status, 401, "Revoked session must be rejected with 401 Unauthorized");
+  console.log("[PASS] Student session successfully revoked, /api/v1/auth/me rejected with 401");
 
   console.log("\n==================================================================");
   console.log(" ALL LIVE PRODUCTION CBT & ADMIN API VERIFICATION TESTS PASSED!");

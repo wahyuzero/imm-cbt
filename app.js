@@ -35,7 +35,7 @@ class ChoukaiApp {
     this.pendingSeek = null;
 
     // View state
-    this.view = "dashboard"; // 'dashboard' | 'exam' | 'result' | 'kosakata'
+    this.view = "auth_gate"; // 'auth_gate' | 'dashboard' | 'exam' | 'result' | 'kosakata'
     this.activeModal = null; // 'onboarding' | 'confirm_submit' | 'image_zoom'
     this.modalData = null;
 
@@ -47,10 +47,14 @@ class ChoukaiApp {
     this.hideMeaning = false;
     this.memorizedWords = this.loadMemorizedWords();
 
-    // Multi-Role & Better Auth State
+    // Multi-Role & Strict Auth State
     this.currentUser = null;
     this.currentSession = null;
     this.serverSessionId = null;
+    this.isAuthenticated = false;
+    this.authChecking = true;
+    this.authGateTab = "login"; // 'login' | 'register'
+    this.targetHash = null;
     this.systemStatus = { allowRegistration: true, globalExamLock: false, announcement: "" };
     this.adminTab = "live";
     this.liveMonitoringData = [];
@@ -63,7 +67,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "47";
+    return "48";
   }
 
   audioUrl(url) {
@@ -78,28 +82,59 @@ class ChoukaiApp {
     return clean.includes("?") ? clean : `${clean}?v=${ChoukaiApp.VERSION}`;
   }
 
-  init() {
+  async init() {
     this.applyTheme(this.theme);
     this.setupAudioListeners();
     this.setupKeyboardShortcuts();
-    this.checkAuthSession();
-    this.fetchSystemStatus();
-    this.fetchChaptersStatus();
 
-    // Deep linking via URL hash
+    // Strict Auth Gate: Start strictly locked
+    this.view = "auth_gate";
+    this.updateAppGateUI();
+    this.render();
+
+    // Check backend session and system status
+    await this.checkAuthSession();
+    await this.fetchSystemStatus();
+
+    this.handleInitialRouting();
+
+    window.addEventListener("hashchange", () => {
+      this.handleHashChange();
+    });
+  }
+
+  handleInitialRouting() {
+    if (!this.isAuthenticated) {
+      const h = window.location.hash;
+      if (h && h !== "#auth" && h !== "#dashboard" && h !== "") {
+        this.targetHash = h;
+      }
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
+
+    // Authenticated user
+    this.updateAppGateUI();
     const hash = window.location.hash;
     const babMatch = hash.match(/^#bab-(\d{1,2})$/);
     const resultMatch = hash.match(/^#result-(\d{1,2})$/);
     const kosakataMatch = hash.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
+
     if (babMatch) {
       const bNum = babMatch[1].padStart(2, "0");
       if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
         this.startExam(CHAPTERS_DATA[bNum], "renshuu");
+      } else {
+        this.goToDashboard();
       }
     } else if (resultMatch) {
       const bNum = resultMatch[1].padStart(2, "0");
       if (this.progress[bNum]) {
         this.viewSavedResult(bNum);
+      } else {
+        this.goToDashboard();
       }
     } else if (kosakataMatch) {
       const bNum = kosakataMatch[1] ? (kosakataMatch[1] === "all" ? "all" : kosakataMatch[1].padStart(2, "0")) : "01";
@@ -110,7 +145,6 @@ class ChoukaiApp {
       this.viewSavedResult("08");
     } else if (hash === "#result-demo") {
       this.startExam(BAB_08_DATA, "shiken");
-      // Populate mock full-score demo
       const ansDemo = {
         1: "B", 2: "C", 3: "A", 4: "D", 5: "B", 6: "C", 7: "A",
         8: "D", 9: "B", 10: "C", 11: "A", 12: "D", 13: "B",
@@ -121,26 +155,52 @@ class ChoukaiApp {
       this.answers = ansDemo;
       this.submitExam();
     } else {
-      this.render();
-      if (!this.profile.name || !this.profile.classNo) {
-        this.openModal("onboarding");
+      this.goToDashboard();
+    }
+  }
+
+  handleHashChange() {
+    if (!this.isAuthenticated) {
+      const h = window.location.hash;
+      if (h && h !== "#auth" && h !== "") {
+        this.targetHash = h;
       }
+      if (window.location.hash !== "#auth" && window.location.hash !== "") {
+        try {
+          history.replaceState(null, "", "#auth");
+        } catch (e) {}
+      }
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
     }
 
-    window.addEventListener("hashchange", () => {
-      const h = window.location.hash;
-      const km = h.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
-      if (km) {
-        const bNum = km[1] ? (km[1] === "all" ? "all" : km[1].padStart(2, "0")) : (this.kosakataBab || "01");
-        if (this.view !== "kosakata" || this.kosakataBab !== bNum) {
-          this.goToKosakata(bNum);
-        }
-      } else if (h === "#dashboard" || h === "") {
-        if (this.view !== "dashboard") {
-          this.goToDashboard();
-        }
+    const h = window.location.hash;
+    const km = h.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
+    const bm = h.match(/^#bab-(\d{1,2})$/);
+    const rm = h.match(/^#result-(\d{1,2})$/);
+
+    if (bm) {
+      const bNum = bm[1].padStart(2, "0");
+      if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
+        this.startExam(CHAPTERS_DATA[bNum], "renshuu");
       }
-    });
+    } else if (rm) {
+      const bNum = rm[1].padStart(2, "0");
+      if (this.progress[bNum]) {
+        this.viewSavedResult(bNum);
+      }
+    } else if (km) {
+      const bNum = km[1] ? (km[1] === "all" ? "all" : km[1].padStart(2, "0")) : (this.kosakataBab || "01");
+      if (this.view !== "kosakata" || this.kosakataBab !== bNum) {
+        this.goToKosakata(bNum);
+      }
+    } else if (h === "#dashboard" || h === "") {
+      if (this.view !== "dashboard") {
+        this.goToDashboard();
+      }
+    }
   }
 
   // ==========================================
@@ -157,6 +217,10 @@ class ChoukaiApp {
 
   saveProfile(name, classNo, target) {
     this.profile = { name: name.trim(), classNo: classNo.trim(), target };
+    if (this.currentUser) {
+      this.currentUser.name = this.profile.name;
+      this.currentUser.className = this.profile.classNo;
+    }
     try {
       localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
     } catch (e) {
@@ -200,6 +264,13 @@ class ChoukaiApp {
   }
 
   viewSavedResult(chapterNum) {
+    if (!this.isAuthenticated) {
+      this.targetHash = `#result-${chapterNum}`;
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
@@ -252,6 +323,12 @@ class ChoukaiApp {
   }
 
   goToDashboard() {
+    if (!this.isAuthenticated) {
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
@@ -266,6 +343,13 @@ class ChoukaiApp {
   }
 
   goToKosakata(babNum) {
+    if (!this.isAuthenticated) {
+      this.targetHash = `#kosakata${babNum ? '-' + babNum : ''}`;
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
@@ -685,6 +769,14 @@ class ChoukaiApp {
 
     chNum = String(chNum).padStart(2, "0");
 
+    if (!this.isAuthenticated) {
+      this.targetHash = `#bab-${chNum}`;
+      this.view = "auth_gate";
+      this.updateAppGateUI();
+      this.render();
+      return;
+    }
+
     // Guard against locked chapters for students
     if (this.currentUser && this.currentUser.role !== "admin") {
       if (this.systemStatus?.globalExamLock) {
@@ -1011,6 +1103,9 @@ class ChoukaiApp {
   // MODAL & UI CONTROLS
   // ==========================================
   openModal(modalName, data = null) {
+    if (!this.isAuthenticated && modalName === "onboarding") {
+      return;
+    }
     this.activeModal = modalName;
     this.modalData = data;
     this.renderModal();
@@ -1072,6 +1167,12 @@ class ChoukaiApp {
     const appEl = document.getElementById("app");
     if (!appEl) return;
 
+    if (!this.isAuthenticated) {
+      appEl.innerHTML = this.renderAuthGateHTML();
+      this.updateAppGateUI();
+      return;
+    }
+
     if (this.view === "dashboard") {
       appEl.innerHTML = this.renderDashboardHTML();
     } else if (this.view === "exam") {
@@ -1087,17 +1188,257 @@ class ChoukaiApp {
     }
 
     this.renderHeaderProfile();
+    this.updateAppGateUI();
   }
 
   renderHeaderProfile() {
     const btn = document.getElementById("header-profile-btn");
     if (!btn) return;
-    if (this.profile && this.profile.name) {
+    const displayName = (this.currentUser && this.currentUser.name) || (this.profile && this.profile.name);
+    if (displayName) {
       btn.innerHTML = `
         <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-[11px] font-bold">学</span>
-        <span class="hidden sm:inline font-medium text-slate-700 dark:text-slate-300 truncate max-w-[120px]">${this.profile.name}</span>
+        <span class="hidden sm:inline font-medium text-slate-700 dark:text-slate-300 truncate max-w-[120px]">${displayName}</span>
       `;
     }
+  }
+
+  switchAuthGateTab(tab) {
+    this.authGateTab = tab;
+    this.render();
+  }
+
+  toggleGatePinVisibility() {
+    const pinInput = document.getElementById("gate-login-pin");
+    if (!pinInput) return;
+    pinInput.type = pinInput.type === "password" ? "text" : "password";
+  }
+
+  fillAndLogin(username, pin) {
+    const uEl = document.getElementById("gate-login-username");
+    const pEl = document.getElementById("gate-login-pin");
+    if (uEl) uEl.value = username;
+    if (pEl) pEl.value = pin;
+    return this.login(username, pin, "gate-login-error");
+  }
+
+  async loginWithGoogle() {
+    if (!window.location.protocol.startsWith("http")) {
+      alert("Google OAuth memerlukan server HTTP / domain live.");
+      return;
+    }
+    try {
+      const res = await fetch("/api/auth/sign-in/social", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          provider: "google",
+          callbackURL: window.location.origin,
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        const err = document.getElementById("gate-login-error");
+        if (err) {
+          err.innerText = data.message || "Google OAuth belum dikonfigurasi di server production (Google Client ID & Secret diperlukan). Silakan gunakan login Username & PIN.";
+          err.classList.remove("hidden");
+        } else {
+          alert("Google OAuth belum dikonfigurasi di server production. Silakan gunakan login Username & PIN.");
+        }
+      }
+    } catch (e) {
+      const err = document.getElementById("gate-login-error");
+      if (err) {
+        err.innerText = "Gagal menghubungkan ke layanan Google OAuth.";
+        err.classList.remove("hidden");
+      }
+    }
+  }
+
+  renderAuthGateHTML() {
+    const isRegister = this.authGateTab === "register";
+    return `
+      <div class="min-h-[calc(100vh-3.5rem)] flex items-center justify-center p-4 sm:p-6 relative select-none">
+        <!-- Ambient Japanese Background Ornament -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-30 dark:opacity-20 flex items-center justify-center">
+          <div class="text-[320px] font-black font-jp text-slate-200 dark:text-slate-800 leading-none select-none tracking-tighter">
+            試験
+          </div>
+        </div>
+
+        <!-- Auth Gate Glass Card -->
+        <div class="relative w-full max-w-md bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-8 transition-all">
+          
+          <!-- Top Utility Bar: Badge & Theme Switcher -->
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-2xl bg-sky-700 text-white flex items-center justify-center font-black font-jp text-lg shadow-md ring-2 ring-sky-500/20">
+                試
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-black text-sm tracking-tight text-slate-900 dark:text-slate-100 font-jp">IMM JAPAN</span>
+                  <span class="px-1.5 py-0.5 bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 rounded text-[9px] font-extrabold font-mono tracking-wide">STRICT AUTH</span>
+                </div>
+                <div class="text-[10px] text-slate-500 font-jp leading-none mt-0.5">読解・聴解・語彙 総合CBTエンジン</div>
+              </div>
+            </div>
+
+            <!-- Dark / Light Mode Switcher -->
+            <button type="button" onclick="window.app.toggleTheme()" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Ganti Mode Gelap / Terang">
+              <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+              <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+          </div>
+
+          <!-- Announcement Banner (if any) -->
+          ${this.systemStatus.announcement ? `
+            <div class="mb-4 p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-900/60 text-sky-800 dark:text-sky-300 text-[11px] font-medium flex items-center gap-2">
+              <span class="text-xs">📢</span>
+              <span class="leading-tight">${this.systemStatus.announcement}</span>
+            </div>
+          ` : ""}
+
+          <!-- Tab Navigation -->
+          <div class="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-2xl mb-5">
+            <button type="button" onclick="window.app.switchAuthGateTab('login')" class="flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${!isRegister ? 'bg-white dark:bg-slate-900 text-sky-700 dark:text-sky-300 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'}">
+              <span>登</span>
+              <span>Masuk Sistem</span>
+            </button>
+            ${this.systemStatus.allowRegistration ? `
+              <button type="button" onclick="window.app.switchAuthGateTab('register')" class="flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${isRegister ? 'bg-white dark:bg-slate-900 text-sky-700 dark:text-sky-300 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'}">
+                <span>生</span>
+                <span>Daftar Siswa</span>
+              </button>
+            ` : `
+              <div class="flex-1 py-2 text-center text-[10px] text-slate-400 font-medium cursor-not-allowed" title="Pendaftaran mandiri dinonaktifkan oleh Sensei">
+                🔒 Registrasi Ditutup
+              </div>
+            `}
+          </div>
+
+          ${!isRegister ? `
+            <!-- TAB: LOGIN FORM -->
+            <div id="gate-login-error" class="hidden mb-4 p-3 bg-rose-50 dark:bg-rose-950/70 border border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-xl text-xs font-medium flex items-center gap-2"></div>
+
+            <form onsubmit="event.preventDefault(); window.app.login(document.getElementById('gate-login-username').value, document.getElementById('gate-login-pin').value, 'gate-login-error');" class="space-y-3.5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  Username Siswa / Sensei:
+                </label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 font-mono text-xs">@</span>
+                  <input id="gate-login-username" type="text" required placeholder="misal: ahmad.syahroni" autocomplete="username" class="w-full pl-8 pr-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  PIN / Password (6-Digit):
+                </label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">🔑</span>
+                  <input id="gate-login-pin" type="password" required placeholder="PIN atau Password" autocomplete="current-password" class="w-full pl-8 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
+                  <button type="button" onclick="window.app.toggleGatePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Tampilkan / Sembunyikan PIN">👁️</button>
+                </div>
+              </div>
+
+              <button type="submit" id="gate-btn-submit" class="w-full mt-2 py-3 bg-sky-600 hover:bg-sky-500 active:bg-sky-700 text-white font-bold rounded-xl text-xs transition shadow-md flex items-center justify-center gap-2">
+                <span>Masuk ke Sistem CBT</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="relative my-4">
+              <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200 dark:border-slate-800"></div></div>
+              <div class="relative flex justify-center text-[10px] uppercase"><span class="bg-white dark:bg-slate-900 px-2 text-slate-400 font-bold tracking-wider">opsi otentikasi</span></div>
+            </div>
+
+            <!-- Google OAuth Button -->
+            <button type="button" id="gate-btn-google" onclick="window.app.loginWithGoogle()" class="w-full py-2.5 px-3 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-2.5 shadow-2xs">
+              <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+              <span>Masuk dengan Akun Google</span>
+            </button>
+
+            <!-- Quick Demo Accounts (Akses Cepat Pengujian) -->
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Akses Cepat Akun Demo:</span>
+                <span class="text-[10px] text-slate-400 font-mono">PIN: 123456</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" id="gate-btn-demo-student" onclick="window.app.fillAndLogin('ahmad.syahroni', '123456')" class="p-2.5 rounded-xl border border-sky-200 dark:border-sky-900 bg-sky-50/70 dark:bg-sky-950/40 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-900 dark:text-sky-200 text-left transition group">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-[10px] font-bold">学</span>
+                    <span class="text-xs font-bold">Siswa Demo</span>
+                  </div>
+                  <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-mono">ahmad.syahroni</div>
+                </button>
+                <button type="button" id="gate-btn-demo-sensei" onclick="window.app.fillAndLogin('sensei.wahyu', '123456')" class="p-2.5 rounded-xl border border-amber-200 dark:border-amber-900 bg-amber-50/70 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-200 text-left transition group">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-5 h-5 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px] font-bold font-jp">先</span>
+                    <span class="text-xs font-bold">Sensei Admin</span>
+                  </div>
+                  <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-mono">sensei.wahyu</div>
+                </button>
+              </div>
+            </div>
+          ` : `
+            <!-- TAB: REGISTRATION FORM -->
+            <div id="gate-reg-error" class="hidden mb-4 p-3 bg-rose-50 dark:bg-rose-950/70 border border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-xl text-xs font-medium flex items-center gap-2"></div>
+
+            <form onsubmit="event.preventDefault(); window.app.registerStudent({
+              name: document.getElementById('gate-reg-name').value,
+              username: document.getElementById('gate-reg-username').value,
+              pin: document.getElementById('gate-reg-pin').value,
+              className: document.getElementById('gate-reg-class').value,
+              email: document.getElementById('gate-reg-email').value,
+            }, 'gate-reg-error');" class="space-y-2.5">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Lengkap Siswa:</label>
+                <input id="gate-reg-name" type="text" required placeholder="Contoh: Dadan Ramdani" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Username (Login LPK):</label>
+                <input id="gate-reg-username" type="text" required placeholder="Contoh: dadan.ramdani" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none focus:ring-2 focus:ring-sky-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">PIN 6-Digit:</label>
+                <input id="gate-reg-pin" type="password" required placeholder="Contoh: 123456" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none focus:ring-2 focus:ring-sky-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Kelas / Angkatan:</label>
+                <input id="gate-reg-class" type="text" placeholder="Angkatan 35-A" value="Angkatan 35-A" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Email (Opsional):</label>
+                <input id="gate-reg-email" type="email" placeholder="dadan@contoh.com" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              </div>
+              <button type="submit" id="gate-btn-reg-submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm mt-3">
+                Daftar & Masuk ke Lab CBT &rarr;
+              </button>
+            </form>
+
+            <div class="mt-3 text-center">
+              <button type="button" onclick="window.app.switchAuthGateTab('login')" class="text-xs text-sky-600 dark:text-sky-400 font-semibold hover:underline">
+                &larr; Sudah punya akun? Kembali ke form login
+              </button>
+            </div>
+          `}
+
+          <!-- Footer Security Notice -->
+          <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-center">
+            <div class="inline-flex items-center gap-1.5 text-[10px] text-slate-400">
+              <span>🔒</span>
+              <span>Sesi Terenkripsi & Anti-Curang CBT ｜ Better Auth & RBAC Guard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   // SCREEN 1: DASHBOARD
@@ -2383,27 +2724,56 @@ class ChoukaiApp {
   // BETTER AUTH & SENSEI ADMIN ENGINE
   // ==========================================
   async checkAuthSession() {
-    if (!window.location.protocol.startsWith("http")) return;
-    try {
-      const res = await fetch("/api/v1/auth/me");
-      const json = await res.json();
-      if (json.success && json.data) {
-        this.currentUser = json.data.user;
-        this.currentSession = json.data.session;
-        if (this.currentUser && this.currentUser.name) {
-          this.profile.name = this.currentUser.name;
-          this.profile.classNo = this.currentUser.className || this.profile.classNo || "LPK";
-          localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
-          this.fetchChaptersStatus();
+    if (window.location.protocol.startsWith("http")) {
+      try {
+        const res = await fetch("/api/v1/auth/me", { credentials: "include" });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && json.data.user) {
+            this.currentUser = json.data.user;
+            this.currentSession = json.data.session;
+            this.isAuthenticated = true;
+            if (this.currentUser && this.currentUser.name) {
+              this.profile.name = this.currentUser.name;
+              this.profile.classNo = this.currentUser.className || this.profile.classNo || "LPK";
+              localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+              await this.fetchChaptersStatus();
+            }
+          } else {
+            this.currentUser = null;
+            this.currentSession = null;
+            this.isAuthenticated = false;
+          }
+        } else {
+          this.currentUser = null;
+          this.currentSession = null;
+          this.isAuthenticated = false;
         }
-      } else {
+      } catch (e) {
         this.currentUser = null;
         this.currentSession = null;
+        this.isAuthenticated = false;
       }
-    } catch (e) {
-      // offline / mock fallback
+    } else {
+      if (!this.currentUser) {
+        this.isAuthenticated = false;
+      }
     }
-    this.updateHeaderAuthUI();
+    this.authChecking = false;
+    this.updateAppGateUI();
+  }
+
+  updateAppGateUI() {
+    const header = document.getElementById("app-header");
+    const footer = document.getElementById("app-footer");
+    if (this.isAuthenticated) {
+      if (header) header.classList.remove("hidden");
+      if (footer) footer.classList.remove("hidden");
+      this.updateHeaderAuthUI();
+    } else {
+      if (header) header.classList.add("hidden");
+      if (footer) footer.classList.add("hidden");
+    }
   }
 
   async fetchSystemStatus() {
@@ -2448,6 +2818,7 @@ class ChoukaiApp {
     const adminBtn = document.getElementById("header-admin-btn");
     const authText = document.getElementById("header-auth-text");
     const profileBtn = document.getElementById("header-profile-btn");
+    const logoutBtn = document.getElementById("header-logout-btn");
 
     if (adminBtn) {
       if (this.currentUser && this.currentUser.role === "admin") {
@@ -2470,6 +2841,14 @@ class ChoukaiApp {
       const span = profileBtn.querySelector("span:not(.bg-sky-600)");
       if (span) span.innerText = this.currentUser.name;
     }
+
+    if (logoutBtn) {
+      if (this.isAuthenticated) {
+        logoutBtn.classList.remove("hidden");
+      } else {
+        logoutBtn.classList.add("hidden");
+      }
+    }
   }
 
   openAuthModal(mode = "auth_login") {
@@ -2483,83 +2862,193 @@ class ChoukaiApp {
     this.renderModal();
   }
 
-  async login(username, pin, errElId = "login-error-msg") {
+  async login(username, pin, errElId = "gate-login-error") {
     const errEl = document.getElementById(errElId);
-    if (errEl) errEl.classList.add("hidden");
-    try {
-      const res = await fetch("/api/auth/sign-in/username", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password: pin }),
-      });
-      const data = await res.json();
-      if (!res.ok || data.error) {
-        const msg = data.message || data.error?.message || "Username atau PIN salah.";
-        if (errEl) {
-          errEl.innerText = msg;
-          errEl.classList.remove("hidden");
-        } else {
-          alert(msg);
-        }
-        return false;
-      }
-      await this.checkAuthSession();
-      this.closeModal();
-      if (this.currentUser?.role === "admin") {
-        this.openAdminPanel("live");
-      } else {
-        this.render();
-      }
-      return true;
-    } catch (e) {
+    if (errEl) {
+      errEl.classList.add("hidden");
+      errEl.innerText = "";
+    }
+    const u = String(username || "").trim().toLowerCase();
+    const p = String(pin || "").trim();
+
+    if (!u || !p) {
       if (errEl) {
-        errEl.innerText = "Gagal menghubungi server API.";
+        errEl.innerText = "Username dan PIN 6-digit wajib diisi.";
         errEl.classList.remove("hidden");
       }
       return false;
     }
-  }
 
-  async logout() {
-    try {
-      await fetch("/api/auth/sign-out", { method: "POST" });
-    } catch (e) {}
-    this.currentUser = null;
-    this.currentSession = null;
-    this.updateHeaderAuthUI();
-    this.closeModal();
-    this.goToDashboard();
-  }
-
-  async registerStudent(formData, errElId = "reg-error-msg") {
-    const errEl = document.getElementById(errElId);
-    if (errEl) errEl.classList.add("hidden");
-    try {
-      const res = await fetch("/api/v1/auth/register-student", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        const msg = data.error || "Gagal melakukan pendaftaran.";
+    if (window.location.protocol.startsWith("http")) {
+      try {
+        const res = await fetch("/api/auth/sign-in/username", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: u, password: p }),
+        });
+        const data = await res.json();
+        if (!res.ok || data.error) {
+          const msg = data.message || data.error?.message || "Username atau PIN salah.";
+          if (errEl) {
+            errEl.innerText = msg;
+            errEl.classList.remove("hidden");
+          } else {
+            alert(msg);
+          }
+          return false;
+        }
+        await this.checkAuthSession();
+      } catch (e) {
         if (errEl) {
-          errEl.innerText = msg;
+          errEl.innerText = "Gagal menghubungi server API.";
           errEl.classList.remove("hidden");
-        } else {
-          alert(msg);
         }
         return false;
       }
-      // Auto login after registration
-      await this.login(formData.username, formData.pin, errElId);
-      return true;
-    } catch (e) {
+    } else {
+      // Local / Offline / file:// protocol mode
+      if ((u === "ahmad.syahroni" || u === "narong.sakda" || u === "siswa.demo") && p === "123456") {
+        this.currentUser = {
+          id: "usr_ahmad",
+          name: u === "narong.sakda" ? "Narong Sakda" : "Ahmad Syahroni",
+          username: u,
+          role: "student",
+          className: "Kelas 24-B (IMM Japan)",
+        };
+        this.currentSession = { id: "ses_local_mock", token: "mock_token" };
+        this.isAuthenticated = true;
+        this.profile.name = this.currentUser.name;
+        this.profile.classNo = this.currentUser.className;
+        localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+      } else if (u === "sensei.wahyu" && p === "123456") {
+        this.currentUser = {
+          id: "usr_admin",
+          name: "Sensei Wahyu",
+          username: "sensei.wahyu",
+          role: "admin",
+          className: "Sensei Pengawas",
+        };
+        this.currentSession = { id: "ses_local_admin", token: "mock_token" };
+        this.isAuthenticated = true;
+      } else {
+        const mockUsers = JSON.parse(localStorage.getItem("imm_mock_users") || "{}");
+        if (mockUsers[u] && mockUsers[u].pin === p) {
+          this.currentUser = mockUsers[u].user;
+          this.currentSession = { id: "ses_mock_" + u, token: "mock_token" };
+          this.isAuthenticated = true;
+          this.profile.name = this.currentUser.name;
+          this.profile.classNo = this.currentUser.className;
+          localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+        } else {
+          if (errEl) {
+            errEl.innerText = "Username atau PIN salah.";
+            errEl.classList.remove("hidden");
+          }
+          return false;
+        }
+      }
+    }
+
+    this.isAuthenticated = true;
+    this.closeModal();
+    this.updateAppGateUI();
+
+    if (this.currentUser?.role === "admin") {
+      this.goToDashboard();
+      this.openAdminPanel("live");
+    } else {
+      if (this.targetHash && this.targetHash !== "#auth" && this.targetHash !== "#dashboard") {
+        const t = this.targetHash;
+        this.targetHash = null;
+        window.location.hash = t;
+      } else {
+        this.goToDashboard();
+      }
+    }
+    return true;
+  }
+
+  async logout() {
+    if (window.location.protocol.startsWith("http")) {
+      try {
+        await fetch("/api/auth/sign-out", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        });
+      } catch (e) {}
+    }
+    this.currentUser = null;
+    this.currentSession = null;
+    this.isAuthenticated = false;
+    this.closeModal();
+    this.view = "auth_gate";
+    try {
+      history.replaceState(null, "", window.location.pathname);
+    } catch (e) {}
+    this.updateAppGateUI();
+    this.render();
+  }
+
+  async registerStudent(formData, errElId = "gate-reg-error") {
+    const errEl = document.getElementById(errElId);
+    if (errEl) {
+      errEl.classList.add("hidden");
+      errEl.innerText = "";
+    }
+    const { name, username, pin, className, email } = formData;
+    if (!name || !username || !pin) {
       if (errEl) {
-        errEl.innerText = "Koneksi server gagal.";
+        errEl.innerText = "Nama, username, dan PIN wajib diisi.";
         errEl.classList.remove("hidden");
       }
       return false;
+    }
+
+    if (window.location.protocol.startsWith("http")) {
+      try {
+        const res = await fetch("/api/v1/auth/register-student", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          const msg = data.error || "Gagal melakukan pendaftaran.";
+          if (errEl) {
+            errEl.innerText = msg;
+            errEl.classList.remove("hidden");
+          } else {
+            alert(msg);
+          }
+          return false;
+        }
+        // Auto login after registration
+        return await this.login(username, pin, errElId);
+      } catch (e) {
+        if (errEl) {
+          errEl.innerText = "Koneksi server gagal.";
+          errEl.classList.remove("hidden");
+        }
+        return false;
+      }
+    } else {
+      // Mock registration for file://
+      const u = String(username).trim().toLowerCase();
+      const mockUsers = JSON.parse(localStorage.getItem("imm_mock_users") || "{}");
+      mockUsers[u] = {
+        user: {
+          id: "usr_mock_" + Date.now(),
+          name: name.trim(),
+          username: u,
+          role: "student",
+          className: className || "Angkatan 35-A",
+          email: email || `${u}@imm.internal`,
+        },
+        pin: String(pin).trim(),
+      };
+      localStorage.setItem("imm_mock_users", JSON.stringify(mockUsers));
+      return await this.login(u, pin, errElId);
     }
   }
 
