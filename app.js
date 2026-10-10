@@ -122,6 +122,7 @@ class ChoukaiApp {
     // Authenticated user
     this.updateAppGateUI();
     const hash = window.location.hash;
+    const promptMatch = hash.match(/^#prompt-(\d{1,2})$/);
     const babMatch = hash.match(/^#bab-(\d{1,2})$/);
     const resultMatch = hash.match(/^#result-(\d{1,2})$/);
     const kosakataMatch = hash.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
@@ -136,7 +137,11 @@ class ChoukaiApp {
       return;
     }
 
-    if (babMatch) {
+    if (promptMatch) {
+      const bNum = promptMatch[1].padStart(2, "0");
+      this.goToDashboard();
+      this.promptStartExam(bNum);
+    } else if (babMatch) {
       const bNum = babMatch[1].padStart(2, "0");
       if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
         this.startExam(CHAPTERS_DATA[bNum], "renshuu");
@@ -191,6 +196,7 @@ class ChoukaiApp {
     }
 
     const h = window.location.hash;
+    const pm = h.match(/^#prompt-(\d{1,2})$/);
     const km = h.match(/^#kosakata(?:-(\d{1,2}|all))?$/);
     const bm = h.match(/^#bab-(\d{1,2})$/);
     const rm = h.match(/^#result-(\d{1,2})$/);
@@ -205,7 +211,11 @@ class ChoukaiApp {
       return;
     }
 
-    if (bm) {
+    if (pm) {
+      const bNum = pm[1].padStart(2, "0");
+      this.goToDashboard();
+      this.promptStartExam(bNum);
+    } else if (bm) {
       const bNum = bm[1].padStart(2, "0");
       if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[bNum]) {
         this.startExam(CHAPTERS_DATA[bNum], "renshuu");
@@ -781,11 +791,15 @@ class ChoukaiApp {
   // EXAM LOGIC & TIMER
   // ==========================================
   promptStartExam(chapterDataOrNum) {
-    let chNum = typeof chapterDataOrNum === "string" ? chapterDataOrNum : (chapterDataOrNum?.chapter || "08");
-    chNum = String(chNum).padStart(2, "0");
+    let chNum = "08";
+    if (chapterDataOrNum && typeof chapterDataOrNum === "object" && chapterDataOrNum.chapter) {
+      chNum = String(chapterDataOrNum.chapter).padStart(2, "0");
+    } else if (typeof chapterDataOrNum === "string" || typeof chapterDataOrNum === "number") {
+      chNum = String(chapterDataOrNum).padStart(2, "0");
+    }
 
     if (!this.isAuthenticated) {
-      this.targetHash = `#bab-${chNum}`;
+      this.targetHash = `#prompt-${chNum}`;
       this.view = "auth_gate";
       this.updateAppGateUI();
       this.render();
@@ -807,18 +821,38 @@ class ChoukaiApp {
     this.openModal("mode_select", chNum);
   }
 
+  selectExamMode(chapterDataOrNum, mode = "renshuu") {
+    if (this._isStartingExam) return;
+    this._isStartingExam = true;
+    this.closeModal();
+    this.startExam(chapterDataOrNum, mode);
+    setTimeout(() => {
+      this._isStartingExam = false;
+    }, 500);
+  }
+
   startExam(chapterDataOrNum, mode = "renshuu") {
-    let chapterData = chapterDataOrNum;
-    let chNum = typeof chapterDataOrNum === "string" ? chapterDataOrNum : (chapterDataOrNum?.chapter || "08");
-    if (typeof chapterDataOrNum === "string" && typeof CHAPTERS_DATA !== "undefined") {
-      chapterData = CHAPTERS_DATA[chapterDataOrNum] || chapterData;
+    let chapterData = null;
+    let chNum = "08";
+
+    if (chapterDataOrNum && typeof chapterDataOrNum === "object" && chapterDataOrNum.questions) {
+      chapterData = chapterDataOrNum;
+      chNum = String(chapterData.chapter || "08").padStart(2, "0");
+    } else if (typeof chapterDataOrNum === "string" || typeof chapterDataOrNum === "number") {
+      chNum = String(chapterDataOrNum).padStart(2, "0");
+      if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[chNum]) {
+        chapterData = CHAPTERS_DATA[chNum];
+      }
     }
+
+    if (!chapterData && typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[chNum]) {
+      chapterData = CHAPTERS_DATA[chNum];
+    }
+
     if (!chapterData && typeof BAB_08_DATA !== "undefined") {
       chapterData = BAB_08_DATA;
       chNum = "08";
     }
-
-    chNum = String(chNum).padStart(2, "0");
 
     if (!this.isAuthenticated) {
       this.targetHash = `#bab-${chNum}`;
@@ -851,8 +885,8 @@ class ChoukaiApp {
 
     if (this.timerInterval) clearInterval(this.timerInterval);
     if (this.mode === "shiken") {
-      const hasChoukai = this.currentChapter.questions.some((q) => q.session === "choukai");
-      this.timerSeconds = hasChoukai ? 3600 : 3000; // 50 menit (3000s) untuk Bab 1-7, 60 menit (3600s) untuk Bab 8
+      const hasChoukai = this.currentChapter?.questions ? this.currentChapter.questions.some((q) => q.session === "choukai") : false;
+      this.timerSeconds = hasChoukai ? 3600 : 3000; // 50 menit (3000s) untuk Bab 1-7, 60 menit (3600s) untuk Bab 8-25
       this.startTimer();
       const q = this.getCurrentQuestion();
       if (q && q.session === "choukai") {
@@ -3967,7 +4001,8 @@ class ChoukaiApp {
         </div>
       `;
     } else if (this.activeModal === "mode_select") {
-      const chNum = String(this.modalData || "08").padStart(2, "0");
+      const rawCh = typeof this.modalData === "object" && this.modalData?.chapter ? this.modalData.chapter : this.modalData;
+      const chNum = String(rawCh || "08").padStart(2, "0");
       const chData = typeof CHAPTERS_DATA !== "undefined" ? CHAPTERS_DATA[chNum] : null;
       const chTitle = chData?.title_ja || `第${parseInt(chNum, 10)}課`;
       const chTitleId = chData?.title_id || `Bab ${chNum}`;
@@ -3999,7 +4034,7 @@ class ChoukaiApp {
             <!-- Mode Selection Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-4">
               <!-- Mode Latihan (Renshuu) -->
-              <div id="modal-opt-renshuu" role="button" tabindex="0" onclick="window.app.closeModal(); window.app.startExam('${chNum}', 'renshuu');" class="group relative p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 bg-slate-50/60 dark:bg-slate-800/40 hover:bg-sky-50/50 dark:hover:bg-sky-950/40 transition-all cursor-pointer shadow-xs hover:shadow-md text-left flex flex-col justify-between">
+              <div id="modal-opt-renshuu" role="button" tabindex="0" onclick="window.app.selectExamMode('${chNum}', 'renshuu');" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.selectExamMode('${chNum}', 'renshuu');}" class="group relative p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 bg-slate-50/60 dark:bg-slate-800/40 hover:bg-sky-50/50 dark:hover:bg-sky-950/40 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition-all cursor-pointer shadow-xs hover:shadow-md text-left flex flex-col justify-between">
                 <div>
                   <div class="flex items-center justify-between mb-2">
                     <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-bold font-jp bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800">
@@ -4024,7 +4059,7 @@ class ChoukaiApp {
               </div>
 
               <!-- Mode Simulasi CBT (Shiken) -->
-              <div id="modal-opt-shiken" role="button" tabindex="0" onclick="window.app.closeModal(); window.app.startExam('${chNum}', 'shiken');" class="group relative p-4 rounded-xl border-2 border-rose-200 dark:border-rose-900/60 hover:border-rose-500 dark:hover:border-rose-500 bg-rose-50/40 dark:bg-rose-950/20 hover:bg-rose-50/80 dark:hover:bg-rose-950/50 transition-all cursor-pointer shadow-xs hover:shadow-md text-left flex flex-col justify-between">
+              <div id="modal-opt-shiken" role="button" tabindex="0" onclick="window.app.selectExamMode('${chNum}', 'shiken');" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.selectExamMode('${chNum}', 'shiken');}" class="group relative p-4 rounded-xl border-2 border-rose-200 dark:border-rose-900/60 hover:border-rose-500 dark:hover:border-rose-500 bg-rose-50/40 dark:bg-rose-950/20 hover:bg-rose-50/80 dark:hover:bg-rose-950/50 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition-all cursor-pointer shadow-xs hover:shadow-md text-left flex flex-col justify-between">
                 <div>
                   <div class="flex items-center justify-between mb-2">
                     <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-bold font-jp bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800">
@@ -4039,7 +4074,7 @@ class ChoukaiApp {
                     Mode Simulasi CBT (試験)
                   </h4>
                   <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                    Timer resmi berjalan mundur (${timerMinutes} menit Bab ${parseInt(chNum, 10) < 8 ? '01–07' : '08–25'}), otomatis submit saat waktu habis, simulasi ketat standar IMM Japan.
+                    Timer resmi berjalan mundur (${timerMinutes} menit — 50 menit Bab 01–07, 60 menit Bab 08–25), otomatis submit saat waktu habis, simulasi ketat standar IMM Japan.
                   </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-rose-200/60 dark:border-rose-900/40 flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400">
