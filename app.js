@@ -78,7 +78,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "55";
+    return "56";
   }
 
   audioUrl(url) {
@@ -1740,6 +1740,7 @@ class ChoukaiApp {
           <div>
             ${actionButton}
             ${pdfCardLinks}
+          </div>
         </div>
       `;
     });
