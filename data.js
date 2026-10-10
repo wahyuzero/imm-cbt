@@ -14164,7 +14164,7 @@ const BAB_11_DATA = {
         "audioSrc": "assets/audio/bab_11/Choukai_Bab_11_Q5.mp3",
         "audioDuration": "00:39",
         "question_ja": "ナロンさんの家族は全部で何人ですか。",
-        "question_ruby": "ナロンさんのご<ruby>家族<rt>かぞく</rt></ruby>は<ruby>全部<rt>ぜんぶ</rt></ruby>で<ruby>何人<rt>なんにん</rt></ruby>ですか。",
+        "question_ruby": "ナロンさんの<ruby>家族<rt>かぞく</rt></ruby>は<ruby>全部<rt>ぜんぶ</rt></ruby>で<ruby>何人<rt>なんにん</rt></ruby>ですか。",
         "question_romaji": "Narong-san no kazoku wa zenbu de nannin desu ka.",
         "question_id": "Berapa jumlah total anggota keluarga Narong?",
         "options": [
