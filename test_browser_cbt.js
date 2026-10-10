@@ -198,7 +198,7 @@ async function runTests() {
 
     // TEST 2: Student Login via Auth Gate & Dashboard Unlock
     console.log('\n--- TEST 2: Student Login via Auth Gate & Profile Persistence ---');
-    await performLogin("ahmad.syahroni", "123456");
+    await performLogin("heru.prayoga", "[REDACTED]");
     await wait(200);
 
     const isAuthNow = await cdp.eval('window.app.isAuthenticated');
@@ -212,7 +212,7 @@ async function runTests() {
     assert(isHeaderVisibleNow, 'App navigation header revealed upon successful authentication');
 
     const studentHeaderName = await cdp.eval('document.getElementById("header-profile-btn").innerText.trim()');
-    assert(studentHeaderName.includes('Ahmad Syahroni'), 'Header profile displays authenticated student name');
+    assert(studentHeaderName.includes('Heru Prayoga'), 'Header profile displays authenticated student name');
 
     // Student Profile customization & saveProfile test
     await cdp.eval(`
@@ -975,7 +975,7 @@ async function runTests() {
     assert(headerHiddenAfterLogout, 'Navigation header re-hidden upon logout');
 
     // Re-login to verify round-trip
-    await performLogin("ahmad.syahroni", "123456");
+    await performLogin("heru.prayoga", "[REDACTED]");
     const reloginOk = await cdp.eval('window.app.isAuthenticated && window.app.view === "dashboard"');
     assert(reloginOk, 'Re-login round-trip successfully restores full dashboard access');
   }
@@ -985,7 +985,7 @@ async function runTests() {
     // 1. Switch to Sensei Admin
     await cdp.eval('window.app.logout()');
     await wait(200);
-    await performLogin("sensei.wahyu", "123456");
+    await performLogin("sensei.rusdi", "[REDACTED]");
     const isAdminNow = await cdp.eval('window.app.currentUser?.role === "admin"');
     assert(isAdminNow, 'Sensei Admin logged in successfully');
 
@@ -1003,13 +1003,13 @@ async function runTests() {
     const hasAksesBabBtn = await cdp.eval('Boolean(document.querySelector("button[onclick*=\'openStudentChapterAccessModal\']"))');
     assert(hasAksesBabBtn, 'Tombol [Akses Bab] is rendered on student rows');
 
-    // 4. Open modal dialog "Pengaturan Hak Akses Bab" for Ahmad Syahroni (dynamically resolving ID)
-    const ahmadInfo = await cdp.eval(`(() => {
+    // 4. Open modal dialog "Pengaturan Hak Akses Bab" for Heru Prayoga (dynamically resolving ID)
+    const heruInfo = await cdp.eval(`(() => {
       const list = window.app.adminUsersData || window.app.adminUsers || [];
-      const u = list.find(x => x.username === 'ahmad.syahroni' || (x.name && x.name.includes('Ahmad')));
-      return u ? { id: u.id, name: u.name } : { id: 'usr_ahmad', name: 'Ahmad Syahroni' };
+      const u = list.find(x => x.username === 'heru.prayoga' || (x.name && x.name.includes('Heru')));
+      return u ? { id: u.id, name: u.name } : { id: 'usr_heru_prayoga', name: 'Heru Prayoga' };
     })()`);
-    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(ahmadInfo.id)}, ${JSON.stringify(ahmadInfo.name)})`);
+    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(heruInfo.id)}, ${JSON.stringify(heruInfo.name)})`);
     for (let i = 0; i < 30; i++) {
       const ready = await cdp.eval('Boolean(window.app.studentChapterAccessData && document.getElementById("access-toggle-05"))');
       if (ready) break;
@@ -1043,10 +1043,10 @@ async function runTests() {
     }
     assert(Boolean(saveAlertMsg && saveAlertMsg.includes('berhasil disimpan')), 'Hak akses bab saved with success confirmation');
 
-    // 6. Log out Sensei and log in as Ahmad Syahroni
+    // 6. Log out Sensei and log in as Heru Prayoga
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await performLogin("ahmad.syahroni", "123456");
+    await performLogin("heru.prayoga", "[REDACTED]");
     await cdp.eval('window.app.goToDashboard()');
     await wait(300);
 
@@ -1066,26 +1066,26 @@ async function runTests() {
     const restrictAlert = await cdp.eval('window.__restrictAlert');
     assert(Boolean(restrictAlert && restrictAlert.includes('Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas')), 'Direct promptStartExam on Bab 05 rejected with restriction alert');
 
-    // 9. Other student (narong.sakda) can still access Bab 05
+    // 9. Other student (stefanni.haryanto) can still access Bab 05
     await cdp.eval('window.app.logout();');
     await wait(200);
-    await performLogin("narong.sakda", "123456");
+    await performLogin("stefanni.haryanto", "[REDACTED]");
     await cdp.eval('window.app.goToDashboard()');
     await wait(300);
-    const narongB5Restricted = await cdp.eval('Boolean(window.app.userRestrictedChapters["05"])');
-    assert(!narongB5Restricted, 'Other student (Narong Sakda) is NOT restricted from Bab 05');
+    const stefanniB5Restricted = await cdp.eval('Boolean(window.app.userRestrictedChapters["05"])');
+    assert(!stefanniB5Restricted, 'Other student (Stefanni Haryanto) is NOT restricted from Bab 05');
 
-    // 10. Sensei restores Bab 05 access for Ahmad
+    // 10. Sensei restores Bab 05 access for Heru
     await cdp.eval('window.app.logout();');
     await wait(200);
-    await performLogin("sensei.wahyu", "123456");
+    await performLogin("sensei.rusdi", "[REDACTED]");
     await cdp.eval('window.app.openAdminPanel("users")');
     for (let i = 0; i < 30; i++) {
       const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
       if (len > 0) break;
       await wait(150);
     }
-    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(ahmadInfo.id)}, ${JSON.stringify(ahmadInfo.name)})`);
+    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(heruInfo.id)}, ${JSON.stringify(heruInfo.name)})`);
     for (let i = 0; i < 30; i++) {
       const ready = await cdp.eval('Boolean(window.app.studentChapterAccessData && document.getElementById("access-toggle-05"))');
       if (ready) break;
@@ -1110,10 +1110,10 @@ async function runTests() {
     }
     assert(Boolean(restoreAlert && restoreAlert.includes('berhasil disimpan')), 'Hak akses bab restored with success confirmation');
 
-    // 11. Ahmad logs back in, verifies Bab 05 is unlocked again
+    // 11. Heru logs back in, verifies Bab 05 is unlocked again
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await performLogin("ahmad.syahroni", "123456");
+    await performLogin("heru.prayoga", "[REDACTED]");
     await cdp.eval('window.app.goToDashboard()');
     let b5UnlockedNow = false;
     for (let i = 0; i < 30; i++) {
@@ -1121,7 +1121,7 @@ async function runTests() {
       if (b5UnlockedNow) break;
       await wait(150);
     }
-    assert(b5UnlockedNow, 'Bab 05 access successfully restored and unlocked on Ahmad dashboard');
+    assert(b5UnlockedNow, 'Bab 05 access successfully restored and unlocked on Heru dashboard');
 
     // =========================================================================
     // TEST 28: Interactive Chapter Resources Dialog & Audio Listening Player
@@ -1196,7 +1196,7 @@ async function runTests() {
     console.log('\n--- TEST 30: Sensei PDF Access Control & Dual-Tab Student Management ---');
     await cdp.eval('window.app.logout()');
     await wait(200);
-    await performLogin("sensei.wahyu", "123456");
+    await performLogin("sensei.rusdi", "[REDACTED]");
     await cdp.eval('window.app.openAdminPanel("users")');
     for (let i = 0; i < 30; i++) {
       const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
@@ -1205,7 +1205,7 @@ async function runTests() {
     }
 
     // Open Student Access Modal
-    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(ahmadInfo.id)}, ${JSON.stringify(ahmadInfo.name)})`);
+    await cdp.eval(`window.app.openStudentChapterAccessModal(${JSON.stringify(heruInfo.id)}, ${JSON.stringify(heruInfo.name)})`);
     for (let i = 0; i < 30; i++) {
       const ready = await cdp.eval('Boolean(window.app.studentChapterAccessData && document.getElementById("access-toggle-05"))');
       if (ready) break;
@@ -1248,7 +1248,7 @@ async function runTests() {
     // Clean up modal and return to dashboard
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await performLogin("ahmad.syahroni", "123456");
+    await performLogin("heru.prayoga", "[REDACTED]");
     await cdp.eval('window.app.goToDashboard()');
     await wait(200);
 

@@ -1534,12 +1534,12 @@ class ChoukaiApp {
 
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  PIN / Password (6-Digit):
+                  Password / PIN:
                 </label>
                 <div class="relative">
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">🔑</span>
-                  <input id="gate-login-pin" type="password" required placeholder="6-digit angka" autocomplete="current-password" class="w-full pl-8 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
-                  <button type="button" onclick="window.app.toggleGatePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Tampilkan / Sembunyikan PIN">👁️</button>
+                  <input id="gate-login-pin" type="password" required placeholder="Masukkan password Anda" autocomplete="current-password" class="w-full pl-8 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
+                  <button type="button" onclick="window.app.toggleGatePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Tampilkan / Sembunyikan Password">👁️</button>
                 </div>
               </div>
 
@@ -3126,7 +3126,7 @@ class ChoukaiApp {
 
     if (!u || !p) {
       if (errEl) {
-        errEl.innerText = "Username dan PIN 6-digit wajib diisi.";
+        errEl.innerText = "Username dan password wajib diisi.";
         errEl.classList.remove("hidden");
       }
       return false;
@@ -3142,7 +3142,7 @@ class ChoukaiApp {
         });
         const data = await res.json();
         if (!res.ok || data.error) {
-          const msg = data.message || data.error?.message || "Username atau PIN salah.";
+          const msg = data.message || data.error?.message || "Username atau password salah.";
           if (errEl) {
             errEl.innerText = msg;
             errEl.classList.remove("hidden");
@@ -3167,33 +3167,46 @@ class ChoukaiApp {
         return false;
       }
     } else {
-      // Local / Offline / file:// protocol mode
-      if ((u === "ahmad.syahroni" || u === "narong.sakda" || u === "siswa.demo") && p === "123456") {
+      // Local / Offline / file:// protocol mode (19 official accounts)
+      const officialAccounts = [
+        { id: "usr_sensei_rusdi", name: "Sensei Rusdi", username: "sensei.rusdi", role: "admin", className: "Instruktur LPK", password: "[REDACTED]" },
+        { id: "usr_sensei_test", name: "Sensei Test", username: "sensei.test", role: "admin", className: "Sensei Penguji", password: "[REDACTED]" },
+        { id: "usr_nafisatun", name: "Nafisatun", username: "nafisatun", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_santi", name: "Santi", username: "santi", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_stefanni_haryanto", name: "Stefanni Haryanto", username: "stefanni.haryanto", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_heru_prayoga", name: "Heru Prayoga", username: "heru.prayoga", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_fikri_muzakki", name: "Fikri Muzakki", username: "fikri.muzakki", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_wahyu_jaka", name: "Wahyu Jaka Permadi", username: "wahyu.jaka", role: "student", className: "Angkatan 35-A", password: "Wahyu2026!" },
+        { id: "usr_andre_ananta", name: "Andre Ananta Wianddin", username: "andre.ananta", role: "student", className: "Angkatan 35-A", password: "AndreA2026!" },
+        { id: "usr_andi_saputra", name: "Andi Saputra", username: "andi.saputra", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_candra_afiansah", name: "Candra Afiansah", username: "candra.afiansah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_syarifudin_asyrof", name: "Syarifudin Asyrof", username: "syarifudin.asyrof", role: "student", className: "Angkatan 35-A", password: "Syarifudin2026!" },
+        { id: "usr_andre_purnomo", name: "Andre Purnomo", username: "andre.purnomo", role: "student", className: "Angkatan 35-A", password: "AndreP2026!" },
+        { id: "usr_desi_wiyanti", name: "Desi Wiyanti", username: "desi.wiyanti", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_aprilianzah", name: "Aprilianzah", username: "aprilianzah", role: "student", className: "Angkatan 35-A", password: "Aprilianzah2026!" },
+        { id: "usr_farrel_ardiansyah", name: "Muhammad Farrel Ardiansyah", username: "farrel.ardiansyah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_hayyu_pradana", name: "Hayyu Alunafa Pradana", username: "hayyu.pradana", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_ahmad_choirul", name: "Ahmad Choirul Muallif", username: "ahmad.choirul", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A", password: "Hamdani2026!" },
+      ];
+
+      const foundOfficial = officialAccounts.find((acc) => acc.username === u && acc.password === p);
+      if (foundOfficial) {
         this.currentUser = {
-          id: u === "narong.sakda" ? "usr_narong" : (u === "siswa.demo" ? "usr_demo" : "usr_ahmad"),
-          name: u === "narong.sakda" ? "Narong Sakda" : "Ahmad Syahroni",
-          username: u,
-          role: "student",
-          className: "Kelas 24-B (IMM Japan)",
+          id: foundOfficial.id,
+          name: foundOfficial.name,
+          username: foundOfficial.username,
+          role: foundOfficial.role,
+          className: foundOfficial.className,
         };
-        this.currentSession = { id: "ses_local_mock", token: "mock_token" };
+        this.currentSession = { id: "ses_local_" + foundOfficial.username, token: "mock_token" };
         this.isAuthenticated = true;
         this.profile.name = this.currentUser.name;
         this.profile.classNo = this.currentUser.className;
         localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
-      } else if (u === "sensei.wahyu" && p === "123456") {
-        this.currentUser = {
-          id: "usr_admin",
-          name: "Sensei Wahyu",
-          username: "sensei.wahyu",
-          role: "admin",
-          className: "Sensei Pengawas",
-        };
-        this.currentSession = { id: "ses_local_admin", token: "mock_token" };
-        this.isAuthenticated = true;
       } else {
         const mockUsers = JSON.parse(localStorage.getItem("imm_mock_users") || "{}");
-        if (mockUsers[u] && mockUsers[u].pin === p) {
+        if (mockUsers[u] && (mockUsers[u].pin === p || mockUsers[u].password === p)) {
           this.currentUser = mockUsers[u].user;
           this.currentSession = { id: "ses_mock_" + u, token: "mock_token" };
           this.isAuthenticated = true;
@@ -3202,7 +3215,7 @@ class ChoukaiApp {
           localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
         } else {
           if (errEl) {
-            errEl.innerText = "Username atau PIN salah.";
+            errEl.innerText = "Username atau password salah.";
             errEl.classList.remove("hidden");
           }
           return false;
@@ -3466,33 +3479,25 @@ class ChoukaiApp {
       // Offline / file:// protocol fallback mock users
       const mockUsers = JSON.parse(localStorage.getItem("imm_mock_users") || "{}");
       const defaultUsers = [
-        {
-          id: "usr_ahmad",
-          name: "Ahmad Syahroni",
-          username: "ahmad.syahroni",
-          role: "student",
-          className: "Kelas 24-B (IMM Japan)",
-          totalExams: 2,
-          avgScore: 82.5,
-        },
-        {
-          id: "usr_narong",
-          name: "Narong Sakda",
-          username: "narong.sakda",
-          role: "student",
-          className: "Kelas 24-B (IMM Japan)",
-          totalExams: 1,
-          avgScore: 78.0,
-        },
-        {
-          id: "usr_admin",
-          name: "Sensei Wahyu",
-          username: "sensei.wahyu",
-          role: "admin",
-          className: "Sensei Pengawas",
-          totalExams: 0,
-          avgScore: 0,
-        },
+        { id: "usr_sensei_rusdi", name: "Sensei Rusdi", username: "sensei.rusdi", role: "admin", className: "Instruktur LPK", totalExams: 0, avgScore: 0 },
+        { id: "usr_sensei_test", name: "Sensei Test", username: "sensei.test", role: "admin", className: "Sensei Penguji", totalExams: 0, avgScore: 0 },
+        { id: "usr_nafisatun", name: "Nafisatun", username: "nafisatun", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_santi", name: "Santi", username: "santi", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_stefanni_haryanto", name: "Stefanni Haryanto", username: "stefanni.haryanto", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_heru_prayoga", name: "Heru Prayoga", username: "heru.prayoga", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_fikri_muzakki", name: "Fikri Muzakki", username: "fikri.muzakki", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_wahyu_jaka", name: "Wahyu Jaka Permadi", username: "wahyu.jaka", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_andre_ananta", name: "Andre Ananta Wianddin", username: "andre.ananta", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_andi_saputra", name: "Andi Saputra", username: "andi.saputra", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_candra_afiansah", name: "Candra Afiansah", username: "candra.afiansah", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_syarifudin_asyrof", name: "Syarifudin Asyrof", username: "syarifudin.asyrof", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_andre_purnomo", name: "Andre Purnomo", username: "andre.purnomo", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_desi_wiyanti", name: "Desi Wiyanti", username: "desi.wiyanti", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_aprilianzah", name: "Aprilianzah", username: "aprilianzah", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_farrel_ardiansyah", name: "Muhammad Farrel Ardiansyah", username: "farrel.ardiansyah", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_hayyu_pradana", name: "Hayyu Alunafa Pradana", username: "hayyu.pradana", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_ahmad_choirul", name: "Ahmad Choirul Muallif", username: "ahmad.choirul", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
+        { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A", totalExams: 0, avgScore: 0 },
       ];
       for (const [k, u] of Object.entries(mockUsers)) {
         if (u.user && !defaultUsers.some((du) => du.username === u.user.username)) {
@@ -4948,8 +4953,8 @@ class ChoukaiApp {
                 <input id="login-username" type="text" required placeholder="Masukkan username Anda" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">PIN / Password (6-Digit):</label>
-                <input id="login-pin" type="password" required placeholder="6-digit angka" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Password / PIN:</label>
+                <input id="login-pin" type="password" required placeholder="Masukkan password Anda" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
               </div>
               <button type="submit" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition shadow-sm mt-2">
                 Masuk ke Sistem CBT

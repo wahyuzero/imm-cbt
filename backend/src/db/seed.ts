@@ -195,66 +195,256 @@ export async function runSeeder() {
   }
   console.log(`Successfully seeded ${totalInsertedVocab} vocabulary items.`);
 
-  // 6. Seed Default Users: Admin (sensei.wahyu) & Siswa (ahmad.syahroni)
-  console.log("Seeding default accounts (Admin: sensei.wahyu & Student: ahmad.syahroni)...");
-  const hashedPin = await hashPassword("123456");
+  // 6. Reset old users and Seed Official Accounts (2 Sensei + 17 Students)
+  await resetAndSeedOfficialAccounts();
 
-  const defaultUsers = [
-    {
-      id: "usr_admin_sensei_wahyu",
-      name: "Sensei Wahyu",
-      username: "sensei.wahyu",
-      displayUsername: "sensei.wahyu",
-      email: "sensei.wahyu@imm.internal",
-      role: "admin",
-      className: "Instruktur LPK",
-      pin: "123456",
-    },
-    {
-      id: "usr_student_ahmad_syahroni",
-      name: "Ahmad Syahroni",
-      username: "ahmad.syahroni",
-      displayUsername: "ahmad.syahroni",
-      email: "ahmad.syahroni@imm.internal",
-      role: "student",
-      className: "Angkatan 35-A",
-      pin: "123456",
-    },
-  ];
+  console.log("Seeding completed successfully!");
+}
 
-  for (const u of defaultUsers) {
-    // Upsert User
+export const INITIAL_USERS = [
+  // Sensei / Pengawas (Admin)
+  {
+    id: "usr_sensei_rusdi",
+    name: "Sensei Rusdi",
+    username: "sensei.rusdi",
+    displayUsername: "sensei.rusdi",
+    email: "rusdi@imm.internal",
+    role: "admin",
+    className: "Instruktur LPK",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_sensei_test",
+    name: "Sensei Test",
+    username: "sensei.test",
+    displayUsername: "sensei.test",
+    email: "test@imm.internal",
+    role: "admin",
+    className: "Sensei Penguji",
+    password: "[REDACTED]",
+  },
+
+  // 17 Siswa (Student - Angkatan 35-A)
+  {
+    id: "usr_nafisatun",
+    name: "Nafisatun",
+    username: "nafisatun",
+    displayUsername: "nafisatun",
+    email: "nafisatun@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_santi",
+    name: "Santi",
+    username: "santi",
+    displayUsername: "santi",
+    email: "santi@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_stefanni_haryanto",
+    name: "Stefanni Haryanto",
+    username: "stefanni.haryanto",
+    displayUsername: "stefanni.haryanto",
+    email: "stefanni.haryanto@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_heru_prayoga",
+    name: "Heru Prayoga",
+    username: "heru.prayoga",
+    displayUsername: "heru.prayoga",
+    email: "heru.prayoga@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_fikri_muzakki",
+    name: "Fikri Muzakki",
+    username: "fikri.muzakki",
+    displayUsername: "fikri.muzakki",
+    email: "fikri.muzakki@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_wahyu_jaka",
+    name: "Wahyu Jaka Permadi",
+    username: "wahyu.jaka",
+    displayUsername: "wahyu.jaka",
+    email: "wahyu.jaka@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "Wahyu2026!",
+  },
+  {
+    id: "usr_andre_ananta",
+    name: "Andre Ananta Wianddin",
+    username: "andre.ananta",
+    displayUsername: "andre.ananta",
+    email: "andre.ananta@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "AndreA2026!",
+  },
+  {
+    id: "usr_andi_saputra",
+    name: "Andi Saputra",
+    username: "andi.saputra",
+    displayUsername: "andi.saputra",
+    email: "andi.saputra@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_candra_afiansah",
+    name: "Candra Afiansah",
+    username: "candra.afiansah",
+    displayUsername: "candra.afiansah",
+    email: "candra.afiansah@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_syarifudin_asyrof",
+    name: "Syarifudin Asyrof",
+    username: "syarifudin.asyrof",
+    displayUsername: "syarifudin.asyrof",
+    email: "syarifudin.asyrof@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "Syarifudin2026!",
+  },
+  {
+    id: "usr_andre_purnomo",
+    name: "Andre Purnomo",
+    username: "andre.purnomo",
+    displayUsername: "andre.purnomo",
+    email: "andre.purnomo@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "AndreP2026!",
+  },
+  {
+    id: "usr_desi_wiyanti",
+    name: "Desi Wiyanti",
+    username: "desi.wiyanti",
+    displayUsername: "desi.wiyanti",
+    email: "desi.wiyanti@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_aprilianzah",
+    name: "Aprilianzah",
+    username: "aprilianzah",
+    displayUsername: "aprilianzah",
+    email: "aprilianzah@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "Aprilianzah2026!",
+  },
+  {
+    id: "usr_farrel_ardiansyah",
+    name: "Muhammad Farrel Ardiansyah",
+    username: "farrel.ardiansyah",
+    displayUsername: "farrel.ardiansyah",
+    email: "farrel.ardiansyah@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_hayyu_pradana",
+    name: "Hayyu Alunafa Pradana",
+    username: "hayyu.pradana",
+    displayUsername: "hayyu.pradana",
+    email: "hayyu.pradana@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_ahmad_choirul",
+    name: "Ahmad Choirul Muallif",
+    username: "ahmad.choirul",
+    displayUsername: "ahmad.choirul",
+    email: "ahmad.choirul@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "[REDACTED]",
+  },
+  {
+    id: "usr_hamdani_lubis",
+    name: "Hamdani Lubis",
+    username: "hamdani.lubis",
+    displayUsername: "hamdani.lubis",
+    email: "hamdani.lubis@imm.internal",
+    role: "student",
+    className: "Angkatan 35-A",
+    password: "Hamdani2026!",
+  },
+];
+
+export async function resetAndSeedOfficialAccounts(forcePurge = false) {
+  // Check if legacy users exist (sensei.wahyu or ahmad.syahroni) or if sensei.rusdi is missing
+  const oldUsers = await client`SELECT count(*)::int as count FROM "user" WHERE "username" IN ('sensei.wahyu', 'ahmad.syahroni');`;
+  const newAdmin = await client`SELECT count(*)::int as count FROM "user" WHERE "username" = 'sensei.rusdi';`;
+
+  const needsPurge = forcePurge || oldUsers[0]?.count > 0 || newAdmin[0]?.count === 0;
+
+  if (needsPurge) {
+    console.log("Purging old user accounts and recreating clean slate with official 19 users...");
+    // Deleting all users cascades to account, session, exam_sessions, and user_chapter_access
+    await client`DELETE FROM "user";`;
+  } else {
+    console.log("Official user schema already active. Upserting accounts...");
+  }
+
+  for (const u of INITIAL_USERS) {
+    const hashedPw = await hashPassword(u.password);
+
     await client`
       INSERT INTO "user" (
         "id", "name", "username", "display_username", "email",
-        "email_verified", "role", "class_name", "banned", "created_at", "updated_at"
+        "email_verified", "role", "class_name", "pdf_access_allowed", "banned", "created_at", "updated_at"
       ) VALUES (
         ${u.id}, ${u.name}, ${u.username}, ${u.displayUsername}, ${u.email},
-        true, ${u.role}, ${u.className}, false, now(), now()
+        true, ${u.role}, ${u.className}, true, false, now(), now()
       )
       ON CONFLICT ("username") DO UPDATE SET
         "name" = EXCLUDED."name",
         "email" = EXCLUDED."email",
         "role" = EXCLUDED."role",
         "class_name" = EXCLUDED."class_name",
+        "pdf_access_allowed" = EXCLUDED."pdf_access_allowed",
         "updated_at" = now();
     `;
 
-    // Upsert Credential Account for Better Auth
     const accountId = `acc_${u.username}`;
     await client`
       INSERT INTO "account" (
         "id", "user_id", "account_id", "provider_id", "password", "created_at", "updated_at"
       ) VALUES (
-        ${accountId}, ${u.id}, ${u.id}, 'credential', ${hashedPin}, now(), now()
+        ${accountId}, ${u.id}, ${u.id}, 'credential', ${hashedPw}, now(), now()
       )
       ON CONFLICT ("id") DO UPDATE SET
         "password" = EXCLUDED."password",
         "updated_at" = now();
     `;
   }
-
-  console.log("Seeding completed successfully!");
+  console.log(`Successfully prepared ${INITIAL_USERS.length} official accounts.`);
 }
 
 // Auto-run if executed directly via CLI
