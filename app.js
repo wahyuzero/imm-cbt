@@ -67,7 +67,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "52";
+    return "53";
   }
 
   audioUrl(url) {
