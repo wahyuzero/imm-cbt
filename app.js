@@ -50,10 +50,20 @@ class ChoukaiApp {
     this.init();
   }
 
+  static get VERSION() {
+    return "47";
+  }
+
+  audioUrl(url) {
+    if (!url) return "";
+    const clean = url.trim();
+    return clean.includes("?") ? clean : `${clean}?v=${ChoukaiApp.VERSION}`;
+  }
+
   pdfUrl(url) {
     if (!url) return "";
     const clean = encodeURI(url);
-    return clean.includes("?") ? clean : `${clean}?v=45`;
+    return clean.includes("?") ? clean : `${clean}?v=${ChoukaiApp.VERSION}`;
   }
 
   init() {
@@ -331,7 +341,8 @@ class ChoukaiApp {
 
   getCurrentQuestionAudioSrc() {
     const q = this.getCurrentQuestion();
-    return q && q.audioSrc ? q.audioSrc : (this.currentChapter ? this.currentChapter.audioSrc : "");
+    const raw = q && q.audioSrc ? q.audioSrc : (this.currentChapter ? this.currentChapter.audioSrc : "");
+    return this.audioUrl(raw);
   }
 
   loadQuestionAudio(idx) {
@@ -342,7 +353,7 @@ class ChoukaiApp {
     if (!q) return;
 
     if (q.session === "choukai" && q.audioSrc) {
-      const targetSrc = q.audioSrc;
+      const targetSrc = this.audioUrl(q.audioSrc);
       if (!this.audio.src || !this.audio.src.endsWith(targetSrc)) {
         this.audio.src = targetSrc;
         this.audio.currentTime = 0;
@@ -395,9 +406,12 @@ class ChoukaiApp {
     const q = this.currentChapter.questions.find((item) => item.id === qId);
     if (!q || !q.audioSrc) return;
     this.cancelAutoNext();
-    this.audio.src = q.audioSrc;
-    this.audio.currentTime = 0;
-    this.applyAudioRateAndPitch();
+    const targetSrc = this.audioUrl(q.audioSrc);
+    if (!this.audio.src || !this.audio.src.endsWith(targetSrc)) {
+      this.audio.src = targetSrc;
+      this.audio.currentTime = 0;
+      this.applyAudioRateAndPitch();
+    }
     this.isPlaying = true;
     this.renderAudioButtons();
     this.audio.play().catch((e) => {
@@ -410,13 +424,14 @@ class ChoukaiApp {
   toggleResultAudio(qId) {
     const q = this.currentChapter.questions.find((item) => item.id === qId);
     if (!q || !q.audioSrc) return;
+    const targetSrc = this.audioUrl(q.audioSrc);
 
-    if (this.isPlaying && this.audio.src && this.audio.src.endsWith(q.audioSrc)) {
+    if (this.isPlaying && this.audio.src && this.audio.src.endsWith(targetSrc)) {
       this.pauseAudio();
       this.updateResultAudioBtn(qId, false);
     } else {
       this.cancelAutoNext();
-      this.audio.src = q.audioSrc;
+      this.audio.src = targetSrc;
       this.audio.currentTime = 0;
       this.applyAudioRateAndPitch();
       this.isPlaying = true;
