@@ -67,7 +67,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "50";
+    return "51";
   }
 
   audioUrl(url) {
@@ -1290,11 +1290,12 @@ class ChoukaiApp {
   }
 
   fillAndLogin(username, pin) {
-    const uEl = document.getElementById("gate-login-username");
-    const pEl = document.getElementById("gate-login-pin");
+    const uEl = document.getElementById("gate-login-username") || document.getElementById("login-username");
+    const pEl = document.getElementById("gate-login-pin") || document.getElementById("login-pin");
     if (uEl) uEl.value = username;
     if (pEl) pEl.value = pin;
-    return this.login(username, pin, "gate-login-error");
+    const errId = uEl && uEl.id === "gate-login-username" ? "gate-login-error" : "login-error-msg";
+    return this.login(username, pin, errId);
   }
 
   async loginWithGoogle() {
@@ -1430,7 +1431,7 @@ class ChoukaiApp {
                 </label>
                 <div class="relative">
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 font-mono text-xs">@</span>
-                  <input id="gate-login-username" type="text" required placeholder="misal: ahmad.syahroni" autocomplete="username" class="w-full pl-8 pr-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
+                  <input id="gate-login-username" type="text" required placeholder="Masukkan username Anda" autocomplete="username" class="w-full pl-8 pr-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
                 </div>
               </div>
 
@@ -1440,7 +1441,7 @@ class ChoukaiApp {
                 </label>
                 <div class="relative">
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">🔑</span>
-                  <input id="gate-login-pin" type="password" required placeholder="PIN atau Password" autocomplete="current-password" class="w-full pl-8 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
+                  <input id="gate-login-pin" type="password" required placeholder="6-digit angka" autocomplete="current-password" class="w-full pl-8 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
                   <button type="button" onclick="window.app.toggleGatePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Tampilkan / Sembunyikan PIN">👁️</button>
                 </div>
               </div>
@@ -1462,30 +1463,6 @@ class ChoukaiApp {
               <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
               <span>Masuk dengan Akun Google</span>
             </button>
-
-            <!-- Quick Demo Accounts (Akses Cepat Pengujian) -->
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Akses Cepat Akun Demo:</span>
-                <span class="text-[10px] text-slate-400 font-mono">PIN: 123456</span>
-              </div>
-              <div class="grid grid-cols-2 gap-2">
-                <button type="button" id="gate-btn-demo-student" onclick="window.app.fillAndLogin('ahmad.syahroni', '123456')" class="p-2.5 rounded-xl border border-sky-200 dark:border-sky-900 bg-sky-50/70 dark:bg-sky-950/40 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-900 dark:text-sky-200 text-left transition group">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-[10px] font-bold">学</span>
-                    <span class="text-xs font-bold">Siswa Demo</span>
-                  </div>
-                  <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-mono">ahmad.syahroni</div>
-                </button>
-                <button type="button" id="gate-btn-demo-sensei" onclick="window.app.fillAndLogin('sensei.wahyu', '123456')" class="p-2.5 rounded-xl border border-amber-200 dark:border-amber-900 bg-amber-50/70 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-200 text-left transition group">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-5 h-5 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px] font-bold font-jp">先</span>
-                    <span class="text-xs font-bold">Sensei Admin</span>
-                  </div>
-                  <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-mono">sensei.wahyu</div>
-                </button>
-              </div>
-            </div>
           ` : `
             <!-- TAB: REGISTRATION FORM -->
             <div id="gate-reg-error" class="hidden mb-4 p-3 bg-rose-50 dark:bg-rose-950/70 border border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-xl text-xs font-medium flex items-center gap-2"></div>
@@ -1507,7 +1484,7 @@ class ChoukaiApp {
               </div>
               <div>
                 <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">PIN 6-Digit:</label>
-                <input id="gate-reg-pin" type="password" required placeholder="Contoh: 123456" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <input id="gate-reg-pin" type="password" required placeholder="6-digit angka" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none focus:ring-2 focus:ring-sky-500">
               </div>
               <div>
                 <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Kelas / Angkatan:</label>
@@ -3792,40 +3769,28 @@ class ChoukaiApp {
             <form onsubmit="event.preventDefault(); window.app.login(document.getElementById('login-username').value, document.getElementById('login-pin').value);" class="space-y-3">
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Username Siswa / Sensei:</label>
-                <input id="login-username" type="text" required placeholder="misal: ahmad.syahroni" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
+                <input id="login-username" type="text" required placeholder="Masukkan username Anda" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">PIN / Password (6-Digit):</label>
-                <input id="login-pin" type="password" required placeholder="PIN atau Password" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
+                <input id="login-pin" type="password" required placeholder="6-digit angka" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-mono">
               </div>
               <button type="submit" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-md text-xs font-bold transition shadow-sm mt-2">
                 Masuk ke Sistem CBT
               </button>
             </form>
 
-            <!-- Quick Demo Accounts -->
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
-              <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Akses Cepat Pengujian:</div>
-              <div class="grid grid-cols-2 gap-2">
-                <button type="button" onclick="document.getElementById('login-username').value='ahmad.syahroni'; document.getElementById('login-pin').value='123456'; window.app.login('ahmad.syahroni', '123456');" class="py-1.5 px-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded text-[11px] font-semibold text-center transition">
-                  👤 Siswa Demo
-                </button>
-                <button type="button" onclick="document.getElementById('login-username').value='sensei.wahyu'; document.getElementById('login-pin').value='123456'; window.app.login('sensei.wahyu', '123456');" class="py-1.5 px-2 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded text-[11px] font-semibold text-center transition">
-                  👨‍🏫 Sensei Admin
+            ${this.systemStatus.allowRegistration ? `
+              <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-center">
+                <button type="button" onclick="window.app.openAuthModal('auth_register')" class="text-xs text-sky-600 dark:text-sky-400 font-semibold hover:underline">
+                  Belum punya akun? Daftar mandiri di sini &rarr;
                 </button>
               </div>
-              ${this.systemStatus.allowRegistration ? `
-                <div class="text-center pt-2">
-                  <button type="button" onclick="window.app.openAuthModal('auth_register')" class="text-xs text-sky-600 dark:text-sky-400 font-semibold hover:underline">
-                    Belum punya akun? Daftar mandiri di sini &rarr;
-                  </button>
-                </div>
-              ` : `
-                <div class="text-center text-[11px] text-slate-400 pt-1">
-                  Pendaftaran mandiri siswa sedang ditutup oleh Sensei.
-                </div>
-              `}
-            </div>
+            ` : `
+              <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-center text-[11px] text-slate-400">
+                Pendaftaran mandiri siswa sedang ditutup oleh Sensei.
+              </div>
+            `}
           </div>
         </div>
       `;
@@ -3867,7 +3832,7 @@ class ChoukaiApp {
               </div>
               <div>
                 <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">PIN 6-Digit:</label>
-                <input id="reg-pin" type="password" required placeholder="Contoh: 123456" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none">
+                <input id="reg-pin" type="password" required placeholder="6-digit angka" class="w-full px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-md text-xs bg-white dark:bg-slate-800 font-mono focus:outline-none">
               </div>
               <div>
                 <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Kelas / Angkatan:</label>
