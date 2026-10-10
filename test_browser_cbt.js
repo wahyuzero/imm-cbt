@@ -12,7 +12,7 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=49`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=50`;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -360,6 +360,7 @@ async function runTests() {
 
     const answeredCount = await cdp.eval('Object.keys(window.app.answers).length');
     assert(answeredCount === 33, 'All 33 questions answered');
+    await wait(800);
 
     // TEST 9: Submission & Result Scoring Engine
     console.log('\n--- TEST 9: Submission & Dual Result Scoring Engine ---');
@@ -651,15 +652,15 @@ async function runTests() {
     const readingSweepChapters = [2, 3, 4, 5, 6, 7];
     for (const b of readingSweepChapters) {
       const bStr = String(b).padStart(2, '0');
-      await cdp.eval(`(() => {
-        window.app.startExam("${bStr}", "renshuu");
+      await cdp.eval(`(async () => {
+        await window.app.startExam("${bStr}", "renshuu");
         const ch = window.CHAPTERS_DATA["${bStr}"];
         ch.questions.forEach(q => {
           window.app.selectOption(q.id, q.correctAnswer);
         });
-        window.app.submitExam();
+        await window.app.submitExam();
       })()`);
-      await wait(120);
+      await wait(300);
 
       const chScore = await cdp.eval('window.app.currentResult.score');
       const chPassed = await cdp.eval('window.app.currentResult.passed');
@@ -698,17 +699,17 @@ async function runTests() {
       assert(qAudioRate === 0.8, `Bab ${bStr} audio plays at comfortable 0.8x tempo baseline`);
       assert(qPitch === true, `Bab ${bStr} audio pitch preservation is enabled`);
       const audioSrcInApp = await cdp.eval('window.app.audio.src');
-      assert(audioSrcInApp.includes('?v=49'), `Bab ${bStr} Q26 audio src includes cache buster ?v=49 (actual: ${audioSrcInApp})`);
+      assert(audioSrcInApp.includes('?v=50'), `Bab ${bStr} Q26 audio src includes cache buster ?v=50 (actual: ${audioSrcInApp})`);
 
       // 3. Complete all 33 questions and submit
-      await cdp.eval(`(() => {
+      await cdp.eval(`(async () => {
         const ch = window.CHAPTERS_DATA["${bStr}"];
         ch.questions.forEach(q => {
           window.app.selectOption(q.id, q.correctAnswer);
         });
-        window.app.submitExam();
+        await window.app.submitExam();
       })()`);
-      await wait(250);
+      await wait(300);
 
       // 3. Verify Result View PDF download links for Choukai and Reading
       const resPdfSoalChoukai = await cdp.eval(`document.querySelector("a[href*='Soal%20Choukai%20Bab%20${bStr}.pdf'], a[href*='Soal Choukai Bab ${bStr}.pdf']") ? true : false`);
