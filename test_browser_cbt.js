@@ -12,7 +12,7 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=50`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=51`;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -151,8 +151,11 @@ async function runTests() {
     const isFooterHidden = await cdp.eval('document.getElementById("app-footer").classList.contains("hidden")');
     assert(isFooterHidden, 'Application footer is strictly hidden');
 
-    const gateInputsExist = await cdp.eval('Boolean(document.getElementById("gate-login-username") && document.getElementById("gate-login-pin") && document.getElementById("gate-btn-google") && document.getElementById("gate-btn-demo-student") && document.getElementById("gate-btn-demo-sensei"))');
-    assert(gateInputsExist, 'Auth gate has Username, PIN, Google OAuth, and Demo buttons');
+    const gateInputsExist = await cdp.eval('Boolean(document.getElementById("gate-login-username") && document.getElementById("gate-login-pin") && document.getElementById("gate-btn-google"))');
+    assert(gateInputsExist, 'Auth gate has Username, PIN, and Google OAuth buttons');
+
+    const demoButtonsHidden = await cdp.eval('!document.getElementById("gate-btn-demo-student") && !document.getElementById("gate-btn-demo-sensei") && !document.body.innerText.includes("Akses Cepat Akun Demo") && !document.body.innerText.includes("PIN: 123456")');
+    assert(demoButtonsHidden, 'Public demo credentials and demo buttons are NOT rendered in DOM');
 
     // Route Interception Verification (attempt hash access while unauthenticated)
     await cdp.eval('window.location.hash = "#bab-08"');
@@ -699,7 +702,7 @@ async function runTests() {
       assert(qAudioRate === 0.8, `Bab ${bStr} audio plays at comfortable 0.8x tempo baseline`);
       assert(qPitch === true, `Bab ${bStr} audio pitch preservation is enabled`);
       const audioSrcInApp = await cdp.eval('window.app.audio.src');
-      assert(audioSrcInApp.includes('?v=50'), `Bab ${bStr} Q26 audio src includes cache buster ?v=50 (actual: ${audioSrcInApp})`);
+      assert(audioSrcInApp.includes('?v=51'), `Bab ${bStr} Q26 audio src includes cache buster ?v=51 (actual: ${audioSrcInApp})`);
 
       // 3. Complete all 33 questions and submit
       await cdp.eval(`(async () => {
