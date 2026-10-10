@@ -262,6 +262,11 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
 
     const body = await c.req.json().catch(() => ({}));
 
+    const allChapters = await db.query.chapters.findMany({
+      orderBy: [asc(chapters.chapterNum)],
+    });
+    const validChapterSet = new Set(allChapters.map((ch) => ch.chapterNum));
+
     const updates: { chapterNum: string; isAllowed: boolean }[] = [];
 
     if (body.chapterNum !== undefined && body.isAllowed !== undefined) {
@@ -271,15 +276,13 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
       });
     } else if (Array.isArray(body.restrictedChapters)) {
       const restrictedSet = new Set(body.restrictedChapters.map((n: any) => String(n).padStart(2, "0")));
-      for (let i = 1; i <= 25; i++) {
-        const num = String(i).padStart(2, "0");
-        updates.push({ chapterNum: num, isAllowed: !restrictedSet.has(num) });
+      for (const ch of allChapters) {
+        updates.push({ chapterNum: ch.chapterNum, isAllowed: !restrictedSet.has(ch.chapterNum) });
       }
     } else if (Array.isArray(body.allowedChapters)) {
       const allowedSet = new Set(body.allowedChapters.map((n: any) => String(n).padStart(2, "0")));
-      for (let i = 1; i <= 25; i++) {
-        const num = String(i).padStart(2, "0");
-        updates.push({ chapterNum: num, isAllowed: allowedSet.has(num) });
+      for (const ch of allChapters) {
+        updates.push({ chapterNum: ch.chapterNum, isAllowed: allowedSet.has(ch.chapterNum) });
       }
     } else if (Array.isArray(body.chapters)) {
       for (const item of body.chapters) {
@@ -307,12 +310,12 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
         }
       }
     } else if (body.action === "allow_all") {
-      for (let i = 1; i <= 25; i++) {
-        updates.push({ chapterNum: String(i).padStart(2, "0"), isAllowed: true });
+      for (const ch of allChapters) {
+        updates.push({ chapterNum: ch.chapterNum, isAllowed: true });
       }
     } else if (body.action === "lock_all") {
-      for (let i = 1; i <= 25; i++) {
-        updates.push({ chapterNum: String(i).padStart(2, "0"), isAllowed: false });
+      for (const ch of allChapters) {
+        updates.push({ chapterNum: ch.chapterNum, isAllowed: false });
       }
     }
 
@@ -320,25 +323,36 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
       return c.json({ success: false, error: "Format data pembaruan hak akses bab tidak valid." }, 400);
     }
 
-    const now = new Date();
-    for (const up of updates) {
-      await db
-        .insert(userChapterAccess)
-        .values({
-          id: `uca_${targetUserId}_${up.chapterNum}`,
-          userId: targetUserId,
-          chapterNum: up.chapterNum,
-          isAllowed: up.isAllowed,
-          updatedAt: now,
-        })
-        .onConflictDoUpdate({
-          target: [userChapterAccess.userId, userChapterAccess.chapterNum],
-          set: {
-            isAllowed: up.isAllowed,
-            updatedAt: now,
-          },
-        });
+    const invalidUpdates = updates.filter((up) => !validChapterSet.has(up.chapterNum));
+    if (invalidUpdates.length > 0) {
+      return c.json(
+        {
+          success: false,
+          error: `Nomor bab tidak valid: ${invalidUpdates.map((u) => u.chapterNum).join(", ")}. Bab harus terdaftar di sistem.`,
+        },
+        400
+      );
     }
+
+    const now = new Date();
+    const rows = updates.map((up) => ({
+      id: `uca_${targetUserId}_${up.chapterNum}`,
+      userId: targetUserId,
+      chapterNum: up.chapterNum,
+      isAllowed: up.isAllowed,
+      updatedAt: now,
+    }));
+
+    await db
+      .insert(userChapterAccess)
+      .values(rows)
+      .onConflictDoUpdate({
+        target: [userChapterAccess.userId, userChapterAccess.chapterNum],
+        set: {
+          isAllowed: sql`EXCLUDED.is_allowed`,
+          updatedAt: now,
+        },
+      });
 
     return c.json({
       success: true,

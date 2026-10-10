@@ -78,7 +78,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "54";
+    return "55";
   }
 
   audioUrl(url) {
@@ -821,6 +821,7 @@ class ChoukaiApp {
     if (this.currentUser && this.currentUser.role !== "admin") {
       if (this.userRestrictedChapters && this.userRestrictedChapters[chNum]) {
         alert("Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas.");
+        this.goToDashboard();
         return;
       }
       if (this.systemStatus?.globalExamLock) {
@@ -881,6 +882,7 @@ class ChoukaiApp {
     if (this.currentUser && this.currentUser.role !== "admin") {
       if (this.userRestrictedChapters && this.userRestrictedChapters[chNum]) {
         alert("Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas.");
+        this.goToDashboard();
         return;
       }
       if (this.systemStatus?.globalExamLock) {
@@ -1002,6 +1004,11 @@ class ChoukaiApp {
           .then(async (res) => {
             if (!res.ok) {
               const errData = await res.json().catch(() => ({}));
+              if (errData.userRestricted || (errData.error && errData.error.includes("dibatasi"))) {
+                alert(errData.error || "Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas.");
+                this.goToDashboard();
+                return;
+              }
               if (errData.error && errData.error.includes("TERMINATED_BY_ADMIN")) {
                 alert("Ujian telah dihentikan & dikumpulkan oleh Sensei/Pengawas.");
                 this.submitExam();
@@ -1630,14 +1637,28 @@ class ChoukaiApp {
             Terkunci (Segera Hadir)
           </button>`;
       } else if (isUserRestricted) {
-        actionButton = `<div class="grid grid-cols-5 gap-1.5 mt-3">
-            <button disabled class="col-span-4 py-2 px-2 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1 shadow-xs" title="Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas">
-              🔒 Dibatasi Pengawas
-            </button>
-            <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
-              語
-            </button>
-          </div>`;
+        if (isCompleted) {
+          actionButton = `<div class="grid grid-cols-5 gap-1.5 mt-3">
+              <button onclick="window.app.viewSavedResult('${ch.num}')" class="col-span-2 py-2 px-1 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-md text-xs font-bold transition flex items-center justify-center gap-1 shadow-xs" title="Lihat hasil & pembahasan tryout sebelumnya">
+                Hasil
+              </button>
+              <button disabled class="col-span-2 py-2 px-1 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1 shadow-xs" title="Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas">
+                🔒 Mulai (Dibatasi Pengawas)
+              </button>
+              <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
+                語
+              </button>
+            </div>`;
+        } else {
+          actionButton = `<div class="grid grid-cols-5 gap-1.5 mt-3">
+              <button disabled class="col-span-4 py-2 px-2 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1 shadow-xs" title="Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas">
+                🔒 Mulai Bab ${ch.num} (Dibatasi Pengawas)
+              </button>
+              <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
+                語
+              </button>
+            </div>`;
+        }
       } else if (isLockedBySensei) {
         actionButton = `<div class="grid grid-cols-5 gap-1.5 mt-3">
             <button disabled class="col-span-4 py-2 px-2 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1" title="Bab ini sedang dikunci oleh Pengawas">
@@ -1701,13 +1722,14 @@ class ChoukaiApp {
         : "";
 
       cardsHTML += `
-        <div class="border ${ch.available ? "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm" : "border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 opacity-75"} rounded-lg p-4 flex flex-col justify-between transition hover:border-sky-500">
+        <div class="border ${isUserRestricted ? "border-amber-300 dark:border-amber-800 bg-amber-50/20 dark:bg-amber-950/20 shadow-sm" : ch.available ? "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm" : "border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 opacity-75"} rounded-lg p-4 flex flex-col justify-between transition hover:border-sky-500">
           <div>
             <div class="flex items-start justify-between gap-2 mb-2">
               <span class="px-2 py-0.5 rounded text-[11px] font-bold font-jp ${ch.available ? "bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300" : "bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400"}">
                 BAB ${ch.num}
               </span>
               <div class="flex items-center gap-1.5">
+                ${isUserRestricted ? `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-800 flex items-center gap-1">🔒 Dibatasi Pengawas</span>` : ""}
                 ${scoreBadge}
                 <span class="text-[10px] text-slate-400 font-mono">${ch.totalQuestions || 33} Soal</span>
               </div>
@@ -1718,7 +1740,6 @@ class ChoukaiApp {
           <div>
             ${actionButton}
             ${pdfCardLinks}
-          </div>
         </div>
       `;
     });
@@ -3646,8 +3667,9 @@ class ChoukaiApp {
   }
 
   setAllStudentChapterAccess(isAllowed) {
-    for (let i = 1; i <= 25; i++) {
-      const num = String(i).padStart(2, "0");
+    const list = typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : [];
+    for (const ch of list) {
+      const num = ch.num;
       const cb = document.getElementById(`access-toggle-${num}`);
       if (cb) {
         cb.checked = isAllowed;
@@ -3689,8 +3711,9 @@ class ChoukaiApp {
     const userId = this.selectedStudentForAccess.id;
     const accessMap = {};
 
-    for (let i = 1; i <= 25; i++) {
-      const num = String(i).padStart(2, "0");
+    const list = typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : [];
+    for (const ch of list) {
+      const num = ch.num;
       const cb = document.getElementById(`access-toggle-${num}`);
       accessMap[num] = cb ? Boolean(cb.checked) : true;
     }

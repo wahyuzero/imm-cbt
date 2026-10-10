@@ -176,6 +176,27 @@ examRouter.post("/exam/answer", authMiddleware, async (c) => {
       );
     }
 
+    // Verify per-student granular chapter access permission
+    if (user.role !== "admin") {
+      const accessRecord = await db.query.userChapterAccess.findFirst({
+        where: and(
+          eq(userChapterAccess.userId, user.id),
+          eq(userChapterAccess.chapterNum, session.chapterNum)
+        ),
+      });
+
+      if (accessRecord && !accessRecord.isAllowed) {
+        return c.json(
+          {
+            success: false,
+            error: "Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas.",
+            userRestricted: true,
+          },
+          403
+        );
+      }
+    }
+
     // Check expiration
     if (new Date() > new Date(session.expiresAt)) {
       await db
