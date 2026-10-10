@@ -93,10 +93,13 @@ class ChoukaiApp {
     this.updateAppGateUI();
     this.render();
 
-    // Check backend session and system status
-    await this.checkAuthSession();
-    await this.fetchSystemStatus();
+    // Check backend session and system status in parallel
+    await Promise.all([
+      this.checkAuthSession(),
+      this.fetchSystemStatus(),
+    ]);
 
+    this.authChecking = false;
     this.handleInitialRouting();
 
     window.addEventListener("hashchange", () => {

@@ -132,7 +132,7 @@ async function runTests() {
     await cdp.send('Runtime.enable');
 
     for (let i = 0; i < 40; i++) {
-      const isReady = await cdp.eval('typeof window.app !== "undefined" && window.app.view === "auth_gate" && !window.app.authChecking');
+      const isReady = await cdp.eval('typeof window.app !== "undefined" && window.app.view === "auth_gate" && !window.app.authChecking && Boolean(document.getElementById("gate-login-username"))');
       if (isReady) break;
       await wait(250);
     }
