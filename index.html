@@ -28,15 +28,15 @@
   </script>
 
   <!-- Custom Tactile & Japanese Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=49">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white">
 
   <!-- Top App Navigation Bar (Hidden by default until authenticated) -->
   <header id="app-header" class="hidden sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 transition-colors">
-    <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-2.5 sm:px-4 h-14 flex items-center justify-between gap-2 sm:gap-4">
       <!-- Brand & Title -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3">
         <a href="#dashboard" onclick="window.app.goToDashboard();" class="flex items-center gap-2 group">
           <div class="w-8 h-8 rounded-lg bg-sky-700 text-white flex items-center justify-center font-black font-jp text-sm shadow-sm">
             試
@@ -52,7 +52,7 @@
       </div>
 
       <!-- Right Nav Controls -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-1.5 sm:gap-2.5">
         <!-- Panel Sensei Button (Visible for admin) -->
         <button id="header-admin-btn" onclick="window.app.openAdminPanel('live')" class="hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-800 dark:text-amber-300 transition text-xs font-bold shadow-xs" title="Panel Kontrol Sensei / Pengawas">
           <span class="w-5 h-5 rounded-full bg-amber-600 text-white flex items-center justify-center text-[11px] font-bold font-jp">先</span>
@@ -71,8 +71,8 @@
           <span class="hidden sm:inline font-medium text-slate-700 dark:text-slate-300">Profil Siswa</span>
         </button>
 
-        <!-- Auth / Login Button -->
-        <button id="header-auth-btn" onclick="window.app.openAuthModal()" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-sky-300 dark:border-sky-700 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-800 dark:text-sky-300 transition text-xs font-bold shadow-xs" title="Login Siswa / Pengawas">
+        <!-- Auth / Login Button (Hidden when authenticated) -->
+        <button id="header-auth-btn" onclick="window.app.openAuthModal()" class="hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-sky-300 dark:border-sky-700 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-800 dark:text-sky-300 transition text-xs font-bold shadow-xs" title="Login Siswa / Pengawas">
           <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-[11px] font-bold font-jp">登</span>
           <span id="header-auth-text" class="hidden sm:inline">Masuk</span>
         </button>
@@ -109,8 +109,8 @@
   </footer>
 
   <!-- Application Scripts -->
-  <script src="kosakata_data.js?v=48"></script>
-  <script src="data.js?v=48"></script>
-  <script src="app.js?v=48"></script>
+  <script src="kosakata_data.js?v=49"></script>
+  <script src="data.js?v=49"></script>
+  <script src="app.js?v=49"></script>
 </body>
 </html>
