@@ -283,7 +283,7 @@ export const INITIAL_USERS = [
     email: "wahyu.jaka@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "Wahyu2026!",
+    password: "[REDACTED]",
   },
   {
     id: "usr_andre_ananta",
@@ -293,7 +293,7 @@ export const INITIAL_USERS = [
     email: "andre.ananta@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "AndreA2026!",
+    password: "[REDACTED]",
   },
   {
     id: "usr_andi_saputra",
@@ -323,7 +323,7 @@ export const INITIAL_USERS = [
     email: "syarifudin.asyrof@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "Syarifudin2026!",
+    password: "[REDACTED]",
   },
   {
     id: "usr_andre_purnomo",
@@ -333,7 +333,7 @@ export const INITIAL_USERS = [
     email: "andre.purnomo@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "AndreP2026!",
+    password: "[REDACTED]",
   },
   {
     id: "usr_desi_wiyanti",
@@ -353,7 +353,7 @@ export const INITIAL_USERS = [
     email: "aprilianzah@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "Aprilianzah2026!",
+    password: "[REDACTED]",
   },
   {
     id: "usr_farrel_ardiansyah",
@@ -393,7 +393,7 @@ export const INITIAL_USERS = [
     email: "hamdani.lubis@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "Hamdani2026!",
+    password: "[REDACTED]",
   },
 ];
 

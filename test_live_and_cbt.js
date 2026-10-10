@@ -178,7 +178,7 @@ async function runApiVerification() {
   });
   assert.strictEqual(usersRes.status, 200, "Users list should return 200");
   const usersJson = await usersRes.json();
-  assert(usersJson.data.length >= 2, "Must contain at least 2 users (Admin & Ahmad)");
+  assert(usersJson.data.length >= 2, "Must contain at least 2 users (Admin & Heru)");
   console.log(`[PASS] Admin retrieved ${usersJson.count} registered users from database`);
 
   // TEST 13: Admin Rekap Nilai & CSV Export (GET /api/v1/admin/monitoring/results/export?format=csv)
@@ -190,7 +190,7 @@ async function runApiVerification() {
   assert(csvRes.headers.get("content-type").includes("text/csv"), "Content-Type must be text/csv");
   const csvText = await csvRes.text();
   assert(csvText.includes("Nama Siswa"), "CSV must include headers");
-  assert(csvText.includes("Ahmad Syahroni"), "CSV must include tryout record");
+  assert(csvText.includes("Heru Prayoga"), "CSV must include tryout record");
   console.log("[PASS] CSV export generated successfully (length: " + csvText.length + " bytes)");
 
   // TEST 14: Chapter Lock & System Switch Controls
