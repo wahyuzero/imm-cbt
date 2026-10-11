@@ -3083,16 +3083,23 @@ class ChoukaiApp {
             this.chaptersStatus[ch.chapterNum] = ch.isUnlocked;
             this.userRestrictedChapters[ch.chapterNum] = Boolean(ch.userRestricted);
             this.userRestrictedPdfs[ch.chapterNum] = Boolean(ch.pdfRestricted);
-            if (ch.userScore && (!this.progress[ch.chapterNum] || ch.userScore.totalScore > this.progress[ch.chapterNum].score)) {
-              this.progress[ch.chapterNum] = {
-                chapter: ch.chapterNum,
-                score: ch.userScore.totalScore,
-                readingScore: ch.userScore.readingScore,
-                choukaiScore: ch.userScore.choukaiScore,
-                passed: ch.userScore.isPassed,
-              };
+            if (ch.userScore) {
+              if (!this.progress[ch.chapterNum] || ch.userScore.totalScore > this.progress[ch.chapterNum].score) {
+                this.progress[ch.chapterNum] = {
+                  chapter: ch.chapterNum,
+                  score: ch.userScore.totalScore,
+                  readingScore: ch.userScore.readingScore,
+                  choukaiScore: ch.userScore.choukaiScore,
+                  passed: ch.userScore.isPassed,
+                };
+              }
+            } else if (this.currentUser && this.currentUser.role !== "admin") {
+              delete this.progress[ch.chapterNum];
             }
           }
+          try {
+            localStorage.setItem("choukai_progress", JSON.stringify(this.progress));
+          } catch (e) {}
           if (this.view === "dashboard") {
             this.render();
           }
@@ -3657,6 +3664,9 @@ class ChoukaiApp {
                   <button onclick="window.app.adminResetPin('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 rounded text-[11px] font-semibold" title="Reset PIN ke 123456">
                     🔑 Reset PIN
                   </button>
+                  <button onclick="window.app.adminResetStudentExam('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-orange-50 dark:bg-orange-950/60 hover:bg-orange-100 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 rounded text-[11px] font-semibold" title="Reset Nilai & Riwayat Ujian Siswa Ini">
+                    🔄 Reset Nilai
+                  </button>
                   ${this.currentUser?.id !== u.id ? `
                     <button onclick="window.app.adminDeleteUser('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-[11px] font-semibold" title="Hapus Akun">
                       🗑️
@@ -3710,6 +3720,41 @@ class ChoukaiApp {
       }
     } catch (e) {
       alert("Koneksi gagal.");
+    }
+  }
+
+  async adminResetStudentExam(userId, userName) {
+    if (!confirm(`Reset seluruh nilai dan riwayat pengerjaan ujian untuk siswa "${userName}"?\n\nSiswa akan dapat mengerjakan ulang seluruh bab ujian dari awal.`)) return;
+    try {
+      if (window.location.protocol.startsWith("http")) {
+        const res = await fetch(`/api/v1/admin/users/${userId}/reset-exams`, {
+          method: "POST",
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(data.message || `Data ujian siswa "${userName}" berhasil di-reset.`);
+          this.fetchAdminUsers();
+        } else {
+          alert(data.error || "Gagal mereset data ujian siswa.");
+        }
+      } else {
+        // Offline / mock mode
+        if (this.adminUsersData) {
+          const userItem = this.adminUsersData.find((x) => x.id === userId);
+          if (userItem) {
+            userItem.totalExams = 0;
+            userItem.avgScore = 0;
+          }
+        }
+        if (this.currentUser && this.currentUser.id === userId) {
+          this.progress = {};
+          try { localStorage.removeItem("choukai_progress"); } catch (e) {}
+        }
+        alert(`Data ujian siswa "${userName}" berhasil di-reset.`);
+        this.renderAdminUsersPane();
+      }
+    } catch (e) {
+      alert("Koneksi gagal saat mereset data ujian siswa.");
     }
   }
 
@@ -4406,9 +4451,14 @@ class ChoukaiApp {
           </select>
           <input id="admin-result-cls-filter" type="text" placeholder="Filter kelas..." value="${selectedClass}" onkeydown="if(event.key==='Enter') window.app.fetchAdminResults(document.getElementById('admin-result-ch-filter').value, this.value)" class="px-2.5 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 w-32">
         </div>
-        <button onclick="window.app.exportResultsCsv()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs">
-          📥 Unduh Rekap Nilai (CSV)
-        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="window.app.exportResultsCsv()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs">
+            📥 Unduh Rekap Nilai (CSV)
+          </button>
+          <button onclick="window.app.adminResetAllExamResults()" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs" title="Kosongkan TOTAL seluruh data nilai dan pengerjaan ujian semua siswa">
+            🗑️ Kosongkan Semua Nilai Ujian
+          </button>
+        </div>
       </div>
 
       <div class="max-h-[55vh] overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-xl">
@@ -4459,6 +4509,37 @@ class ChoukaiApp {
     if (ch) url += `&chapter=${ch}`;
     if (cls) url += `&class=${encodeURIComponent(cls)}`;
     window.open(url, "_blank");
+  }
+
+  async adminResetAllExamResults() {
+    const confirm1 = confirm(
+      "PERINGATAN SENSEI:\n\nApakah Anda yakin ingin MENGOSONGKAN TOTAL seluruh data pengerjaan ujian dari SEMUA siswa?\n\nTindakan ini akan menghapus seluruh rekaman sesi ujian dan jawaban dari basis data, sehingga seluruh siswa mulai dari lembaran kosong."
+    );
+    if (!confirm1) return;
+    try {
+      if (window.location.protocol.startsWith("http")) {
+        const res = await fetch("/api/v1/admin/monitoring/results/reset-all", {
+          method: "POST",
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(data.message || "Seluruh data pengerjaan ujian berhasil dikosongkan total.");
+          this.progress = {};
+          try { localStorage.removeItem("choukai_progress"); } catch (e) {}
+          this.fetchAdminResults();
+        } else {
+          alert(data.error || "Gagal mengosongkan data ujian.");
+        }
+      } else {
+        this.adminResultsData = [];
+        this.progress = {};
+        try { localStorage.removeItem("choukai_progress"); } catch (e) {}
+        alert("Seluruh data pengerjaan ujian berhasil dikosongkan.");
+        this.renderAdminResultsPane();
+      }
+    } catch (e) {
+      alert("Koneksi gagal saat mengosongkan data ujian.");
+    }
   }
 
   // =========================================================================

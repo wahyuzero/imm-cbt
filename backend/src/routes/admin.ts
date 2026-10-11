@@ -12,7 +12,7 @@ import {
   examAnswers,
   userChapterAccess,
 } from "../db/schema.js";
-import { eq, desc, asc, and, sql, or, ilike } from "drizzle-orm";
+import { eq, desc, asc, and, sql, or, ilike, inArray } from "drizzle-orm";
 import { hashPassword } from "better-auth/crypto";
 import crypto from "crypto";
 import { AppEnv } from "../types.js";
@@ -192,6 +192,40 @@ adminRouter.post("/admin/users/:id/reset-pin", async (c) => {
       newPin: newPin,
     });
   } catch (err: any) {
+    return c.json({ success: false, error: err.message }, 500);
+  }
+});
+
+// Admin resets exam results & sessions for a specific student
+adminRouter.post("/admin/users/:id/reset-exams", async (c) => {
+  try {
+    const targetUserId = c.req.param("id");
+    const targetUser = await db.query.user.findFirst({
+      where: eq(user.id, targetUserId),
+    });
+
+    if (!targetUser) {
+      return c.json({ success: false, error: "Pengguna tidak ditemukan." }, 404);
+    }
+
+    // Ambil seluruh ID sesi ujian milik siswa ini
+    const userSessions = await db.query.examSessions.findMany({
+      where: eq(examSessions.userId, targetUserId),
+    });
+
+    const sessionIds = userSessions.map((s) => s.id);
+    if (sessionIds.length > 0) {
+      await db.delete(examAnswers).where(inArray(examAnswers.sessionId, sessionIds));
+      await db.delete(examSessions).where(eq(examSessions.userId, targetUserId));
+    }
+
+    return c.json({
+      success: true,
+      message: `Seluruh data nilai dan riwayat pengerjaan ujian untuk siswa "${targetUser.name}" berhasil di-reset total (${sessionIds.length} sesi dihapus).`,
+      deletedCount: sessionIds.length,
+    });
+  } catch (err: any) {
+    console.error("Reset student exams error:", err);
     return c.json({ success: false, error: err.message }, 500);
   }
 });
@@ -860,6 +894,26 @@ adminRouter.get("/admin/monitoring/results/export", async (c) => {
       },
     });
   } catch (err: any) {
+    return c.json({ success: false, error: err.message }, 500);
+  }
+});
+
+// Admin resets ALL exam results and answers (Kosongkan Total Data Pengerjaan)
+adminRouter.post("/admin/monitoring/results/reset-all", async (c) => {
+  try {
+    const totalSessions = await db.select({ count: sql<number>`count(*)::int` }).from(examSessions);
+    const count = totalSessions[0]?.count || 0;
+
+    await db.delete(examAnswers);
+    await db.delete(examSessions);
+
+    return c.json({
+      success: true,
+      message: `Seluruh data pengerjaan ujian siswa (${count} sesi) berhasil dikosongkan total dari basis data.`,
+      deletedCount: count,
+    });
+  } catch (err: any) {
+    console.error("Reset all exam results error:", err);
     return c.json({ success: false, error: err.message }, 500);
   }
 });
