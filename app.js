@@ -1532,7 +1532,7 @@ class ChoukaiApp {
           <!-- Announcement Banner (if any) -->
           ${this.systemStatus.announcement ? `
             <div class="mb-4 p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-900/60 text-sky-800 dark:text-sky-300 text-[11px] font-medium flex items-center gap-2">
-              <span class="text-xs">📢</span>
+              <svg class="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
               <span class="leading-tight">${this.systemStatus.announcement}</span>
             </div>
           ` : ""}
@@ -1549,8 +1549,9 @@ class ChoukaiApp {
                 <span>Daftar Siswa</span>
               </button>
             ` : `
-              <div class="flex-1 py-2 text-center text-[10px] text-slate-400 font-medium cursor-not-allowed" title="Pendaftaran mandiri dinonaktifkan oleh Sensei">
-                🔒 Registrasi Ditutup
+              <div class="flex-1 py-2 text-center text-[10px] text-slate-400 font-medium cursor-not-allowed flex items-center justify-center gap-1.5" title="Pendaftaran mandiri dinonaktifkan oleh Sensei">
+                <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Registrasi Ditutup</span>
               </div>
             `}
           </div>
@@ -1575,9 +1576,9 @@ class ChoukaiApp {
                   Password / PIN:
                 </label>
                 <div class="relative">
-                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">🔑</span>
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg></span>
                   <input id="gate-login-pin" type="password" required placeholder="Masukkan password Anda" autocomplete="current-password" class="w-full pl-8 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 font-mono shadow-2xs">
-                  <button type="button" onclick="window.app.toggleGatePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Tampilkan / Sembunyikan Password">👁️</button>
+                  <button type="button" onclick="window.app.toggleGatePinVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600" title="Tampilkan / Sembunyikan Password"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button>
                 </div>
               </div>
 
@@ -1644,7 +1645,7 @@ class ChoukaiApp {
           <!-- Footer Security Notice -->
           <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-center">
             <div class="inline-flex items-center gap-1.5 text-[10px] text-slate-400">
-              <span>🔒</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
               <span>Sesi Terenkripsi & Anti-Curang CBT ｜ Better Auth & RBAC Guard</span>
             </div>
           </div>
@@ -1691,7 +1692,8 @@ class ChoukaiApp {
                 Hasil
               </button>
               <button disabled class="col-span-2 py-2 px-1 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1 shadow-xs" title="Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas">
-                🔒 Mulai (Dibatasi Pengawas)
+                <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Mulai (Dibatasi Pengawas)</span>
               </button>
               <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
                 語
@@ -1699,8 +1701,9 @@ class ChoukaiApp {
             </div>`;
         } else {
           actionButton = `<div class="grid grid-cols-5 gap-1.5 mt-3">
-              <button disabled class="col-span-4 py-2 px-2 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1 shadow-xs" title="Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas">
-                🔒 Mulai Bab ${ch.num} (Dibatasi Pengawas)
+              <button disabled class="col-span-4 py-2 px-2 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1.5 shadow-xs" title="Akses bab ini dibatasi khusus untuk akun Anda oleh pengawas">
+                <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Mulai Bab ${ch.num} (Dibatasi Pengawas)</span>
               </button>
               <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
                 語
@@ -1709,8 +1712,9 @@ class ChoukaiApp {
         }
       } else if (isLockedBySensei) {
         actionButton = `<div class="grid grid-cols-5 gap-1.5 mt-3">
-            <button disabled class="col-span-4 py-2 px-2 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1" title="Bab ini sedang dikunci oleh Pengawas">
-              🔒 Terkunci Sensei
+            <button disabled class="col-span-4 py-2 px-2 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900 rounded-md text-xs font-bold cursor-not-allowed flex items-center justify-center gap-1.5" title="Bab ini sedang dikunci oleh Pengawas">
+              <svg class="w-3.5 h-3.5 text-rose-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span>Terkunci Sensei</span>
             </button>
             <button onclick="window.app.goToKosakata('${ch.num}')" class="col-span-1 py-2 px-1 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md text-xs font-bold font-jp transition flex items-center justify-center shadow-xs" title="Buka Hafalan Kosakata Bab ${ch.num}">
               語
@@ -1777,7 +1781,7 @@ class ChoukaiApp {
                 BAB ${ch.num}
               </span>
               <div class="flex items-center gap-1.5">
-                ${isUserRestricted ? `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-800 flex items-center gap-1">🔒 Dibatasi Pengawas</span>` : ""}
+                ${isUserRestricted ? `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-800 flex items-center gap-1"><svg class="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg><span>Dibatasi Pengawas</span></span>` : ""}
                 ${scoreBadge}
                 <span class="text-[10px] text-slate-400 font-mono">${ch.totalQuestions || 33} Soal</span>
               </div>
@@ -1793,7 +1797,7 @@ class ChoukaiApp {
                 Dokumen & Audio Bab ${ch.num}
               </span>
               <span class="px-1.5 py-0.2 rounded text-[10px] font-mono ${ch.choukaiQuestions > 0 ? 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300' : 'bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}">
-                ${ch.choukaiQuestions > 0 ? '5 Dokumen + 🎧' : '3 Dokumen'}
+                ${ch.choukaiQuestions > 0 ? `<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-3 h-3 text-sky-600 dark:text-sky-400 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg></span>` : '3 Dokumen'}
               </span>
             </button>
             <div class="hidden" aria-hidden="true">
@@ -1849,7 +1853,7 @@ class ChoukaiApp {
           <div class="flex flex-wrap items-center gap-2">
             <button onclick="window.app.openPdfLibraryModal()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Buka Bank Dokumen PDF Lengkap (112 File)">
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
-              📚 Bank Dokumen PDF (112 File)
+              <span>Bank Dokumen PDF (112 File)</span>
             </button>
             <button onclick="window.app.goToKosakata('01')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Buka Modul Hafalan Kosakata Interaktif">
               <span class="font-jp">語</span>
@@ -2021,16 +2025,19 @@ class ChoukaiApp {
           <div class="flex items-center gap-2">
             ${choukaiQuestions.length > 0 ? `
               <button onclick="window.app.goToSession('reading')" class="px-2.5 py-1 rounded text-xs font-bold transition flex items-center gap-1.5 ${currentSession === 'reading' ? 'bg-sky-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                <span>📖 Sesi 1: Reading</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <span>Sesi 1: Reading</span>
                 <span class="text-[10px] font-mono px-1 py-0.2 rounded ${currentSession === 'reading' ? 'bg-sky-700 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${readingAnswered}/${readingQuestions.length}</span>
               </button>
               <button onclick="window.app.goToSession('choukai')" class="px-2.5 py-1 rounded text-xs font-bold transition flex items-center gap-1.5 ${currentSession === 'choukai' ? 'bg-sky-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                <span>🎧 Sesi 2: Choukai</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg>
+                <span>Sesi 2: Choukai</span>
                 <span class="text-[10px] font-mono px-1 py-0.2 rounded ${currentSession === 'choukai' ? 'bg-sky-700 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${choukaiAnswered}/${choukaiQuestions.length}</span>
               </button>
             ` : `
               <div class="px-2.5 py-1 rounded text-xs font-bold bg-sky-600 text-white shadow-xs flex items-center gap-1.5">
-                <span>📖 Ujian Tulis (Reading)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <span>Ujian Tulis (Reading)</span>
                 <span class="text-[10px] font-mono px-1 py-0.2 rounded bg-sky-700 text-white">${readingAnswered}/${readingQuestions.length}</span>
               </div>
             `}
@@ -2168,8 +2175,8 @@ class ChoukaiApp {
     if (r.isGrading) {
       return `
         <div class="max-w-xl mx-auto py-20 px-4 text-center">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sky-100 dark:bg-sky-950/60 border border-sky-300 dark:border-sky-800 text-sky-600 dark:text-sky-400 mb-4 shadow-sm text-2xl animate-pulse">
-            ⏳
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sky-100 dark:bg-sky-950/60 border border-sky-300 dark:border-sky-800 text-sky-600 dark:text-sky-400 mb-4 shadow-sm">
+            <svg class="w-8 h-8 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
           </div>
           <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 font-jp">
             採点中... Memeriksa Lembar Ujian
@@ -2281,7 +2288,7 @@ class ChoukaiApp {
           ${isChoukai && dialogueScriptHTML ? `
             <details class="bg-white dark:bg-slate-800/80 rounded-lg p-3 my-2.5 border border-slate-200 dark:border-slate-700 shadow-2xs">
               <summary class="cursor-pointer text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
-                <span>📄 Transkrip Percakapan Lengkap & Terjemahan</span>
+                <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Transkrip Percakapan Lengkap & Terjemahan</span></span>
                 <span class="text-[10px] text-slate-400">Klik untuk buka/tutup</span>
               </summary>
               <div class="mt-2.5 pt-2.5 border-t border-slate-100 dark:border-slate-700/60 space-y-1.5">
@@ -2292,7 +2299,7 @@ class ChoukaiApp {
 
           ${q.translation ? `
             <div class="text-[11px] text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700/60 mb-2.5">
-              <span class="font-bold text-slate-700 dark:text-slate-300">🇮🇩 Terjemahan Konteks:</span> ${q.translation}
+              <span class="font-bold text-slate-700 dark:text-slate-300 inline-flex items-center gap-1"><span class="px-1 py-0.2 rounded bg-slate-200 dark:bg-slate-700 text-[10px] font-mono">ID</span> Terjemahan Konteks:</span> ${q.translation}
             </div>
           ` : ""}
 
@@ -2302,7 +2309,7 @@ class ChoukaiApp {
             ${q.explanation.logic ? `
             <div class="bg-white dark:bg-slate-800/90 p-3 rounded-lg border ${isCorrect ? "border-emerald-100 dark:border-emerald-950" : "border-rose-100 dark:border-rose-950"} text-slate-700 dark:text-slate-200">
               <strong class="${isCorrect ? "text-emerald-700 dark:text-emerald-400" : "text-rose-700 dark:text-rose-400"} block mb-1">
-                ${isCorrect ? "💡 Analisis Mengapa Jawaban Anda Tepat:" : "⚠️ Bedah Kesalahan & Jebakan Logika:"}
+                ${isCorrect ? `<span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><span>Analisis Mengapa Jawaban Anda Tepat:</span></span>` : `<span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><span>Bedah Kesalahan & Jebakan Logika:</span></span>`}
               </strong>
               <p class="leading-relaxed">${q.explanation.logic}</p>
             </div>
@@ -2310,14 +2317,14 @@ class ChoukaiApp {
 
             ${!isCorrect && q.explanation.distractor ? `
             <div class="bg-amber-50 dark:bg-amber-950/30 p-3 rounded-lg border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200">
-              <strong class="text-amber-800 dark:text-amber-300 block mb-1">⚠️ Jebakan Distraktor Pengecoh:</strong>
+              <strong class="text-amber-800 dark:text-amber-300 block mb-1 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><span>Jebakan Distraktor Pengecoh:</span></strong>
               <div class="whitespace-pre-line leading-relaxed text-[11.5px]">${q.explanation.distractor}</div>
             </div>
             ` : ""}
 
             ${q.explanation.grammarRule ? `
             <div class="bg-sky-50 dark:bg-sky-950/40 p-3 rounded-lg border border-sky-200 dark:border-sky-900 text-sky-900 dark:text-sky-200">
-              <strong class="block mb-1">📘 Poin Kaidah Bab ${this.currentChapter.chapter}:</strong>
+              <strong class="block mb-1 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Poin Kaidah Bab ${this.currentChapter.chapter}:</span></strong>
               <p class="leading-relaxed text-[11.5px]">${q.explanation.grammarRule}</p>
             </div>
             ` : ""}
@@ -2345,7 +2352,7 @@ class ChoukaiApp {
           ${r.choukaiTotal > 0 ? `
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto text-left mb-4">
               <div class="p-3 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60">
-                <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono">📖 Sesi 1: Reading (読解)</div>
+                <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono flex items-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Sesi 1: Reading (読解)</span></div>
                 <div class="text-xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
                   ${r.readingScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
                 </div>
@@ -2354,7 +2361,7 @@ class ChoukaiApp {
                 </div>
               </div>
               <div class="p-3 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60">
-                <div class="text-[11px] text-sky-700 dark:text-sky-400 font-bold uppercase font-mono">🎧 Sesi 2: Choukai (聴解)</div>
+                <div class="text-[11px] text-sky-700 dark:text-sky-400 font-bold uppercase font-mono flex items-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg><span>Sesi 2: Choukai (聴解)</span></div>
                 <div class="text-xl font-black font-mono text-sky-900 dark:text-sky-200 mt-0.5">
                   ${r.choukaiScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
                 </div>
@@ -2365,7 +2372,7 @@ class ChoukaiApp {
             </div>
           ` : `
             <div class="p-3.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 max-w-sm mx-auto text-center mb-4">
-              <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono">📖 Ujian Tulis: Reading (読解)</div>
+              <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono flex items-center justify-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Ujian Tulis: Reading (読解)</span></div>
               <div class="text-2xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
                 ${r.readingScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
               </div>
@@ -2417,8 +2424,8 @@ class ChoukaiApp {
         <!-- Bagian 1: Soal Salah (Prioritas Utama untuk Evaluasi) -->
         <div class="mb-8">
           <div class="flex items-center gap-2.5 mb-4 p-3 bg-rose-50/60 dark:bg-rose-950/40 rounded-xl border border-rose-200/80 dark:border-rose-900/60">
-            <span class="w-8 h-8 rounded-lg bg-rose-600 text-white flex items-center justify-center shrink-0 shadow-sm font-bold text-sm">
-              ⚠️
+            <span class="w-8 h-8 rounded-lg bg-rose-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
             </span>
             <div>
               <h3 class="text-sm sm:text-base font-bold text-rose-900 dark:text-rose-200">
@@ -2434,7 +2441,7 @@ class ChoukaiApp {
             ? wrongQuestions.map((q) => renderCard(q, false)).join("")
             : `
             <div class="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/80 rounded-xl p-6 text-center text-emerald-800 dark:text-emerald-200 shadow-xs">
-              <div class="text-3xl mb-1.5">🎉</div>
+              <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 mx-auto flex items-center justify-center mb-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div>
               <h4 class="font-bold text-sm">Luar Biasa! Sempurna (100 / 100)</h4>
               <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">${(r.choukaiTotal || 0) > 0 ? `Seluruh ${r.totalCount} butir soal (Reading & Choukai) berhasil Anda kuasai dengan tepat.` : `Seluruh ${r.totalCount} butir soal (Reading) berhasil Anda kuasai dengan tepat.`}</p>
             </div>
@@ -2445,8 +2452,8 @@ class ChoukaiApp {
         <!-- Bagian 2: Soal Benar (Terpisah di Bawah) -->
         <div>
           <div class="flex items-center gap-2.5 mb-4 p-3 bg-emerald-50/60 dark:bg-emerald-950/40 rounded-xl border border-emerald-200/80 dark:border-emerald-900/60">
-            <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm font-bold text-sm">
-              ✓
+            <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
             </span>
             <div>
               <h3 class="text-sm sm:text-base font-bold text-emerald-900 dark:text-emerald-200">
@@ -2628,7 +2635,7 @@ class ChoukaiApp {
     if (!words || words.length === 0) {
       return `
         <div class="col-span-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 text-center shadow-xs">
-          <div class="text-3xl mb-2">🔍</div>
+          <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 mx-auto flex items-center justify-center mb-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
           <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">Tidak ada kosakata yang cocok</h4>
           <p class="text-xs text-slate-500 mt-1">Coba sesuaikan kata kunci pencarian atau ubah filter kategori gramatikal.</p>
           <button onclick="window.app.resetKosakataFilters()" class="mt-4 px-3 py-1.5 bg-sky-600 text-white rounded text-xs font-semibold hover:bg-sky-700 transition">
@@ -2887,25 +2894,30 @@ class ChoukaiApp {
           <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs">
             <div class="flex flex-wrap items-center gap-2">
               <span class="text-slate-500 text-[11px] font-medium">Mode Uji Hafalan (Flashcard):</span>
-              <button id="toggle-hide-reading" class="px-2.5 py-1 rounded-md border text-xs font-semibold transition flex items-center gap-1 ${
+              <button id="toggle-hide-reading" class="px-2.5 py-1 rounded-md border text-xs font-semibold transition flex items-center gap-1.5 ${
                 this.hideReading
                   ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-700"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-200"
               }">
-                <span>${this.hideReading ? "🙈 Cara Baca Tersembunyi" : "👁️ Cara Baca Terlihat"}</span>
+                ${this.hideReading
+                  ? `<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg><span>Cara Baca Tersembunyi</span>`
+                  : `<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg><span>Cara Baca Terlihat</span>`}
               </button>
-              <button id="toggle-hide-meaning" class="px-2.5 py-1 rounded-md border text-xs font-semibold transition flex items-center gap-1 ${
+              <button id="toggle-hide-meaning" class="px-2.5 py-1 rounded-md border text-xs font-semibold transition flex items-center gap-1.5 ${
                 this.hideMeaning
                   ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-700"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-200"
               }">
-                <span>${this.hideMeaning ? "🙈 Arti Tersembunyi" : "👁️ Arti Terlihat"}</span>
+                ${this.hideMeaning
+                  ? `<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg><span>Arti Tersembunyi</span>`
+                  : `<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg><span>Arti Terlihat</span>`}
               </button>
             </div>
 
             <div class="flex items-center gap-2">
-              <button onclick="window.app.markVisibleWordsMemorized(true)" class="px-2.5 py-1 text-emerald-700 dark:text-emerald-400 hover:underline text-xs font-semibold">
-                ✓ Tandai Semua Selesai
+              <button onclick="window.app.markVisibleWordsMemorized(true)" class="px-2.5 py-1 text-emerald-700 dark:text-emerald-400 hover:underline text-xs font-semibold flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Tandai Semua Selesai
               </button>
               <span class="text-slate-300 dark:text-slate-700">&bull;</span>
               <button onclick="window.app.markVisibleWordsMemorized(false)" class="px-2.5 py-1 text-slate-500 hover:underline text-xs font-semibold">
@@ -2920,8 +2932,9 @@ class ChoukaiApp {
           <div>
             Menampilkan <strong id="kosakata-counter" class="text-slate-800 dark:text-slate-200">${words.length}</strong> butir kosakata
           </div>
-          <div class="text-[11px] italic">
-            Tips: Gunakan tombol 🔊 untuk mendengarkan pelafalan penutur asli Jepang.
+          <div class="text-[11px] italic flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-sky-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+            <span>Tips: Gunakan tombol audio untuk mendengarkan pelafalan penutur asli Jepang.</span>
           </div>
         </div>
 
@@ -3484,8 +3497,9 @@ class ChoukaiApp {
             Siswa Sedang Ujian: <strong>${items.length} Peserta</strong>
           </span>
         </div>
-        <button onclick="window.app.fetchLiveMonitoring()" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-semibold flex items-center gap-1 transition">
-          🔄 Refresh
+        <button onclick="window.app.fetchLiveMonitoring()" class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-semibold flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Refresh
         </button>
       </div>
       ${items.length === 0 ? `
@@ -3518,8 +3532,9 @@ class ChoukaiApp {
                 </div>
               </div>
               <div class="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
-                <button onclick="window.app.terminateStudentExam('${s.sessionId}')" class="px-2.5 py-1.5 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-900/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-md text-xs font-bold transition">
-                  🛑 Paksa Kumpulkan
+                <button onclick="window.app.terminateStudentExam('${s.sessionId}')" class="px-2.5 py-1.5 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-900/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-md text-xs font-bold transition flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>
+                  Paksa Kumpulkan
                 </button>
               </div>
             </div>
@@ -3658,18 +3673,21 @@ class ChoukaiApp {
                 <td class="p-2.5 text-center font-bold">${u.totalExams || 0}</td>
                 <td class="p-2.5 text-center font-bold ${u.avgScore >= 80 ? 'text-emerald-600' : 'text-slate-700 dark:text-slate-300'}">${u.avgScore ? u.avgScore.toFixed(1) : '-'}</td>
                 <td class="p-2.5 text-right space-x-1">
-                  <button onclick="window.app.openStudentChapterAccessModal('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-300 rounded text-[11px] font-semibold" title="Atur Hak Akses Bab Siswa">
-                    🛡️ Akses Bab
+                  <button onclick="window.app.openStudentChapterAccessModal('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Atur Hak Akses Bab Siswa">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    Akses Bab
                   </button>
-                  <button onclick="window.app.adminResetPin('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 rounded text-[11px] font-semibold" title="Reset PIN ke 123456">
-                    🔑 Reset PIN
+                  <button onclick="window.app.adminResetPin('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Reset PIN ke 123456">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    Reset PIN
                   </button>
-                  <button onclick="window.app.adminResetStudentExam('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-orange-50 dark:bg-orange-950/60 hover:bg-orange-100 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 rounded text-[11px] font-semibold" title="Reset Nilai & Riwayat Ujian Siswa Ini">
-                    🔄 Reset Nilai
+                  <button onclick="window.app.adminResetStudentExam('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-orange-50 dark:bg-orange-950/60 hover:bg-orange-100 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Reset Nilai & Riwayat Ujian Siswa Ini">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    Reset Nilai
                   </button>
                   ${this.currentUser?.id !== u.id ? `
-                    <button onclick="window.app.adminDeleteUser('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-[11px] font-semibold" title="Hapus Akun">
-                      🗑️
+                    <button onclick="window.app.adminDeleteUser('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-[11px] font-semibold inline-flex items-center" title="Hapus Akun">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                     </button>
                   ` : ''}
                 </td>
@@ -4029,14 +4047,14 @@ class ChoukaiApp {
           alert(json.error || "Gagal menyimpan hak akses.");
           if (saveBtn) {
             saveBtn.disabled = false;
-            saveBtn.innerText = "💾 Simpan";
+            saveBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg> Simpan';
           }
         }
       } catch (e) {
         alert("Koneksi gagal saat menyimpan hak akses.");
         if (saveBtn) {
           saveBtn.disabled = false;
-          saveBtn.innerText = "💾 Simpan";
+          saveBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg> Simpan';
         }
       }
     } else {
@@ -4148,11 +4166,13 @@ class ChoukaiApp {
           <!-- Quick Action Bar -->
           <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
             <div class="flex items-center gap-2">
-              <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(true)" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-                ✅ Buka Semua PDF (25 Bab)
+              <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(true)" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Buka Semua PDF (25 Bab)
               </button>
-              <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-                🔒 Kunci Semua PDF (Kembali Default)
+              <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Kunci Semua PDF (Kembali Default)
               </button>
             </div>
             <span class="text-[11px] text-slate-500 italic">
@@ -4180,7 +4200,7 @@ class ChoukaiApp {
                       ${ch.title_ja}
                     </div>
                     <div class="text-[10px] text-slate-500 mt-1">
-                      ${hasChoukai ? '5 Dokumen + 🎧 Audio' : '3 Dokumen PDF'}
+                      ${hasChoukai ? '<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>Audio</span>' : '3 Dokumen PDF'}
                     </div>
                   </div>
                   <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
@@ -4210,11 +4230,13 @@ class ChoukaiApp {
         <!-- Quick Action Bar -->
         <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
           <div class="flex items-center gap-2">
-            <button type="button" onclick="window.app.setAllStudentChapterAccess(true)" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-              ✅ Izinkan Semua Ujian
+            <button type="button" onclick="window.app.setAllStudentChapterAccess(true)" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Izinkan Semua Ujian
             </button>
-            <button type="button" onclick="window.app.setAllStudentChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-              🔒 Kunci Semua Ujian
+            <button type="button" onclick="window.app.setAllStudentChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              Kunci Semua Ujian
             </button>
           </div>
           <span class="text-[11px] text-slate-500 italic">
@@ -4319,11 +4341,13 @@ class ChoukaiApp {
             <div class="text-[11px] text-slate-500">Buka atau kunci seluruh Bab 01 s.d. Bab 25 serentak</div>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="window.app.lockAllChapters()" class="px-3 py-1.5 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-bold transition">
-              🔒 Kunci Semua Bab
+            <button onclick="window.app.lockAllChapters()" class="px-3 py-1.5 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              Kunci Semua Bab
             </button>
-            <button onclick="window.app.unlockAllChapters()" class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 rounded-lg text-xs font-bold transition">
-              🔓 Buka Semua Bab
+            <button onclick="window.app.unlockAllChapters()" class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+              Buka Semua Bab
             </button>
           </div>
         </div>
@@ -4453,10 +4477,12 @@ class ChoukaiApp {
         </div>
         <div class="flex items-center gap-2">
           <button onclick="window.app.exportResultsCsv()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs">
-            📥 Unduh Rekap Nilai (CSV)
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Unduh Rekap Nilai (CSV)
           </button>
           <button onclick="window.app.adminResetAllExamResults()" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs" title="Kosongkan TOTAL seluruh data nilai dan pengerjaan ujian semua siswa">
-            🗑️ Kosongkan Semua Nilai Ujian
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            Kosongkan Semua Nilai Ujian
           </button>
         </div>
       </div>
@@ -4576,7 +4602,8 @@ class ChoukaiApp {
               Master Bundle Kosakata (76 Hal)
             </a>
             <button onclick="window.app.openPdfLibraryModal()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
-              🔍 Buka Tampilan Library
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              Buka Tampilan Library
             </button>
           </div>
         </div>
@@ -4628,25 +4655,30 @@ class ChoukaiApp {
                     </td>
                     <td class="p-2.5">
                       <div class="flex flex-wrap gap-1.5">
-                        <a href="${rSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-[10px] font-semibold hover:underline">
-                          📄 Soal
+                        <a href="${rSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
+                          <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                          Soal
                         </a>
-                        <a href="${rKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline">
-                          🔑 Kunci
+                        <a href="${rKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
+                          <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                          Kunci
                         </a>
-                        <a href="${rKosa.url}" target="_blank" class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-[10px] font-semibold hover:underline">
-                          📖 Kotoba
+                        <a href="${rKosa.url}" target="_blank" class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
+                          <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                          Kotoba
                         </a>
                       </div>
                     </td>
                     <td class="p-2.5">
                       ${cSoal ? `
                         <div class="flex flex-wrap gap-1.5">
-                          <a href="${cSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-[10px] font-semibold hover:underline">
-                            🎧 Soal
+                          <a href="${cSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
+                            <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                            Soal
                           </a>
-                          <a href="${cKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline">
-                            🔑 Kunci
+                          <a href="${cKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
+                            <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                            Kunci
                           </a>
                         </div>
                       ` : `
@@ -4847,7 +4879,7 @@ class ChoukaiApp {
     if (filteredChapters.length === 0) {
       container.innerHTML = `
         <div class="col-span-full py-16 text-center text-slate-400">
-          <div class="text-3xl mb-2">🔍</div>
+          <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 mx-auto flex items-center justify-center mb-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
           <p class="text-sm font-semibold">Tidak ditemukan dokumen yang cocok.</p>
           <p class="text-xs mt-1">Coba gunakan kata kunci pencarian lain atau pilih tab filter "Semua".</p>
         </div>
@@ -4882,8 +4914,9 @@ class ChoukaiApp {
               </div>
               <div>
                 ${isRestricted ? `
-                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">
-                    🔒 Dibatasi
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 inline-flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    Dibatasi
                   </span>
                 ` : `
                   <button onclick="window.app.openChapterResourcesModal('${num}')" class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 hover:bg-sky-100 transition">
@@ -4900,7 +4933,7 @@ class ChoukaiApp {
                   return `
                     <div class="p-2 rounded-lg bg-sky-50/60 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex items-center justify-between gap-2">
                       <div class="flex items-center gap-2 min-w-0">
-                        <span class="text-sm">🎧</span>
+                        <span class="w-5 h-5 rounded-md bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-300 flex items-center justify-center shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg></span>
                         <div class="min-w-0">
                           <div class="text-[11px] font-bold text-sky-900 dark:text-sky-200 truncate">${item.title}</div>
                           <div class="text-[10px] text-sky-700 dark:text-sky-400 truncate">Audio Penutur Asli Choukai</div>
@@ -4940,8 +4973,8 @@ class ChoukaiApp {
                     </div>
                     <div>
                       ${isRestricted ? `
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-400">
-                          🔒
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-400 inline-flex items-center">
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                         </span>
                       ` : `
                         <a
@@ -4963,7 +4996,7 @@ class ChoukaiApp {
           <!-- Bottom Action / Summary -->
           <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px]">
             <span class="text-slate-500">
-              ${resList.length > 3 ? '5 PDF + 🎧 Audio' : '3 Dokumen PDF'}
+              ${resList.length > 3 ? '<span class="inline-flex items-center gap-1">5 PDF + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>Audio</span>' : '3 Dokumen PDF'}
             </span>
             ${!isRestricted ? `
               <button onclick="window.app.openChapterResourcesModal('${num}')" class="text-sky-600 dark:text-sky-400 font-bold hover:underline">
@@ -5064,7 +5097,9 @@ class ChoukaiApp {
         }
         const barPlayBtn = document.getElementById("res-audio-bar-play-btn");
         if (barPlayBtn) {
-          barPlayBtn.innerText = isPlaying ? "⏸️ Pause" : "▶️ Putar";
+          barPlayBtn.innerHTML = isPlaying
+            ? `<span class="inline-flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>Pause</span>`
+            : `<span class="inline-flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>Putar</span>`;
         }
       } else {
         playerBar.classList.add("hidden");
@@ -5272,20 +5307,25 @@ class ChoukaiApp {
 
             <!-- Navigation Tabs -->
             <div class="flex items-center gap-1.5 my-3 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/60 overflow-x-auto">
-              <button data-tab="live" onclick="window.app.switchAdminTab('live')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'live' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                📡 Live Monitor
+              <button data-tab="live" onclick="window.app.switchAdminTab('live')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 ${this.adminTab === 'live' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>Live Monitor</span>
               </button>
-              <button data-tab="users" onclick="window.app.switchAdminTab('users')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'users' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                👥 Manajemen Siswa
+              <button data-tab="users" onclick="window.app.switchAdminTab('users')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 ${this.adminTab === 'users' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                <span>Manajemen Siswa</span>
               </button>
-              <button data-tab="lock" onclick="window.app.switchAdminTab('lock')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'lock' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                🔒 Kontrol Ujian & Sakelar
+              <button data-tab="lock" onclick="window.app.switchAdminTab('lock')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 ${this.adminTab === 'lock' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Kontrol Ujian & Sakelar</span>
               </button>
-              <button data-tab="results" onclick="window.app.switchAdminTab('results')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'results' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                📊 Rekap Nilai & Ekspor CSV
+              <button data-tab="results" onclick="window.app.switchAdminTab('results')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 ${this.adminTab === 'results' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <span>Rekap Nilai & Ekspor CSV</span>
               </button>
-              <button data-tab="pdfs" onclick="window.app.switchAdminTab('pdfs')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg ${this.adminTab === 'pdfs' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-                📚 Bank Dokumen PDF
+              <button data-tab="pdfs" onclick="window.app.switchAdminTab('pdfs')" class="admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 ${this.adminTab === 'pdfs' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <span>Bank Dokumen PDF</span>
               </button>
             </div>
 
@@ -5324,14 +5364,16 @@ class ChoukaiApp {
                 onclick="window.app.switchStudentAccessTab('cbt')"
                 class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${this.studentAccessModalTab === 'cbt' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}"
               >
-                📝 Hak Akses Ujian CBT
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Hak Akses Ujian CBT</span>
               </button>
               <button
                 type="button"
                 onclick="window.app.switchStudentAccessTab('pdf')"
                 class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${this.studentAccessModalTab === 'pdf' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}"
               >
-                📚 Hak Akses Dokumen PDF
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <span>Hak Akses Dokumen PDF</span>
               </button>
             </div>
 
@@ -5346,7 +5388,8 @@ class ChoukaiApp {
                 Batal
               </button>
               <button id="btn-save-chapter-access" type="button" onclick="window.app.saveStudentChapterAccess()" class="px-5 py-2 text-xs font-bold rounded-lg bg-sky-600 hover:bg-sky-700 text-white transition shadow-sm flex items-center gap-1.5">
-                💾 Simpan
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                <span>Simpan</span>
               </button>
             </div>
           </div>
@@ -5384,7 +5427,7 @@ class ChoukaiApp {
                       Materi & Dokumen Bab ${num}
                     </h3>
                     <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isRestricted ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300' : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300'}">
-                      ${isRestricted ? '🔒 Dibatasi Pengawas' : (cAudio ? '5 Dokumen + 🎧 Audio' : '3 Dokumen PDF')}
+                      ${isRestricted ? '<span class="inline-flex items-center gap-1"><svg class="w-3 h-3 text-rose-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Dibatasi Pengawas</span>' : (cAudio ? '<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>Audio</span>' : '3 Dokumen PDF')}
                     </span>
                   </div>
                   <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -5399,7 +5442,7 @@ class ChoukaiApp {
             <div class="space-y-4 my-4 overflow-y-auto pr-1">
               ${isRestricted ? `
                 <div class="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 text-xs flex items-start gap-2.5">
-                  <span class="text-lg leading-none">🔒</span>
+                  <svg class="w-5 h-5 text-rose-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                   <div>
                     <div class="font-bold">Akses Dokumen Bab Ini Sedang Dibatasi</div>
                     <div class="text-[11px] mt-0.5 text-rose-700 dark:text-rose-400">Pengawas/Sensei membatasi hak akses file PDF materi & kunci untuk akun Anda. Anda tetap dapat mengerjakan soal ujian tryout.</div>
@@ -5412,7 +5455,7 @@ class ChoukaiApp {
                 <div class="p-4 rounded-xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/40 dark:bg-sky-950/20">
                   <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-2">
-                      <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-bold">🎧</span>
+                      <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg></span>
                       <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
                         Choukai Listening Engine (Mendengarkan)
                       </h4>
@@ -5432,10 +5475,10 @@ class ChoukaiApp {
                         <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg> Putar Audio
                       </button>
                       <button type="button" onclick="window.app.seekResourceAudio(-10)" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold" title="Mundur 10 Detik">
-                        ⏪ -10s
+                        <span class="inline-flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.334 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z"/></svg>-10s</span>
                       </button>
                       <button type="button" onclick="window.app.seekResourceAudio(10)" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold" title="Maju 10 Detik">
-                        +10s ⏩
+                        <span class="inline-flex items-center gap-1">+10s<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.934 12.8a1 1 0 000-1.6l-5.334-4A1 1 0 005 8v8a1 1 0 001.6.8l5.334-4zm8 0a1 1 0 000-1.6l-5.334-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.334-4z"/></svg></span>
                       </button>
                     </div>
                     <div class="flex items-center gap-2">
@@ -5452,7 +5495,7 @@ class ChoukaiApp {
                         <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Soal Choukai PDF</div>
                         <div class="text-[10px] text-slate-500">Naskah soal bergambar listening</div>
                       </div>
-                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold inline-flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Terkunci</span>` : `
                         <a href="${cSoal.url}" target="_blank" class="px-2.5 py-1 rounded-md bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 text-xs font-bold border border-rose-200 dark:border-rose-800 transition">
                           Buka &rarr;
                         </a>
@@ -5463,7 +5506,7 @@ class ChoukaiApp {
                         <div class="text-xs font-bold text-slate-900 dark:text-slate-100">Kunci Choukai PDF</div>
                         <div class="text-[10px] text-slate-500">Kunci & transkrip audio lengkap</div>
                       </div>
-                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold inline-flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Terkunci</span>` : `
                         <a href="${cKunci.url}" target="_blank" class="px-2.5 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800 transition">
                           Buka &rarr;
                         </a>
@@ -5486,7 +5529,7 @@ class ChoukaiApp {
                       <div class="text-[10px] text-slate-500 mt-0.5">Lembar naskah soal bab</div>
                     </div>
                     <div class="mt-3">
-                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold inline-flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Terkunci</span>` : `
                         <a href="${rSoal.url}" target="_blank" class="w-full py-1.5 px-2.5 rounded-md bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800 transition text-center block">
                           Buka Soal &rarr;
                         </a>
@@ -5501,7 +5544,7 @@ class ChoukaiApp {
                       <div class="text-[10px] text-slate-500 mt-0.5">Kunci jawaban & pembahasan</div>
                     </div>
                     <div class="mt-3">
-                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold inline-flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Terkunci</span>` : `
                         <a href="${rKunci.url}" target="_blank" class="w-full py-1.5 px-2.5 rounded-md bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800 transition text-center block">
                           Buka Kunci &rarr;
                         </a>
@@ -5516,7 +5559,7 @@ class ChoukaiApp {
                       <div class="text-[10px] text-slate-500 mt-0.5">Lembar daftar kata bab ${num}</div>
                     </div>
                     <div class="mt-3">
-                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold">🔒 Terkunci</span>` : `
+                      ${isRestricted ? `<span class="text-xs text-rose-500 font-bold inline-flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Terkunci</span>` : `
                         <a href="${rKosa.url}" target="_blank" class="w-full py-1.5 px-2.5 rounded-md bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-xs font-bold border border-amber-200 dark:border-amber-800 transition text-center block">
                           Buka Kosakata &rarr;
                         </a>
@@ -5571,7 +5614,7 @@ class ChoukaiApp {
             <!-- Master Restriction Alert (If applicable) -->
             ${isMasterRestricted ? `
               <div class="my-2.5 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 text-xs flex items-center gap-2">
-                <span class="text-base">⚠️</span>
+                <svg class="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 <span>Akses seluruh bank dokumen PDF sedang dinonaktifkan khusus untuk akun Anda oleh Sensei/Pengawas.</span>
               </div>
             ` : ""}
@@ -5582,7 +5625,7 @@ class ChoukaiApp {
                 <!-- Search Box -->
                 <div class="flex-1 min-w-[240px] relative">
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                    🔍
+                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                   </span>
                   <input
                     id="pdf-lib-search-input"
@@ -5614,16 +5657,16 @@ class ChoukaiApp {
                   Semua Dokumen (112 File)
                 </button>
                 <button data-type="reading" onclick="window.app.setPdfLibraryFilterType('reading')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'reading' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
-                  📄 Soal & Kunci Reading (50 PDF)
+                  <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Soal & Kunci Reading (50 PDF)</span></span>
                 </button>
                 <button data-type="choukai" onclick="window.app.setPdfLibraryFilterType('choukai')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'choukai' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
-                  🎧 Soal & Kunci Choukai (36 PDF)
+                  <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg><span>Soal & Kunci Choukai (36 PDF)</span></span>
                 </button>
                 <button data-type="kosakata" onclick="window.app.setPdfLibraryFilterType('kosakata')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'kosakata' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
-                  📖 Daftar Kosakata (26 PDF)
+                  <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Daftar Kosakata (26 PDF)</span></span>
                 </button>
                 <button data-type="audio" onclick="window.app.setPdfLibraryFilterType('audio')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'audio' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
-                  🔊 Rekaman Audio Listening (18 MP3)
+                  <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg><span>Rekaman Audio Listening (18 MP3)</span></span>
                 </button>
               </div>
             </div>
@@ -5636,16 +5679,16 @@ class ChoukaiApp {
             <!-- Floating Active Audio Player Bar -->
             <div id="active-audio-bar" class="hidden mt-3 p-2.5 rounded-xl bg-slate-900 text-white flex items-center justify-between gap-3 shadow-lg border border-slate-800 text-xs">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center text-xs font-bold">🎧</span>
+                <span class="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center text-white shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg></span>
                 <div class="min-w-0">
                   <div id="res-audio-bar-title" class="font-bold truncate text-xs text-white">Audio Listening</div>
                   <div id="res-audio-bar-time" class="text-[10px] text-slate-400 font-mono">00:00 / 00:00</div>
                 </div>
               </div>
               <div class="flex items-center gap-1.5">
-                <button type="button" onclick="window.app.seekResourceAudio(-10)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold" title="Mundur 10s">⏪</button>
-                <button id="res-audio-bar-play-btn" type="button" onclick="window.app.toggleResourceAudio(window.app.resourceAudioTrack)" class="px-3 py-1 rounded bg-sky-600 hover:bg-sky-700 text-xs font-bold">▶️ Putar</button>
-                <button type="button" onclick="window.app.seekResourceAudio(10)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold" title="Maju 10s">⏩</button>
+                <button type="button" onclick="window.app.seekResourceAudio(-10)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold" title="Mundur 10s"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.334 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z"/></svg></button>
+                <button id="res-audio-bar-play-btn" type="button" onclick="window.app.toggleResourceAudio(window.app.resourceAudioTrack)" class="px-3 py-1 rounded bg-sky-600 hover:bg-sky-700 text-xs font-bold"><span class="inline-flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>Putar</span></button>
+                <button type="button" onclick="window.app.seekResourceAudio(10)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold" title="Maju 10s"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.934 12.8a1 1 0 000-1.6l-5.334-4A1 1 0 005 8v8a1 1 0 001.6.8l5.334-4zm8 0a1 1 0 000-1.6l-5.334-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.334-4z"/></svg></button>
                 <button id="res-audio-rate-btn" type="button" onclick="window.app.cycleResourceAudioRate()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-bold font-mono">1.0x</button>
               </div>
             </div>
@@ -5741,8 +5784,9 @@ class ChoukaiApp {
                       <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
                       練習 Latihan
                     </span>
-                    <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                      ⏱️ Bebas Waktu
+                    <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400 inline-flex items-center gap-1">
+                      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <span>Bebas Waktu</span>
                     </span>
                   </div>
                   <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
@@ -5766,8 +5810,9 @@ class ChoukaiApp {
                       <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
                       試験 Ujian CBT
                     </span>
-                    <span class="text-[11px] font-bold font-mono text-rose-600 dark:text-rose-400">
-                      ⏱️ ${timerMinutes} Menit
+                    <span class="text-[11px] font-bold font-mono text-rose-600 dark:text-rose-400 inline-flex items-center gap-1">
+                      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <span>${timerMinutes} Menit</span>
                     </span>
                   </div>
                   <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition">
