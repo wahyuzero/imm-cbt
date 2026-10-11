@@ -1224,12 +1224,21 @@ async function runTests() {
     const hasPdfCard08 = await cdp.eval('Boolean(document.getElementById("pdf-toggle-08"))');
     assert(hasPdfCard08, 'Bab 08 PDF access toggle checkbox exists');
 
-    // Toggle Bab 08 PDF checkbox
+    // Verify initially unchecked (default restricted for students)
+    const b8PdfInitial = await cdp.eval('Boolean(document.getElementById("pdf-toggle-08")?.checked)');
+    assert(!b8PdfInitial, 'Bab 08 PDF toggle initially unchecked (Sensei-only by default)');
+
+    // Toggle Bab 08 PDF checkbox to true (custom access for Heru)
+    await cdp.eval('document.getElementById("pdf-toggle-08").checked = true; window.app.toggleStudentPdfChapterAccess("08");');
+    const b8PdfCustomAllowed = await cdp.eval('document.getElementById("pdf-badge-08")?.innerText');
+    assert(b8PdfCustomAllowed === 'PDF Diizinkan', `Bab 08 PDF badge updated to "PDF Diizinkan": ${b8PdfCustomAllowed}`);
+
+    // Toggle Bab 08 PDF checkbox back to false
     await cdp.eval('document.getElementById("pdf-toggle-08").checked = false; window.app.toggleStudentPdfChapterAccess("08");');
     const b8PdfBadge = await cdp.eval('document.getElementById("pdf-badge-08")?.innerText');
     assert(b8PdfBadge === 'PDF Dibatasi', `Bab 08 PDF badge updated to "PDF Dibatasi": ${b8PdfBadge}`);
 
-    // Restore Bab 08 PDF access
+    // Test Buka Semua PDF (25 Bab)
     await cdp.eval('window.app.setAllStudentPdfChapterAccess(true)');
     const b8PdfRestored = await cdp.eval('document.getElementById("pdf-badge-08")?.innerText');
     assert(b8PdfRestored === 'PDF Diizinkan', `Bab 08 PDF badge restored to "PDF Diizinkan": ${b8PdfRestored}`);

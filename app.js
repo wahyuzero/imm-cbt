@@ -64,12 +64,12 @@ class ChoukaiApp {
     this.chaptersStatus = {};
     this.userRestrictedChapters = {};
     this.userRestrictedPdfs = {};
-    this.isUserPdfAccessAllowed = true;
+    this.isUserPdfAccessAllowed = false; // Default: Hanya Sensei yang bisa akses by default
     this.pdfLibrarySearchQuery = "";
     this.pdfLibraryFilterType = "all";
     this.selectedChapterForResources = null;
     this.studentAccessModalTab = "exam";
-    this.selectedStudentPdfMasterAllowed = true;
+    this.selectedStudentPdfMasterAllowed = false;
     this.resourceAudio = new Audio();
     this.resourceAudioPlaying = false;
     this.selectedStudentForAccess = null;
@@ -87,7 +87,7 @@ class ChoukaiApp {
   }
 
   static get VERSION() {
-    return "59";
+    return "60";
   }
 
   audioUrl(url) {
@@ -3035,7 +3035,7 @@ class ChoukaiApp {
         const userAccess = mockAccess[this.currentUser.id] || mockAccess[this.currentUser.username] || {};
         const mockPdfAccess = JSON.parse(localStorage.getItem("imm_mock_pdf_access") || "{}");
         const userPdfAccess = mockPdfAccess[this.currentUser.id] || mockPdfAccess[this.currentUser.username] || {};
-        this.isUserPdfAccessAllowed = userPdfAccess.master !== false;
+        this.isUserPdfAccessAllowed = Boolean(userPdfAccess.master);
 
         for (let i = 1; i <= 25; i++) {
           const num = String(i).padStart(2, "0");
@@ -3045,7 +3045,12 @@ class ChoukaiApp {
           } else {
             this.userRestrictedChapters[num] = false;
           }
-          this.userRestrictedPdfs[num] = userPdfAccess.master === false || userPdfAccess[num] === false;
+          if (this.isUserPdfAccessAllowed) {
+            this.userRestrictedPdfs[num] = userPdfAccess[num] === false;
+          } else {
+            // Default: restricted unless specifically allowed
+            this.userRestrictedPdfs[num] = userPdfAccess[num] !== true;
+          }
         }
       } else {
         this.userRestrictedChapters = {};
@@ -3662,7 +3667,7 @@ class ChoukaiApp {
     this.selectedStudentForAccess = { id: userId, name: userName };
     this.studentChapterAccessData = null;
     this.studentAccessModalTab = "cbt";
-    this.selectedStudentPdfMasterAllowed = true;
+    this.selectedStudentPdfMasterAllowed = false; // Default: Hanya Sensei yang bisa akses by default
     this.activeModal = "student_chapter_access";
     this.renderModal();
 
@@ -3674,6 +3679,8 @@ class ChoukaiApp {
         this.studentChapterAccessData = list;
         if (json.user && json.user.pdfAccessAllowed !== undefined) {
           this.selectedStudentPdfMasterAllowed = Boolean(json.user.pdfAccessAllowed);
+        } else {
+          this.selectedStudentPdfMasterAllowed = false;
         }
       } catch (e) {
         console.error("Failed to fetch chapter access:", e);
@@ -3685,14 +3692,14 @@ class ChoukaiApp {
       const userAccess = mockAccess[userId] || {};
       const mockPdfAccess = JSON.parse(localStorage.getItem("imm_mock_pdf_access") || "{}");
       const userPdfAccess = mockPdfAccess[userId] || {};
-      this.selectedStudentPdfMasterAllowed = userPdfAccess.master !== false;
+      this.selectedStudentPdfMasterAllowed = Boolean(userPdfAccess.master);
 
       const list = CHAPTERS_INDEX.map((ch) => ({
         chapterNum: ch.num,
         titleJa: ch.title_ja,
         titleId: ch.title_id,
         isAllowed: userAccess[ch.num] !== false,
-        isPdfAllowed: userPdfAccess.master === false ? false : userPdfAccess[ch.num] !== false,
+        isPdfAllowed: Boolean(userPdfAccess[ch.num] ?? userPdfAccess.master),
       }));
       this.studentChapterAccessData = list;
     }
@@ -3758,22 +3765,55 @@ class ChoukaiApp {
   }
 
   toggleStudentPdfMasterAccess(allowed) {
-    this.selectedStudentPdfMasterAllowed = Boolean(allowed);
+    this.setAllStudentPdfChapterAccess(Boolean(allowed));
+  }
+
+  updatePdfStatusDisplay() {
+    const list = this.studentChapterAccessData || [];
+    const count = list.filter((x) => x.isPdfAllowed).length;
+    const badge = document.getElementById("pdf-master-status-badge");
+    const desc = document.getElementById("pdf-master-desc");
     const masterSwitch = document.getElementById("pdf-master-toggle-btn");
-    if (masterSwitch) {
-      if (this.selectedStudentPdfMasterAllowed) {
-        masterSwitch.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-emerald-600 text-white shadow-xs";
-        masterSwitch.innerText = "AKTIF (Bisa Buka PDF)";
-      } else {
-        masterSwitch.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-rose-600 text-white shadow-xs";
-        masterSwitch.innerText = "DIKUNCI (Semua PDF Diblokir)";
+
+    if (count === 25) {
+      this.selectedStudentPdfMasterAllowed = true;
+      if (badge) {
+        badge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
+        badge.innerText = "Semua Dibuka (25/25 Bab)";
       }
-    }
-    const banner = document.getElementById("pdf-master-desc");
-    if (banner) {
-      banner.innerText = this.selectedStudentPdfMasterAllowed
-        ? "Hak akses PDF terbuka. Anda dapat mengatur pembatasan per bab di bawah ini."
-        : "Hak akses PDF dikunci secara global. Siswa ini tidak dapat membuka dokumen PDF apapun.";
+      if (desc) {
+        desc.innerText = "Seluruh 25 dokumen PDF materi & kunci dibuka untuk siswa ini.";
+      }
+      if (masterSwitch) {
+        masterSwitch.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs bg-emerald-600 text-white hover:bg-emerald-700";
+        masterSwitch.innerText = "SEMUA DIBUKA (25 Bab)";
+      }
+    } else if (count === 0) {
+      this.selectedStudentPdfMasterAllowed = false;
+      if (badge) {
+        badge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300";
+        badge.innerText = "Terkunci Total (Default Sensei)";
+      }
+      if (desc) {
+        desc.innerText = "Akses PDF terkunci secara default. Hanya Sensei yang bisa mengakses, kecuali dibuka per bab di bawah ini.";
+      }
+      if (masterSwitch) {
+        masterSwitch.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs bg-rose-600 text-white hover:bg-rose-700";
+        masterSwitch.innerText = "TERKUNCI (Default Sensei)";
+      }
+    } else {
+      this.selectedStudentPdfMasterAllowed = false;
+      if (badge) {
+        badge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300";
+        badge.innerText = `Kustom (${count}/25 Bab Dibuka)`;
+      }
+      if (desc) {
+        desc.innerText = `Siswa ini memiliki akses kustom hanya pada ${count} bab yang dicentang di bawah ini.`;
+      }
+      if (masterSwitch) {
+        masterSwitch.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs bg-sky-600 text-white hover:bg-sky-700";
+        masterSwitch.innerText = `KUSTOM (${count}/25 Bab)`;
+      }
     }
   }
 
@@ -3785,6 +3825,7 @@ class ChoukaiApp {
         const item = this.studentChapterAccessData.find((x) => x.chapterNum === chNum);
         if (item) item.isPdfAllowed = cb.checked;
       }
+      this.updatePdfStatusDisplay();
     }
   }
 
@@ -3810,6 +3851,7 @@ class ChoukaiApp {
   }
 
   setAllStudentPdfChapterAccess(isAllowed) {
+    this.selectedStudentPdfMasterAllowed = Boolean(isAllowed);
     const list = typeof CHAPTERS_INDEX !== "undefined" ? CHAPTERS_INDEX : [];
     for (const ch of list) {
       const num = ch.num;
@@ -3823,6 +3865,7 @@ class ChoukaiApp {
         if (item) item.isPdfAllowed = isAllowed;
       }
     }
+    this.updatePdfStatusDisplay();
   }
 
   async saveStudentChapterAccess() {
@@ -3839,7 +3882,7 @@ class ChoukaiApp {
       const existing = (this.studentChapterAccessData || []).find((x) => x.chapterNum === num);
 
       accessMap[num] = cbCbt ? Boolean(cbCbt.checked) : (existing ? existing.isAllowed !== false : true);
-      pdfMap[num] = cbPdf ? Boolean(cbPdf.checked) : (existing ? existing.isPdfAllowed !== false : true);
+      pdfMap[num] = cbPdf ? Boolean(cbPdf.checked) : (existing ? Boolean(existing.isPdfAllowed) : false);
     }
 
     const saveBtn = document.getElementById("btn-save-chapter-access");
@@ -3848,8 +3891,10 @@ class ChoukaiApp {
       saveBtn.innerText = "Menyimpan...";
     }
 
+    const allPdfsAllowed = Object.values(pdfMap).every(Boolean);
+    const anyPdfsAllowed = Object.values(pdfMap).some(Boolean);
     const payload = {
-      pdfAccessAllowed: this.selectedStudentPdfMasterAllowed,
+      pdfAccessAllowed: this.selectedStudentPdfMasterAllowed || allPdfsAllowed,
       chapters: accessMap,
       pdfChapters: pdfMap,
     };
@@ -3889,7 +3934,7 @@ class ChoukaiApp {
       localStorage.setItem("imm_mock_chapter_access", JSON.stringify(mockAccess));
 
       const mockPdfAccess = JSON.parse(localStorage.getItem("imm_mock_pdf_access") || "{}");
-      const pdfObj = { master: this.selectedStudentPdfMasterAllowed, ...pdfMap };
+      const pdfObj = { master: this.selectedStudentPdfMasterAllowed || allPdfsAllowed, ...pdfMap };
       mockPdfAccess[userId] = pdfObj;
       if (this.selectedStudentForAccess.username) {
         mockPdfAccess[this.selectedStudentForAccess.username] = pdfObj;
@@ -3898,11 +3943,11 @@ class ChoukaiApp {
 
       // Update local state if the current user is this student
       if (this.currentUser && (this.currentUser.id === userId || this.currentUser.name === this.selectedStudentForAccess.name)) {
-        this.isUserPdfAccessAllowed = this.selectedStudentPdfMasterAllowed;
+        this.isUserPdfAccessAllowed = this.selectedStudentPdfMasterAllowed || allPdfsAllowed;
         for (let i = 1; i <= 25; i++) {
           const num = String(i).padStart(2, "0");
           this.userRestrictedChapters[num] = accessMap[num] === false;
-          this.userRestrictedPdfs[num] = !this.selectedStudentPdfMasterAllowed || pdfMap[num] === false;
+          this.userRestrictedPdfs[num] = !this.isUserPdfAccessAllowed ? !pdfMap[num] : pdfMap[num] === false;
           if (accessMap[num] === false) {
             this.chaptersStatus[num] = false;
           }
@@ -3932,12 +3977,34 @@ class ChoukaiApp {
     const pdfMap = {};
     for (const item of data) {
       accessMap[item.chapterNum] = item.isAllowed !== false;
-      pdfMap[item.chapterNum] = item.isPdfAllowed !== false;
+      pdfMap[item.chapterNum] = Boolean(item.isPdfAllowed);
     }
 
     const currentTab = this.studentAccessModalTab || "cbt";
 
     if (currentTab === "pdf") {
+      const count = Object.values(pdfMap).filter(Boolean).length;
+      let statusBadge = "";
+      let statusDesc = "";
+      let masterBtnText = "";
+      let masterBtnClass = "";
+      if (count === 25) {
+        statusBadge = '<span id="pdf-master-status-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Semua Dibuka (25/25 Bab)</span>';
+        statusDesc = "Seluruh 25 dokumen PDF materi & kunci dibuka untuk siswa ini.";
+        masterBtnText = "SEMUA DIBUKA (25 Bab)";
+        masterBtnClass = "bg-emerald-600 text-white hover:bg-emerald-700";
+      } else if (count === 0) {
+        statusBadge = '<span id="pdf-master-status-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">Terkunci Total (Default Sensei)</span>';
+        statusDesc = "Akses PDF terkunci secara default. Hanya Sensei yang bisa mengakses, kecuali dibuka per bab di bawah ini.";
+        masterBtnText = "TERKUNCI (Default Sensei)";
+        masterBtnClass = "bg-rose-600 text-white hover:bg-rose-700";
+      } else {
+        statusBadge = `<span id="pdf-master-status-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">Kustom (${count}/25 Bab Dibuka)</span>`;
+        statusDesc = `Siswa ini memiliki akses kustom hanya pada ${count} bab yang dicentang di bawah ini.`;
+        masterBtnText = `KUSTOM (${count}/25 Bab)`;
+        masterBtnClass = "bg-sky-600 text-white hover:bg-sky-700";
+      }
+
       pane.innerHTML = `
         <div class="space-y-4">
           <!-- Master Switch Hak Akses PDF -->
@@ -3945,25 +4012,21 @@ class ChoukaiApp {
             <div>
               <div class="flex items-center gap-2">
                 <span class="text-xs font-black uppercase tracking-wider text-sky-900 dark:text-sky-200">
-                  Sakelar Utama Hak Akses PDF Siswa
+                  Status Hak Akses Dokumen PDF Siswa
                 </span>
-                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${this.selectedStudentPdfMasterAllowed ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'}">
-                  ${this.selectedStudentPdfMasterAllowed ? 'Aktif' : 'Diblokir'}
-                </span>
+                ${statusBadge}
               </div>
               <p id="pdf-master-desc" class="text-xs text-slate-600 dark:text-slate-400 mt-1">
-                ${this.selectedStudentPdfMasterAllowed
-                  ? 'Hak akses PDF terbuka. Anda dapat mengatur pembatasan per bab di bawah ini.'
-                  : 'Hak akses PDF dikunci secara global. Siswa ini tidak dapat membuka dokumen PDF apapun.'}
+                ${statusDesc}
               </p>
             </div>
             <button
               id="pdf-master-toggle-btn"
               type="button"
               onclick="window.app.toggleStudentPdfMasterAccess(!window.app.selectedStudentPdfMasterAllowed)"
-              class="px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs ${this.selectedStudentPdfMasterAllowed ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-rose-600 text-white hover:bg-rose-700'}"
+              class="px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs ${masterBtnClass}"
             >
-              ${this.selectedStudentPdfMasterAllowed ? 'AKTIF (Bisa Buka PDF)' : 'DIKUNCI (Semua PDF Diblokir)'}
+              ${masterBtnText}
             </button>
           </div>
 
@@ -3971,21 +4034,21 @@ class ChoukaiApp {
           <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
             <div class="flex items-center gap-2">
               <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(true)" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-                ✅ Izinkan Semua PDF Bab
+                ✅ Buka Semua PDF (25 Bab)
               </button>
               <button type="button" onclick="window.app.setAllStudentPdfChapterAccess(false)" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 shadow-xs">
-                🔒 Kunci Semua PDF Bab
+                🔒 Kunci Semua PDF (Kembali Default)
               </button>
             </div>
             <span class="text-[11px] text-slate-500 italic">
-              Mengatur izin Salinan Soal, Kunci Pembahasan, Kosakata, dan Choukai PDF per bab
+              Toggle on/off tiap bab di bawah untuk custom akses per siswa
             </span>
           </div>
 
           <!-- Grid 25 Bab PDF -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-h-[45vh] overflow-y-auto p-1">
             ${CHAPTERS_INDEX.map((ch) => {
-              const isAllowed = pdfMap[ch.num] !== false;
+              const isAllowed = Boolean(pdfMap[ch.num]);
               const hasChoukai = parseInt(ch.num, 10) >= 8;
               return `
                 <div id="pdf-card-${ch.num}" class="pdf-ch-card p-3 rounded-xl border ${isAllowed ? 'border-sky-300 dark:border-sky-800 bg-sky-50/50 dark:bg-sky-950/20' : 'border-rose-300 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/20 opacity-80'} transition flex flex-col justify-between">

@@ -423,7 +423,7 @@ export async function resetAndSeedOfficialAccounts(forcePurge = false) {
         "email_verified", "role", "class_name", "pdf_access_allowed", "banned", "created_at", "updated_at"
       ) VALUES (
         ${u.id}, ${u.name}, ${u.username}, ${u.displayUsername}, ${u.email},
-        true, ${u.role}, ${u.className}, true, false, now(), now()
+        true, ${u.role}, ${u.className}, ${u.role === "admin"}, false, now(), now()
       )
       ON CONFLICT ("username") DO UPDATE SET
         "name" = EXCLUDED."name",

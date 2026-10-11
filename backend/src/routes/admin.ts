@@ -238,14 +238,30 @@ adminRouter.get("/admin/users/:id/chapter-access", async (c) => {
     const accessMap = new Map(userAccessList.map((a) => [a.chapterNum, a.isAllowed]));
     const pdfAccessMap = new Map(userAccessList.map((a) => [a.chapterNum, a.isPdfAllowed]));
 
-    const chapterList = allChapters.map((ch) => ({
-      chapterNum: ch.chapterNum,
-      titleJa: ch.titleJa,
-      titleId: ch.titleId,
-      isAllowed: accessMap.has(ch.chapterNum) ? accessMap.get(ch.chapterNum)! : true,
-      isPdfAllowed: pdfAccessMap.has(ch.chapterNum) ? pdfAccessMap.get(ch.chapterNum)! : true,
-      isGeneralUnlocked: ch.isUnlocked,
-    }));
+    const targetIsAdmin = targetUser.role === "admin";
+    const targetPdfMaster = targetIsAdmin ? true : Boolean(targetUser.pdfAccessAllowed);
+
+    const chapterList = allChapters.map((ch) => {
+      let isPdfAllowed = false;
+      if (targetIsAdmin) {
+        isPdfAllowed = true;
+      } else if (pdfAccessMap.has(ch.chapterNum)) {
+        isPdfAllowed = pdfAccessMap.get(ch.chapterNum)! === true;
+      } else if (targetPdfMaster) {
+        isPdfAllowed = true;
+      } else {
+        isPdfAllowed = false;
+      }
+
+      return {
+        chapterNum: ch.chapterNum,
+        titleJa: ch.titleJa,
+        titleId: ch.titleId,
+        isAllowed: accessMap.has(ch.chapterNum) ? accessMap.get(ch.chapterNum)! : true,
+        isPdfAllowed: isPdfAllowed,
+        isGeneralUnlocked: ch.isUnlocked,
+      };
+    });
 
     return c.json({
       success: true,
@@ -256,9 +272,9 @@ adminRouter.get("/admin/users/:id/chapter-access", async (c) => {
         username: targetUser.username,
         role: targetUser.role,
         className: targetUser.className || "-",
-        pdfAccessAllowed: targetUser.pdfAccessAllowed ?? true,
+        pdfAccessAllowed: targetPdfMaster,
       },
-      pdfAccessAllowed: targetUser.pdfAccessAllowed ?? true,
+      pdfAccessAllowed: targetPdfMaster,
       chapters: chapterList,
     });
   } catch (err: any) {
@@ -377,10 +393,18 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
       for (const ch of allChapters) {
         getOrCreateUpdate(ch.chapterNum).isPdfAllowed = true;
       }
+      await db
+        .update(user)
+        .set({ pdfAccessAllowed: true, updatedAt: new Date() })
+        .where(eq(user.id, targetUserId));
     } else if (body.pdfAction === "lock_all") {
       for (const ch of allChapters) {
         getOrCreateUpdate(ch.chapterNum).isPdfAllowed = false;
       }
+      await db
+        .update(user)
+        .set({ pdfAccessAllowed: false, updatedAt: new Date() })
+        .where(eq(user.id, targetUserId));
     }
 
     const updates = Array.from(updatesMap.values());
@@ -413,7 +437,9 @@ adminRouter.put("/admin/users/:id/chapter-access", async (c) => {
     const rows = updates.map((up) => {
       const existing = existingMap.get(up.chapterNum);
       const isAllowedVal = up.isAllowed !== undefined ? up.isAllowed : (existing ? existing.isAllowed : true);
-      const isPdfAllowedVal = up.isPdfAllowed !== undefined ? up.isPdfAllowed : (existing ? existing.isPdfAllowed : true);
+      const isPdfAllowedVal = up.isPdfAllowed !== undefined
+        ? up.isPdfAllowed
+        : (existing ? existing.isPdfAllowed : (targetUser.role === "admin" ? true : false));
       return {
         id: `uca_${targetUserId}_${up.chapterNum}`,
         userId: targetUserId,

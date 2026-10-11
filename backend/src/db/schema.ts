@@ -13,7 +13,7 @@ export const user = pgTable("user", {
   image: text("image"),
   role: text("role").default("student").notNull(),   // 'student' | 'admin'
   className: text("class_name"),                     // "Angkatan 35-A" (teks fleksibel)
-  pdfAccessAllowed: boolean("pdf_access_allowed").default(true).notNull(),
+  pdfAccessAllowed: boolean("pdf_access_allowed").default(false).notNull(), // Default: false (Hanya Sensei yang bisa akses by default)
   banned: boolean("banned").default(false).notNull(),
   banReason: text("ban_reason"),
   banExpires: timestamp("ban_expires"),              // Diwajibkan Better Auth Admin Plugin
@@ -187,7 +187,7 @@ export const userChapterAccess = pgTable("user_chapter_access", {
   userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
   chapterNum: text("chapter_num").notNull().references(() => chapters.chapterNum, { onDelete: "cascade" }),
   isAllowed: boolean("is_allowed").default(true).notNull(), // true = dibolehkan, false = dibatasi khusus
-  isPdfAllowed: boolean("is_pdf_allowed").default(true).notNull(), // true = dibolehkan, false = dibatasi khusus
+  isPdfAllowed: boolean("is_pdf_allowed").default(false).notNull(), // true = dibolehkan, false = dibatasi khusus (default: false)
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 }, (table) => ({
   userChapterAccessUniqueIdx: uniqueIndex("user_chapter_access_user_ch_idx").on(table.userId, table.chapterNum),
