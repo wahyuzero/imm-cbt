@@ -496,10 +496,10 @@ async function runApiVerification() {
   assert.strictEqual(heruRestartB5Res.status, 200, "Heru can start Bab 05 again after access restored");
   console.log("[PASS] Access restoration verified: Heru Prayoga can access and start Bab 05 again");
 
-  // TEST 17B: Per-Student PDF Access Control (Master Switch & Per-Chapter PDF Permissions)
-  console.log("\n[TEST 17B] Per-Student PDF Access Control (Sensei API & Student Chapters Endpoint)");
+  // TEST 17B: Per-Student PDF Access Control (Default Restricted for Students, Custom Per-Bab & Buka Semua)
+  console.log("\n[TEST 17B] Per-Student PDF Access Control (Sensei Only By Default, Custom Per-Bab & Buka Semua)");
 
-  // 1. Sensei inspects Heru's PDF access
+  // 1. Sensei inspects Heru's PDF access (Expect default: false for students)
   const heruPdfAccessRes = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
     headers: { Cookie: adminCookie },
   });
@@ -507,53 +507,43 @@ async function runApiVerification() {
   const heruPdfAccessJson = await heruPdfAccessRes.json();
   assert.strictEqual(typeof heruPdfAccessJson.user.pdfAccessAllowed, "boolean", "user.pdfAccessAllowed is boolean");
   const bab08PdfItem = heruPdfAccessJson.data.find((c) => c.chapterNum === "08");
-  assert.strictEqual(bab08PdfItem.isPdfAllowed, true, "Bab 08 isPdfAllowed initially true");
+  assert.strictEqual(bab08PdfItem.isPdfAllowed, false, "Bab 08 isPdfAllowed initially false by default for students");
+  console.log("[PASS] Default PDF access verified: students have PDF access restricted by default");
 
-  // 2. Sensei restricts Bab 08 PDF for Heru
-  const restrictPdfB8Res = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
+  // 2. Heru inspects chapters and verifies all PDFs are restricted by default
+  const heruDefaultChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  const heruDefaultChaptersJson = await heruDefaultChaptersRes.json();
+  const b8Default = heruDefaultChaptersJson.data.find((c) => c.chapterNum === "08");
+  assert.strictEqual(b8Default.isPdfAllowed, false, "Bab 08 isPdfAllowed is false by default for Heru");
+  assert.strictEqual(b8Default.pdfRestricted, true, "Bab 08 pdfRestricted is true by default for Heru");
+
+  // 3. Sensei enables custom access specifically for Bab 08 PDF
+  const customPdfB8Res = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Cookie: adminCookie,
     },
-    body: JSON.stringify({ chapterNum: "08", isPdfAllowed: false }),
+    body: JSON.stringify({ chapterNum: "08", isPdfAllowed: true }),
   });
-  assert.strictEqual(restrictPdfB8Res.status, 200, "Sensei restricts Bab 08 PDF with 200");
+  assert.strictEqual(customPdfB8Res.status, 200, "Sensei enables custom Bab 08 PDF with 200");
 
-  // 3. Heru inspects chapters and verifies Bab 08 PDF is restricted
-  const heruPdfChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+  // 4. Heru verifies custom access: Bab 08 is now allowed, but Bab 01 remains restricted
+  const heruCustomChaptersRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
     headers: { Cookie: studentCookie },
   });
-  const heruPdfChaptersJson = await heruPdfChaptersRes.json();
-  const b8PdfChapter = heruPdfChaptersJson.data.find((c) => c.chapterNum === "08");
-  assert.strictEqual(b8PdfChapter.isPdfAllowed, false, "Bab 08 isPdfAllowed is false for Heru");
-  assert.strictEqual(b8PdfChapter.pdfRestricted, true, "Bab 08 pdfRestricted is true for Heru");
-  const b01PdfChapter = heruPdfChaptersJson.data.find((c) => c.chapterNum === "01");
-  assert.strictEqual(b01PdfChapter.isPdfAllowed, true, "Bab 01 isPdfAllowed remains true");
-  console.log("[PASS] Per-chapter PDF restriction verified: Bab 08 PDF restricted for Heru while Bab 01 remains open");
+  const heruCustomChaptersJson = await heruCustomChaptersRes.json();
+  const b8Custom = heruCustomChaptersJson.data.find((c) => c.chapterNum === "08");
+  assert.strictEqual(b8Custom.isPdfAllowed, true, "Bab 08 isPdfAllowed is now true for Heru");
+  assert.strictEqual(b8Custom.pdfRestricted, false, "Bab 08 pdfRestricted is false for Heru");
+  const b01Custom = heruCustomChaptersJson.data.find((c) => c.chapterNum === "01");
+  assert.strictEqual(b01Custom.isPdfAllowed, false, "Bab 01 remains false under custom access");
+  console.log("[PASS] Custom per-chapter PDF toggle verified: Bab 08 PDF opened while other chapters remain closed");
 
-  // 4. Sensei tests master lock switch (pdfAccessAllowed: false)
-  const masterLockPdfRes = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: adminCookie,
-    },
-    body: JSON.stringify({ pdfAccessAllowed: false }),
-  });
-  assert.strictEqual(masterLockPdfRes.status, 200, "Master PDF lock returns 200");
-
-  // 5. Heru inspects chapters under master PDF lock
-  const heruMasterLockedRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
-    headers: { Cookie: studentCookie },
-  });
-  const heruMasterLockedJson = await heruMasterLockedRes.json();
-  assert.strictEqual(heruMasterLockedJson.pdfAccessAllowed, false, "Root pdfAccessAllowed is false for Heru");
-  assert.strictEqual(heruMasterLockedJson.data[0].isPdfAllowed, false, "All chapters have isPdfAllowed: false under master lock");
-  console.log("[PASS] Master PDF lock verified: all PDF access globally restricted for Heru");
-
-  // 6. Sensei restores full PDF access (pdfAccessAllowed: true, pdfAction: 'allow_all')
-  const restorePdfRes = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
+  // 5. Sensei unlocks all PDFs ("Buka Semua")
+  const bukaSemuaPdfRes = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -561,17 +551,36 @@ async function runApiVerification() {
     },
     body: JSON.stringify({ pdfAccessAllowed: true, pdfAction: "allow_all" }),
   });
-  assert.strictEqual(restorePdfRes.status, 200, "Restore PDF access returns 200");
+  assert.strictEqual(bukaSemuaPdfRes.status, 200, "Sensei Buka Semua PDF returns 200");
 
-  // 7. Heru verifies PDF access is fully restored
-  const heruRestoredPdfRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+  // 6. Heru verifies all chapters are allowed under "Buka Semua"
+  const heruAllOpenRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
     headers: { Cookie: studentCookie },
   });
-  const heruRestoredPdfJson = await heruRestoredPdfRes.json();
-  assert.strictEqual(heruRestoredPdfJson.pdfAccessAllowed, true, "Root pdfAccessAllowed is true after restore");
-  const b8RestoredPdf = heruRestoredPdfJson.data.find((c) => c.chapterNum === "08");
-  assert.strictEqual(b8RestoredPdf.isPdfAllowed, true, "Bab 08 isPdfAllowed is true after restore");
-  console.log("[PASS] Full PDF access restoration verified: Heru can access all PDF documents again");
+  const heruAllOpenJson = await heruAllOpenRes.json();
+  assert.strictEqual(heruAllOpenJson.pdfAccessAllowed, true, "Root pdfAccessAllowed is true after Buka Semua");
+  assert.strictEqual(heruAllOpenJson.data[0].isPdfAllowed, true, "Bab 01 is allowed under Buka Semua");
+  assert.strictEqual(heruAllOpenJson.data[7].isPdfAllowed, true, "Bab 08 is allowed under Buka Semua");
+  console.log("[PASS] Buka Semua verified: Heru can access all 25 chapters PDF");
+
+  // 7. Sensei locks all PDFs back ("Kunci Semua" / Kembali ke Default)
+  const kunciSemuaPdfRes = await fetch(`${BASE_URL}/api/v1/admin/users/${heruRecord.id}/chapter-access`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: adminCookie,
+    },
+    body: JSON.stringify({ pdfAccessAllowed: false, pdfAction: "lock_all" }),
+  });
+  assert.strictEqual(kunciSemuaPdfRes.status, 200, "Kunci Semua PDF returns 200");
+
+  const heruRelockedRes = await fetch(`${BASE_URL}/api/v1/chapters`, {
+    headers: { Cookie: studentCookie },
+  });
+  const heruRelockedJson = await heruRelockedRes.json();
+  assert.strictEqual(heruRelockedJson.pdfAccessAllowed, false, "Root pdfAccessAllowed is false after Kunci Semua");
+  assert.strictEqual(heruRelockedJson.data[0].isPdfAllowed, false, "All chapters relocked to default false");
+  console.log("[PASS] Kunci Semua verified: all PDFs returned to default restricted state");
 
   // TEST 18: Student Logout & Backend Session Revocation (POST /api/auth/sign-out)
   console.log("\n[TEST 18] Student Logout & Backend Session Revocation");

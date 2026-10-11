@@ -40,11 +40,13 @@ chaptersRouter.get("/chapters", async (c) => {
         }
       }
 
-      if (session.user.role !== "admin") {
+      if (session.user.role === "admin") {
+        userGlobalPdfAllowed = true;
+      } else {
         const dbUser = await db.query.user.findFirst({
           where: eq(user.id, session.user.id),
         });
-        userGlobalPdfAllowed = dbUser ? dbUser.pdfAccessAllowed : true;
+        userGlobalPdfAllowed = dbUser ? Boolean(dbUser.pdfAccessAllowed) : false;
 
         const accessList = await db.query.userChapterAccess.findMany({
           where: eq(userChapterAccess.userId, session.user.id),
@@ -62,11 +64,22 @@ chaptersRouter.get("/chapters", async (c) => {
         : true;
       const isUserRestricted = !isAllowedForUser;
 
-      const isPdfAllowedForUser = !userGlobalPdfAllowed
-        ? false
-        : userPdfAccessMap.has(ch.chapterNum)
-        ? userPdfAccessMap.get(ch.chapterNum)!
-        : true;
+      // PDF logic:
+      // Sensei: ALWAYS allowed (true)
+      // Siswa:
+      // 1. If Sensei configured custom chapter toggle for this student: use that specific chapter toggle!
+      // 2. Else if userGlobalPdfAllowed is true (Sensei clicked "Buka Semua"): true
+      // 3. Else: false (By default, only Sensei has access!)
+      let isPdfAllowedForUser = false;
+      if (session && session.user.role === "admin") {
+        isPdfAllowedForUser = true;
+      } else if (userPdfAccessMap.has(ch.chapterNum)) {
+        isPdfAllowedForUser = userPdfAccessMap.get(ch.chapterNum)! === true;
+      } else if (userGlobalPdfAllowed) {
+        isPdfAllowedForUser = true;
+      } else {
+        isPdfAllowedForUser = false;
+      }
 
       return {
         ...ch,
