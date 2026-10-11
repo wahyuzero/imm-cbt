@@ -2266,11 +2266,11 @@ class ChoukaiApp {
               if (isTargetCorrect) {
                 optBorder = "border-emerald-300 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-semibold";
                 badgeColor = "bg-emerald-600 text-white";
-                tag = `<span class="ml-auto text-[10px] text-emerald-700 dark:text-emerald-300 font-bold font-mono">✓ Kunci</span>`;
+                tag = `<span class="ml-auto text-[10px] text-emerald-700 dark:text-emerald-300 font-bold font-mono inline-flex items-center gap-1"><svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg><span>✓ Kunci</span></span>`;
               } else if (isSelected && !isCorrect) {
                 optBorder = "border-rose-300 dark:border-rose-800 bg-rose-50/60 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-semibold";
                 badgeColor = "bg-rose-600 text-white";
-                tag = `<span class="ml-auto text-[10px] text-rose-700 dark:text-rose-300 font-bold font-mono">✕ Pilihan Anda</span>`;
+                tag = `<span class="ml-auto text-[10px] text-rose-700 dark:text-rose-300 font-bold font-mono inline-flex items-center gap-1"><svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg><span>✕ Pilihan Anda</span></span>`;
               }
               const optCleanJa = opt.text_ja.replace(/^[①②③④\d]+[\s.、]*\s*/, "");
               return `
@@ -3452,9 +3452,9 @@ class ChoukaiApp {
     document.querySelectorAll(".admin-tab-btn").forEach((btn) => {
       const target = btn.getAttribute("data-tab");
       if (target === tab) {
-        btn.className = "admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg bg-sky-600 text-white shadow-xs transition";
+        btn.className = "admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 bg-sky-600 text-white shadow-xs transition";
       } else {
-        btn.className = "admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition";
+        btn.className = "admin-tab-btn px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition";
       }
     });
 
@@ -3846,6 +3846,14 @@ class ChoukaiApp {
 
   switchStudentAccessTab(tab) {
     this.studentAccessModalTab = tab;
+    const cbtBtn = document.querySelector("button[onclick*=\"switchStudentAccessTab('cbt')\"]");
+    const pdfBtn = document.querySelector("button[onclick*=\"switchStudentAccessTab('pdf')\"]");
+    if (cbtBtn) {
+      cbtBtn.className = `flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${tab === 'cbt' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`;
+    }
+    if (pdfBtn) {
+      pdfBtn.className = `flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${tab === 'pdf' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'}`;
+    }
     this.renderStudentChapterAccessModalContent();
   }
 
@@ -4047,14 +4055,14 @@ class ChoukaiApp {
           alert(json.error || "Gagal menyimpan hak akses.");
           if (saveBtn) {
             saveBtn.disabled = false;
-            saveBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg> Simpan';
+            saveBtn.innerHTML = '<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="17 21 17 13 7 13 7 21"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="7 3 7 8 15 8"/></svg><span>Simpan</span>';
           }
         }
       } catch (e) {
         alert("Koneksi gagal saat menyimpan hak akses.");
         if (saveBtn) {
           saveBtn.disabled = false;
-          saveBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg> Simpan';
+          saveBtn.innerHTML = '<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="17 21 17 13 7 13 7 21"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="7 3 7 8 15 8"/></svg><span>Simpan</span>';
         }
       }
     } else {
@@ -4200,7 +4208,7 @@ class ChoukaiApp {
                       ${ch.title_ja}
                     </div>
                     <div class="text-[10px] text-slate-500 mt-1">
-                      ${hasChoukai ? '<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>Audio</span>' : '3 Dokumen PDF'}
+                      ${hasChoukai ? '<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg>Audio</span>' : '3 Dokumen PDF'}
                     </div>
                   </div>
                   <div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
@@ -4673,7 +4681,7 @@ class ChoukaiApp {
                       ${cSoal ? `
                         <div class="flex flex-wrap gap-1.5">
                           <a href="${cSoal.url}" target="_blank" class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
-                            <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                            <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg>
                             Soal
                           </a>
                           <a href="${cKunci.url}" target="_blank" class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold hover:underline inline-flex items-center gap-1">
@@ -4933,7 +4941,7 @@ class ChoukaiApp {
                   return `
                     <div class="p-2 rounded-lg bg-sky-50/60 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex items-center justify-between gap-2">
                       <div class="flex items-center gap-2 min-w-0">
-                        <span class="w-5 h-5 rounded-md bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-300 flex items-center justify-center shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg></span>
+                        <span class="w-5 h-5 rounded-md bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-300 flex items-center justify-center shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg></span>
                         <div class="min-w-0">
                           <div class="text-[11px] font-bold text-sky-900 dark:text-sky-200 truncate">${item.title}</div>
                           <div class="text-[10px] text-sky-700 dark:text-sky-400 truncate">Audio Penutur Asli Choukai</div>
@@ -4996,7 +5004,7 @@ class ChoukaiApp {
           <!-- Bottom Action / Summary -->
           <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px]">
             <span class="text-slate-500">
-              ${resList.length > 3 ? '<span class="inline-flex items-center gap-1">5 PDF + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>Audio</span>' : '3 Dokumen PDF'}
+              ${resList.length > 3 ? '<span class="inline-flex items-center gap-1">5 PDF + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg>Audio</span>' : '3 Dokumen PDF'}
             </span>
             ${!isRestricted ? `
               <button onclick="window.app.openChapterResourcesModal('${num}')" class="text-sky-600 dark:text-sky-400 font-bold hover:underline">
@@ -5388,7 +5396,7 @@ class ChoukaiApp {
                 Batal
               </button>
               <button id="btn-save-chapter-access" type="button" onclick="window.app.saveStudentChapterAccess()" class="px-5 py-2 text-xs font-bold rounded-lg bg-sky-600 hover:bg-sky-700 text-white transition shadow-sm flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="17 21 17 13 7 13 7 21"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="7 3 7 8 15 8"/></svg>
                 <span>Simpan</span>
               </button>
             </div>
@@ -5427,7 +5435,7 @@ class ChoukaiApp {
                       Materi & Dokumen Bab ${num}
                     </h3>
                     <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isRestricted ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300' : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300'}">
-                      ${isRestricted ? '<span class="inline-flex items-center gap-1"><svg class="w-3 h-3 text-rose-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Dibatasi Pengawas</span>' : (cAudio ? '<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>Audio</span>' : '3 Dokumen PDF')}
+                      ${isRestricted ? '<span class="inline-flex items-center gap-1"><svg class="w-3 h-3 text-rose-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Dibatasi Pengawas</span>' : (cAudio ? '<span class="inline-flex items-center gap-1">5 Dokumen + <svg class="w-2.5 h-2.5 text-rose-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg>Audio</span>' : '3 Dokumen PDF')}
                     </span>
                   </div>
                   <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -5455,7 +5463,7 @@ class ChoukaiApp {
                 <div class="p-4 rounded-xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/40 dark:bg-sky-950/20">
                   <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-2">
-                      <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg></span>
+                      <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center shrink-0"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg></span>
                       <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
                         Choukai Listening Engine (Mendengarkan)
                       </h4>
@@ -5660,7 +5668,7 @@ class ChoukaiApp {
                   <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Soal & Kunci Reading (50 PDF)</span></span>
                 </button>
                 <button data-type="choukai" onclick="window.app.setPdfLibraryFilterType('choukai')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'choukai' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
-                  <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg><span>Soal & Kunci Choukai (36 PDF)</span></span>
+                  <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg><span>Soal & Kunci Choukai (36 PDF)</span></span>
                 </button>
                 <button data-type="kosakata" onclick="window.app.setPdfLibraryFilterType('kosakata')" class="pdf-lib-filter-chip px-3 py-1.5 rounded-lg text-xs font-bold ${this.pdfLibraryFilterType === 'kosakata' ? 'bg-sky-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'} transition">
                   <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Daftar Kosakata (26 PDF)</span></span>
@@ -5679,7 +5687,7 @@ class ChoukaiApp {
             <!-- Floating Active Audio Player Bar -->
             <div id="active-audio-bar" class="hidden mt-3 p-2.5 rounded-xl bg-slate-900 text-white flex items-center justify-between gap-3 shadow-lg border border-slate-800 text-xs">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span class="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center text-white shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg></span>
+                <span class="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center text-white shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg></span>
                 <div class="min-w-0">
                   <div id="res-audio-bar-title" class="font-bold truncate text-xs text-white">Audio Listening</div>
                   <div id="res-audio-bar-time" class="text-[10px] text-slate-400 font-mono">00:00 / 00:00</div>
