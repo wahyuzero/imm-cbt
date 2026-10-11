@@ -5,8 +5,35 @@
  */
 
 const assert = require("assert");
+const fs = require("fs");
+const path = require("path");
 
 const BASE_URL = process.env.BASE_URL || "https://imm.frugaldev.biz.id";
+
+function loadCredentials() {
+  const creds = {};
+  const paths = [
+    process.env.CREDENTIALS_FILE,
+    path.resolve(__dirname, "../credentials/user_password.txt"),
+    "/home/wxsys/Jepun/credentials/user_password.txt",
+  ].filter(Boolean);
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      try {
+        const lines = fs.readFileSync(p, "utf8").split("\n");
+        for (const line of lines) {
+          const parts = line.trim().split(/\s+/);
+          if (parts.length >= 2) creds[parts[0]] = parts[1];
+        }
+        break;
+      } catch (e) {}
+    }
+  }
+  return creds;
+}
+
+const CREDS = loadCredentials();
+const getPassword = (u, fb) => CREDS[u] || process.env[`PASSWORD_${u.toUpperCase().replace(/\./g, "_")}`] || fb;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -54,12 +81,12 @@ async function runApiVerification() {
   assert.strictEqual(unauthMeJson.success, false, "success must be false");
   console.log("[PASS] Strict Auth Gate backend guard verified: 401 returned when not logged in");
 
-  // TEST 4: Student Login via Better Auth (heru.prayoga / [REDACTED])
-  console.log("\n[TEST 4] Student Login: heru.prayoga + [REDACTED]");
+  // TEST 4: Student Login via Better Auth
+  console.log("\n[TEST 4] Student Login: heru.prayoga");
   const studentLoginRes = await fetch(`${BASE_URL}/api/auth/sign-in/username`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username: "heru.prayoga", password: "[REDACTED]" }),
+    body: JSON.stringify({ username: "heru.prayoga", password: getPassword("heru.prayoga") }),
   });
   assert.strictEqual(studentLoginRes.status, 200, "Student login should succeed with 200");
   const studentLoginJson = await studentLoginRes.json();
@@ -127,12 +154,12 @@ async function runApiVerification() {
   assert.strictEqual(answer1Json.saved, true, "Answer saved should be true");
   console.log("[PASS] Real-time answer saved successfully to PostgreSQL");
 
-  // TEST 9: Sensei Admin Login (sensei.rusdi / [REDACTED])
-  console.log("\n[TEST 9] Sensei Admin Login: sensei.rusdi + [REDACTED]");
+  // TEST 9: Sensei Admin Login
+  console.log("\n[TEST 9] Sensei Admin Login: sensei.rusdi");
   const adminLoginRes = await fetch(`${BASE_URL}/api/auth/sign-in/username`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username: "sensei.rusdi", password: "[REDACTED]" }),
+    body: JSON.stringify({ username: "sensei.rusdi", password: getPassword("sensei.rusdi") }),
   });
   assert.strictEqual(adminLoginRes.status, 200, "Admin login should succeed with 200");
   const adminLoginJson = await adminLoginRes.json();

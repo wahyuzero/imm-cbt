@@ -201,6 +201,45 @@ export async function runSeeder() {
   console.log("Seeding completed successfully!");
 }
 
+function loadCredentialMap(): Record<string, string> {
+  const map: Record<string, string> = {};
+  const credPaths = [
+    process.env.CREDENTIALS_FILE,
+    "/home/wxsys/Jepun/credentials/user_password.txt",
+    path.resolve(process.cwd(), "credentials/user_password.txt"),
+    path.resolve(process.cwd(), "../credentials/user_password.txt"),
+    path.resolve(process.cwd(), "../../credentials/user_password.txt"),
+  ].filter(Boolean) as string[];
+
+  for (const cp of credPaths) {
+    if (fs.existsSync(cp)) {
+      try {
+        const lines = fs.readFileSync(cp, "utf8").split("\n");
+        for (const line of lines) {
+          const parts = line.trim().split(/\s+/);
+          if (parts.length >= 2) {
+            map[parts[0]] = parts[1];
+          }
+        }
+        break;
+      } catch (e) {
+        // ignore
+      }
+    }
+  }
+  return map;
+}
+
+const CREDENTIAL_MAP = loadCredentialMap();
+const getPassword = (username: string) => {
+  return (
+    CREDENTIAL_MAP[username] ||
+    process.env[`PASSWORD_${username.toUpperCase().replace(/\./g, "_")}`] ||
+    process.env.DEFAULT_SEED_PASSWORD ||
+    "ImmCbt2026!"
+  );
+};
+
 export const INITIAL_USERS = [
   // Sensei / Pengawas (Admin)
   {
@@ -211,7 +250,7 @@ export const INITIAL_USERS = [
     email: "rusdi@imm.internal",
     role: "admin",
     className: "Instruktur LPK",
-    password: "[REDACTED]",
+    password: getPassword("sensei.rusdi"),
   },
   {
     id: "usr_sensei_test",
@@ -221,7 +260,7 @@ export const INITIAL_USERS = [
     email: "test@imm.internal",
     role: "admin",
     className: "Sensei Penguji",
-    password: "[REDACTED]",
+    password: getPassword("sensei.test"),
   },
 
   // 17 Siswa (Student - Angkatan 35-A)
@@ -233,7 +272,7 @@ export const INITIAL_USERS = [
     email: "nafisatun@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("nafisatun"),
   },
   {
     id: "usr_santi",
@@ -243,7 +282,7 @@ export const INITIAL_USERS = [
     email: "santi@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("santi"),
   },
   {
     id: "usr_stefanni_haryanto",
@@ -253,7 +292,7 @@ export const INITIAL_USERS = [
     email: "stefanni.haryanto@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("stefanni.haryanto"),
   },
   {
     id: "usr_heru_prayoga",
@@ -263,7 +302,7 @@ export const INITIAL_USERS = [
     email: "heru.prayoga@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("heru.prayoga"),
   },
   {
     id: "usr_fikri_muzakki",
@@ -273,7 +312,7 @@ export const INITIAL_USERS = [
     email: "fikri.muzakki@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("fikri.muzakki"),
   },
   {
     id: "usr_wahyu_jaka",
@@ -283,7 +322,7 @@ export const INITIAL_USERS = [
     email: "wahyu.jaka@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("wahyu.jaka"),
   },
   {
     id: "usr_andre_ananta",
@@ -293,7 +332,7 @@ export const INITIAL_USERS = [
     email: "andre.ananta@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("andre.ananta"),
   },
   {
     id: "usr_andi_saputra",
@@ -303,7 +342,7 @@ export const INITIAL_USERS = [
     email: "andi.saputra@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("andi.saputra"),
   },
   {
     id: "usr_candra_afiansah",
@@ -313,7 +352,7 @@ export const INITIAL_USERS = [
     email: "candra.afiansah@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("candra.afiansah"),
   },
   {
     id: "usr_syarifudin_asyrof",
@@ -323,7 +362,7 @@ export const INITIAL_USERS = [
     email: "syarifudin.asyrof@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("syarifudin.asyrof"),
   },
   {
     id: "usr_andre_purnomo",
@@ -333,7 +372,7 @@ export const INITIAL_USERS = [
     email: "andre.purnomo@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("andre.purnomo"),
   },
   {
     id: "usr_desi_wiyanti",
@@ -343,7 +382,7 @@ export const INITIAL_USERS = [
     email: "desi.wiyanti@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("desi.wiyanti"),
   },
   {
     id: "usr_aprilianzah",
@@ -353,7 +392,7 @@ export const INITIAL_USERS = [
     email: "aprilianzah@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("aprilianzah"),
   },
   {
     id: "usr_farrel_ardiansyah",
@@ -363,7 +402,7 @@ export const INITIAL_USERS = [
     email: "farrel.ardiansyah@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("farrel.ardiansyah"),
   },
   {
     id: "usr_hayyu_pradana",
@@ -373,7 +412,7 @@ export const INITIAL_USERS = [
     email: "hayyu.pradana@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("hayyu.pradana"),
   },
   {
     id: "usr_ahmad_choirul",
@@ -383,7 +422,7 @@ export const INITIAL_USERS = [
     email: "ahmad.choirul@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("ahmad.choirul"),
   },
   {
     id: "usr_hamdani_lubis",
@@ -393,7 +432,7 @@ export const INITIAL_USERS = [
     email: "hamdani.lubis@imm.internal",
     role: "student",
     className: "Angkatan 35-A",
-    password: "[REDACTED]",
+    password: getPassword("hamdani.lubis"),
   },
 ];
 
@@ -441,9 +480,7 @@ export async function resetAndSeedOfficialAccounts(forcePurge = false) {
       ) VALUES (
         ${accountId}, ${u.id}, ${u.id}, 'credential', ${hashedPw}, now(), now()
       )
-      ON CONFLICT ("id") DO UPDATE SET
-        "password" = EXCLUDED."password",
-        "updated_at" = now();
+      ON CONFLICT ("id") DO NOTHING;
     `;
   }
   console.log(`Successfully prepared ${INITIAL_USERS.length} official accounts.`);
