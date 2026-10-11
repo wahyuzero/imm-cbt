@@ -53,6 +53,8 @@ export const auth = betterAuth({
     "http://localhost:3000",
     "http://localhost:8080",
     "http://localhost:5173",
+    "http://localhost:9334",
+    "http://127.0.0.1:9334",
     "https://imm.frugaldev.biz.id",
     "http://imm.frugaldev.biz.id",
   ],

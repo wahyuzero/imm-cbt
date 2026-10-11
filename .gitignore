@@ -1,1 +1,11 @@
 .DS_Store
+*.txt
+*.env
+*.env.*
+!backend/.env.example
+*.log
+credentials/
+*password*
+*kredensial*
+dist/
+node_modules/

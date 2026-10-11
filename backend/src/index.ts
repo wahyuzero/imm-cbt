@@ -10,6 +10,7 @@ import { chaptersRouter } from "./routes/chapters.js";
 import { examRouter } from "./routes/exam.js";
 import { vocabularyRouter } from "./routes/vocabulary.js";
 import { adminRouter } from "./routes/admin.js";
+import { authRateLimiter, examSubmitRateLimiter } from "./middlewares/rateLimiter.js";
 import { AppEnv } from "./types.js";
 
 const app = new Hono<AppEnv>();
@@ -17,13 +18,28 @@ const app = new Hono<AppEnv>();
 // Logger
 app.use("*", logger());
 
-// CORS configuration
+// Whitelist CORS ketat: Hanya domain resmi dan local host/IP development
+const ALLOWED_ORIGIN_PATTERNS = [
+  /^https:\/\/imm\.frugaldev\.biz\.id$/,
+  /^http:\/\/imm\.frugaldev\.biz\.id$/,
+  /^http:\/\/localhost(:\d+)?$/,
+  /^http:\/\/127\.0\.0\.1(:\d+)?$/,
+];
+
+function isOriginAllowed(origin?: string): boolean {
+  if (!origin) return false;
+  return ALLOWED_ORIGIN_PATTERNS.some((pattern) => pattern.test(origin));
+}
+
+// CORS configuration dengan whitelist ketat
 app.use(
   "*",
   cors({
     origin: (origin) => {
-      // Allow localhost, domain, or any internal proxy
-      return origin || "*";
+      if (isOriginAllowed(origin)) {
+        return origin;
+      }
+      return null;
     },
     credentials: true,
     allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -32,6 +48,11 @@ app.use(
     maxAge: 86400,
   })
 );
+
+// Rate Limiter pada endpoint autentikasi & submit exam
+app.use("/api/auth/*", authRateLimiter);
+app.use("/api/v1/auth/*", authRateLimiter);
+app.use("/api/v1/exam/submit", examSubmitRateLimiter);
 
 // Health check
 app.get("/health", (c) => {

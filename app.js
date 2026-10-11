@@ -939,6 +939,15 @@ class ChoukaiApp {
         .then((json) => {
           if (json.success && json.data?.session) {
             this.currentExamSession = json.data.session;
+            // Sanitasi integritas kunci jawaban jika mode ujian aktif (anti-cheat)
+            if (this.mode === "shiken" && (!this.currentUser || this.currentUser.role !== "admin")) {
+              if (this.currentChapter && Array.isArray(this.currentChapter.questions)) {
+                this.currentChapter.questions.forEach((q) => {
+                  delete q.correctAnswer;
+                  delete q.explanation;
+                });
+              }
+            }
             return this.currentExamSession;
           } else if (!json.success && this.currentUser.role !== "admin") {
             alert(json.error || "Gagal memulai sesi ujian di server.");
@@ -1182,6 +1191,17 @@ class ChoukaiApp {
             this.currentResult.readingScore = json.data.readingScore;
             this.currentResult.choukaiScore = json.data.choukaiScore;
             this.currentResult.passed = json.data.isPassed;
+            // Sinkronkan review resmi dari backend ke memori untuk review pembahasan hasil ujian
+            if (json.data.review && Array.isArray(json.data.review) && this.currentChapter?.questions) {
+              const reviewMap = new Map(json.data.review.map((r) => [r.questionNumber || r.id, r]));
+              this.currentChapter.questions.forEach((q) => {
+                const r = reviewMap.get(q.id);
+                if (r) {
+                  q.correctAnswer = r.correctAnswer;
+                  q.explanation = r.explanation;
+                }
+              });
+            }
             this.saveExamResult(this.currentResult);
             if (this.view === "result") this.render();
           }
