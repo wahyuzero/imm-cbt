@@ -92,9 +92,9 @@ export const authRateLimiter = createRateLimiter({
   message: "Terlalu banyak percobaan autentikasi. Silakan tunggu sejenak sebelum mencoba lagi.",
 });
 
-// 2. Rate Limiter untuk Pengumpulan Ujian (Cegah Spam Submission)
+// 2. Rate Limiter untuk Pengumpulan Ujian (Cegah Spam Submission, aman untuk konkurensi lab kelas)
 export const examSubmitRateLimiter = createRateLimiter({
   windowMs: 60 * 1000, // 1 menit
-  max: 30, // 30 submit per menit per IP
+  max: 60, // 60 submit per menit per IP (mencegah false-positive saat kelas lab 40+ siswa submit serempak)
   message: "Terlalu banyak pengumpulan lembar ujian dari alamat IP ini. Silakan tunggu sejenak.",
 });

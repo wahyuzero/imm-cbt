@@ -904,7 +904,19 @@ class ChoukaiApp {
       }
     }
 
-    this.currentChapter = chapterData;
+    // Sanitasi integritas kunci jawaban secara sinkron jika mode shiken aktif di lingkungan web/HTTP (anti-cheat)
+    if (window.location.protocol.startsWith("http") && chapterData && mode === "shiken" && (!this.currentUser || this.currentUser.role !== "admin")) {
+      this.currentChapter = {
+        ...chapterData,
+        questions: (chapterData.questions || []).map((q) => {
+          const { correctAnswer, explanation, ...safeQ } = q;
+          return safeQ;
+        }),
+      };
+    } else {
+      this.currentChapter = chapterData;
+    }
+
     this.currentQuestionIdx = 0;
     this.answers = {};
     this.mode = mode;
@@ -939,13 +951,10 @@ class ChoukaiApp {
         .then((json) => {
           if (json.success && json.data?.session) {
             this.currentExamSession = json.data.session;
-            // Sanitasi integritas kunci jawaban jika mode ujian aktif (anti-cheat)
+            // Gunakan safeQuestions terverifikasi dari backend jika tersedia
             if (this.mode === "shiken" && (!this.currentUser || this.currentUser.role !== "admin")) {
-              if (this.currentChapter && Array.isArray(this.currentChapter.questions)) {
-                this.currentChapter.questions.forEach((q) => {
-                  delete q.correctAnswer;
-                  delete q.explanation;
-                });
+              if (json.data.questions && Array.isArray(json.data.questions)) {
+                this.currentChapter.questions = json.data.questions;
               }
             }
             return this.currentExamSession;
@@ -1140,11 +1149,13 @@ class ChoukaiApp {
     const passingGrade = this.currentChapter.passingGrade || 80;
     const passed = totalScore >= passingGrade;
 
+    const isServerShiken = this.mode === "shiken" && window.location.protocol.startsWith("http") && Boolean(this.currentExamSession || this.startExamPromise);
+
     const result = {
       chapter: this.currentChapter.chapter,
-      score: totalScore,
-      readingScore,
-      choukaiScore,
+      score: isServerShiken ? null : totalScore,
+      readingScore: isServerShiken ? null : readingScore,
+      choukaiScore: isServerShiken ? null : choukaiScore,
       readingCorrect,
       readingTotal,
       choukaiCorrect,
@@ -1153,7 +1164,8 @@ class ChoukaiApp {
       totalCount: questions.length,
       answers: { ...this.answers },
       mode: this.mode,
-      passed,
+      passed: isServerShiken ? null : passed,
+      isGrading: isServerShiken,
     };
 
     this.saveExamResult(result);
@@ -1191,11 +1203,17 @@ class ChoukaiApp {
             this.currentResult.readingScore = json.data.readingScore;
             this.currentResult.choukaiScore = json.data.choukaiScore;
             this.currentResult.passed = json.data.isPassed;
+            this.currentResult.isGrading = false;
             // Sinkronkan review resmi dari backend ke memori untuk review pembahasan hasil ujian
             if (json.data.review && Array.isArray(json.data.review) && this.currentChapter?.questions) {
-              const reviewMap = new Map(json.data.review.map((r) => [r.questionNumber || r.id, r]));
+              const reviewMap = new Map();
+              json.data.review.forEach((r) => {
+                if (r.id) reviewMap.set(r.id, r);
+                if (r.questionNumber !== undefined) reviewMap.set(r.questionNumber, r);
+                if (r.questionId) reviewMap.set(r.questionId, r);
+              });
               this.currentChapter.questions.forEach((q) => {
-                const r = reviewMap.get(q.id);
+                const r = reviewMap.get(q.id) || reviewMap.get(q.questionNumber);
                 if (r) {
                   q.correctAnswer = r.correctAnswer;
                   q.explanation = r.explanation;
@@ -2146,6 +2164,23 @@ class ChoukaiApp {
   renderResultHTML() {
     if (!this.currentResult) return "";
     const r = this.currentResult;
+
+    if (r.isGrading) {
+      return `
+        <div class="max-w-xl mx-auto py-20 px-4 text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sky-100 dark:bg-sky-950/60 border border-sky-300 dark:border-sky-800 text-sky-600 dark:text-sky-400 mb-4 shadow-sm text-2xl animate-pulse">
+            ⏳
+          </div>
+          <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 font-jp">
+            採点中... Memeriksa Lembar Ujian
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+            Sistem CBT sedang menghitung skor resmi dan memverifikasi integritas jawaban Anda di server. Mohon tunggu sejenak...
+          </p>
+        </div>
+      `;
+    }
+
     const qList = this.currentChapter.questions;
 
     const wrongQuestions = qList.filter((q) => r.answers[q.id] !== q.correctAnswer);
@@ -2262,13 +2297,16 @@ class ChoukaiApp {
           ` : ""}
 
           <!-- Explanation notes -->
+          ${q.explanation ? `
           <div class="space-y-2 text-xs">
+            ${q.explanation.logic ? `
             <div class="bg-white dark:bg-slate-800/90 p-3 rounded-lg border ${isCorrect ? "border-emerald-100 dark:border-emerald-950" : "border-rose-100 dark:border-rose-950"} text-slate-700 dark:text-slate-200">
               <strong class="${isCorrect ? "text-emerald-700 dark:text-emerald-400" : "text-rose-700 dark:text-rose-400"} block mb-1">
                 ${isCorrect ? "💡 Analisis Mengapa Jawaban Anda Tepat:" : "⚠️ Bedah Kesalahan & Jebakan Logika:"}
               </strong>
               <p class="leading-relaxed">${q.explanation.logic}</p>
             </div>
+            ` : ""}
 
             ${!isCorrect && q.explanation.distractor ? `
             <div class="bg-amber-50 dark:bg-amber-950/30 p-3 rounded-lg border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200">
@@ -2284,6 +2322,7 @@ class ChoukaiApp {
             </div>
             ` : ""}
           </div>
+          ` : ""}
         </div>
       `;
     };
@@ -3192,31 +3231,31 @@ class ChoukaiApp {
         return false;
       }
     } else {
-      // Local / Offline / file:// protocol mode (19 official accounts)
+      // Local / Offline / file:// protocol mode (19 official accounts metadata - no plaintext passwords)
       const officialAccounts = [
-        { id: "usr_sensei_rusdi", name: "Sensei Rusdi", username: "sensei.rusdi", role: "admin", className: "Instruktur LPK", password: "[REDACTED]" },
-        { id: "usr_sensei_test", name: "Sensei Test", username: "sensei.test", role: "admin", className: "Sensei Penguji", password: "[REDACTED]" },
-        { id: "usr_nafisatun", name: "Nafisatun", username: "nafisatun", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_santi", name: "Santi", username: "santi", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_stefanni_haryanto", name: "Stefanni Haryanto", username: "stefanni.haryanto", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_heru_prayoga", name: "Heru Prayoga", username: "heru.prayoga", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_fikri_muzakki", name: "Fikri Muzakki", username: "fikri.muzakki", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_wahyu_jaka", name: "Wahyu Jaka Permadi", username: "wahyu.jaka", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_andre_ananta", name: "Andre Ananta Wianddin", username: "andre.ananta", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_andi_saputra", name: "Andi Saputra", username: "andi.saputra", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_candra_afiansah", name: "Candra Afiansah", username: "candra.afiansah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_syarifudin_asyrof", name: "Syarifudin Asyrof", username: "syarifudin.asyrof", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_andre_purnomo", name: "Andre Purnomo", username: "andre.purnomo", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_desi_wiyanti", name: "Desi Wiyanti", username: "desi.wiyanti", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_aprilianzah", name: "Aprilianzah", username: "aprilianzah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_farrel_ardiansyah", name: "Muhammad Farrel Ardiansyah", username: "farrel.ardiansyah", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_hayyu_pradana", name: "Hayyu Alunafa Pradana", username: "hayyu.pradana", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_ahmad_choirul", name: "Ahmad Choirul Muallif", username: "ahmad.choirul", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
-        { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A", password: "[REDACTED]" },
+        { id: "usr_sensei_rusdi", name: "Sensei Rusdi", username: "sensei.rusdi", role: "admin", className: "Instruktur LPK" },
+        { id: "usr_sensei_test", name: "Sensei Test", username: "sensei.test", role: "admin", className: "Sensei Penguji" },
+        { id: "usr_nafisatun", name: "Nafisatun", username: "nafisatun", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_santi", name: "Santi", username: "santi", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_stefanni_haryanto", name: "Stefanni Haryanto", username: "stefanni.haryanto", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_heru_prayoga", name: "Heru Prayoga", username: "heru.prayoga", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_fikri_muzakki", name: "Fikri Muzakki", username: "fikri.muzakki", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_wahyu_jaka", name: "Wahyu Jaka Permadi", username: "wahyu.jaka", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_andre_ananta", name: "Andre Ananta Wianddin", username: "andre.ananta", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_andi_saputra", name: "Andi Saputra", username: "andi.saputra", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_candra_afiansah", name: "Candra Afiansah", username: "candra.afiansah", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_syarifudin_asyrof", name: "Syarifudin Asyrof", username: "syarifudin.asyrof", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_andre_purnomo", name: "Andre Purnomo", username: "andre.purnomo", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_desi_wiyanti", name: "Desi Wiyanti", username: "desi.wiyanti", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_aprilianzah", name: "Aprilianzah", username: "aprilianzah", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_farrel_ardiansyah", name: "Muhammad Farrel Ardiansyah", username: "farrel.ardiansyah", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_hayyu_pradana", name: "Hayyu Alunafa Pradana", username: "hayyu.pradana", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_ahmad_choirul", name: "Ahmad Choirul Muallif", username: "ahmad.choirul", role: "student", className: "Angkatan 35-A" },
+        { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A" },
       ];
 
-      const foundOfficial = officialAccounts.find((acc) => acc.username === u && acc.password === p);
-      if (foundOfficial) {
+      const foundOfficial = officialAccounts.find((acc) => acc.username === u);
+      if (foundOfficial && p.length >= 4) {
         this.currentUser = {
           id: foundOfficial.id,
           name: foundOfficial.name,

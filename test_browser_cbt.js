@@ -12,7 +12,32 @@ const path = require('path');
 
 const PORT = 9334;
 const WEB_DIR = path.resolve(__dirname);
-const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=57`;
+const INDEX_URL = process.env.TEST_URL || `file://${path.join(WEB_DIR, 'index.html')}?v=62`;
+
+function loadCredentials() {
+  const creds = {};
+  const paths = [
+    process.env.CREDENTIALS_FILE,
+    path.resolve(__dirname, "../credentials/user_password.txt"),
+    "/home/wxsys/Jepun/credentials/user_password.txt",
+  ].filter(Boolean);
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      try {
+        const lines = fs.readFileSync(p, "utf8").split("\n");
+        for (const line of lines) {
+          const parts = line.trim().split(/\s+/);
+          if (parts.length >= 2) creds[parts[0]] = parts[1];
+        }
+        break;
+      } catch (e) {}
+    }
+  }
+  return creds;
+}
+
+const CREDS = loadCredentials();
+const getPassword = (u, fb = "testpass123") => CREDS[u] || process.env[`PASSWORD_${u.toUpperCase().replace(/\./g, "_")}`] || fb;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -198,7 +223,7 @@ async function runTests() {
 
     // TEST 2: Student Login via Auth Gate & Dashboard Unlock
     console.log('\n--- TEST 2: Student Login via Auth Gate & Profile Persistence ---');
-    await performLogin("heru.prayoga", "[REDACTED]");
+    await performLogin("heru.prayoga", getPassword("heru.prayoga"));
     await wait(200);
 
     const isAuthNow = await cdp.eval('window.app.isAuthenticated');
@@ -975,7 +1000,7 @@ async function runTests() {
     assert(headerHiddenAfterLogout, 'Navigation header re-hidden upon logout');
 
     // Re-login to verify round-trip
-    await performLogin("heru.prayoga", "[REDACTED]");
+    await performLogin("heru.prayoga", getPassword("heru.prayoga"));
     const reloginOk = await cdp.eval('window.app.isAuthenticated && window.app.view === "dashboard"');
     assert(reloginOk, 'Re-login round-trip successfully restores full dashboard access');
   }
@@ -985,7 +1010,7 @@ async function runTests() {
     // 1. Switch to Sensei Admin
     await cdp.eval('window.app.logout()');
     await wait(200);
-    await performLogin("sensei.rusdi", "[REDACTED]");
+    await performLogin("sensei.rusdi", getPassword("sensei.rusdi"));
     const isAdminNow = await cdp.eval('window.app.currentUser?.role === "admin"');
     assert(isAdminNow, 'Sensei Admin logged in successfully');
 
@@ -1046,7 +1071,7 @@ async function runTests() {
     // 6. Log out Sensei and log in as Heru Prayoga
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await performLogin("heru.prayoga", "[REDACTED]");
+    await performLogin("heru.prayoga", getPassword("heru.prayoga"));
     await cdp.eval('window.app.goToDashboard()');
     await wait(300);
 
@@ -1069,7 +1094,7 @@ async function runTests() {
     // 9. Other student (stefanni.haryanto) can still access Bab 05
     await cdp.eval('window.app.logout();');
     await wait(200);
-    await performLogin("stefanni.haryanto", "[REDACTED]");
+    await performLogin("stefanni.haryanto", getPassword("stefanni.haryanto"));
     await cdp.eval('window.app.goToDashboard()');
     await wait(300);
     const stefanniB5Restricted = await cdp.eval('Boolean(window.app.userRestrictedChapters["05"])');
@@ -1078,7 +1103,7 @@ async function runTests() {
     // 10. Sensei restores Bab 05 access for Heru
     await cdp.eval('window.app.logout();');
     await wait(200);
-    await performLogin("sensei.rusdi", "[REDACTED]");
+    await performLogin("sensei.rusdi", getPassword("sensei.rusdi"));
     await cdp.eval('window.app.openAdminPanel("users")');
     for (let i = 0; i < 30; i++) {
       const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
@@ -1113,7 +1138,7 @@ async function runTests() {
     // 11. Heru logs back in, verifies Bab 05 is unlocked again
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await performLogin("heru.prayoga", "[REDACTED]");
+    await performLogin("heru.prayoga", getPassword("heru.prayoga"));
     await cdp.eval('window.app.goToDashboard()');
     let b5UnlockedNow = false;
     for (let i = 0; i < 30; i++) {
@@ -1196,7 +1221,7 @@ async function runTests() {
     console.log('\n--- TEST 30: Sensei PDF Access Control & Dual-Tab Student Management ---');
     await cdp.eval('window.app.logout()');
     await wait(200);
-    await performLogin("sensei.rusdi", "[REDACTED]");
+    await performLogin("sensei.rusdi", getPassword("sensei.rusdi"));
     await cdp.eval('window.app.openAdminPanel("users")');
     for (let i = 0; i < 30; i++) {
       const len = await cdp.eval('((window.app.adminUsersData || window.app.adminUsers || []).length)');
@@ -1257,7 +1282,7 @@ async function runTests() {
     // Clean up modal and return to dashboard
     await cdp.eval('window.app.closeModal(); window.app.logout();');
     await wait(200);
-    await performLogin("heru.prayoga", "[REDACTED]");
+    await performLogin("heru.prayoga", getPassword("heru.prayoga"));
     await cdp.eval('window.app.goToDashboard()');
     await wait(200);
 
