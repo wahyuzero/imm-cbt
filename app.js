@@ -2478,7 +2478,8 @@ class ChoukaiApp {
     let targetWords = [];
     if (this.kosakataBab === "all") {
       if (typeof KOSAKATA_DATA !== "undefined") {
-        for (let b = 1; b <= 25; b++) {
+        const bKeys = Object.keys(KOSAKATA_DATA).map(Number).sort((a, b) => a - b);
+        for (const b of bKeys) {
           if (KOSAKATA_DATA[b] && KOSAKATA_DATA[b].words) {
             targetWords = targetWords.concat(KOSAKATA_DATA[b].words);
           }
@@ -2531,7 +2532,8 @@ class ChoukaiApp {
     if (typeof KOSAKATA_DATA === "undefined") return [];
     let list = [];
     if (this.kosakataBab === "all") {
-      for (let b = 1; b <= 25; b++) {
+      const bKeys = Object.keys(KOSAKATA_DATA).map(Number).sort((a, b) => a - b);
+      for (const b of bKeys) {
         if (KOSAKATA_DATA[b] && KOSAKATA_DATA[b].words) {
           list = list.concat(KOSAKATA_DATA[b].words);
         }
@@ -2737,19 +2739,28 @@ class ChoukaiApp {
     const stats = this.getMemorizedStats();
     const words = this.getFilteredKosakataWords();
 
+    const isBuku2 = !isAll && bInt >= 26;
     const pdfBabUrl = this.pdfUrl(
       isAll ? "assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf" : `assets/pdf/Daftar Kosakata Bab ${this.kosakataBab}.pdf`
     );
-    const pdfBundleUrl = this.pdfUrl("assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf");
+    const pdfBundleUrl = this.pdfUrl(
+      isBuku2 ? "assets/pdf/Daftar Kosakata Lengkap Bab 26-35.pdf" : "assets/pdf/Daftar Kosakata Lengkap Bab 01-25.pdf"
+    );
+    const bundleLabel = isBuku2 ? "Bundle Buku 2 (21 Hal)" : "Bundle Buku 1 (76 Hal)";
 
     // Total words count
     const totalAllWords = typeof KOSAKATA_DATA !== "undefined"
       ? Object.values(KOSAKATA_DATA).reduce((sum, ch) => sum + (ch.words ? ch.words.length : 0), 0)
-      : 1500;
+      : 1804;
+
+    const bKeys = typeof KOSAKATA_DATA !== "undefined"
+      ? Object.keys(KOSAKATA_DATA).map(Number).sort((a, b) => a - b)
+      : Array.from({ length: 35 }, (_, i) => i + 1);
+    const maxBab = bKeys.length > 0 ? String(Math.max(...bKeys)).padStart(2, "0") : "35";
 
     // Build Chapter options
-    let babOptionsHTML = `<option value="all" ${isAll ? "selected" : ""}>Semua Bab (Bab 01 s.d. 25 — ${totalAllWords} Kosakata)</option>`;
-    for (let i = 1; i <= 25; i++) {
+    let babOptionsHTML = `<option value="all" ${isAll ? "selected" : ""}>Semua Bab (Bab 01 s.d. ${maxBab} — ${totalAllWords} Kosakata)</option>`;
+    for (const i of bKeys) {
       const bStr = String(i).padStart(2, "0");
       const d = typeof KOSAKATA_DATA !== "undefined" ? KOSAKATA_DATA[i] : null;
       const count = d ? d.total_words : 0;
@@ -2801,9 +2812,9 @@ class ChoukaiApp {
               <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
               <span>${isAll ? "PDF Lengkap (76 Hal)" : `PDF Bab ${this.kosakataBab}`}</span>
             </a>
-            <a href="${pdfBundleUrl}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Unduh Lembar Hafalan Bundle Lengkap Bab 01 s.d. 25 (76 Halaman)">
+            <a href="${pdfBundleUrl}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Unduh Lembar Hafalan Bundle ${bundleLabel}">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span>Bundle Lengkap (76 Hal)</span>
+              <span>${bundleLabel}</span>
             </a>
           </div>
         </div>
@@ -2819,7 +2830,7 @@ class ChoukaiApp {
                 <span class="text-xs text-slate-300">${totalAllWords} Kosakata Resmi</span>
               </div>
               <h1 class="text-lg md:text-xl font-black font-jp mt-1.5 tracking-tight">
-                ${isAll ? "単語帳 ｜ Seluruh Kosakata Bab 01 s.d. Bab 25" : (chData ? chData.title_jp : `Bab ${this.kosakataBab}`)}
+                ${isAll ? `単語帳 ｜ Seluruh Kosakata Bab 01 s.d. Bab ${maxBab}` : (chData ? chData.title_jp : `Bab ${this.kosakataBab}`)}
               </h1>
               <p class="text-xs text-slate-300 mt-1 max-w-2xl">
                 ${isAll ? "Modul hafalan kosakata lengkap untuk persiapan setoran berkala siswa magang LPK & evaluasi Tokutei Ginou SSW." : (chData ? chData.title_id : "")}
