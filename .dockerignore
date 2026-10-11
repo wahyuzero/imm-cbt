@@ -1,5 +1,12 @@
 .git
 .gitignore
+.dockerignore
 backend/
-test_browser_cbt.js
+test_*.js
 *.md
+*.txt
+*.env*
+*.log
+*.sh
+credentials/
+*password*
