@@ -206,13 +206,22 @@ examRouter.post("/exam/answer", authMiddleware, async (c) => {
       return c.json({ success: false, error: "Waktu ujian telah habis." }, 400);
     }
 
-    // Check correctness server-side
+    // Check correctness server-side — soal wajib milik bab sesi (BUG-21)
     const q = await db.query.questions.findFirst({
-      where: eq(questions.id, questionId),
+      where: and(eq(questions.id, questionId), eq(questions.chapterNum, session.chapterNum)),
     });
 
     if (!q) {
       return c.json({ success: false, error: "ID Soal tidak valid." }, 404);
+    }
+
+    // Validasi opsi jawaban terhadap daftar opsi soal — tolak string arbitrer
+    const validOptions = Array.isArray(q.options) ? q.options : [];
+    const isValidOption = validOptions.some(
+      (opt: any) => opt && String(opt.id) === String(selectedOption)
+    );
+    if (!isValidOption) {
+      return c.json({ success: false, error: "Opsi jawaban tidak valid." }, 400);
     }
 
     const isCorrect = String(q.correctAnswer) === String(selectedOption);
@@ -325,7 +334,16 @@ examRouter.post("/exam/submit", authMiddleware, async (c) => {
 
     const now = new Date();
     const timeSpentSeconds = Math.max(0, Math.floor((now.getTime() - new Date(session.startedAt).getTime()) / 1000));
-    const isAlreadyFinalized = session.status === "SUBMITTED" || session.status === "TERMINATED_BY_ADMIN";
+    // BUG-15: sesi kadaluarsa (status EXPIRED atau lewat expiresAt) tidak boleh difinalisasi sebagai SUBMITTED
+    let effectiveStatus = session.status;
+    if (effectiveStatus === "IN_PROGRESS" && now.getTime() > new Date(session.expiresAt).getTime()) {
+      effectiveStatus = "EXPIRED";
+      await db
+        .update(examSessions)
+        .set({ status: "EXPIRED" })
+        .where(eq(examSessions.id, sessionId));
+    }
+    const isAlreadyFinalized = effectiveStatus !== "IN_PROGRESS";
 
     // Only update session record if not already finalized
     if (!isAlreadyFinalized) {
@@ -361,7 +379,7 @@ examRouter.post("/exam/submit", authMiddleware, async (c) => {
         isPassed: isPassed,
         timeSpentSeconds: isAlreadyFinalized ? (session.timeSpentSeconds || timeSpentSeconds) : timeSpentSeconds,
         submittedAt: isAlreadyFinalized ? (session.submittedAt || now) : now,
-        status: isAlreadyFinalized ? session.status : "SUBMITTED",
+        status: isAlreadyFinalized ? effectiveStatus : "SUBMITTED",
         review: detailedReview,
       },
     });
@@ -389,11 +407,20 @@ examRouter.get("/exam/sessions/:id", authMiddleware, async (c) => {
       where: eq(examAnswers.sessionId, sessionId),
     });
 
+    // BUG-09: jangan bocorkan isCorrect selama ujian masih berjalan (oracle kebenaran real-time)
+    const sessionInProgress = session.status === "IN_PROGRESS";
+    const safeAnswers = sessionInProgress
+      ? answers.map((a) => {
+          const { isCorrect, ...rest } = a;
+          return rest;
+        })
+      : answers;
+
     return c.json({
       success: true,
       data: {
         session,
-        answers,
+        answers: safeAnswers,
       },
     });
   } catch (err: any) {

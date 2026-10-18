@@ -13,6 +13,23 @@ interface ClientRecord {
   timestamps: number[];
 }
 
+// RESIDUAL BUG-10 (edge topologi): apakah peer langsung berasal dari jaringan
+// internal (proxy container seperti nginx/traefik di jaringan Docker/Coolify)?
+// Header X-Real-IP/XFF hanya dipercaya dari peer seperti ini — koneksi langsung
+// dari IP publik (port backend terekspos) tidak bisa spoof header identitas.
+function isPrivateOrLoopback(addr: string): boolean {
+  if (!addr) return false;
+  const a = addr.replace(/^::ffff:/, "");
+  if (a === "::1" || a === "::" || a.startsWith("127.")) return true;
+  if (a.startsWith("10.") || a.startsWith("192.168.")) return true;
+  const m = a.match(/^172\.(\d+)\./);
+  if (m) {
+    const n = Number(m[1]);
+    if (n >= 16 && n <= 31) return true;
+  }
+  return false;
+}
+
 export function createRateLimiter(options: RateLimiterOptions) {
   const {
     windowMs,
@@ -20,11 +37,33 @@ export function createRateLimiter(options: RateLimiterOptions) {
     message = "Terlalu banyak permintaan. Silakan coba beberapa saat lagi.",
     statusCode = 429,
     keyGenerator = (c) => {
-      const forwarded = c.req.header("x-forwarded-for");
-      if (forwarded) {
-        return forwarded.split(",")[0].trim();
+      // BUG-10 + RESIDUAL (edge topologi):
+      // (1) Header identitas klien hanya dipercaya bila peer langsung adalah proxy
+      //     internal (alamat privat/loopback) — mencegah spoof X-Real-IP/XFF saat
+      //     port backend terekspos langsung ke publik.
+      // (2) Kedalaman proxy dikonfigurasi via TRUSTED_PROXY_COUNT (default 1 =
+      //     klien→nginx→backend). Bila ada tier proxy tambahan di depan nginx
+      //     (mis. traefik Coolify), set TRUSTED_PROXY_COUNT=2 di env backend agar
+      //     bucket rate-limit tidak menyatu untuk satu kelas (429 massal).
+      const incoming = c.env?.incoming;
+      const peer = incoming?.socket?.remoteAddress || incoming?.remoteAddress || "";
+      if (isPrivateOrLoopback(peer)) {
+        const trustedCount = Math.max(1, Number(process.env.TRUSTED_PROXY_COUNT) || 1);
+        const forwarded = c.req.header("x-forwarded-for");
+        if (forwarded) {
+          const parts = forwarded.split(",").map((s: string) => s.trim()).filter(Boolean);
+          const candidate = parts[parts.length - trustedCount];
+          if (candidate) return candidate;
+        }
+        const realIp = c.req.header("x-real-ip");
+        if (realIp && realIp.trim()) {
+          return realIp.trim();
+        }
       }
-      return c.req.header("x-real-ip") || "unknown-client";
+      if (peer) {
+        return peer;
+      }
+      return "unknown-client";
     },
   } = options;
 

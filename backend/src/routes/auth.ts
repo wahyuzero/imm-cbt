@@ -9,6 +9,16 @@ import { AppEnv } from "../types.js";
 
 export const authRouter = new Hono<AppEnv>();
 
+// BUG-11: sanitasi field tampilan — buang kurung siku, kutip ganda/tunggal,
+// backtick, dan karakter kontrol agar tidak bisa menjadi vektor stored XSS di panel admin.
+// RESIDUAL BUG-11: diekspor agar route admin (/admin/users) memakai sanitasi identik.
+export function sanitizeDisplayName(value: string): string {
+  return value
+    .replace(/[<>"'`]/g, "")
+    .replace(/[\u0000-\u001F\u007F]/g, "")
+    .trim();
+}
+
 // Public system status
 authRouter.get("/system/status", async (c) => {
   const settings = await db.query.systemSettings.findFirst({
@@ -47,15 +57,46 @@ authRouter.get("/auth/me", authMiddleware, async (c) => {
 authRouter.post("/auth/register-student", registrationGuard, async (c) => {
   try {
     const body = await c.req.json();
-    const { name, username: rawUsername, pin, className, email: rawEmail } = body;
+    const { name, username: rawUsername, pin, className: rawClassName, email: rawEmail } = body;
 
     if (!name || !rawUsername || !pin) {
       return c.json({ success: false, error: "Nama, username, dan PIN wajib diisi." }, 400);
     }
 
+    // BUG-11: validasi + sanitasi ketat per field sebelum disimpan ke database.
+    const nameClean = sanitizeDisplayName(String(name));
+    if (nameClean.length < 1 || nameClean.length > 60) {
+      return c.json(
+        { success: false, error: "Nama harus 1-60 karakter dan tidak boleh hanya berisi karakter tidak valid." },
+        400
+      );
+    }
+
     const usernameClean = String(rawUsername).trim().toLowerCase();
-    if (usernameClean.length < 3 || usernameClean.length > 30) {
-      return c.json({ success: false, error: "Username harus 3-30 karakter." }, 400);
+    if (!/^[a-z0-9._-]{3,30}$/.test(usernameClean)) {
+      return c.json(
+        { success: false, error: "Username hanya boleh berisi huruf, angka, titik, underscore, dan hyphen, dengan panjang 3-30 karakter." },
+        400
+      );
+    }
+
+    // BUG-22b: PIN wajib tepat 6 digit angka.
+    if (!/^\d{6}$/.test(String(pin))) {
+      return c.json(
+        { success: false, error: "PIN harus tepat 6 digit angka." },
+        400
+      );
+    }
+
+    let classNameClean = "Angkatan 35-A";
+    if (rawClassName !== undefined && rawClassName !== null && String(rawClassName).trim().length > 0) {
+      classNameClean = sanitizeDisplayName(String(rawClassName));
+      if (classNameClean.length > 40) {
+        return c.json(
+          { success: false, error: "Nama kelas maksimal 40 karakter." },
+          400
+        );
+      }
     }
 
     const emailClean = rawEmail && String(rawEmail).trim().length > 0
@@ -85,13 +126,13 @@ authRouter.post("/auth/register-student", registrationGuard, async (c) => {
 
     const [newUser] = await db.insert(user).values({
       id: userId,
-      name: String(name).trim(),
+      name: nameClean,
       username: usernameClean,
       displayUsername: usernameClean,
       email: emailClean,
       emailVerified: true,
       role: "student",
-      className: className ? String(className).trim() : "Angkatan 35-A",
+      className: classNameClean,
       banned: false,
     }).returning();
 

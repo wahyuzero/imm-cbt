@@ -204,13 +204,53 @@ export async function runMigrations() {
     ON "user_chapter_access" ("user_id", "chapter_num");
   `;
 
+  // BUG-13b: default akses PDF harus false (default-deny, "Hanya Sensei"),
+  // konsisten dengan schema.ts (.default(false)) dan defaultValue register-student di auth.ts.
   await client`
-    ALTER TABLE "user" ADD COLUMN IF NOT EXISTS "pdf_access_allowed" BOOLEAN DEFAULT true NOT NULL;
+    ALTER TABLE "user" ADD COLUMN IF NOT EXISTS "pdf_access_allowed" BOOLEAN DEFAULT false NOT NULL;
   `;
 
   await client`
-    ALTER TABLE "user_chapter_access" ADD COLUMN IF NOT EXISTS "is_pdf_allowed" BOOLEAN DEFAULT true NOT NULL;
+    ALTER TABLE "user_chapter_access" ADD COLUMN IF NOT EXISTS "is_pdf_allowed" BOOLEAN DEFAULT false NOT NULL;
   `;
+
+  // Database lama yang kolomnya sudah terlanjur dibuat dengan DEFAULT true perlu
+  // disamakan secara eksplisit (ADD COLUMN IF NOT EXISTS tidak menyentuh kolom yang sudah ada).
+  await client`
+    ALTER TABLE "user" ALTER COLUMN "pdf_access_allowed" SET DEFAULT false;
+  `;
+
+  await client`
+    ALTER TABLE "user_chapter_access" ALTER COLUMN "is_pdf_allowed" SET DEFAULT false;
+  `;
+
+  // Data migration koreksi satu kali (BUG-13b): siswa yang terlanjur lahir dari
+  // default salah (pdf_access_allowed=true karena register-student INSERT tanpa
+  // kolom tersebut) dikembalikan ke false. Ditandai di tabel data_migrations agar
+  // hanya dijalankan sekali — grant manual sensei di kemudian hari tidak tertimpa
+  // ulang pada boot berikutnya. Kolom is_pdf_allowed tidak ikut di-UPDATE karena
+  // baris user_chapter_access selalu dibuat dengan nilai eksplisit dari panel admin.
+  await client`
+    CREATE TABLE IF NOT EXISTS "data_migrations" (
+      "id" TEXT PRIMARY KEY,
+      "applied_at" TIMESTAMP DEFAULT now() NOT NULL
+    );
+  `;
+
+  const pdfFixApplied = await client`
+    SELECT "id" FROM "data_migrations" WHERE "id" = 'fix_pdf_access_default_false'
+  `;
+  if (pdfFixApplied.length === 0) {
+    console.log("Applying one-time data fix: set pdf_access_allowed=false untuk user role student...");
+    await client`
+      UPDATE "user" SET "pdf_access_allowed" = false, "updated_at" = now()
+      WHERE "role" = 'student' AND "pdf_access_allowed" = true;
+    `;
+    await client`
+      INSERT INTO "data_migrations" ("id") VALUES ('fix_pdf_access_default_false')
+      ON CONFLICT ("id") DO NOTHING;
+    `;
+  }
 
   console.log("PostgreSQL table migrations completed successfully.");
 }

@@ -2,6 +2,8 @@
 *.txt
 *.env
 *.env.*
+.env
+.env.*
 !backend/.env.example
 *.log
 credentials/
@@ -9,3 +11,6 @@ credentials/
 *kredensial*
 dist/
 node_modules/
+
+# Agent harness internal state
+.pi/

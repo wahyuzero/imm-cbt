@@ -5,6 +5,6 @@ export default defineConfig({
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL || "postgres://imm_admin:***REMOVED-DB-PASSWORD***@localhost:5432/imm_cbt",
+    url: process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/imm_cbt", // BUG-04: fallback hanya URL localhost dev generik
   },
 });

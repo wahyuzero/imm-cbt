@@ -5,6 +5,21 @@
  * Zero-dependency, client-side state in localStorage, reactive Vanilla JS.
  */
 
+// --- Escaping helpers (XSS hardening, dipakai lintas aplikasi) ---
+function escapeHtml(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Alias untuk konteks atribut HTML (kutip ganda/tunggal sudah ter-encode oleh escapeHtml).
+function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
 class ChoukaiApp {
   constructor() {
     this.profile = this.loadProfile();
@@ -260,9 +275,17 @@ class ChoukaiApp {
   // ==========================================
   // PROFILE & PROGRESS STORAGE
   // ==========================================
+  // BUG-18: namespace key localStorage per user agar data tidak bocor antar akun di browser bersama.
+  userStorageKey(base) {
+    const u = this.currentUser || (this.currentSession && this.currentSession.user);
+    const uid = u ? (u.username || u.id || "guest") : "guest";
+    const safe = String(uid).replace(/[^a-zA-Z0-9._-]/g, "_");
+    return `${base}__${safe}`;
+  }
+
   loadProfile() {
     try {
-      const data = localStorage.getItem("choukai_student_profile");
+      const data = localStorage.getItem(this.userStorageKey("choukai_student_profile"));
       return data ? JSON.parse(data) : { name: "", classNo: "", target: "JFT-Basic A2" };
     } catch (e) {
       return { name: "", classNo: "", target: "JFT-Basic A2" };
@@ -276,7 +299,7 @@ class ChoukaiApp {
       this.currentUser.className = this.profile.classNo;
     }
     try {
-      localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+      localStorage.setItem(this.userStorageKey("choukai_student_profile"), JSON.stringify(this.profile));
     } catch (e) {
       console.warn("Gagal menyimpan profil siswa ke localStorage:", e);
     }
@@ -286,7 +309,7 @@ class ChoukaiApp {
 
   loadProgress() {
     try {
-      const data = localStorage.getItem("choukai_progress");
+      const data = localStorage.getItem(this.userStorageKey("choukai_progress"));
       return data ? JSON.parse(data) : {};
     } catch (e) {
       return {};
@@ -311,7 +334,7 @@ class ChoukaiApp {
       mode: result.mode,
     };
     try {
-      localStorage.setItem("choukai_progress", JSON.stringify(this.progress));
+      localStorage.setItem(this.userStorageKey("choukai_progress"), JSON.stringify(this.progress));
     } catch (e) {
       console.warn("Gagal menyimpan progress ujian ke localStorage:", e);
     }
@@ -345,7 +368,7 @@ class ChoukaiApp {
 
   loadMemorizedWords() {
     try {
-      const data = localStorage.getItem("choukai_memorized_words");
+      const data = localStorage.getItem(this.userStorageKey("choukai_memorized_words"));
       return data ? JSON.parse(data) : {};
     } catch (e) {
       return {};
@@ -359,7 +382,7 @@ class ChoukaiApp {
       this.memorizedWords[wordKey] = true;
     }
     try {
-      localStorage.setItem("choukai_memorized_words", JSON.stringify(this.memorizedWords));
+      localStorage.setItem(this.userStorageKey("choukai_memorized_words"), JSON.stringify(this.memorizedWords));
     } catch (e) {
       console.warn("Gagal menyimpan progress kosakata ke localStorage:", e);
     }
@@ -850,10 +873,32 @@ class ChoukaiApp {
     if (this._isStartingExam) return;
     this._isStartingExam = true;
     this.closeModal();
-    this.startExam(chapterDataOrNum, mode);
+    this.startChapterExam(chapterDataOrNum, mode);
     setTimeout(() => {
       this._isStartingExam = false;
     }, 500);
+  }
+
+  // Entry point ujian per bab: membungkus startExam agar normalisasi soal server (safeQuestions/_dbId) terpusat (BUG-01)
+  startChapterExam(chapterDataOrNum, mode = "renshuu") {
+    return this.startExam(chapterDataOrNum, mode);
+  }
+
+  // Normalisasi soal bentuk backend (safeQuestions) ke bentuk lokal; simpan ID DB asli sebagai _dbId (BUG-01/BUG-02)
+  normalizeServerQuestions(serverQuestions) {
+    if (!Array.isArray(serverQuestions)) return [];
+    return serverQuestions.map((sq) => ({
+      ...sq,
+      id: sq.questionNumber !== undefined && sq.questionNumber !== null ? sq.questionNumber : sq.id,
+      _dbId: sq.id,
+      type: sq.type || sq.questionType,
+      question_ja: sq.question_ja || sq.questionJa || "",
+      question_ruby: sq.question_ruby || sq.questionRuby || "",
+      question_romaji: sq.question_romaji || sq.questionRomaji || "",
+      question_id: sq.question_id || sq.questionId || "",
+      image: sq.image || sq.imageUrl || "",
+      section_ja: sq.section_ja || sq.sectionJa || "",
+    }));
   }
 
   startExam(chapterDataOrNum, mode = "renshuu") {
@@ -951,10 +996,10 @@ class ChoukaiApp {
         .then((json) => {
           if (json.success && json.data?.session) {
             this.currentExamSession = json.data.session;
-            // Gunakan safeQuestions terverifikasi dari backend jika tersedia
+            // Gunakan safeQuestions terverifikasi dari backend jika tersedia (dinormalisasi ke bentuk lokal + _dbId)
             if (this.mode === "shiken" && (!this.currentUser || this.currentUser.role !== "admin")) {
               if (json.data.questions && Array.isArray(json.data.questions)) {
-                this.currentChapter.questions = json.data.questions;
+                this.currentChapter.questions = this.normalizeServerQuestions(json.data.questions);
               }
             }
             return this.currentExamSession;
@@ -990,6 +1035,9 @@ class ChoukaiApp {
             console.warn("Alert dialog prevented:", e);
           }
         }
+        // RESIDUAL BUG-16: tutup modal konfirmasi submit yang sedang menggantung
+        // saat auto-submit timer agar tidak menutupi layar hasil.
+        this.closeModal();
         this.submitExam();
       }
     }, 1000);
@@ -1015,7 +1063,9 @@ class ChoukaiApp {
     // Real-time server auto-save
     if (window.location.protocol.startsWith("http") && this.currentUser) {
       const chNum = String(this.currentChapter?.chapter || "08").padStart(2, "0");
-      const dbQId = `q_${chNum}_${String(questionId).padStart(2, "0")}`;
+      // BUG-01: pakai _dbId hasil normalisasi safeQuestions; fallback rekonstruksi hanya untuk soal lokal ber-ID numerik
+      const q = (this.currentChapter?.questions || []).find((x) => String(x.id) === String(questionId));
+      const dbQId = (q && q._dbId) || `q_${chNum}_${String(questionId).padStart(2, "0")}`;
 
       const doSave = (session) => {
         if (!session) return;
@@ -1115,6 +1165,10 @@ class ChoukaiApp {
   }
 
   submitExam() {
+    // BUG-16: guard double-submit (auto-submit timer + tombol modal "Ya, Kumpulkan")
+    if (this._isSubmitting) return this.submitExamPromise;
+    this._isSubmitting = true;
+
     if (this.timerInterval) clearInterval(this.timerInterval);
     this.cancelAutoNext();
     this.pauseAudio();
@@ -1149,7 +1203,10 @@ class ChoukaiApp {
     const passingGrade = this.currentChapter.passingGrade || 80;
     const passed = totalScore >= passingGrade;
 
-    const isServerShiken = this.mode === "shiken" && window.location.protocol.startsWith("http") && Boolean(this.currentExamSession || this.startExamPromise);
+    // RESIDUAL BUG-11 (regresi): grading lokal pada mode HTTP memakai data.public.js
+    // yang TANPA correctAnswer (hasil selalu 0) — semua mode dengan sesi server
+    // (shiken ATAU renshuu) menunggu skor resmi server sebelum skor tampil/disimpan.
+    const isServerShiken = window.location.protocol.startsWith("http") && Boolean(this.currentExamSession || this.startExamPromise);
 
     const result = {
       chapter: this.currentChapter.chapter,
@@ -1176,59 +1233,155 @@ class ChoukaiApp {
     // Server-authoritative submit if exam session active or pending
     if (window.location.protocol.startsWith("http") && (this.currentExamSession || this.startExamPromise)) {
       this.submitExamPromise = (async () => {
-        let activeSession = this.currentExamSession;
-        if (!activeSession && this.startExamPromise) {
-          activeSession = await this.startExamPromise;
-        }
-        this.currentExamSession = null;
-        this.startExamPromise = null;
-
-        if (!activeSession) return;
-
-        if (this.pendingSavePromises && this.pendingSavePromises.length > 0) {
-          const saves = [...this.pendingSavePromises];
-          this.pendingSavePromises = [];
-          await Promise.allSettled(saves);
-        }
-
         try {
-          const res = await fetch("/api/v1/exam/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ sessionId: activeSession.id }),
-          });
-          const json = await res.json();
-          if (json.success && json.data) {
-            this.currentResult.score = json.data.totalScore;
-            this.currentResult.readingScore = json.data.readingScore;
-            this.currentResult.choukaiScore = json.data.choukaiScore;
-            this.currentResult.passed = json.data.isPassed;
-            this.currentResult.isGrading = false;
-            // Sinkronkan review resmi dari backend ke memori untuk review pembahasan hasil ujian
-            if (json.data.review && Array.isArray(json.data.review) && this.currentChapter?.questions) {
-              const reviewMap = new Map();
-              json.data.review.forEach((r) => {
-                if (r.id) reviewMap.set(r.id, r);
-                if (r.questionNumber !== undefined) reviewMap.set(r.questionNumber, r);
-                if (r.questionId) reviewMap.set(r.questionId, r);
-              });
-              this.currentChapter.questions.forEach((q) => {
-                const r = reviewMap.get(q.id) || reviewMap.get(q.questionNumber);
-                if (r) {
-                  q.correctAnswer = r.correctAnswer;
-                  q.explanation = r.explanation;
-                }
-              });
-            }
-            this.saveExamResult(this.currentResult);
-            if (this.view === "result") this.render();
+          let activeSession = this.currentExamSession;
+          if (!activeSession && this.startExamPromise) {
+            activeSession = await this.startExamPromise;
           }
-        } catch (e) {
-          console.warn("Backend submit error:", e);
+          this.currentExamSession = null;
+          this.startExamPromise = null;
+
+          if (!activeSession) {
+            // Sesi server tidak pernah terbentuk (mis. backend down saat start) —
+            // jangan biarkan spinner grading menggantung selamanya tanpa fallback.
+            this._submitFailed = true;
+            this._fallbackToLocalGrading();
+            return;
+          }
+
+          if (this.pendingSavePromises && this.pendingSavePromises.length > 0) {
+            const saves = [...this.pendingSavePromises];
+            this.pendingSavePromises = [];
+            await Promise.allSettled(saves);
+          }
+
+          this._lastSubmitSessionId = activeSession.id;
+          await this._postExamSubmitToServer(activeSession.id);
+        } finally {
+          this._isSubmitting = false;
         }
       })();
       return this.submitExamPromise;
     }
+
+    this._isSubmitting = false;
+  }
+
+  // Terapkan hasil submit resmi dari server ke currentResult (dipakai submit & retry)
+  _applyServerSubmitResult(json) {
+    if (!json || !json.success || !json.data || !this.currentResult) return false;
+    this.currentResult.score = json.data.totalScore;
+    this.currentResult.readingScore = json.data.readingScore;
+    this.currentResult.choukaiScore = json.data.choukaiScore;
+    this.currentResult.passed = json.data.isPassed;
+    this.currentResult.isGrading = false;
+    // RESIDUAL BUG-07: salin angka benar resmi server — grading lokal pada data
+    // publik selalu 0, sehingga banner "Total Benar" & laporan WhatsApp salah tanpa ini.
+    this.currentResult.readingCorrect = json.data.readingCorrect;
+    this.currentResult.readingTotal = json.data.readingTotal;
+    this.currentResult.choukaiCorrect = json.data.choukaiCorrect;
+    this.currentResult.choukaiTotal = json.data.choukaiTotal;
+    this.currentResult.correctCount = json.data.totalCorrect;
+    this.currentResult.totalCount = json.data.totalQuestions ?? this.currentResult.totalCount;
+    // Sinkronkan review resmi dari backend ke memori untuk review pembahasan hasil ujian
+    if (json.data.review && Array.isArray(json.data.review) && this.currentChapter?.questions) {
+      const reviewMap = new Map();
+      json.data.review.forEach((r) => {
+        if (r.id) reviewMap.set(r.id, r);
+        if (r.questionNumber !== undefined) reviewMap.set(r.questionNumber, r);
+        if (r.questionId) reviewMap.set(r.questionId, r);
+      });
+      this.currentChapter.questions.forEach((q) => {
+        const r = reviewMap.get(q.id) || reviewMap.get(q.questionNumber);
+        if (r) {
+          q.correctAnswer = r.correctAnswer;
+          q.explanation = r.explanation;
+        }
+      });
+    }
+    this.saveExamResult(this.currentResult);
+    if (this.view === "result") this.render();
+    return true;
+  }
+
+  // POST /exam/submit + fallback skor lokal bila server gagal (BUG-08: spinner selamanya)
+  async _postExamSubmitToServer(sessionId) {
+    try {
+      const res = await fetch("/api/v1/exam/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: sessionId }),
+      });
+      const json = await res.json().catch(() => null);
+      const applied = this._applyServerSubmitResult(json);
+      this._submitFailed = !applied;
+      if (!applied) this._fallbackToLocalGrading();
+      return applied;
+    } catch (e) {
+      console.warn("Backend submit error:", e);
+      this._submitFailed = true;
+      this._fallbackToLocalGrading();
+      return false;
+    }
+  }
+
+  // Fallback: matikan isGrading & pakai skor lokal saat submit server gagal (BUG-08)
+  _fallbackToLocalGrading() {
+    if (!this.currentResult) return;
+    const result = this.currentResult;
+    const questions = (this.currentChapter && this.currentChapter.questions) || [];
+    // RESIDUAL BUG-11: data.public.js (mode HTTP produksi) tidak memuat correctAnswer —
+    // grading lokal mustahil. Jangan menulis skor 0 palsu permanen; pertahankan status
+    // grading + tombol "Coba Kirim Ulang ke Server" sampai skor server berhasil diterima.
+    if (!questions.some((q) => q.correctAnswer !== undefined)) {
+      result.isGrading = true;
+      if (this.view === "result") this.render();
+      return;
+    }
+    const answers = result.answers || {};
+    const readingQuestions = questions.filter((q) => q.session === "reading" || q.id <= 25);
+    const choukaiQuestions = questions.filter((q) => q.session === "choukai" || (q.id > 25 && (this.currentChapter.choukaiCount || 0) > 0));
+    let readingCorrect = 0;
+    readingQuestions.forEach((q) => {
+      if (answers[q.id] === q.correctAnswer) readingCorrect++;
+    });
+    let choukaiCorrect = 0;
+    choukaiQuestions.forEach((q) => {
+      if (answers[q.id] === q.correctAnswer) choukaiCorrect++;
+    });
+    const readingTotal = readingQuestions.length || 25;
+    const choukaiTotal = choukaiQuestions.length;
+    const readingScore = (readingCorrect / readingTotal) * 100;
+    let choukaiScore = 0;
+    let totalScore = 0;
+    if (choukaiTotal > 0) {
+      choukaiScore = (choukaiCorrect / choukaiTotal) * 100;
+      totalScore = (readingScore + choukaiScore) / 2;
+    } else {
+      totalScore = readingScore;
+    }
+    const passingGrade = (this.currentChapter && this.currentChapter.passingGrade) || 80;
+    result.score = totalScore;
+    result.readingScore = readingScore;
+    result.choukaiScore = choukaiScore;
+    result.passed = totalScore >= passingGrade;
+    result.isGrading = false;
+    this.saveExamResult(result);
+    if (this.view === "result") this.render();
+  }
+
+  // BUG-08: kirim ulang hasil ujian ke server setelah submit pertama gagal
+  retrySubmitExam() {
+    if (this._isSubmitting || !this._lastSubmitSessionId || !this.currentResult) return;
+    this._isSubmitting = true;
+    const p = (async () => {
+      try {
+        await this._postExamSubmitToServer(this._lastSubmitSessionId);
+      } finally {
+        this._isSubmitting = false;
+      }
+    })();
+    return p;
   }
 
   // ==========================================
@@ -1238,6 +1391,10 @@ class ChoukaiApp {
     if (!this.currentResult) return;
     const r = this.currentResult;
     const qList = this.currentChapter.questions;
+    // RESIDUAL BUG-05/BUG-07: skor/angka benar bisa null/undefined (grading server
+    // pending atau entri server-lite) — format null-safe agar tombol kirim nilai tidak crash.
+    const f1 = (v) => (typeof v === "number" && isFinite(v) ? v.toFixed(1) : "0.0");
+    const rAns = r.answers || {};
 
     const dateStr = new Date().toLocaleDateString("id-ID", {
       weekday: "long",
@@ -1249,14 +1406,19 @@ class ChoukaiApp {
     });
 
     const hasChoukai = (r.choukaiTotal || 0) > 0;
+    const hasAnswers = r.answers && Object.keys(r.answers).length > 0;
     let itemsStr = "";
-    qList.forEach((q) => {
-      const isCorrect = r.answers[q.id] === q.correctAnswer;
-      const mark = isCorrect ? "✅ [BENAR]" : "❌ [SALAH]";
-      const userAns = r.answers[q.id] ? `Opsi ${r.answers[q.id]}` : "Tidak dijawab";
-      const sessionTag = hasChoukai ? ((q.session === "reading" || q.id <= 25) ? "[Reading] " : "[Choukai] ") : "";
-      itemsStr += `• ${sessionTag}Soal ${q.id}: ${mark} (Pilihan: ${userAns} | Kunci: ${q.correctAnswer})\n`;
-    });
+    if (hasAnswers) {
+      qList.forEach((q) => {
+        const isCorrect = rAns[q.id] === q.correctAnswer;
+        const mark = isCorrect ? "✅ [BENAR]" : "❌ [SALAH]";
+        const userAns = rAns[q.id] ? `Opsi ${rAns[q.id]}` : "Tidak dijawab";
+        const sessionTag = hasChoukai ? ((q.session === "reading" || q.id <= 25) ? "[Reading] " : "[Choukai] ") : "";
+        itemsStr += `• ${sessionTag}Soal ${q.id}: ${mark} (Pilihan: ${userAns} | Kunci: ${q.correctAnswer})\n`;
+      });
+    } else {
+      itemsStr = "• Rincian jawaban per soal tidak tersimpan di perangkat (hasil disinkronkan dari skor server).\n";
+    }
 
     const statusBadge = r.passed ? "LULUS (合格) 🎉" : "REMEDIAL / BELUM LULUS (再試) ⚠️";
     const modeText = r.mode === "shiken" ? "Simulasi CBT" : "Latihan Mandiri";
@@ -1266,14 +1428,14 @@ class ChoukaiApp {
     if (hasChoukai) {
       headerTitle = `🎌 *LAPORAN EVALUASI IMM JAPAN (TRYOUT TERPADU)*\n`;
       scoreSection =
-        `📖 *Skor Reading (読解):* *${r.readingScore.toFixed(1)} / 100* (${r.readingCorrect}/${r.readingTotal} Benar)\n` +
-        `🎧 *Skor Choukai (聴解):* *${r.choukaiScore.toFixed(1)} / 100* (${r.choukaiCorrect}/${r.choukaiTotal} Benar)\n` +
-        `📊 *Skor Akhir Tryout:* *${r.score.toFixed(1)} / 100*\n`;
+        `📖 *Skor Reading (読解):* *${f1(r.readingScore)} / 100* (${r.readingCorrect ?? 0}/${r.readingTotal ?? qList.length} Benar)\n` +
+        `🎧 *Skor Choukai (聴解):* *${f1(r.choukaiScore)} / 100* (${r.choukaiCorrect ?? 0}/${r.choukaiTotal ?? 0} Benar)\n` +
+        `📊 *Skor Akhir Tryout:* *${f1(r.score)} / 100*\n`;
     } else {
       headerTitle = `🎌 *LAPORAN EVALUASI IMM JAPAN (UJIAN TULIS)*\n`;
       scoreSection =
-        `📖 *Skor Ujian Tulis (Reading):* *${r.readingScore.toFixed(1)} / 100* (${r.readingCorrect}/${r.readingTotal} Benar • Bobot 4.0 Poin/Soal)\n` +
-        `📊 *Skor Akhir:* *${r.score.toFixed(1)} / 100*\n`;
+        `📖 *Skor Ujian Tulis (Reading):* *${f1(r.readingScore)} / 100* (${r.readingCorrect ?? 0}/${r.readingTotal ?? qList.length} Benar • Bobot 4.0 Poin/Soal)\n` +
+        `📊 *Skor Akhir:* *${f1(r.score)} / 100*\n`;
     }
 
     const msg =
@@ -1287,7 +1449,7 @@ class ChoukaiApp {
       `🏆 *Status:* *${statusBadge}*\n` +
       `📌 *Passing Grade:* 80.0 Poin\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-      `*Rincian Hasil Pengerjaan (${r.totalCount} Soal):*\n` +
+      `*Rincian Hasil Pengerjaan (${r.totalCount ?? qList.length} Soal):*\n` +
       itemsStr +
       `━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
       `🗓️ *Waktu:* ${dateStr}\n` +
@@ -1666,11 +1828,12 @@ class ChoukaiApp {
       const isCompleted = Boolean(prog);
       if (isCompleted) {
         completedCount++;
-        totalScoreSum += prog.score;
+        // BUG-05: null-guard skor (entri server pending/failed tersimpan sebagai null)
+        totalScoreSum += Number(prog.score) || 0;
       }
 
       const scoreBadge = isCompleted
-        ? `<span class="px-2 py-0.5 rounded text-xs font-bold ${prog.passed ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400" : "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400"}">${prog.score.toFixed(0)} Poin</span>`
+        ? `<span class="px-2 py-0.5 rounded text-xs font-bold ${prog.passed ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400" : "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-400"}">${(Number(prog.score) || 0).toFixed(0)} Poin</span>`
         : "";
 
       const chData = typeof CHAPTERS_DATA !== "undefined" ? CHAPTERS_DATA[ch.num] : null;
@@ -2109,7 +2272,7 @@ class ChoukaiApp {
       const optCleanJa = opt.text_ja.replace(/^[①②③④\d]+[\s.、]*\s*/, "");
 
       optionsHTML += `
-        <button onclick="window.app.selectOption(${q.id}, '${opt.id}')" class="option-btn ${btnState} p-3.5 rounded-lg flex items-start gap-3 w-full">
+        <button onclick="window.app.selectOption('${q.id}', '${opt.id}')" class="option-btn ${btnState} p-3.5 rounded-lg flex items-start gap-3 w-full">
           <span class="w-6 h-6 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center text-xs font-bold shrink-0 font-jp ${isSelected ? "bg-sky-600 text-white border-sky-600" : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"}">
             ${opt.symbol || opt.id}
           </span>
@@ -2184,17 +2347,31 @@ class ChoukaiApp {
           <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
             Sistem CBT sedang menghitung skor resmi dan memverifikasi integritas jawaban Anda di server. Mohon tunggu sejenak...
           </p>
+          ${this._submitFailed && this._lastSubmitSessionId ? `
+            <button onclick="window.app.retrySubmitExam()" class="mt-5 px-4 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-2 shadow-sm mx-auto" title="Grading lokal tidak tersedia (data publik tanpa kunci). Coba kirim ulang ke server.">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              Coba Kirim Ulang ke Server
+            </button>
+          ` : ""}
         </div>
       `;
     }
 
     const qList = this.currentChapter.questions;
+    // RESIDUAL BUG-06/BUG-05: entri hasil versi-server tidak memuat jawaban per soal,
+    // dan entri pending bisa ber-skor null — guard agar layar hasil tidak crash
+    // (TypeError pada r.answers[q.id] / null.toFixed) dan statistik tetap tampil wajar.
+    const fmtScore = (v) => (typeof v === "number" && isFinite(v) ? v.toFixed(1) : "0.0");
+    const rAnswers = r.answers || {};
+    const hasDetail = Object.keys(rAnswers).length > 0;
+    const rlTotal = r.readingTotal ?? qList.filter((q) => q.session === "reading" || q.id <= 25).length;
+    const ckTotal = r.choukaiTotal ?? qList.filter((q) => q.session === "choukai" || (q.id > 25 && (this.currentChapter.choukaiCount || 0) > 0)).length;
 
-    const wrongQuestions = qList.filter((q) => r.answers[q.id] !== q.correctAnswer);
-    const correctQuestions = qList.filter((q) => r.answers[q.id] === q.correctAnswer);
+    const wrongQuestions = hasDetail ? qList.filter((q) => rAnswers[q.id] !== q.correctAnswer) : [];
+    const correctQuestions = hasDetail ? qList.filter((q) => rAnswers[q.id] === q.correctAnswer) : [];
 
     const renderCard = (q, isCorrect) => {
-      const userAns = r.answers[q.id];
+      const userAns = rAnswers[q.id];
       const isChoukai = q.session === "choukai";
 
       let dialogueScriptHTML = "";
@@ -2342,31 +2519,31 @@ class ChoukaiApp {
             ${r.passed ? "LULUS EVALUASI (合格)" : "REMEDIAL / BELUM LULUS (再試)"}
           </span>
           <div class="text-4xl sm:text-5xl font-black font-mono mt-3 mb-1 ${r.passed ? "text-emerald-600" : "text-rose-600"}">
-            ${r.score.toFixed(1)} <span class="text-lg text-slate-400 font-normal">/ 100</span>
+            ${fmtScore(r.score)} <span class="text-lg text-slate-400 font-normal">/ 100</span>
           </div>
           <p class="text-xs text-slate-500 mb-4">
-            Total Benar: ${r.correctCount} dari ${r.totalCount} Soal &bull; Passing Grade: 80.0
+            Total Benar: ${r.correctCount ?? 0} dari ${r.totalCount ?? qList.length} Soal &bull; Passing Grade: 80.0
           </p>
 
           <!-- Score Breakdown Badges -->
-          ${r.choukaiTotal > 0 ? `
+          ${ckTotal > 0 ? `
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto text-left mb-4">
               <div class="p-3 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60">
                 <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono flex items-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Sesi 1: Reading (読解)</span></div>
                 <div class="text-xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
-                  ${r.readingScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
+                  ${fmtScore(r.readingScore)} <span class="text-xs font-normal text-slate-500">/ 100</span>
                 </div>
                 <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                  ${r.readingCorrect} dari ${r.readingTotal} Soal Benar
+                  ${r.readingCorrect ?? 0} dari ${rlTotal} Soal Benar
                 </div>
               </div>
               <div class="p-3 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60">
                 <div class="text-[11px] text-sky-700 dark:text-sky-400 font-bold uppercase font-mono flex items-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 18v-6a9 9 0 0118 0v6M3 18a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5zm18 0a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h2v5z"/></svg><span>Sesi 2: Choukai (聴解)</span></div>
                 <div class="text-xl font-black font-mono text-sky-900 dark:text-sky-200 mt-0.5">
-                  ${r.choukaiScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
+                  ${fmtScore(r.choukaiScore)} <span class="text-xs font-normal text-slate-500">/ 100</span>
                 </div>
                 <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                  ${r.choukaiCorrect} dari ${r.choukaiTotal} Soal Benar
+                  ${r.choukaiCorrect ?? 0} dari ${ckTotal} Soal Benar
                 </div>
               </div>
             </div>
@@ -2374,16 +2551,22 @@ class ChoukaiApp {
             <div class="p-3.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 max-w-sm mx-auto text-center mb-4">
               <div class="text-[11px] text-indigo-700 dark:text-indigo-400 font-bold uppercase font-mono flex items-center justify-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span>Ujian Tulis: Reading (読解)</span></div>
               <div class="text-2xl font-black font-mono text-indigo-900 dark:text-indigo-200 mt-0.5">
-                ${r.readingScore.toFixed(1)} <span class="text-xs font-normal text-slate-500">/ 100</span>
+                ${fmtScore(r.readingScore)} <span class="text-xs font-normal text-slate-500">/ 100</span>
               </div>
               <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                ${r.readingCorrect} dari ${r.readingTotal} Soal Benar (Bobot 4.0 Poin / Soal)
+                ${r.readingCorrect ?? 0} dari ${rlTotal} Soal Benar (Bobot 4.0 Poin / Soal)
               </div>
             </div>
           `}
 
           <!-- WhatsApp Share & Actions -->
           <div class="flex flex-wrap items-center justify-center gap-2.5 mt-5 pt-5 border-t border-slate-100 dark:border-slate-800">
+            ${this._submitFailed && this._lastSubmitSessionId ? `
+              <button onclick="window.app.retrySubmitExam()" class="px-4 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-2 shadow-sm" title="Skor resmi server belum tersinkron. Coba kirim ulang sekarang.">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Coba Kirim Ulang ke Server
+              </button>
+            ` : ""}
             <button onclick="window.app.shareResultWhatsApp()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-2 shadow-sm">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.74 0.965 1.2.664.592 1.224.776 1.397.863.173.086.274.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
               Kirim Nilai ke Sensei via WhatsApp
@@ -2437,7 +2620,14 @@ class ChoukaiApp {
             </div>
           </div>
 
-          ${wrongQuestions.length > 0
+          ${!hasDetail
+            ? `
+            <div class="bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60 rounded-xl p-6 text-center text-sky-800 dark:text-sky-200 shadow-xs">
+              <h4 class="font-bold text-sm">Rincian Jawaban Per Soal Tidak Tersedia</h4>
+              <p class="text-xs text-sky-600 dark:text-sky-400 mt-1">Hasil ini disinkronkan dari skor resmi server, sehingga lembar jawaban per soal tidak tersimpan di perangkat ini. Kerjakan ulang tryout untuk melihat pembahasan lengkap per soal.</p>
+            </div>
+            `
+            : wrongQuestions.length > 0
             ? wrongQuestions.map((q) => renderCard(q, false)).join("")
             : `
             <div class="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/80 rounded-xl p-6 text-center text-emerald-800 dark:text-emerald-200 shadow-xs">
@@ -2449,6 +2639,7 @@ class ChoukaiApp {
           }
         </div>
 
+        ${hasDetail ? `
         <!-- Bagian 2: Soal Benar (Terpisah di Bawah) -->
         <div>
           <div class="flex items-center gap-2.5 mb-4 p-3 bg-emerald-50/60 dark:bg-emerald-950/40 rounded-xl border border-emerald-200/80 dark:border-emerald-900/60">
@@ -2474,6 +2665,7 @@ class ChoukaiApp {
             `
           }
         </div>
+        ` : ""}
       </div>
     `;
   }
@@ -2626,7 +2818,7 @@ class ChoukaiApp {
       }
     });
     try {
-      localStorage.setItem("choukai_memorized_words", JSON.stringify(this.memorizedWords));
+      localStorage.setItem(this.userStorageKey("choukai_memorized_words"), JSON.stringify(this.memorizedWords));
     } catch (e) {}
     this.refreshKosakataGrid();
   }
@@ -2775,29 +2967,26 @@ class ChoukaiApp {
       babOptionsHTML += `<option value="${bStr}" ${this.kosakataBab === bStr ? "selected" : ""}>Bab ${bStr}: ${title} (${count} kata)</option>`;
     }
 
-    // Categories list
-    const categories = [
-      "all",
-      "Kata Benda",
-      "Kata Kerja",
-      "Kata Sifat",
-      "Istilah Industri / K3",
-      "Ungkapan / Salam",
-      "Kata Ganti",
-      "Kata Ganti Tunjuk",
-      "Kata Ganti Tempat",
-      "Kata Tanya",
-      "Kata Keterangan",
-      "Kata Sambung",
-      "Kata Bantu Bilangan",
-      "Bilangan",
-      "Kata Penjelas",
-      "Keterangan / Partikel"
-    ];
+    // Categories list — dibangun DINAMIS dari field kategori tiap kata pada scope bab yang
+    // sedang dipilih (sama dengan scope getFilteredKosakataWords), sehingga kategori seperti
+    // "Kata Sifat-i", "Kata Sifat-na", "Satuan Bilangan", "Tata Bahasa", "Kata Partikel"
+    // otomatis tersedia dan nilainya selalu cocok dengan pembanding filter (w.kategori).
+    const catSet = new Set();
+    if (typeof KOSAKATA_DATA !== "undefined") {
+      if (isAll) {
+        for (const b of bKeys) {
+          const ch = KOSAKATA_DATA[b];
+          if (ch && ch.words) for (const w of ch.words) if (w.kategori) catSet.add(w.kategori);
+        }
+      } else if (KOSAKATA_DATA[bInt] && KOSAKATA_DATA[bInt].words) {
+        for (const w of KOSAKATA_DATA[bInt].words) if (w.kategori) catSet.add(w.kategori);
+      }
+    }
+    const categories = ["all", ...Array.from(catSet).sort()];
 
     let catOptionsHTML = categories.map((cat) => {
       const label = cat === "all" ? "Semua Kategori Gramatikal" : cat;
-      return `<option value="${cat}" ${this.kosakataFilter === cat ? "selected" : ""}>${label}</option>`;
+      return `<option value="${escapeAttr(cat)}" ${this.kosakataFilter === cat ? "selected" : ""}>${escapeHtml(label)}</option>`;
     }).join("");
 
     return `
@@ -2884,7 +3073,7 @@ class ChoukaiApp {
             <div class="md:col-span-4">
               <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Pencarian Cepat:</label>
               <div class="relative">
-                <input id="kosakata-search-input" type="text" placeholder="Cari Kanji, Hiragana, Romaji, Arti..." value="${this.kosakataSearch}" class="w-full pl-8 pr-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500">
+                <input id="kosakata-search-input" type="text" placeholder="Cari Kanji, Hiragana, Romaji, Arti..." value="${escapeAttr(this.kosakataSearch)}" class="w-full pl-8 pr-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500">
                 <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
               </div>
             </div>
@@ -3026,10 +3215,18 @@ class ChoukaiApp {
             this.currentUser = json.data.user;
             this.currentSession = json.data.session;
             this.isAuthenticated = true;
+            // RESIDUAL BUG-18: muat state per-user (key bernamespace) SEKARANG —
+            // sebelumnya jalur HTTP hanya memuat state 'guest' dari konstruktor,
+            // sehingga riwayat renshuu lokal & kata terhafal per-user tidak pernah
+            // tampil lintas sesi di mode HTTP.
+            this.profile = this.loadProfile();
+            this.progress = this.loadProgress();
+            this.memorizedWords = this.loadMemorizedWords();
             if (this.currentUser && this.currentUser.name) {
               this.profile.name = this.currentUser.name;
               this.profile.classNo = this.currentUser.className || this.profile.classNo || "LPK";
-              localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+              // RESIDUAL BUG-18: tulis ke key per-user, bukan key global yatim.
+              localStorage.setItem(this.userStorageKey("choukai_student_profile"), JSON.stringify(this.profile));
               await this.fetchChaptersStatus();
             }
           } else {
@@ -3104,14 +3301,19 @@ class ChoukaiApp {
                   readingScore: ch.userScore.readingScore,
                   choukaiScore: ch.userScore.choukaiScore,
                   passed: ch.userScore.isPassed,
+                  // RESIDUAL BUG-06: field wajib agar tombol "Hasil" (viewSavedResult →
+                  // renderResultHTML) tidak crash — entri server-lite tidak menyimpan
+                  // jawaban per soal; UI menampilkan banner skor tanpa rincian.
+                  answers: {},
                 };
               }
-            } else if (this.currentUser && this.currentUser.role !== "admin") {
-              delete this.progress[ch.chapterNum];
             }
+            // BUG-19: jangan hapus progress lokal hanya karena belum ada skor server (submit gagal/offline)
           }
           try {
-            localStorage.setItem("choukai_progress", JSON.stringify(this.progress));
+            // RESIDUAL BUG-18: simpan ke key per-user (key global 'choukai_progress'
+            // tidak pernah dibaca lagi oleh loadProgress — skor tersinkron hilang).
+            localStorage.setItem(this.userStorageKey("choukai_progress"), JSON.stringify(this.progress));
           } catch (e) {}
           if (this.view === "dashboard") {
             this.render();
@@ -3285,36 +3487,48 @@ class ChoukaiApp {
         { id: "usr_hamdani_lubis", name: "Hamdani Lubis", username: "hamdani.lubis", role: "student", className: "Angkatan 35-A" },
       ];
 
+      // BUG-12: kredensial offline diverifikasi dari SATU sumber — mock user store lokal.
+      // foundOfficial hanya memperkaya data tampilan (id/role/nama/kelas), bukan auth.
       const foundOfficial = officialAccounts.find((acc) => acc.username === u);
-      if (foundOfficial && p.length >= 4) {
-        this.currentUser = {
-          id: foundOfficial.id,
-          name: foundOfficial.name,
-          username: foundOfficial.username,
-          role: foundOfficial.role,
-          className: foundOfficial.className,
-        };
-        this.currentSession = { id: "ses_local_" + foundOfficial.username, token: "mock_token" };
+      let mockUsers = {};
+      try {
+        mockUsers = JSON.parse(localStorage.getItem("imm_mock_users") || "{}") || {};
+      } catch (e) {
+        mockUsers = {};
+      }
+      const mu = mockUsers[u];
+      if (mu && (mu.pin === p || mu.password === p)) {
+        this.currentUser = { ...mu.user };
+        if (foundOfficial) {
+          this.currentUser.id = foundOfficial.id;
+          this.currentUser.role = foundOfficial.role;
+          this.currentUser.name = this.currentUser.name || foundOfficial.name;
+          this.currentUser.className = this.currentUser.className || foundOfficial.className;
+        }
+        this.currentSession = { id: foundOfficial ? "ses_local_" + foundOfficial.username : "ses_mock_" + u, token: "mock_token" };
         this.isAuthenticated = true;
+        // BUG-18: muat state per-user (key bernamespace) setelah currentUser terisi.
+        this.profile = this.loadProfile();
         this.profile.name = this.currentUser.name;
         this.profile.classNo = this.currentUser.className;
-        localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
-      } else {
-        const mockUsers = JSON.parse(localStorage.getItem("imm_mock_users") || "{}");
-        if (mockUsers[u] && (mockUsers[u].pin === p || mockUsers[u].password === p)) {
-          this.currentUser = mockUsers[u].user;
-          this.currentSession = { id: "ses_mock_" + u, token: "mock_token" };
-          this.isAuthenticated = true;
-          this.profile.name = this.currentUser.name;
-          this.profile.classNo = this.currentUser.className;
-          localStorage.setItem("choukai_student_profile", JSON.stringify(this.profile));
+        localStorage.setItem(this.userStorageKey("choukai_student_profile"), JSON.stringify(this.profile));
+        this.progress = this.loadProgress();
+        this.memorizedWords = this.loadMemorizedWords();
+      } else if (foundOfficial) {
+        const msg = "Akun resmi hanya bisa login saat terhubung ke server. Mode offline hanya untuk akun yang terdaftar di perangkat ini.";
+        if (errEl) {
+          errEl.innerText = msg;
+          errEl.classList.remove("hidden");
         } else {
-          if (errEl) {
-            errEl.innerText = "Username atau password salah.";
-            errEl.classList.remove("hidden");
-          }
-          return false;
+          alert(msg);
         }
+        return false;
+      } else {
+        if (errEl) {
+          errEl.innerText = "Username atau password salah.";
+          errEl.classList.remove("hidden");
+        }
+        return false;
       }
     }
 
@@ -3341,6 +3555,13 @@ class ChoukaiApp {
   }
 
   async logout() {
+    // BUG-17: hentikan timer ujian, auto-next choukai, dan pemutar audio (idiom goToDashboard).
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    this.cancelAutoNext();
+    this.pauseAudio();
     if (window.location.protocol.startsWith("http")) {
       try {
         await fetch("/api/auth/sign-out", {
@@ -3356,6 +3577,15 @@ class ChoukaiApp {
     this.isAuthenticated = false;
     this.authChecking = false;
     this.userRestrictedChapters = {};
+    // BUG-17: reset state ujian yang menggantung.
+    this.currentExamSession = null;
+    this.startExamPromise = null;
+    this.pendingSavePromises = [];
+    // BUG-18: data persisten per-user TIDAK dihapus, tapi memori dikosongkan agar
+    // user berikutnya tidak melihat sisa data user sebelumnya sebelum render halaman login.
+    this.progress = {};
+    this.profile = { name: "", classNo: "", target: "JFT-Basic A2" };
+    this.memorizedWords = {};
     this.closeModal();
     this.view = "auth_gate";
     try {
@@ -3513,13 +3743,13 @@ class ChoukaiApp {
             <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-xs flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between">
-                  <span class="font-extrabold text-sm text-slate-900 dark:text-slate-100">${s.studentName}</span>
+                  <span class="font-extrabold text-sm text-slate-900 dark:text-slate-100">${escapeHtml(s.studentName)}</span>
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold ${s.isExpired ? 'bg-rose-100 text-rose-700' : 'bg-sky-100 text-sky-700'}">
                     ${s.isExpired ? 'Waktu Habis' : s.remainingMinutes + 'm tersisa'}
                   </span>
                 </div>
                 <div class="text-[11px] text-slate-500 mt-0.5">
-                  ${s.username} • ${s.className} • <strong>Bab ${s.chapterNum} (${s.mode})</strong>
+                  ${escapeHtml(s.username)} • ${escapeHtml(s.className)} • <strong>Bab ${s.chapterNum} (${s.mode})</strong>
                 </div>
                 <div class="mt-3">
                   <div class="flex justify-between text-[11px] font-bold mb-1">
@@ -3621,7 +3851,7 @@ class ChoukaiApp {
     pane.innerHTML = `
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
         <div class="flex items-center gap-2">
-          <input id="admin-user-search-input" type="text" placeholder="Cari nama, username, kelas..." value="${searchQ}" onkeydown="if(event.key==='Enter') window.app.fetchAdminUsers(this.value)" class="px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none w-56">
+          <input id="admin-user-search-input" type="text" placeholder="Cari nama, username, kelas..." value="${escapeAttr(searchQ)}" onkeydown="if(event.key==='Enter') window.app.fetchAdminUsers(this.value)" class="px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none w-56">
           <button onclick="window.app.fetchAdminUsers(document.getElementById('admin-user-search-input').value)" class="px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-lg hover:bg-slate-200">Cari</button>
         </div>
         <button onclick="document.getElementById('add-user-form-card').classList.toggle('hidden')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-xs">
@@ -3658,41 +3888,45 @@ class ChoukaiApp {
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-            ${users.map((u) => `
+            ${users.map((u) => {
+              // Escape nama untuk konteks JS string di dalam atribut onclick: backslash digandakan dulu, baru kutip tunggal di-prefix backslash; escapeAttr menutup konteks atribut HTML.
+              const safeNameAttr = escapeAttr(String(u.name).replace(/\\/g, "\\\\").replace(/'/g, "\\'"));
+              return `
               <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                 <td class="p-2.5">
-                  <div class="font-bold text-slate-900 dark:text-slate-100">${u.name}</div>
-                  <div class="text-[11px] text-slate-500 font-mono">${u.username}</div>
+                  <div class="font-bold text-slate-900 dark:text-slate-100">${escapeHtml(u.name)}</div>
+                  <div class="text-[11px] text-slate-500 font-mono">${escapeHtml(u.username)}</div>
                 </td>
                 <td class="p-2.5">
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold ${u.role === 'admin' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'}">
                     ${u.role === 'admin' ? 'Sensei (Admin)' : 'Siswa'}
                   </span>
                 </td>
-                <td class="p-2.5 text-slate-600 dark:text-slate-400">${u.className}</td>
+                <td class="p-2.5 text-slate-600 dark:text-slate-400">${escapeHtml(u.className)}</td>
                 <td class="p-2.5 text-center font-bold">${u.totalExams || 0}</td>
                 <td class="p-2.5 text-center font-bold ${u.avgScore >= 80 ? 'text-emerald-600' : 'text-slate-700 dark:text-slate-300'}">${u.avgScore ? u.avgScore.toFixed(1) : '-'}</td>
                 <td class="p-2.5 text-right space-x-1">
-                  <button onclick="window.app.openStudentChapterAccessModal('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Atur Hak Akses Bab Siswa">
+                  <button onclick="window.app.openStudentChapterAccessModal('${u.id}', '${safeNameAttr}')" class="px-2 py-1 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Atur Hak Akses Bab Siswa">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     Akses Bab
                   </button>
-                  <button onclick="window.app.adminResetPin('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Reset PIN ke 123456">
+                  <button onclick="window.app.adminResetPin('${u.id}', '${safeNameAttr}')" class="px-2 py-1 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Reset PIN ke 123456">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                     Reset PIN
                   </button>
-                  <button onclick="window.app.adminResetStudentExam('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-orange-50 dark:bg-orange-950/60 hover:bg-orange-100 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Reset Nilai & Riwayat Ujian Siswa Ini">
+                  <button onclick="window.app.adminResetStudentExam('${u.id}', '${safeNameAttr}')" class="px-2 py-1 bg-orange-50 dark:bg-orange-950/60 hover:bg-orange-100 border border-orange-200 dark:border-orange-800 text-orange-800 dark:text-orange-300 rounded text-[11px] font-semibold inline-flex items-center gap-1" title="Reset Nilai & Riwayat Ujian Siswa Ini">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     Reset Nilai
                   </button>
                   ${this.currentUser?.id !== u.id ? `
-                    <button onclick="window.app.adminDeleteUser('${u.id}', '${u.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-[11px] font-semibold inline-flex items-center" title="Hapus Akun">
+                    <button onclick="window.app.adminDeleteUser('${u.id}', '${safeNameAttr}')" class="px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded text-[11px] font-semibold inline-flex items-center" title="Hapus Akun">
                       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                     </button>
                   ` : ''}
                 </td>
               </tr>
-            `).join("")}
+            `;
+            }).join("")}
           </tbody>
         </table>
       </div>
@@ -3766,7 +4000,8 @@ class ChoukaiApp {
         }
         if (this.currentUser && this.currentUser.id === userId) {
           this.progress = {};
-          try { localStorage.removeItem("choukai_progress"); } catch (e) {}
+          // RESIDUAL BUG-18: hapus key per-user (key global sudah tidak dipakai).
+          try { localStorage.removeItem(this.userStorageKey("choukai_progress")); } catch (e) {}
         }
         alert(`Data ujian siswa "${userName}" berhasil di-reset.`);
         this.renderAdminUsersPane();
@@ -4517,8 +4752,8 @@ class ChoukaiApp {
             ` : items.map((r) => `
               <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                 <td class="p-2.5 text-slate-500 text-[11px]">${r.submittedAt ? new Date(r.submittedAt).toLocaleDateString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '-'}</td>
-                <td class="p-2.5 font-bold text-slate-900 dark:text-slate-100">${r.studentName}</td>
-                <td class="p-2.5 text-slate-600 dark:text-slate-400">${r.className}</td>
+                <td class="p-2.5 font-bold text-slate-900 dark:text-slate-100">${escapeHtml(r.studentName)}</td>
+                <td class="p-2.5 text-slate-600 dark:text-slate-400">${escapeHtml(r.className)}</td>
                 <td class="p-2.5 font-mono">Bab ${r.chapterNum}</td>
                 <td class="p-2.5 text-center">${r.readingScore || '0'}</td>
                 <td class="p-2.5 text-center">${r.choukaiScore || '0'}</td>
@@ -4559,7 +4794,9 @@ class ChoukaiApp {
         if (data.success) {
           alert(data.message || "Seluruh data pengerjaan ujian berhasil dikosongkan total.");
           this.progress = {};
-          try { localStorage.removeItem("choukai_progress"); } catch (e) {}
+          // RESIDUAL BUG-18: hapus key per-user admin ini (key global sudah tidak dipakai;
+          // progress siswa lain di browser masing-masing disegarkan via skor server).
+          try { localStorage.removeItem(this.userStorageKey("choukai_progress")); } catch (e) {}
           this.fetchAdminResults();
         } else {
           alert(data.error || "Gagal mengosongkan data ujian.");
@@ -4567,7 +4804,8 @@ class ChoukaiApp {
       } else {
         this.adminResultsData = [];
         this.progress = {};
-        try { localStorage.removeItem("choukai_progress"); } catch (e) {}
+        // RESIDUAL BUG-18: hapus key per-user (key global sudah tidak dipakai).
+        try { localStorage.removeItem(this.userStorageKey("choukai_progress")); } catch (e) {}
         alert("Seluruh data pengerjaan ujian berhasil dikosongkan.");
         this.renderAdminResultsPane();
       }
@@ -5357,7 +5595,7 @@ class ChoukaiApp {
                 </div>
                 <div>
                   <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 font-jp leading-tight">
-                    Pengaturan Hak Akses Bab: <span class="text-sky-600 dark:text-sky-400">${studentName}</span>
+                    Pengaturan Hak Akses Bab: <span class="text-sky-600 dark:text-sky-400">${escapeHtml(studentName)}</span>
                   </h3>
                   <p class="text-[11px] text-slate-500">Atur izin ujian CBT tryout dan pembatasan bank dokumen PDF materi/kunci per siswa.</p>
                 </div>

@@ -17,6 +17,7 @@ import { hashPassword } from "better-auth/crypto";
 import crypto from "crypto";
 import { AppEnv } from "../types.js";
 import { resetAndSeedOfficialAccounts, INITIAL_USERS } from "../db/seed.js";
+import { sanitizeDisplayName } from "./auth.js";
 
 export const adminRouter = new Hono<AppEnv>();
 
@@ -97,7 +98,31 @@ adminRouter.post("/admin/users", async (c) => {
       return c.json({ success: false, error: "Nama, username, dan PIN wajib diisi." }, 400);
     }
 
+    // RESIDUAL BUG-11/BUG-22: validasi + sanitasi identik dengan registrasi siswa
+    // (defense-in-depth — sink frontend sudah di-escape, backend tidak boleh lebih longgar).
+    const nameClean = sanitizeDisplayName(String(name));
+    if (nameClean.length < 1 || nameClean.length > 60) {
+      return c.json(
+        { success: false, error: "Nama harus 1-60 karakter dan tidak boleh hanya berisi karakter tidak valid." },
+        400
+      );
+    }
+
     const usernameClean = String(rawUsername).trim().toLowerCase();
+    if (!/^[a-z0-9._-]{3,30}$/.test(usernameClean)) {
+      return c.json(
+        { success: false, error: "Username hanya boleh berisi huruf, angka, titik, underscore, dan hyphen, dengan panjang 3-30 karakter." },
+        400
+      );
+    }
+
+    // RESIDUAL BUG-22: PIN wajib tepat 6 digit angka.
+    if (!/^\d{6}$/.test(String(pin))) {
+      return c.json(
+        { success: false, error: "PIN harus tepat 6 digit angka." },
+        400
+      );
+    }
     const emailClean = rawEmail && String(rawEmail).trim().length > 0
       ? String(rawEmail).trim().toLowerCase()
       : `${usernameClean}@imm.internal`;
@@ -118,13 +143,13 @@ adminRouter.post("/admin/users", async (c) => {
       .insert(user)
       .values({
         id: userId,
-        name: String(name).trim(),
+        name: nameClean,
         username: usernameClean,
         displayUsername: usernameClean,
         email: emailClean,
         emailVerified: true,
         role: role === "admin" ? "admin" : "student",
-        className: className ? String(className).trim() : "Angkatan 35-A",
+        className: className ? (sanitizeDisplayName(String(className)) || "Angkatan 35-A").slice(0, 40) : "Angkatan 35-A",
         banned: false,
       })
       .returning();
@@ -165,6 +190,10 @@ adminRouter.post("/admin/users/:id/reset-pin", async (c) => {
   try {
     const targetUserId = c.req.param("id");
     const body = await c.req.json().catch(() => ({}));
+    // RESIDUAL BUG-22: PIN kustom (bila diberikan) wajib tepat 6 digit angka.
+    if (body.pin !== undefined && body.pin !== null && !/^\d{6}$/.test(String(body.pin))) {
+      return c.json({ success: false, error: "PIN harus tepat 6 digit angka." }, 400);
+    }
     const newPin = body.pin ? String(body.pin) : "123456";
 
     const targetUser = await db.query.user.findFirst({
@@ -236,7 +265,9 @@ adminRouter.post("/admin/reset-system-users", async (c) => {
     await resetAndSeedOfficialAccounts(true);
     return c.json({
       success: true,
-      message: `Seluruh data pengguna lama berhasil dibersihkan dan ${INITIAL_USERS.length} akun resmi (2 Sensei + 17 Siswa) telah disiapkan.`,
+      // RESIDUAL BUG-14: pesan harus mencerminkan perilaku non-destruktif aktual
+      // (purge dinonaktifkan) — jangan menyesatkan sensei bahwa data lama dibersihkan.
+      message: `Mode non-destruktif: TIDAK ada data pengguna lama yang dihapus. ${INITIAL_USERS.length} akun resmi (2 Sensei + 17 Siswa) telah dipastikan tersedia; akun yang sudah ada tidak diubah.`,
       count: INITIAL_USERS.length,
     });
   } catch (err: any) {

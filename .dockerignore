@@ -10,3 +10,25 @@ test_*.js
 *.sh
 credentials/
 *password*
+
+# --- BUG-03 hardening -----------------------------------------------
+# data.js (bank soal + KUNCI JAWABAN) tidak boleh pernah terbawa pola
+# "COPY ." di stage final Dockerfile. Pengecualian "!data.js" tetap
+# diperlukan karena stage-1 (data-sanitizer) membacanya untuk sanitasi;
+# stage final memakai COPY eksplisit + guard grep sehingga data.js mentah
+# mustahil masuk image (kebocoran apapun = build gagal).
+#
+# CATATAN RESIDUAL (diluar jangkauan .dockerignore): file ini HANYA mengontrol
+# apa yang masuk IMAGE — build CONTEXT yang dikirim ke daemon/builder tetap
+# memuat data.js karena stage-1 membutuhkannya. Implikasi:
+#   * Jalankan docker build hanya di host/CI terpercaya; untuk eliminasi total
+#     dari context gunakan BuildKit secret:
+#       docker build --secret id=examdata,src=data.js .
+#     dengan Dockerfile alternatif (RUN --mount=type=secret,id=examdata ...).
+#   * Hosting statis non-Docker yang menyajikan repo ini secara mentah HARUS
+#     memblokir /data.js di web server (contoh nginx: location = /data.js
+#     { return 404; } lalu ganti referensi index.html ke data.public.js hasil
+#     `node scripts/build_public_data.js data.js data.public.js`).
+data.js
+!data.js
+# --------------------------------------------------------------------

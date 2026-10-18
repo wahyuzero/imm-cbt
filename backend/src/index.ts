@@ -5,6 +5,7 @@ import { logger } from "hono/logger";
 import { auth } from "./lib/auth.js";
 import { runMigrations } from "./db/migrate.js";
 import { runSeeder } from "./db/seed.js";
+import { client } from "./db/index.js";
 import { authRouter } from "./routes/auth.js";
 import { chaptersRouter } from "./routes/chapters.js";
 import { examRouter } from "./routes/exam.js";
@@ -95,8 +96,33 @@ async function bootstrap() {
     if (process.env.AUTO_MIGRATE !== "false") {
       console.log("Running auto-migration...");
       await runMigrations();
-      console.log("Running auto-seeder...");
-      await runSeeder();
+
+      // BUG-14: seeding penuh hanya dijalankan bila database belum berisi user
+      // sama sekali (bootstrap pertama / user terhapus semua) ATAU env
+      // SEED_ON_BOOT=true — restart biasa tidak lagi menjalankan seeder agar
+      // konfigurasi user buatan sensei tidak tertimpa. Migrasi tetap mengikuti
+      // flag AUTO_MIGRATE di atas.
+      const seedOnBoot = process.env.SEED_ON_BOOT === "true";
+      let databaseEmpty = true;
+      let hasAdmin = false;
+      try {
+        const existingUsers = await client`SELECT 1 FROM "user" LIMIT 1`;
+        databaseEmpty = existingUsers.length === 0;
+        // RESIDUAL BUG-14: database berisi user tetapi NOL admin (mis. admin dihapus
+        // semua) juga harus memicu seeder — bootstrap admin non-destruktif
+        // (ON CONFLICT DO NOTHING), bukan hanya saat database kosong total.
+        const admins = await client`SELECT 1 FROM "user" WHERE "role" = 'admin' LIMIT 1`;
+        hasAdmin = admins.length > 0;
+      } catch {
+        databaseEmpty = true;
+      }
+
+      if (seedOnBoot || databaseEmpty || !hasAdmin) {
+        console.log("Running auto-seeder...");
+        await runSeeder();
+      } else {
+        console.log("Skipping auto-seeder (database sudah berisi user; set SEED_ON_BOOT=true untuk paksa seed ulang).");
+      }
     }
   } catch (err) {
     console.error("Bootstrap migration/seed error (continuing startup):", err);

@@ -195,7 +195,7 @@ export async function runSeeder() {
   }
   console.log(`Successfully seeded ${totalInsertedVocab} vocabulary items.`);
 
-  // 6. Reset old users and Seed Official Accounts (2 Sensei + 17 Students)
+  // 6. Ensure Official Accounts (2 Sensei + 17 Students) — non-destructive (BUG-14/BUG-23)
   await resetAndSeedOfficialAccounts();
 
   console.log("Seeding completed successfully!");
@@ -437,25 +437,30 @@ export const INITIAL_USERS = [
 ];
 
 export async function resetAndSeedOfficialAccounts(forcePurge = false) {
-  // Check if legacy users exist (sensei.wahyu or ahmad.syahroni) or if sensei.rusdi is missing
-  const oldUsers = await client`SELECT count(*)::int as count FROM "user" WHERE "username" IN ('sensei.wahyu', 'ahmad.syahroni');`;
-  const newAdmin = await client`SELECT count(*)::int as count FROM "user" WHERE "username" = 'sensei.rusdi';`;
+  // BUG-14: jalur purge destruktif (DELETE FROM "user" + cek user legacy) dihapus total.
+  // Parameter forcePurge dipertahankan demi kompatibilitas pemanggil lama (route admin),
+  // tetapi tidak lagi melakukan penghapusan massal apa pun.
+  if (forcePurge) {
+    console.warn(
+      "resetAndSeedOfficialAccounts: permintaan purge diterima namun dinonaktifkan (BUG-14). " +
+        "Tidak ada user yang dihapus; hanya memastikan akun resmi hadir."
+    );
+  }
 
-  const needsPurge = forcePurge || oldUsers[0]?.count > 0 || newAdmin[0]?.count === 0;
-
-  if (needsPurge) {
-    console.log("Purging old user accounts and recreating clean slate with official 19 users...");
-    // Clear foreign key reference from system_settings before purging users
-    await client`UPDATE "system_settings" SET "updated_by" = NULL;`;
-    // Deleting all users cascades to account, session, exam_sessions, and user_chapter_access
-    await client`DELETE FROM "user";`;
+  // Bootstrap admin: hitung admin yang ada; bila nol, loop di bawah akan INSERT
+  // admin default (ON CONFLICT DO NOTHING) tanpa menghapus siapa pun.
+  const adminCount = await client`SELECT count(*)::int as count FROM "user" WHERE "role" = 'admin';`;
+  if ((adminCount[0]?.count ?? 0) === 0) {
+    console.log("No admin account found. Bootstrapping default sensei accounts (non-destructive)...");
   } else {
-    console.log("Official user schema already active. Upserting accounts...");
+    console.log(`Found ${adminCount[0]?.count} admin account(s). Ensuring seed users without overwriting edits...`);
   }
 
   for (const u of INITIAL_USERS) {
-    const hashedPw = await hashPassword(u.password);
-
+    // BUG-14: ON CONFLICT DO NOTHING — baris user yang sudah ada dipertahankan apa
+    // adanya (role, email, class_name, pdf_access_allowed hasil edit sensei tidak
+    // ditimpa); nilai seed hanya berlaku untuk baris baru. Tanpa target konflik
+    // eksplisit agar benturan unik username/email/id sama-sama tidak melempar error.
     await client`
       INSERT INTO "user" (
         "id", "name", "username", "display_username", "email",
@@ -464,26 +469,43 @@ export async function resetAndSeedOfficialAccounts(forcePurge = false) {
         ${u.id}, ${u.name}, ${u.username}, ${u.displayUsername}, ${u.email},
         true, ${u.role}, ${u.className}, ${u.role === "admin"}, false, now(), now()
       )
-      ON CONFLICT ("username") DO UPDATE SET
-        "name" = EXCLUDED."name",
-        "email" = EXCLUDED."email",
-        "role" = EXCLUDED."role",
-        "class_name" = EXCLUDED."class_name",
-        "pdf_access_allowed" = EXCLUDED."pdf_access_allowed",
-        "updated_at" = now();
+      ON CONFLICT DO NOTHING;
     `;
 
+    // BUG-23: id aktual user bisa berbeda dari id seed (mis. username seeded pernah
+    // dihapus lalu diregistrasi ulang → id baru). Resolve id aktual via username
+    // sebelum membuat account agar tidak melanggar FK.
+    const userRows = await client`SELECT "id" FROM "user" WHERE "username" = ${u.username} LIMIT 1;`;
+    const actualUserId = userRows[0]?.id;
+    if (!actualUserId) {
+      console.warn(`Seeder: user "${u.username}" tidak ditemukan setelah upsert — akun credential dilewati.`);
+      continue;
+    }
+
+    // Hanya isi akun credential bila user belum memilikinya — mencegah akun ganda
+    // yang membuat lookup password better-auth ambigu pada user hasil re-registrasi.
+    const existingAccount = await client`
+      SELECT "id" FROM "account" WHERE "user_id" = ${actualUserId} AND "provider_id" = 'credential' LIMIT 1;
+    `;
+    if (existingAccount.length > 0) {
+      continue;
+    }
+
+    const hashedPw = await hashPassword(u.password);
     const accountId = `acc_${u.username}`;
+    // Kunci konflik account di schema hanya PK "id" (tidak ada unique index
+    // provider_id+account_id), jadi ON CONFLICT ("id") DO NOTHING dengan id
+    // deterministik acc_<username> sudah menjadikan boot berulang idempoten.
     await client`
       INSERT INTO "account" (
         "id", "user_id", "account_id", "provider_id", "password", "created_at", "updated_at"
       ) VALUES (
-        ${accountId}, ${u.id}, ${u.id}, 'credential', ${hashedPw}, now(), now()
+        ${accountId}, ${actualUserId}, ${actualUserId}, 'credential', ${hashedPw}, now(), now()
       )
       ON CONFLICT ("id") DO NOTHING;
     `;
   }
-  console.log(`Successfully prepared ${INITIAL_USERS.length} official accounts.`);
+  console.log(`Successfully ensured ${INITIAL_USERS.length} official accounts (non-destructive).`);
 }
 
 // Auto-run if executed directly via CLI
