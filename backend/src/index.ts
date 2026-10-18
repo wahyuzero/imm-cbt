@@ -2,6 +2,7 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
+import { existsSync } from "node:fs";
 import { auth } from "./lib/auth.js";
 import { runMigrations } from "./db/migrate.js";
 import { runSeeder } from "./db/seed.js";
@@ -126,6 +127,15 @@ async function bootstrap() {
     }
   } catch (err) {
     console.error("Bootstrap migration/seed error (continuing startup):", err);
+    // RESIDUAL BUG-04 (operasional #2): deployment container tidak boleh lanjut
+    // melayanan setelah bootstrap DB gagal — proses dihentikan supaya misconfig
+    // terlihat jelas (status container merah + log FATAL), bukan gagal diam-diam.
+    if (existsSync("/.dockerenv") && process.env.NODE_ENV !== "development") {
+      console.error(
+        "FATAL: bootstrap database gagal di lingkungan deployment (container) — proses dihentikan. Periksa DATABASE_URL / kredensial / reachability database."
+      );
+      process.exit(1);
+    }
   }
 
   serve(

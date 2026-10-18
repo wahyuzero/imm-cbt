@@ -21,6 +21,21 @@ import { sanitizeDisplayName } from "./auth.js";
 
 export const adminRouter = new Hono<AppEnv>();
 
+// RESIDUAL BUG-18: catat waktu reset ujian (global/per-user) di system_settings
+// agar browser siswa dapat membersihkan progress lokal yang basi — marker ini
+// dibaca /api/v1/chapters (field resultsResetAt) dan dibandingkan klien dengan
+// tanggal entri progress lokalnya.
+async function touchExamResetMarker(adminId: string | undefined, targetUserId?: string) {
+  const id = targetUserId ? `exam_reset_user_${targetUserId}` : "exam_reset_global";
+  await db
+    .insert(systemSettings)
+    .values({ id, updatedBy: adminId || null })
+    .onConflictDoUpdate({
+      target: systemSettings.id,
+      set: { updatedAt: new Date(), updatedBy: adminId || null },
+    });
+}
+
 // Apply auth + admin guard to all /admin/* routes
 adminRouter.use("/admin/*", authMiddleware, adminGuard);
 
@@ -248,9 +263,13 @@ adminRouter.post("/admin/users/:id/reset-exams", async (c) => {
       await db.delete(examSessions).where(eq(examSessions.userId, targetUserId));
     }
 
+    // RESIDUAL BUG-18: bump marker reset per-user agar perangkat siswa membersihkan cache lokal.
+    const adminCtx = c.get("user") as any;
+    await touchExamResetMarker(adminCtx?.id, targetUserId);
+
     return c.json({
       success: true,
-      message: `Seluruh data nilai dan riwayat pengerjaan ujian untuk siswa "${targetUser.name}" berhasil di-reset total (${sessionIds.length} sesi dihapus).`,
+      message: `Seluruh data nilai dan riwayat pengerjaan ujian untuk siswa "${targetUser.name}" berhasil di-reset total (${sessionIds.length} sesi dihapus; perangkat siswa akan menyinkronkan saat login berikutnya).`,
       deletedCount: sessionIds.length,
     });
   } catch (err: any) {
@@ -938,9 +957,14 @@ adminRouter.post("/admin/monitoring/results/reset-all", async (c) => {
     await db.delete(examAnswers);
     await db.delete(examSessions);
 
+    // RESIDUAL BUG-18: bump marker reset global agar semua perangkat siswa
+    // membersihkan progress lokal basi (dashboard tak lagi menampilkan nilai lama).
+    const adminCtx = c.get("user") as any;
+    await touchExamResetMarker(adminCtx?.id);
+
     return c.json({
       success: true,
-      message: `Seluruh data pengerjaan ujian siswa (${count} sesi) berhasil dikosongkan total dari basis data.`,
+      message: `Seluruh data pengerjaan ujian siswa (${count} sesi) berhasil dikosongkan total dari basis data; perangkat siswa akan menyinkronkan saat login berikutnya.`,
       deletedCount: count,
     });
   } catch (err: any) {

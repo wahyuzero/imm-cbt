@@ -25,10 +25,10 @@ credentials/
 #     dari context gunakan BuildKit secret:
 #       docker build --secret id=examdata,src=data.js .
 #     dengan Dockerfile alternatif (RUN --mount=type=secret,id=examdata ...).
-#   * Hosting statis non-Docker yang menyajikan repo ini secara mentah HARUS
-#     memblokir /data.js di web server (contoh nginx: location = /data.js
-#     { return 404; } lalu ganti referensi index.html ke data.public.js hasil
-#     `node scripts/build_public_data.js data.js data.public.js`).
+#   * Hosting statis non-Docker yang menyajikan repo ini secara mentah: JANGAN
+#     upload repo mentah — paket aman dibuat OTOMATIS dengan satu perintah:
+#       bash scripts/build_static_public.sh   -> dist_static/ (data.public.js +
+#       index.html terpatch + snippet nginx 404 untuk /data.js + guard anti-bocor).
 data.js
 !data.js
 # --------------------------------------------------------------------

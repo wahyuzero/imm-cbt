@@ -31,6 +31,8 @@ function isPrivateOrLoopback(addr: string): boolean {
 }
 
 export function createRateLimiter(options: RateLimiterOptions) {
+  // RESIDUAL BUG-10: flag anti-spam untuk peringatan misconfig proxy (sekali per proses).
+  let proxyDepthWarned = false;
   const {
     windowMs,
     max,
@@ -52,7 +54,28 @@ export function createRateLimiter(options: RateLimiterOptions) {
         const forwarded = c.req.header("x-forwarded-for");
         if (forwarded) {
           const parts = forwarded.split(",").map((s: string) => s.trim()).filter(Boolean);
-          const candidate = parts[parts.length - trustedCount];
+          let candidate = parts[parts.length - trustedCount];
+          // RESIDUAL BUG-10: deteksi + koreksi otomatis TRUSTED_PROXY_COUNT terlalu
+          // kecil. Bila kandidat IP justru IP privat (milik proxy) padahal rantai
+          // XFF lebih panjang dari kedalaman tepercaya, SEMUA klien berbagi satu
+          // bucket → 429 massal (topologi traefik Coolify → nginx → backend).
+          // Koreksi: ambil entri publik terdehat di KIRI kandidat — hop tersebut
+          // direkam oleh proxy tepercaya (IP klien nyata); entri spoof klien
+          // berada lebih kiri lagi dan tetap diabaikan.
+          if (candidate && isPrivateOrLoopback(candidate) && parts.length > trustedCount) {
+            for (let i = parts.length - trustedCount - 1; i >= 0; i--) {
+              if (!isPrivateOrLoopback(parts[i])) {
+                candidate = parts[i];
+                break;
+              }
+            }
+            if (!proxyDepthWarned) {
+              proxyDepthWarned = true;
+              console.warn(
+                `[PERINGATAN KONFIGURASI] TRUSTED_PROXY_COUNT=${trustedCount} tampak lebih kecil dari rantai proxy aktual (XFF berisi ${parts.length} hop; kandidat awal adalah IP proxy privat). Bucket rate-limit sebelumnya menyatu untuk semua klien (risiko 429 massal). Set TRUSTED_PROXY_COUNT yang sesuai di environment backend.`
+              );
+            }
+          }
           if (candidate) return candidate;
         }
         const realIp = c.req.header("x-real-ip");

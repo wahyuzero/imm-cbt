@@ -332,6 +332,12 @@ class ChoukaiApp {
       answers: result.answers,
       date: new Date().toISOString(),
       mode: result.mode,
+      // RESIDUAL BUG-05: flag grading-pending WAJIB ikut dipersist — tanpa ini
+      // entri {score:null, passed:null} yang dilihat via tombol "Hasil"
+      // (viewSavedResult) menampilkan skor palsu "0.0 / 100" + badge REMEDIAL
+      // karena isGrading sebelumnya hanya hidup di memori sesi.
+      isGrading: Boolean(result.isGrading),
+      pendingSessionId: result.pendingSessionId || null,
     };
     try {
       localStorage.setItem(this.userStorageKey("choukai_progress"), JSON.stringify(this.progress));
@@ -356,6 +362,14 @@ class ChoukaiApp {
     this.pauseAudio();
     const saved = this.progress[chapterNum];
     if (!saved) return;
+    // RESIDUAL BUG-05: pulihkan konteks retry dari entri pending-grading yang
+    // dipersist — bila submit server gagal lalu tab ditutup, tombol "Hasil"
+    // tetap menampilkan banner "採点中" + tombol kirim ulang (bukan skor 0 palsu).
+    // Retry idempoten di server (sesi ter-finalisasi mengembalikan skor resmi).
+    if (saved.isGrading && saved.pendingSessionId) {
+      if (!this._lastSubmitSessionId) this._lastSubmitSessionId = saved.pendingSessionId;
+      this._submitFailed = true;
+    }
     if (typeof CHAPTERS_DATA !== "undefined" && CHAPTERS_DATA[chapterNum]) {
       this.currentChapter = CHAPTERS_DATA[chapterNum];
     } else if (chapterNum === "08" && typeof BAB_08_DATA !== "undefined") {
@@ -1256,6 +1270,14 @@ class ChoukaiApp {
           }
 
           this._lastSubmitSessionId = activeSession.id;
+          // RESIDUAL BUG-05: persist sessionId pada entri pending-grading agar
+          // tombol "Coba Kirim Ulang ke Server" bisa dipulihkan di sesi/tab
+          // berikutnya (sebelumnya retry hanya hidup di memori — bila tab ditutup,
+          // entri null menetap menyesatkan sampai skor server tersinkron).
+          if (this.currentResult) {
+            this.currentResult.pendingSessionId = activeSession.id;
+            this.saveExamResult(this.currentResult);
+          }
           await this._postExamSubmitToServer(activeSession.id);
         } finally {
           this._isSubmitting = false;
@@ -1394,6 +1416,11 @@ class ChoukaiApp {
     // RESIDUAL BUG-05/BUG-07: skor/angka benar bisa null/undefined (grading server
     // pending atau entri server-lite) — format null-safe agar tombol kirim nilai tidak crash.
     const f1 = (v) => (typeof v === "number" && isFinite(v) ? v.toFixed(1) : "0.0");
+    // RESIDUAL BUG-07 varian server-lite: jumlah benar bisa tak tersedia (entri
+    // sinkron /chapters pada backend lama) — jangan kirim "(0/33 Benar)" palsu.
+    const rcCount = typeof r.readingCorrect === "number" ? ` (${r.readingCorrect}/${r.readingTotal ?? qList.length} Benar)` : "";
+    const ckCount = typeof r.choukaiCorrect === "number" ? ` (${r.choukaiCorrect}/${r.choukaiTotal ?? 0} Benar)` : "";
+    const rcCountW = typeof r.readingCorrect === "number" ? ` (${r.readingCorrect}/${r.readingTotal ?? qList.length} Benar • Bobot 4.0 Poin/Soal)` : " (Bobot 4.0 Poin/Soal)";
     const rAns = r.answers || {};
 
     const dateStr = new Date().toLocaleDateString("id-ID", {
@@ -1428,13 +1455,13 @@ class ChoukaiApp {
     if (hasChoukai) {
       headerTitle = `🎌 *LAPORAN EVALUASI IMM JAPAN (TRYOUT TERPADU)*\n`;
       scoreSection =
-        `📖 *Skor Reading (読解):* *${f1(r.readingScore)} / 100* (${r.readingCorrect ?? 0}/${r.readingTotal ?? qList.length} Benar)\n` +
-        `🎧 *Skor Choukai (聴解):* *${f1(r.choukaiScore)} / 100* (${r.choukaiCorrect ?? 0}/${r.choukaiTotal ?? 0} Benar)\n` +
+        `📖 *Skor Reading (読解):* *${f1(r.readingScore)} / 100*${rcCount}\n` +
+        `🎧 *Skor Choukai (聴解):* *${f1(r.choukaiScore)} / 100*${ckCount}\n` +
         `📊 *Skor Akhir Tryout:* *${f1(r.score)} / 100*\n`;
     } else {
       headerTitle = `🎌 *LAPORAN EVALUASI IMM JAPAN (UJIAN TULIS)*\n`;
       scoreSection =
-        `📖 *Skor Ujian Tulis (Reading):* *${f1(r.readingScore)} / 100* (${r.readingCorrect ?? 0}/${r.readingTotal ?? qList.length} Benar • Bobot 4.0 Poin/Soal)\n` +
+        `📖 *Skor Ujian Tulis (Reading):* *${f1(r.readingScore)} / 100*${rcCountW}\n` +
         `📊 *Skor Akhir:* *${f1(r.score)} / 100*\n`;
     }
 
@@ -2362,6 +2389,10 @@ class ChoukaiApp {
     // dan entri pending bisa ber-skor null — guard agar layar hasil tidak crash
     // (TypeError pada r.answers[q.id] / null.toFixed) dan statistik tetap tampil wajar.
     const fmtScore = (v) => (typeof v === "number" && isFinite(v) ? v.toFixed(1) : "0.0");
+    // RESIDUAL BUG-07 varian server-lite: entri sinkron /chapters pada backend
+    // lama tidak memuat jumlah benar — jangan tampilkan "0 dari 33" yang salah.
+    const fmtCorrect = (v, total, suffix) =>
+      typeof v === "number" ? `${v} dari ${total} Soal Benar${suffix || ""}` : "Jumlah benar tidak tersedia";
     const rAnswers = r.answers || {};
     const hasDetail = Object.keys(rAnswers).length > 0;
     const rlTotal = r.readingTotal ?? qList.filter((q) => q.session === "reading" || q.id <= 25).length;
@@ -2522,7 +2553,7 @@ class ChoukaiApp {
             ${fmtScore(r.score)} <span class="text-lg text-slate-400 font-normal">/ 100</span>
           </div>
           <p class="text-xs text-slate-500 mb-4">
-            Total Benar: ${r.correctCount ?? 0} dari ${r.totalCount ?? qList.length} Soal &bull; Passing Grade: 80.0
+            ${typeof r.correctCount === "number" ? `Total Benar: ${r.correctCount} dari ${r.totalCount ?? qList.length} Soal` : "Rincian jumlah benar tidak tersedia (skor tersinkron dari server)"} &bull; Passing Grade: 80.0
           </p>
 
           <!-- Score Breakdown Badges -->
@@ -2534,7 +2565,7 @@ class ChoukaiApp {
                   ${fmtScore(r.readingScore)} <span class="text-xs font-normal text-slate-500">/ 100</span>
                 </div>
                 <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                  ${r.readingCorrect ?? 0} dari ${rlTotal} Soal Benar
+                  ${fmtCorrect(r.readingCorrect, rlTotal)}
                 </div>
               </div>
               <div class="p-3 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/60">
@@ -2543,7 +2574,7 @@ class ChoukaiApp {
                   ${fmtScore(r.choukaiScore)} <span class="text-xs font-normal text-slate-500">/ 100</span>
                 </div>
                 <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                  ${r.choukaiCorrect ?? 0} dari ${ckTotal} Soal Benar
+                  ${fmtCorrect(r.choukaiCorrect, ckTotal)}
                 </div>
               </div>
             </div>
@@ -2554,7 +2585,7 @@ class ChoukaiApp {
                 ${fmtScore(r.readingScore)} <span class="text-xs font-normal text-slate-500">/ 100</span>
               </div>
               <div class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                ${r.readingCorrect ?? 0} dari ${rlTotal} Soal Benar (Bobot 4.0 Poin / Soal)
+                ${fmtCorrect(r.readingCorrect, rlTotal, " (Bobot 4.0 Poin / Soal)")}
               </div>
             </div>
           `}
@@ -3289,18 +3320,62 @@ class ChoukaiApp {
           if (json.pdfAccessAllowed !== undefined) {
             this.isUserPdfAccessAllowed = Boolean(json.pdfAccessAllowed);
           }
+          // RESIDUAL BUG-18: sinkronisasi reset admin via HTTP — bila sensei
+          // me-reset data ujian di server (marker resultsResetAt berubah),
+          // bersihkan entri progress lokal yang lebih tua dari waktu reset agar
+          // dashboard siswa tidak menampilkan status selesai + skor basi.
+          // (Guard BUG-19 tetap utuh: tanpa perubahan marker, entri lokal tanpa
+          // skor server TIDAK dihapus.)
+          if (json.resultsResetAt) {
+            const markerKey = this.userStorageKey("choukai_reset_seen");
+            let seenMarker = null;
+            try {
+              seenMarker = localStorage.getItem(markerKey);
+            } catch (e) {}
+            const resetMs = new Date(json.resultsResetAt).getTime();
+            if (seenMarker !== String(resetMs) && isFinite(resetMs)) {
+              for (const chKey of Object.keys(this.progress)) {
+                const entry = this.progress[chKey];
+                // Entri tanpa date (server-lite) dianggap pra-reset.
+                const entryMs = entry && entry.date ? new Date(entry.date).getTime() : 0;
+                if (!isFinite(entryMs) || entryMs < resetMs) {
+                  delete this.progress[chKey];
+                }
+              }
+              try {
+                localStorage.setItem(markerKey, String(resetMs));
+              } catch (e) {}
+            }
+          }
           for (const ch of json.data) {
             this.chaptersStatus[ch.chapterNum] = ch.isUnlocked;
             this.userRestrictedChapters[ch.chapterNum] = Boolean(ch.userRestricted);
             this.userRestrictedPdfs[ch.chapterNum] = Boolean(ch.pdfRestricted);
             if (ch.userScore) {
-              if (!this.progress[ch.chapterNum] || ch.userScore.totalScore > this.progress[ch.chapterNum].score) {
+              const existing = this.progress[ch.chapterNum];
+              // RESIDUAL BUG-05: entri pending-grading (score null) SELALU ditimpa
+              // skor resmi server — sebelumnya "0 > null" false membuat entri
+              // skor-0 tak pernah ter-heal.
+              const shouldOverwrite =
+                !existing ||
+                ch.userScore.totalScore > existing.score ||
+                (existing.isGrading && typeof ch.userScore.totalScore === "number");
+              if (shouldOverwrite) {
                 this.progress[ch.chapterNum] = {
                   chapter: ch.chapterNum,
                   score: ch.userScore.totalScore,
                   readingScore: ch.userScore.readingScore,
                   choukaiScore: ch.userScore.choukaiScore,
                   passed: ch.userScore.isPassed,
+                  // RESIDUAL BUG-07: jumlah soal benar resmi server ikut
+                  // disinkronkan agar headline "Total Benar" & laporan WhatsApp
+                  // tidak menampilkan "0/33 Benar" yang salah di perangkat lain.
+                  readingCorrect: ch.userScore.readingCorrect,
+                  choukaiCorrect: ch.userScore.choukaiCorrect,
+                  correctCount: ch.userScore.totalCorrect,
+                  readingTotal: ch.userScore.readingTotal,
+                  choukaiTotal: ch.userScore.choukaiTotal,
+                  totalCount: ch.userScore.totalQuestions,
                   // RESIDUAL BUG-06: field wajib agar tombol "Hasil" (viewSavedResult →
                   // renderResultHTML) tidak crash — entri server-lite tidak menyimpan
                   // jawaban per soal; UI menampilkan banner skor tanpa rincian.

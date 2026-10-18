@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { username, admin } from "better-auth/plugins";
 import { randomBytes } from "crypto";
+import { existsSync } from "node:fs";
 import { db } from "../db/index.js";
 import * as schema from "../db/schema.js";
 
@@ -10,9 +11,14 @@ import * as schema from "../db/schema.js";
 // (random per-proses, RESIDUAL BUG-04) — deploy tanpa NODE_ENV=production dan
 // tanpa secret tidak lagi mendapat cookie bertanda-tangan konstanta publik yang
 // bisa dipalsukan; hanya session-nya yang tidak survive restart.
+// RESIDUAL BUG-04 (operasional #2): proses di dalam container (/.dockerenv)
+// dianggap deployment server — deploy Coolify dsb. yang lupa set
+// NODE_ENV=production tetap fail-fast, tidak boot diam-diam dengan secret
+// ephemeral. (Set NODE_ENV=development untuk dev di dalam container.)
+const isDeployedContainer = existsSync("/.dockerenv") && process.env.NODE_ENV !== "development";
 let authSecret = process.env.BETTER_AUTH_SECRET;
 if (!authSecret) {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "production" || isDeployedContainer) {
     throw new Error(
       "FATAL: BETTER_AUTH_SECRET wajib diisi di produksi. Generate secret baru (mis. `openssl rand -base64 32`) dan set environment variable ini sebelum server dijalankan."
     );
