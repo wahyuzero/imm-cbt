@@ -30,6 +30,20 @@ function isPrivateOrLoopback(addr: string): boolean {
   return false;
 }
 
+// RESIDUAL-1 FIX (deterministik): IP klien = entri XFF pada indeks
+// [len - TRUSTED_PROXY_COUNT] — entri yang direkam proxy tepercaya pertama.
+// Entri di KIRI indeks itu sepenuhnya dikontrol klien dan TIDAK PERNAH dipakai,
+// menutup bypass rotasi bucket via IP publik palsu yang ditempel klien LAN di
+// kiri rantai (celah scan-heuristik versi lama). Rantai lebih pendek dari
+// kedalaman tepercaya → pakai entri terkiri (paling dekat klien yang terekam).
+export function pickClientIpFromXff(forwarded: string, trustedCount: number): string | null {
+  const tc = Math.max(1, Math.min(10, Number(trustedCount) || 1));
+  const parts = forwarded.split(",").map((s) => s.trim()).filter(Boolean);
+  if (parts.length === 0) return null;
+  const idx = Math.max(0, parts.length - tc);
+  return parts[idx] || null;
+}
+
 export function createRateLimiter(options: RateLimiterOptions) {
   // RESIDUAL BUG-10: flag anti-spam untuk peringatan misconfig proxy (sekali per proses).
   let proxyDepthWarned = false;
@@ -54,27 +68,15 @@ export function createRateLimiter(options: RateLimiterOptions) {
         const forwarded = c.req.header("x-forwarded-for");
         if (forwarded) {
           const parts = forwarded.split(",").map((s: string) => s.trim()).filter(Boolean);
-          let candidate = parts[parts.length - trustedCount];
-          // RESIDUAL BUG-10: deteksi + koreksi otomatis TRUSTED_PROXY_COUNT terlalu
-          // kecil. Bila kandidat IP justru IP privat (milik proxy) padahal rantai
-          // XFF lebih panjang dari kedalaman tepercaya, SEMUA klien berbagi satu
-          // bucket → 429 massal (topologi traefik Coolify → nginx → backend).
-          // Koreksi: ambil entri publik terdehat di KIRI kandidat — hop tersebut
-          // direkam oleh proxy tepercaya (IP klien nyata); entri spoof klien
-          // berada lebih kiri lagi dan tetap diabaikan.
-          if (candidate && isPrivateOrLoopback(candidate) && parts.length > trustedCount) {
-            for (let i = parts.length - trustedCount - 1; i >= 0; i--) {
-              if (!isPrivateOrLoopback(parts[i])) {
-                candidate = parts[i];
-                break;
-              }
-            }
-            if (!proxyDepthWarned) {
-              proxyDepthWarned = true;
-              console.warn(
-                `[PERINGATAN KONFIGURASI] TRUSTED_PROXY_COUNT=${trustedCount} tampak lebih kecil dari rantai proxy aktual (XFF berisi ${parts.length} hop; kandidat awal adalah IP proxy privat). Bucket rate-limit sebelumnya menyatu untuk semua klien (risiko 429 massal). Set TRUSTED_PROXY_COUNT yang sesuai di environment backend.`
-              );
-            }
+          const candidate = pickClientIpFromXff(forwarded, trustedCount);
+          // RESIDUAL-1 FIX: kandidat privat dengan rantai lebih panjang dari
+          // kedalaman tepercaya kini HANYA peringatan observabilitas — key TIDAK
+          // diubah (mengubah key secara heuristik justru membuka bypass bucket).
+          if (candidate && isPrivateOrLoopback(candidate) && parts.length > trustedCount && !proxyDepthWarned) {
+            proxyDepthWarned = true;
+            console.warn(
+              `[PERINGATAN KONFIGURASI] TRUSTED_PROXY_COUNT=${trustedCount} tampak lebih kecil dari rantai proxy aktual (XFF berisi ${parts.length} hop; kandidat adalah IP privat). Bucket rate-limit mungkin menyatu untuk beberapa klien (risiko 429 massal). Set TRUSTED_PROXY_COUNT yang sesuai di environment backend.`
+            );
           }
           if (candidate) return candidate;
         }
