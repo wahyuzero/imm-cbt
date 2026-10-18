@@ -2362,7 +2362,11 @@ class ChoukaiApp {
     if (!this.currentResult) return "";
     const r = this.currentResult;
 
-    if (r.isGrading) {
+    // RESIDUAL BUG-05: entri hasil ber-skor null (legacy pra-fix tanpa flag isGrading,
+    // atau submit server yang tak pernah merespons) TIDAK boleh dirender sebagai
+    // "0.0 / REMEDIAL" palsu — perlakukan sebagai pending (採点中) hingga skor
+    // server tersinkron lewat fetchChaptersStatus atau tombol kirim ulang.
+    if (r.isGrading || typeof r.score !== "number") {
       return `
         <div class="max-w-xl mx-auto py-20 px-4 text-center">
           <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sky-100 dark:bg-sky-950/60 border border-sky-300 dark:border-sky-800 text-sky-600 dark:text-sky-400 mb-4 shadow-sm">
