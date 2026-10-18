@@ -2,6 +2,31 @@
 
 Tanggal audit: 2026-10-11 · Commit: 5a9a164 · Metode: baca kode penuh (app.js 5.857 baris, backend ~3.000 baris TS), skrip validasi data (769 soal, 1.804 kosakata), simulasi Node untuk bukti runtime, verifikasi silang 3 agen audit independen.
 
+---
+
+> ## ✅ STATUS REMEDIASI (2026-10-18) — 26/26 BUG DIPERBAIKI DI KODE
+>
+> Dieksekusi orkestrasi multi-agen (7 agen paralel + verifikasi build + QA silang 2 ronde, 14 agen total) di atas audit 2026-10-11. Verifikasi akhir: `node --check app.js` bersih, `tsc --noEmit` bersih, `build_public_data.js` menghasilkan 769 soal / 25 bab dengan 0 kunci bocor, `git fsck` sehat.
+>
+> | Bug | Status | Bug | Status | Bug | Status |
+> |---|---|---|---|---|---|
+> | 01 ID rusak shiken server | ✅ fixed (normalisasi `_dbId` + kutip onclick) | 10 rate-limit bypass XFF | ✅ fixed (X-Real-IP + koreksi hop privat) | 19 data loss progress lokal | ✅ fixed (merge-preserving) |
+> | 02 field backend≠frontend | ✅ fixed (mapping ke bentuk lokal) | 11 stored XSS panel sensei | ✅ fixed (escapeHtml/escapeAttr + sanitasi backend) | 20 XSS reflektif pencarian | ✅ fixed (escapeAttr) |
+> | 03 kunci 769 soal ke browser | ✅ fixed (Docker multi-stage + data.js steril + guard build) | 12 bypass login offline | ✅ fixed (wajib verifikasi mock store) | 21 answer lintas bab | ✅ fixed (scope chapterNum) |
+> | 04 rahasia hardcoded | ✅ fixed kode + history rewrite LOKAL (lihat tindakan operasional) | 13 default PDF terbalik | ✅ fixed (+data migration existing students) | 22 validasi input minim | ✅ fixed (regex opsi/pin/username) |
+> | 05 crash score null | ✅ fixed (null-safe + entri legacy null = pending) | 14 seeder destruktif | ✅ fixed (tanpa DELETE FROM user; user upsert DO NOTHING) | 23 FK edge seeder account | ✅ fixed (resolve id aktual) |
+> | 06 crash tombol Hasil | ✅ fixed (guard r.answers + notice server) | 15 submit abaikan expiresAt | ✅ fixed (finalisasi EXPIRED) | 24 jebakan nginx location | ✅ fixed (^~ /api/) |
+> | 07 statistik 0 benar | ✅ fixed (server-graded seragam, salin counts) | 16 race double-submit | ✅ fixed (_isSubmitting + modal ditutup) | 25 Tailwind CDN | ✅ fixed (vendored 407KB lokal) |
+> | 08 spinner selamanya | ✅ fixed (+retry lintas tab via pendingSessionId) | 17 logout tak bersih | ✅ fixed (timer/audio/autoNext/state) | 26 filter kategori kosakata | ✅ fixed (dinamis dari data, 20 kategori) |
+> | 09 oracle isCorrect | ✅ fixed (strip saat IN_PROGRESS) | 18 localStorage bocor | ✅ fixed (namespace per-user + reset marker admin) | | |
+>
+> **Arsitektur kunci yang berubah:** (1) `safeQuestions` backend dinormalisasi ke bentuk lokal (`id` numerik + `_dbId`) di `startExam`; (2) semua mode HTTP kini **server-graded** — `data.js` di image Docker disterilkan dari kunci/pembahasan via `scripts/build_public_data.js` + guard gagal-build bila bocor; (3) progress lokal merge-preserving + marker `resultsResetAt` sinkron reset admin; (4) localStorage namespaced per-user (`choukai_progress__<username>` dst.); (5) rate limiter sadar-topologi-proxy (traefik→nginx→backend).
+>
+> ### ⚠️ TINDAKAN OPERASIONAL YANG MASIH WAJIB (di luar repo, tidak bisa dikerjakan agen)
+> 1. **BUG-04:** riwayat git lokal sudah ditulis ulang (kredensial lama hilang dari `rev-list --all`, fsck bersih), TAPI remote GitHub `origin/master` MASIH memuat commit lama yang bisa diunduh publik → wajib `git push --force origin master`, purge cache/fork GitHub (via Support), lalu **rotasi password DB di server live + regenerasi BETTER_AUTH_SECRET** (nilai lama dianggap compromised).
+> 2. **BUG-10 (limitasi terdokumentasi):** bila SELURUH hop XFF privat (klien NAT yang men-stamp IP privat), bucket rate-limit bisa bersama → 429 massal; topologi proxy tercatat di komentar `rateLimiter.ts`.
+> 3. **BUG-25:** `assets/vendor/tailwindcdn.js` adalah snapshot Play CDN — upgrade Tailwind major harus re-vendor manual.
+
 Status tiap butir: ✅ = terkonfirmasi lewat bukti kode + verifikasi silang (bukan spekulasi).
 
 ---
