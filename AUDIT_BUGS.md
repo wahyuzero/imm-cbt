@@ -2,6 +2,8 @@
 
 Tanggal audit: 2026-10-11 · Commit: 5a9a164 · Metode: baca kode penuh (app.js 5.857 baris, backend ~3.000 baris TS), skrip validasi data (769 soal, 1.804 kosakata), simulasi Node untuk bukti runtime, verifikasi silang 3 agen audit independen.
 
+> Verifikasi detail lengkap per-bug beserta bukti empiris runtime: lihat **`AUDIT_BUGS_AFTER_FIX.md`**.
+
 ---
 
 > ## ✅ STATUS REMEDIASI (2026-10-18) — 26/26 BUG DIPERBAIKI DI KODE
@@ -27,7 +29,29 @@ Tanggal audit: 2026-10-11 · Commit: 5a9a164 · Metode: baca kode penuh (app.js 
 > 2. **BUG-10 (limitasi terdokumentasi):** bila SELURUH hop XFF privat (klien NAT yang men-stamp IP privat), bucket rate-limit bisa bersama → 429 massal; topologi proxy tercatat di komentar `rateLimiter.ts`.
 > 3. **BUG-25:** `assets/vendor/tailwindcdn.js` adalah snapshot Play CDN — upgrade Tailwind major harus re-vendor manual.
 
-Status tiap butir: ✅ = terkonfirmasi lewat bukti kode + verifikasi silang (bukan spekulasi).
+> ### 🧪 HASIL VERIFIKASI ULANG INDEPENDEN (2026-10-18, pasca-fix) — BUKTI EMPIRIS RUNTIME
+>
+> Verifikator terpisah (bukan agen yang melakukan fix) menguji ulang dengan bukti runtime, bukan sekadar baca kode:
+> - **Browser headless nyata** (Chromium CDP + HTTP server lokal + mock `/api/*` berbentuk persis `safeQuestions` backend: id string `"q_08_01"` + field camelCase): **30/30 PASS**.
+> - **Browser mode `file://`** (BUG-12): **6/6 PASS**.
+> - **Backend hidup** (PostgreSQL 18.6 + Hono via tsx + HTTP sungguhan + kredensial resmi): **17/19 PASS** — 2 kegagalan awal terbukti artefak skrip test (zona waktu naive-timestamp & quoting jq), 1 gagal = temuan residual baru (bawah).
+> - **Sanitizer build** (BUG-03): `node scripts/build_public_data.js` → 769 soal/25 bab utuh, `grep -c '"correctAnswer"'` = **0**, guard Dockerfile ada.
+>
+> | Bukti kunci (dipilih) | Hasil empiris |
+> |---|---|
+> | BUG-01/02 | Klik nyata tombol opsi → 0 ReferenceError; `answers[1]="A"`; POST `/exam/answer` mengirim `questionId:"q_08_01"` (bukan `q_08_q_08_01`); `question_ja`/`image`/`type` terisi dari field backend |
+> | BUG-05/06/07/08 | Submit gagal → status pending + retry (bukan skor 0 palsu/spinner mati); dashboard & tombol Hasil TANPA crash; counts & skor dari server (bukan "0 benar") |
+> | BUG-09/15/16/21 | Live: `isCorrect` tak bocor saat IN_PROGRESS; sesi EXPIRED tidak difinalisasi (tetap EXPIRED di DB); submit dobel idempoten (skor 2==2, 1 baris); soal lintas bab 404 |
+> | BUG-10 | Live: 429 tercapai tanpa XFF (8×) & spoof-IP-privat tidak bisa rotasi bucket (5×429/65 req) — **TAPI lihat RESIDUAL-1** |
+> | BUG-12 | `file://`: sensei.rusdi+"1234" DITOLAK; register offline → PIN salah DITOLAK, PIN benar DITERIMA |
+> | BUG-13/14/23 | Live PG: default kolom `false`; edit flag Sensei bertahan re-seed; hapus admin TIDAK memicu purge (18→19 user, tanpa error FK) |
+> | BUG-11/20 | Payload `<img onerror>` & injeksi atribut TIDAK tereksekusi di panel admin & pencarian kosakata |
+>
+> ### ⚠️ RESIDUAL-1 (TEMUAN BARU) → **✅ FIXED 2026-10-18 (commit `21ac2c4`)**
+> `backend/src/middlewares/rateLimiter.ts`: scan heuristik ke-kiri dihapus total. Resolusi IP klien kini **deterministik**: `XFF[len - TRUSTED_PROXY_COUNT]` (clamp terkiri). Entri di kiri indeks itu milik klien dan tidak pernah dipakai.
+> **Bukti live produksi:** 140 request bertubi-tubi dengan header `X-Forwarded-For: 8.8.x.x, 203.0.113.y` berputar cepat menghasilkan **119× HTTP 429**; 5 request kontrol berikutnya tanpa spoof langsung **429 semua**. Rotasi bucket via spoof IP publik resmi tertutup total. Key stabil mengunci IP asli.
+>
+> Catatan verifikasi lain: (1) `backend/dist/` telah dibersihkan dari workstation; (2) kegagalan BUG-15 pada ronde-1 verifikasi terbukti artefak zona waktu skrip test (psql menulis naive +07 vs konvensi naive-UTC aplikasi) — ronde-2 dengan naive-UTC lolos sempurna. Konvensi naive-UTC kini konsisten di seluruh kodebase.
 
 ---
 
